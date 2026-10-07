@@ -294,7 +294,7 @@ func set(q url.Values, key, value string) {
 		q.Set(key, value)
 	}
 }
-func setInt(q url.Values, key, value int) {
+func setInt(q url.Values, key string, value int) {
 	if value != 0 {
 		q.Set(key, strconv.Itoa(value))
 	}
