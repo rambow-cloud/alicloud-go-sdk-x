@@ -1,0 +1,370 @@
+package codegen
+
+import (
+	"bytes"
+	"encoding/json/jsontext"
+	"encoding/json/v2"
+	"errors"
+	"fmt"
+	"go/format"
+	"go/token"
+	"regexp"
+	"slices"
+	"strings"
+)
+
+var productWords = regexp.MustCompile(`[A-Z]+[a-z]*|[a-z]+|[0-9]+`)
+var productInitialisms = map[string]string{"Id": "ID", "Ids": "IDs", "Ip": "IP", "Ips": "IPs", "Ipv": "IPv", "Eip": "EIP", "Hpc": "HPC", "Api": "API", "Vpc": "VPC", "Vswitch": "VSwitch", "Cidr": "CIDR", "Url": "URL", "Uri": "URI", "Arn": "ARN", "Ecs": "ECS", "Dns": "DNS", "Cpu": "CPU", "Io": "IO", "Iops": "IOPS", "Os": "OS", "Ram": "RAM", "Sts": "STS", "Ssl": "SSL", "Vpn": "VPN", "Nat": "NAT", "Bgp": "BGP", "Dhcp": "DHCP", "Mac": "MAC", "Uuid": "UUID", "Http": "HTTP", "Https": "HTTPS"}
+
+func productName(value string) string {
+	var b strings.Builder
+	for _, word := range productWords.FindAllString(value, -1) {
+		word = strings.ToUpper(word[:1]) + word[1:]
+		if initial, ok := productInitialisms[word]; ok {
+			word = initial
+		}
+		b.WriteString(word)
+	}
+	return b.String()
+}
+
+type productRenderer struct {
+	p          productIR
+	models     map[string]productModel
+	names      map[string]string
+	output     map[string]bool
+	operations []productOperation
+}
+
+func newProductRenderer(p productIR) (*productRenderer, error) {
+	if !packageName.MatchString(p.Product) || token.Lookup(p.Product).IsKeyword() {
+		return nil, errors.New("invalid package name")
+	}
+	r := &productRenderer{p: p, models: map[string]productModel{}, names: map[string]string{}, output: map[string]bool{}}
+	all := map[string]productModel{}
+	for _, m := range p.Models {
+		if m.ID == "" {
+			return nil, errors.New("empty model identity")
+		}
+		if _, ok := all[m.ID]; ok {
+			return nil, errors.New("duplicate model identity")
+		}
+		all[m.ID] = m
+	}
+	for _, op := range p.Operations {
+		if !exportedName.MatchString(op.Name) {
+			return nil, errors.New("invalid operation name")
+		}
+		if op.Status == "unsupported" {
+			continue
+		}
+		if op.Status != "lowered" {
+			return nil, errors.New("unrecognized operation status")
+		}
+		pr := op.Protocol
+		if pr.Action != op.Name || pr.Version != p.Version || pr.Protocol != "HTTPS" || pr.Path != "/" || pr.Method != "POST" || pr.AuthType != "AK" || pr.Style != "RPC" || pr.RequestBodyType != "formData" || pr.BodyType != "json" {
+			return nil, fmt.Errorf("%s: unsupported protocol", op.Name)
+		}
+		for _, t := range []productType{op.Roots.Request, op.Roots.Response, op.Roots.Body} {
+			if t.Kind != "model" || t.Ref == "" {
+				return nil, errors.New("invalid operation root")
+			}
+		}
+		for id, name := range map[string]string{op.Roots.Request.Ref: op.Name + "Input", op.Roots.Body.Ref: op.Name + "Output", op.Roots.Response.Ref: op.Name + "Response"} {
+			if previous, ok := r.names[id]; ok && previous != name {
+				return nil, errors.New("shared root requires naming exception")
+			}
+			r.names[id] = name
+		}
+		r.output[op.Roots.Body.Ref] = true
+		for _, id := range op.ReachableModels {
+			m, ok := all[id]
+			if !ok {
+				return nil, fmt.Errorf("missing reachable model %s", id)
+			}
+			r.models[id] = m
+		}
+		for _, root := range []productType{op.Roots.Request, op.Roots.Response, op.Roots.Body} {
+			if _, ok := r.models[root.Ref]; !ok {
+				return nil, errors.New("operation root not reachable")
+			}
+		}
+		request, ok := r.models[op.Roots.Request.Ref]
+		if !ok {
+			return nil, errors.New("request not reachable")
+		}
+		bound := map[string]bool{}
+		for _, binding := range op.Bindings {
+			if binding.Location != "query" || binding.Guard != "isUnset" || bound[binding.Field] {
+				return nil, errors.New("unsupported query binding")
+			}
+			found := false
+			for _, f := range request.Fields {
+				if f.DSLName == binding.Field && f.WireName == binding.Wire {
+					found = true
+				}
+			}
+			if !found {
+				return nil, errors.New("binding/model mismatch")
+			}
+			bound[binding.Field] = true
+		}
+		if len(bound) != len(request.Fields) {
+			return nil, errors.New("unbound request field")
+		}
+		r.operations = append(r.operations, op)
+	}
+	if len(r.operations) == 0 {
+		return nil, errors.New("no supported operations")
+	}
+	slices.SortFunc(r.operations, func(a, b productOperation) int { return strings.Compare(a.Name, b.Name) })
+	used := map[string]bool{"Client": true, "Options": true, "New": true, "NewFromConfig": true}
+	for _, op := range r.operations {
+		for _, name := range []string{op.Name, op.Name + "API"} {
+			if used[name] {
+				return nil, fmt.Errorf("operation naming collision %s", name)
+			}
+			used[name] = true
+		}
+	}
+	for _, id := range sortedKeys(r.models) {
+		if r.names[id] == "" {
+			parts := strings.Split(id, ".")
+			base := parts[0]
+			if r.names[base] != "" {
+				base = r.names[base]
+			}
+			for _, part := range parts[1:] {
+				base += productName(part)
+			}
+			r.names[id] = productName(base)
+		}
+		name := r.names[id]
+		if !exportedName.MatchString(name) || used[name] {
+			return nil, fmt.Errorf("model naming collision %s (%s)", name, id)
+		}
+		used[name] = true
+		m := r.models[id]
+		if m.Extends != nil || len(m.InheritedFields) > 0 {
+			return nil, errors.New("model inheritance requires an expanded profile")
+		}
+		fields := map[string]bool{}
+		wires := map[string]bool{}
+		dsl := map[string]bool{}
+		if r.output[id] {
+			fields["Metadata"] = true
+		}
+		for _, f := range m.Fields {
+			field := productName(f.DSLName)
+			if !exportedName.MatchString(field) || fields[field] || wires[f.WireName] || dsl[f.DSLName] || f.WireName == "" || strings.ContainsAny(f.WireName, "`\"\\\n\r,") {
+				return nil, fmt.Errorf("invalid/colliding field %s.%s", id, f.DSLName)
+			}
+			fields[field] = true
+			wires[f.WireName] = true
+			dsl[f.DSLName] = true
+		}
+	}
+	for _, m := range r.models {
+		for _, f := range m.Fields {
+			if _, err := r.goType(f.Type, !f.Required); err != nil {
+				return nil, fmt.Errorf("%s.%s: %w", m.ID, f.DSLName, err)
+			}
+		}
+	}
+	return r, nil
+}
+
+func (r *productRenderer) goType(t productType, optional bool) (string, error) {
+	var name string
+	switch t.Kind {
+	case "scalar":
+		name = map[string]string{"string": "string", "boolean": "bool", "integer": "int32", "number": "int32", "long": "int64", "int8": "int8", "int16": "int16", "int32": "int32", "int64": "int64", "uint8": "uint8", "uint16": "uint16", "uint32": "uint32", "uint64": "uint64", "float": "float32", "double": "float64"}[t.DSLType]
+		if name == "" {
+			return "", fmt.Errorf("unsupported scalar %s", t.DSLType)
+		}
+	case "model":
+		if _, ok := r.models[t.Ref]; !ok {
+			return "", fmt.Errorf("missing model %s", t.Ref)
+		}
+		name = r.names[t.Ref]
+	case "array":
+		if t.Items == nil {
+			return "", errors.New("missing array items")
+		}
+		elem, err := r.goType(*t.Items, false)
+		if err != nil {
+			return "", err
+		}
+		return "[]" + elem, nil
+	case "map":
+		if t.Keys == nil || t.Keys.Kind != "scalar" || t.Keys.DSLType != "string" || t.Values == nil {
+			return "", errors.New("unsupported map")
+		}
+		value, err := r.goType(*t.Values, false)
+		if err != nil {
+			return "", err
+		}
+		return "map[string]" + value, nil
+	default:
+		return "", fmt.Errorf("unsupported type %s", t.Kind)
+	}
+	if optional {
+		return "*" + name, nil
+	}
+	return name, nil
+}
+
+func productFormat(b *bytes.Buffer) ([]byte, error) { return format.Source(b.Bytes()) }
+
+func renderProduct(p productIR) (map[string][]byte, error) {
+	r, err := newProductRenderer(p)
+	if err != nil {
+		return nil, err
+	}
+	base := "service/" + p.Product + "/"
+	files := map[string][]byte{}
+	var types bytes.Buffer
+	fmt.Fprintf(&types, "%s// SPDX-License-Identifier: Apache-2.0\n// Model definitions derive from pinned Alibaba Cloud Darabonba DSL.\n// See sources/darabonba/LICENSE.upstream and the source manifest for attribution.\npackage %s\nimport alicloud %q\n", productGenerated, p.Product, module)
+	for _, id := range sortedKeys(r.models) {
+		m := r.models[id]
+		name := r.names[id]
+		fmt.Fprintf(&types, "// %s represents the complete DSL model %s.\n// Optional pointers preserve absence; callers must not mutate inputs during a call.\ntype %s struct{\n", name, id, name)
+		for _, f := range m.Fields {
+			typ, err := r.goType(f.Type, !f.Required)
+			if err != nil {
+				return nil, err
+			}
+			field := productName(f.DSLName)
+			fmt.Fprintf(&types, "// %s maps to the exact wire member %s.\n", field, f.WireName)
+			if strings.HasPrefix(typ, "*") {
+				types.WriteString("// Nil omits this member; non-nil scalar pointers preserve explicit zero values.\n")
+			}
+			fmt.Fprintf(&types, "%s %s `json:%s`\n", field, typ, quote(f.WireName+",omitzero"))
+		}
+		if r.output[id] {
+			types.WriteString("// Metadata contains request identity, HTTP status and attempt count.\nMetadata alicloud.Metadata `json:\"-\"`\n")
+		}
+		types.WriteString("}\n")
+	}
+	files[base+"types.gen.go"], err = productFormat(&types)
+	if err != nil {
+		return nil, err
+	}
+	var client bytes.Buffer
+	fmt.Fprintf(&client, "%spackage %s\n", productGenerated, p.Product)
+	fmt.Fprintf(&client, productClientTemplate, module, module+"/internal/rpcmodel")
+	files[base+"client.gen.go"], err = productFormat(&client)
+	if err != nil {
+		return nil, err
+	}
+	var methods bytes.Buffer
+	fmt.Fprintf(&methods, "%spackage %s\nimport (\"context\";alicloud %q)\n", productGenerated, p.Product, module)
+	for _, op := range r.operations {
+		fmt.Fprintf(&methods, "// %sAPI is the minimal interface for %s mocks and capability adapters.\ntype %sAPI interface{\n// %s invokes the native action with owned inputs and per-call options.\n%s(context.Context,*%sInput,...func(*Options))(*%sOutput,error)\n}\n", op.Name, op.Name, op.Name, op.Name, op.Name, op.Name, op.Name)
+		fmt.Fprintf(&methods, "// %s calls the native %s action (API version %s).\n// Nil input is an empty request. Errors preserve cancellation and structured service causes.\n// Inputs are deeply copied before hooks; callbacks must not retain options or models.\n// Retry is conservatively disabled until reviewed operation policy exists.\nfunc(c *Client)%s(ctx context.Context,input *%sInput,optFns ...func(*Options))(*%sOutput,error){\n", op.Name, op.Name, p.Version, op.Name, op.Name, op.Name)
+		hasRegion := false
+		for _, f := range r.models[op.Roots.Request.Ref].Fields {
+			if f.WireName == "RegionId" {
+				if f.Type.Kind != "scalar" || f.Type.DSLType != "string" {
+					return nil, errors.New("unsupported region field")
+				}
+				hasRegion = true
+			}
+		}
+		fmt.Fprintf(&methods, "out,meta,err:=invoke[%sInput,%sOutput](ctx,c,input,alicloud.Operation{Service:%q,Name:%q,Version:%q},%t,optFns);if err!=nil{return nil,err};out.Metadata=meta;return out,nil}\n", op.Name, op.Name, p.Product, op.Protocol.Action, op.Protocol.Version, hasRegion)
+	}
+	files[base+"operations.gen.go"], err = productFormat(&methods)
+	if err != nil {
+		return nil, err
+	}
+	var examples bytes.Buffer
+	fmt.Fprintf(&examples, "%spackage %s_test\nimport(\"context\";\"fmt\";\"net/http\";alicloud %q;%q;%q;%q)\n", productGenerated, p.Product, module, module+"/credentials", module+"/sdktest", module+"/service/"+p.Product)
+	for _, op := range r.operations {
+		fmt.Fprintf(&examples, "func ExampleClient_%s(){provider,err:=credentials.NewStaticProvider(credentials.Credentials{AccessKeyID:\"placeholder\",AccessKeySecret:\"placeholder\"});if err!=nil{panic(err)};transport:=sdktest.NewTransport(sdktest.Step{Body:\"{}\"});client,err:=%s.NewFromConfig(alicloud.Config{Region:\"cn-hangzhou\",BaseEndpoint:\"https://example.invalid\",CredentialsProvider:provider,HTTPClient:&http.Client{Transport:transport}});if err!=nil{panic(err)};var api %s.%sAPI=client;out,err:=api.%s(context.Background(),&%s.%sInput{});if err!=nil{panic(err)};fmt.Println(out.Metadata.HTTPStatusCode)\n// Output: 200\n}\n", op.Name, p.Product, p.Product, op.Name, op.Name, p.Product, op.Name)
+	}
+	files[base+"examples.gen_test.go"], err = productFormat(&examples)
+	if err != nil {
+		return nil, err
+	}
+	fmtDoc := productGenerated + "\n" + fmt.Sprintf("// Package %s provides complete models and methods for %d supported native RPC actions.\n// Construct with NewFromConfig. Clients are safe for concurrent use; inputs must not\n// be mutated during calls. Nil optional pointers omit members; explicit zeros survive.\n// Output preserves the JSON body containers and adds transport Metadata.\n// Unsupported DSL actions are listed in docs/products/%s.coverage.json.\n// This package does not yet generate paginator/waiter policies; see issue #37.\n// See docs/products/%s.md for bilingual usage, coverage and migration guidance.\n// Models derive from pinned Apache-2.0 Alibaba Cloud DSL; upstream notices remain\n// under sources/darabonba/licenses. No Tea runtime dependency is required.\npackage %s\n", p.Product, len(r.operations), p.Product, p.Product, p.Product)
+	files[base+"doc.go"], err = format.Source([]byte(fmtDoc))
+	if err != nil {
+		return nil, err
+	}
+	files["docs/products/"+p.Product+".md"] = r.guide()
+	report := struct {
+		Generator            string                     `json:"generator"`
+		SchemaVersion        int                        `json:"schemaVersion"`
+		Product              string                     `json:"product"`
+		Version              string                     `json:"version"`
+		SourceManifestSHA256 string                     `json:"sourceManifestSHA256"`
+		Discovered           int                        `json:"discovered"`
+		Lowered              int                        `json:"lowered"`
+		Emitted              int                        `json:"emitted"`
+		Models               int                        `json:"models"`
+		Compilation          string                     `json:"compilation"`
+		Live                 string                     `json:"live"`
+		CapabilityPolicy     string                     `json:"capabilityPolicy"`
+		Operations           []productCoverageOperation `json:"operations"`
+	}{"sdkgen product", 1, p.Product, p.Version, p.Provenance.SourceManifestSHA256, len(p.Operations), len(r.operations), len(r.operations), len(r.models), "not-assessed", "not-assessed", "not-assessed", nil}
+	reportOperations := slices.Clone(p.Operations)
+	slices.SortFunc(reportOperations, func(a, b productOperation) int { return strings.Compare(a.Name, b.Name) })
+	for _, op := range reportOperations {
+		status := op.Status
+		if status == "lowered" {
+			status = "emitted"
+		}
+		report.Operations = append(report.Operations, productCoverageOperation{Name: op.Name, Status: status, Source: op.Source, Reasons: op.Reasons})
+	}
+	content, err := json.Marshal(report, jsontext.Multiline(true), jsontext.WithIndent("  "))
+	if err != nil {
+		return nil, err
+	}
+	files["docs/products/"+p.Product+".coverage.json"] = append(content, '\n')
+	return files, nil
+}
+
+func (r *productRenderer) guide() []byte {
+	var b bytes.Buffer
+	fmt.Fprintf(&b, "%s# %s complete models / %s 完整模型\n\n## English\n\nImport `%s/service/%s`. Generated from pinned Apache-2.0 official DSL at\n`%s`; upstream licenses and source bytes remain in `sources/darabonba`.\n%d discovered actions, %d lowered/emitted, %d unsupported; %d complete reachable models.\nEmission is not compilation or live acceptance; see `%s.coverage.json` and PR validation.\n\nUse `NewFromConfig(config)` and `client.Operation(ctx, &OperationInput{}, optFns...)`.\nNil input is empty; optional scalar/model pointers preserve absence, non-nil scalars\npreserve zero/false/empty, and input graphs are copied before middleware. Arrays use\none-based query indexes and exact member case; DSL string fields stay strings.\nRegionId defaults to configured region and follows operation region options.\nOutputs preserve full native response body containers and add Metadata. DSL response\nenvelope types are retained separately. Small OperationAPI interfaces support mocks.\nErrors retain cancellation and APIError/OperationError. Clients are concurrency safe;\ndo not mutate caller inputs during calls or retain hook models/options. Standard retry\nis conservatively disabled for these operations pending reviewed #37 policy.\n\nThe older `services/%s` is the bounded reference bridge, including its existing\npaginator/waiter adapters; changing imports also requires adapting scalar pointers\nand complete native response shapes. New product paginators/waiters are #37, not\ninferred from token fields. Licensed semantic prose automation belongs to #38; current\nGo comments document exact bindings and ownership. Each operation has an offline\nexternal Example using a scripted HTTP transport; empty mock requests/responses\nillustrate invocation only, not valid cloud parameter sets or complete server examples.\n\n## 中文\n\n导入 `%s/service/%s`，由 Apache-2.0 官方 DSL 的固定版本 `%s` 生成；上游许可及\n源码原始字节保留在 `sources/darabonba`。发现 %d 操作，降低/输出 %d，不支持 %d，\n完整可达模型 %d；输出不等于编译或真实验收，详见 `%s.coverage.json` 和 PR 检查。\n\n通过 `NewFromConfig(config)` 和 `client.Operation(ctx, &OperationInput{}, optFns...)`\n调用。nil 输入表示空请求；可选标量/模型指针表达缺失，非 nil 标量保留零/false/空串，\n在 middleware 前深复制输入。数组使用从 1 起的 query 索引与准确大小写，DSL 字符串\n保持字符串。RegionId 使用配置默认地区及操作地区选项。Output 保留完整原生响应体\n容器并增加 Metadata；DSL response envelope 类型单独保留。小 OperationAPI 接口\n支持 mock；错误保留取消及 APIError/OperationError。Client 可并发，调用中不要修改\n输入或保留 hooks 模型/选项。审核 #37 策略前，Standard 不重试这些操作。\n\n原 `services/%s` 为有界参考桥，含已有分页/waiter；迁移导入时同步适配标量指针及\n完整原生响应结构。新产品分页/waiter 属于 #37，不凭 token 字段猜能力。授权语义\n说明自动化属于 #38，当前 Go 注释说明准确绑定/所有权。每操作有脚本 HTTP transport\n的离线外部 Example；空 mock 请求/响应仅演示调用，不表示有效云参数或完整服务示例。\n\n", productMarkdown, r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product)
+	return append(bytes.TrimRight(b.Bytes(), "\n"), '\n')
+}
+
+const productClientTemplate = `
+import ("context";"encoding/json/v2";"errors";alicloud %q;%q)
+// Options configures this service. Configured extension objects remain shared.
+type Options alicloud.Config
+// Client is immutable and concurrency safe. Construct with NewFromConfig.
+type Client struct {runtime *alicloud.Client}
+// NewFromConfig copies configuration and middleware registrations and applies options.
+// Nil options and invalid configuration fail; callbacks must not retain Options.
+func NewFromConfig(config alicloud.Config,optFns ...func(*Options))(*Client,error){
+ options:=Options(config);options.Middleware=append(options.Middleware[:0:0],options.Middleware...)
+ for _,f:=range optFns {if f==nil{return nil,errors.New("nil service option")};f(&options)}
+ runtime,err:=alicloud.NewClient(alicloud.Config(options));if err!=nil{return nil,err};return &Client{runtime:runtime},nil
+}
+// New constructs a service client with the same behavior as NewFromConfig.
+func New(config alicloud.Config,optFns ...func(*Options))(*Client,error){return NewFromConfig(config,optFns...)}
+// Options returns a configuration snapshot; extension objects remain shared.
+func(c *Client)Options()Options{return Options(c.runtime.Config())}
+func(c *Client)callOptions(region string,optFns []func(*Options))([]func(*alicloud.CallOptions),error){
+ if len(optFns)==0{return nil,nil};options:=c.Options();if region!=""{options.Region=region}
+ for _,f:=range optFns {if f==nil{return nil,errors.New("nil operation option")};f(&options)}
+ config:=alicloud.Config(options);return []func(*alicloud.CallOptions){func(o *alicloud.CallOptions){o.Config=&config;o.Region=config.Region}},nil
+}
+func invoke[I,O any](ctx context.Context,c *Client,input *I,op alicloud.Operation,hasRegion bool,optFns []func(*Options))(*O,alicloud.Metadata,error){
+ fail:=func(err error)(*O,alicloud.Metadata,error){if ctx.Err()!=nil{err=ctx.Err()};return nil,alicloud.Metadata{},&alicloud.OperationError{Service:op.Service,Operation:op.Name,Err:err}}
+ if err:=ctx.Err();err!=nil{return fail(err)}
+ if c==nil||c.runtime==nil{return fail(errors.New("uninitialized service client"))}
+ in,err:=rpcmodel.Snapshot(ctx,input);if err!=nil{return fail(err)}
+ region:="";if hasRegion{q,err:=rpcmodel.Query(ctx,in);if err!=nil{return fail(err)};region=q.Get("RegionId")}
+ callOptions,err:=c.callOptions(region,optFns);if err!=nil{return fail(err)}
+ codec:=alicloud.Codec{
+ Encode:func(ctx context.Context,value any)(alicloud.Request,error){
+  q,err:=rpcmodel.Query(ctx,value);if err!=nil{return alicloud.Request{},err}
+  requestRegion:=q.Get("RegionId");if hasRegion&&requestRegion==""{requestRegion=c.runtime.Region();q.Set("RegionId",requestRegion)}
+  return alicloud.Request{Method:"POST",Path:"/",Region:requestRegion,Query:q,Header:map[string][]string{"Content-Type":{"application/x-www-form-urlencoded"}}},nil
+ },Decode:func(ctx context.Context,data []byte,value any)error{if err:=ctx.Err();err!=nil{return err};return json.Unmarshal(data,value)}}
+ out:=new(O);meta,err:=c.runtime.InvokeModel(ctx,op,in,alicloud.Request{Region:region},out,codec,callOptions...);if err!=nil{return nil,meta,err};return out,meta,nil
+}
+`

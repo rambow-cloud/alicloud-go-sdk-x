@@ -2,6 +2,13 @@
 
 ## English
 
+Historical implementation was committed directly to main: shared engine `61d2581`
+(issue #7), generated native adapters `89e1d07` (issue #28); neither issue is a PR.
+This guide describes `services/` reference adapters. The #36 full-DSL `service/`
+backend provides complete operation models and interfaces; native paginator/waiter
+policy adapters for those packages are a separate #37 PR, not delivered by #36.
+The paired [batch specification](batch-go-emission.md) records this boundary.
+
 `pagination.Paginator[T]` uses a typed fetcher, comparable Cursor and explicit HasMore.
 Native token/page adapters decide termination from service metadata. Empty items can
 continue with a token. Failed/canceled fetches preserve the cursor. Duplicate/cyclic
@@ -34,6 +41,11 @@ each fetch. No NextToken is invented for page-only APIs. See the
 [official ECS paging contract](https://help.aliyun.com/zh/ecs/developer-reference/api-ecs-2014-05-26-describeinstances).
 
 ## 中文
+
+历史实现直接提交 main：共享引擎 `61d2581`（issue #7），原生生成适配器 `89e1d07`
+（issue #28）；issue 编号不是 PR。本指南描述原 `services/` 参考适配器。#36 完整
+DSL 的 `service/` 后端交付完整操作模型和接口；对应原生分页/waiter 策略适配器由
+独立 #37 PR 交付，不属于 #36，边界见[双语批量规格](batch-go-emission.md)。
 
 `pagination.Paginator[T]` 使用类型化 fetcher、可比较 Cursor 和明确 HasMore，根据服务 token/页元数据
 决定终止。有 token 时空条目可继续；失败/取消保留游标。重复/循环游标默认成功返回当前页后停止，

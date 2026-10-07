@@ -95,6 +95,10 @@ before changing the public API.
 - Publish deterministic coverage/reasons; discovered, lowered, emitted, compiled and live
   coverage are distinct. Selected unsupported behavior fails before writes. Normalize
   indexed inputs/itemName wrappers before source conflict decisions.
+- Full-DSL products use `service/<product>`; `services/<product>` retains the bounded
+  compatibility/reference bridge. Follow docs/batch-go-emission.md for explicit migration.
+  Product changes also run `sdkgen product-check`; old/new generators must preserve each
+  other's owned outputs. New product paginator/waiter policy generation is #37.
 - Establish bilingual route docs, then actual issue dependencies, then stage implementation
   on separate issue branches. Each stage includes docs/tests/Examples/pkg.go.dev acceptance;
   the documentation automation stage does not postpone earlier documentation.
@@ -186,6 +190,9 @@ before changing the public API.
   手写流程。保留 runtime/AWS 范式、Go 1.27、JSON v2。
 - 输出确定性覆盖/原因，区分发现/降低/输出/编译/真实验收；选中不支持行为写前失败。
   先规范化索引输入/itemName 包装，再判断来源冲突。
+- 完整 DSL 产品使用 `service/<product>`，原 `services/<product>` 保留有界兼容/参考桥；
+  明确迁移见 docs/batch-go-emission.md。产品变更还需运行 `sdkgen product-check`，新旧
+  生成器相互保留各自产物；新产品分页/waiter 策略生成属于 #37。
 - 先落实双语路线，再建真实 issue 依赖，然后各 issue 分支实现阶段；每阶段同步文档/
   测试/Example/pkg.go.dev，文档自动化阶段不表示前面可推迟文档。
 

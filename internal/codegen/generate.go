@@ -87,6 +87,10 @@ func Generate(ctx context.Context, root string, check bool) error {
 }
 
 func reconcile(ctx context.Context, root string, files map[string][]byte, check bool) error {
+	return reconcileOwned(ctx, root, files, check, []string{"services", "docs/generated"}, owned)
+}
+
+func reconcileOwned(ctx context.Context, root string, files map[string][]byte, check bool, bases []string, owns func([]byte) bool) error {
 	var drift []string
 	for _, name := range sortedKeys(files) {
 		if err := safeOutputPath(root, name); err != nil {
@@ -97,7 +101,7 @@ func reconcile(ctx context.Context, root string, files map[string][]byte, check 
 		if err != nil && !errors.Is(err, fs.ErrNotExist) {
 			return err
 		}
-		if err == nil && !owned(existing) {
+		if err == nil && !owns(existing) {
 			return fmt.Errorf("codegen: refusing to overwrite unmarked file %s", name)
 		}
 		if !bytes.Equal(existing, files[name]) {
@@ -105,7 +109,7 @@ func reconcile(ctx context.Context, root string, files map[string][]byte, check 
 		}
 	}
 	var stale []string
-	for _, base := range []string{"services", "docs/generated"} {
+	for _, base := range bases {
 		if err := safeOutputPath(root, base+"/.sdkgen-scan"); err != nil {
 			return err
 		}
@@ -122,14 +126,14 @@ func reconcile(ctx context.Context, root string, files map[string][]byte, check 
 			if entry.IsDir() {
 				return nil
 			}
-			if !strings.HasSuffix(path, ".go") && !strings.HasSuffix(path, ".md") {
+			if !strings.HasSuffix(path, ".go") && !strings.HasSuffix(path, ".md") && !strings.HasSuffix(path, ".json") {
 				return nil
 			}
 			data, err := os.ReadFile(path)
 			if err != nil {
 				return err
 			}
-			if !owned(data) {
+			if !owns(data) {
 				return nil
 			}
 			relative, err := filepath.Rel(root, path)

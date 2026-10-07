@@ -7,6 +7,10 @@ older per-operation prerequisites. #31 remains a five-operation bridge; #34 adds
 [source normalization](../../docs/source-normalization.md), and #35 discovers
 complete products without per-operation snapshots/overlays. Its offline command and
 coverage/IR contract are in [product discovery](../../docs/product-discovery.md).
+The #36 [batch Go backend](../../docs/batch-go-emission.md) consumes this complete IR
+without legacy overlays. Run `go run ./internal/cmd/sdkgen product-generate` and
+read-only `go run ./internal/cmd/sdkgen product-check` from the root. Outputs use
+`service/`; the legacy bridge still uses `services/`. Product capabilities are #37.
 
 Issue [#31](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/31) replaces the
 metadata-only production frontend with real official product DSL. Requires Node 22
@@ -71,6 +75,10 @@ Read [migration](../../docs/darabonba-migration.md),
 #31 仍为五操作兼容桥；#34 增加[来源规范化](../../docs/source-normalization.md)，
 #35 已提供无需逐操作快照/overlay 的完整产品发现；离线命令与覆盖/IR 契约见
 [产品发现](../../docs/product-discovery.md)。
+#36 [批量 Go 后端](../../docs/batch-go-emission.md) 无旧 overlay 地消费完整 IR。
+在根目录执行 `go run ./internal/cmd/sdkgen product-generate` 和只读
+`go run ./internal/cmd/sdkgen product-check`，输出到 `service/`；旧桥仍使用 `services/`。
+产品能力策略属于 #37。
 
 Issue [#31](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/31) 将生产前端
 从纯元数据改为真实官方产品 DSL。要求 Node 22、Go 1.27；官方 parser 2.2.1 执行语法

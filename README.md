@@ -12,9 +12,16 @@ An independent Alibaba Cloud SDK for Go. Requires Go 1.27 and encoding/json/v2.
 Development is issue-driven, runtime-first, with English-primary Go docs and paired
 English/Chinese guides. It is not an official SDK. APIs may change before v1.
 
+The full-DSL [batch backend](docs/batch-go-emission.md) now emits 579 supported
+operations in `service/ecs`, `service/vpc` and `service/sts`, with complete native
+models, operation interfaces and offline Examples. Existing `services/` imports
+remain the five-operation reference bridge described below. New full-product paginator/
+waiter policies are tracked by #37; unsupported actions and separate acceptance
+levels are recorded in [product guides](docs/products/ecs.md).
+
 The eleven shared foundation capabilities were accepted with handwritten references and are now exercised by generated
 ECS/STS/VPC clients. See the [supported-operation matrix](docs/support.md) and
-[acceptance mapping](docs/foundation-acceptance.md). Coverage is limited to the documented
+[acceptance mapping](docs/foundation-acceptance.md). The `services/` bridge covers the documented
 reference operations; no full-product or live-cloud acceptance is claimed. The first
 [generator profile](docs/generator.md), extended under #24/#25, generates five operations, models, codecs, mock
 interfaces, paginator/waiter adapters, Go docs, offline Examples and bilingual guides.
@@ -76,7 +83,7 @@ remove the scripted HTTP client. Guides: [runtime](docs/runtime.md),
 [testing](docs/testing.md), [telemetry](docs/telemetry.md).
 
 Run go run ./internal/cmd/sdkgen check, go run ./internal/cmd/doccheck, node .github/scripts/check-doc-language.cjs,
-go vet ./..., go test ./..., and node --test .github/scripts/*.test.cjs.
+go vet ./..., go test ./..., and node --test .github/scripts/\*.test.cjs.
 Linux CI runs race detection; Windows CI verifies portability. Public packages provide
 offline external Examples. Documentation checks cover structure; reviewers check semantics.
 The checker also enforces JSON v2 and standard-library core dependencies.
@@ -84,6 +91,11 @@ Local documentation checks do not imply pkg.go.dev indexing.
 Read AGENTS.md and CONTRIBUTING.md before contributing. MIT: see LICENSE.
 
 ## 中文
+
+完整 DSL [批量后端](docs/batch-go-emission.md) 已在 `service/ecs`、`service/vpc`、
+`service/sts` 输出 579 个支持操作、完整原生模型、操作小接口和离线 Example。
+原 `services/` 导入仍为下文五操作参考桥；新完整产品分页/waiter 策略由 #37 跟踪，
+不支持操作与不同验收层次见[产品指南](docs/products/ecs.md)。
 
 生产前端使用固定官方 Darabonba 产品 DSL 与官方语义 parser，结合公共元数据及本项目
 审核策略；见[迁移/工具](docs/darabonba-migration.md)及[DSL/元数据决策](docs/darabonba-decisions.md)。
@@ -96,7 +108,7 @@ Read AGENTS.md and CONTRIBUTING.md before contributing. MIT: see LICENSE.
 Go 注释英文为主，使用指南中英文对应。本项目非官方 SDK，v1 前 API 可能变化。
 
 十一项共享基础能力已由手写参考验收，现由生成的 ECS/STS/VPC 客户端继续验证。参见[支持矩阵](docs/support.md)和
-[验收映射](docs/foundation-acceptance.md)。覆盖限于记载的参考操作，不宣称全产品或真实云验收。
+[验收映射](docs/foundation-acceptance.md)。原 `services/` 桥覆盖记载的参考操作，不宣称全产品或真实云验收。
 [生成器](docs/generator.md) 经 #24/#25 扩展后生成五个操作、模型、编码、小 mock 接口、分页/waiter 适配器、Go 注释、
 离线 Example 和双语指南；基准 #20 继续独立。
 本次任务不发布版本标签。基础包括共享 middleware、endpoint、结构化错误、有界重试、凭据 provider/cache/chain、
