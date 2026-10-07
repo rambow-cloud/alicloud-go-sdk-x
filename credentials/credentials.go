@@ -5,6 +5,7 @@ import (
 	"errors"
 	"os"
 	"strings"
+	"time"
 )
 
 // ErrMissingCredentials indicates an empty or incomplete access key pair.
@@ -15,6 +16,9 @@ var ErrMissingCredentials = errors.New("alicloud: access key ID and secret are r
 // incomplete credentials and retrieval failures stop resolution.
 var ErrNotFound = errors.New("alicloud: credential source not configured")
 
+// ErrExpired indicates credentials whose expiration has been reached.
+var ErrExpired = errors.New("alicloud: credentials expired")
+
 // Credentials is a snapshot of an access key pair and an optional STS token.
 // The zero value is invalid. Values are returned by copy; strings must not be logged.
 type Credentials struct {
@@ -24,6 +28,10 @@ type Credentials struct {
 	AccessKeySecret string
 	// SecurityToken is an optional STS token; empty means long-lived access keys.
 	SecurityToken string
+	// ExpiresAt is the UTC expiration; zero means no known expiration.
+	ExpiresAt time.Time
+	// Source identifies the provider without containing secrets.
+	Source string
 }
 
 // String returns a redacted representation without any credential values.
@@ -43,7 +51,7 @@ type Provider interface {
 
 // StaticProvider holds an immutable copy of explicitly supplied credentials.
 // Construct one with NewStaticProvider. A zero provider returns ErrMissingCredentials.
-// Static credentials are not refreshed and this provider does not track expiration.
+// Static credentials are not refreshed; known expiration is checked on retrieval.
 type StaticProvider struct {
 	value Credentials
 }
@@ -72,6 +80,9 @@ func (p *StaticProvider) Retrieve(ctx context.Context) (Credentials, error) {
 	}
 	if err := validate(p.value); err != nil {
 		return Credentials{}, err
+	}
+	if !p.value.ExpiresAt.IsZero() && !time.Now().Before(p.value.ExpiresAt) {
+		return Credentials{}, ErrExpired
 	}
 	return p.value, nil
 }
