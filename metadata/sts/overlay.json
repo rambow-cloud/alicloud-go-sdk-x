@@ -15,8 +15,8 @@
           "wire": "AccessKeyId",
           "type": "string",
           "doc": {
-            "english": "Contains selected wire field AccessKeyId.",
-            "chinese": "包含选定线字段 AccessKeyId。"
+            "english": "Contains the temporary access key identifier.",
+            "chinese": "包含临时访问密钥 ID。"
           }
         },
         {
@@ -24,8 +24,8 @@
           "wire": "AccessKeySecret",
           "type": "string",
           "doc": {
-            "english": "Contains selected wire field AccessKeySecret.",
-            "chinese": "包含选定线字段 AccessKeySecret。"
+            "english": "Contains the temporary signing secret; it must never be logged.",
+            "chinese": "包含临时签名密钥，禁止记录到日志。"
           }
         },
         {
@@ -33,8 +33,8 @@
           "wire": "SecurityToken",
           "type": "string",
           "doc": {
-            "english": "Contains selected wire field SecurityToken.",
-            "chinese": "包含选定线字段 SecurityToken。"
+            "english": "Contains the STS security token; no fixed maximum length is assumed.",
+            "chinese": "包含 STS 安全令牌，不假定固定最大长度。"
           }
         },
         {
@@ -93,8 +93,8 @@
           "wire": "RoleArn",
           "type": "string",
           "doc": {
-            "english": "Selects wire field RoleArn; zero values are omitted.",
-            "chinese": "选择线字段 RoleArn，零值省略。"
+            "english": "Specifies the required RAM role ARN, for example acs:ram::123456789012:role/example.",
+            "chinese": "指定必填 RAM 角色 ARN，例如 acs:ram::123456789012:role/example。"
           }
         },
         {
@@ -102,8 +102,8 @@
           "wire": "RoleSessionName",
           "type": "string",
           "doc": {
-            "english": "Selects wire field RoleSessionName; zero values are omitted.",
-            "chinese": "选择线字段 RoleSessionName，零值省略。"
+            "english": "Specifies a required audit session name of 2..64 ASCII characters.",
+            "chinese": "指定必填审计会话名称，长度为 2..64 个 ASCII 字符。"
           }
         },
         {
@@ -111,8 +111,8 @@
           "wire": "DurationSeconds",
           "type": "int64",
           "doc": {
-            "english": "Selects wire field DurationSeconds; zero values are omitted.",
-            "chinese": "选择线字段 DurationSeconds，零值省略。"
+            "english": "Specifies the token lifetime; zero omits it (service default 3600), nonzero must be at least 900. The role maximum is a service decision.",
+            "chinese": "指定令牌有效期；零值省略（服务默认 3600），非零至少为 900。角色最大值由服务决定。"
           }
         },
         {
@@ -120,8 +120,8 @@
           "wire": "Policy",
           "type": "string",
           "doc": {
-            "english": "Selects wire field Policy; zero values are omitted.",
-            "chinese": "选择线字段 Policy，零值省略。"
+            "english": "Specifies an optional restrictive JSON object policy limited to 2048 bytes; empty omits it.",
+            "chinese": "指定可选的限制权限 JSON 对象策略，最多 2048 字节；空值省略。"
           }
         },
         {
@@ -129,8 +129,8 @@
           "wire": "ExternalId",
           "type": "string",
           "doc": {
-            "english": "Selects wire field ExternalId; zero values are omitted.",
-            "chinese": "选择线字段 ExternalId，零值省略。"
+            "english": "Specifies an optional external identity of 2..1224 ASCII characters; empty omits it.",
+            "chinese": "指定可选外部身份，长度 2..1224 个 ASCII 字符；空值省略。"
           }
         },
         {
@@ -138,8 +138,8 @@
           "wire": "SourceIdentity",
           "type": "string",
           "doc": {
-            "english": "Selects wire field SourceIdentity; zero values are omitted.",
-            "chinese": "选择线字段 SourceIdentity，零值省略。"
+            "english": "Contains the source identity retained through role chaining; empty input omits it, otherwise 2..64 ASCII characters and no reserved prefix are accepted.",
+            "chinese": "包含角色链保留的源身份；空输入省略，否则要求 2..64 个 ASCII 字符且不使用保留前缀。"
           }
         }
       ],
@@ -167,8 +167,8 @@
           "wire": "SourceIdentity",
           "type": "string",
           "doc": {
-            "english": "Contains selected wire field SourceIdentity.",
-            "chinese": "包含选定线字段 SourceIdentity。"
+            "english": "Contains the source identity retained through role chaining; empty input omits it, otherwise 2..64 ASCII characters and no reserved prefix are accepted.",
+            "chinese": "包含角色链保留的源身份；空输入省略，否则要求 2..64 个 ASCII 字符且不使用保留前缀。"
           }
         }
       ],

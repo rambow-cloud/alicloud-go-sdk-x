@@ -18,14 +18,14 @@ All entries have implementations, offline behavior tests, public Go documentatio
 | Structured errors | alicloud.OperationError/APIError/Metadata | errors.Is/As; safe default cause/message formatting |
 | Testing helpers | sdktest | offline script, RoundTripper adapter, virtual clock |
 
-| Service version | Handwritten operation | Selected output fields |
+| Service version | Generated operation | Selected output fields |
 | --- | --- | --- |
 | ECS 2014-05-26 | DescribeRegions | ID, localized name, endpoint, availability |
 | ECS 2014-05-26 | DescribeInstances | ID/name/region/zone/status; token/page metadata |
 | ECS 2014-05-26 | DescribeInstanceStatus | ID/status; page metadata |
 | STS 2015-04-01 | AssumeRole | keys/token/expiration, assumed user, source identity |
 
-RPC uses POST `/` with reviewed query encoding and ACS3. ROA path encoding is tested in the signer, but no ROA product client is delivered. Other regions require reviewed custom HTTPS endpoints. Other operations, complete models, OSS/SLS signing, streaming, automatic credential discovery and generator implementation are outside scope. Benchmarks and broader generation remain separate #20/#8 tasks. Release/indexing steps are in releasing.md.
+RPC uses POST `/` with reviewed query encoding and ACS3. ROA path encoding is tested in the signer, but no ROA product client is delivered. Other regions require reviewed custom HTTPS endpoints. Other operations, complete models, OSS/SLS signing, streaming and automatic credential discovery are outside scope. The [first generator profile](generator.md) produces these clients and reviewed paginator/waiter adapters from pinned metadata and overlays; prose-only validators remain handwritten. Benchmarks #20 and broader generation remain separate. Release/indexing steps are in releasing.md.
 
 ## 中文
 
@@ -45,11 +45,11 @@ RPC uses POST `/` with reviewed query encoding and ACS3. ROA path encoding is te
 | 结构化错误 | alicloud.OperationError/APIError/Metadata | errors.Is/As，默认隐藏 cause/message 敏感文本 |
 | testing helper | sdktest | 离线脚本、RoundTripper 适配、虚拟时钟 |
 
-| 服务版本 | 手写操作 | 选定输出字段 |
+| 服务版本 | 生成操作 | 选定输出字段 |
 | --- | --- | --- |
 | ECS 2014-05-26 | DescribeRegions | ID、本地化名称、端点、可用性 |
 | ECS 2014-05-26 | DescribeInstances | ID/名称/地域/可用区/状态；token/页元数据 |
 | ECS 2014-05-26 | DescribeInstanceStatus | ID/状态；页元数据 |
 | STS 2015-04-01 | AssumeRole | 密钥/token/过期、扮演用户、来源身份 |
 
-RPC 使用 POST `/`、核实的 query 编码和 ACS3。签名器测试 ROA 路径编码，但未交付 ROA 产品客户端。其他地域需核实的自定义 HTTPS 端点。其他操作、完整模型、OSS/SLS 签名、流式、自动凭据发现和 generator 不在范围内。基准与更多生成分别由 #20/#8 跟踪。发布/索引步骤见 releasing.md。
+RPC 使用 POST `/`、核实的 query 编码和 ACS3。签名器测试 ROA 路径编码，但未交付 ROA 产品客户端。其他地域需核实的自定义 HTTPS 端点。其他操作、完整模型、OSS/SLS 签名、流式、自动凭据发现不在范围内。[首版生成器](generator.md) 由固定元数据和 overlay 生成这些客户端及审核分页/waiter 适配器；仅说明中存在的校验保持手写。基准 #20 和更多生成独立跟踪。发布/索引步骤见 releasing.md。

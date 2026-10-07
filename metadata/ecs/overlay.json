@@ -33,8 +33,8 @@
           "wire": "RegionEndpoint",
           "type": "string",
           "doc": {
-            "english": "Contains selected wire field RegionEndpoint.",
-            "chinese": "包含选定线字段 RegionEndpoint。"
+            "english": "Contains the service-advertised endpoint; it is not automatically trusted by the endpoint resolver.",
+            "chinese": "包含服务声明的端点，端点 resolver 不自动信任它。"
           }
         },
         {
@@ -242,8 +242,8 @@
           "wire": "NextToken",
           "type": "string",
           "doc": {
-            "english": "Selects wire field NextToken; zero values are omitted.",
-            "chinese": "选择线字段 NextToken，零值省略。"
+            "english": "Selects a continuation token on input; an empty output token ends token pagination.",
+            "chinese": "输入选择续页 token，输出 token 为空表示 token 分页结束。"
           }
         },
         {
@@ -251,8 +251,8 @@
           "wire": "MaxResults",
           "type": "int",
           "doc": {
-            "english": "Selects wire field MaxResults; zero values are omitted.",
-            "chinese": "选择线字段 MaxResults，零值省略。"
+            "english": "Selects token page size; zero omits it and the service defaults to ten. Token and page-number parameters cannot be combined.",
+            "chinese": "选择 token 页大小；零值省略，服务默认十条。token 参数与页码参数不能混用。"
           }
         },
         {
@@ -260,8 +260,8 @@
           "wire": "PageNumber",
           "type": "int",
           "doc": {
-            "english": "Selects wire field PageNumber; zero values are omitted.",
-            "chinese": "选择线字段 PageNumber，零值省略。"
+            "english": "Selects a one-based page on input; zero omits it. DescribeInstances token and page-number parameters cannot be combined.",
+            "chinese": "输入选择从一开始的页码，零值省略。DescribeInstances 的 token 与页码参数不能混用。"
           }
         },
         {
@@ -269,8 +269,8 @@
           "wire": "PageSize",
           "type": "int",
           "doc": {
-            "english": "Selects wire field PageSize; zero values are omitted.",
-            "chinese": "选择线字段 PageSize，零值省略。"
+            "english": "Selects page size on input; zero omits it (service default ten). DescribeInstances token and page-number parameters cannot be combined.",
+            "chinese": "输入选择页大小，零值省略（服务默认十条）。DescribeInstances 的 token 与页码参数不能混用。"
           }
         }
       ],
@@ -289,8 +289,8 @@
           "wire": "NextToken",
           "type": "string",
           "doc": {
-            "english": "Contains selected wire field NextToken.",
-            "chinese": "包含选定线字段 NextToken。"
+            "english": "Selects a continuation token on input; an empty output token ends token pagination.",
+            "chinese": "输入选择续页 token，输出 token 为空表示 token 分页结束。"
           }
         },
         {
@@ -298,8 +298,8 @@
           "wire": "PageNumber",
           "type": "int",
           "doc": {
-            "english": "Contains selected wire field PageNumber.",
-            "chinese": "包含选定线字段 PageNumber。"
+            "english": "Selects a one-based page on input; zero omits it. DescribeInstances token and page-number parameters cannot be combined.",
+            "chinese": "输入选择从一开始的页码，零值省略。DescribeInstances 的 token 与页码参数不能混用。"
           }
         },
         {
@@ -307,8 +307,8 @@
           "wire": "PageSize",
           "type": "int",
           "doc": {
-            "english": "Contains selected wire field PageSize.",
-            "chinese": "包含选定线字段 PageSize。"
+            "english": "Selects page size on input; zero omits it (service default ten). DescribeInstances token and page-number parameters cannot be combined.",
+            "chinese": "输入选择页大小，零值省略（服务默认十条）。DescribeInstances 的 token 与页码参数不能混用。"
           }
         },
         {
@@ -316,8 +316,8 @@
           "wire": "TotalCount",
           "type": "int",
           "doc": {
-            "english": "Contains selected wire field TotalCount.",
-            "chinese": "包含选定线字段 TotalCount。"
+            "english": "Contains the total count; for DescribeInstances it is meaningful only in legacy page-number mode.",
+            "chinese": "包含总数；DescribeInstances 中仅旧页码模式有意义。"
           }
         }
       ],
@@ -376,8 +376,8 @@
           "wire": "PageNumber",
           "type": "int",
           "doc": {
-            "english": "Selects wire field PageNumber; zero values are omitted.",
-            "chinese": "选择线字段 PageNumber，零值省略。"
+            "english": "Selects a one-based page on input; zero omits it. DescribeInstances token and page-number parameters cannot be combined.",
+            "chinese": "输入选择从一开始的页码，零值省略。DescribeInstances 的 token 与页码参数不能混用。"
           }
         },
         {
@@ -385,8 +385,8 @@
           "wire": "PageSize",
           "type": "int",
           "doc": {
-            "english": "Selects wire field PageSize; zero values are omitted.",
-            "chinese": "选择线字段 PageSize，零值省略。"
+            "english": "Selects page size on input; zero omits it (service default ten). DescribeInstances token and page-number parameters cannot be combined.",
+            "chinese": "输入选择页大小，零值省略（服务默认十条）。DescribeInstances 的 token 与页码参数不能混用。"
           }
         }
       ],
@@ -405,8 +405,8 @@
           "wire": "TotalCount",
           "type": "int",
           "doc": {
-            "english": "Contains selected wire field TotalCount.",
-            "chinese": "包含选定线字段 TotalCount。"
+            "english": "Contains the total count; for DescribeInstances it is meaningful only in legacy page-number mode.",
+            "chinese": "包含总数；DescribeInstances 中仅旧页码模式有意义。"
           }
         },
         {
@@ -414,8 +414,8 @@
           "wire": "PageNumber",
           "type": "int",
           "doc": {
-            "english": "Contains selected wire field PageNumber.",
-            "chinese": "包含选定线字段 PageNumber。"
+            "english": "Selects a one-based page on input; zero omits it. DescribeInstances token and page-number parameters cannot be combined.",
+            "chinese": "输入选择从一开始的页码，零值省略。DescribeInstances 的 token 与页码参数不能混用。"
           }
         },
         {
@@ -423,8 +423,8 @@
           "wire": "PageSize",
           "type": "int",
           "doc": {
-            "english": "Contains selected wire field PageSize.",
-            "chinese": "包含选定线字段 PageSize。"
+            "english": "Selects page size on input; zero omits it (service default ten). DescribeInstances token and page-number parameters cannot be combined.",
+            "chinese": "输入选择页大小，零值省略（服务默认十条）。DescribeInstances 的 token 与页码参数不能混用。"
           }
         }
       ],

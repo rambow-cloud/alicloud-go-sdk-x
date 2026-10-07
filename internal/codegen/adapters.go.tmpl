@@ -1,0 +1,76 @@
+{{with .Paginator}}
+// {{.Operation}}Paginator adapts the shared engine with reviewed token/page policies.
+// It defaults to token mode; explicit page or size selects legacy mode. Use one consumer.
+type {{.Operation}}Paginator struct { engine *pagination.Paginator[*{{.Operation}}Output] }
+
+// New{{.Operation}}Paginator copies input/options and starts at the supplied cursor.
+// Nil input selects token mode with the reviewed default result count.
+func New{{.Operation}}Paginator(api {{.Operation}}API,input *{{.Operation}}Input,opts ...func(*Options))(*{{.Operation}}Paginator,error){
+ if api==nil{return nil,errors.New("nil paginator API")}
+ var in {{.Operation}}Input
+ if input!=nil{in=*input;{{copies .Operation "in" "input"}}}
+ {{validate .Operation}}
+ copiedOptions:=append([]func(*Options){},opts...)
+ pageMode:=in.{{.Page}}!=0||in.{{.Size}}!=0
+ initial:=pagination.Cursor{Token:in.{{.Token}}}
+ if pageMode{
+  if in.{{.Page}}==0{in.{{.Page}}=1};if in.{{.Size}}==0{in.{{.Size}}={{.DefaultSize}}}
+  initial=pagination.Cursor{PageNumber:in.{{.Page}}}
+ }else{if in.{{.Limit}}==0{in.{{.Limit}}={{.DefaultSize}}}}
+ engine,err:=pagination.New(initial,func(ctx context.Context,cursor pagination.Cursor)(pagination.Page[*{{.Operation}}Output],error){
+  request:=in;{{copies .Operation "request" "in"}}
+  if pageMode{request.{{.Page}}=cursor.PageNumber}else{request.{{.Token}}=cursor.Token}
+  out,err:=api.{{.Operation}}(ctx,&request,copiedOptions...)
+  if err!=nil{return pagination.Page[*{{.Operation}}Output]{},err}
+  if out==nil{return pagination.Page[*{{.Operation}}Output]{},errors.New("nil paginator response")}
+  page:=pagination.Page[*{{.Operation}}Output]{Value:out,Next:pagination.Cursor{Token:out.{{.Token}}},HasMore:out.{{.Token}}!=""}
+  if pageMode{
+   if out.{{.Total}}<0||(out.{{.Page}}!=0&&out.{{.Page}}!=cursor.PageNumber){return pagination.Page[*{{.Operation}}Output]{},errors.New("inconsistent pagination metadata")}
+   size:=out.{{.Size}};if size<=0{size=in.{{.Size}}}
+   page.Next=pagination.Cursor{PageNumber:cursor.PageNumber+1}
+   page.HasMore=len(out.{{.Items}})>0&&int64(cursor.PageNumber)*int64(size)<int64(out.{{.Total}})
+  }
+  return page,nil
+ })
+ if err!=nil{return nil,err};return &{{.Operation}}Paginator{engine:engine},nil
+}
+// HasMorePages reports whether another service page is available.
+func(p *{{.Operation}}Paginator)HasMorePages()bool{return p.engine.HasMorePages()}
+// NextPage fetches without changing the original input; errors do not advance.
+func(p *{{.Operation}}Paginator)NextPage(ctx context.Context)(*{{.Operation}}Output,error){return p.engine.NextPage(ctx)}
+{{end}}
+
+{{with .Waiter}}
+// {{.Name}} waits until all explicitly requested identities have the reviewed success state.
+// Missing identities and reviewed retry states continue; unknown or duplicate states fail.
+type {{.Name}} struct{engine *waiter.Waiter[*{{.Operation}}Output]}
+// New{{.Name}} copies input/options and polls one bounded first page.
+// All IDs must be nonempty and distinct; operation errors fail immediately.
+func New{{.Name}}(api {{.Operation}}API,input *{{.Operation}}Input,options waiter.Options,opts ...func(*Options))(*{{.Name}},error){
+ if api==nil||input==nil||len(input.{{.IDs}})==0||len(input.{{.IDs}})>{{.MaxIDs}}||input.{{.Page}}>1||input.{{.Page}}<0{return nil,errors.New("waiter requires a bounded distinct ID list on the first page")}
+ in:=*input;{{copies .Operation "in" "input"}}
+ in.{{.Page}}=1;in.{{.Size}}={{.MaxIDs}}
+ copiedOptions:=append([]func(*Options){},opts...)
+ required:=map[string]bool{}
+ for _,id:=range in.{{.IDs}}{if id==""||required[id]{return nil,errors.New("invalid waiter IDs")};required[id]=true}
+ engine,err:=waiter.New(func(ctx context.Context)(*{{.Operation}}Output,error){
+  request:=in;{{copies .Operation "request" "in"}};return api.{{.Operation}}(ctx,&request,copiedOptions...)
+ },func(out *{{.Operation}}Output,err error)waiter.Decision{
+  if err!=nil||out==nil{return waiter.Failure}
+  states:=map[string]string{}
+  for _,entry:=range out.{{.Items}}{
+   if !required[entry.{{.ID}}]{continue};if _,ok:=states[entry.{{.ID}}];ok{return waiter.Failure};states[entry.{{.ID}}]=entry.{{.State}}
+  }
+  success:=0
+  for id:=range required{
+   state,present:=states[id];if !present{continue}
+   switch state{case {{q .Success}}:success++;case {{range $i,$v:=.Retry}}{{if $i}},{{end}}{{q $v}}{{end}}:;default:return waiter.Failure}
+  }
+  if success==len(required){return waiter.Success};return waiter.Retry
+ },options)
+ if err!=nil{return nil,err};return &{{.Name}}{engine:engine},nil
+}
+// Wait requires a positive total duration; caller context bounds each operation.
+// Waiter expiry preserves waiter.ErrTimeout independently of operation retry timeouts.
+func(w *{{.Name}})Wait(ctx context.Context,maxWait time.Duration)(*{{.Operation}}Output,error){return w.engine.Wait(ctx,maxWait)}
+{{end}}
