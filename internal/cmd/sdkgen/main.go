@@ -1,4 +1,4 @@
-// Command sdkgen imports explicit metadata snapshots and generates repository RPC clients.
+// Command sdkgen verifies pinned sources/IR and generates offline repository RPC clients.
 package main
 
 import (
@@ -23,9 +23,28 @@ func main() {
 
 func run(ctx context.Context, args []string) error {
 	if len(args) == 0 {
-		return errors.New("usage: sdkgen import|generate|check [flags]")
+		return errors.New("usage: sdkgen import|generate|check|product-generate|product-check [flags]")
 	}
 	switch args[0] {
+	case "product-generate", "product-check":
+		flags := flag.NewFlagSet(args[0], flag.ContinueOnError)
+		root := flags.String("root", ".", "Repository root containing complete pinned product IR")
+		operations := flags.String("operations", "", "Comma-separated product/Name assertions; does not narrow output")
+		if err := flags.Parse(args[1:]); err != nil {
+			return err
+		}
+		if flags.NArg() != 0 {
+			return errors.New("product: no positional arguments expected")
+		}
+		var selected []string
+		if *operations != "" {
+			selected = strings.Split(*operations, ",")
+		}
+		if err := codegen.GenerateProducts(ctx, *root, args[0] == "product-check", selected); err != nil {
+			return err
+		}
+		fmt.Println("Product generation " + args[0] + " passed (offline; compilation/live assessed separately).")
+		return nil
 	case "generate", "check":
 		flags := flag.NewFlagSet(args[0], flag.ContinueOnError)
 		root := flags.String("root", ".", "Repository root containing metadata and generated outputs")

@@ -22,15 +22,18 @@ other module types are explicit external references. Protocol/binding evidence i
 unsupported constructs, while executable bindings/protocol exist only for lowered
 operations. Numeric DSL type names remain alongside normalized wire types.
 
-| Product | Discovered | Lowered | Unsupported | Reachable named / declared models | Reachable anonymous models |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| ECS 2014-05-26 | 380 | 283 | 97 | 1140 / 1150 | 913 |
-| STS 2015-04-01 | 4 | 1 | 3 | 11 / 11 | 8 |
-| VPC 2016-04-28 | 403 | 295 | 108 | 1208 / 1212 | 520 |
+| Product        | Discovered | Lowered | Unsupported | Reachable named / declared models | Reachable anonymous models |
+| -------------- | ---------: | ------: | ----------: | --------------------------------: | -------------------------: |
+| ECS 2014-05-26 |        380 |     283 |          97 |                       1140 / 1150 |                        913 |
+| STS 2015-04-01 |          4 |       1 |           3 |                           11 / 11 |                          8 |
+| VPC 2016-04-28 |        403 |     295 |         108 |                       1208 / 1212 |                        520 |
 
 Counts describe revision ec489e5c3deae95496daae2b41503ac58b221adb under the current
-strict lowering profile. IR generation emits no Go clients; Go emission, compilation,
-policy and live acceptance of these operations are **not assessed**. Existing five-operation
+strict lowering profile. IR generation itself emits no Go clients; the separate #36
+[batch backend](../docs/batch-go-emission.md) emits 283 ECS, 295 VPC and one STS operation
+into `service/`, with separate reports in docs/products. Discovery coverage intentionally
+leaves downstream acceptance **not assessed**; compilation evidence belongs to the
+emission PR, and product capability policy/live acceptance remain separate. Existing five-operation
 Go bridge acceptance is separate. Unsupported operations retain stable reasons and
 source locations. Source coordinates use parser line/column conventions; file paths
 are relative to sources/darabonba. Report ECS reasons with
@@ -52,13 +55,15 @@ manifest.json 固定各产品 ir.json/coverage.json 哈希。按英文章节命�
 导入 RuntimeOptions 等明确为外部引用。协议/绑定证据包含不支持行为，
 可执行 bindings/protocol 只存在于已降低操作。原始数值 DSL 类型与规范化线类型并存。
 
-| 产品 | 已发现 | 已降低 | 不支持 | 可达具名 / 声明模型 | 可达匿名模型 |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| ECS 2014-05-26 | 380 | 283 | 97 | 1140 / 1150 | 913 |
-| STS 2015-04-01 | 4 | 1 | 3 | 11 / 11 | 8 |
-| VPC 2016-04-28 | 403 | 295 | 108 | 1208 / 1212 | 520 |
+| 产品           | 已发现 | 已降低 | 不支持 | 可达具名 / 声明模型 | 可达匿名模型 |
+| -------------- | -----: | -----: | -----: | ------------------: | -----------: |
+| ECS 2014-05-26 |    380 |    283 |     97 |         1140 / 1150 |          913 |
+| STS 2015-04-01 |      4 |      1 |      3 |             11 / 11 |            8 |
+| VPC 2016-04-28 |    403 |    295 |    108 |         1208 / 1212 |          520 |
 
 数量对应 revision ec489e5c3deae95496daae2b41503ac58b221adb 和当前严格降低模式。
-IR 生成不输出 Go 客户端；这些操作的 Go 输出、编译、策略、真实验收**尚未评估**。
+IR 生成本身不输出 Go；独立的 #36 [批量后端](../docs/batch-go-emission.md) 在 `service/`
+输出 ECS 283、VPC 295、STS 1 个操作，独立报告在 docs/products。发现报告刻意将下游
+验收标为**尚未评估**；编译证据属于输出 PR，产品能力策略/真实验收继续分别记录。
 既有五操作 Go 桥验收单独记录。不支持项保留稳定原因与源码位置。坐标采用 parser
 行列规则，文件路径相对 sources/darabonba；英文章节 report ecs 命令打印 ECS 原因。

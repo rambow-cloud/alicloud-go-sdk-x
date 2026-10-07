@@ -7,6 +7,23 @@ complete hash-pinned `models/*/ir.json`, following #35 / PR #40. This specificat
 precedes implementation. Official DSL and its semantic IR are sufficient; no legacy
 metadata, per-operation field/model selection or documentation overlay is required.
 
+The pre-implementation specification is commit `ce18878`. Current emission is ECS
+283/380 actions and 1,453 models, VPC 295/403 and 1,240 models, STS 1/4 and five
+models: 579 operations and 2,698 models in total. Each emitted operation has an
+external deterministic Example. Local full Go tests include independent temporary-
+module compilation and signed HTTP/middleware contracts; doccheck passed all 16 public
+packages. Linux race and Windows acceptance are recorded separately in the linked PR.
+Renderer reports intentionally leave compilation/live/policy unassessed rather than
+embedding machine-dependent successful-build claims into deterministic source output.
+
+From the repository root:
+
+```sh
+go run ./internal/cmd/sdkgen product-generate
+go run ./internal/cmd/sdkgen product-check
+go run ./internal/cmd/sdkgen product-check -operations ecs/DescribeImages,sts/AssumeRole
+```
+
 Generate supported products into `service/<product>` (singular), following AWS-style
 service imports. The earlier `services/<product>` packages remain the five-operation
 compatibility/reference bridge, with their existing paginator/waiter contracts intact.
@@ -32,6 +49,11 @@ indexes, JSON string fields remain strings, and nil values are omitted. Context,
 signing, endpoint resolution, hooks, response limits, structured errors and retries
 remain the accepted shared runtime. All new operations conservatively disallow retry
 until reviewed #37 policy exists. Credentials and bodies are not logged.
+
+Encoding reference: the [official Go Query implementation](https://github.com/alibabacloud-go/openapi-util/blob/master/service/service.go)
+recursively flattens object members and uses one-based repeated indexes. It was
+inspected on 2026-10-07 as behavior evidence; it is not a pinned build/runtime
+dependency. The backend has independent standard-library code and offline contracts.
 
 `sdkgen product-generate` and read-only `product-check` operate offline. Explicit
 `-operations product/Name,...` asserts support without silently narrowing the generated
@@ -64,6 +86,13 @@ than guessing capabilities from field or operation names.
 之后读取完整且哈希固定的 `models/*/ir.json`；本规格先于实现。官方 DSL/语义 IR
 即可生成，不依赖旧元数据、逐操作字段/模型选择或手写文档 overlay。
 
+实现前规格提交为 `ce18878`。当前输出 ECS 283/380 操作及 1,453 模型、VPC 295/403
+及 1,240 模型、STS 1/4 及 5 模型，总计 579 操作、2,698 模型。每个输出操作有确定性
+外部 Example。本地完整 Go 测试包含临时独立 module 编译及签名 HTTP/middleware
+契约；doccheck 已通过 16 公共包。Linux race/Windows 验收在关联 PR 单独记录。
+渲染报告刻意将编译/真实/策略标为未评估，不把依赖机器环境的编译成功写入确定性
+源码产物。仓库根目录生成、只读检查及严格选择检查命令如英文章节。
+
 完整生成包使用单数 `service/<product>`，遵循 AWS 风格的服务导入。原复数
 `services/<product>` 保留五操作兼容/参考桥和已有 paginator/waiter 契约，其选择性
 模型不与新完整模型互为别名。迁移需明确修改导入、可选标量指针、原生响应容器；
@@ -81,6 +110,10 @@ Options/NewFromConfig、小操作 API 接口。Input 为请求根；Output 为 H
 独占模型；递归编码保留点分成员、从 1 起数组索引、原字符串，省略 nil。context、
 签名、endpoint、hooks、响应限制、结构化错误及重试复用公共 runtime；所有新操作
 在 #37 审核策略前保守禁止重试，不记录凭据/请求响应体。
+
+编码参考：[官方 Go Query 实现](https://github.com/alibabacloud-go/openapi-util/blob/master/service/service.go)
+递归展开对象成员，数组使用从 1 起索引；于 2026-10-07 阅读作为行为证据，不作为
+固定构建/runtime 依赖。本后端为独立标准库实现，并提供离线契约测试。
 
 离线命令为 `sdkgen product-generate`、只读 `product-check`。显式
 `-operations product/Name,...` 验证支持情况，不悄悄缩小生成产品集合。不支持/未知
