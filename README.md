@@ -20,6 +20,12 @@ adds four native paginators, an ECS waiter and seven reviewed operation policies
 Unsupported actions and separate acceptance
 levels are recorded in [product guides](docs/products/ecs.md).
 
+[Documentation automation](docs/product-documentation.md) extracts licensed official
+descriptions into English Go comments and generates paired usage/source indexes with
+per-symbol coverage. Missing source descriptions and Chinese semantic translations
+are reported explicitly. Generated packages include Apache terms and source notices;
+original runtime/tooling retain MIT. Executable Examples remain offline.
+
 The eleven shared foundation capabilities were accepted with handwritten references and are now exercised by generated
 ECS/STS/VPC clients. See the [supported-operation matrix](docs/support.md) and
 [acceptance mapping](docs/foundation-acceptance.md). The `services/` bridge covers the documented
@@ -98,6 +104,10 @@ Read AGENTS.md and CONTRIBUTING.md before contributing. MIT: see LICENSE.
 原 `services/` 导入仍为下文五操作参考桥；[稀疏策略后端](docs/capability-policy.md)
 在 #37 新增四个原生分页器、ECS waiter 和七项已审核操作策略，
 不支持操作与不同验收层次见[产品指南](docs/products/ecs.md)。
+
+[文档自动化](docs/product-documentation.md) 将授权官方说明转换为英文 Go 注释，
+生成对应双语使用/来源索引和逐符号覆盖；缺失说明与中文语义翻译明确报告。
+生成包附 Apache 条款/来源通知，原创 runtime/工具保留 MIT，Example 仍离线运行。
 
 生产前端使用固定官方 Darabonba 产品 DSL 与官方语义 parser，结合公共元数据及本项目
 审核策略；见[迁移/工具](docs/darabonba-migration.md)及[DSL/元数据决策](docs/darabonba-decisions.md)。

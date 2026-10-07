@@ -8,8 +8,9 @@ Schema version 1 and profile rpc-query-json-v1 record the pinned official produc
 parser version, complete source-lock hash, source/API catalog hashes and Apache-2.0
 provenance. The original license is [LICENSE.upstream](../sources/darabonba/LICENSE.upstream).
 Do not relabel source-derived definitions under the project MIT license. Descriptions/
-examples reference coordinates in the licensed source; prose is not copied or converted
-to validators. Imported module license evidence remains separately recorded in the
+examples reference coordinates in the licensed source; #38 includes parser description/
+summary text for English Go comments, with paired guides and documentation coverage.
+Source example values stay absent and prose is never converted to validators. Imported module license evidence remains separately recorded in the
 source lock, including its documented NOASSERTION limitation.
 
 manifest.json hashes all product ir.json and coverage.json files. Regenerate using
@@ -46,7 +47,8 @@ are relative to sources/darabonba. Report ECS reasons with
 rpc-query-json-v1 记录固定官方 DSL、parser 版本、完整来源锁哈希、源码/API catalog
 哈希和 Apache-2.0 来源。原始许可见
 [LICENSE.upstream](../sources/darabonba/LICENSE.upstream)，不把来源派生定义重新标为
-项目 MIT。description/example 引用带许可来源坐标，不复制说明或转成 validator。
+项目 MIT。description/example 引用带许可来源坐标；#38 包含 parser 说明/摘要文本，
+用于英文 Go 注释、对应双语指南与文档覆盖。example 值仍不复制，说明不转成 validator。
 导入模块许可独立记录在来源锁，保留已说明的 NOASSERTION 限制。
 
 manifest.json 固定各产品 ir.json/coverage.json 哈希。按英文章节命令生成和检查，

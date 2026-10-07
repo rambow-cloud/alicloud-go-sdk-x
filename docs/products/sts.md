@@ -21,8 +21,8 @@ is available only for explicitly reviewed idempotent operations with a configure
 
 The older `services/sts` is the bounded reference bridge, including its existing
 paginator/waiter adapters; changing imports also requires adapting scalar pointers
-and complete native response shapes. Reviewed native adapters are listed below; token fields alone do not grant support. Licensed semantic prose automation belongs to #38; current
-Go comments document exact bindings and ownership. Each operation has an offline
+and complete native response shapes. Reviewed native adapters are listed below; token fields alone do not grant support. Licensed semantic prose and source indexes are automated under #38; Go comments
+retain exact bindings and ownership. Each operation has an offline
 external Example using a scripted HTTP transport; empty mock requests/responses
 illustrate invocation only, not valid cloud parameter sets or complete server examples.
 
@@ -41,8 +41,8 @@ illustrate invocation only, not valid cloud parameter sets or complete server ex
 输入或保留 hooks 模型/选项。Standard 仅对明确审核幂等的操作、配置 Retryer 后允许重试。
 
 原 `services/sts` 为有界参考桥，含已有分页/waiter；迁移导入时同步适配标量指针及
-完整原生响应结构。已审核原生适配器见下表，不凭 token 字段猜能力。授权语义
-说明自动化属于 #38，当前 Go 注释说明准确绑定/所有权。每操作有脚本 HTTP transport
+完整原生响应结构。已审核原生适配器见下表，不凭 token 字段猜能力。授权语义说明及来源索引
+由 #38 自动化，Go 注释保留准确绑定/所有权。每操作有脚本 HTTP transport
 的离线外部 Example；空 mock 请求/响应仅演示调用，不表示有效云参数或完整服务示例。
 
 ## Capability policy / 能力策略
@@ -71,3 +71,27 @@ Sensitive String/GoString hide whole models; JSON/direct fields remain raw.
 重试；缺 token 在独占输入上生成一次。敏感 String/GoString 隐藏整个模型，JSON/
 直接字段仍为原始数据。能力表逐操作对应英文章节各列：操作、分页、waiter、可安全
 读重试、token、validator、敏感格式化；其余操作不宣称已审核。
+
+## Documentation sources / 文档来源
+
+### English
+
+English Go comments reuse licensed parser descriptions and summaries: 1/1 operations
+and 14/19 fields have emitted prose. Missing/empty/non-English descriptions are retained
+in `sts.documentation.json`; comments do not create validators or requiredness. This
+paired guide covers usage/contracts and the same source index in both languages.
+Chinese semantic translations are not available in the pinned input; none are invented.
+All executable Examples use offline scripted responses, not upstream example values.
+See [documentation rules](../product-documentation.md), package LICENSE and NOTICE.
+
+### 中文
+
+英文 Go 注释复用授权 parser 说明/摘要：1/1 操作、14/19 字段有已输出说明。
+缺失/空/纯非英文说明保留在 `sts.documentation.json`，说明不自动变为校验或必填。
+本指南中英文同步使用/契约及相同来源索引；固定输入没有中文语义翻译，不编造。
+所有可执行 Example 使用离线脚本响应，不使用上游 example 值。规则见
+[文档规格](../product-documentation.md)，许可/归属见包内 LICENSE 和 NOTICE。
+
+| Operation / 操作 | English prose / 英文说明 | Pinned source / 固定来源 |
+| --- | --- | --- |
+| AssumeRole | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L147) |

@@ -126,7 +126,7 @@ func reconcileOwned(ctx context.Context, root string, files map[string][]byte, c
 			if entry.IsDir() {
 				return nil
 			}
-			if !strings.HasSuffix(path, ".go") && !strings.HasSuffix(path, ".md") && !strings.HasSuffix(path, ".json") {
+			if !strings.HasSuffix(path, ".go") && !strings.HasSuffix(path, ".md") && !strings.HasSuffix(path, ".json") && entry.Name() != "LICENSE" && entry.Name() != "NOTICE" {
 				return nil
 			}
 			data, err := os.ReadFile(path)

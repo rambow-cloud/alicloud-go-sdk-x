@@ -57,7 +57,8 @@ func TestCompleteProductsDeterministicModelsMethodsAndExamples(t *testing.T) {
 			methods := string(files["service/"+pkg+"/operations.gen.go"])
 			examples := string(files["service/"+pkg+"/examples.gen_test.go"])
 			types := string(files["service/"+pkg+"/types.gen.go"])
-			if strings.Count(methods, "func (c *Client)") != want || strings.Count(examples, "func ExampleClient_") != want || strings.Count(types, "type ") != len(r.models) {
+			// Count declaration lines rather than words inside licensed prose.
+			if strings.Count(methods, "\nfunc (c *Client)") != want || strings.Count(examples, "\nfunc ExampleClient_") != want || strings.Count(types, "\ntype ") != len(r.models) {
 				t.Fatal("model/method/example omissions")
 			}
 			var report struct {
@@ -174,6 +175,7 @@ func TestProductReconciliationAndIndependentOwnership(t *testing.T) {
 		t.Fatal("selection silently narrowed products")
 	}
 	writeTestFile(t, root, "service/ecs/obsolete.gen.go", []byte(productGenerated+"package ecs\n"))
+	writeTestFile(t, root, "service/obsolete/LICENSE", []byte(productGenerated+"\nold terms\n"))
 	writeTestFile(t, root, "service/ecs/manual.go", []byte("package ecs\n"))
 	changed := filepath.Join(root, "service", "sts", "types.gen.go")
 	original, err := os.ReadFile(changed)
@@ -184,7 +186,7 @@ func TestProductReconciliationAndIndependentOwnership(t *testing.T) {
 		t.Fatal(err)
 	}
 	var drift *DriftError
-	if err := GenerateProducts(ctx, root, true, nil); !errors.As(err, &drift) || len(drift.Files) != 2 {
+	if err := GenerateProducts(ctx, root, true, nil); !errors.As(err, &drift) || len(drift.Files) != 3 {
 		t.Fatal("drift not recorded", err)
 	}
 	if data, _ := os.ReadFile(changed); bytes.Equal(data, original) {
@@ -196,6 +198,9 @@ func TestProductReconciliationAndIndependentOwnership(t *testing.T) {
 	if _, err := os.Stat(filepath.Join(root, "service", "ecs", "obsolete.gen.go")); !errors.Is(err, os.ErrNotExist) {
 		t.Fatal("stale output retained")
 	}
+	if _, err := os.Stat(filepath.Join(root, "service", "obsolete", "LICENSE")); !errors.Is(err, os.ErrNotExist) {
+		t.Fatal("stale license retained")
+	}
 	if _, err := os.Stat(filepath.Join(root, "service", "ecs", "manual.go")); err != nil {
 		t.Fatal("handwritten file lost")
 	}
@@ -206,15 +211,17 @@ func TestProductReconciliationAndIndependentOwnership(t *testing.T) {
 
 func TestProductPreflightRejectsProtectedFilesAndSymlinks(t *testing.T) {
 	root := fullProductFixture(t)
-	writeTestFile(t, root, "service/sts/types.gen.go", []byte("package sts\n"))
-	if err := GenerateProducts(context.Background(), root, false, nil); err == nil {
-		t.Fatal("manual file overwritten")
-	}
-	if _, err := os.Stat(filepath.Join(root, "docs", "products")); !errors.Is(err, os.ErrNotExist) {
-		t.Fatal("partial output before preflight")
-	}
-	if err := os.Remove(filepath.Join(root, "service", "sts", "types.gen.go")); err != nil {
-		t.Fatal(err)
+	for _, file := range []string{"types.gen.go", "LICENSE", "NOTICE"} {
+		writeTestFile(t, root, "service/sts/"+file, []byte("unmarked manual content\n"))
+		if err := GenerateProducts(context.Background(), root, false, nil); err == nil {
+			t.Fatal("manual file overwritten", file)
+		}
+		if _, err := os.Stat(filepath.Join(root, "docs", "products")); !errors.Is(err, os.ErrNotExist) {
+			t.Fatal("partial output before preflight")
+		}
+		if err := os.Remove(filepath.Join(root, "service", "sts", file)); err != nil {
+			t.Fatal(err)
+		}
 	}
 	out := t.TempDir()
 	if err := os.Symlink(out, filepath.Join(root, "service", "ecs")); err != nil {

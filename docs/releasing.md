@@ -4,7 +4,9 @@
 
 ## English
 
-Canonical public module: github.com/rambow-cloud/alicloud-go-sdk-x, MIT license, Go 1.27.
+Canonical public module: github.com/rambow-cloud/alicloud-go-sdk-x, Go 1.27.
+Original runtime/tooling use MIT; generated product definitions/prose retain Apache-2.0,
+with package LICENSE/NOTICE and pinned-source references. Inspect both before release.
 This work does not create a release tag. Release only the documented operation coverage
 after CI and foundation acceptance; update equivalent English/Chinese release notes.
 Use v0 for experimental APIs. Never overwrite indexed tags; use a new version and retract
@@ -19,7 +21,9 @@ Sources: https://pkg.go.dev/about#adding-a-package and https://pkg.go.dev/licens
 
 ## 中文
 
-公开 module 为 github.com/rambow-cloud/alicloud-go-sdk-x，MIT 许可证、Go 1.27。本次工作不创建发布标签。
+公开 module 为 github.com/rambow-cloud/alicloud-go-sdk-x，Go 1.27；原创 runtime/工具使用
+MIT，生成产品定义/说明保留 Apache-2.0、包内 LICENSE/NOTICE 和固定来源引用，发布前
+核对两者。本次工作不创建发布标签。
 CI 和基础验收通过后，只发布明确记载的操作范围，并同步中英文版本说明。实验 API 使用 v0；
 索引标签不能改写，必要时用新版本及 retract。v1 承诺兼容，后续主版本遵守 Go 版本路径规则。
 

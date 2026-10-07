@@ -177,6 +177,18 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 	if err := r.validateCapabilityPolicy(); err != nil {
 		return nil, err
 	}
+	for _, op := range r.operations {
+		if err := r.validateDocuments(op.Documentation); err != nil {
+			return nil, err
+		}
+	}
+	for _, m := range r.models {
+		for _, f := range m.Fields {
+			if err := r.validateDocuments(f.Documentation); err != nil {
+				return nil, err
+			}
+		}
+	}
 	return r, nil
 }
 
@@ -230,7 +242,7 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 	base := "service/" + p.Product + "/"
 	files := map[string][]byte{}
 	var types bytes.Buffer
-	fmt.Fprintf(&types, "%s// SPDX-License-Identifier: Apache-2.0\n// Model definitions derive from pinned Alibaba Cloud Darabonba DSL.\n// See sources/darabonba/LICENSE.upstream and the source manifest for attribution.\npackage %s\nimport alicloud %q\n", productGenerated, p.Product, module)
+	fmt.Fprintf(&types, "%s// SPDX-License-Identifier: Apache-2.0\n// Copyright (c) 2009-present, Alibaba Cloud All rights reserved.\n// Modified: models and descriptions converted to native Go by alicloud-go-sdk-x.\n// See package LICENSE and NOTICE for source attribution.\npackage %s\nimport alicloud %q\n", productGenerated, p.Product, module)
 	for _, id := range sortedKeys(r.models) {
 		m := r.models[id]
 		name := r.names[id]
@@ -245,6 +257,7 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 			if strings.HasPrefix(typ, "*") {
 				types.WriteString("// Nil omits this member; non-nil scalar pointers preserve explicit zero values.\n")
 			}
+			r.appendProse(&types, f.Documentation)
 			fmt.Fprintf(&types, "%s %s `json:%s`\n", field, typ, quote(f.WireName+",omitzero"))
 		}
 		if r.output[id] {
@@ -264,7 +277,7 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 		return nil, err
 	}
 	var methods bytes.Buffer
-	fmt.Fprintf(&methods, "%spackage %s\nimport (\"context\";alicloud %q)\n", productGenerated, p.Product, module)
+	fmt.Fprintf(&methods, "%s// SPDX-License-Identifier: Apache-2.0\n// Copyright (c) 2009-present, Alibaba Cloud All rights reserved.\n// Modified: operation declarations and prose converted to Go by alicloud-go-sdk-x.\n// See package LICENSE and NOTICE for source attribution.\npackage %s\nimport (\"context\";alicloud %q)\n", productGenerated, p.Product, module)
 	for _, op := range r.operations {
 		fmt.Fprintf(&methods, "// %sAPI is the minimal interface for %s mocks and capability adapters.\ntype %sAPI interface{\n// %s invokes the native action with owned inputs and per-call options.\n%s(context.Context,*%sInput,...func(*Options))(*%sOutput,error)\n}\n", op.Name, op.Name, op.Name, op.Name, op.Name, op.Name, op.Name)
 		cfg := r.opPolicy(op.Name)
@@ -278,6 +291,7 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 		if cfg.ClientToken != "" {
 			methods.WriteString("// An absent client token is filled once on the owned input; caller input remains unchanged.\n")
 		}
+		r.appendProse(&methods, op.Documentation)
 		fmt.Fprintf(&methods, "func(c *Client)%s(ctx context.Context,input *%sInput,optFns ...func(*Options))(*%sOutput,error){\n", op.Name, op.Name, op.Name)
 		hasRegion := false
 		for _, f := range r.models[op.Roots.Request.Ref].Fields {
@@ -339,12 +353,19 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	fmtDoc := productGenerated + "\n" + fmt.Sprintf("// Package %s provides complete models and methods for %d supported native RPC actions.\n// Construct with NewFromConfig. Clients are safe for concurrent use; inputs must not\n// be mutated during calls. Nil optional pointers omit members; explicit zeros survive.\n// Output preserves the JSON body containers and adds transport Metadata.\n// Unsupported DSL actions are listed in docs/products/%s.coverage.json.\n// Reviewed native adapters and operation policies are listed in the product guide.\n// See docs/products/%s.md for bilingual usage, coverage and migration guidance.\n// Models derive from pinned Apache-2.0 Alibaba Cloud DSL; upstream notices remain\n// under sources/darabonba/licenses. No Tea runtime dependency is required.\npackage %s\n", p.Product, len(r.operations), p.Product, p.Product, p.Product)
+	fmtDoc := productGenerated + "\n" + fmt.Sprintf("// Package %s provides complete models and methods for %d supported native RPC actions.\n// Construct with NewFromConfig. Clients are safe for concurrent use; inputs must not\n// be mutated during calls. Nil optional pointers omit members; explicit zeros survive.\n// Output preserves the JSON body containers and adds transport Metadata.\n// Unsupported DSL actions are listed in docs/products/%s.coverage.json.\n// Reviewed native adapters and operation policies are listed in the product guide.\n// See docs/products/%s.md for bilingual usage, coverage and migration guidance.\n// Models and service descriptions derive from pinned Apache-2.0 Alibaba Cloud DSL.\n// Package LICENSE and NOTICE preserve terms and attribution; see documentation coverage.\n// Service prose is informational and does not create SDK validation. No Tea runtime is required.\npackage %s\n", p.Product, len(r.operations), p.Product, p.Product, p.Product)
 	files[base+"doc.go"], err = format.Source([]byte(fmtDoc))
 	if err != nil {
 		return nil, err
 	}
 	files["docs/products/"+p.Product+".md"] = r.guide()
+	docReport, err := json.Marshal(r.documentationCoverage(), json.Deterministic(true), jsontext.Multiline(true), jsontext.WithIndent("  "))
+	if err != nil {
+		return nil, err
+	}
+	files["docs/products/"+p.Product+".documentation.json"] = append(docReport, '\n')
+	files[base+"LICENSE"] = append([]byte(productGenerated+"\n"), productApacheLicense...)
+	files[base+"NOTICE"] = []byte(fmt.Sprintf("%s\n## English\n\nCopyright (c) 2009-present, Alibaba Cloud All rights reserved.\nUpstream product DSL and descriptions: %s/tree/%s\nSource manifest SHA256: %s\nApache-2.0 applies to upstream-derived definitions and prose; see LICENSE.\nModified by alicloud-go-sdk-x: typed Go models/methods and normalized Go comments.\nOriginal shared runtime, tooling and handwritten tests retain the project MIT license.\nNo imported Tea module implementation is distributed in these product packages.\n\n## 中文\n\n阿里云上游版权、固定产品来源和哈希如英文章节。上游派生定义/说明按 Apache-2.0，\n完整条款见 LICENSE；本项目将其转换为强类型 Go 模型/方法及规范 Go 注释。\n原创 runtime、工具、手写测试保留项目 MIT，不分发导入 Tea 模块实现。\n", productGenerated, p.Provenance.Repository, p.Provenance.Revision, p.Provenance.SourceManifestSHA256))
 	report := struct {
 		Generator            string                     `json:"generator"`
 		SchemaVersion        int                        `json:"schemaVersion"`
@@ -387,8 +408,9 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 
 func (r *productRenderer) guide() []byte {
 	var b bytes.Buffer
-	fmt.Fprintf(&b, "%s# %s complete models / %s 完整模型\n\n## English\n\nImport `%s/service/%s`. Generated from pinned Apache-2.0 official DSL at\n`%s`; upstream licenses and source bytes remain in `sources/darabonba`.\n%d discovered actions, %d lowered/emitted, %d unsupported; %d complete reachable models.\nEmission is not compilation or live acceptance; see `%s.coverage.json` and PR validation.\n\nUse `NewFromConfig(config)` and `client.Operation(ctx, &OperationInput{}, optFns...)`.\nNil input is empty; optional scalar/model pointers preserve absence, non-nil scalars\npreserve zero/false/empty, and input graphs are copied before middleware. Arrays use\none-based query indexes and exact member case; DSL string fields stay strings.\nRegionId defaults to configured region and follows operation region options.\nOutputs preserve full native response body containers and add Metadata. DSL response\nenvelope types are retained separately. Small OperationAPI interfaces support mocks.\nErrors retain cancellation and APIError/OperationError. Clients are concurrency safe;\ndo not mutate caller inputs during calls or retain hook models/options. Standard retry\nis available only for explicitly reviewed idempotent operations with a configured Retryer.\n\nThe older `services/%s` is the bounded reference bridge, including its existing\npaginator/waiter adapters; changing imports also requires adapting scalar pointers\nand complete native response shapes. Reviewed native adapters are listed below; token fields alone do not grant support. Licensed semantic prose automation belongs to #38; current\nGo comments document exact bindings and ownership. Each operation has an offline\nexternal Example using a scripted HTTP transport; empty mock requests/responses\nillustrate invocation only, not valid cloud parameter sets or complete server examples.\n\n## 中文\n\n导入 `%s/service/%s`，由 Apache-2.0 官方 DSL 的固定版本 `%s` 生成；上游许可及\n源码原始字节保留在 `sources/darabonba`。发现 %d 操作，降低/输出 %d，不支持 %d，\n完整可达模型 %d；输出不等于编译或真实验收，详见 `%s.coverage.json` 和 PR 检查。\n\n通过 `NewFromConfig(config)` 和 `client.Operation(ctx, &OperationInput{}, optFns...)`\n调用。nil 输入表示空请求；可选标量/模型指针表达缺失，非 nil 标量保留零/false/空串，\n在 middleware 前深复制输入。数组使用从 1 起的 query 索引与准确大小写，DSL 字符串\n保持字符串。RegionId 使用配置默认地区及操作地区选项。Output 保留完整原生响应体\n容器并增加 Metadata；DSL response envelope 类型单独保留。小 OperationAPI 接口\n支持 mock；错误保留取消及 APIError/OperationError。Client 可并发，调用中不要修改\n输入或保留 hooks 模型/选项。Standard 仅对明确审核幂等的操作、配置 Retryer 后允许重试。\n\n原 `services/%s` 为有界参考桥，含已有分页/waiter；迁移导入时同步适配标量指针及\n完整原生响应结构。已审核原生适配器见下表，不凭 token 字段猜能力。授权语义\n说明自动化属于 #38，当前 Go 注释说明准确绑定/所有权。每操作有脚本 HTTP transport\n的离线外部 Example；空 mock 请求/响应仅演示调用，不表示有效云参数或完整服务示例。\n\n", productMarkdown, r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product)
+	fmt.Fprintf(&b, "%s# %s complete models / %s 完整模型\n\n## English\n\nImport `%s/service/%s`. Generated from pinned Apache-2.0 official DSL at\n`%s`; upstream licenses and source bytes remain in `sources/darabonba`.\n%d discovered actions, %d lowered/emitted, %d unsupported; %d complete reachable models.\nEmission is not compilation or live acceptance; see `%s.coverage.json` and PR validation.\n\nUse `NewFromConfig(config)` and `client.Operation(ctx, &OperationInput{}, optFns...)`.\nNil input is empty; optional scalar/model pointers preserve absence, non-nil scalars\npreserve zero/false/empty, and input graphs are copied before middleware. Arrays use\none-based query indexes and exact member case; DSL string fields stay strings.\nRegionId defaults to configured region and follows operation region options.\nOutputs preserve full native response body containers and add Metadata. DSL response\nenvelope types are retained separately. Small OperationAPI interfaces support mocks.\nErrors retain cancellation and APIError/OperationError. Clients are concurrency safe;\ndo not mutate caller inputs during calls or retain hook models/options. Standard retry\nis available only for explicitly reviewed idempotent operations with a configured Retryer.\n\nThe older `services/%s` is the bounded reference bridge, including its existing\npaginator/waiter adapters; changing imports also requires adapting scalar pointers\nand complete native response shapes. Reviewed native adapters are listed below; token fields alone do not grant support. Licensed semantic prose and source indexes are automated under #38; Go comments\nretain exact bindings and ownership. Each operation has an offline\nexternal Example using a scripted HTTP transport; empty mock requests/responses\nillustrate invocation only, not valid cloud parameter sets or complete server examples.\n\n## 中文\n\n导入 `%s/service/%s`，由 Apache-2.0 官方 DSL 的固定版本 `%s` 生成；上游许可及\n源码原始字节保留在 `sources/darabonba`。发现 %d 操作，降低/输出 %d，不支持 %d，\n完整可达模型 %d；输出不等于编译或真实验收，详见 `%s.coverage.json` 和 PR 检查。\n\n通过 `NewFromConfig(config)` 和 `client.Operation(ctx, &OperationInput{}, optFns...)`\n调用。nil 输入表示空请求；可选标量/模型指针表达缺失，非 nil 标量保留零/false/空串，\n在 middleware 前深复制输入。数组使用从 1 起的 query 索引与准确大小写，DSL 字符串\n保持字符串。RegionId 使用配置默认地区及操作地区选项。Output 保留完整原生响应体\n容器并增加 Metadata；DSL response envelope 类型单独保留。小 OperationAPI 接口\n支持 mock；错误保留取消及 APIError/OperationError。Client 可并发，调用中不要修改\n输入或保留 hooks 模型/选项。Standard 仅对明确审核幂等的操作、配置 Retryer 后允许重试。\n\n原 `services/%s` 为有界参考桥，含已有分页/waiter；迁移导入时同步适配标量指针及\n完整原生响应结构。已审核原生适配器见下表，不凭 token 字段猜能力。授权语义说明及来源索引\n由 #38 自动化，Go 注释保留准确绑定/所有权。每操作有脚本 HTTP transport\n的离线外部 Example；空 mock 请求/响应仅演示调用，不表示有效云参数或完整服务示例。\n\n", productMarkdown, r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product)
 	r.appendCapabilityGuide(&b)
+	r.appendDocumentationGuide(&b)
 	return append(bytes.TrimRight(b.Bytes(), "\n"), '\n')
 }
 

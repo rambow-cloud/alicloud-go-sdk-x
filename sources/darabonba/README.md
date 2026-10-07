@@ -8,7 +8,10 @@ api-info.json bytes intact for ECS 2014-05-26, STS 2015-04-01 and VPC 2016-04-28
 The upstream [Apache notice](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/LICENSE)
 is preserved as LICENSE.upstream. Product source descriptions are part of this
 licensed corpus; public metadata snapshots separately exclude descriptions/examples.
-Generated comments and paired guides remain original reviewed project documentation.
+Product comments now reuse licensed parser descriptions/annotations under #38; paired
+usage/contracts/source indexes record language and prose coverage. Source example
+values remain excluded from executable Examples. Package LICENSE/NOTICE preserve
+Apache terms, copyright and transformation attribution; original runtime/tooling use MIT.
 
 The lock records product paths, original URLs, per-file SHA-256, parser version,
 module registry URLs, archive SHA-1/SHA-256 and resolved scope/name/version. Product
@@ -17,24 +20,24 @@ no registry calls. Imported module artifacts, README and notices remain byte-exa
 Our bilingual guides explain their use; language checks distinguish these preserved
 third-party artifacts from project-authored Markdown.
 
-| Module | Pinned version |
-| --- | --- |
-| alibabacloud Credential | 0.5.17 |
-| alibabacloud EndpointUtil | 0.2.1 |
-| alibabacloud GatewayPOP | 0.1.4 |
-| alibabacloud GatewaySPI | 0.0.15 |
-| alibabacloud OpenApi | 0.3.23 |
-| alibabacloud OpenApiUtil | 0.2.11 |
-| alibabacloud Paginator | 0.0.3 |
-| darabonba Array | 0.1.1 |
-| darabonba EncodeUtil | 0.0.6 |
-| darabonba Map | 0.0.5 |
-| darabonba SignatureUtil | 0.0.11 |
-| darabonba String | 0.0.13 |
-| darabonba Util | 0.2.19 |
-| darabonba XML | 0.1.14 |
+| Module                    | Pinned version |
+| ------------------------- | -------------- |
+| alibabacloud Credential   | 0.5.17         |
+| alibabacloud EndpointUtil | 0.2.1          |
+| alibabacloud GatewayPOP   | 0.1.4          |
+| alibabacloud GatewaySPI   | 0.0.15         |
+| alibabacloud OpenApi      | 0.3.23         |
+| alibabacloud OpenApiUtil  | 0.2.11         |
+| alibabacloud Paginator    | 0.0.3          |
+| darabonba Array           | 0.1.1          |
+| darabonba EncodeUtil      | 0.0.6          |
+| darabonba Map             | 0.0.5          |
+| darabonba SignatureUtil   | 0.0.11         |
+| darabonba String          | 0.0.13         |
+| darabonba Util            | 0.2.19         |
+| darabonba XML             | 0.1.14         |
 
-License evidence is stored in licenses/*.NOTICE with file SHA-256 and upstream Git
+License evidence is stored in licenses/\*.NOTICE with file SHA-256 and upstream Git
 blob identities in the manifest. These contain original LICENSE or README license
 declarations; full Apache terms are included in the gateway/paginator/crypto notices.
 Module source repositories declare Apache-2.0. Credential's registry archive supplies
@@ -61,7 +64,9 @@ commit 固定 ec489e5c3deae95496daae2b41503ac58b221adb。ECS 2014-05-26、STS
 2015-04-01、VPC 2016-04-28 的 main.tea、Teafile、api-info.json 保留原始字节。
 上游[Apache 通知](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/LICENSE)
 保存在 LICENSE.upstream。产品说明属于该授权源码集合；公共元数据快照仍单独排除
-说明和示例，生成注释及双语指南仍为本项目原创审核文档。
+说明和示例。#38 生成注释复用授权 parser 说明/摘要；双语使用/契约/来源索引明确
+语言及说明覆盖，原始 example 值不进入可执行 Example。包 LICENSE/NOTICE 保留
+Apache 条款、版权及转换归属，原创 runtime/工具使用 MIT。
 
 锁文件记录产品路径、原始 URL、各文件 SHA-256、parser 版本、模块仓库 URL、归档
 SHA-1/SHA-256 和实际 scope/name/version。产品 .libraries.json 将通配符映射到本地
@@ -73,7 +78,7 @@ SHA-1/SHA-256 和实际 scope/name/version。产品 .libraries.json 将通配符
 Array 0.1.1、EncodeUtil 0.0.6、Map 0.0.5、SignatureUtil 0.0.11、String 0.0.13、
 Util 0.2.19、XML 0.1.14；scope 与表格对应。
 
-licenses/*.NOTICE 保存原 LICENSE 或 README 许可声明，manifest 固定文件哈希和
+licenses/\*.NOTICE 保存原 LICENSE 或 README 许可声明，manifest 固定文件哈希和
 上游 Git blob；gateway/paginator/crypto 通知含完整 Apache 条款。模块源码仓库声明
 Apache-2.0。Credential 的注册归档未提供许可声明，引用的 Node runtime 声明 MIT，
 仅记录为相关运行时证据，sourceSPDX=NOASSERTION，不能据此确定注册 DSL 的许可证。

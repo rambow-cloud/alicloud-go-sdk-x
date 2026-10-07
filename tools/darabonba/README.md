@@ -15,6 +15,11 @@ read-only `go run ./internal/cmd/sdkgen product-check` from the root. Outputs us
 without requiring per-operation entries for full emission. Product reports include
 policy hashes and individual reviewed/unreviewed status.
 
+#38 [documentation automation](../../docs/product-documentation.md) consumes official
+parser descriptions/annotations, generates English Go comments and paired usage/source
+indexes, and reports missing prose/Chinese translations. Original example values never
+enter Go Examples. Full Apache terms and source/transformation notices accompany output.
+
 Issue [#31](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/31) replaces the
 metadata-only production frontend with real official product DSL. Requires Node 22
 and Go 1.27. The official parser 2.2.1 performs syntax and imported-module semantic
@@ -34,7 +39,7 @@ node tools/darabonba/frontend.cjs check
 node tools/darabonba/discovery.cjs generate
 node tools/darabonba/discovery.cjs report ecs
 node tools/darabonba/discovery.cjs check
-node --test tools/darabonba/frontend.test.cjs tools/darabonba/normalization.test.cjs tools/darabonba/discovery.test.cjs
+npm --prefix tools/darabonba test
 go run ./internal/cmd/sdkgen check
 ```
 
@@ -84,6 +89,10 @@ Read [migration](../../docs/darabonba-migration.md),
 #37 从可选且绑定来源的 `policies/<product>.json` 读取
 [审核能力](../../docs/capability-policy.md)，完整输出无需逐操作策略条目。
 产品报告记录策略哈希及逐操作已审核/未审核状态。
+
+#38 [文档自动化](../../docs/product-documentation.md) 消费官方 parser 的说明/注释，
+生成英文 Go 注释与对应双语使用/来源索引，报告缺失说明/中文翻译。原始 example 值
+不进入 Go Example；输出附完整 Apache 条款及来源/转换通知。
 
 Issue [#31](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/31) 将生产前端
 从纯元数据改为真实官方产品 DSL。要求 Node 22、Go 1.27；官方 parser 2.2.1 执行语法
