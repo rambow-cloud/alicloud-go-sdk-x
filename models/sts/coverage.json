@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "product": "sts",
+  "version": "2015-04-01",
+  "provenance": {
+    "repository": "https://github.com/aliyun/alibabacloud-sdk",
+    "revision": "ec489e5c3deae95496daae2b41503ac58b221adb",
+    "license": "Apache-2.0",
+    "parserVersion": "2.2.1",
+    "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
+    "sourceSHA256": "99e3d971f8c80993650253b123c5851ffc757c7a2b729ba290eb823f37d654a4",
+    "apiInfoSHA256": "9fe5ac3ce2f5fb81f033ef33a2e8205fbe7895907b8ea8d521414fb281f9a2f3"
+  },
+  "counts": {
+    "discovered": 4,
+    "lowered": 1,
+    "unsupported": 3,
+    "dslOperations": 4,
+    "catalogOnlyOperations": 0,
+    "dslOnlyOperations": 0,
+    "declaredModels": 11,
+    "reachableNamedModels": 11,
+    "reachableAnonymousModels": 8,
+    "unusedNamedModels": 0
+  },
+  "acceptance": {
+    "lowering": "assessed",
+    "goEmission": "not-assessed",
+    "compilation": "not-assessed",
+    "live": "not-assessed"
+  },
+  "reasonCounts": {
+    "DSL_OPERATION_SIGNATURE": 1,
+    "DSL_PROTOCOL_PROFILE": 2
+  },
+  "operations": [
+    {
+      "name": "AssumeRole",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/sts/main.tea",
+        "line": 147,
+        "column": 16,
+        "endLine": 147,
+        "endColumn": 37
+      },
+      "reasons": []
+    },
+    {
+      "name": "AssumeRoleWithOIDC",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/sts/main.tea",
+        "line": 294,
+        "column": 16,
+        "endLine": 294,
+        "endColumn": 45
+      },
+      "reasons": [
+        {
+          "code": "DSL_PROTOCOL_PROFILE",
+          "message": "RPC profile",
+          "source": {
+            "file": "products/sts/main.tea",
+            "line": 294,
+            "column": 16,
+            "endLine": 294,
+            "endColumn": 45
+          }
+        }
+      ]
+    },
+    {
+      "name": "AssumeRoleWithSAML",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/sts/main.tea",
+        "line": 426,
+        "column": 16,
+        "endLine": 426,
+        "endColumn": 45
+      },
+      "reasons": [
+        {
+          "code": "DSL_PROTOCOL_PROFILE",
+          "message": "RPC profile",
+          "source": {
+            "file": "products/sts/main.tea",
+            "line": 426,
+            "column": 16,
+            "endLine": 426,
+            "endColumn": 45
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetCallerIdentity",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/sts/main.tea",
+        "line": 500,
+        "column": 16,
+        "endLine": 500,
+        "endColumn": 44
+      },
+      "reasons": [
+        {
+          "code": "DSL_OPERATION_SIGNATURE",
+          "message": "operation signature",
+          "source": {
+            "file": "products/sts/main.tea",
+            "line": 500,
+            "column": 16,
+            "endLine": 500,
+            "endColumn": 44
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -37,12 +37,13 @@ patterns have stable reason codes, messages and source locations. A lowered reco
 not a claim of Go emission, compilation, runtime policy or live-cloud acceptance.
 Those later acceptance stages remain unassessed here.
 
-Planned repository-root commands:
+Repository-root commands:
 
 ```sh
 node tools/darabonba/discovery.cjs generate
 node tools/darabonba/discovery.cjs report ecs
 node tools/darabonba/discovery.cjs check
+node tools/darabonba/discovery.cjs check --operations ecs/DescribeImages,sts/AssumeRole
 ```
 
 Artifacts live under models/{ecs,sts,vpc}/ir.json and coverage.json with a hash-pinned
@@ -51,6 +52,8 @@ fetches. System write failures can leave partial updates. Optional --operations
 selection is a strict acceptance gate: selected unknown/unsupported operations fail
 before writes, while unselected unsupported entries remain in the full inventory.
 The report prints actual counts/reasons and locations; no invented API coverage.
+The current pinned corpus accounts for ECS 380/283/97, STS 4/1/3 and VPC 403/295/108
+discovered/lowered/unsupported operations. See [artifact guide](../models/README.md).
 
 Acceptance: real full-corpus deterministic regeneration and complete accounting;
 discovery with no legacy metadata/overlays/canonical files; malformed/unsupported
@@ -88,11 +91,13 @@ RuntimeOptions/导入 transport 模型明确为外部引用，不可达声明也
 继承线模型及其他不支持行为有稳定原因代码、说明、源码位置。已降低不表示已输出
 Go、编译、建立 runtime 策略或真实云验收；后续验收在此均尚未评估。
 
-计划在仓库根目录执行英文章节的 generate、report ecs 和 check 命令。产物为
+在仓库根目录执行英文章节的 generate、report ecs、check 和严格选择命令。产物为
 models/{ecs,sts,vpc}/ir.json、coverage.json 及哈希固定的 models/manifest.json。
 全部产品检查后写入，check 不写、不联网；系统写入失败可能部分更新。可选
 --operations 提供严格验收：选中未知/不支持操作在写前失败，未选中的不支持操作
-仍保留全量清单。报告打印实际数量、原因、位置，不编造覆盖。
+仍保留全量清单。报告打印实际数量、原因、位置，不编造覆盖。当前固定来源的
+发现/降低/不支持数量为 ECS 380/283/97、STS 4/1/3、VPC 403/295/108，见
+[产物指南](../models/README.md)。
 
 验收包含真实全量来源的确定性再生成和完整统计、没有旧元数据/overlay/canonical
 仍可发现、协议/绑定/模型/来源异常、严格选择写前失败、双语文档和 CLI 使用示例。
