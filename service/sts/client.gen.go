@@ -57,7 +57,7 @@ func (c *Client) callOptions(region string, optFns []func(*Options)) ([]func(*al
 	config := alicloud.Config(options)
 	return []func(*alicloud.CallOptions){func(o *alicloud.CallOptions) { o.Config = &config; o.Region = config.Region }}, nil
 }
-func invoke[I, O any](ctx context.Context, c *Client, input *I, op alicloud.Operation, hasRegion bool, optFns []func(*Options)) (*O, alicloud.Metadata, error) {
+func invoke[I, O any](ctx context.Context, c *Client, input *I, op alicloud.Operation, hasRegion bool, prepare func(context.Context, *I) error, validate func(*I) error, optFns []func(*Options)) (*O, alicloud.Metadata, error) {
 	fail := func(err error) (*O, alicloud.Metadata, error) {
 		if ctx.Err() != nil {
 			err = ctx.Err()
@@ -74,6 +74,16 @@ func invoke[I, O any](ctx context.Context, c *Client, input *I, op alicloud.Oper
 	if err != nil {
 		return fail(err)
 	}
+	if prepare != nil {
+		if err := prepare(ctx, in); err != nil {
+			return fail(err)
+		}
+	}
+	if validate != nil {
+		if err := validate(in); err != nil {
+			return fail(err)
+		}
+	}
 	region := ""
 	if hasRegion {
 		q, err := rpcmodel.Query(ctx, in)
@@ -88,6 +98,11 @@ func invoke[I, O any](ctx context.Context, c *Client, input *I, op alicloud.Oper
 	}
 	codec := alicloud.Codec{
 		Encode: func(ctx context.Context, value any) (alicloud.Request, error) {
+			if validate != nil {
+				if err := validate(value.(*I)); err != nil {
+					return alicloud.Request{}, err
+				}
+			}
 			q, err := rpcmodel.Query(ctx, value)
 			if err != nil {
 				return alicloud.Request{}, err

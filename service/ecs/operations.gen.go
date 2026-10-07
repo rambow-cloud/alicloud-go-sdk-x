@@ -15,9 +15,9 @@ type ActivateRouterInterfaceAPI interface {
 // ActivateRouterInterface calls the native ActivateRouterInterface action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ActivateRouterInterface(ctx context.Context, input *ActivateRouterInterfaceInput, optFns ...func(*Options)) (*ActivateRouterInterfaceOutput, error) {
-	out, meta, err := invoke[ActivateRouterInterfaceInput, ActivateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ActivateRouterInterface", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ActivateRouterInterfaceInput, ActivateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ActivateRouterInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -34,9 +34,9 @@ type AddBandwidthPackageIpsAPI interface {
 // AddBandwidthPackageIps calls the native AddBandwidthPackageIps action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) AddBandwidthPackageIps(ctx context.Context, input *AddBandwidthPackageIpsInput, optFns ...func(*Options)) (*AddBandwidthPackageIpsOutput, error) {
-	out, meta, err := invoke[AddBandwidthPackageIpsInput, AddBandwidthPackageIpsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AddBandwidthPackageIps", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[AddBandwidthPackageIpsInput, AddBandwidthPackageIpsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AddBandwidthPackageIps", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -53,9 +53,9 @@ type AddTagsAPI interface {
 // AddTags calls the native AddTags action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) AddTags(ctx context.Context, input *AddTagsInput, optFns ...func(*Options)) (*AddTagsOutput, error) {
-	out, meta, err := invoke[AddTagsInput, AddTagsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AddTags", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[AddTagsInput, AddTagsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AddTags", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -72,9 +72,10 @@ type AllocateDedicatedHostsAPI interface {
 // AllocateDedicatedHosts calls the native AllocateDedicatedHosts action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
+// An absent client token is filled once on the owned input; caller input remains unchanged.
 func (c *Client) AllocateDedicatedHosts(ctx context.Context, input *AllocateDedicatedHostsInput, optFns ...func(*Options)) (*AllocateDedicatedHostsOutput, error) {
-	out, meta, err := invoke[AllocateDedicatedHostsInput, AllocateDedicatedHostsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AllocateDedicatedHosts", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[AllocateDedicatedHostsInput, AllocateDedicatedHostsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AllocateDedicatedHosts", Version: "2014-05-26", Idempotent: false}, true, prepareAllocateDedicatedHostsInput, ValidateAllocateDedicatedHostsInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -91,9 +92,9 @@ type AllocateEipAddressAPI interface {
 // AllocateEipAddress calls the native AllocateEipAddress action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) AllocateEipAddress(ctx context.Context, input *AllocateEipAddressInput, optFns ...func(*Options)) (*AllocateEipAddressOutput, error) {
-	out, meta, err := invoke[AllocateEipAddressInput, AllocateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AllocateEipAddress", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[AllocateEipAddressInput, AllocateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AllocateEipAddress", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -110,9 +111,9 @@ type AllocatePublicIpAddressAPI interface {
 // AllocatePublicIpAddress calls the native AllocatePublicIpAddress action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) AllocatePublicIpAddress(ctx context.Context, input *AllocatePublicIpAddressInput, optFns ...func(*Options)) (*AllocatePublicIpAddressOutput, error) {
-	out, meta, err := invoke[AllocatePublicIpAddressInput, AllocatePublicIpAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AllocatePublicIpAddress", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[AllocatePublicIpAddressInput, AllocatePublicIpAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AllocatePublicIpAddress", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -129,9 +130,9 @@ type ApplyAutoSnapshotPolicyAPI interface {
 // ApplyAutoSnapshotPolicy calls the native ApplyAutoSnapshotPolicy action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ApplyAutoSnapshotPolicy(ctx context.Context, input *ApplyAutoSnapshotPolicyInput, optFns ...func(*Options)) (*ApplyAutoSnapshotPolicyOutput, error) {
-	out, meta, err := invoke[ApplyAutoSnapshotPolicyInput, ApplyAutoSnapshotPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ApplyAutoSnapshotPolicy", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[ApplyAutoSnapshotPolicyInput, ApplyAutoSnapshotPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ApplyAutoSnapshotPolicy", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -148,9 +149,9 @@ type AssociateEipAddressAPI interface {
 // AssociateEipAddress calls the native AssociateEipAddress action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) AssociateEipAddress(ctx context.Context, input *AssociateEipAddressInput, optFns ...func(*Options)) (*AssociateEipAddressOutput, error) {
-	out, meta, err := invoke[AssociateEipAddressInput, AssociateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AssociateEipAddress", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[AssociateEipAddressInput, AssociateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AssociateEipAddress", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -167,9 +168,9 @@ type AssociateHaVipAPI interface {
 // AssociateHaVip calls the native AssociateHaVip action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) AssociateHaVip(ctx context.Context, input *AssociateHaVipInput, optFns ...func(*Options)) (*AssociateHaVipOutput, error) {
-	out, meta, err := invoke[AssociateHaVipInput, AssociateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AssociateHaVip", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[AssociateHaVipInput, AssociateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AssociateHaVip", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -186,9 +187,9 @@ type AttachClassicLinkVpcAPI interface {
 // AttachClassicLinkVpc calls the native AttachClassicLinkVpc action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) AttachClassicLinkVpc(ctx context.Context, input *AttachClassicLinkVpcInput, optFns ...func(*Options)) (*AttachClassicLinkVpcOutput, error) {
-	out, meta, err := invoke[AttachClassicLinkVpcInput, AttachClassicLinkVpcOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachClassicLinkVpc", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[AttachClassicLinkVpcInput, AttachClassicLinkVpcOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachClassicLinkVpc", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -205,9 +206,9 @@ type AttachDiskAPI interface {
 // AttachDisk calls the native AttachDisk action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) AttachDisk(ctx context.Context, input *AttachDiskInput, optFns ...func(*Options)) (*AttachDiskOutput, error) {
-	out, meta, err := invoke[AttachDiskInput, AttachDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachDisk", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[AttachDiskInput, AttachDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachDisk", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -224,9 +225,9 @@ type AttachInstanceRamRoleAPI interface {
 // AttachInstanceRamRole calls the native AttachInstanceRamRole action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) AttachInstanceRamRole(ctx context.Context, input *AttachInstanceRamRoleInput, optFns ...func(*Options)) (*AttachInstanceRamRoleOutput, error) {
-	out, meta, err := invoke[AttachInstanceRamRoleInput, AttachInstanceRamRoleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachInstanceRamRole", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[AttachInstanceRamRoleInput, AttachInstanceRamRoleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachInstanceRamRole", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -243,9 +244,9 @@ type AttachKeyPairAPI interface {
 // AttachKeyPair calls the native AttachKeyPair action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) AttachKeyPair(ctx context.Context, input *AttachKeyPairInput, optFns ...func(*Options)) (*AttachKeyPairOutput, error) {
-	out, meta, err := invoke[AttachKeyPairInput, AttachKeyPairOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachKeyPair", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[AttachKeyPairInput, AttachKeyPairOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachKeyPair", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -262,9 +263,9 @@ type CancelAutoSnapshotPolicyAPI interface {
 // CancelAutoSnapshotPolicy calls the native CancelAutoSnapshotPolicy action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CancelAutoSnapshotPolicy(ctx context.Context, input *CancelAutoSnapshotPolicyInput, optFns ...func(*Options)) (*CancelAutoSnapshotPolicyOutput, error) {
-	out, meta, err := invoke[CancelAutoSnapshotPolicyInput, CancelAutoSnapshotPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelAutoSnapshotPolicy", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[CancelAutoSnapshotPolicyInput, CancelAutoSnapshotPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelAutoSnapshotPolicy", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -281,9 +282,9 @@ type CancelCopyImageAPI interface {
 // CancelCopyImage calls the native CancelCopyImage action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CancelCopyImage(ctx context.Context, input *CancelCopyImageInput, optFns ...func(*Options)) (*CancelCopyImageOutput, error) {
-	out, meta, err := invoke[CancelCopyImageInput, CancelCopyImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelCopyImage", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CancelCopyImageInput, CancelCopyImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelCopyImage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -300,9 +301,9 @@ type CancelPhysicalConnectionAPI interface {
 // CancelPhysicalConnection calls the native CancelPhysicalConnection action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CancelPhysicalConnection(ctx context.Context, input *CancelPhysicalConnectionInput, optFns ...func(*Options)) (*CancelPhysicalConnectionOutput, error) {
-	out, meta, err := invoke[CancelPhysicalConnectionInput, CancelPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelPhysicalConnection", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CancelPhysicalConnectionInput, CancelPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelPhysicalConnection", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -319,9 +320,9 @@ type CancelTaskAPI interface {
 // CancelTask calls the native CancelTask action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CancelTask(ctx context.Context, input *CancelTaskInput, optFns ...func(*Options)) (*CancelTaskOutput, error) {
-	out, meta, err := invoke[CancelTaskInput, CancelTaskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelTask", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CancelTaskInput, CancelTaskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelTask", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -338,9 +339,9 @@ type CloneDisksAPI interface {
 // CloneDisks calls the native CloneDisks action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CloneDisks(ctx context.Context, input *CloneDisksInput, optFns ...func(*Options)) (*CloneDisksOutput, error) {
-	out, meta, err := invoke[CloneDisksInput, CloneDisksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CloneDisks", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CloneDisksInput, CloneDisksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CloneDisks", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -357,9 +358,9 @@ type ConnectRouterInterfaceAPI interface {
 // ConnectRouterInterface calls the native ConnectRouterInterface action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ConnectRouterInterface(ctx context.Context, input *ConnectRouterInterfaceInput, optFns ...func(*Options)) (*ConnectRouterInterfaceOutput, error) {
-	out, meta, err := invoke[ConnectRouterInterfaceInput, ConnectRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ConnectRouterInterface", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ConnectRouterInterfaceInput, ConnectRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ConnectRouterInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -376,9 +377,9 @@ type ConvertNatPublicIpToEipAPI interface {
 // ConvertNatPublicIpToEip calls the native ConvertNatPublicIpToEip action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ConvertNatPublicIpToEip(ctx context.Context, input *ConvertNatPublicIpToEipInput, optFns ...func(*Options)) (*ConvertNatPublicIpToEipOutput, error) {
-	out, meta, err := invoke[ConvertNatPublicIpToEipInput, ConvertNatPublicIpToEipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ConvertNatPublicIpToEip", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ConvertNatPublicIpToEipInput, ConvertNatPublicIpToEipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ConvertNatPublicIpToEip", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -395,9 +396,9 @@ type CopyImageAPI interface {
 // CopyImage calls the native CopyImage action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CopyImage(ctx context.Context, input *CopyImageInput, optFns ...func(*Options)) (*CopyImageOutput, error) {
-	out, meta, err := invoke[CopyImageInput, CopyImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CopyImage", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CopyImageInput, CopyImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CopyImage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -414,9 +415,9 @@ type CopySnapshotAPI interface {
 // CopySnapshot calls the native CopySnapshot action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CopySnapshot(ctx context.Context, input *CopySnapshotInput, optFns ...func(*Options)) (*CopySnapshotOutput, error) {
-	out, meta, err := invoke[CopySnapshotInput, CopySnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CopySnapshot", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CopySnapshotInput, CopySnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CopySnapshot", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -433,9 +434,9 @@ type CreateAutoSnapshotPolicyAPI interface {
 // CreateAutoSnapshotPolicy calls the native CreateAutoSnapshotPolicy action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateAutoSnapshotPolicy(ctx context.Context, input *CreateAutoSnapshotPolicyInput, optFns ...func(*Options)) (*CreateAutoSnapshotPolicyOutput, error) {
-	out, meta, err := invoke[CreateAutoSnapshotPolicyInput, CreateAutoSnapshotPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateAutoSnapshotPolicy", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[CreateAutoSnapshotPolicyInput, CreateAutoSnapshotPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateAutoSnapshotPolicy", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -452,9 +453,9 @@ type CreateCapacityReservationAPI interface {
 // CreateCapacityReservation calls the native CreateCapacityReservation action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateCapacityReservation(ctx context.Context, input *CreateCapacityReservationInput, optFns ...func(*Options)) (*CreateCapacityReservationOutput, error) {
-	out, meta, err := invoke[CreateCapacityReservationInput, CreateCapacityReservationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateCapacityReservation", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateCapacityReservationInput, CreateCapacityReservationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateCapacityReservation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -471,9 +472,9 @@ type CreateDedicatedHostClusterAPI interface {
 // CreateDedicatedHostCluster calls the native CreateDedicatedHostCluster action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateDedicatedHostCluster(ctx context.Context, input *CreateDedicatedHostClusterInput, optFns ...func(*Options)) (*CreateDedicatedHostClusterOutput, error) {
-	out, meta, err := invoke[CreateDedicatedHostClusterInput, CreateDedicatedHostClusterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDedicatedHostCluster", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateDedicatedHostClusterInput, CreateDedicatedHostClusterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDedicatedHostCluster", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -490,9 +491,9 @@ type CreateDeploymentSetAPI interface {
 // CreateDeploymentSet calls the native CreateDeploymentSet action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateDeploymentSet(ctx context.Context, input *CreateDeploymentSetInput, optFns ...func(*Options)) (*CreateDeploymentSetOutput, error) {
-	out, meta, err := invoke[CreateDeploymentSetInput, CreateDeploymentSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDeploymentSet", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateDeploymentSetInput, CreateDeploymentSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDeploymentSet", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -509,9 +510,9 @@ type CreateDiagnosticMetricSetAPI interface {
 // CreateDiagnosticMetricSet calls the native CreateDiagnosticMetricSet action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateDiagnosticMetricSet(ctx context.Context, input *CreateDiagnosticMetricSetInput, optFns ...func(*Options)) (*CreateDiagnosticMetricSetOutput, error) {
-	out, meta, err := invoke[CreateDiagnosticMetricSetInput, CreateDiagnosticMetricSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDiagnosticMetricSet", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateDiagnosticMetricSetInput, CreateDiagnosticMetricSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDiagnosticMetricSet", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -528,9 +529,9 @@ type CreateDiskAPI interface {
 // CreateDisk calls the native CreateDisk action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateDisk(ctx context.Context, input *CreateDiskInput, optFns ...func(*Options)) (*CreateDiskOutput, error) {
-	out, meta, err := invoke[CreateDiskInput, CreateDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDisk", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateDiskInput, CreateDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDisk", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -547,9 +548,9 @@ type CreateElasticityAssuranceAPI interface {
 // CreateElasticityAssurance calls the native CreateElasticityAssurance action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateElasticityAssurance(ctx context.Context, input *CreateElasticityAssuranceInput, optFns ...func(*Options)) (*CreateElasticityAssuranceOutput, error) {
-	out, meta, err := invoke[CreateElasticityAssuranceInput, CreateElasticityAssuranceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateElasticityAssurance", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateElasticityAssuranceInput, CreateElasticityAssuranceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateElasticityAssurance", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -566,9 +567,9 @@ type CreateForwardEntryAPI interface {
 // CreateForwardEntry calls the native CreateForwardEntry action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateForwardEntry(ctx context.Context, input *CreateForwardEntryInput, optFns ...func(*Options)) (*CreateForwardEntryOutput, error) {
-	out, meta, err := invoke[CreateForwardEntryInput, CreateForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateForwardEntry", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateForwardEntryInput, CreateForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateForwardEntry", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -585,9 +586,9 @@ type CreateHaVipAPI interface {
 // CreateHaVip calls the native CreateHaVip action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateHaVip(ctx context.Context, input *CreateHaVipInput, optFns ...func(*Options)) (*CreateHaVipOutput, error) {
-	out, meta, err := invoke[CreateHaVipInput, CreateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateHaVip", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateHaVipInput, CreateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateHaVip", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -604,9 +605,9 @@ type CreateImageAPI interface {
 // CreateImage calls the native CreateImage action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateImage(ctx context.Context, input *CreateImageInput, optFns ...func(*Options)) (*CreateImageOutput, error) {
-	out, meta, err := invoke[CreateImageInput, CreateImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateImage", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateImageInput, CreateImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateImage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -623,9 +624,9 @@ type CreateInstanceAPI interface {
 // CreateInstance calls the native CreateInstance action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateInstance(ctx context.Context, input *CreateInstanceInput, optFns ...func(*Options)) (*CreateInstanceOutput, error) {
-	out, meta, err := invoke[CreateInstanceInput, CreateInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateInstance", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateInstanceInput, CreateInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateInstance", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -642,9 +643,9 @@ type CreateKeyPairAPI interface {
 // CreateKeyPair calls the native CreateKeyPair action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateKeyPair(ctx context.Context, input *CreateKeyPairInput, optFns ...func(*Options)) (*CreateKeyPairOutput, error) {
-	out, meta, err := invoke[CreateKeyPairInput, CreateKeyPairOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateKeyPair", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateKeyPairInput, CreateKeyPairOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateKeyPair", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -661,9 +662,9 @@ type CreateNatGatewayAPI interface {
 // CreateNatGateway calls the native CreateNatGateway action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateNatGateway(ctx context.Context, input *CreateNatGatewayInput, optFns ...func(*Options)) (*CreateNatGatewayOutput, error) {
-	out, meta, err := invoke[CreateNatGatewayInput, CreateNatGatewayOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateNatGateway", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateNatGatewayInput, CreateNatGatewayOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateNatGateway", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -680,9 +681,9 @@ type CreateRouteEntryAPI interface {
 // CreateRouteEntry calls the native CreateRouteEntry action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateRouteEntry(ctx context.Context, input *CreateRouteEntryInput, optFns ...func(*Options)) (*CreateRouteEntryOutput, error) {
-	out, meta, err := invoke[CreateRouteEntryInput, CreateRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateRouteEntry", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateRouteEntryInput, CreateRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateRouteEntry", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -699,9 +700,9 @@ type CreateSavingsPlanAPI interface {
 // CreateSavingsPlan calls the native CreateSavingsPlan action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateSavingsPlan(ctx context.Context, input *CreateSavingsPlanInput, optFns ...func(*Options)) (*CreateSavingsPlanOutput, error) {
-	out, meta, err := invoke[CreateSavingsPlanInput, CreateSavingsPlanOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSavingsPlan", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateSavingsPlanInput, CreateSavingsPlanOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSavingsPlan", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -718,9 +719,9 @@ type CreateSecurityGroupAPI interface {
 // CreateSecurityGroup calls the native CreateSecurityGroup action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateSecurityGroup(ctx context.Context, input *CreateSecurityGroupInput, optFns ...func(*Options)) (*CreateSecurityGroupOutput, error) {
-	out, meta, err := invoke[CreateSecurityGroupInput, CreateSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSecurityGroup", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateSecurityGroupInput, CreateSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSecurityGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -737,9 +738,9 @@ type CreateSnapshotAPI interface {
 // CreateSnapshot calls the native CreateSnapshot action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateSnapshot(ctx context.Context, input *CreateSnapshotInput, optFns ...func(*Options)) (*CreateSnapshotOutput, error) {
-	out, meta, err := invoke[CreateSnapshotInput, CreateSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSnapshot", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[CreateSnapshotInput, CreateSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSnapshot", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -756,9 +757,9 @@ type CreateSnapshotGroupAPI interface {
 // CreateSnapshotGroup calls the native CreateSnapshotGroup action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateSnapshotGroup(ctx context.Context, input *CreateSnapshotGroupInput, optFns ...func(*Options)) (*CreateSnapshotGroupOutput, error) {
-	out, meta, err := invoke[CreateSnapshotGroupInput, CreateSnapshotGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSnapshotGroup", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateSnapshotGroupInput, CreateSnapshotGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSnapshotGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -775,9 +776,9 @@ type CreateStorageSetAPI interface {
 // CreateStorageSet calls the native CreateStorageSet action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateStorageSet(ctx context.Context, input *CreateStorageSetInput, optFns ...func(*Options)) (*CreateStorageSetOutput, error) {
-	out, meta, err := invoke[CreateStorageSetInput, CreateStorageSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateStorageSet", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateStorageSetInput, CreateStorageSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateStorageSet", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -794,9 +795,9 @@ type CreateVSwitchAPI interface {
 // CreateVSwitch calls the native CreateVSwitch action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateVSwitch(ctx context.Context, input *CreateVSwitchInput, optFns ...func(*Options)) (*CreateVSwitchOutput, error) {
-	out, meta, err := invoke[CreateVSwitchInput, CreateVSwitchOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateVSwitch", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateVSwitchInput, CreateVSwitchOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateVSwitch", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -813,9 +814,9 @@ type CreateVpcAPI interface {
 // CreateVpc calls the native CreateVpc action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateVpc(ctx context.Context, input *CreateVpcInput, optFns ...func(*Options)) (*CreateVpcOutput, error) {
-	out, meta, err := invoke[CreateVpcInput, CreateVpcOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateVpc", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateVpcInput, CreateVpcOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateVpc", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -832,9 +833,9 @@ type CreateVscAPI interface {
 // CreateVsc calls the native CreateVsc action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateVsc(ctx context.Context, input *CreateVscInput, optFns ...func(*Options)) (*CreateVscOutput, error) {
-	out, meta, err := invoke[CreateVscInput, CreateVscOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateVsc", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[CreateVscInput, CreateVscOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateVsc", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -851,9 +852,9 @@ type DeactivateRouterInterfaceAPI interface {
 // DeactivateRouterInterface calls the native DeactivateRouterInterface action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeactivateRouterInterface(ctx context.Context, input *DeactivateRouterInterfaceInput, optFns ...func(*Options)) (*DeactivateRouterInterfaceOutput, error) {
-	out, meta, err := invoke[DeactivateRouterInterfaceInput, DeactivateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeactivateRouterInterface", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeactivateRouterInterfaceInput, DeactivateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeactivateRouterInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -870,9 +871,9 @@ type DeleteAutoProvisioningGroupAPI interface {
 // DeleteAutoProvisioningGroup calls the native DeleteAutoProvisioningGroup action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteAutoProvisioningGroup(ctx context.Context, input *DeleteAutoProvisioningGroupInput, optFns ...func(*Options)) (*DeleteAutoProvisioningGroupOutput, error) {
-	out, meta, err := invoke[DeleteAutoProvisioningGroupInput, DeleteAutoProvisioningGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteAutoProvisioningGroup", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteAutoProvisioningGroupInput, DeleteAutoProvisioningGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteAutoProvisioningGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -889,9 +890,9 @@ type DeleteAutoSnapshotPolicyAPI interface {
 // DeleteAutoSnapshotPolicy calls the native DeleteAutoSnapshotPolicy action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteAutoSnapshotPolicy(ctx context.Context, input *DeleteAutoSnapshotPolicyInput, optFns ...func(*Options)) (*DeleteAutoSnapshotPolicyOutput, error) {
-	out, meta, err := invoke[DeleteAutoSnapshotPolicyInput, DeleteAutoSnapshotPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteAutoSnapshotPolicy", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[DeleteAutoSnapshotPolicyInput, DeleteAutoSnapshotPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteAutoSnapshotPolicy", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -908,9 +909,9 @@ type DeleteBandwidthPackageAPI interface {
 // DeleteBandwidthPackage calls the native DeleteBandwidthPackage action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteBandwidthPackage(ctx context.Context, input *DeleteBandwidthPackageInput, optFns ...func(*Options)) (*DeleteBandwidthPackageOutput, error) {
-	out, meta, err := invoke[DeleteBandwidthPackageInput, DeleteBandwidthPackageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteBandwidthPackage", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteBandwidthPackageInput, DeleteBandwidthPackageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteBandwidthPackage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -927,9 +928,9 @@ type DeleteDedicatedHostClusterAPI interface {
 // DeleteDedicatedHostCluster calls the native DeleteDedicatedHostCluster action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteDedicatedHostCluster(ctx context.Context, input *DeleteDedicatedHostClusterInput, optFns ...func(*Options)) (*DeleteDedicatedHostClusterOutput, error) {
-	out, meta, err := invoke[DeleteDedicatedHostClusterInput, DeleteDedicatedHostClusterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDedicatedHostCluster", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteDedicatedHostClusterInput, DeleteDedicatedHostClusterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDedicatedHostCluster", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -946,9 +947,9 @@ type DeleteDeploymentSetAPI interface {
 // DeleteDeploymentSet calls the native DeleteDeploymentSet action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteDeploymentSet(ctx context.Context, input *DeleteDeploymentSetInput, optFns ...func(*Options)) (*DeleteDeploymentSetOutput, error) {
-	out, meta, err := invoke[DeleteDeploymentSetInput, DeleteDeploymentSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDeploymentSet", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteDeploymentSetInput, DeleteDeploymentSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDeploymentSet", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -965,9 +966,9 @@ type DeleteDiagnosticMetricSetsAPI interface {
 // DeleteDiagnosticMetricSets calls the native DeleteDiagnosticMetricSets action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteDiagnosticMetricSets(ctx context.Context, input *DeleteDiagnosticMetricSetsInput, optFns ...func(*Options)) (*DeleteDiagnosticMetricSetsOutput, error) {
-	out, meta, err := invoke[DeleteDiagnosticMetricSetsInput, DeleteDiagnosticMetricSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDiagnosticMetricSets", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteDiagnosticMetricSetsInput, DeleteDiagnosticMetricSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDiagnosticMetricSets", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -984,9 +985,9 @@ type DeleteDiagnosticReportsAPI interface {
 // DeleteDiagnosticReports calls the native DeleteDiagnosticReports action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteDiagnosticReports(ctx context.Context, input *DeleteDiagnosticReportsInput, optFns ...func(*Options)) (*DeleteDiagnosticReportsOutput, error) {
-	out, meta, err := invoke[DeleteDiagnosticReportsInput, DeleteDiagnosticReportsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDiagnosticReports", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteDiagnosticReportsInput, DeleteDiagnosticReportsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDiagnosticReports", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1003,9 +1004,9 @@ type DeleteDiskAPI interface {
 // DeleteDisk calls the native DeleteDisk action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteDisk(ctx context.Context, input *DeleteDiskInput, optFns ...func(*Options)) (*DeleteDiskOutput, error) {
-	out, meta, err := invoke[DeleteDiskInput, DeleteDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDisk", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[DeleteDiskInput, DeleteDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDisk", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1022,9 +1023,9 @@ type DeleteForwardEntryAPI interface {
 // DeleteForwardEntry calls the native DeleteForwardEntry action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteForwardEntry(ctx context.Context, input *DeleteForwardEntryInput, optFns ...func(*Options)) (*DeleteForwardEntryOutput, error) {
-	out, meta, err := invoke[DeleteForwardEntryInput, DeleteForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteForwardEntry", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteForwardEntryInput, DeleteForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteForwardEntry", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1041,9 +1042,9 @@ type DeleteHaVipAPI interface {
 // DeleteHaVip calls the native DeleteHaVip action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteHaVip(ctx context.Context, input *DeleteHaVipInput, optFns ...func(*Options)) (*DeleteHaVipOutput, error) {
-	out, meta, err := invoke[DeleteHaVipInput, DeleteHaVipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteHaVip", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteHaVipInput, DeleteHaVipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteHaVip", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1060,9 +1061,9 @@ type DeleteImageAPI interface {
 // DeleteImage calls the native DeleteImage action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteImage(ctx context.Context, input *DeleteImageInput, optFns ...func(*Options)) (*DeleteImageOutput, error) {
-	out, meta, err := invoke[DeleteImageInput, DeleteImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteImage", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteImageInput, DeleteImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteImage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1079,9 +1080,9 @@ type DeleteInstanceAPI interface {
 // DeleteInstance calls the native DeleteInstance action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteInstance(ctx context.Context, input *DeleteInstanceInput, optFns ...func(*Options)) (*DeleteInstanceOutput, error) {
-	out, meta, err := invoke[DeleteInstanceInput, DeleteInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteInstance", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[DeleteInstanceInput, DeleteInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteInstance", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1098,9 +1099,9 @@ type DeleteInstancesAPI interface {
 // DeleteInstances calls the native DeleteInstances action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteInstances(ctx context.Context, input *DeleteInstancesInput, optFns ...func(*Options)) (*DeleteInstancesOutput, error) {
-	out, meta, err := invoke[DeleteInstancesInput, DeleteInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteInstances", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteInstancesInput, DeleteInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1117,9 +1118,9 @@ type DeleteKeyPairsAPI interface {
 // DeleteKeyPairs calls the native DeleteKeyPairs action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteKeyPairs(ctx context.Context, input *DeleteKeyPairsInput, optFns ...func(*Options)) (*DeleteKeyPairsOutput, error) {
-	out, meta, err := invoke[DeleteKeyPairsInput, DeleteKeyPairsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteKeyPairs", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteKeyPairsInput, DeleteKeyPairsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteKeyPairs", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1136,9 +1137,9 @@ type DeleteLaunchTemplateAPI interface {
 // DeleteLaunchTemplate calls the native DeleteLaunchTemplate action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteLaunchTemplate(ctx context.Context, input *DeleteLaunchTemplateInput, optFns ...func(*Options)) (*DeleteLaunchTemplateOutput, error) {
-	out, meta, err := invoke[DeleteLaunchTemplateInput, DeleteLaunchTemplateOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteLaunchTemplate", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteLaunchTemplateInput, DeleteLaunchTemplateOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteLaunchTemplate", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1155,9 +1156,9 @@ type DeleteLaunchTemplateVersionAPI interface {
 // DeleteLaunchTemplateVersion calls the native DeleteLaunchTemplateVersion action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteLaunchTemplateVersion(ctx context.Context, input *DeleteLaunchTemplateVersionInput, optFns ...func(*Options)) (*DeleteLaunchTemplateVersionOutput, error) {
-	out, meta, err := invoke[DeleteLaunchTemplateVersionInput, DeleteLaunchTemplateVersionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteLaunchTemplateVersion", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteLaunchTemplateVersionInput, DeleteLaunchTemplateVersionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteLaunchTemplateVersion", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1174,9 +1175,9 @@ type DeleteNatGatewayAPI interface {
 // DeleteNatGateway calls the native DeleteNatGateway action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteNatGateway(ctx context.Context, input *DeleteNatGatewayInput, optFns ...func(*Options)) (*DeleteNatGatewayOutput, error) {
-	out, meta, err := invoke[DeleteNatGatewayInput, DeleteNatGatewayOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteNatGateway", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteNatGatewayInput, DeleteNatGatewayOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteNatGateway", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1193,9 +1194,9 @@ type DeletePhysicalConnectionAPI interface {
 // DeletePhysicalConnection calls the native DeletePhysicalConnection action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeletePhysicalConnection(ctx context.Context, input *DeletePhysicalConnectionInput, optFns ...func(*Options)) (*DeletePhysicalConnectionOutput, error) {
-	out, meta, err := invoke[DeletePhysicalConnectionInput, DeletePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeletePhysicalConnection", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeletePhysicalConnectionInput, DeletePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeletePhysicalConnection", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1212,9 +1213,9 @@ type DeletePlanMaintenanceWindowAPI interface {
 // DeletePlanMaintenanceWindow calls the native DeletePlanMaintenanceWindow action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeletePlanMaintenanceWindow(ctx context.Context, input *DeletePlanMaintenanceWindowInput, optFns ...func(*Options)) (*DeletePlanMaintenanceWindowOutput, error) {
-	out, meta, err := invoke[DeletePlanMaintenanceWindowInput, DeletePlanMaintenanceWindowOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeletePlanMaintenanceWindow", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeletePlanMaintenanceWindowInput, DeletePlanMaintenanceWindowOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeletePlanMaintenanceWindow", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1231,9 +1232,9 @@ type DeleteRouteEntryAPI interface {
 // DeleteRouteEntry calls the native DeleteRouteEntry action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteRouteEntry(ctx context.Context, input *DeleteRouteEntryInput, optFns ...func(*Options)) (*DeleteRouteEntryOutput, error) {
-	out, meta, err := invoke[DeleteRouteEntryInput, DeleteRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteRouteEntry", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteRouteEntryInput, DeleteRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteRouteEntry", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1250,9 +1251,9 @@ type DeleteRouterInterfaceAPI interface {
 // DeleteRouterInterface calls the native DeleteRouterInterface action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteRouterInterface(ctx context.Context, input *DeleteRouterInterfaceInput, optFns ...func(*Options)) (*DeleteRouterInterfaceOutput, error) {
-	out, meta, err := invoke[DeleteRouterInterfaceInput, DeleteRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteRouterInterface", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteRouterInterfaceInput, DeleteRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteRouterInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1269,9 +1270,9 @@ type DeleteSecurityGroupAPI interface {
 // DeleteSecurityGroup calls the native DeleteSecurityGroup action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteSecurityGroup(ctx context.Context, input *DeleteSecurityGroupInput, optFns ...func(*Options)) (*DeleteSecurityGroupOutput, error) {
-	out, meta, err := invoke[DeleteSecurityGroupInput, DeleteSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteSecurityGroup", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteSecurityGroupInput, DeleteSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteSecurityGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1288,9 +1289,9 @@ type DeleteSnapshotAPI interface {
 // DeleteSnapshot calls the native DeleteSnapshot action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteSnapshot(ctx context.Context, input *DeleteSnapshotInput, optFns ...func(*Options)) (*DeleteSnapshotOutput, error) {
-	out, meta, err := invoke[DeleteSnapshotInput, DeleteSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteSnapshot", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[DeleteSnapshotInput, DeleteSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteSnapshot", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1307,9 +1308,9 @@ type DeleteSnapshotGroupAPI interface {
 // DeleteSnapshotGroup calls the native DeleteSnapshotGroup action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteSnapshotGroup(ctx context.Context, input *DeleteSnapshotGroupInput, optFns ...func(*Options)) (*DeleteSnapshotGroupOutput, error) {
-	out, meta, err := invoke[DeleteSnapshotGroupInput, DeleteSnapshotGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteSnapshotGroup", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteSnapshotGroupInput, DeleteSnapshotGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteSnapshotGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1326,9 +1327,9 @@ type DeleteStorageSetAPI interface {
 // DeleteStorageSet calls the native DeleteStorageSet action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteStorageSet(ctx context.Context, input *DeleteStorageSetInput, optFns ...func(*Options)) (*DeleteStorageSetOutput, error) {
-	out, meta, err := invoke[DeleteStorageSetInput, DeleteStorageSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteStorageSet", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteStorageSetInput, DeleteStorageSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteStorageSet", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1345,9 +1346,9 @@ type DeleteVSwitchAPI interface {
 // DeleteVSwitch calls the native DeleteVSwitch action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteVSwitch(ctx context.Context, input *DeleteVSwitchInput, optFns ...func(*Options)) (*DeleteVSwitchOutput, error) {
-	out, meta, err := invoke[DeleteVSwitchInput, DeleteVSwitchOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteVSwitch", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteVSwitchInput, DeleteVSwitchOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteVSwitch", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1364,9 +1365,9 @@ type DeleteVirtualBorderRouterAPI interface {
 // DeleteVirtualBorderRouter calls the native DeleteVirtualBorderRouter action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteVirtualBorderRouter(ctx context.Context, input *DeleteVirtualBorderRouterInput, optFns ...func(*Options)) (*DeleteVirtualBorderRouterOutput, error) {
-	out, meta, err := invoke[DeleteVirtualBorderRouterInput, DeleteVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteVirtualBorderRouter", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteVirtualBorderRouterInput, DeleteVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteVirtualBorderRouter", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1383,9 +1384,9 @@ type DeleteVpcAPI interface {
 // DeleteVpc calls the native DeleteVpc action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteVpc(ctx context.Context, input *DeleteVpcInput, optFns ...func(*Options)) (*DeleteVpcOutput, error) {
-	out, meta, err := invoke[DeleteVpcInput, DeleteVpcOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteVpc", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteVpcInput, DeleteVpcOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteVpc", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1402,9 +1403,9 @@ type DeleteVscAPI interface {
 // DeleteVsc calls the native DeleteVsc action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteVsc(ctx context.Context, input *DeleteVscInput, optFns ...func(*Options)) (*DeleteVscOutput, error) {
-	out, meta, err := invoke[DeleteVscInput, DeleteVscOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteVsc", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DeleteVscInput, DeleteVscOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteVsc", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1421,9 +1422,9 @@ type DescribeAccessPointsAPI interface {
 // DescribeAccessPoints calls the native DescribeAccessPoints action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeAccessPoints(ctx context.Context, input *DescribeAccessPointsInput, optFns ...func(*Options)) (*DescribeAccessPointsOutput, error) {
-	out, meta, err := invoke[DescribeAccessPointsInput, DescribeAccessPointsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAccessPoints", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeAccessPointsInput, DescribeAccessPointsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAccessPoints", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1440,9 +1441,9 @@ type DescribeAccountAttributesAPI interface {
 // DescribeAccountAttributes calls the native DescribeAccountAttributes action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeAccountAttributes(ctx context.Context, input *DescribeAccountAttributesInput, optFns ...func(*Options)) (*DescribeAccountAttributesOutput, error) {
-	out, meta, err := invoke[DescribeAccountAttributesInput, DescribeAccountAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAccountAttributes", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeAccountAttributesInput, DescribeAccountAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAccountAttributes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1459,9 +1460,9 @@ type DescribeAutoProvisioningGroupHistoryAPI interface {
 // DescribeAutoProvisioningGroupHistory calls the native DescribeAutoProvisioningGroupHistory action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeAutoProvisioningGroupHistory(ctx context.Context, input *DescribeAutoProvisioningGroupHistoryInput, optFns ...func(*Options)) (*DescribeAutoProvisioningGroupHistoryOutput, error) {
-	out, meta, err := invoke[DescribeAutoProvisioningGroupHistoryInput, DescribeAutoProvisioningGroupHistoryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoProvisioningGroupHistory", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeAutoProvisioningGroupHistoryInput, DescribeAutoProvisioningGroupHistoryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoProvisioningGroupHistory", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1478,9 +1479,9 @@ type DescribeAutoProvisioningGroupInstancesAPI interface {
 // DescribeAutoProvisioningGroupInstances calls the native DescribeAutoProvisioningGroupInstances action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeAutoProvisioningGroupInstances(ctx context.Context, input *DescribeAutoProvisioningGroupInstancesInput, optFns ...func(*Options)) (*DescribeAutoProvisioningGroupInstancesOutput, error) {
-	out, meta, err := invoke[DescribeAutoProvisioningGroupInstancesInput, DescribeAutoProvisioningGroupInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoProvisioningGroupInstances", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeAutoProvisioningGroupInstancesInput, DescribeAutoProvisioningGroupInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoProvisioningGroupInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1497,9 +1498,9 @@ type DescribeAutoProvisioningGroupsAPI interface {
 // DescribeAutoProvisioningGroups calls the native DescribeAutoProvisioningGroups action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeAutoProvisioningGroups(ctx context.Context, input *DescribeAutoProvisioningGroupsInput, optFns ...func(*Options)) (*DescribeAutoProvisioningGroupsOutput, error) {
-	out, meta, err := invoke[DescribeAutoProvisioningGroupsInput, DescribeAutoProvisioningGroupsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoProvisioningGroups", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeAutoProvisioningGroupsInput, DescribeAutoProvisioningGroupsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoProvisioningGroups", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1516,9 +1517,9 @@ type DescribeAutoSnapshotPolicyAssociationsAPI interface {
 // DescribeAutoSnapshotPolicyAssociations calls the native DescribeAutoSnapshotPolicyAssociations action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeAutoSnapshotPolicyAssociations(ctx context.Context, input *DescribeAutoSnapshotPolicyAssociationsInput, optFns ...func(*Options)) (*DescribeAutoSnapshotPolicyAssociationsOutput, error) {
-	out, meta, err := invoke[DescribeAutoSnapshotPolicyAssociationsInput, DescribeAutoSnapshotPolicyAssociationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoSnapshotPolicyAssociations", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeAutoSnapshotPolicyAssociationsInput, DescribeAutoSnapshotPolicyAssociationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoSnapshotPolicyAssociations", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1535,9 +1536,9 @@ type DescribeAutoSnapshotPolicyExAPI interface {
 // DescribeAutoSnapshotPolicyEx calls the native DescribeAutoSnapshotPolicyEx action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeAutoSnapshotPolicyEx(ctx context.Context, input *DescribeAutoSnapshotPolicyExInput, optFns ...func(*Options)) (*DescribeAutoSnapshotPolicyExOutput, error) {
-	out, meta, err := invoke[DescribeAutoSnapshotPolicyExInput, DescribeAutoSnapshotPolicyExOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoSnapshotPolicyEx", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeAutoSnapshotPolicyExInput, DescribeAutoSnapshotPolicyExOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoSnapshotPolicyEx", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1554,9 +1555,9 @@ type DescribeAvailableResourceAPI interface {
 // DescribeAvailableResource calls the native DescribeAvailableResource action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeAvailableResource(ctx context.Context, input *DescribeAvailableResourceInput, optFns ...func(*Options)) (*DescribeAvailableResourceOutput, error) {
-	out, meta, err := invoke[DescribeAvailableResourceInput, DescribeAvailableResourceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAvailableResource", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeAvailableResourceInput, DescribeAvailableResourceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAvailableResource", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1573,9 +1574,9 @@ type DescribeBandwidthLimitationAPI interface {
 // DescribeBandwidthLimitation calls the native DescribeBandwidthLimitation action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeBandwidthLimitation(ctx context.Context, input *DescribeBandwidthLimitationInput, optFns ...func(*Options)) (*DescribeBandwidthLimitationOutput, error) {
-	out, meta, err := invoke[DescribeBandwidthLimitationInput, DescribeBandwidthLimitationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeBandwidthLimitation", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeBandwidthLimitationInput, DescribeBandwidthLimitationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeBandwidthLimitation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1592,9 +1593,9 @@ type DescribeBandwidthPackagesAPI interface {
 // DescribeBandwidthPackages calls the native DescribeBandwidthPackages action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeBandwidthPackages(ctx context.Context, input *DescribeBandwidthPackagesInput, optFns ...func(*Options)) (*DescribeBandwidthPackagesOutput, error) {
-	out, meta, err := invoke[DescribeBandwidthPackagesInput, DescribeBandwidthPackagesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeBandwidthPackages", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeBandwidthPackagesInput, DescribeBandwidthPackagesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeBandwidthPackages", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1611,9 +1612,9 @@ type DescribeCapacityReservationInstancesAPI interface {
 // DescribeCapacityReservationInstances calls the native DescribeCapacityReservationInstances action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeCapacityReservationInstances(ctx context.Context, input *DescribeCapacityReservationInstancesInput, optFns ...func(*Options)) (*DescribeCapacityReservationInstancesOutput, error) {
-	out, meta, err := invoke[DescribeCapacityReservationInstancesInput, DescribeCapacityReservationInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCapacityReservationInstances", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeCapacityReservationInstancesInput, DescribeCapacityReservationInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCapacityReservationInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1630,9 +1631,9 @@ type DescribeCapacityReservationsAPI interface {
 // DescribeCapacityReservations calls the native DescribeCapacityReservations action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeCapacityReservations(ctx context.Context, input *DescribeCapacityReservationsInput, optFns ...func(*Options)) (*DescribeCapacityReservationsOutput, error) {
-	out, meta, err := invoke[DescribeCapacityReservationsInput, DescribeCapacityReservationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCapacityReservations", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeCapacityReservationsInput, DescribeCapacityReservationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCapacityReservations", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1649,9 +1650,9 @@ type DescribeClassicLinkInstancesAPI interface {
 // DescribeClassicLinkInstances calls the native DescribeClassicLinkInstances action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeClassicLinkInstances(ctx context.Context, input *DescribeClassicLinkInstancesInput, optFns ...func(*Options)) (*DescribeClassicLinkInstancesOutput, error) {
-	out, meta, err := invoke[DescribeClassicLinkInstancesInput, DescribeClassicLinkInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeClassicLinkInstances", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeClassicLinkInstancesInput, DescribeClassicLinkInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeClassicLinkInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1668,9 +1669,9 @@ type DescribeCloudAssistantSettingsAPI interface {
 // DescribeCloudAssistantSettings calls the native DescribeCloudAssistantSettings action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeCloudAssistantSettings(ctx context.Context, input *DescribeCloudAssistantSettingsInput, optFns ...func(*Options)) (*DescribeCloudAssistantSettingsOutput, error) {
-	out, meta, err := invoke[DescribeCloudAssistantSettingsInput, DescribeCloudAssistantSettingsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCloudAssistantSettings", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeCloudAssistantSettingsInput, DescribeCloudAssistantSettingsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCloudAssistantSettings", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1687,9 +1688,9 @@ type DescribeClustersAPI interface {
 // DescribeClusters calls the native DescribeClusters action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeClusters(ctx context.Context, input *DescribeClustersInput, optFns ...func(*Options)) (*DescribeClustersOutput, error) {
-	out, meta, err := invoke[DescribeClustersInput, DescribeClustersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeClusters", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeClustersInput, DescribeClustersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeClusters", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1706,9 +1707,9 @@ type DescribeDedicatedHostAutoRenewAPI interface {
 // DescribeDedicatedHostAutoRenew calls the native DescribeDedicatedHostAutoRenew action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeDedicatedHostAutoRenew(ctx context.Context, input *DescribeDedicatedHostAutoRenewInput, optFns ...func(*Options)) (*DescribeDedicatedHostAutoRenewOutput, error) {
-	out, meta, err := invoke[DescribeDedicatedHostAutoRenewInput, DescribeDedicatedHostAutoRenewOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDedicatedHostAutoRenew", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeDedicatedHostAutoRenewInput, DescribeDedicatedHostAutoRenewOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDedicatedHostAutoRenew", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1725,9 +1726,9 @@ type DescribeDedicatedHostClustersAPI interface {
 // DescribeDedicatedHostClusters calls the native DescribeDedicatedHostClusters action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeDedicatedHostClusters(ctx context.Context, input *DescribeDedicatedHostClustersInput, optFns ...func(*Options)) (*DescribeDedicatedHostClustersOutput, error) {
-	out, meta, err := invoke[DescribeDedicatedHostClustersInput, DescribeDedicatedHostClustersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDedicatedHostClusters", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeDedicatedHostClustersInput, DescribeDedicatedHostClustersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDedicatedHostClusters", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1744,9 +1745,9 @@ type DescribeDedicatedHostTypesAPI interface {
 // DescribeDedicatedHostTypes calls the native DescribeDedicatedHostTypes action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeDedicatedHostTypes(ctx context.Context, input *DescribeDedicatedHostTypesInput, optFns ...func(*Options)) (*DescribeDedicatedHostTypesOutput, error) {
-	out, meta, err := invoke[DescribeDedicatedHostTypesInput, DescribeDedicatedHostTypesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDedicatedHostTypes", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeDedicatedHostTypesInput, DescribeDedicatedHostTypesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDedicatedHostTypes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1763,9 +1764,9 @@ type DescribeDedicatedHostsAPI interface {
 // DescribeDedicatedHosts calls the native DescribeDedicatedHosts action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeDedicatedHosts(ctx context.Context, input *DescribeDedicatedHostsInput, optFns ...func(*Options)) (*DescribeDedicatedHostsOutput, error) {
-	out, meta, err := invoke[DescribeDedicatedHostsInput, DescribeDedicatedHostsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDedicatedHosts", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeDedicatedHostsInput, DescribeDedicatedHostsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDedicatedHosts", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1782,9 +1783,9 @@ type DescribeDeploymentSetSupportedInstanceTypeFamilyAPI interface {
 // DescribeDeploymentSetSupportedInstanceTypeFamily calls the native DescribeDeploymentSetSupportedInstanceTypeFamily action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeDeploymentSetSupportedInstanceTypeFamily(ctx context.Context, input *DescribeDeploymentSetSupportedInstanceTypeFamilyInput, optFns ...func(*Options)) (*DescribeDeploymentSetSupportedInstanceTypeFamilyOutput, error) {
-	out, meta, err := invoke[DescribeDeploymentSetSupportedInstanceTypeFamilyInput, DescribeDeploymentSetSupportedInstanceTypeFamilyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDeploymentSetSupportedInstanceTypeFamily", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeDeploymentSetSupportedInstanceTypeFamilyInput, DescribeDeploymentSetSupportedInstanceTypeFamilyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDeploymentSetSupportedInstanceTypeFamily", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1801,9 +1802,9 @@ type DescribeDeploymentSetsAPI interface {
 // DescribeDeploymentSets calls the native DescribeDeploymentSets action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeDeploymentSets(ctx context.Context, input *DescribeDeploymentSetsInput, optFns ...func(*Options)) (*DescribeDeploymentSetsOutput, error) {
-	out, meta, err := invoke[DescribeDeploymentSetsInput, DescribeDeploymentSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDeploymentSets", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeDeploymentSetsInput, DescribeDeploymentSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDeploymentSets", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1820,9 +1821,9 @@ type DescribeDiagnosticMetricSetsAPI interface {
 // DescribeDiagnosticMetricSets calls the native DescribeDiagnosticMetricSets action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeDiagnosticMetricSets(ctx context.Context, input *DescribeDiagnosticMetricSetsInput, optFns ...func(*Options)) (*DescribeDiagnosticMetricSetsOutput, error) {
-	out, meta, err := invoke[DescribeDiagnosticMetricSetsInput, DescribeDiagnosticMetricSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiagnosticMetricSets", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeDiagnosticMetricSetsInput, DescribeDiagnosticMetricSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiagnosticMetricSets", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1839,9 +1840,9 @@ type DescribeDiagnosticMetricsAPI interface {
 // DescribeDiagnosticMetrics calls the native DescribeDiagnosticMetrics action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeDiagnosticMetrics(ctx context.Context, input *DescribeDiagnosticMetricsInput, optFns ...func(*Options)) (*DescribeDiagnosticMetricsOutput, error) {
-	out, meta, err := invoke[DescribeDiagnosticMetricsInput, DescribeDiagnosticMetricsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiagnosticMetrics", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeDiagnosticMetricsInput, DescribeDiagnosticMetricsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiagnosticMetrics", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1858,9 +1859,9 @@ type DescribeDiagnosticReportAttributesAPI interface {
 // DescribeDiagnosticReportAttributes calls the native DescribeDiagnosticReportAttributes action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeDiagnosticReportAttributes(ctx context.Context, input *DescribeDiagnosticReportAttributesInput, optFns ...func(*Options)) (*DescribeDiagnosticReportAttributesOutput, error) {
-	out, meta, err := invoke[DescribeDiagnosticReportAttributesInput, DescribeDiagnosticReportAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiagnosticReportAttributes", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeDiagnosticReportAttributesInput, DescribeDiagnosticReportAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiagnosticReportAttributes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1877,9 +1878,9 @@ type DescribeDiagnosticReportsAPI interface {
 // DescribeDiagnosticReports calls the native DescribeDiagnosticReports action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeDiagnosticReports(ctx context.Context, input *DescribeDiagnosticReportsInput, optFns ...func(*Options)) (*DescribeDiagnosticReportsOutput, error) {
-	out, meta, err := invoke[DescribeDiagnosticReportsInput, DescribeDiagnosticReportsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiagnosticReports", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeDiagnosticReportsInput, DescribeDiagnosticReportsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiagnosticReports", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1896,9 +1897,9 @@ type DescribeDiskDefaultKMSKeyIdAPI interface {
 // DescribeDiskDefaultKMSKeyId calls the native DescribeDiskDefaultKMSKeyId action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeDiskDefaultKMSKeyId(ctx context.Context, input *DescribeDiskDefaultKMSKeyIdInput, optFns ...func(*Options)) (*DescribeDiskDefaultKMSKeyIdOutput, error) {
-	out, meta, err := invoke[DescribeDiskDefaultKMSKeyIdInput, DescribeDiskDefaultKMSKeyIdOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiskDefaultKMSKeyId", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeDiskDefaultKMSKeyIdInput, DescribeDiskDefaultKMSKeyIdOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiskDefaultKMSKeyId", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1915,9 +1916,9 @@ type DescribeDiskEncryptionByDefaultStatusAPI interface {
 // DescribeDiskEncryptionByDefaultStatus calls the native DescribeDiskEncryptionByDefaultStatus action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeDiskEncryptionByDefaultStatus(ctx context.Context, input *DescribeDiskEncryptionByDefaultStatusInput, optFns ...func(*Options)) (*DescribeDiskEncryptionByDefaultStatusOutput, error) {
-	out, meta, err := invoke[DescribeDiskEncryptionByDefaultStatusInput, DescribeDiskEncryptionByDefaultStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiskEncryptionByDefaultStatus", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeDiskEncryptionByDefaultStatusInput, DescribeDiskEncryptionByDefaultStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiskEncryptionByDefaultStatus", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1934,9 +1935,9 @@ type DescribeDiskMonitorDataAPI interface {
 // DescribeDiskMonitorData calls the native DescribeDiskMonitorData action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeDiskMonitorData(ctx context.Context, input *DescribeDiskMonitorDataInput, optFns ...func(*Options)) (*DescribeDiskMonitorDataOutput, error) {
-	out, meta, err := invoke[DescribeDiskMonitorDataInput, DescribeDiskMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiskMonitorData", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[DescribeDiskMonitorDataInput, DescribeDiskMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiskMonitorData", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1953,9 +1954,9 @@ type DescribeDisksAPI interface {
 // DescribeDisks calls the native DescribeDisks action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeDisks(ctx context.Context, input *DescribeDisksInput, optFns ...func(*Options)) (*DescribeDisksOutput, error) {
-	out, meta, err := invoke[DescribeDisksInput, DescribeDisksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDisks", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeDisksInput, DescribeDisksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDisks", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1972,9 +1973,9 @@ type DescribeEipAddressesAPI interface {
 // DescribeEipAddresses calls the native DescribeEipAddresses action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeEipAddresses(ctx context.Context, input *DescribeEipAddressesInput, optFns ...func(*Options)) (*DescribeEipAddressesOutput, error) {
-	out, meta, err := invoke[DescribeEipAddressesInput, DescribeEipAddressesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeEipAddresses", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeEipAddressesInput, DescribeEipAddressesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeEipAddresses", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1991,9 +1992,9 @@ type DescribeEipMonitorDataAPI interface {
 // DescribeEipMonitorData calls the native DescribeEipMonitorData action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeEipMonitorData(ctx context.Context, input *DescribeEipMonitorDataInput, optFns ...func(*Options)) (*DescribeEipMonitorDataOutput, error) {
-	out, meta, err := invoke[DescribeEipMonitorDataInput, DescribeEipMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeEipMonitorData", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeEipMonitorDataInput, DescribeEipMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeEipMonitorData", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2010,9 +2011,9 @@ type DescribeElasticityAssuranceAutoRenewAttributeAPI interface {
 // DescribeElasticityAssuranceAutoRenewAttribute calls the native DescribeElasticityAssuranceAutoRenewAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeElasticityAssuranceAutoRenewAttribute(ctx context.Context, input *DescribeElasticityAssuranceAutoRenewAttributeInput, optFns ...func(*Options)) (*DescribeElasticityAssuranceAutoRenewAttributeOutput, error) {
-	out, meta, err := invoke[DescribeElasticityAssuranceAutoRenewAttributeInput, DescribeElasticityAssuranceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeElasticityAssuranceAutoRenewAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeElasticityAssuranceAutoRenewAttributeInput, DescribeElasticityAssuranceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeElasticityAssuranceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2029,9 +2030,9 @@ type DescribeElasticityAssuranceInstancesAPI interface {
 // DescribeElasticityAssuranceInstances calls the native DescribeElasticityAssuranceInstances action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeElasticityAssuranceInstances(ctx context.Context, input *DescribeElasticityAssuranceInstancesInput, optFns ...func(*Options)) (*DescribeElasticityAssuranceInstancesOutput, error) {
-	out, meta, err := invoke[DescribeElasticityAssuranceInstancesInput, DescribeElasticityAssuranceInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeElasticityAssuranceInstances", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeElasticityAssuranceInstancesInput, DescribeElasticityAssuranceInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeElasticityAssuranceInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2048,9 +2049,9 @@ type DescribeElasticityAssurancesAPI interface {
 // DescribeElasticityAssurances calls the native DescribeElasticityAssurances action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeElasticityAssurances(ctx context.Context, input *DescribeElasticityAssurancesInput, optFns ...func(*Options)) (*DescribeElasticityAssurancesOutput, error) {
-	out, meta, err := invoke[DescribeElasticityAssurancesInput, DescribeElasticityAssurancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeElasticityAssurances", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeElasticityAssurancesInput, DescribeElasticityAssurancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeElasticityAssurances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2067,9 +2068,9 @@ type DescribeEniMonitorDataAPI interface {
 // DescribeEniMonitorData calls the native DescribeEniMonitorData action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeEniMonitorData(ctx context.Context, input *DescribeEniMonitorDataInput, optFns ...func(*Options)) (*DescribeEniMonitorDataOutput, error) {
-	out, meta, err := invoke[DescribeEniMonitorDataInput, DescribeEniMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeEniMonitorData", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeEniMonitorDataInput, DescribeEniMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeEniMonitorData", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2086,9 +2087,9 @@ type DescribeForwardTableEntriesAPI interface {
 // DescribeForwardTableEntries calls the native DescribeForwardTableEntries action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeForwardTableEntries(ctx context.Context, input *DescribeForwardTableEntriesInput, optFns ...func(*Options)) (*DescribeForwardTableEntriesOutput, error) {
-	out, meta, err := invoke[DescribeForwardTableEntriesInput, DescribeForwardTableEntriesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeForwardTableEntries", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeForwardTableEntriesInput, DescribeForwardTableEntriesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeForwardTableEntries", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2105,9 +2106,9 @@ type DescribeHaVipsAPI interface {
 // DescribeHaVips calls the native DescribeHaVips action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeHaVips(ctx context.Context, input *DescribeHaVipsInput, optFns ...func(*Options)) (*DescribeHaVipsOutput, error) {
-	out, meta, err := invoke[DescribeHaVipsInput, DescribeHaVipsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeHaVips", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeHaVipsInput, DescribeHaVipsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeHaVips", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2124,9 +2125,9 @@ type DescribeImageFromFamilyAPI interface {
 // DescribeImageFromFamily calls the native DescribeImageFromFamily action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeImageFromFamily(ctx context.Context, input *DescribeImageFromFamilyInput, optFns ...func(*Options)) (*DescribeImageFromFamilyOutput, error) {
-	out, meta, err := invoke[DescribeImageFromFamilyInput, DescribeImageFromFamilyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImageFromFamily", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeImageFromFamilyInput, DescribeImageFromFamilyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImageFromFamily", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2143,9 +2144,9 @@ type DescribeImageSharePermissionAPI interface {
 // DescribeImageSharePermission calls the native DescribeImageSharePermission action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeImageSharePermission(ctx context.Context, input *DescribeImageSharePermissionInput, optFns ...func(*Options)) (*DescribeImageSharePermissionOutput, error) {
-	out, meta, err := invoke[DescribeImageSharePermissionInput, DescribeImageSharePermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImageSharePermission", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeImageSharePermissionInput, DescribeImageSharePermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImageSharePermission", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2162,9 +2163,9 @@ type DescribeImageSupportInstanceTypesAPI interface {
 // DescribeImageSupportInstanceTypes calls the native DescribeImageSupportInstanceTypes action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeImageSupportInstanceTypes(ctx context.Context, input *DescribeImageSupportInstanceTypesInput, optFns ...func(*Options)) (*DescribeImageSupportInstanceTypesOutput, error) {
-	out, meta, err := invoke[DescribeImageSupportInstanceTypesInput, DescribeImageSupportInstanceTypesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImageSupportInstanceTypes", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeImageSupportInstanceTypesInput, DescribeImageSupportInstanceTypesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImageSupportInstanceTypes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2181,9 +2182,9 @@ type DescribeImagesAPI interface {
 // DescribeImages calls the native DescribeImages action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Reviewed idempotency permits replay only when a configured retry policy allows it.
 func (c *Client) DescribeImages(ctx context.Context, input *DescribeImagesInput, optFns ...func(*Options)) (*DescribeImagesOutput, error) {
-	out, meta, err := invoke[DescribeImagesInput, DescribeImagesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImages", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeImagesInput, DescribeImagesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImages", Version: "2014-05-26", Idempotent: true}, true, nil, ValidateDescribeImagesInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2200,9 +2201,9 @@ type DescribeInstanceAttachmentAttributesAPI interface {
 // DescribeInstanceAttachmentAttributes calls the native DescribeInstanceAttachmentAttributes action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeInstanceAttachmentAttributes(ctx context.Context, input *DescribeInstanceAttachmentAttributesInput, optFns ...func(*Options)) (*DescribeInstanceAttachmentAttributesOutput, error) {
-	out, meta, err := invoke[DescribeInstanceAttachmentAttributesInput, DescribeInstanceAttachmentAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceAttachmentAttributes", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeInstanceAttachmentAttributesInput, DescribeInstanceAttachmentAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceAttachmentAttributes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2219,9 +2220,9 @@ type DescribeInstanceAttributeAPI interface {
 // DescribeInstanceAttribute calls the native DescribeInstanceAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeInstanceAttribute(ctx context.Context, input *DescribeInstanceAttributeInput, optFns ...func(*Options)) (*DescribeInstanceAttributeOutput, error) {
-	out, meta, err := invoke[DescribeInstanceAttributeInput, DescribeInstanceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceAttribute", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[DescribeInstanceAttributeInput, DescribeInstanceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceAttribute", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2238,9 +2239,9 @@ type DescribeInstanceAutoRenewAttributeAPI interface {
 // DescribeInstanceAutoRenewAttribute calls the native DescribeInstanceAutoRenewAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeInstanceAutoRenewAttribute(ctx context.Context, input *DescribeInstanceAutoRenewAttributeInput, optFns ...func(*Options)) (*DescribeInstanceAutoRenewAttributeOutput, error) {
-	out, meta, err := invoke[DescribeInstanceAutoRenewAttributeInput, DescribeInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceAutoRenewAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeInstanceAutoRenewAttributeInput, DescribeInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2257,9 +2258,9 @@ type DescribeInstanceMaintenanceAttributesAPI interface {
 // DescribeInstanceMaintenanceAttributes calls the native DescribeInstanceMaintenanceAttributes action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeInstanceMaintenanceAttributes(ctx context.Context, input *DescribeInstanceMaintenanceAttributesInput, optFns ...func(*Options)) (*DescribeInstanceMaintenanceAttributesOutput, error) {
-	out, meta, err := invoke[DescribeInstanceMaintenanceAttributesInput, DescribeInstanceMaintenanceAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceMaintenanceAttributes", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeInstanceMaintenanceAttributesInput, DescribeInstanceMaintenanceAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceMaintenanceAttributes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2276,9 +2277,9 @@ type DescribeInstanceModificationPriceAPI interface {
 // DescribeInstanceModificationPrice calls the native DescribeInstanceModificationPrice action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeInstanceModificationPrice(ctx context.Context, input *DescribeInstanceModificationPriceInput, optFns ...func(*Options)) (*DescribeInstanceModificationPriceOutput, error) {
-	out, meta, err := invoke[DescribeInstanceModificationPriceInput, DescribeInstanceModificationPriceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceModificationPrice", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeInstanceModificationPriceInput, DescribeInstanceModificationPriceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceModificationPrice", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2295,9 +2296,9 @@ type DescribeInstanceMonitorDataAPI interface {
 // DescribeInstanceMonitorData calls the native DescribeInstanceMonitorData action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeInstanceMonitorData(ctx context.Context, input *DescribeInstanceMonitorDataInput, optFns ...func(*Options)) (*DescribeInstanceMonitorDataOutput, error) {
-	out, meta, err := invoke[DescribeInstanceMonitorDataInput, DescribeInstanceMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceMonitorData", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[DescribeInstanceMonitorDataInput, DescribeInstanceMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceMonitorData", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2314,9 +2315,9 @@ type DescribeInstanceRamRoleAPI interface {
 // DescribeInstanceRamRole calls the native DescribeInstanceRamRole action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeInstanceRamRole(ctx context.Context, input *DescribeInstanceRamRoleInput, optFns ...func(*Options)) (*DescribeInstanceRamRoleOutput, error) {
-	out, meta, err := invoke[DescribeInstanceRamRoleInput, DescribeInstanceRamRoleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceRamRole", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeInstanceRamRoleInput, DescribeInstanceRamRoleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceRamRole", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2333,9 +2334,9 @@ type DescribeInstanceStatusAPI interface {
 // DescribeInstanceStatus calls the native DescribeInstanceStatus action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Reviewed idempotency permits replay only when a configured retry policy allows it.
 func (c *Client) DescribeInstanceStatus(ctx context.Context, input *DescribeInstanceStatusInput, optFns ...func(*Options)) (*DescribeInstanceStatusOutput, error) {
-	out, meta, err := invoke[DescribeInstanceStatusInput, DescribeInstanceStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceStatus", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeInstanceStatusInput, DescribeInstanceStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceStatus", Version: "2014-05-26", Idempotent: true}, true, nil, ValidateDescribeInstanceStatusInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2352,9 +2353,9 @@ type DescribeInstanceTopologyAPI interface {
 // DescribeInstanceTopology calls the native DescribeInstanceTopology action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeInstanceTopology(ctx context.Context, input *DescribeInstanceTopologyInput, optFns ...func(*Options)) (*DescribeInstanceTopologyOutput, error) {
-	out, meta, err := invoke[DescribeInstanceTopologyInput, DescribeInstanceTopologyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceTopology", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeInstanceTopologyInput, DescribeInstanceTopologyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceTopology", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2371,9 +2372,9 @@ type DescribeInstanceTypeFamiliesAPI interface {
 // DescribeInstanceTypeFamilies calls the native DescribeInstanceTypeFamilies action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeInstanceTypeFamilies(ctx context.Context, input *DescribeInstanceTypeFamiliesInput, optFns ...func(*Options)) (*DescribeInstanceTypeFamiliesOutput, error) {
-	out, meta, err := invoke[DescribeInstanceTypeFamiliesInput, DescribeInstanceTypeFamiliesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceTypeFamilies", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeInstanceTypeFamiliesInput, DescribeInstanceTypeFamiliesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceTypeFamilies", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2390,9 +2391,9 @@ type DescribeInstanceTypesAPI interface {
 // DescribeInstanceTypes calls the native DescribeInstanceTypes action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeInstanceTypes(ctx context.Context, input *DescribeInstanceTypesInput, optFns ...func(*Options)) (*DescribeInstanceTypesOutput, error) {
-	out, meta, err := invoke[DescribeInstanceTypesInput, DescribeInstanceTypesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceTypes", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[DescribeInstanceTypesInput, DescribeInstanceTypesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceTypes", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2409,9 +2410,9 @@ type DescribeInstanceVncUrlAPI interface {
 // DescribeInstanceVncUrl calls the native DescribeInstanceVncUrl action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeInstanceVncUrl(ctx context.Context, input *DescribeInstanceVncUrlInput, optFns ...func(*Options)) (*DescribeInstanceVncUrlOutput, error) {
-	out, meta, err := invoke[DescribeInstanceVncUrlInput, DescribeInstanceVncUrlOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceVncUrl", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeInstanceVncUrlInput, DescribeInstanceVncUrlOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceVncUrl", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2428,9 +2429,9 @@ type DescribeInstancesAPI interface {
 // DescribeInstances calls the native DescribeInstances action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Reviewed idempotency permits replay only when a configured retry policy allows it.
 func (c *Client) DescribeInstances(ctx context.Context, input *DescribeInstancesInput, optFns ...func(*Options)) (*DescribeInstancesOutput, error) {
-	out, meta, err := invoke[DescribeInstancesInput, DescribeInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstances", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeInstancesInput, DescribeInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstances", Version: "2014-05-26", Idempotent: true}, true, nil, ValidateDescribeInstancesInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2447,9 +2448,9 @@ type DescribeKeyPairsAPI interface {
 // DescribeKeyPairs calls the native DescribeKeyPairs action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeKeyPairs(ctx context.Context, input *DescribeKeyPairsInput, optFns ...func(*Options)) (*DescribeKeyPairsOutput, error) {
-	out, meta, err := invoke[DescribeKeyPairsInput, DescribeKeyPairsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeKeyPairs", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeKeyPairsInput, DescribeKeyPairsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeKeyPairs", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2466,9 +2467,9 @@ type DescribeLaunchTemplateVersionsAPI interface {
 // DescribeLaunchTemplateVersions calls the native DescribeLaunchTemplateVersions action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeLaunchTemplateVersions(ctx context.Context, input *DescribeLaunchTemplateVersionsInput, optFns ...func(*Options)) (*DescribeLaunchTemplateVersionsOutput, error) {
-	out, meta, err := invoke[DescribeLaunchTemplateVersionsInput, DescribeLaunchTemplateVersionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeLaunchTemplateVersions", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeLaunchTemplateVersionsInput, DescribeLaunchTemplateVersionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeLaunchTemplateVersions", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2485,9 +2486,9 @@ type DescribeLaunchTemplatesAPI interface {
 // DescribeLaunchTemplates calls the native DescribeLaunchTemplates action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeLaunchTemplates(ctx context.Context, input *DescribeLaunchTemplatesInput, optFns ...func(*Options)) (*DescribeLaunchTemplatesOutput, error) {
-	out, meta, err := invoke[DescribeLaunchTemplatesInput, DescribeLaunchTemplatesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeLaunchTemplates", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeLaunchTemplatesInput, DescribeLaunchTemplatesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeLaunchTemplates", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2504,9 +2505,9 @@ type DescribeLimitationAPI interface {
 // DescribeLimitation calls the native DescribeLimitation action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeLimitation(ctx context.Context, input *DescribeLimitationInput, optFns ...func(*Options)) (*DescribeLimitationOutput, error) {
-	out, meta, err := invoke[DescribeLimitationInput, DescribeLimitationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeLimitation", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[DescribeLimitationInput, DescribeLimitationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeLimitation", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2523,9 +2524,9 @@ type DescribeLockedSnapshotsAPI interface {
 // DescribeLockedSnapshots calls the native DescribeLockedSnapshots action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeLockedSnapshots(ctx context.Context, input *DescribeLockedSnapshotsInput, optFns ...func(*Options)) (*DescribeLockedSnapshotsOutput, error) {
-	out, meta, err := invoke[DescribeLockedSnapshotsInput, DescribeLockedSnapshotsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeLockedSnapshots", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeLockedSnapshotsInput, DescribeLockedSnapshotsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeLockedSnapshots", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2542,9 +2543,9 @@ type DescribeNatGatewaysAPI interface {
 // DescribeNatGateways calls the native DescribeNatGateways action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeNatGateways(ctx context.Context, input *DescribeNatGatewaysInput, optFns ...func(*Options)) (*DescribeNatGatewaysOutput, error) {
-	out, meta, err := invoke[DescribeNatGatewaysInput, DescribeNatGatewaysOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNatGateways", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeNatGatewaysInput, DescribeNatGatewaysOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNatGateways", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2561,9 +2562,9 @@ type DescribeNewProjectEipMonitorDataAPI interface {
 // DescribeNewProjectEipMonitorData calls the native DescribeNewProjectEipMonitorData action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeNewProjectEipMonitorData(ctx context.Context, input *DescribeNewProjectEipMonitorDataInput, optFns ...func(*Options)) (*DescribeNewProjectEipMonitorDataOutput, error) {
-	out, meta, err := invoke[DescribeNewProjectEipMonitorDataInput, DescribeNewProjectEipMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNewProjectEipMonitorData", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeNewProjectEipMonitorDataInput, DescribeNewProjectEipMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNewProjectEipMonitorData", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2580,9 +2581,9 @@ type DescribePhysicalConnectionsAPI interface {
 // DescribePhysicalConnections calls the native DescribePhysicalConnections action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribePhysicalConnections(ctx context.Context, input *DescribePhysicalConnectionsInput, optFns ...func(*Options)) (*DescribePhysicalConnectionsOutput, error) {
-	out, meta, err := invoke[DescribePhysicalConnectionsInput, DescribePhysicalConnectionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePhysicalConnections", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribePhysicalConnectionsInput, DescribePhysicalConnectionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePhysicalConnections", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2599,9 +2600,9 @@ type DescribePriceAPI interface {
 // DescribePrice calls the native DescribePrice action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribePrice(ctx context.Context, input *DescribePriceInput, optFns ...func(*Options)) (*DescribePriceOutput, error) {
-	out, meta, err := invoke[DescribePriceInput, DescribePriceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePrice", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribePriceInput, DescribePriceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePrice", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2618,9 +2619,9 @@ type DescribeRecommendInstanceTypeAPI interface {
 // DescribeRecommendInstanceType calls the native DescribeRecommendInstanceType action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeRecommendInstanceType(ctx context.Context, input *DescribeRecommendInstanceTypeInput, optFns ...func(*Options)) (*DescribeRecommendInstanceTypeOutput, error) {
-	out, meta, err := invoke[DescribeRecommendInstanceTypeInput, DescribeRecommendInstanceTypeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRecommendInstanceType", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeRecommendInstanceTypeInput, DescribeRecommendInstanceTypeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRecommendInstanceType", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2637,9 +2638,9 @@ type DescribeRegionsAPI interface {
 // DescribeRegions calls the native DescribeRegions action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Reviewed idempotency permits replay only when a configured retry policy allows it.
 func (c *Client) DescribeRegions(ctx context.Context, input *DescribeRegionsInput, optFns ...func(*Options)) (*DescribeRegionsOutput, error) {
-	out, meta, err := invoke[DescribeRegionsInput, DescribeRegionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRegions", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[DescribeRegionsInput, DescribeRegionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRegions", Version: "2014-05-26", Idempotent: true}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2656,9 +2657,9 @@ type DescribeRenewalPriceAPI interface {
 // DescribeRenewalPrice calls the native DescribeRenewalPrice action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeRenewalPrice(ctx context.Context, input *DescribeRenewalPriceInput, optFns ...func(*Options)) (*DescribeRenewalPriceOutput, error) {
-	out, meta, err := invoke[DescribeRenewalPriceInput, DescribeRenewalPriceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRenewalPrice", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeRenewalPriceInput, DescribeRenewalPriceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRenewalPrice", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2675,9 +2676,9 @@ type DescribeReservedInstanceAutoRenewAttributeAPI interface {
 // DescribeReservedInstanceAutoRenewAttribute calls the native DescribeReservedInstanceAutoRenewAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeReservedInstanceAutoRenewAttribute(ctx context.Context, input *DescribeReservedInstanceAutoRenewAttributeInput, optFns ...func(*Options)) (*DescribeReservedInstanceAutoRenewAttributeOutput, error) {
-	out, meta, err := invoke[DescribeReservedInstanceAutoRenewAttributeInput, DescribeReservedInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeReservedInstanceAutoRenewAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeReservedInstanceAutoRenewAttributeInput, DescribeReservedInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeReservedInstanceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2694,9 +2695,9 @@ type DescribeResourceByTagsAPI interface {
 // DescribeResourceByTags calls the native DescribeResourceByTags action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeResourceByTags(ctx context.Context, input *DescribeResourceByTagsInput, optFns ...func(*Options)) (*DescribeResourceByTagsOutput, error) {
-	out, meta, err := invoke[DescribeResourceByTagsInput, DescribeResourceByTagsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeResourceByTags", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeResourceByTagsInput, DescribeResourceByTagsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeResourceByTags", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2713,9 +2714,9 @@ type DescribeResourcesModificationAPI interface {
 // DescribeResourcesModification calls the native DescribeResourcesModification action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeResourcesModification(ctx context.Context, input *DescribeResourcesModificationInput, optFns ...func(*Options)) (*DescribeResourcesModificationOutput, error) {
-	out, meta, err := invoke[DescribeResourcesModificationInput, DescribeResourcesModificationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeResourcesModification", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeResourcesModificationInput, DescribeResourcesModificationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeResourcesModification", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2732,9 +2733,9 @@ type DescribeRouteTablesAPI interface {
 // DescribeRouteTables calls the native DescribeRouteTables action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeRouteTables(ctx context.Context, input *DescribeRouteTablesInput, optFns ...func(*Options)) (*DescribeRouteTablesOutput, error) {
-	out, meta, err := invoke[DescribeRouteTablesInput, DescribeRouteTablesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRouteTables", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeRouteTablesInput, DescribeRouteTablesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRouteTables", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2751,9 +2752,9 @@ type DescribeRouterInterfacesAPI interface {
 // DescribeRouterInterfaces calls the native DescribeRouterInterfaces action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeRouterInterfaces(ctx context.Context, input *DescribeRouterInterfacesInput, optFns ...func(*Options)) (*DescribeRouterInterfacesOutput, error) {
-	out, meta, err := invoke[DescribeRouterInterfacesInput, DescribeRouterInterfacesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRouterInterfaces", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeRouterInterfacesInput, DescribeRouterInterfacesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRouterInterfaces", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2770,9 +2771,9 @@ type DescribeSavingsPlanEstimationAPI interface {
 // DescribeSavingsPlanEstimation calls the native DescribeSavingsPlanEstimation action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeSavingsPlanEstimation(ctx context.Context, input *DescribeSavingsPlanEstimationInput, optFns ...func(*Options)) (*DescribeSavingsPlanEstimationOutput, error) {
-	out, meta, err := invoke[DescribeSavingsPlanEstimationInput, DescribeSavingsPlanEstimationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSavingsPlanEstimation", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeSavingsPlanEstimationInput, DescribeSavingsPlanEstimationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSavingsPlanEstimation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2789,9 +2790,9 @@ type DescribeSavingsPlanPriceAPI interface {
 // DescribeSavingsPlanPrice calls the native DescribeSavingsPlanPrice action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeSavingsPlanPrice(ctx context.Context, input *DescribeSavingsPlanPriceInput, optFns ...func(*Options)) (*DescribeSavingsPlanPriceOutput, error) {
-	out, meta, err := invoke[DescribeSavingsPlanPriceInput, DescribeSavingsPlanPriceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSavingsPlanPrice", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeSavingsPlanPriceInput, DescribeSavingsPlanPriceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSavingsPlanPrice", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2808,9 +2809,9 @@ type DescribeSecurityGroupAttributeAPI interface {
 // DescribeSecurityGroupAttribute calls the native DescribeSecurityGroupAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeSecurityGroupAttribute(ctx context.Context, input *DescribeSecurityGroupAttributeInput, optFns ...func(*Options)) (*DescribeSecurityGroupAttributeOutput, error) {
-	out, meta, err := invoke[DescribeSecurityGroupAttributeInput, DescribeSecurityGroupAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSecurityGroupAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeSecurityGroupAttributeInput, DescribeSecurityGroupAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSecurityGroupAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2827,9 +2828,9 @@ type DescribeSecurityGroupReferencesAPI interface {
 // DescribeSecurityGroupReferences calls the native DescribeSecurityGroupReferences action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeSecurityGroupReferences(ctx context.Context, input *DescribeSecurityGroupReferencesInput, optFns ...func(*Options)) (*DescribeSecurityGroupReferencesOutput, error) {
-	out, meta, err := invoke[DescribeSecurityGroupReferencesInput, DescribeSecurityGroupReferencesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSecurityGroupReferences", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeSecurityGroupReferencesInput, DescribeSecurityGroupReferencesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSecurityGroupReferences", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2846,9 +2847,9 @@ type DescribeSecurityGroupsAPI interface {
 // DescribeSecurityGroups calls the native DescribeSecurityGroups action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeSecurityGroups(ctx context.Context, input *DescribeSecurityGroupsInput, optFns ...func(*Options)) (*DescribeSecurityGroupsOutput, error) {
-	out, meta, err := invoke[DescribeSecurityGroupsInput, DescribeSecurityGroupsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSecurityGroups", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeSecurityGroupsInput, DescribeSecurityGroupsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSecurityGroups", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2865,9 +2866,9 @@ type DescribeSnapshotGroupsAPI interface {
 // DescribeSnapshotGroups calls the native DescribeSnapshotGroups action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeSnapshotGroups(ctx context.Context, input *DescribeSnapshotGroupsInput, optFns ...func(*Options)) (*DescribeSnapshotGroupsOutput, error) {
-	out, meta, err := invoke[DescribeSnapshotGroupsInput, DescribeSnapshotGroupsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotGroups", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeSnapshotGroupsInput, DescribeSnapshotGroupsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotGroups", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2884,9 +2885,9 @@ type DescribeSnapshotLinksAPI interface {
 // DescribeSnapshotLinks calls the native DescribeSnapshotLinks action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeSnapshotLinks(ctx context.Context, input *DescribeSnapshotLinksInput, optFns ...func(*Options)) (*DescribeSnapshotLinksOutput, error) {
-	out, meta, err := invoke[DescribeSnapshotLinksInput, DescribeSnapshotLinksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotLinks", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeSnapshotLinksInput, DescribeSnapshotLinksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotLinks", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2903,9 +2904,9 @@ type DescribeSnapshotMonitorDataAPI interface {
 // DescribeSnapshotMonitorData calls the native DescribeSnapshotMonitorData action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeSnapshotMonitorData(ctx context.Context, input *DescribeSnapshotMonitorDataInput, optFns ...func(*Options)) (*DescribeSnapshotMonitorDataOutput, error) {
-	out, meta, err := invoke[DescribeSnapshotMonitorDataInput, DescribeSnapshotMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotMonitorData", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeSnapshotMonitorDataInput, DescribeSnapshotMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotMonitorData", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2922,9 +2923,9 @@ type DescribeSnapshotPackageAPI interface {
 // DescribeSnapshotPackage calls the native DescribeSnapshotPackage action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeSnapshotPackage(ctx context.Context, input *DescribeSnapshotPackageInput, optFns ...func(*Options)) (*DescribeSnapshotPackageOutput, error) {
-	out, meta, err := invoke[DescribeSnapshotPackageInput, DescribeSnapshotPackageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotPackage", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeSnapshotPackageInput, DescribeSnapshotPackageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotPackage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2941,9 +2942,9 @@ type DescribeSnapshotsAPI interface {
 // DescribeSnapshots calls the native DescribeSnapshots action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeSnapshots(ctx context.Context, input *DescribeSnapshotsInput, optFns ...func(*Options)) (*DescribeSnapshotsOutput, error) {
-	out, meta, err := invoke[DescribeSnapshotsInput, DescribeSnapshotsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshots", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeSnapshotsInput, DescribeSnapshotsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshots", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2960,9 +2961,9 @@ type DescribeSnapshotsUsageAPI interface {
 // DescribeSnapshotsUsage calls the native DescribeSnapshotsUsage action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeSnapshotsUsage(ctx context.Context, input *DescribeSnapshotsUsageInput, optFns ...func(*Options)) (*DescribeSnapshotsUsageOutput, error) {
-	out, meta, err := invoke[DescribeSnapshotsUsageInput, DescribeSnapshotsUsageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotsUsage", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeSnapshotsUsageInput, DescribeSnapshotsUsageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotsUsage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2979,9 +2980,9 @@ type DescribeSpotAdviceAPI interface {
 // DescribeSpotAdvice calls the native DescribeSpotAdvice action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeSpotAdvice(ctx context.Context, input *DescribeSpotAdviceInput, optFns ...func(*Options)) (*DescribeSpotAdviceOutput, error) {
-	out, meta, err := invoke[DescribeSpotAdviceInput, DescribeSpotAdviceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSpotAdvice", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeSpotAdviceInput, DescribeSpotAdviceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSpotAdvice", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2998,9 +2999,9 @@ type DescribeStorageCapacityUnitsAPI interface {
 // DescribeStorageCapacityUnits calls the native DescribeStorageCapacityUnits action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeStorageCapacityUnits(ctx context.Context, input *DescribeStorageCapacityUnitsInput, optFns ...func(*Options)) (*DescribeStorageCapacityUnitsOutput, error) {
-	out, meta, err := invoke[DescribeStorageCapacityUnitsInput, DescribeStorageCapacityUnitsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeStorageCapacityUnits", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeStorageCapacityUnitsInput, DescribeStorageCapacityUnitsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeStorageCapacityUnits", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3017,9 +3018,9 @@ type DescribeStorageSetDetailsAPI interface {
 // DescribeStorageSetDetails calls the native DescribeStorageSetDetails action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeStorageSetDetails(ctx context.Context, input *DescribeStorageSetDetailsInput, optFns ...func(*Options)) (*DescribeStorageSetDetailsOutput, error) {
-	out, meta, err := invoke[DescribeStorageSetDetailsInput, DescribeStorageSetDetailsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeStorageSetDetails", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeStorageSetDetailsInput, DescribeStorageSetDetailsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeStorageSetDetails", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3036,9 +3037,9 @@ type DescribeStorageSetsAPI interface {
 // DescribeStorageSets calls the native DescribeStorageSets action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeStorageSets(ctx context.Context, input *DescribeStorageSetsInput, optFns ...func(*Options)) (*DescribeStorageSetsOutput, error) {
-	out, meta, err := invoke[DescribeStorageSetsInput, DescribeStorageSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeStorageSets", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeStorageSetsInput, DescribeStorageSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeStorageSets", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3055,9 +3056,9 @@ type DescribeTagsAPI interface {
 // DescribeTags calls the native DescribeTags action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeTags(ctx context.Context, input *DescribeTagsInput, optFns ...func(*Options)) (*DescribeTagsOutput, error) {
-	out, meta, err := invoke[DescribeTagsInput, DescribeTagsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeTags", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeTagsInput, DescribeTagsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeTags", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3074,9 +3075,9 @@ type DescribeTaskAttributeAPI interface {
 // DescribeTaskAttribute calls the native DescribeTaskAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeTaskAttribute(ctx context.Context, input *DescribeTaskAttributeInput, optFns ...func(*Options)) (*DescribeTaskAttributeOutput, error) {
-	out, meta, err := invoke[DescribeTaskAttributeInput, DescribeTaskAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeTaskAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeTaskAttributeInput, DescribeTaskAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeTaskAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3093,9 +3094,9 @@ type DescribeTasksAPI interface {
 // DescribeTasks calls the native DescribeTasks action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeTasks(ctx context.Context, input *DescribeTasksInput, optFns ...func(*Options)) (*DescribeTasksOutput, error) {
-	out, meta, err := invoke[DescribeTasksInput, DescribeTasksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeTasks", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeTasksInput, DescribeTasksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeTasks", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3112,9 +3113,9 @@ type DescribeTerminalSessionsAPI interface {
 // DescribeTerminalSessions calls the native DescribeTerminalSessions action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeTerminalSessions(ctx context.Context, input *DescribeTerminalSessionsInput, optFns ...func(*Options)) (*DescribeTerminalSessionsOutput, error) {
-	out, meta, err := invoke[DescribeTerminalSessionsInput, DescribeTerminalSessionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeTerminalSessions", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeTerminalSessionsInput, DescribeTerminalSessionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeTerminalSessions", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3131,9 +3132,9 @@ type DescribeUserBusinessBehaviorAPI interface {
 // DescribeUserBusinessBehavior calls the native DescribeUserBusinessBehavior action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeUserBusinessBehavior(ctx context.Context, input *DescribeUserBusinessBehaviorInput, optFns ...func(*Options)) (*DescribeUserBusinessBehaviorOutput, error) {
-	out, meta, err := invoke[DescribeUserBusinessBehaviorInput, DescribeUserBusinessBehaviorOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeUserBusinessBehavior", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeUserBusinessBehaviorInput, DescribeUserBusinessBehaviorOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeUserBusinessBehavior", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3150,9 +3151,9 @@ type DescribeUserDataAPI interface {
 // DescribeUserData calls the native DescribeUserData action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeUserData(ctx context.Context, input *DescribeUserDataInput, optFns ...func(*Options)) (*DescribeUserDataOutput, error) {
-	out, meta, err := invoke[DescribeUserDataInput, DescribeUserDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeUserData", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeUserDataInput, DescribeUserDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeUserData", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3169,9 +3170,9 @@ type DescribeVRoutersAPI interface {
 // DescribeVRouters calls the native DescribeVRouters action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeVRouters(ctx context.Context, input *DescribeVRoutersInput, optFns ...func(*Options)) (*DescribeVRoutersOutput, error) {
-	out, meta, err := invoke[DescribeVRoutersInput, DescribeVRoutersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVRouters", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeVRoutersInput, DescribeVRoutersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVRouters", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3188,9 +3189,9 @@ type DescribeVSwitchesAPI interface {
 // DescribeVSwitches calls the native DescribeVSwitches action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeVSwitches(ctx context.Context, input *DescribeVSwitchesInput, optFns ...func(*Options)) (*DescribeVSwitchesOutput, error) {
-	out, meta, err := invoke[DescribeVSwitchesInput, DescribeVSwitchesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVSwitches", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeVSwitchesInput, DescribeVSwitchesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVSwitches", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3207,9 +3208,9 @@ type DescribeVirtualBorderRoutersAPI interface {
 // DescribeVirtualBorderRouters calls the native DescribeVirtualBorderRouters action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeVirtualBorderRouters(ctx context.Context, input *DescribeVirtualBorderRoutersInput, optFns ...func(*Options)) (*DescribeVirtualBorderRoutersOutput, error) {
-	out, meta, err := invoke[DescribeVirtualBorderRoutersInput, DescribeVirtualBorderRoutersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVirtualBorderRouters", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeVirtualBorderRoutersInput, DescribeVirtualBorderRoutersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVirtualBorderRouters", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3226,9 +3227,9 @@ type DescribeVirtualBorderRoutersForPhysicalConnectionAPI interface {
 // DescribeVirtualBorderRoutersForPhysicalConnection calls the native DescribeVirtualBorderRoutersForPhysicalConnection action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeVirtualBorderRoutersForPhysicalConnection(ctx context.Context, input *DescribeVirtualBorderRoutersForPhysicalConnectionInput, optFns ...func(*Options)) (*DescribeVirtualBorderRoutersForPhysicalConnectionOutput, error) {
-	out, meta, err := invoke[DescribeVirtualBorderRoutersForPhysicalConnectionInput, DescribeVirtualBorderRoutersForPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVirtualBorderRoutersForPhysicalConnection", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeVirtualBorderRoutersForPhysicalConnectionInput, DescribeVirtualBorderRoutersForPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVirtualBorderRoutersForPhysicalConnection", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3245,9 +3246,9 @@ type DescribeVpcsAPI interface {
 // DescribeVpcs calls the native DescribeVpcs action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeVpcs(ctx context.Context, input *DescribeVpcsInput, optFns ...func(*Options)) (*DescribeVpcsOutput, error) {
-	out, meta, err := invoke[DescribeVpcsInput, DescribeVpcsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVpcs", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeVpcsInput, DescribeVpcsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVpcs", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3264,9 +3265,9 @@ type DescribeVscsAPI interface {
 // DescribeVscs calls the native DescribeVscs action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeVscs(ctx context.Context, input *DescribeVscsInput, optFns ...func(*Options)) (*DescribeVscsOutput, error) {
-	out, meta, err := invoke[DescribeVscsInput, DescribeVscsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVscs", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeVscsInput, DescribeVscsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVscs", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3283,9 +3284,9 @@ type DescribeZonesAPI interface {
 // DescribeZones calls the native DescribeZones action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeZones(ctx context.Context, input *DescribeZonesInput, optFns ...func(*Options)) (*DescribeZonesOutput, error) {
-	out, meta, err := invoke[DescribeZonesInput, DescribeZonesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeZones", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DescribeZonesInput, DescribeZonesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeZones", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3302,9 +3303,9 @@ type DetachClassicLinkVpcAPI interface {
 // DetachClassicLinkVpc calls the native DetachClassicLinkVpc action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DetachClassicLinkVpc(ctx context.Context, input *DetachClassicLinkVpcInput, optFns ...func(*Options)) (*DetachClassicLinkVpcOutput, error) {
-	out, meta, err := invoke[DetachClassicLinkVpcInput, DetachClassicLinkVpcOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachClassicLinkVpc", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DetachClassicLinkVpcInput, DetachClassicLinkVpcOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachClassicLinkVpc", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3321,9 +3322,9 @@ type DetachDiskAPI interface {
 // DetachDisk calls the native DetachDisk action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DetachDisk(ctx context.Context, input *DetachDiskInput, optFns ...func(*Options)) (*DetachDiskOutput, error) {
-	out, meta, err := invoke[DetachDiskInput, DetachDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachDisk", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[DetachDiskInput, DetachDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachDisk", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3340,9 +3341,9 @@ type DetachInstanceRamRoleAPI interface {
 // DetachInstanceRamRole calls the native DetachInstanceRamRole action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DetachInstanceRamRole(ctx context.Context, input *DetachInstanceRamRoleInput, optFns ...func(*Options)) (*DetachInstanceRamRoleOutput, error) {
-	out, meta, err := invoke[DetachInstanceRamRoleInput, DetachInstanceRamRoleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachInstanceRamRole", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DetachInstanceRamRoleInput, DetachInstanceRamRoleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachInstanceRamRole", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3359,9 +3360,9 @@ type DetachKeyPairAPI interface {
 // DetachKeyPair calls the native DetachKeyPair action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DetachKeyPair(ctx context.Context, input *DetachKeyPairInput, optFns ...func(*Options)) (*DetachKeyPairOutput, error) {
-	out, meta, err := invoke[DetachKeyPairInput, DetachKeyPairOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachKeyPair", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DetachKeyPairInput, DetachKeyPairOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachKeyPair", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3378,9 +3379,9 @@ type DisableDiskEncryptionByDefaultAPI interface {
 // DisableDiskEncryptionByDefault calls the native DisableDiskEncryptionByDefault action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) DisableDiskEncryptionByDefault(ctx context.Context, input *DisableDiskEncryptionByDefaultInput, optFns ...func(*Options)) (*DisableDiskEncryptionByDefaultOutput, error) {
-	out, meta, err := invoke[DisableDiskEncryptionByDefaultInput, DisableDiskEncryptionByDefaultOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DisableDiskEncryptionByDefault", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[DisableDiskEncryptionByDefaultInput, DisableDiskEncryptionByDefaultOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DisableDiskEncryptionByDefault", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3397,9 +3398,9 @@ type EnableDiskEncryptionByDefaultAPI interface {
 // EnableDiskEncryptionByDefault calls the native EnableDiskEncryptionByDefault action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) EnableDiskEncryptionByDefault(ctx context.Context, input *EnableDiskEncryptionByDefaultInput, optFns ...func(*Options)) (*EnableDiskEncryptionByDefaultOutput, error) {
-	out, meta, err := invoke[EnableDiskEncryptionByDefaultInput, EnableDiskEncryptionByDefaultOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "EnableDiskEncryptionByDefault", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[EnableDiskEncryptionByDefaultInput, EnableDiskEncryptionByDefaultOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "EnableDiskEncryptionByDefault", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3416,9 +3417,9 @@ type EnablePhysicalConnectionAPI interface {
 // EnablePhysicalConnection calls the native EnablePhysicalConnection action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) EnablePhysicalConnection(ctx context.Context, input *EnablePhysicalConnectionInput, optFns ...func(*Options)) (*EnablePhysicalConnectionOutput, error) {
-	out, meta, err := invoke[EnablePhysicalConnectionInput, EnablePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "EnablePhysicalConnection", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[EnablePhysicalConnectionInput, EnablePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "EnablePhysicalConnection", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3435,9 +3436,9 @@ type EndTerminalSessionAPI interface {
 // EndTerminalSession calls the native EndTerminalSession action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) EndTerminalSession(ctx context.Context, input *EndTerminalSessionInput, optFns ...func(*Options)) (*EndTerminalSessionOutput, error) {
-	out, meta, err := invoke[EndTerminalSessionInput, EndTerminalSessionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "EndTerminalSession", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[EndTerminalSessionInput, EndTerminalSessionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "EndTerminalSession", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3454,9 +3455,9 @@ type ExportImageAPI interface {
 // ExportImage calls the native ExportImage action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ExportImage(ctx context.Context, input *ExportImageInput, optFns ...func(*Options)) (*ExportImageOutput, error) {
-	out, meta, err := invoke[ExportImageInput, ExportImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ExportImage", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ExportImageInput, ExportImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ExportImage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3473,9 +3474,9 @@ type ExportSnapshotAPI interface {
 // ExportSnapshot calls the native ExportSnapshot action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ExportSnapshot(ctx context.Context, input *ExportSnapshotInput, optFns ...func(*Options)) (*ExportSnapshotOutput, error) {
-	out, meta, err := invoke[ExportSnapshotInput, ExportSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ExportSnapshot", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ExportSnapshotInput, ExportSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ExportSnapshot", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3492,9 +3493,9 @@ type ImportImageAPI interface {
 // ImportImage calls the native ImportImage action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ImportImage(ctx context.Context, input *ImportImageInput, optFns ...func(*Options)) (*ImportImageOutput, error) {
-	out, meta, err := invoke[ImportImageInput, ImportImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ImportImage", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ImportImageInput, ImportImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ImportImage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3511,9 +3512,9 @@ type ImportKeyPairAPI interface {
 // ImportKeyPair calls the native ImportKeyPair action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ImportKeyPair(ctx context.Context, input *ImportKeyPairInput, optFns ...func(*Options)) (*ImportKeyPairOutput, error) {
-	out, meta, err := invoke[ImportKeyPairInput, ImportKeyPairOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ImportKeyPair", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ImportKeyPairInput, ImportKeyPairOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ImportKeyPair", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3530,9 +3531,9 @@ type JoinResourceGroupAPI interface {
 // JoinResourceGroup calls the native JoinResourceGroup action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) JoinResourceGroup(ctx context.Context, input *JoinResourceGroupInput, optFns ...func(*Options)) (*JoinResourceGroupOutput, error) {
-	out, meta, err := invoke[JoinResourceGroupInput, JoinResourceGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "JoinResourceGroup", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[JoinResourceGroupInput, JoinResourceGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "JoinResourceGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3549,9 +3550,9 @@ type JoinSecurityGroupAPI interface {
 // JoinSecurityGroup calls the native JoinSecurityGroup action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) JoinSecurityGroup(ctx context.Context, input *JoinSecurityGroupInput, optFns ...func(*Options)) (*JoinSecurityGroupOutput, error) {
-	out, meta, err := invoke[JoinSecurityGroupInput, JoinSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "JoinSecurityGroup", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[JoinSecurityGroupInput, JoinSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "JoinSecurityGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3568,9 +3569,9 @@ type LeaveSecurityGroupAPI interface {
 // LeaveSecurityGroup calls the native LeaveSecurityGroup action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) LeaveSecurityGroup(ctx context.Context, input *LeaveSecurityGroupInput, optFns ...func(*Options)) (*LeaveSecurityGroupOutput, error) {
-	out, meta, err := invoke[LeaveSecurityGroupInput, LeaveSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "LeaveSecurityGroup", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[LeaveSecurityGroupInput, LeaveSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "LeaveSecurityGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3587,9 +3588,9 @@ type LockSnapshotAPI interface {
 // LockSnapshot calls the native LockSnapshot action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) LockSnapshot(ctx context.Context, input *LockSnapshotInput, optFns ...func(*Options)) (*LockSnapshotOutput, error) {
-	out, meta, err := invoke[LockSnapshotInput, LockSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "LockSnapshot", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[LockSnapshotInput, LockSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "LockSnapshot", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3606,9 +3607,9 @@ type ModifyAutoProvisioningGroupAPI interface {
 // ModifyAutoProvisioningGroup calls the native ModifyAutoProvisioningGroup action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyAutoProvisioningGroup(ctx context.Context, input *ModifyAutoProvisioningGroupInput, optFns ...func(*Options)) (*ModifyAutoProvisioningGroupOutput, error) {
-	out, meta, err := invoke[ModifyAutoProvisioningGroupInput, ModifyAutoProvisioningGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyAutoProvisioningGroup", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyAutoProvisioningGroupInput, ModifyAutoProvisioningGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyAutoProvisioningGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3625,9 +3626,9 @@ type ModifyAutoSnapshotPolicyExAPI interface {
 // ModifyAutoSnapshotPolicyEx calls the native ModifyAutoSnapshotPolicyEx action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyAutoSnapshotPolicyEx(ctx context.Context, input *ModifyAutoSnapshotPolicyExInput, optFns ...func(*Options)) (*ModifyAutoSnapshotPolicyExOutput, error) {
-	out, meta, err := invoke[ModifyAutoSnapshotPolicyExInput, ModifyAutoSnapshotPolicyExOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyAutoSnapshotPolicyEx", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[ModifyAutoSnapshotPolicyExInput, ModifyAutoSnapshotPolicyExOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyAutoSnapshotPolicyEx", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3644,9 +3645,9 @@ type ModifyBandwidthPackageSpecAPI interface {
 // ModifyBandwidthPackageSpec calls the native ModifyBandwidthPackageSpec action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyBandwidthPackageSpec(ctx context.Context, input *ModifyBandwidthPackageSpecInput, optFns ...func(*Options)) (*ModifyBandwidthPackageSpecOutput, error) {
-	out, meta, err := invoke[ModifyBandwidthPackageSpecInput, ModifyBandwidthPackageSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyBandwidthPackageSpec", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyBandwidthPackageSpecInput, ModifyBandwidthPackageSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyBandwidthPackageSpec", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3663,9 +3664,9 @@ type ModifyCapacityReservationAPI interface {
 // ModifyCapacityReservation calls the native ModifyCapacityReservation action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyCapacityReservation(ctx context.Context, input *ModifyCapacityReservationInput, optFns ...func(*Options)) (*ModifyCapacityReservationOutput, error) {
-	out, meta, err := invoke[ModifyCapacityReservationInput, ModifyCapacityReservationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyCapacityReservation", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyCapacityReservationInput, ModifyCapacityReservationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyCapacityReservation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3682,9 +3683,9 @@ type ModifyDedicatedHostAttributeAPI interface {
 // ModifyDedicatedHostAttribute calls the native ModifyDedicatedHostAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyDedicatedHostAttribute(ctx context.Context, input *ModifyDedicatedHostAttributeInput, optFns ...func(*Options)) (*ModifyDedicatedHostAttributeOutput, error) {
-	out, meta, err := invoke[ModifyDedicatedHostAttributeInput, ModifyDedicatedHostAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyDedicatedHostAttributeInput, ModifyDedicatedHostAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3701,9 +3702,9 @@ type ModifyDedicatedHostAutoReleaseTimeAPI interface {
 // ModifyDedicatedHostAutoReleaseTime calls the native ModifyDedicatedHostAutoReleaseTime action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyDedicatedHostAutoReleaseTime(ctx context.Context, input *ModifyDedicatedHostAutoReleaseTimeInput, optFns ...func(*Options)) (*ModifyDedicatedHostAutoReleaseTimeOutput, error) {
-	out, meta, err := invoke[ModifyDedicatedHostAutoReleaseTimeInput, ModifyDedicatedHostAutoReleaseTimeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostAutoReleaseTime", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyDedicatedHostAutoReleaseTimeInput, ModifyDedicatedHostAutoReleaseTimeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostAutoReleaseTime", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3720,9 +3721,9 @@ type ModifyDedicatedHostAutoRenewAttributeAPI interface {
 // ModifyDedicatedHostAutoRenewAttribute calls the native ModifyDedicatedHostAutoRenewAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyDedicatedHostAutoRenewAttribute(ctx context.Context, input *ModifyDedicatedHostAutoRenewAttributeInput, optFns ...func(*Options)) (*ModifyDedicatedHostAutoRenewAttributeOutput, error) {
-	out, meta, err := invoke[ModifyDedicatedHostAutoRenewAttributeInput, ModifyDedicatedHostAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostAutoRenewAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyDedicatedHostAutoRenewAttributeInput, ModifyDedicatedHostAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3739,9 +3740,9 @@ type ModifyDedicatedHostClusterAttributeAPI interface {
 // ModifyDedicatedHostClusterAttribute calls the native ModifyDedicatedHostClusterAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyDedicatedHostClusterAttribute(ctx context.Context, input *ModifyDedicatedHostClusterAttributeInput, optFns ...func(*Options)) (*ModifyDedicatedHostClusterAttributeOutput, error) {
-	out, meta, err := invoke[ModifyDedicatedHostClusterAttributeInput, ModifyDedicatedHostClusterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostClusterAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyDedicatedHostClusterAttributeInput, ModifyDedicatedHostClusterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostClusterAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3758,9 +3759,9 @@ type ModifyDedicatedHostsChargeTypeAPI interface {
 // ModifyDedicatedHostsChargeType calls the native ModifyDedicatedHostsChargeType action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyDedicatedHostsChargeType(ctx context.Context, input *ModifyDedicatedHostsChargeTypeInput, optFns ...func(*Options)) (*ModifyDedicatedHostsChargeTypeOutput, error) {
-	out, meta, err := invoke[ModifyDedicatedHostsChargeTypeInput, ModifyDedicatedHostsChargeTypeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostsChargeType", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyDedicatedHostsChargeTypeInput, ModifyDedicatedHostsChargeTypeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostsChargeType", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3777,9 +3778,9 @@ type ModifyDeploymentSetAttributeAPI interface {
 // ModifyDeploymentSetAttribute calls the native ModifyDeploymentSetAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyDeploymentSetAttribute(ctx context.Context, input *ModifyDeploymentSetAttributeInput, optFns ...func(*Options)) (*ModifyDeploymentSetAttributeOutput, error) {
-	out, meta, err := invoke[ModifyDeploymentSetAttributeInput, ModifyDeploymentSetAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDeploymentSetAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyDeploymentSetAttributeInput, ModifyDeploymentSetAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDeploymentSetAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3796,9 +3797,9 @@ type ModifyDiagnosticMetricSetAPI interface {
 // ModifyDiagnosticMetricSet calls the native ModifyDiagnosticMetricSet action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyDiagnosticMetricSet(ctx context.Context, input *ModifyDiagnosticMetricSetInput, optFns ...func(*Options)) (*ModifyDiagnosticMetricSetOutput, error) {
-	out, meta, err := invoke[ModifyDiagnosticMetricSetInput, ModifyDiagnosticMetricSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiagnosticMetricSet", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyDiagnosticMetricSetInput, ModifyDiagnosticMetricSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiagnosticMetricSet", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3815,9 +3816,9 @@ type ModifyDiskAttributeAPI interface {
 // ModifyDiskAttribute calls the native ModifyDiskAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyDiskAttribute(ctx context.Context, input *ModifyDiskAttributeInput, optFns ...func(*Options)) (*ModifyDiskAttributeOutput, error) {
-	out, meta, err := invoke[ModifyDiskAttributeInput, ModifyDiskAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyDiskAttributeInput, ModifyDiskAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3834,9 +3835,9 @@ type ModifyDiskChargeTypeAPI interface {
 // ModifyDiskChargeType calls the native ModifyDiskChargeType action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyDiskChargeType(ctx context.Context, input *ModifyDiskChargeTypeInput, optFns ...func(*Options)) (*ModifyDiskChargeTypeOutput, error) {
-	out, meta, err := invoke[ModifyDiskChargeTypeInput, ModifyDiskChargeTypeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskChargeType", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyDiskChargeTypeInput, ModifyDiskChargeTypeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskChargeType", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3853,9 +3854,9 @@ type ModifyDiskDefaultKMSKeyIdAPI interface {
 // ModifyDiskDefaultKMSKeyId calls the native ModifyDiskDefaultKMSKeyId action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyDiskDefaultKMSKeyId(ctx context.Context, input *ModifyDiskDefaultKMSKeyIdInput, optFns ...func(*Options)) (*ModifyDiskDefaultKMSKeyIdOutput, error) {
-	out, meta, err := invoke[ModifyDiskDefaultKMSKeyIdInput, ModifyDiskDefaultKMSKeyIdOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskDefaultKMSKeyId", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyDiskDefaultKMSKeyIdInput, ModifyDiskDefaultKMSKeyIdOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskDefaultKMSKeyId", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3872,9 +3873,9 @@ type ModifyDiskDeploymentAPI interface {
 // ModifyDiskDeployment calls the native ModifyDiskDeployment action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyDiskDeployment(ctx context.Context, input *ModifyDiskDeploymentInput, optFns ...func(*Options)) (*ModifyDiskDeploymentOutput, error) {
-	out, meta, err := invoke[ModifyDiskDeploymentInput, ModifyDiskDeploymentOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskDeployment", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[ModifyDiskDeploymentInput, ModifyDiskDeploymentOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskDeployment", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3891,9 +3892,9 @@ type ModifyDiskSpecAPI interface {
 // ModifyDiskSpec calls the native ModifyDiskSpec action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyDiskSpec(ctx context.Context, input *ModifyDiskSpecInput, optFns ...func(*Options)) (*ModifyDiskSpecOutput, error) {
-	out, meta, err := invoke[ModifyDiskSpecInput, ModifyDiskSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskSpec", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[ModifyDiskSpecInput, ModifyDiskSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskSpec", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3910,9 +3911,9 @@ type ModifyEipAddressAttributeAPI interface {
 // ModifyEipAddressAttribute calls the native ModifyEipAddressAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyEipAddressAttribute(ctx context.Context, input *ModifyEipAddressAttributeInput, optFns ...func(*Options)) (*ModifyEipAddressAttributeOutput, error) {
-	out, meta, err := invoke[ModifyEipAddressAttributeInput, ModifyEipAddressAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyEipAddressAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyEipAddressAttributeInput, ModifyEipAddressAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyEipAddressAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3929,9 +3930,9 @@ type ModifyElasticityAssuranceAPI interface {
 // ModifyElasticityAssurance calls the native ModifyElasticityAssurance action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyElasticityAssurance(ctx context.Context, input *ModifyElasticityAssuranceInput, optFns ...func(*Options)) (*ModifyElasticityAssuranceOutput, error) {
-	out, meta, err := invoke[ModifyElasticityAssuranceInput, ModifyElasticityAssuranceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyElasticityAssurance", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyElasticityAssuranceInput, ModifyElasticityAssuranceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyElasticityAssurance", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3948,9 +3949,9 @@ type ModifyElasticityAssuranceAutoRenewAttributeAPI interface {
 // ModifyElasticityAssuranceAutoRenewAttribute calls the native ModifyElasticityAssuranceAutoRenewAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyElasticityAssuranceAutoRenewAttribute(ctx context.Context, input *ModifyElasticityAssuranceAutoRenewAttributeInput, optFns ...func(*Options)) (*ModifyElasticityAssuranceAutoRenewAttributeOutput, error) {
-	out, meta, err := invoke[ModifyElasticityAssuranceAutoRenewAttributeInput, ModifyElasticityAssuranceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyElasticityAssuranceAutoRenewAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyElasticityAssuranceAutoRenewAttributeInput, ModifyElasticityAssuranceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyElasticityAssuranceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3967,9 +3968,9 @@ type ModifyForwardEntryAPI interface {
 // ModifyForwardEntry calls the native ModifyForwardEntry action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyForwardEntry(ctx context.Context, input *ModifyForwardEntryInput, optFns ...func(*Options)) (*ModifyForwardEntryOutput, error) {
-	out, meta, err := invoke[ModifyForwardEntryInput, ModifyForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyForwardEntry", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyForwardEntryInput, ModifyForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyForwardEntry", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3986,9 +3987,9 @@ type ModifyHaVipAttributeAPI interface {
 // ModifyHaVipAttribute calls the native ModifyHaVipAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyHaVipAttribute(ctx context.Context, input *ModifyHaVipAttributeInput, optFns ...func(*Options)) (*ModifyHaVipAttributeOutput, error) {
-	out, meta, err := invoke[ModifyHaVipAttributeInput, ModifyHaVipAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyHaVipAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyHaVipAttributeInput, ModifyHaVipAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyHaVipAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4005,9 +4006,9 @@ type ModifyImageAttributeAPI interface {
 // ModifyImageAttribute calls the native ModifyImageAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyImageAttribute(ctx context.Context, input *ModifyImageAttributeInput, optFns ...func(*Options)) (*ModifyImageAttributeOutput, error) {
-	out, meta, err := invoke[ModifyImageAttributeInput, ModifyImageAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyImageAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyImageAttributeInput, ModifyImageAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyImageAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4024,9 +4025,9 @@ type ModifyImageShareGroupPermissionAPI interface {
 // ModifyImageShareGroupPermission calls the native ModifyImageShareGroupPermission action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyImageShareGroupPermission(ctx context.Context, input *ModifyImageShareGroupPermissionInput, optFns ...func(*Options)) (*ModifyImageShareGroupPermissionOutput, error) {
-	out, meta, err := invoke[ModifyImageShareGroupPermissionInput, ModifyImageShareGroupPermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyImageShareGroupPermission", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyImageShareGroupPermissionInput, ModifyImageShareGroupPermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyImageShareGroupPermission", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4043,9 +4044,9 @@ type ModifyImageSharePermissionAPI interface {
 // ModifyImageSharePermission calls the native ModifyImageSharePermission action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyImageSharePermission(ctx context.Context, input *ModifyImageSharePermissionInput, optFns ...func(*Options)) (*ModifyImageSharePermissionOutput, error) {
-	out, meta, err := invoke[ModifyImageSharePermissionInput, ModifyImageSharePermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyImageSharePermission", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyImageSharePermissionInput, ModifyImageSharePermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyImageSharePermission", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4062,9 +4063,9 @@ type ModifyInstanceAttachmentAttributesAPI interface {
 // ModifyInstanceAttachmentAttributes calls the native ModifyInstanceAttachmentAttributes action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyInstanceAttachmentAttributes(ctx context.Context, input *ModifyInstanceAttachmentAttributesInput, optFns ...func(*Options)) (*ModifyInstanceAttachmentAttributesOutput, error) {
-	out, meta, err := invoke[ModifyInstanceAttachmentAttributesInput, ModifyInstanceAttachmentAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceAttachmentAttributes", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyInstanceAttachmentAttributesInput, ModifyInstanceAttachmentAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceAttachmentAttributes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4081,9 +4082,9 @@ type ModifyInstanceAttributeAPI interface {
 // ModifyInstanceAttribute calls the native ModifyInstanceAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyInstanceAttribute(ctx context.Context, input *ModifyInstanceAttributeInput, optFns ...func(*Options)) (*ModifyInstanceAttributeOutput, error) {
-	out, meta, err := invoke[ModifyInstanceAttributeInput, ModifyInstanceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceAttribute", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[ModifyInstanceAttributeInput, ModifyInstanceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceAttribute", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4100,9 +4101,9 @@ type ModifyInstanceAutoReleaseTimeAPI interface {
 // ModifyInstanceAutoReleaseTime calls the native ModifyInstanceAutoReleaseTime action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyInstanceAutoReleaseTime(ctx context.Context, input *ModifyInstanceAutoReleaseTimeInput, optFns ...func(*Options)) (*ModifyInstanceAutoReleaseTimeOutput, error) {
-	out, meta, err := invoke[ModifyInstanceAutoReleaseTimeInput, ModifyInstanceAutoReleaseTimeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceAutoReleaseTime", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyInstanceAutoReleaseTimeInput, ModifyInstanceAutoReleaseTimeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceAutoReleaseTime", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4119,9 +4120,9 @@ type ModifyInstanceAutoRenewAttributeAPI interface {
 // ModifyInstanceAutoRenewAttribute calls the native ModifyInstanceAutoRenewAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyInstanceAutoRenewAttribute(ctx context.Context, input *ModifyInstanceAutoRenewAttributeInput, optFns ...func(*Options)) (*ModifyInstanceAutoRenewAttributeOutput, error) {
-	out, meta, err := invoke[ModifyInstanceAutoRenewAttributeInput, ModifyInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceAutoRenewAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyInstanceAutoRenewAttributeInput, ModifyInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4138,9 +4139,9 @@ type ModifyInstanceChargeTypeAPI interface {
 // ModifyInstanceChargeType calls the native ModifyInstanceChargeType action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyInstanceChargeType(ctx context.Context, input *ModifyInstanceChargeTypeInput, optFns ...func(*Options)) (*ModifyInstanceChargeTypeOutput, error) {
-	out, meta, err := invoke[ModifyInstanceChargeTypeInput, ModifyInstanceChargeTypeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceChargeType", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyInstanceChargeTypeInput, ModifyInstanceChargeTypeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceChargeType", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4157,9 +4158,9 @@ type ModifyInstanceClockOptionsAPI interface {
 // ModifyInstanceClockOptions calls the native ModifyInstanceClockOptions action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyInstanceClockOptions(ctx context.Context, input *ModifyInstanceClockOptionsInput, optFns ...func(*Options)) (*ModifyInstanceClockOptionsOutput, error) {
-	out, meta, err := invoke[ModifyInstanceClockOptionsInput, ModifyInstanceClockOptionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceClockOptions", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyInstanceClockOptionsInput, ModifyInstanceClockOptionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceClockOptions", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4176,9 +4177,9 @@ type ModifyInstanceDeploymentAPI interface {
 // ModifyInstanceDeployment calls the native ModifyInstanceDeployment action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyInstanceDeployment(ctx context.Context, input *ModifyInstanceDeploymentInput, optFns ...func(*Options)) (*ModifyInstanceDeploymentOutput, error) {
-	out, meta, err := invoke[ModifyInstanceDeploymentInput, ModifyInstanceDeploymentOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceDeployment", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyInstanceDeploymentInput, ModifyInstanceDeploymentOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceDeployment", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4195,9 +4196,9 @@ type ModifyInstanceMaintenanceAttributesAPI interface {
 // ModifyInstanceMaintenanceAttributes calls the native ModifyInstanceMaintenanceAttributes action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyInstanceMaintenanceAttributes(ctx context.Context, input *ModifyInstanceMaintenanceAttributesInput, optFns ...func(*Options)) (*ModifyInstanceMaintenanceAttributesOutput, error) {
-	out, meta, err := invoke[ModifyInstanceMaintenanceAttributesInput, ModifyInstanceMaintenanceAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceMaintenanceAttributes", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyInstanceMaintenanceAttributesInput, ModifyInstanceMaintenanceAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceMaintenanceAttributes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4214,9 +4215,9 @@ type ModifyInstanceMetadataOptionsAPI interface {
 // ModifyInstanceMetadataOptions calls the native ModifyInstanceMetadataOptions action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyInstanceMetadataOptions(ctx context.Context, input *ModifyInstanceMetadataOptionsInput, optFns ...func(*Options)) (*ModifyInstanceMetadataOptionsOutput, error) {
-	out, meta, err := invoke[ModifyInstanceMetadataOptionsInput, ModifyInstanceMetadataOptionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceMetadataOptions", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyInstanceMetadataOptionsInput, ModifyInstanceMetadataOptionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceMetadataOptions", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4233,9 +4234,9 @@ type ModifyInstanceNetworkOptionsAPI interface {
 // ModifyInstanceNetworkOptions calls the native ModifyInstanceNetworkOptions action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyInstanceNetworkOptions(ctx context.Context, input *ModifyInstanceNetworkOptionsInput, optFns ...func(*Options)) (*ModifyInstanceNetworkOptionsOutput, error) {
-	out, meta, err := invoke[ModifyInstanceNetworkOptionsInput, ModifyInstanceNetworkOptionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceNetworkOptions", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[ModifyInstanceNetworkOptionsInput, ModifyInstanceNetworkOptionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceNetworkOptions", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4252,9 +4253,9 @@ type ModifyInstanceNetworkSpecAPI interface {
 // ModifyInstanceNetworkSpec calls the native ModifyInstanceNetworkSpec action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyInstanceNetworkSpec(ctx context.Context, input *ModifyInstanceNetworkSpecInput, optFns ...func(*Options)) (*ModifyInstanceNetworkSpecOutput, error) {
-	out, meta, err := invoke[ModifyInstanceNetworkSpecInput, ModifyInstanceNetworkSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceNetworkSpec", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[ModifyInstanceNetworkSpecInput, ModifyInstanceNetworkSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceNetworkSpec", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4271,9 +4272,9 @@ type ModifyInstanceSecurityOptionsAPI interface {
 // ModifyInstanceSecurityOptions calls the native ModifyInstanceSecurityOptions action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyInstanceSecurityOptions(ctx context.Context, input *ModifyInstanceSecurityOptionsInput, optFns ...func(*Options)) (*ModifyInstanceSecurityOptionsOutput, error) {
-	out, meta, err := invoke[ModifyInstanceSecurityOptionsInput, ModifyInstanceSecurityOptionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceSecurityOptions", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyInstanceSecurityOptionsInput, ModifyInstanceSecurityOptionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceSecurityOptions", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4290,9 +4291,9 @@ type ModifyInstanceSpecAPI interface {
 // ModifyInstanceSpec calls the native ModifyInstanceSpec action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyInstanceSpec(ctx context.Context, input *ModifyInstanceSpecInput, optFns ...func(*Options)) (*ModifyInstanceSpecOutput, error) {
-	out, meta, err := invoke[ModifyInstanceSpecInput, ModifyInstanceSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceSpec", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[ModifyInstanceSpecInput, ModifyInstanceSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceSpec", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4309,9 +4310,9 @@ type ModifyInstanceVncPasswdAPI interface {
 // ModifyInstanceVncPasswd calls the native ModifyInstanceVncPasswd action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyInstanceVncPasswd(ctx context.Context, input *ModifyInstanceVncPasswdInput, optFns ...func(*Options)) (*ModifyInstanceVncPasswdOutput, error) {
-	out, meta, err := invoke[ModifyInstanceVncPasswdInput, ModifyInstanceVncPasswdOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceVncPasswd", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyInstanceVncPasswdInput, ModifyInstanceVncPasswdOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceVncPasswd", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4328,9 +4329,9 @@ type ModifyInstanceVpcAttributeAPI interface {
 // ModifyInstanceVpcAttribute calls the native ModifyInstanceVpcAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyInstanceVpcAttribute(ctx context.Context, input *ModifyInstanceVpcAttributeInput, optFns ...func(*Options)) (*ModifyInstanceVpcAttributeOutput, error) {
-	out, meta, err := invoke[ModifyInstanceVpcAttributeInput, ModifyInstanceVpcAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceVpcAttribute", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[ModifyInstanceVpcAttributeInput, ModifyInstanceVpcAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceVpcAttribute", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4347,9 +4348,9 @@ type ModifyLaunchTemplateDefaultVersionAPI interface {
 // ModifyLaunchTemplateDefaultVersion calls the native ModifyLaunchTemplateDefaultVersion action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyLaunchTemplateDefaultVersion(ctx context.Context, input *ModifyLaunchTemplateDefaultVersionInput, optFns ...func(*Options)) (*ModifyLaunchTemplateDefaultVersionOutput, error) {
-	out, meta, err := invoke[ModifyLaunchTemplateDefaultVersionInput, ModifyLaunchTemplateDefaultVersionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyLaunchTemplateDefaultVersion", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyLaunchTemplateDefaultVersionInput, ModifyLaunchTemplateDefaultVersionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyLaunchTemplateDefaultVersion", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4366,9 +4367,9 @@ type ModifyPrepayInstanceSpecAPI interface {
 // ModifyPrepayInstanceSpec calls the native ModifyPrepayInstanceSpec action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyPrepayInstanceSpec(ctx context.Context, input *ModifyPrepayInstanceSpecInput, optFns ...func(*Options)) (*ModifyPrepayInstanceSpecOutput, error) {
-	out, meta, err := invoke[ModifyPrepayInstanceSpecInput, ModifyPrepayInstanceSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyPrepayInstanceSpec", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyPrepayInstanceSpecInput, ModifyPrepayInstanceSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyPrepayInstanceSpec", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4385,9 +4386,9 @@ type ModifyReservedInstanceAttributeAPI interface {
 // ModifyReservedInstanceAttribute calls the native ModifyReservedInstanceAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyReservedInstanceAttribute(ctx context.Context, input *ModifyReservedInstanceAttributeInput, optFns ...func(*Options)) (*ModifyReservedInstanceAttributeOutput, error) {
-	out, meta, err := invoke[ModifyReservedInstanceAttributeInput, ModifyReservedInstanceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyReservedInstanceAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyReservedInstanceAttributeInput, ModifyReservedInstanceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyReservedInstanceAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4404,9 +4405,9 @@ type ModifyReservedInstanceAutoRenewAttributeAPI interface {
 // ModifyReservedInstanceAutoRenewAttribute calls the native ModifyReservedInstanceAutoRenewAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyReservedInstanceAutoRenewAttribute(ctx context.Context, input *ModifyReservedInstanceAutoRenewAttributeInput, optFns ...func(*Options)) (*ModifyReservedInstanceAutoRenewAttributeOutput, error) {
-	out, meta, err := invoke[ModifyReservedInstanceAutoRenewAttributeInput, ModifyReservedInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyReservedInstanceAutoRenewAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyReservedInstanceAutoRenewAttributeInput, ModifyReservedInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyReservedInstanceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4423,9 +4424,9 @@ type ModifyReservedInstancesAPI interface {
 // ModifyReservedInstances calls the native ModifyReservedInstances action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyReservedInstances(ctx context.Context, input *ModifyReservedInstancesInput, optFns ...func(*Options)) (*ModifyReservedInstancesOutput, error) {
-	out, meta, err := invoke[ModifyReservedInstancesInput, ModifyReservedInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyReservedInstances", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyReservedInstancesInput, ModifyReservedInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyReservedInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4442,9 +4443,9 @@ type ModifyRouterInterfaceAttributeAPI interface {
 // ModifyRouterInterfaceAttribute calls the native ModifyRouterInterfaceAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyRouterInterfaceAttribute(ctx context.Context, input *ModifyRouterInterfaceAttributeInput, optFns ...func(*Options)) (*ModifyRouterInterfaceAttributeOutput, error) {
-	out, meta, err := invoke[ModifyRouterInterfaceAttributeInput, ModifyRouterInterfaceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyRouterInterfaceAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyRouterInterfaceAttributeInput, ModifyRouterInterfaceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyRouterInterfaceAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4461,9 +4462,9 @@ type ModifyRouterInterfaceSpecAPI interface {
 // ModifyRouterInterfaceSpec calls the native ModifyRouterInterfaceSpec action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyRouterInterfaceSpec(ctx context.Context, input *ModifyRouterInterfaceSpecInput, optFns ...func(*Options)) (*ModifyRouterInterfaceSpecOutput, error) {
-	out, meta, err := invoke[ModifyRouterInterfaceSpecInput, ModifyRouterInterfaceSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyRouterInterfaceSpec", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyRouterInterfaceSpecInput, ModifyRouterInterfaceSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyRouterInterfaceSpec", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4480,9 +4481,9 @@ type ModifySecurityGroupAttributeAPI interface {
 // ModifySecurityGroupAttribute calls the native ModifySecurityGroupAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifySecurityGroupAttribute(ctx context.Context, input *ModifySecurityGroupAttributeInput, optFns ...func(*Options)) (*ModifySecurityGroupAttributeOutput, error) {
-	out, meta, err := invoke[ModifySecurityGroupAttributeInput, ModifySecurityGroupAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySecurityGroupAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifySecurityGroupAttributeInput, ModifySecurityGroupAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySecurityGroupAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4499,9 +4500,9 @@ type ModifySecurityGroupPolicyAPI interface {
 // ModifySecurityGroupPolicy calls the native ModifySecurityGroupPolicy action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifySecurityGroupPolicy(ctx context.Context, input *ModifySecurityGroupPolicyInput, optFns ...func(*Options)) (*ModifySecurityGroupPolicyOutput, error) {
-	out, meta, err := invoke[ModifySecurityGroupPolicyInput, ModifySecurityGroupPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySecurityGroupPolicy", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifySecurityGroupPolicyInput, ModifySecurityGroupPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySecurityGroupPolicy", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4518,9 +4519,9 @@ type ModifySnapshotAttributeAPI interface {
 // ModifySnapshotAttribute calls the native ModifySnapshotAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifySnapshotAttribute(ctx context.Context, input *ModifySnapshotAttributeInput, optFns ...func(*Options)) (*ModifySnapshotAttributeOutput, error) {
-	out, meta, err := invoke[ModifySnapshotAttributeInput, ModifySnapshotAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySnapshotAttribute", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[ModifySnapshotAttributeInput, ModifySnapshotAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySnapshotAttribute", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4537,9 +4538,9 @@ type ModifySnapshotCategoryAPI interface {
 // ModifySnapshotCategory calls the native ModifySnapshotCategory action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifySnapshotCategory(ctx context.Context, input *ModifySnapshotCategoryInput, optFns ...func(*Options)) (*ModifySnapshotCategoryOutput, error) {
-	out, meta, err := invoke[ModifySnapshotCategoryInput, ModifySnapshotCategoryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySnapshotCategory", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[ModifySnapshotCategoryInput, ModifySnapshotCategoryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySnapshotCategory", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4556,9 +4557,9 @@ type ModifySnapshotGroupAPI interface {
 // ModifySnapshotGroup calls the native ModifySnapshotGroup action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifySnapshotGroup(ctx context.Context, input *ModifySnapshotGroupInput, optFns ...func(*Options)) (*ModifySnapshotGroupOutput, error) {
-	out, meta, err := invoke[ModifySnapshotGroupInput, ModifySnapshotGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySnapshotGroup", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifySnapshotGroupInput, ModifySnapshotGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySnapshotGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4575,9 +4576,9 @@ type ModifyStorageCapacityUnitAttributeAPI interface {
 // ModifyStorageCapacityUnitAttribute calls the native ModifyStorageCapacityUnitAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyStorageCapacityUnitAttribute(ctx context.Context, input *ModifyStorageCapacityUnitAttributeInput, optFns ...func(*Options)) (*ModifyStorageCapacityUnitAttributeOutput, error) {
-	out, meta, err := invoke[ModifyStorageCapacityUnitAttributeInput, ModifyStorageCapacityUnitAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyStorageCapacityUnitAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyStorageCapacityUnitAttributeInput, ModifyStorageCapacityUnitAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyStorageCapacityUnitAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4594,9 +4595,9 @@ type ModifyStorageSetAttributeAPI interface {
 // ModifyStorageSetAttribute calls the native ModifyStorageSetAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyStorageSetAttribute(ctx context.Context, input *ModifyStorageSetAttributeInput, optFns ...func(*Options)) (*ModifyStorageSetAttributeOutput, error) {
-	out, meta, err := invoke[ModifyStorageSetAttributeInput, ModifyStorageSetAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyStorageSetAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyStorageSetAttributeInput, ModifyStorageSetAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyStorageSetAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4613,9 +4614,9 @@ type ModifySystemEventAttributeAPI interface {
 // ModifySystemEventAttribute calls the native ModifySystemEventAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifySystemEventAttribute(ctx context.Context, input *ModifySystemEventAttributeInput, optFns ...func(*Options)) (*ModifySystemEventAttributeOutput, error) {
-	out, meta, err := invoke[ModifySystemEventAttributeInput, ModifySystemEventAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySystemEventAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifySystemEventAttributeInput, ModifySystemEventAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySystemEventAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4632,9 +4633,9 @@ type ModifyUserBusinessBehaviorAPI interface {
 // ModifyUserBusinessBehavior calls the native ModifyUserBusinessBehavior action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyUserBusinessBehavior(ctx context.Context, input *ModifyUserBusinessBehaviorInput, optFns ...func(*Options)) (*ModifyUserBusinessBehaviorOutput, error) {
-	out, meta, err := invoke[ModifyUserBusinessBehaviorInput, ModifyUserBusinessBehaviorOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyUserBusinessBehavior", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyUserBusinessBehaviorInput, ModifyUserBusinessBehaviorOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyUserBusinessBehavior", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4651,9 +4652,9 @@ type ModifyVRouterAttributeAPI interface {
 // ModifyVRouterAttribute calls the native ModifyVRouterAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyVRouterAttribute(ctx context.Context, input *ModifyVRouterAttributeInput, optFns ...func(*Options)) (*ModifyVRouterAttributeOutput, error) {
-	out, meta, err := invoke[ModifyVRouterAttributeInput, ModifyVRouterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyVRouterAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyVRouterAttributeInput, ModifyVRouterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyVRouterAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4670,9 +4671,9 @@ type ModifyVSwitchAttributeAPI interface {
 // ModifyVSwitchAttribute calls the native ModifyVSwitchAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyVSwitchAttribute(ctx context.Context, input *ModifyVSwitchAttributeInput, optFns ...func(*Options)) (*ModifyVSwitchAttributeOutput, error) {
-	out, meta, err := invoke[ModifyVSwitchAttributeInput, ModifyVSwitchAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyVSwitchAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyVSwitchAttributeInput, ModifyVSwitchAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyVSwitchAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4689,9 +4690,9 @@ type ModifyVirtualBorderRouterAttributeAPI interface {
 // ModifyVirtualBorderRouterAttribute calls the native ModifyVirtualBorderRouterAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyVirtualBorderRouterAttribute(ctx context.Context, input *ModifyVirtualBorderRouterAttributeInput, optFns ...func(*Options)) (*ModifyVirtualBorderRouterAttributeOutput, error) {
-	out, meta, err := invoke[ModifyVirtualBorderRouterAttributeInput, ModifyVirtualBorderRouterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyVirtualBorderRouterAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyVirtualBorderRouterAttributeInput, ModifyVirtualBorderRouterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyVirtualBorderRouterAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4708,9 +4709,9 @@ type ModifyVpcAttributeAPI interface {
 // ModifyVpcAttribute calls the native ModifyVpcAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyVpcAttribute(ctx context.Context, input *ModifyVpcAttributeInput, optFns ...func(*Options)) (*ModifyVpcAttributeOutput, error) {
-	out, meta, err := invoke[ModifyVpcAttributeInput, ModifyVpcAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyVpcAttribute", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ModifyVpcAttributeInput, ModifyVpcAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyVpcAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4727,9 +4728,9 @@ type OpenSnapshotServiceAPI interface {
 // OpenSnapshotService calls the native OpenSnapshotService action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) OpenSnapshotService(ctx context.Context, input *OpenSnapshotServiceInput, optFns ...func(*Options)) (*OpenSnapshotServiceOutput, error) {
-	out, meta, err := invoke[OpenSnapshotServiceInput, OpenSnapshotServiceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "OpenSnapshotService", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[OpenSnapshotServiceInput, OpenSnapshotServiceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "OpenSnapshotService", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4746,9 +4747,9 @@ type PurchaseReservedInstancesOfferingAPI interface {
 // PurchaseReservedInstancesOffering calls the native PurchaseReservedInstancesOffering action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) PurchaseReservedInstancesOffering(ctx context.Context, input *PurchaseReservedInstancesOfferingInput, optFns ...func(*Options)) (*PurchaseReservedInstancesOfferingOutput, error) {
-	out, meta, err := invoke[PurchaseReservedInstancesOfferingInput, PurchaseReservedInstancesOfferingOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "PurchaseReservedInstancesOffering", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[PurchaseReservedInstancesOfferingInput, PurchaseReservedInstancesOfferingOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "PurchaseReservedInstancesOffering", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4765,9 +4766,9 @@ type PurchaseStorageCapacityUnitAPI interface {
 // PurchaseStorageCapacityUnit calls the native PurchaseStorageCapacityUnit action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) PurchaseStorageCapacityUnit(ctx context.Context, input *PurchaseStorageCapacityUnitInput, optFns ...func(*Options)) (*PurchaseStorageCapacityUnitOutput, error) {
-	out, meta, err := invoke[PurchaseStorageCapacityUnitInput, PurchaseStorageCapacityUnitOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "PurchaseStorageCapacityUnit", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[PurchaseStorageCapacityUnitInput, PurchaseStorageCapacityUnitOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "PurchaseStorageCapacityUnit", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4784,9 +4785,9 @@ type ReActivateInstancesAPI interface {
 // ReActivateInstances calls the native ReActivateInstances action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ReActivateInstances(ctx context.Context, input *ReActivateInstancesInput, optFns ...func(*Options)) (*ReActivateInstancesOutput, error) {
-	out, meta, err := invoke[ReActivateInstancesInput, ReActivateInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReActivateInstances", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ReActivateInstancesInput, ReActivateInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReActivateInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4803,9 +4804,9 @@ type ReInitDiskAPI interface {
 // ReInitDisk calls the native ReInitDisk action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ReInitDisk(ctx context.Context, input *ReInitDiskInput, optFns ...func(*Options)) (*ReInitDiskOutput, error) {
-	out, meta, err := invoke[ReInitDiskInput, ReInitDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReInitDisk", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[ReInitDiskInput, ReInitDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReInitDisk", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4822,9 +4823,9 @@ type RebootInstanceAPI interface {
 // RebootInstance calls the native RebootInstance action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) RebootInstance(ctx context.Context, input *RebootInstanceInput, optFns ...func(*Options)) (*RebootInstanceOutput, error) {
-	out, meta, err := invoke[RebootInstanceInput, RebootInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RebootInstance", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[RebootInstanceInput, RebootInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RebootInstance", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4841,9 +4842,9 @@ type RebootInstancesAPI interface {
 // RebootInstances calls the native RebootInstances action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) RebootInstances(ctx context.Context, input *RebootInstancesInput, optFns ...func(*Options)) (*RebootInstancesOutput, error) {
-	out, meta, err := invoke[RebootInstancesInput, RebootInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RebootInstances", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[RebootInstancesInput, RebootInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RebootInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4860,9 +4861,9 @@ type RecoverVirtualBorderRouterAPI interface {
 // RecoverVirtualBorderRouter calls the native RecoverVirtualBorderRouter action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) RecoverVirtualBorderRouter(ctx context.Context, input *RecoverVirtualBorderRouterInput, optFns ...func(*Options)) (*RecoverVirtualBorderRouterOutput, error) {
-	out, meta, err := invoke[RecoverVirtualBorderRouterInput, RecoverVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RecoverVirtualBorderRouter", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[RecoverVirtualBorderRouterInput, RecoverVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RecoverVirtualBorderRouter", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4879,9 +4880,9 @@ type RedeployDedicatedHostAPI interface {
 // RedeployDedicatedHost calls the native RedeployDedicatedHost action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) RedeployDedicatedHost(ctx context.Context, input *RedeployDedicatedHostInput, optFns ...func(*Options)) (*RedeployDedicatedHostOutput, error) {
-	out, meta, err := invoke[RedeployDedicatedHostInput, RedeployDedicatedHostOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RedeployDedicatedHost", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[RedeployDedicatedHostInput, RedeployDedicatedHostOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RedeployDedicatedHost", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4898,9 +4899,9 @@ type RedeployInstanceAPI interface {
 // RedeployInstance calls the native RedeployInstance action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) RedeployInstance(ctx context.Context, input *RedeployInstanceInput, optFns ...func(*Options)) (*RedeployInstanceOutput, error) {
-	out, meta, err := invoke[RedeployInstanceInput, RedeployInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RedeployInstance", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[RedeployInstanceInput, RedeployInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RedeployInstance", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4917,9 +4918,9 @@ type ReleaseCapacityReservationAPI interface {
 // ReleaseCapacityReservation calls the native ReleaseCapacityReservation action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ReleaseCapacityReservation(ctx context.Context, input *ReleaseCapacityReservationInput, optFns ...func(*Options)) (*ReleaseCapacityReservationOutput, error) {
-	out, meta, err := invoke[ReleaseCapacityReservationInput, ReleaseCapacityReservationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReleaseCapacityReservation", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ReleaseCapacityReservationInput, ReleaseCapacityReservationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReleaseCapacityReservation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4936,9 +4937,9 @@ type ReleaseDedicatedHostAPI interface {
 // ReleaseDedicatedHost calls the native ReleaseDedicatedHost action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ReleaseDedicatedHost(ctx context.Context, input *ReleaseDedicatedHostInput, optFns ...func(*Options)) (*ReleaseDedicatedHostOutput, error) {
-	out, meta, err := invoke[ReleaseDedicatedHostInput, ReleaseDedicatedHostOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReleaseDedicatedHost", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ReleaseDedicatedHostInput, ReleaseDedicatedHostOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReleaseDedicatedHost", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4955,9 +4956,9 @@ type ReleaseEipAddressAPI interface {
 // ReleaseEipAddress calls the native ReleaseEipAddress action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ReleaseEipAddress(ctx context.Context, input *ReleaseEipAddressInput, optFns ...func(*Options)) (*ReleaseEipAddressOutput, error) {
-	out, meta, err := invoke[ReleaseEipAddressInput, ReleaseEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReleaseEipAddress", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ReleaseEipAddressInput, ReleaseEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReleaseEipAddress", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4974,9 +4975,9 @@ type ReleasePublicIpAddressAPI interface {
 // ReleasePublicIpAddress calls the native ReleasePublicIpAddress action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ReleasePublicIpAddress(ctx context.Context, input *ReleasePublicIpAddressInput, optFns ...func(*Options)) (*ReleasePublicIpAddressOutput, error) {
-	out, meta, err := invoke[ReleasePublicIpAddressInput, ReleasePublicIpAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReleasePublicIpAddress", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ReleasePublicIpAddressInput, ReleasePublicIpAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReleasePublicIpAddress", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4993,9 +4994,9 @@ type RemoveBandwidthPackageIpsAPI interface {
 // RemoveBandwidthPackageIps calls the native RemoveBandwidthPackageIps action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) RemoveBandwidthPackageIps(ctx context.Context, input *RemoveBandwidthPackageIpsInput, optFns ...func(*Options)) (*RemoveBandwidthPackageIpsOutput, error) {
-	out, meta, err := invoke[RemoveBandwidthPackageIpsInput, RemoveBandwidthPackageIpsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RemoveBandwidthPackageIps", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[RemoveBandwidthPackageIpsInput, RemoveBandwidthPackageIpsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RemoveBandwidthPackageIps", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5012,9 +5013,9 @@ type RemoveTagsAPI interface {
 // RemoveTags calls the native RemoveTags action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) RemoveTags(ctx context.Context, input *RemoveTagsInput, optFns ...func(*Options)) (*RemoveTagsOutput, error) {
-	out, meta, err := invoke[RemoveTagsInput, RemoveTagsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RemoveTags", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[RemoveTagsInput, RemoveTagsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RemoveTags", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5031,9 +5032,9 @@ type RenewDedicatedHostsAPI interface {
 // RenewDedicatedHosts calls the native RenewDedicatedHosts action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) RenewDedicatedHosts(ctx context.Context, input *RenewDedicatedHostsInput, optFns ...func(*Options)) (*RenewDedicatedHostsOutput, error) {
-	out, meta, err := invoke[RenewDedicatedHostsInput, RenewDedicatedHostsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RenewDedicatedHosts", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[RenewDedicatedHostsInput, RenewDedicatedHostsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RenewDedicatedHosts", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5050,9 +5051,9 @@ type RenewElasticityAssurancesAPI interface {
 // RenewElasticityAssurances calls the native RenewElasticityAssurances action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) RenewElasticityAssurances(ctx context.Context, input *RenewElasticityAssurancesInput, optFns ...func(*Options)) (*RenewElasticityAssurancesOutput, error) {
-	out, meta, err := invoke[RenewElasticityAssurancesInput, RenewElasticityAssurancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RenewElasticityAssurances", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[RenewElasticityAssurancesInput, RenewElasticityAssurancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RenewElasticityAssurances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5069,9 +5070,9 @@ type RenewInstanceAPI interface {
 // RenewInstance calls the native RenewInstance action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) RenewInstance(ctx context.Context, input *RenewInstanceInput, optFns ...func(*Options)) (*RenewInstanceOutput, error) {
-	out, meta, err := invoke[RenewInstanceInput, RenewInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RenewInstance", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[RenewInstanceInput, RenewInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RenewInstance", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5088,9 +5089,9 @@ type RenewReservedInstancesAPI interface {
 // RenewReservedInstances calls the native RenewReservedInstances action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) RenewReservedInstances(ctx context.Context, input *RenewReservedInstancesInput, optFns ...func(*Options)) (*RenewReservedInstancesOutput, error) {
-	out, meta, err := invoke[RenewReservedInstancesInput, RenewReservedInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RenewReservedInstances", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[RenewReservedInstancesInput, RenewReservedInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RenewReservedInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5107,9 +5108,9 @@ type ReplaceSystemDiskAPI interface {
 // ReplaceSystemDisk calls the native ReplaceSystemDisk action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ReplaceSystemDisk(ctx context.Context, input *ReplaceSystemDiskInput, optFns ...func(*Options)) (*ReplaceSystemDiskOutput, error) {
-	out, meta, err := invoke[ReplaceSystemDiskInput, ReplaceSystemDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReplaceSystemDisk", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[ReplaceSystemDiskInput, ReplaceSystemDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReplaceSystemDisk", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5126,9 +5127,9 @@ type ResetDiskAPI interface {
 // ResetDisk calls the native ResetDisk action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ResetDisk(ctx context.Context, input *ResetDiskInput, optFns ...func(*Options)) (*ResetDiskOutput, error) {
-	out, meta, err := invoke[ResetDiskInput, ResetDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ResetDisk", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[ResetDiskInput, ResetDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ResetDisk", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5145,9 +5146,9 @@ type ResetDiskDefaultKMSKeyIdAPI interface {
 // ResetDiskDefaultKMSKeyId calls the native ResetDiskDefaultKMSKeyId action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ResetDiskDefaultKMSKeyId(ctx context.Context, input *ResetDiskDefaultKMSKeyIdInput, optFns ...func(*Options)) (*ResetDiskDefaultKMSKeyIdOutput, error) {
-	out, meta, err := invoke[ResetDiskDefaultKMSKeyIdInput, ResetDiskDefaultKMSKeyIdOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ResetDiskDefaultKMSKeyId", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ResetDiskDefaultKMSKeyIdInput, ResetDiskDefaultKMSKeyIdOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ResetDiskDefaultKMSKeyId", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5164,9 +5165,9 @@ type ResetDisksAPI interface {
 // ResetDisks calls the native ResetDisks action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ResetDisks(ctx context.Context, input *ResetDisksInput, optFns ...func(*Options)) (*ResetDisksOutput, error) {
-	out, meta, err := invoke[ResetDisksInput, ResetDisksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ResetDisks", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[ResetDisksInput, ResetDisksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ResetDisks", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5183,9 +5184,9 @@ type ResizeDiskAPI interface {
 // ResizeDisk calls the native ResizeDisk action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) ResizeDisk(ctx context.Context, input *ResizeDiskInput, optFns ...func(*Options)) (*ResizeDiskOutput, error) {
-	out, meta, err := invoke[ResizeDiskInput, ResizeDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ResizeDisk", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[ResizeDiskInput, ResizeDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ResizeDisk", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5202,9 +5203,9 @@ type SendDiagnosticInterruptAPI interface {
 // SendDiagnosticInterrupt calls the native SendDiagnosticInterrupt action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) SendDiagnosticInterrupt(ctx context.Context, input *SendDiagnosticInterruptInput, optFns ...func(*Options)) (*SendDiagnosticInterruptOutput, error) {
-	out, meta, err := invoke[SendDiagnosticInterruptInput, SendDiagnosticInterruptOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "SendDiagnosticInterrupt", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[SendDiagnosticInterruptInput, SendDiagnosticInterruptOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "SendDiagnosticInterrupt", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5221,9 +5222,9 @@ type StartInstanceAPI interface {
 // StartInstance calls the native StartInstance action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) StartInstance(ctx context.Context, input *StartInstanceInput, optFns ...func(*Options)) (*StartInstanceOutput, error) {
-	out, meta, err := invoke[StartInstanceInput, StartInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StartInstance", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[StartInstanceInput, StartInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StartInstance", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5240,9 +5241,9 @@ type StartInstancesAPI interface {
 // StartInstances calls the native StartInstances action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) StartInstances(ctx context.Context, input *StartInstancesInput, optFns ...func(*Options)) (*StartInstancesOutput, error) {
-	out, meta, err := invoke[StartInstancesInput, StartInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StartInstances", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[StartInstancesInput, StartInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StartInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5259,9 +5260,9 @@ type StopInstanceAPI interface {
 // StopInstance calls the native StopInstance action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) StopInstance(ctx context.Context, input *StopInstanceInput, optFns ...func(*Options)) (*StopInstanceOutput, error) {
-	out, meta, err := invoke[StopInstanceInput, StopInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StopInstance", Version: "2014-05-26"}, false, optFns)
+	out, meta, err := invoke[StopInstanceInput, StopInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StopInstance", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5278,9 +5279,9 @@ type StopInstancesAPI interface {
 // StopInstances calls the native StopInstances action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) StopInstances(ctx context.Context, input *StopInstancesInput, optFns ...func(*Options)) (*StopInstancesOutput, error) {
-	out, meta, err := invoke[StopInstancesInput, StopInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StopInstances", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[StopInstancesInput, StopInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StopInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5297,9 +5298,9 @@ type TerminatePhysicalConnectionAPI interface {
 // TerminatePhysicalConnection calls the native TerminatePhysicalConnection action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) TerminatePhysicalConnection(ctx context.Context, input *TerminatePhysicalConnectionInput, optFns ...func(*Options)) (*TerminatePhysicalConnectionOutput, error) {
-	out, meta, err := invoke[TerminatePhysicalConnectionInput, TerminatePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "TerminatePhysicalConnection", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[TerminatePhysicalConnectionInput, TerminatePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "TerminatePhysicalConnection", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5316,9 +5317,9 @@ type TerminateVirtualBorderRouterAPI interface {
 // TerminateVirtualBorderRouter calls the native TerminateVirtualBorderRouter action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) TerminateVirtualBorderRouter(ctx context.Context, input *TerminateVirtualBorderRouterInput, optFns ...func(*Options)) (*TerminateVirtualBorderRouterOutput, error) {
-	out, meta, err := invoke[TerminateVirtualBorderRouterInput, TerminateVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "TerminateVirtualBorderRouter", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[TerminateVirtualBorderRouterInput, TerminateVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "TerminateVirtualBorderRouter", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5335,9 +5336,9 @@ type UnassociateEipAddressAPI interface {
 // UnassociateEipAddress calls the native UnassociateEipAddress action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) UnassociateEipAddress(ctx context.Context, input *UnassociateEipAddressInput, optFns ...func(*Options)) (*UnassociateEipAddressOutput, error) {
-	out, meta, err := invoke[UnassociateEipAddressInput, UnassociateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnassociateEipAddress", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[UnassociateEipAddressInput, UnassociateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnassociateEipAddress", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5354,9 +5355,9 @@ type UnassociateHaVipAPI interface {
 // UnassociateHaVip calls the native UnassociateHaVip action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) UnassociateHaVip(ctx context.Context, input *UnassociateHaVipInput, optFns ...func(*Options)) (*UnassociateHaVipOutput, error) {
-	out, meta, err := invoke[UnassociateHaVipInput, UnassociateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnassociateHaVip", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[UnassociateHaVipInput, UnassociateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnassociateHaVip", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5373,9 +5374,9 @@ type UnlockSnapshotAPI interface {
 // UnlockSnapshot calls the native UnlockSnapshot action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) UnlockSnapshot(ctx context.Context, input *UnlockSnapshotInput, optFns ...func(*Options)) (*UnlockSnapshotOutput, error) {
-	out, meta, err := invoke[UnlockSnapshotInput, UnlockSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnlockSnapshot", Version: "2014-05-26"}, true, optFns)
+	out, meta, err := invoke[UnlockSnapshotInput, UnlockSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnlockSnapshot", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}

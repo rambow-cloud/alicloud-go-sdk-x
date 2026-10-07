@@ -50,10 +50,11 @@ type productReason struct {
 	Source  productSource `json:"source"`
 }
 type productCoverageOperation struct {
-	Name    string          `json:"name"`
-	Status  string          `json:"status"`
-	Source  productSource   `json:"source"`
-	Reasons []productReason `json:"reasons"`
+	Name         string              `json:"name"`
+	Status       string              `json:"status"`
+	Source       productSource       `json:"source"`
+	Reasons      []productReason     `json:"reasons"`
+	Capabilities *capabilityCoverage `json:"capabilities,omitempty"`
 }
 type productOperation struct {
 	Name    string          `json:"name"`
@@ -75,10 +76,12 @@ type productOperation struct {
 	} `json:"bindings"`
 }
 type productIR struct {
-	SchemaVersion int    `json:"schemaVersion"`
-	Profile       string `json:"profile"`
-	Product       string `json:"product"`
-	Version       string `json:"version"`
+	Policy        *capabilityPolicy `json:"-"`
+	PolicySHA256  string            `json:"-"`
+	SchemaVersion int               `json:"schemaVersion"`
+	Profile       string            `json:"profile"`
+	Product       string            `json:"product"`
+	Version       string            `json:"version"`
 	Provenance    struct {
 		Repository           string `json:"repository"`
 		Revision             string `json:"revision"`
@@ -162,6 +165,9 @@ func GenerateProducts(ctx context.Context, root string, check bool, selected []s
 	}
 	if len(products) == 0 {
 		return errors.New("product: no product IR")
+	}
+	if err := loadCapabilityPolicies(root, products); err != nil {
+		return err
 	}
 	slices.SortFunc(products, func(a, b productIR) int { return strings.Compare(a.Product, b.Product) })
 	operations := map[string]productOperation{}

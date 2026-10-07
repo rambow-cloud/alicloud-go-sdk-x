@@ -15,9 +15,9 @@ type AssumeRoleAPI interface {
 // AssumeRole calls the native AssumeRole action (API version 2015-04-01).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Retry is conservatively disabled until reviewed operation policy exists.
+// Standard never retries this operation under the current conservative policy.
 func (c *Client) AssumeRole(ctx context.Context, input *AssumeRoleInput, optFns ...func(*Options)) (*AssumeRoleOutput, error) {
-	out, meta, err := invoke[AssumeRoleInput, AssumeRoleOutput](ctx, c, input, alicloud.Operation{Service: "sts", Name: "AssumeRole", Version: "2015-04-01"}, false, optFns)
+	out, meta, err := invoke[AssumeRoleInput, AssumeRoleOutput](ctx, c, input, alicloud.Operation{Service: "sts", Name: "AssumeRole", Version: "2015-04-01", Idempotent: false}, false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}

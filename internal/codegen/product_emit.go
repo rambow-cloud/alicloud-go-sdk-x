@@ -139,6 +139,9 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 			}
 			r.names[id] = productName(base)
 		}
+		if p.Policy != nil && p.Policy.ModelNames[id] != "" {
+			r.names[id] = p.Policy.ModelNames[id]
+		}
 		name := r.names[id]
 		if !exportedName.MatchString(name) || used[name] {
 			return nil, fmt.Errorf("model naming collision %s (%s)", name, id)
@@ -155,7 +158,7 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 			fields["Metadata"] = true
 		}
 		for _, f := range m.Fields {
-			field := productName(f.DSLName)
+			field := r.fieldName(id, f)
 			if !exportedName.MatchString(field) || fields[field] || wires[f.WireName] || dsl[f.DSLName] || f.WireName == "" || strings.ContainsAny(f.WireName, "`\"\\\n\r,") {
 				return nil, fmt.Errorf("invalid/colliding field %s.%s", id, f.DSLName)
 			}
@@ -170,6 +173,9 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 				return nil, fmt.Errorf("%s.%s: %w", m.ID, f.DSLName, err)
 			}
 		}
+	}
+	if err := r.validateCapabilityPolicy(); err != nil {
+		return nil, err
 	}
 	return r, nil
 }
@@ -234,7 +240,7 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 			if err != nil {
 				return nil, err
 			}
-			field := productName(f.DSLName)
+			field := r.fieldName(id, f)
 			fmt.Fprintf(&types, "// %s maps to the exact wire member %s.\n", field, f.WireName)
 			if strings.HasPrefix(typ, "*") {
 				types.WriteString("// Nil omits this member; non-nil scalar pointers preserve explicit zero values.\n")
@@ -261,7 +267,18 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 	fmt.Fprintf(&methods, "%spackage %s\nimport (\"context\";alicloud %q)\n", productGenerated, p.Product, module)
 	for _, op := range r.operations {
 		fmt.Fprintf(&methods, "// %sAPI is the minimal interface for %s mocks and capability adapters.\ntype %sAPI interface{\n// %s invokes the native action with owned inputs and per-call options.\n%s(context.Context,*%sInput,...func(*Options))(*%sOutput,error)\n}\n", op.Name, op.Name, op.Name, op.Name, op.Name, op.Name, op.Name)
-		fmt.Fprintf(&methods, "// %s calls the native %s action (API version %s).\n// Nil input is an empty request. Errors preserve cancellation and structured service causes.\n// Inputs are deeply copied before hooks; callbacks must not retain options or models.\n// Retry is conservatively disabled until reviewed operation policy exists.\nfunc(c *Client)%s(ctx context.Context,input *%sInput,optFns ...func(*Options))(*%sOutput,error){\n", op.Name, op.Name, p.Version, op.Name, op.Name, op.Name)
+		cfg := r.opPolicy(op.Name)
+		fmt.Fprintf(&methods, "// %s calls the native %s action (API version %s).\n// Nil input is an empty request. Errors preserve cancellation and structured service causes.\n// Inputs are deeply copied before hooks; callbacks must not retain options or models.\n", op.Name, op.Name, p.Version)
+		idempotent := cfg.Idempotent != nil && *cfg.Idempotent
+		if idempotent {
+			methods.WriteString("// Reviewed idempotency permits replay only when a configured retry policy allows it.\n")
+		} else {
+			methods.WriteString("// Standard never retries this operation under the current conservative policy.\n")
+		}
+		if cfg.ClientToken != "" {
+			methods.WriteString("// An absent client token is filled once on the owned input; caller input remains unchanged.\n")
+		}
+		fmt.Fprintf(&methods, "func(c *Client)%s(ctx context.Context,input *%sInput,optFns ...func(*Options))(*%sOutput,error){\n", op.Name, op.Name, op.Name)
 		hasRegion := false
 		for _, f := range r.models[op.Roots.Request.Ref].Fields {
 			if f.WireName == "RegionId" {
@@ -271,11 +288,47 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 				hasRegion = true
 			}
 		}
-		fmt.Fprintf(&methods, "out,meta,err:=invoke[%sInput,%sOutput](ctx,c,input,alicloud.Operation{Service:%q,Name:%q,Version:%q},%t,optFns);if err!=nil{return nil,err};out.Metadata=meta;return out,nil}\n", op.Name, op.Name, p.Product, op.Protocol.Action, op.Protocol.Version, hasRegion)
+		prepare, validate := "nil", "nil"
+		if cfg.ClientToken != "" {
+			prepare = "prepare" + op.Name + "Input"
+		}
+		if hasValidator(cfg) {
+			validate = "Validate" + op.Name + "Input"
+		}
+		fmt.Fprintf(&methods, "out,meta,err:=invoke[%sInput,%sOutput](ctx,c,input,alicloud.Operation{Service:%q,Name:%q,Version:%q,Idempotent:%t},%t,%s,%s,optFns);if err!=nil{return nil,err};out.Metadata=meta;return out,nil}\n", op.Name, op.Name, p.Product, op.Protocol.Action, op.Protocol.Version, idempotent, hasRegion, prepare, validate)
 	}
 	files[base+"operations.gen.go"], err = productFormat(&methods)
 	if err != nil {
 		return nil, err
+	}
+	if p.Policy != nil {
+		examples, err := r.emitCapabilityExamples()
+		if err != nil {
+			return nil, fmt.Errorf("format capability examples: %w", err)
+		}
+		if examples != nil {
+			files[base+"capability_examples.gen_test.go"] = examples
+		}
+		code, err := r.emitPolicyFunctions()
+		if err != nil {
+			return nil, fmt.Errorf("format policy functions: %w", err)
+		}
+		if code != nil {
+			files[base+"policy.gen.go"] = code
+		}
+		for _, waiters := range []bool{false, true} {
+			code, err := r.emitNativeAdapters(waiters)
+			if err != nil {
+				return nil, fmt.Errorf("format native adapters: %w", err)
+			}
+			if code != nil {
+				name := "paginators.gen.go"
+				if waiters {
+					name = "waiters.gen.go"
+				}
+				files[base+name] = code
+			}
+		}
 	}
 	var examples bytes.Buffer
 	fmt.Fprintf(&examples, "%spackage %s_test\nimport(\"context\";\"fmt\";\"net/http\";alicloud %q;%q;%q;%q)\n", productGenerated, p.Product, module, module+"/credentials", module+"/sdktest", module+"/service/"+p.Product)
@@ -286,7 +339,7 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	fmtDoc := productGenerated + "\n" + fmt.Sprintf("// Package %s provides complete models and methods for %d supported native RPC actions.\n// Construct with NewFromConfig. Clients are safe for concurrent use; inputs must not\n// be mutated during calls. Nil optional pointers omit members; explicit zeros survive.\n// Output preserves the JSON body containers and adds transport Metadata.\n// Unsupported DSL actions are listed in docs/products/%s.coverage.json.\n// This package does not yet generate paginator/waiter policies; see issue #37.\n// See docs/products/%s.md for bilingual usage, coverage and migration guidance.\n// Models derive from pinned Apache-2.0 Alibaba Cloud DSL; upstream notices remain\n// under sources/darabonba/licenses. No Tea runtime dependency is required.\npackage %s\n", p.Product, len(r.operations), p.Product, p.Product, p.Product)
+	fmtDoc := productGenerated + "\n" + fmt.Sprintf("// Package %s provides complete models and methods for %d supported native RPC actions.\n// Construct with NewFromConfig. Clients are safe for concurrent use; inputs must not\n// be mutated during calls. Nil optional pointers omit members; explicit zeros survive.\n// Output preserves the JSON body containers and adds transport Metadata.\n// Unsupported DSL actions are listed in docs/products/%s.coverage.json.\n// Reviewed native adapters and operation policies are listed in the product guide.\n// See docs/products/%s.md for bilingual usage, coverage and migration guidance.\n// Models derive from pinned Apache-2.0 Alibaba Cloud DSL; upstream notices remain\n// under sources/darabonba/licenses. No Tea runtime dependency is required.\npackage %s\n", p.Product, len(r.operations), p.Product, p.Product, p.Product)
 	files[base+"doc.go"], err = format.Source([]byte(fmtDoc))
 	if err != nil {
 		return nil, err
@@ -305,8 +358,12 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 		Compilation          string                     `json:"compilation"`
 		Live                 string                     `json:"live"`
 		CapabilityPolicy     string                     `json:"capabilityPolicy"`
+		PolicySHA256         string                     `json:"policySHA256,omitempty"`
 		Operations           []productCoverageOperation `json:"operations"`
-	}{"sdkgen product", 1, p.Product, p.Version, p.Provenance.SourceManifestSHA256, len(p.Operations), len(r.operations), len(r.operations), len(r.models), "not-assessed", "not-assessed", "not-assessed", nil}
+	}{Generator: "sdkgen product", SchemaVersion: 1, Product: p.Product, Version: p.Version, SourceManifestSHA256: p.Provenance.SourceManifestSHA256, Discovered: len(p.Operations), Lowered: len(r.operations), Emitted: len(r.operations), Models: len(r.models), Compilation: "not-assessed", Live: "not-assessed", CapabilityPolicy: "not-assessed", PolicySHA256: p.PolicySHA256}
+	if p.Policy != nil {
+		report.CapabilityPolicy = "sparse-reviewed"
+	}
 	reportOperations := slices.Clone(p.Operations)
 	slices.SortFunc(reportOperations, func(a, b productOperation) int { return strings.Compare(a.Name, b.Name) })
 	for _, op := range reportOperations {
@@ -314,7 +371,11 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 		if status == "lowered" {
 			status = "emitted"
 		}
-		report.Operations = append(report.Operations, productCoverageOperation{Name: op.Name, Status: status, Source: op.Source, Reasons: op.Reasons})
+		var capabilities *capabilityCoverage
+		if status == "emitted" {
+			capabilities = r.capabilityCoverage(op)
+		}
+		report.Operations = append(report.Operations, productCoverageOperation{Name: op.Name, Status: status, Source: op.Source, Reasons: op.Reasons, Capabilities: capabilities})
 	}
 	content, err := json.Marshal(report, jsontext.Multiline(true), jsontext.WithIndent("  "))
 	if err != nil {
@@ -326,7 +387,8 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 
 func (r *productRenderer) guide() []byte {
 	var b bytes.Buffer
-	fmt.Fprintf(&b, "%s# %s complete models / %s 完整模型\n\n## English\n\nImport `%s/service/%s`. Generated from pinned Apache-2.0 official DSL at\n`%s`; upstream licenses and source bytes remain in `sources/darabonba`.\n%d discovered actions, %d lowered/emitted, %d unsupported; %d complete reachable models.\nEmission is not compilation or live acceptance; see `%s.coverage.json` and PR validation.\n\nUse `NewFromConfig(config)` and `client.Operation(ctx, &OperationInput{}, optFns...)`.\nNil input is empty; optional scalar/model pointers preserve absence, non-nil scalars\npreserve zero/false/empty, and input graphs are copied before middleware. Arrays use\none-based query indexes and exact member case; DSL string fields stay strings.\nRegionId defaults to configured region and follows operation region options.\nOutputs preserve full native response body containers and add Metadata. DSL response\nenvelope types are retained separately. Small OperationAPI interfaces support mocks.\nErrors retain cancellation and APIError/OperationError. Clients are concurrency safe;\ndo not mutate caller inputs during calls or retain hook models/options. Standard retry\nis conservatively disabled for these operations pending reviewed #37 policy.\n\nThe older `services/%s` is the bounded reference bridge, including its existing\npaginator/waiter adapters; changing imports also requires adapting scalar pointers\nand complete native response shapes. New product paginators/waiters are #37, not\ninferred from token fields. Licensed semantic prose automation belongs to #38; current\nGo comments document exact bindings and ownership. Each operation has an offline\nexternal Example using a scripted HTTP transport; empty mock requests/responses\nillustrate invocation only, not valid cloud parameter sets or complete server examples.\n\n## 中文\n\n导入 `%s/service/%s`，由 Apache-2.0 官方 DSL 的固定版本 `%s` 生成；上游许可及\n源码原始字节保留在 `sources/darabonba`。发现 %d 操作，降低/输出 %d，不支持 %d，\n完整可达模型 %d；输出不等于编译或真实验收，详见 `%s.coverage.json` 和 PR 检查。\n\n通过 `NewFromConfig(config)` 和 `client.Operation(ctx, &OperationInput{}, optFns...)`\n调用。nil 输入表示空请求；可选标量/模型指针表达缺失，非 nil 标量保留零/false/空串，\n在 middleware 前深复制输入。数组使用从 1 起的 query 索引与准确大小写，DSL 字符串\n保持字符串。RegionId 使用配置默认地区及操作地区选项。Output 保留完整原生响应体\n容器并增加 Metadata；DSL response envelope 类型单独保留。小 OperationAPI 接口\n支持 mock；错误保留取消及 APIError/OperationError。Client 可并发，调用中不要修改\n输入或保留 hooks 模型/选项。审核 #37 策略前，Standard 不重试这些操作。\n\n原 `services/%s` 为有界参考桥，含已有分页/waiter；迁移导入时同步适配标量指针及\n完整原生响应结构。新产品分页/waiter 属于 #37，不凭 token 字段猜能力。授权语义\n说明自动化属于 #38，当前 Go 注释说明准确绑定/所有权。每操作有脚本 HTTP transport\n的离线外部 Example；空 mock 请求/响应仅演示调用，不表示有效云参数或完整服务示例。\n\n", productMarkdown, r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product)
+	fmt.Fprintf(&b, "%s# %s complete models / %s 完整模型\n\n## English\n\nImport `%s/service/%s`. Generated from pinned Apache-2.0 official DSL at\n`%s`; upstream licenses and source bytes remain in `sources/darabonba`.\n%d discovered actions, %d lowered/emitted, %d unsupported; %d complete reachable models.\nEmission is not compilation or live acceptance; see `%s.coverage.json` and PR validation.\n\nUse `NewFromConfig(config)` and `client.Operation(ctx, &OperationInput{}, optFns...)`.\nNil input is empty; optional scalar/model pointers preserve absence, non-nil scalars\npreserve zero/false/empty, and input graphs are copied before middleware. Arrays use\none-based query indexes and exact member case; DSL string fields stay strings.\nRegionId defaults to configured region and follows operation region options.\nOutputs preserve full native response body containers and add Metadata. DSL response\nenvelope types are retained separately. Small OperationAPI interfaces support mocks.\nErrors retain cancellation and APIError/OperationError. Clients are concurrency safe;\ndo not mutate caller inputs during calls or retain hook models/options. Standard retry\nis available only for explicitly reviewed idempotent operations with a configured Retryer.\n\nThe older `services/%s` is the bounded reference bridge, including its existing\npaginator/waiter adapters; changing imports also requires adapting scalar pointers\nand complete native response shapes. Reviewed native adapters are listed below; token fields alone do not grant support. Licensed semantic prose automation belongs to #38; current\nGo comments document exact bindings and ownership. Each operation has an offline\nexternal Example using a scripted HTTP transport; empty mock requests/responses\nillustrate invocation only, not valid cloud parameter sets or complete server examples.\n\n## 中文\n\n导入 `%s/service/%s`，由 Apache-2.0 官方 DSL 的固定版本 `%s` 生成；上游许可及\n源码原始字节保留在 `sources/darabonba`。发现 %d 操作，降低/输出 %d，不支持 %d，\n完整可达模型 %d；输出不等于编译或真实验收，详见 `%s.coverage.json` 和 PR 检查。\n\n通过 `NewFromConfig(config)` 和 `client.Operation(ctx, &OperationInput{}, optFns...)`\n调用。nil 输入表示空请求；可选标量/模型指针表达缺失，非 nil 标量保留零/false/空串，\n在 middleware 前深复制输入。数组使用从 1 起的 query 索引与准确大小写，DSL 字符串\n保持字符串。RegionId 使用配置默认地区及操作地区选项。Output 保留完整原生响应体\n容器并增加 Metadata；DSL response envelope 类型单独保留。小 OperationAPI 接口\n支持 mock；错误保留取消及 APIError/OperationError。Client 可并发，调用中不要修改\n输入或保留 hooks 模型/选项。Standard 仅对明确审核幂等的操作、配置 Retryer 后允许重试。\n\n原 `services/%s` 为有界参考桥，含已有分页/waiter；迁移导入时同步适配标量指针及\n完整原生响应结构。已审核原生适配器见下表，不凭 token 字段猜能力。授权语义\n说明自动化属于 #38，当前 Go 注释说明准确绑定/所有权。每操作有脚本 HTTP transport\n的离线外部 Example；空 mock 请求/响应仅演示调用，不表示有效云参数或完整服务示例。\n\n", productMarkdown, r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product)
+	r.appendCapabilityGuide(&b)
 	return append(bytes.TrimRight(b.Bytes(), "\n"), '\n')
 }
 
@@ -352,15 +414,18 @@ func(c *Client)callOptions(region string,optFns []func(*Options))([]func(*aliclo
  for _,f:=range optFns {if f==nil{return nil,errors.New("nil operation option")};f(&options)}
  config:=alicloud.Config(options);return []func(*alicloud.CallOptions){func(o *alicloud.CallOptions){o.Config=&config;o.Region=config.Region}},nil
 }
-func invoke[I,O any](ctx context.Context,c *Client,input *I,op alicloud.Operation,hasRegion bool,optFns []func(*Options))(*O,alicloud.Metadata,error){
+func invoke[I,O any](ctx context.Context,c *Client,input *I,op alicloud.Operation,hasRegion bool,prepare func(context.Context,*I)error,validate func(*I)error,optFns []func(*Options))(*O,alicloud.Metadata,error){
  fail:=func(err error)(*O,alicloud.Metadata,error){if ctx.Err()!=nil{err=ctx.Err()};return nil,alicloud.Metadata{},&alicloud.OperationError{Service:op.Service,Operation:op.Name,Err:err}}
  if err:=ctx.Err();err!=nil{return fail(err)}
  if c==nil||c.runtime==nil{return fail(errors.New("uninitialized service client"))}
  in,err:=rpcmodel.Snapshot(ctx,input);if err!=nil{return fail(err)}
+ if prepare!=nil{if err:=prepare(ctx,in);err!=nil{return fail(err)}}
+ if validate!=nil{if err:=validate(in);err!=nil{return fail(err)}}
  region:="";if hasRegion{q,err:=rpcmodel.Query(ctx,in);if err!=nil{return fail(err)};region=q.Get("RegionId")}
  callOptions,err:=c.callOptions(region,optFns);if err!=nil{return fail(err)}
  codec:=alicloud.Codec{
  Encode:func(ctx context.Context,value any)(alicloud.Request,error){
+  if validate!=nil{if err:=validate(value.(*I));err!=nil{return alicloud.Request{},err}}
   q,err:=rpcmodel.Query(ctx,value);if err!=nil{return alicloud.Request{},err}
   requestRegion:=q.Get("RegionId");if hasRegion&&requestRegion==""{requestRegion=c.runtime.Region();q.Set("RegionId",requestRegion)}
   return alicloud.Request{Method:"POST",Path:"/",Region:requestRegion,Query:q,Header:map[string][]string{"Content-Type":{"application/x-www-form-urlencoded"}}},nil

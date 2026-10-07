@@ -29,10 +29,10 @@ func config(t *testing.T, transport *sdktest.ScriptedTransport) alicloud.Config 
 }
 
 func TestFullRPCModelsSignedPresenceAndOwnedMiddleware(t *testing.T) {
-	in := &ecs.DescribeImagesInput{DryRun: pointer(false), PageNumber: pointer(int32(0)), ImageOwnerID: pointer(int64(9007199254740993)), ImageName: pointer(""), Filter: []ecs.DescribeImagesInputFilter{{Key: pointer("original"), Value: pointer("a & b")}}, Tag: []ecs.DescribeImagesInputTag{{Key: pointer("original"), Value: pointer("")}}}
+	in := &ecs.DescribeImagesInput{DryRun: pointer(false), OwnerID: pointer(int64(0)), PageNumber: pointer(int32(1)), ImageOwnerID: pointer(int64(9007199254740993)), ImageName: pointer(""), Filter: []ecs.DescribeImagesInputFilter{{Key: pointer("original"), Value: pointer("a & b")}}, Tag: []ecs.DescribeImagesInputTag{{Key: pointer("original"), Value: pointer("")}}}
 	transport := sdktest.NewTransport(sdktest.Step{Body: `{"RequestId":"request","PageNumber":0,"Images":{"Image":[{"ImageId":"img-1","ImageOwnerId":9007199254740993,"IsPublic":false,"DiskDeviceMappings":{"DiskDeviceMapping":[{"Size":"20","SnapshotId":"snap-1"}]},"Tags":{"Tag":[{"TagKey":"purpose","TagValue":"test"}]}}]},"Unknown":true}`, Check: func(r *http.Request) error {
 		q := r.URL.Query()
-		for key, want := range map[string]string{"DryRun": "false", "PageNumber": "0", "ImageOwnerId": "9007199254740993", "ImageName": "", "Filter.1.Key": "hook", "Filter.1.Value": "a & b", "Tag.1.Key": "hook", "Tag.1.Value": "", "RegionId": "cn-hangzhou"} {
+		for key, want := range map[string]string{"DryRun": "false", "OwnerId": "0", "PageNumber": "1", "ImageOwnerId": "9007199254740993", "ImageName": "", "Filter.1.Key": "hook", "Filter.1.Value": "a & b", "Tag.1.Key": "hook", "Tag.1.Value": "", "RegionId": "cn-hangzhou"} {
 			if values, ok := q[key]; !ok || len(values) != 1 || values[0] != want {
 				t.Errorf("%s = %v", key, values)
 			}
@@ -123,7 +123,7 @@ func TestCallOptionsIsolationCancellationStructuredErrorsAndConservativeRetry(t 
 	if c.Options().Region != "cn-hangzhou" {
 		t.Fatal("per-call options changed client")
 	}
-	_, err = c.DescribeImages(context.Background(), nil)
+	_, err = c.AllocateDedicatedHosts(context.Background(), nil)
 	var apiErr *alicloud.APIError
 	var opErr *alicloud.OperationError
 	if !errors.As(err, &apiErr) || !errors.As(err, &opErr) || apiErr.Code != "Throttling" || opErr.Metadata.Attempts != 1 || transport.Calls() != 3 {

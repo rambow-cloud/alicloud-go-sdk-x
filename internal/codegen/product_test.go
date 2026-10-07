@@ -258,7 +258,7 @@ func TestFullProductEmissionCompilesInIsolatedModule(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	for _, relative := range []string{".", "credentials", "endpoint", "middleware", "retry", "sdktest", "internal/signing", "internal/rpcmodel"} {
+	for _, relative := range []string{".", "credentials", "endpoint", "middleware", "retry", "pagination", "waiter", "sdktest", "internal/signing", "internal/rpcmodel"} {
 		entries, err := os.ReadDir(filepath.Join(repository, relative))
 		if err != nil {
 			t.Fatal(err)
@@ -276,7 +276,7 @@ func TestFullProductEmissionCompilesInIsolatedModule(t *testing.T) {
 	}
 	writeTestFile(t, root, "go.mod", []byte("module "+module+"\n\ngo 1.27.0\n"))
 	for _, pkg := range []string{"ecs", "sts", "vpc"} {
-		files, err := renderProduct(readProductIR(t, pkg))
+		files, err := renderProduct(readPolicyProduct(t, pkg))
 		if err != nil {
 			t.Fatal(err)
 		}

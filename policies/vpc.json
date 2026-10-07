@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "product": "vpc",
+  "version": "2016-04-28",
+  "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
+  "operations": {
+    "DescribeVpcs": {
+      "idempotent": true,
+      "evidence": ["https://help.aliyun.com/en/vpc/developer-reference/api-vpc-2016-04-28-describevpcs"],
+      "paginator": {"mode": "pages", "items": "Vpcs.Vpc", "page": "PageNumber", "size": "PageSize", "total": "TotalCount", "defaultSize": 10, "maximumSize": 50},
+      "constraints": [{"path": "PageNumber", "minimum": 1}, {"path": "PageSize", "minimum": 1, "maximum": 50}]
+    }
+  }
+}

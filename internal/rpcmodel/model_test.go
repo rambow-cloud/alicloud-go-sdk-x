@@ -2,12 +2,39 @@ package rpcmodel
 
 import (
 	"context"
+	"encoding/hex"
 	"errors"
 	"math"
 	"net/url"
 	"reflect"
 	"testing"
 )
+
+func TestPolicyHelpersTypedNilTokensAndCancellation(t *testing.T) {
+	var value *struct{}
+	if !IsNil(value) || !IsNil(nil) || IsNil(struct{}{}) {
+		t.Fatal("typed nil detection")
+	}
+	first, err := NewClientToken(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+	second, err := NewClientToken(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(*first) != 32 || *first == *second {
+		t.Fatal("invalid token entropy or length")
+	}
+	if _, err := hex.DecodeString(*first); err != nil {
+		t.Fatal(err)
+	}
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+	if _, err := NewClientToken(ctx); !errors.Is(err, context.Canceled) {
+		t.Fatal(err)
+	}
+}
 
 func ptr[T any](v T) *T { return &v }
 

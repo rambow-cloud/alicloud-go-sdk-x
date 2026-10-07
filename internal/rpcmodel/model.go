@@ -3,6 +3,8 @@ package rpcmodel
 
 import (
 	"context"
+	"crypto/rand"
+	"encoding/hex"
 	"errors"
 	"fmt"
 	"math"
@@ -12,6 +14,38 @@ import (
 	"strconv"
 	"strings"
 )
+
+// IsNil reports nil extension interfaces, including typed nil pointers.
+func IsNil(value any) bool {
+	if value == nil {
+		return true
+	}
+	v := reflect.ValueOf(value)
+	switch v.Kind() {
+	case reflect.Chan, reflect.Func, reflect.Interface, reflect.Map, reflect.Pointer, reflect.Slice:
+		return v.IsNil()
+	}
+	return false
+}
+
+// NewClientToken creates a 32-character random ASCII token for one owned invocation.
+func NewClientToken(ctx context.Context) (*string, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	var data [16]byte
+	if _, err := rand.Read(data[:]); err != nil {
+		return nil, err
+	}
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	value := hex.EncodeToString(data[:])
+	return &value, nil
+}
+
+// Pointer returns a private copy of a scalar for generated native cursor fields.
+func Pointer[T any](value T) *T { return &value }
 
 // Snapshot copies a generated model graph, preserving nil, widths and explicit zeros.
 // Callers must not mutate the source concurrently. Cyclic inputs are rejected.

@@ -5,7 +5,7 @@
 // be mutated during calls. Nil optional pointers omit members; explicit zeros survive.
 // Output preserves the JSON body containers and adds transport Metadata.
 // Unsupported DSL actions are listed in docs/products/ecs.coverage.json.
-// This package does not yet generate paginator/waiter policies; see issue #37.
+// Reviewed native adapters and operation policies are listed in the product guide.
 // See docs/products/ecs.md for bilingual usage, coverage and migration guidance.
 // Models derive from pinned Apache-2.0 Alibaba Cloud DSL; upstream notices remain
 // under sources/darabonba/licenses. No Tea runtime dependency is required.

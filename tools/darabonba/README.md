@@ -10,7 +10,10 @@ coverage/IR contract are in [product discovery](../../docs/product-discovery.md)
 The #36 [batch Go backend](../../docs/batch-go-emission.md) consumes this complete IR
 without legacy overlays. Run `go run ./internal/cmd/sdkgen product-generate` and
 read-only `go run ./internal/cmd/sdkgen product-check` from the root. Outputs use
-`service/`; the legacy bridge still uses `services/`. Product capabilities are #37.
+`service/`; the legacy bridge still uses `services/`. #37 reads optional source-bound
+`policies/<product>.json` for [reviewed capabilities](../../docs/capability-policy.md),
+without requiring per-operation entries for full emission. Product reports include
+policy hashes and individual reviewed/unreviewed status.
 
 Issue [#31](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/31) replaces the
 metadata-only production frontend with real official product DSL. Requires Node 22
@@ -78,7 +81,9 @@ Read [migration](../../docs/darabonba-migration.md),
 #36 [批量 Go 后端](../../docs/batch-go-emission.md) 无旧 overlay 地消费完整 IR。
 在根目录执行 `go run ./internal/cmd/sdkgen product-generate` 和只读
 `go run ./internal/cmd/sdkgen product-check`，输出到 `service/`；旧桥仍使用 `services/`。
-产品能力策略属于 #37。
+#37 从可选且绑定来源的 `policies/<product>.json` 读取
+[审核能力](../../docs/capability-policy.md)，完整输出无需逐操作策略条目。
+产品报告记录策略哈希及逐操作已审核/未审核状态。
 
 Issue [#31](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/31) 将生产前端
 从纯元数据改为真实官方产品 DSL。要求 Node 22、Go 1.27；官方 parser 2.2.1 执行语法

@@ -2,6 +2,10 @@
 
 ## English
 
+#37 emits this contract for full-DSL `service/ecs` using reviewed sparse policies;
+the earlier `services/ecs` reference remains available. Import the chosen package
+explicitly. See [capability policy](capability-policy.md) for coverage and source binding.
+
 Construct `ecs.NewInstanceRunningWaiter(api, optFns...)` once, then call
 `Wait(ctx, input, maxWait, optFns...) error` or
 `WaitForOutput(ctx, input, maxWait, optFns...) (*ecs.DescribeInstanceStatusOutput, error)`.
@@ -49,6 +53,9 @@ functional callbacks, and use WaitForOutput when the response is needed. The gen
 engine API is preserved. See [the remediation path](aws-style-remediation.md).
 
 ## 中文
+
+#37 基于审核稀疏策略为完整 DSL `service/ecs` 输出此契约，原 `services/ecs`
+参考仍可用，明确导入所需包。覆盖与来源绑定见[能力策略](capability-policy.md)。
 
 一次构造 `ecs.NewInstanceRunningWaiter(api, optFns...)`，再调用
 `Wait(ctx, input, maxWait, optFns...) error` 或
