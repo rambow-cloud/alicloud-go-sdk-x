@@ -57,3 +57,7 @@ func (e *OperationError) Unwrap() error { return e.Err }
 
 // ErrResponseTooLarge indicates that a response exceeds the configured byte limit.
 var ErrResponseTooLarge = fmt.Errorf("alicloud: response exceeds byte limit")
+
+// ErrIncompleteOperation indicates a successful middleware short circuit that
+// supplied no completed output. The SDK never publishes an earlier attempt's data.
+var ErrIncompleteOperation = fmt.Errorf("alicloud: operation completed without output")

@@ -3,6 +3,7 @@ package retry
 import (
 	"context"
 	"errors"
+	"io"
 	"math/rand/v2"
 	"net"
 	"net/http"
@@ -29,6 +30,20 @@ type Attempt struct {
 	// RetryAfter is the parsed server delay; policy caps it to MaxDelay.
 	RetryAfter time.Duration
 }
+
+// ResponseReadError identifies a transport failure while reading a response body.
+// It preserves the cause while keeping raw transport text out of diagnostics.
+// Decoding errors must not be wrapped as response read failures.
+type ResponseReadError struct {
+	// Err is the non-nil read failure.
+	Err error
+}
+
+// Error returns a safe diagnostic without the underlying transport text.
+func (*ResponseReadError) Error() string { return "retry: response body read failed" }
+
+// Unwrap preserves the read cause for errors.Is and errors.As.
+func (e *ResponseReadError) Unwrap() error { return e.Err }
 
 // Retryer controls retry decisions and must be concurrency safe.
 type Retryer interface {
@@ -115,9 +130,17 @@ func (s *Standard) ShouldRetry(a Attempt) bool {
 		return false
 	}
 	transient := a.StatusCode == 429 || a.StatusCode == 500 || a.StatusCode == 502 || a.StatusCode == 503 || a.StatusCode == 504 || a.Code == "Throttling" || strings.HasPrefix(a.Code, "Throttling.")
-	var network net.Error
-	if a.StatusCode == 0 && errors.As(a.Err, &network) {
+	var read *ResponseReadError
+	if errors.As(a.Err, &read) && (errors.Is(read.Err, io.EOF) || errors.Is(read.Err, io.ErrUnexpectedEOF)) {
 		transient = true
+	}
+	var network net.Error
+	if (a.StatusCode == 0 || read != nil) && errors.As(a.Err, &network) {
+		transient = true
+	}
+	var dns *net.DNSError
+	if errors.As(a.Err, &dns) && dns.IsNotFound {
+		return false
 	}
 	if !transient {
 		return false

@@ -22,6 +22,10 @@ GitHub owns current state; this table records dependencies. Existing #3 HTTP dep
 | #23 | Deterministic regeneration and CI acceptance | #22 |
 | #24 | Scalar presence, object lists, local references and page-only generation | #23 |
 | #25 | Generated VPC DescribeVpcs client and paginator | #24 |
+| #26 | Isolated attempt output and interrupted response retries | #25 |
+| #27 | Typed middleware and concrete service Options | #26 |
+| #28 | Native paginator options and multiple policy profiles | #27 |
+| #29 | Reusable Wait/WaitForOutput and waiter options | #28 |
 
 ## 中文
 
@@ -48,3 +52,7 @@ Review 修复按 #26 → #27 → #28 → #29 执行，详见 [修复路径](../a
 | #23 | 确定性再生成与 CI 验收。 | #22 |
 | #24 | 标量存在语义、对象数组、本地引用及纯页码生成。 | #23 |
 | #25 | 生成 VPC DescribeVpcs 客户端及分页。 | #24 |
+| #26 | 尝试输出隔离与中断响应重试。 | #25 |
+| #27 | 类型化 middleware 和独立服务 Options。 | #26 |
+| #28 | 原生分页选项及多策略 profile。 | #27 |
+| #29 | 可复用 Wait/WaitForOutput 和 waiter 选项。 | #28 |

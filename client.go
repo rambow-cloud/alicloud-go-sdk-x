@@ -276,6 +276,7 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 					return ctx.Err()
 				}
 				e.Attempt = number
+				decoded = reflect.Value{}
 				meta.Attempts = number
 				e.Response = nil
 				e.RequestID = ""
@@ -328,7 +329,7 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 						}
 						data, readErr := io.ReadAll(io.LimitReader(response.Body, c.config.MaxResponseBytes+1))
 						if readErr != nil {
-							return readErr
+							return &retry.ResponseReadError{Err: readErr}
 						}
 						if int64(len(data)) > c.config.MaxResponseBytes {
 							return ErrResponseTooLarge
@@ -366,10 +367,13 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 					return ctx.Err()
 				}
 				if attemptErr == nil {
+					if !decoded.IsValid() {
+						return ErrIncompleteOperation
+					}
 					c.config.Retryer.RecordSuccess()
 					return nil
 				}
-				a := retry.Attempt{Number: number, Err: attemptErr, Idempotent: op.Idempotent, Replayable: true}
+				a := retry.Attempt{Number: number, Err: attemptErr, StatusCode: meta.HTTPStatusCode, Idempotent: op.Idempotent, Replayable: true}
 				var api *APIError
 				if errors.As(attemptErr, &api) {
 					a.StatusCode = api.HTTPStatusCode
@@ -394,6 +398,9 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 	})
 	if callCtx.Err() != nil {
 		err = callCtx.Err()
+	}
+	if err == nil && !decoded.IsValid() {
+		err = ErrIncompleteOperation
 	}
 	if err == nil && decoded.IsValid() {
 		target.Elem().Set(decoded)
