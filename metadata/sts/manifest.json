@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "product": "Sts",
+  "version": "2015-04-01",
+  "style": "RPC",
+  "package": "sts",
+  "service": "sts",
+  "sources": [
+    {
+      "operation": "AssumeRole",
+      "file": "AssumeRole.json",
+      "url": "https://api.aliyun.com/meta/v1/products/Sts/versions/2015-04-01/apis/AssumeRole/api.json?language=EN_US",
+      "retrievedAt": "2026-10-07T02:56:27Z",
+      "rawSHA256": "2e6066d014bbe236d5b1fbcf4a417f633d1a24e3d73fd2a63ce8e45ee4d4ebe6",
+      "sha256": "0f06adf9507ae0fa5d159fe83527a653dea1683036c76b4bb07c140f18aed5b0"
+    }
+  ]
+}

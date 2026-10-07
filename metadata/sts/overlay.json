@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "doc": {
+    "english": "Provides selected STS RPC operations generated from pinned metadata. Clients are concurrency safe; inputs are copied. Shared runtime errors and cancellation preserve their identity. Coverage is limited to the listed operations and fields.",
+    "chinese": "由固定元数据生成选定 STS RPC 操作。客户端并发安全，输入被复制；共享运行时保留错误及取消的身份。覆盖限于列出的操作和字段。"
+  },
+  "models": [
+    {
+      "name": "RoleCredentials",
+      "operation": "AssumeRole",
+      "path": "Credentials",
+      "fields": [
+        {
+          "name": "AccessKeyID",
+          "wire": "AccessKeyId",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field AccessKeyId.",
+            "chinese": "包含选定线字段 AccessKeyId。"
+          }
+        },
+        {
+          "name": "AccessKeySecret",
+          "wire": "AccessKeySecret",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field AccessKeySecret.",
+            "chinese": "包含选定线字段 AccessKeySecret。"
+          }
+        },
+        {
+          "name": "SecurityToken",
+          "wire": "SecurityToken",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field SecurityToken.",
+            "chinese": "包含选定线字段 SecurityToken。"
+          }
+        },
+        {
+          "name": "ExpiresAt",
+          "wire": "Expiration",
+          "type": "time.Time",
+          "doc": {
+            "english": "Contains the parsed RFC3339 service expiration.",
+            "chinese": "包含解析后的服务 RFC3339 到期时间。"
+          }
+        }
+      ],
+      "doc": {
+        "english": "Contains selected response properties.",
+        "chinese": "包含选定响应属性。"
+      },
+      "redact": true
+    },
+    {
+      "name": "AssumedRoleUser",
+      "operation": "AssumeRole",
+      "path": "AssumedRoleUser",
+      "fields": [
+        {
+          "name": "ARN",
+          "wire": "Arn",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field Arn.",
+            "chinese": "包含选定线字段 Arn。"
+          }
+        },
+        {
+          "name": "AssumedRoleID",
+          "wire": "AssumedRoleId",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field AssumedRoleId.",
+            "chinese": "包含选定线字段 AssumedRoleId。"
+          }
+        }
+      ],
+      "doc": {
+        "english": "Contains selected response properties.",
+        "chinese": "包含选定响应属性。"
+      }
+    }
+  ],
+  "operations": [
+    {
+      "name": "AssumeRole",
+      "idempotent": false,
+      "inputs": [
+        {
+          "name": "RoleARN",
+          "wire": "RoleArn",
+          "type": "string",
+          "doc": {
+            "english": "Selects wire field RoleArn; zero values are omitted.",
+            "chinese": "选择线字段 RoleArn，零值省略。"
+          }
+        },
+        {
+          "name": "RoleSessionName",
+          "wire": "RoleSessionName",
+          "type": "string",
+          "doc": {
+            "english": "Selects wire field RoleSessionName; zero values are omitted.",
+            "chinese": "选择线字段 RoleSessionName，零值省略。"
+          }
+        },
+        {
+          "name": "DurationSeconds",
+          "wire": "DurationSeconds",
+          "type": "int64",
+          "doc": {
+            "english": "Selects wire field DurationSeconds; zero values are omitted.",
+            "chinese": "选择线字段 DurationSeconds，零值省略。"
+          }
+        },
+        {
+          "name": "Policy",
+          "wire": "Policy",
+          "type": "string",
+          "doc": {
+            "english": "Selects wire field Policy; zero values are omitted.",
+            "chinese": "选择线字段 Policy，零值省略。"
+          }
+        },
+        {
+          "name": "ExternalID",
+          "wire": "ExternalId",
+          "type": "string",
+          "doc": {
+            "english": "Selects wire field ExternalId; zero values are omitted.",
+            "chinese": "选择线字段 ExternalId，零值省略。"
+          }
+        },
+        {
+          "name": "SourceIdentity",
+          "wire": "SourceIdentity",
+          "type": "string",
+          "doc": {
+            "english": "Selects wire field SourceIdentity; zero values are omitted.",
+            "chinese": "选择线字段 SourceIdentity，零值省略。"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Credentials",
+          "wire": "Credentials",
+          "type": "RoleCredentials",
+          "doc": {
+            "english": "Contains selected wire field Credentials.",
+            "chinese": "包含选定线字段 Credentials。"
+          }
+        },
+        {
+          "name": "AssumedRoleUser",
+          "wire": "AssumedRoleUser",
+          "type": "AssumedRoleUser",
+          "doc": {
+            "english": "Contains selected wire field AssumedRoleUser.",
+            "chinese": "包含选定线字段 AssumedRoleUser。"
+          }
+        },
+        {
+          "name": "SourceIdentity",
+          "wire": "SourceIdentity",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field SourceIdentity.",
+            "chinese": "包含选定线字段 SourceIdentity。"
+          }
+        }
+      ],
+      "doc": {
+        "english": "Executes one RPC request through the shared runtime; nil input uses zero values unless required. Callers must not mutate input concurrently.",
+        "chinese": "通过共享运行时执行一次 RPC 请求；除必填输入外，nil 输入使用零值。调用者不得并发修改输入。"
+      },
+      "example": {
+        "input": {
+          "RoleARN": "acs:ram::123456789012:role/example",
+          "RoleSessionName": "example-session"
+        },
+        "response": "{\"AssumedRoleUser\":{\"Arn\":\"acs:ram::123456789012:role/example/example-session\"}}",
+        "print": "AssumedRoleUser.ARN",
+        "output": "acs:ram::123456789012:role/example/example-session"
+      },
+      "validator": "validateAssumeRole",
+      "inputRequired": true
+    }
+  ]
+}

@@ -1,0 +1,477 @@
+{
+  "schemaVersion": 1,
+  "doc": {
+    "english": "Provides selected ECS RPC operations generated from pinned metadata. Clients are concurrency safe; inputs are copied. Shared runtime errors and cancellation preserve their identity. Coverage is limited to the listed operations and fields.",
+    "chinese": "由固定元数据生成选定 ECS RPC 操作。客户端并发安全，输入被复制；共享运行时保留错误及取消的身份。覆盖限于列出的操作和字段。"
+  },
+  "models": [
+    {
+      "name": "Region",
+      "operation": "DescribeRegions",
+      "path": "Regions.Region[]",
+      "fields": [
+        {
+          "name": "RegionID",
+          "wire": "RegionId",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field RegionId.",
+            "chinese": "包含选定线字段 RegionId。"
+          }
+        },
+        {
+          "name": "LocalName",
+          "wire": "LocalName",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field LocalName.",
+            "chinese": "包含选定线字段 LocalName。"
+          }
+        },
+        {
+          "name": "RegionEndpoint",
+          "wire": "RegionEndpoint",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field RegionEndpoint.",
+            "chinese": "包含选定线字段 RegionEndpoint。"
+          }
+        },
+        {
+          "name": "Status",
+          "wire": "Status",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field Status.",
+            "chinese": "包含选定线字段 Status。"
+          }
+        }
+      ],
+      "doc": {
+        "english": "Contains selected response properties.",
+        "chinese": "包含选定响应属性。"
+      }
+    },
+    {
+      "name": "Instance",
+      "operation": "DescribeInstances",
+      "path": "Instances.Instance[]",
+      "fields": [
+        {
+          "name": "InstanceID",
+          "wire": "InstanceId",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field InstanceId.",
+            "chinese": "包含选定线字段 InstanceId。"
+          }
+        },
+        {
+          "name": "InstanceName",
+          "wire": "InstanceName",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field InstanceName.",
+            "chinese": "包含选定线字段 InstanceName。"
+          }
+        },
+        {
+          "name": "RegionID",
+          "wire": "RegionId",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field RegionId.",
+            "chinese": "包含选定线字段 RegionId。"
+          }
+        },
+        {
+          "name": "ZoneID",
+          "wire": "ZoneId",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field ZoneId.",
+            "chinese": "包含选定线字段 ZoneId。"
+          }
+        },
+        {
+          "name": "Status",
+          "wire": "Status",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field Status.",
+            "chinese": "包含选定线字段 Status。"
+          }
+        }
+      ],
+      "doc": {
+        "english": "Contains selected response properties.",
+        "chinese": "包含选定响应属性。"
+      }
+    },
+    {
+      "name": "InstanceStatus",
+      "operation": "DescribeInstanceStatus",
+      "path": "InstanceStatuses.InstanceStatus[]",
+      "fields": [
+        {
+          "name": "InstanceID",
+          "wire": "InstanceId",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field InstanceId.",
+            "chinese": "包含选定线字段 InstanceId。"
+          }
+        },
+        {
+          "name": "Status",
+          "wire": "Status",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field Status.",
+            "chinese": "包含选定线字段 Status。"
+          }
+        }
+      ],
+      "doc": {
+        "english": "Contains selected response properties.",
+        "chinese": "包含选定响应属性。"
+      }
+    }
+  ],
+  "operations": [
+    {
+      "name": "DescribeRegions",
+      "idempotent": true,
+      "inputs": [
+        {
+          "name": "AcceptLanguage",
+          "wire": "AcceptLanguage",
+          "type": "string",
+          "doc": {
+            "english": "Selects wire field AcceptLanguage; zero values are omitted.",
+            "chinese": "选择线字段 AcceptLanguage，零值省略。"
+          }
+        },
+        {
+          "name": "InstanceChargeType",
+          "wire": "InstanceChargeType",
+          "type": "string",
+          "doc": {
+            "english": "Selects wire field InstanceChargeType; zero values are omitted.",
+            "chinese": "选择线字段 InstanceChargeType，零值省略。"
+          }
+        },
+        {
+          "name": "ResourceType",
+          "wire": "ResourceType",
+          "type": "string",
+          "doc": {
+            "english": "Selects wire field ResourceType; zero values are omitted.",
+            "chinese": "选择线字段 ResourceType，零值省略。"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Regions",
+          "wire": "Regions.Region",
+          "type": "[]Region",
+          "doc": {
+            "english": "Contains selected wire field Regions.Region.",
+            "chinese": "包含选定线字段 Regions.Region。"
+          }
+        }
+      ],
+      "doc": {
+        "english": "Executes one RPC request through the shared runtime; nil input uses zero values unless required. Callers must not mutate input concurrently.",
+        "chinese": "通过共享运行时执行一次 RPC 请求；除必填输入外，nil 输入使用零值。调用者不得并发修改输入。"
+      },
+      "example": {
+        "input": {
+          "AcceptLanguage": "en-US"
+        },
+        "response": "{\"Regions\":{\"Region\":[{\"RegionId\":\"cn-hangzhou\"}]}}",
+        "print": "Regions[0].RegionID",
+        "output": "cn-hangzhou"
+      }
+    },
+    {
+      "name": "DescribeInstances",
+      "idempotent": true,
+      "inputs": [
+        {
+          "name": "RegionID",
+          "wire": "RegionId",
+          "type": "string",
+          "doc": {
+            "english": "Defaults to the client region; a per-call region override takes precedence.",
+            "chinese": "默认使用客户端地域，调用级地域覆盖优先。"
+          },
+          "region": true
+        },
+        {
+          "name": "InstanceIDs",
+          "wire": "InstanceIds",
+          "type": "[]string",
+          "doc": {
+            "english": "Contains up to 100 nonempty IDs; the slice is copied before encoding.",
+            "chinese": "包含最多 100 个非空 ID，编码前复制切片。"
+          },
+          "encoding": "jsonArray"
+        },
+        {
+          "name": "ZoneID",
+          "wire": "ZoneId",
+          "type": "string",
+          "doc": {
+            "english": "Selects wire field ZoneId; zero values are omitted.",
+            "chinese": "选择线字段 ZoneId，零值省略。"
+          }
+        },
+        {
+          "name": "Status",
+          "wire": "Status",
+          "type": "string",
+          "doc": {
+            "english": "Selects wire field Status; zero values are omitted.",
+            "chinese": "选择线字段 Status，零值省略。"
+          }
+        },
+        {
+          "name": "NextToken",
+          "wire": "NextToken",
+          "type": "string",
+          "doc": {
+            "english": "Selects wire field NextToken; zero values are omitted.",
+            "chinese": "选择线字段 NextToken，零值省略。"
+          }
+        },
+        {
+          "name": "MaxResults",
+          "wire": "MaxResults",
+          "type": "int",
+          "doc": {
+            "english": "Selects wire field MaxResults; zero values are omitted.",
+            "chinese": "选择线字段 MaxResults，零值省略。"
+          }
+        },
+        {
+          "name": "PageNumber",
+          "wire": "PageNumber",
+          "type": "int",
+          "doc": {
+            "english": "Selects wire field PageNumber; zero values are omitted.",
+            "chinese": "选择线字段 PageNumber，零值省略。"
+          }
+        },
+        {
+          "name": "PageSize",
+          "wire": "PageSize",
+          "type": "int",
+          "doc": {
+            "english": "Selects wire field PageSize; zero values are omitted.",
+            "chinese": "选择线字段 PageSize，零值省略。"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Instances",
+          "wire": "Instances.Instance",
+          "type": "[]Instance",
+          "doc": {
+            "english": "Contains selected wire field Instances.Instance.",
+            "chinese": "包含选定线字段 Instances.Instance。"
+          }
+        },
+        {
+          "name": "NextToken",
+          "wire": "NextToken",
+          "type": "string",
+          "doc": {
+            "english": "Contains selected wire field NextToken.",
+            "chinese": "包含选定线字段 NextToken。"
+          }
+        },
+        {
+          "name": "PageNumber",
+          "wire": "PageNumber",
+          "type": "int",
+          "doc": {
+            "english": "Contains selected wire field PageNumber.",
+            "chinese": "包含选定线字段 PageNumber。"
+          }
+        },
+        {
+          "name": "PageSize",
+          "wire": "PageSize",
+          "type": "int",
+          "doc": {
+            "english": "Contains selected wire field PageSize.",
+            "chinese": "包含选定线字段 PageSize。"
+          }
+        },
+        {
+          "name": "TotalCount",
+          "wire": "TotalCount",
+          "type": "int",
+          "doc": {
+            "english": "Contains selected wire field TotalCount.",
+            "chinese": "包含选定线字段 TotalCount。"
+          }
+        }
+      ],
+      "doc": {
+        "english": "Executes one RPC request through the shared runtime; nil input uses zero values unless required. Callers must not mutate input concurrently.",
+        "chinese": "通过共享运行时执行一次 RPC 请求；除必填输入外，nil 输入使用零值。调用者不得并发修改输入。"
+      },
+      "example": {
+        "input": {
+          "InstanceIDs": [
+            "i-example"
+          ],
+          "MaxResults": 10
+        },
+        "response": "{\"Instances\":{\"Instance\":[{\"InstanceId\":\"i-example\"}]}}",
+        "print": "Instances[0].InstanceID",
+        "output": "i-example"
+      },
+      "validator": "validateInstances"
+    },
+    {
+      "name": "DescribeInstanceStatus",
+      "idempotent": true,
+      "inputs": [
+        {
+          "name": "RegionID",
+          "wire": "RegionId",
+          "type": "string",
+          "doc": {
+            "english": "Defaults to the client region; a per-call region override takes precedence.",
+            "chinese": "默认使用客户端地域，调用级地域覆盖优先。"
+          },
+          "region": true
+        },
+        {
+          "name": "InstanceIDs",
+          "wire": "InstanceId",
+          "type": "[]string",
+          "doc": {
+            "english": "Contains up to 100 nonempty IDs; the slice is copied before encoding.",
+            "chinese": "包含最多 100 个非空 ID，编码前复制切片。"
+          },
+          "encoding": "repeatList"
+        },
+        {
+          "name": "ZoneID",
+          "wire": "ZoneId",
+          "type": "string",
+          "doc": {
+            "english": "Selects wire field ZoneId; zero values are omitted.",
+            "chinese": "选择线字段 ZoneId，零值省略。"
+          }
+        },
+        {
+          "name": "PageNumber",
+          "wire": "PageNumber",
+          "type": "int",
+          "doc": {
+            "english": "Selects wire field PageNumber; zero values are omitted.",
+            "chinese": "选择线字段 PageNumber，零值省略。"
+          }
+        },
+        {
+          "name": "PageSize",
+          "wire": "PageSize",
+          "type": "int",
+          "doc": {
+            "english": "Selects wire field PageSize; zero values are omitted.",
+            "chinese": "选择线字段 PageSize，零值省略。"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "InstanceStatuses",
+          "wire": "InstanceStatuses.InstanceStatus",
+          "type": "[]InstanceStatus",
+          "doc": {
+            "english": "Contains selected wire field InstanceStatuses.InstanceStatus.",
+            "chinese": "包含选定线字段 InstanceStatuses.InstanceStatus。"
+          }
+        },
+        {
+          "name": "TotalCount",
+          "wire": "TotalCount",
+          "type": "int",
+          "doc": {
+            "english": "Contains selected wire field TotalCount.",
+            "chinese": "包含选定线字段 TotalCount。"
+          }
+        },
+        {
+          "name": "PageNumber",
+          "wire": "PageNumber",
+          "type": "int",
+          "doc": {
+            "english": "Contains selected wire field PageNumber.",
+            "chinese": "包含选定线字段 PageNumber。"
+          }
+        },
+        {
+          "name": "PageSize",
+          "wire": "PageSize",
+          "type": "int",
+          "doc": {
+            "english": "Contains selected wire field PageSize.",
+            "chinese": "包含选定线字段 PageSize。"
+          }
+        }
+      ],
+      "doc": {
+        "english": "Executes one RPC request through the shared runtime; nil input uses zero values unless required. Callers must not mutate input concurrently.",
+        "chinese": "通过共享运行时执行一次 RPC 请求；除必填输入外，nil 输入使用零值。调用者不得并发修改输入。"
+      },
+      "example": {
+        "input": {
+          "InstanceIDs": [
+            "i-example"
+          ],
+          "PageSize": 50
+        },
+        "response": "{\"InstanceStatuses\":{\"InstanceStatus\":[{\"InstanceId\":\"i-example\",\"Status\":\"Running\"}]}}",
+        "print": "InstanceStatuses[0].Status",
+        "output": "Running"
+      },
+      "validator": "validateStatus"
+    }
+  ],
+  "paginator": {
+    "operation": "DescribeInstances",
+    "items": "Instances",
+    "token": "NextToken",
+    "limit": "MaxResults",
+    "page": "PageNumber",
+    "size": "PageSize",
+    "total": "TotalCount",
+    "defaultSize": 10
+  },
+  "waiter": {
+    "name": "InstanceRunningWaiter",
+    "operation": "DescribeInstanceStatus",
+    "ids": "InstanceIDs",
+    "items": "InstanceStatuses",
+    "id": "InstanceID",
+    "state": "Status",
+    "page": "PageNumber",
+    "size": "PageSize",
+    "maxIDs": 50,
+    "success": "Running",
+    "retry": [
+      "Pending",
+      "Starting",
+      "Stopping",
+      "Stopped"
+    ]
+  }
+}

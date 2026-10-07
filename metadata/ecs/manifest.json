@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "product": "Ecs",
+  "version": "2014-05-26",
+  "style": "RPC",
+  "package": "ecs",
+  "service": "ecs",
+  "sources": [
+    {
+      "operation": "DescribeInstanceStatus",
+      "file": "DescribeInstanceStatus.json",
+      "url": "https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstanceStatus/api.json?language=EN_US",
+      "retrievedAt": "2026-10-07T02:56:26Z",
+      "rawSHA256": "5f1602a9cf555014b0fe38894c3d9e39689208a92cefe052cf530e0c8fa64f12",
+      "sha256": "88204fef54ecd607d11e1e6f96b2a8f34c173115537d7f5a63cdd78a09c19ee1"
+    },
+    {
+      "operation": "DescribeInstances",
+      "file": "DescribeInstances.json",
+      "url": "https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json?language=EN_US",
+      "retrievedAt": "2026-10-07T02:56:15Z",
+      "rawSHA256": "b0c5fd882e35da95786db757aaebace6c7a45ec0775555a5c3227fbcf855dfd9",
+      "sha256": "0d7f0b64a17313b8f8dec90e99e961059ab4df335656fa2c0c331eb4af555535"
+    },
+    {
+      "operation": "DescribeRegions",
+      "file": "DescribeRegions.json",
+      "url": "https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeRegions/api.json?language=EN_US",
+      "retrievedAt": "2026-10-07T02:56:14Z",
+      "rawSHA256": "471706d659eafa81e155d43135095e8f29660bc23f913c2500e77712761269d0",
+      "sha256": "2c709cf76a0e8bdf037e9032e0fd37792dc0f99f70d7aba4e2ffca41290fd610"
+    }
+  ]
+}
