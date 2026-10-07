@@ -4,6 +4,10 @@
 
 All entries have implementations, offline behavior tests, public Go documentation and external executable examples. APIs are early v0 contracts. This matrix records code coverage, not real-account acceptance or full parity with AWS SDK v2.
 
+Selected generated ECS/VPC reads have also passed the explicit local-profile comparison
+in [live validation #30](live-validation.md). That run ended each paginator on page one;
+waiter/AssumeRole and Explorer browser checks are separately documented as skipped/not run.
+
 | Capability | Package / API | Scope and limits |
 | --- | --- | --- |
 | Unified paginator | pagination.Paginator[T]; ECS DescribeInstances/DescribeInstanceStatusPaginator; VPC DescribeVpcsPaginator | native tokens/page numbers; dedicated/per-page options; current page delivered before cycle stop; single consumer |
@@ -31,6 +35,9 @@ RPC uses POST `/` with reviewed query encoding and ACS3. ROA path encoding is te
 ## 中文
 
 每项均有实现、离线行为测试、公共 Go 文档和外部可运行示例。API 属于早期 v0 契约。矩阵记录代码覆盖，不代表真实账号验收或与 AWS SDK v2 完全等价。
+
+选定生成 ECS/VPC 读取还通过了[真实验证 #30](live-validation.md) 的显式本地 Profile 对比。
+该次分页均第一页结束；waiter/AssumeRole 及 Explorer 浏览器检查分别明确标记为跳过/未运行。
 
 | 能力 | 包 / API | 范围与限制 |
 | --- | --- | --- |
