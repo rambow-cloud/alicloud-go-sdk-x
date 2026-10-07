@@ -1,4 +1,35 @@
 {{with .Paginator}}
+{{if eq .Mode "pages"}}
+// {{.Operation}}Paginator traverses reviewed page-number results using the shared engine.
+// Use one consumer; the original input and pointer/slice members are copied.
+type {{.Operation}}Paginator struct{engine *pagination.Paginator[*{{.Operation}}Output]}
+// New{{.Operation}}Paginator starts at the supplied page, defaulting to page one.
+// A zero page size uses the reviewed default; service failures do not advance.
+func New{{.Operation}}Paginator(api {{.Operation}}API,input *{{.Operation}}Input,opts ...func(*Options))(*{{.Operation}}Paginator,error){
+ if api==nil{return nil,errors.New("nil paginator API")}
+ var in {{.Operation}}Input;if input!=nil{in=*input;{{copies .Operation "in" "input"}}}
+ {{validate .Operation}}
+ if in.{{.Page}}<0||in.{{.Size}}<0{return nil,errors.New("negative page parameters")}
+ if in.{{.Page}}==0{in.{{.Page}}=1};if in.{{.Size}}==0{in.{{.Size}}={{.DefaultSize}}}
+ copiedOptions:=append([]func(*Options){},opts...)
+ engine,err:=pagination.New(pagination.Cursor{PageNumber:in.{{.Page}}},func(ctx context.Context,cursor pagination.Cursor)(pagination.Page[*{{.Operation}}Output],error){
+  request:=in;{{copies .Operation "request" "in"}};request.{{.Page}}=cursor.PageNumber
+  out,err:=api.{{.Operation}}(ctx,&request,copiedOptions...);if err!=nil{return pagination.Page[*{{.Operation}}Output]{},err}
+  if out==nil||out.{{.Total}}<0||out.{{.Size}}<0||(out.{{.Page}}!=0&&out.{{.Page}}!=cursor.PageNumber){return pagination.Page[*{{.Operation}}Output]{},errors.New("inconsistent page response")}
+  size:=out.{{.Size}};if size==0{size=in.{{.Size}}}
+  // Division keeps total/position comparisons safe at the machine integer limit.
+  more:=len(out.{{.Items}})>0&&out.{{.Total}}>0&&cursor.PageNumber<=(out.{{.Total}}-1)/size
+  page:=pagination.Page[*{{.Operation}}Output]{Value:out,HasMore:more}
+  if more{page.Next=pagination.Cursor{PageNumber:cursor.PageNumber+1}}
+  return page,nil
+ })
+ if err!=nil{return nil,err};return &{{.Operation}}Paginator{engine:engine},nil
+}
+// HasMorePages reports whether another service page is available.
+func(p *{{.Operation}}Paginator)HasMorePages()bool{return p.engine.HasMorePages()}
+// NextPage fetches without modifying input; errors preserve the current cursor.
+func(p *{{.Operation}}Paginator)NextPage(ctx context.Context)(*{{.Operation}}Output,error){return p.engine.NextPage(ctx)}
+{{else}}
 // {{.Operation}}Paginator adapts the shared engine with reviewed token/page policies.
 // It defaults to token mode; explicit page or size selects legacy mode. Use one consumer.
 type {{.Operation}}Paginator struct { engine *pagination.Paginator[*{{.Operation}}Output] }
@@ -38,6 +69,7 @@ func New{{.Operation}}Paginator(api {{.Operation}}API,input *{{.Operation}}Input
 func(p *{{.Operation}}Paginator)HasMorePages()bool{return p.engine.HasMorePages()}
 // NextPage fetches without changing the original input; errors do not advance.
 func(p *{{.Operation}}Paginator)NextPage(ctx context.Context)(*{{.Operation}}Output,error){return p.engine.NextPage(ctx)}
+{{end}}
 {{end}}
 
 {{with .Waiter}}

@@ -67,8 +67,11 @@ func emitClient(p Product) ([]byte, error) {
 	imports := map[string]string{"context": "", "net/url": "", module: "alicloud"}
 	for _, model := range p.Models {
 		for _, f := range model.Fields {
-			if f.Type == "time.Time" {
+			if strings.TrimPrefix(strings.TrimPrefix(f.Type, "[]"), "*") == "time.Time" {
 				imports["time"] = ""
+			}
+			if strings.Contains(f.Wire, ".") {
+				imports["encoding/json/v2"] = ""
 			}
 		}
 	}
@@ -77,7 +80,7 @@ func emitClient(p Product) ([]byte, error) {
 			imports["errors"] = ""
 		}
 		for _, f := range op.Outputs {
-			if f.Type == "time.Time" || f.Type == "[]time.Time" {
+			if strings.TrimPrefix(strings.TrimPrefix(f.Type, "[]"), "*") == "time.Time" {
 				imports["time"] = ""
 			}
 		}
@@ -85,11 +88,22 @@ func emitClient(p Product) ([]byte, error) {
 			if (f.Required && !f.Region) || f.Minimum != nil || f.Maximum != nil || f.MaxItems > 0 {
 				imports["errors"] = ""
 			}
-			if f.Type == "int" || f.Type == "int64" || f.Encoding == "repeatList" {
+			if strings.TrimPrefix(f.Type, "*") == "int" || strings.TrimPrefix(f.Type, "*") == "int64" || f.Type == "*bool" || f.Encoding == "repeatList" {
 				imports["strconv"] = ""
 			}
 			if f.Encoding == "jsonArray" {
 				imports["encoding/json/v2"] = ""
+			}
+			if strings.HasPrefix(f.Type, "[]") {
+				for _, m := range p.Models {
+					if m.Location == "input" && m.Name == strings.TrimPrefix(f.Type, "[]") {
+						for _, member := range m.Fields {
+							if member.Required || member.Minimum != nil || member.Maximum != nil {
+								imports["errors"] = ""
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -101,9 +115,21 @@ func emitClient(p Product) ([]byte, error) {
 	for _, m := range p.Models {
 		fmt.Fprintf(&b, "// %s %s\ntype %s struct {\n", m.Name, lowerFirst(m.Doc.English), m.Name)
 		for _, f := range m.Fields {
-			fmt.Fprintf(&b, "// %s %s\n%s %s `json:%s`\n", f.Name, lowerFirst(f.Doc.English), f.Name, f.Type, quote(f.Wire))
+			fmt.Fprintf(&b, "// %s %s\n", f.Name, lowerFirst(f.Doc.English))
+			if m.Location == "input" {
+				emitPresenceDoc(&b, f)
+			}
+			fmt.Fprintf(&b, "%s %s `json:%s`\n", f.Name, f.Type, quote(f.Wire))
 		}
 		b.WriteString("}\n")
+		if m.Location == "input" {
+			fmt.Fprintf(&b, "func clone%s(in %s)%s{out:=in\n", m.Name, m.Name, m.Name)
+			copySlices(&b, m.Fields, "out", "in", p.Models)
+			b.WriteString("return out}\n")
+		}
+		if hasNested(m.Fields) {
+			emitModelJSON(&b, m)
+		}
 		if m.Redact {
 			fmt.Fprintf(&b, "// String returns a redacted representation.\nfunc (%s) String()string{return %q}\n// GoString returns a redacted representation for Go formatting.\nfunc(c %s)GoString()string{return c.String()}\n", m.Name, m.Name+"(<redacted>)", m.Name)
 		}
@@ -112,14 +138,23 @@ func emitClient(p Product) ([]byte, error) {
 		fmt.Fprintf(&b, "// %sInput contains the selected query parameters; zero optional values are omitted.\ntype %sInput struct {\n", op.Name, op.Name)
 		for _, f := range op.Inputs {
 			fmt.Fprintf(&b, "// %s %s\n", f.Name, lowerFirst(f.Doc.English))
+			emitPresenceDoc(&b, f)
 			if f.Required && !f.Region {
 				b.WriteString("// This field is required.\n")
 			}
 			if f.Minimum != nil {
-				fmt.Fprintf(&b, "// Nonzero values must be at least %d.\n", *f.Minimum)
+				if strings.HasPrefix(f.Type, "*") {
+					fmt.Fprintf(&b, "// Present values must be at least %d.\n", *f.Minimum)
+				} else {
+					fmt.Fprintf(&b, "// Nonzero values must be at least %d.\n", *f.Minimum)
+				}
 			}
 			if f.Maximum != nil {
-				fmt.Fprintf(&b, "// Nonzero values must be at most %d.\n", *f.Maximum)
+				if strings.HasPrefix(f.Type, "*") {
+					fmt.Fprintf(&b, "// Present values must be at most %d.\n", *f.Maximum)
+				} else {
+					fmt.Fprintf(&b, "// Nonzero values must be at most %d.\n", *f.Maximum)
+				}
 			}
 			fmt.Fprintf(&b, "%s %s\n", f.Name, f.Type)
 		}
@@ -146,10 +181,20 @@ func emitClient(p Product) ([]byte, error) {
 	return data, nil
 }
 
-func copySlices(b *bytes.Buffer, fields []Field, dst, src string) {
+func copySlices(b *bytes.Buffer, fields []Field, dst, src string, models ...[]Model) {
 	for _, f := range fields {
 		if f.Type == "[]string" {
 			fmt.Fprintf(b, "%s.%s=append([]string(nil),%s.%s...)\n", dst, f.Name, src, f.Name)
+		}
+		if strings.HasPrefix(f.Type, "*") {
+			fmt.Fprintf(b, "if %s.%s!=nil{copied:=*%s.%s;%s.%s=&copied}\n", src, f.Name, src, f.Name, dst, f.Name)
+		}
+		if strings.HasPrefix(f.Type, "[]") && f.Type != "[]string" && len(models) > 0 {
+			for _, m := range models[0] {
+				if m.Name == strings.TrimPrefix(f.Type, "[]") && m.Location == "input" {
+					fmt.Fprintf(b, "%s.%s=append([]%s(nil),%s.%s...)\nfor i:=range %s.%s{%s.%s[i]=clone%s(%s.%s[i])}\n", dst, f.Name, m.Name, src, f.Name, dst, f.Name, dst, f.Name, m.Name, dst, f.Name)
+				}
+			}
 		}
 	}
 }
@@ -213,7 +258,7 @@ func emitOperation(b *bytes.Buffer, p Product, op Operation) error {
 		b.WriteString("if input==nil{return fail(errors.New(\"input required\"))}\n")
 	}
 	fmt.Fprintf(b, "var in %sInput\nif input!=nil{in=*input\n", op.Name)
-	copySlices(b, op.Inputs, "in", "input")
+	copySlices(b, op.Inputs, "in", "input", p.Models)
 	b.WriteString("}\n")
 	if op.Validator != "" {
 		fmt.Fprintf(b, "if err:=%s(in);err!=nil{return fail(err)}\n", op.Validator)
@@ -225,40 +270,32 @@ func emitOperation(b *bytes.Buffer, p Product, op Operation) error {
 			fmt.Fprintf(b, "region=%s;if region==\"\"{region=c.runtime.Region()};q.Set(%q,region)\n", value, f.Wire)
 			continue
 		}
+		if !strings.HasPrefix(f.Type, "[]") {
+			emitQueryField(b, f, value, quote(f.Wire))
+			continue
+		}
 		if f.Required {
-			zero := value + "==0"
-			if f.Type == "string" {
-				zero = value + `==""`
-			}
-			if f.Type == "[]string" {
-				zero = "len(" + value + ")==0"
-			}
-			fmt.Fprintf(b, "if %s{return fail(errors.New(%q))}\n", zero, "required parameter "+f.Wire)
-		}
-		if f.Minimum != nil {
-			fmt.Fprintf(b, "if %s!=0&&%s<%d{return fail(errors.New(%q))}\n", value, value, *f.Minimum, "parameter below minimum: "+f.Wire)
-		}
-		if f.Maximum != nil {
-			fmt.Fprintf(b, "if %s!=0&&%s>%d{return fail(errors.New(%q))}\n", value, value, *f.Maximum, "parameter above maximum: "+f.Wire)
+			fmt.Fprintf(b, "if len(%s)==0{return fail(errors.New(%q))}\n", value, "required parameter "+f.Wire)
 		}
 		if f.MaxItems > 0 {
 			fmt.Fprintf(b, "if len(%s)>%d{return fail(errors.New(%q))}\n", value, f.MaxItems, "array too large: "+f.Wire)
 		}
-		switch f.Type {
-		case "string":
-			fmt.Fprintf(b, "if %s!=\"\"{q.Set(%q,%s)}\n", value, f.Wire, value)
-		case "int":
-			fmt.Fprintf(b, "if %s!=0{q.Set(%q,strconv.Itoa(%s))}\n", value, f.Wire, value)
-		case "int64":
-			fmt.Fprintf(b, "if %s!=0{q.Set(%q,strconv.FormatInt(%s,10))}\n", value, f.Wire, value)
-		case "[]string":
+		if f.Type == "[]string" {
 			if f.Encoding == "jsonArray" {
 				fmt.Fprintf(b, "if len(%s)>0{encoded,err:=json.Marshal(%s);if err!=nil{return fail(err)};q.Set(%q,string(encoded))}\n", value, value, f.Wire)
 			} else {
 				fmt.Fprintf(b, "for i,value:=range %s{q.Set(%q+strconv.Itoa(i+1),value)}\n", value, f.Wire+".")
 			}
-		default:
-			return fmt.Errorf("codegen: unsupported input type %s", f.Type)
+		} else {
+			for _, m := range p.Models {
+				if m.Name == strings.TrimPrefix(f.Type, "[]") {
+					fmt.Fprintf(b, "for i,item:=range %s{prefix:=%q+strconv.Itoa(i+1)+\".\"\n", value, f.Wire+".")
+					for _, member := range m.Fields {
+						emitQueryField(b, member, "item."+member.Name, "prefix+"+quote(member.Wire))
+					}
+					b.WriteString("}\n")
+				}
+			}
 		}
 	}
 	root := wireTree(op.Outputs)
@@ -285,21 +322,19 @@ func emitExamples(p Product) ([]byte, error) {
 		fmt.Fprintf(&b, "out,err:=client.%s(context.Background(),&%s.%sInput{", op.Name, p.Manifest.Package, op.Name)
 		for _, name := range sortedKeys(op.Example.Input) {
 			fmt.Fprintf(&b, "%s:", name)
-			value := op.Example.Input[name]
-			switch v := value.(type) {
-			case string:
-				b.WriteString(quote(v))
-			case float64:
-				fmt.Fprintf(&b, "%d", int64(v))
-			case []any:
-				b.WriteString("[]string{")
-				for _, entry := range v {
-					fmt.Fprintf(&b, "%q,", entry.(string))
-				}
-				b.WriteString("}")
-			default:
-				return nil, fmt.Errorf("codegen: invalid example %s", name)
+			fields := map[string]Field{}
+			for _, f := range op.Inputs {
+				fields[f.Name] = f
 			}
+			models := map[string]ModelSpec{}
+			for _, m := range p.Models {
+				models[m.Name] = m.ModelSpec
+			}
+			literal, err := exampleLiteral(fields[name].Type, op.Example.Input[name], p.Manifest.Package, models)
+			if err != nil {
+				return nil, err
+			}
+			b.WriteString(literal)
 			b.WriteString(",")
 		}
 		fmt.Fprintf(&b, "});if err!=nil{panic(err)}\nfmt.Println(out.%s)\n// Output: %s\n}\n", op.Example.Print, op.Example.Output)
@@ -319,9 +354,24 @@ func emitGuide(p Product) []byte {
 
 func emitGuideLanguage(b *bytes.Buffer, p Product, chinese bool) {
 	if chinese {
-		fmt.Fprintf(b, "API 版本 `%s`，协议 RPC/HTTPS/POST；只有审核操作可幂等重试。端点由共享 resolver 决定，元数据不自动扩大地域范围。生成的分页默认 token 模式，显式页码或页大小选择旧模式；waiter 等待所有指定 ID，缺失/过渡状态继续，未知或重复状态及 API 错误失败。仅配置了相应 overlay 时生成适配器。\n\n", p.Manifest.Version)
+		fmt.Fprintf(b, "API 版本 `%s`，协议 RPC/HTTPS/POST；只有审核操作可幂等重试。端点由共享 resolver 决定，元数据不自动扩大地域范围。分页使用审核 token/页码规则；waiter 等待所有指定 ID，缺失/过渡状态继续，未知或重复状态及 API 错误失败。仅配置了相应 overlay 时生成适配器。\n\n", p.Manifest.Version)
 	} else {
-		fmt.Fprintf(b, "API version `%s`; RPC/HTTPS/POST. Only explicitly reviewed idempotent operations permit retries. Endpoints use the shared resolver; metadata does not expand region coverage. Generated pagination defaults to token mode; explicit page/size selects legacy mode. Waiters require all requested IDs, retry missing/transitional states and fail unknown/duplicate states or API errors. Adapters are emitted only when configured in the overlay.\n\n", p.Manifest.Version)
+		fmt.Fprintf(b, "API version `%s`; RPC/HTTPS/POST. Only explicitly reviewed idempotent operations permit retries. Endpoints use the shared resolver; metadata does not expand region coverage. Pagination follows reviewed token/page policies. Waiters require all requested IDs, retry missing/transitional states and fail unknown/duplicate states or API errors. Adapters are emitted only when configured in the overlay.\n\n", p.Manifest.Version)
+	}
+	if pager := p.Overlay.Paginator; pager != nil {
+		if pager.Mode == "pages" {
+			if chinese {
+				fmt.Fprintf(b, "分页仅使用页码，默认页 1/大小 %d；空页或总数到达时结束。\n\n", pager.DefaultSize)
+			} else {
+				fmt.Fprintf(b, "Pagination is page-only, defaulting to page 1/size %d; empty pages or reaching the total end traversal.\n\n", pager.DefaultSize)
+			}
+		} else {
+			if chinese {
+				b.WriteString("分页默认 token 模式，显式页码或大小选择旧页码模式。\n\n")
+			} else {
+				b.WriteString("Pagination defaults to token mode; explicit page/size selects legacy pages.\n\n")
+			}
+		}
 	}
 	for _, op := range p.Operations {
 		fmt.Fprintf(b, "### %s\n\n", op.Name)
@@ -347,18 +397,41 @@ func emitGuideLanguage(b *bytes.Buffer, p Product, chinese bool) {
 						doc += " Required."
 					}
 				}
+				if strings.HasPrefix(f.Type, "*") {
+					if chinese {
+						doc += " nil 省略，非 nil 保留显式零值。"
+					} else {
+						doc += " Nil omits; non-nil preserves explicit zero."
+					}
+				}
 				if f.Minimum != nil {
 					if chinese {
-						doc += fmt.Sprintf(" 非零最小值 %d。", *f.Minimum)
+						if strings.HasPrefix(f.Type, "*") {
+							doc += fmt.Sprintf(" 存在时最小值 %d。", *f.Minimum)
+						} else {
+							doc += fmt.Sprintf(" 非零最小值 %d。", *f.Minimum)
+						}
 					} else {
-						doc += fmt.Sprintf(" Nonzero minimum %d.", *f.Minimum)
+						if strings.HasPrefix(f.Type, "*") {
+							doc += fmt.Sprintf(" Present minimum %d.", *f.Minimum)
+						} else {
+							doc += fmt.Sprintf(" Nonzero minimum %d.", *f.Minimum)
+						}
 					}
 				}
 				if f.Maximum != nil {
 					if chinese {
-						doc += fmt.Sprintf(" 非零最大值 %d。", *f.Maximum)
+						if strings.HasPrefix(f.Type, "*") {
+							doc += fmt.Sprintf(" 存在时最大值 %d。", *f.Maximum)
+						} else {
+							doc += fmt.Sprintf(" 非零最大值 %d。", *f.Maximum)
+						}
 					} else {
-						doc += fmt.Sprintf(" Nonzero maximum %d.", *f.Maximum)
+						if strings.HasPrefix(f.Type, "*") {
+							doc += fmt.Sprintf(" Present maximum %d.", *f.Maximum)
+						} else {
+							doc += fmt.Sprintf(" Nonzero maximum %d.", *f.Maximum)
+						}
 					}
 				}
 				fmt.Fprintf(b, "| %s | `%s` | `%s` | %s |\n", f.Name, f.Type, f.Wire, strings.ReplaceAll(doc, "|", "\\|"))

@@ -28,7 +28,7 @@ func emitAdapters(p Product) ([]byte, error) {
 			var code bytes.Buffer
 			for _, op := range p.Operations {
 				if op.Name == operation {
-					copySlices(&code, op.Inputs, dst, src)
+					copySlices(&code, op.Inputs, dst, src, p.Models)
 				}
 			}
 			return code.String()

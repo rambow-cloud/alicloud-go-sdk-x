@@ -74,6 +74,11 @@ func TestSyntheticGeneratedClient(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	runGeneratedService(t, files, syntheticProtocolTest)
+}
+
+func runGeneratedService(t *testing.T, files map[string][]byte, protocol string) {
+	t.Helper()
 	compiled := t.TempDir()
 	repository, err := filepath.Abs(filepath.Join("..", ".."))
 	if err != nil {
@@ -81,7 +86,7 @@ func TestSyntheticGeneratedClient(t *testing.T) {
 	}
 	// Copy only standard-library runtime source into an isolated module. No network
 	// or new public package is needed to compile and execute a new product.
-	for _, relative := range []string{".", "credentials", "endpoint", "middleware", "retry", "sdktest", "internal/signing"} {
+	for _, relative := range []string{".", "credentials", "endpoint", "middleware", "retry", "sdktest", "pagination", "waiter", "internal/signing"} {
 		entries, err := os.ReadDir(filepath.Join(repository, relative))
 		if err != nil {
 			t.Fatal(err)
@@ -101,7 +106,7 @@ func TestSyntheticGeneratedClient(t *testing.T) {
 	for name, data := range files {
 		writeTestFile(t, compiled, name, data)
 	}
-	writeTestFile(t, compiled, "services/demo/protocol_test.go", []byte(syntheticProtocolTest))
+	writeTestFile(t, compiled, "services/demo/protocol_test.go", []byte(protocol))
 	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
 	defer cancel()
 	cmd := exec.CommandContext(ctx, "go", "test", "-p", "1", "./services/demo")

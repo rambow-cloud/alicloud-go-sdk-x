@@ -32,6 +32,7 @@ type FieldSpec struct {
 
 // ModelSpec projects one metadata object into a named public Go model.
 type ModelSpec struct {
+	Location  string      `json:"location,omitempty"`
 	Name      string      `json:"name"`
 	Operation string      `json:"operation"`
 	Path      string      `json:"path"`
@@ -62,6 +63,7 @@ type OperationSpec struct {
 
 // PaginatorSpec selects the reviewed dual token/page-number profile.
 type PaginatorSpec struct {
+	Mode        string `json:"mode,omitempty"`
 	Operation   string `json:"operation"`
 	Items       string `json:"items"`
 	Token       string `json:"token"`
@@ -195,23 +197,26 @@ func Load(dir string) (Product, error) {
 		if !ok {
 			return Product{}, fmt.Errorf("codegen: missing model operation %s", model.Operation)
 		}
-		schema, err := schemaAt(s.Responses["200"].Schema, model.Path)
+		schema, err := s.modelRoot(model)
 		if err != nil {
 			return Product{}, err
 		}
 		if err := object(schema); err != nil {
 			return Product{}, fmt.Errorf("model %s: %w", model.Name, err)
 		}
-		fields, err := responseFields(schema, model.Fields, models, model.Operation, model.Path)
+		var fields []Field
+		if model.Location == "input" {
+			fields, err = inputModelFields(s, schema, model.Fields)
+		} else {
+			fields, err = responseFields(schema, model.Fields, models, model.Operation, model.Path, s.resolve)
+		}
 		if err != nil {
 			return Product{}, err
 		}
-		for _, field := range fields {
-			if strings.Contains(field.Wire, ".") {
-				return Product{}, errors.New("codegen: nested model projections require separate models")
-			}
-		}
 		p.Models = append(p.Models, Model{ModelSpec: model, Fields: fields})
+	}
+	if err := modelDependencies(p.Models); err != nil {
+		return Product{}, err
 	}
 	opNames := map[string]bool{}
 	for _, spec := range o.Operations {
@@ -234,11 +239,15 @@ func Load(dir string) (Product, error) {
 		if !ok {
 			return Product{}, fmt.Errorf("codegen: missing source for %s", spec.Name)
 		}
-		inputs, err := inputFields(s, spec.Inputs)
+		inputs, err := inputFields(s, spec.Inputs, models, spec.Name)
 		if err != nil {
 			return Product{}, fmt.Errorf("%s input: %w", spec.Name, err)
 		}
-		outputs, err := responseFields(s.Responses["200"].Schema, spec.Outputs, models, spec.Name, "")
+		root, err := s.responseRoot()
+		if err != nil {
+			return Product{}, err
+		}
+		outputs, err := responseFields(root, spec.Outputs, models, spec.Name, "", s.resolve)
 		if err != nil {
 			return Product{}, fmt.Errorf("%s output: %w", spec.Name, err)
 		}
@@ -286,7 +295,12 @@ func shape(s *Schema) error {
 	return nil
 }
 
-func schemaAt(s *Schema, path string) (*Schema, error) {
+func schemaAt(s *Schema, path string, resolve func(*Schema) (*Schema, error)) (*Schema, error) {
+	var err error
+	s, err = resolve(s)
+	if err != nil {
+		return nil, err
+	}
 	if path == "" {
 		return s, nil
 	}
@@ -303,6 +317,10 @@ func schemaAt(s *Schema, path string) (*Schema, error) {
 		if s == nil {
 			return nil, fmt.Errorf("codegen: removed response path %q", path)
 		}
+		s, err = resolve(s)
+		if err != nil {
+			return nil, err
+		}
 		if array {
 			if err := shape(s); err != nil {
 				return nil, err
@@ -311,6 +329,10 @@ func schemaAt(s *Schema, path string) (*Schema, error) {
 				return nil, errors.New("codegen: response path array changed")
 			}
 			s = s.Items
+			s, err = resolve(s)
+			if err != nil {
+				return nil, err
+			}
 		}
 	}
 	if err := shape(s); err != nil {
@@ -339,14 +361,15 @@ func scalar(s *Schema, typ string) error {
 	if err := shape(s); err != nil {
 		return err
 	}
-	ok := typ == "string" && s.Type == "string" || typ == "time.Time" && s.Type == "string" || typ == "int" && s.Type == "integer" && (s.Format == "" || s.Format == "int32") || typ == "int64" && s.Type == "integer" && (s.Format == "int64" || s.Format == "")
+	typ = strings.TrimPrefix(typ, "*")
+	ok := typ == "bool" && s.Type == "boolean" || typ == "string" && s.Type == "string" || typ == "time.Time" && s.Type == "string" || typ == "int" && s.Type == "integer" && (s.Format == "" || s.Format == "int32") || typ == "int64" && s.Type == "integer" && (s.Format == "int64" || s.Format == "")
 	if !ok {
 		return fmt.Errorf("codegen: wire type %s/%s cannot become %s", s.Type, s.Format, typ)
 	}
 	return nil
 }
 
-func inputFields(s Snapshot, specs []FieldSpec) ([]Field, error) {
+func inputFields(s Snapshot, specs []FieldSpec, models map[string]ModelSpec, operation string) ([]Field, error) {
 	if err := fieldNames(specs); err != nil {
 		return nil, err
 	}
@@ -368,8 +391,13 @@ func inputFields(s Snapshot, specs []FieldSpec) ([]Field, error) {
 		if param.In != "query" {
 			return nil, errors.New("codegen: only query parameters supported")
 		}
-		if spec.Type == "[]string" {
-			if spec.Encoding == "jsonArray" {
+		resolved, err := s.resolve(param.Schema)
+		if err != nil {
+			return nil, err
+		}
+		param.Schema = resolved
+		if strings.HasPrefix(spec.Type, "[]") {
+			if spec.Encoding == "jsonArray" && spec.Type == "[]string" {
 				if param.Style != "" || param.Schema == nil || param.Schema.Type != "string" {
 					return nil, errors.New("codegen: JSON string array wire changed")
 				}
@@ -383,14 +411,29 @@ func inputFields(s Snapshot, specs []FieldSpec) ([]Field, error) {
 				if err := shape(param.Schema); err != nil {
 					return nil, err
 				}
-				if err := scalar(param.Schema.Items, "string"); err != nil {
+				item, err := s.resolve(param.Schema.Items)
+				if err != nil {
 					return nil, err
+				}
+				typ := strings.TrimPrefix(spec.Type, "[]")
+				if typ == "string" {
+					if err := scalar(item, typ); err != nil {
+						return nil, err
+					}
+				} else {
+					model, ok := models[typ]
+					if !ok || model.Location != "input" || model.Operation != operation || model.Path != spec.Wire+"[]" {
+						return nil, errors.New("codegen: input model bound to incompatible schema")
+					}
+					if err := object(item); err != nil {
+						return nil, err
+					}
 				}
 			} else {
 				return nil, errors.New("codegen: array needs explicit supported encoding")
 			}
 		} else {
-			if spec.Encoding != "" || param.Style != "" || spec.Type == "time.Time" {
+			if spec.Encoding != "" || param.Style != "" || strings.TrimPrefix(spec.Type, "*") == "time.Time" || spec.Type == "bool" {
 				return nil, errors.New("codegen: unsupported scalar input encoding")
 			}
 			if err := scalar(param.Schema, spec.Type); err != nil {
@@ -403,24 +446,9 @@ func inputFields(s Snapshot, specs []FieldSpec) ([]Field, error) {
 				return nil, errors.New("codegen: region binding must be the RegionId string")
 			}
 		}
-		field := Field{FieldSpec: spec, Required: param.Schema.Required, MaxItems: param.Schema.MaxItems}
-		var err error
-		field.Minimum, err = number(param.Schema.Minimum)
+		field, err := constrainedField(spec, param.Schema)
 		if err != nil {
 			return nil, err
-		}
-		field.Maximum, err = number(param.Schema.Maximum)
-		if err != nil {
-			return nil, err
-		}
-		if field.Minimum != nil && field.Maximum != nil && *field.Minimum > *field.Maximum {
-			return nil, errors.New("codegen: inconsistent numeric constraints")
-		}
-		if (field.Minimum != nil || field.Maximum != nil) && spec.Type != "int" && spec.Type != "int64" {
-			return nil, errors.New("codegen: numeric constraints on a non-integer input")
-		}
-		if field.MaxItems < 0 || (field.MaxItems != 0 && spec.Type != "[]string") {
-			return nil, errors.New("codegen: invalid array bound")
 		}
 		selected[spec.Wire] = true
 		result = append(result, field)
@@ -451,7 +479,7 @@ func number(raw []byte) (*int64, error) {
 	return &value, nil
 }
 
-func responseFields(root *Schema, specs []FieldSpec, models map[string]ModelSpec, operation, prefix string) ([]Field, error) {
+func responseFields(root *Schema, specs []FieldSpec, models map[string]ModelSpec, operation, prefix string, resolve func(*Schema) (*Schema, error)) ([]Field, error) {
 	if err := object(root); err != nil {
 		return nil, err
 	}
@@ -463,7 +491,7 @@ func responseFields(root *Schema, specs []FieldSpec, models map[string]ModelSpec
 		if spec.Encoding != "" || spec.Region {
 			return nil, errors.New("codegen: input options on response field")
 		}
-		s, err := schemaAt(root, spec.Wire)
+		s, err := schemaAt(root, spec.Wire, resolve)
 		if err != nil {
 			return nil, err
 		}
@@ -476,12 +504,15 @@ func responseFields(root *Schema, specs []FieldSpec, models map[string]ModelSpec
 			if s.Type != "array" {
 				return nil, errors.New("codegen: expected response array")
 			}
-			s = s.Items
+			s, err = resolve(s.Items)
+			if err != nil {
+				return nil, err
+			}
 			typ = strings.TrimPrefix(typ, "[]")
 			path += "[]"
 		}
 		if model, ok := models[typ]; ok {
-			if model.Operation != operation || model.Path != path {
+			if model.Operation != operation || model.Path != path || model.Location == "input" {
 				return nil, fmt.Errorf("codegen: model %s bound to incompatible schema path", typ)
 			}
 			if err := object(s); err != nil {
@@ -522,28 +553,11 @@ func checkExample(spec OperationSpec, inputs, outputs []Field, models map[string
 		if !ok {
 			return errors.New("codegen: example input field missing")
 		}
-		switch f.Type {
-		case "string":
-			if _, ok := value.(string); !ok {
-				return errors.New("codegen: example string required")
-			}
-		case "int", "int64":
-			n, ok := value.(float64)
-			if !ok || n != float64(int64(n)) {
-				return errors.New("codegen: example integer required")
-			}
-		case "[]string":
-			v, ok := value.([]any)
-			if !ok {
-				return errors.New("codegen: example string array required")
-			}
-			for _, entry := range v {
-				if _, ok := entry.(string); !ok {
-					return errors.New("codegen: example array entry required")
-				}
-			}
-		default:
-			return errors.New("codegen: unsupported example input")
+		if strings.HasPrefix(f.Type, "*") && value == nil && f.Required {
+			return errors.New("codegen: missing required example pointer")
+		}
+		if _, err := exampleLiteral(f.Type, value, "example", models); err != nil {
+			return err
 		}
 	}
 	for _, f := range inputs {
@@ -603,6 +617,12 @@ func checkPolicies(p Product, claim func(string) error) error {
 		return fmt.Errorf("codegen: policy field %s must be %s", name, typ)
 	}
 	if spec := p.Overlay.Paginator; spec != nil {
+		if spec.Mode != "" && spec.Mode != "pages" {
+			return errors.New("codegen: unsupported paginator mode")
+		}
+		if spec.Mode == "pages" && (spec.Token != "" || spec.Limit != "") {
+			return errors.New("codegen: page-only policy cannot include token fields")
+		}
 		op, err := find(spec.Operation)
 		if err != nil {
 			return err
@@ -623,21 +643,29 @@ func checkPolicies(p Product, claim func(string) error) error {
 		if err := claim("New" + spec.Operation + "Paginator"); err != nil {
 			return err
 		}
-		for _, name := range []string{spec.Limit, spec.Page, spec.Size} {
+		numeric := []string{spec.Page, spec.Size}
+		if spec.Mode != "pages" {
+			numeric = append(numeric, spec.Limit)
+		}
+		for _, name := range numeric {
 			if err := field(op.Inputs, name, "int"); err != nil {
 				return err
 			}
 		}
-		if err := field(op.Inputs, spec.Token, "string"); err != nil {
-			return err
+		if spec.Mode != "pages" {
+			if err := field(op.Inputs, spec.Token, "string"); err != nil {
+				return err
+			}
 		}
 		for _, name := range []string{spec.Page, spec.Size, spec.Total} {
 			if err := field(op.Outputs, name, "int"); err != nil {
 				return err
 			}
 		}
-		if err := field(op.Outputs, spec.Token, "string"); err != nil {
-			return err
+		if spec.Mode != "pages" {
+			if err := field(op.Outputs, spec.Token, "string"); err != nil {
+				return err
+			}
 		}
 		found := false
 		for _, f := range op.Outputs {

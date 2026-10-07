@@ -47,19 +47,20 @@ type Manifest struct {
 
 // Schema contains supported wire structure and evidence of unsupported shapes.
 type Schema struct {
-	Type                 string             `json:"type"`
-	Format               string             `json:"format"`
-	Required             bool               `json:"required"`
-	Properties           map[string]*Schema `json:"properties"`
-	Items                *Schema            `json:"items"`
-	Ref                  string             `json:"$ref"`
-	OneOf                []jsontext.Value   `json:"oneOf"`
-	AllOf                []jsontext.Value   `json:"allOf"`
-	AnyOf                []jsontext.Value   `json:"anyOf"`
-	AdditionalProperties jsontext.Value     `json:"additionalProperties"`
-	Minimum              jsontext.Value     `json:"minimum"`
-	Maximum              jsontext.Value     `json:"maximum"`
-	MaxItems             int                `json:"maxItems"`
+	Type                 string                    `json:"type"`
+	Format               string                    `json:"format"`
+	Required             bool                      `json:"required"`
+	Properties           map[string]*Schema        `json:"properties"`
+	Items                *Schema                   `json:"items"`
+	Ref                  string                    `json:"$ref"`
+	OneOf                []jsontext.Value          `json:"oneOf"`
+	AllOf                []jsontext.Value          `json:"allOf"`
+	AnyOf                []jsontext.Value          `json:"anyOf"`
+	AdditionalProperties jsontext.Value            `json:"additionalProperties"`
+	Minimum              jsontext.Value            `json:"minimum"`
+	Maximum              jsontext.Value            `json:"maximum"`
+	MaxItems             int                       `json:"maxItems"`
+	Extra                map[string]jsontext.Value `json:",unknown"`
 }
 
 // Parameter describes a metadata query parameter.
@@ -79,6 +80,9 @@ type Snapshot struct {
 	Responses  map[string]struct {
 		Schema *Schema `json:"schema"`
 	} `json:"responses"`
+	Components struct {
+		Schemas map[string]*Schema `json:"schemas"`
+	} `json:"components"`
 }
 
 // MetadataURL returns the official unauthenticated operation metadata URL.
@@ -108,6 +112,12 @@ func Extract(raw []byte) ([]byte, error) {
 	for _, key := range []string{"methods", "schemes", "path", "parameters", "responses"} {
 		if value, ok := document[key]; ok {
 			selected[key] = value
+		}
+	}
+	// Empty components are excluded to preserve existing snapshot bytes.
+	if components, ok := document["components"].(map[string]any); ok {
+		if schemas, ok := components["schemas"].(map[string]any); ok && len(schemas) > 0 {
+			selected["components"] = map[string]any{"schemas": schemas}
 		}
 	}
 	// Only schema annotations are removed. Wire property names may themselves be
@@ -158,6 +168,15 @@ func Extract(raw []byte) ([]byte, error) {
 				delete(response, "headers")
 				if s, ok := response["schema"].(map[string]any); ok {
 					pruneSchema(s)
+				}
+			}
+		}
+	}
+	if components, ok := selected["components"].(map[string]any); ok {
+		if schemas, ok := components["schemas"].(map[string]any); ok {
+			for _, value := range schemas {
+				if schema, ok := value.(map[string]any); ok {
+					pruneSchema(schema)
 				}
 			}
 		}
@@ -250,7 +269,11 @@ func checkProtocol(s Snapshot) error {
 	if !contains(s.Methods, "post") || !contains(s.Schemes, "https") || (s.Path != "" && s.Path != "/") {
 		return errors.New("codegen: unsupported RPC method, scheme or path")
 	}
-	if s.Responses["200"].Schema == nil || s.Responses["200"].Schema.Type != "object" {
+	root, err := s.resolve(s.Responses["200"].Schema)
+	if err != nil {
+		return err
+	}
+	if root.Type != "object" {
 		return errors.New("codegen: JSON 200 object response required")
 	}
 	return nil
