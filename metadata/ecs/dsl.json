@@ -79,7 +79,17 @@
               }
             },
             "required": false
-          }
+          },
+          "metadataBindings": [
+            "Filter.1.Key",
+            "Filter.1.Value",
+            "Filter.2.Key",
+            "Filter.2.Value",
+            "Filter.3.Key",
+            "Filter.3.Value",
+            "Filter.4.Key",
+            "Filter.4.Value"
+          ]
         },
         {
           "wire": "HpcClusterId",

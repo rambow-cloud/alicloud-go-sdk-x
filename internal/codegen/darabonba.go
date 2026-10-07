@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"io/fs"
+	"maps"
 	"os"
 	"path/filepath"
 	"slices"
@@ -46,6 +47,8 @@ type DSLInput struct {
 	Location string    `json:"location"`
 	Guard    string    `json:"guard"`
 	Schema   *DSLShape `json:"schema"`
+	// MetadataBindings lists literal indexed aliases verified against Schema, not array limits.
+	MetadataBindings []string `json:"metadataBindings,omitempty"`
 }
 
 // DSLOperation records a selected operation's lowered protocol and wire shapes.
@@ -148,8 +151,9 @@ type dslDecisions struct {
 	SchemaVersion int    `json:"schemaVersion"`
 	Revision      string `json:"revision"`
 	Operations    map[string]struct {
-		DSLOnlyInputs  []string `json:"dslOnlyInputs"`
-		RequiredInputs []string `json:"requiredInputs"`
+		DSLOnlyInputs      []string          `json:"dslOnlyInputs"`
+		RequiredInputs     []string          `json:"requiredInputs"`
+		MetadataOnlyFields map[string]string `json:"metadataOnlyFields,omitempty"`
 	} `json:"operations"`
 }
 
@@ -233,14 +237,55 @@ func LoadProduct(dir string) (Product, error) {
 		var extra, required []string
 		parameters := map[string]*Schema{}
 		for _, param := range snapshot.Parameters {
+			if param.In != "query" || parameters[param.Name] != nil {
+				return Product{}, errors.New("darabonba: invalid/duplicate metadata binding")
+			}
 			schema, err := snapshot.resolve(param.Schema)
 			if err != nil {
 				return Product{}, err
 			}
 			parameters[param.Name] = schema
 		}
+		metadataOnly := map[string]string{}
+		indexed := map[string]bool{}
+		for _, in := range dsl.Inputs {
+			var aliases []string
+			for name, schema := range parameters {
+				if !strings.HasPrefix(name, in.Wire+".") {
+					continue
+				}
+				leaf, err := indexedDSLLeaf(in.Schema, strings.TrimPrefix(name, in.Wire+"."))
+				if err != nil {
+					return Product{}, err
+				}
+				if err = compatibleBinding(snapshot, schema, leaf, name, nil, 0); err != nil {
+					return Product{}, err
+				}
+				if schema.Required != leaf.Required {
+					return Product{}, fmt.Errorf("darabonba: indexed requiredness differs: %s", name)
+				}
+				aliases = append(aliases, name)
+			}
+			slices.Sort(aliases)
+			if !slices.Equal(aliases, in.MetadataBindings) {
+				return Product{}, fmt.Errorf("darabonba: indexed bindings differ: %s", in.Wire)
+			}
+			if len(aliases) > 0 {
+				if parameters[in.Wire] != nil || in.Schema.Required {
+					return Product{}, errors.New("darabonba: ambiguous/required indexed root")
+				}
+				indexed[in.Wire] = true
+			} else if schema := parameters[in.Wire]; schema != nil {
+				if err = compatibleBinding(snapshot, schema, in.Schema, in.Wire, &metadataOnly, 0); err != nil {
+					return Product{}, err
+				}
+			}
+		}
 		for name, input := range inputs {
 			if schema := parameters[name]; schema == nil {
+				if indexed[name] {
+					continue
+				}
 				if input.Required {
 					return Product{}, fmt.Errorf("darabonba: unselected required DSL input: %s", name)
 				}
@@ -255,7 +300,7 @@ func LoadProduct(dir string) (Product, error) {
 		slices.Sort(extra)
 		slices.Sort(required)
 		decision, reviewed := decisions.Operations[p.Manifest.Package+"/"+op.Name]
-		if !reviewed || !slices.Equal(extra, decision.DSLOnlyInputs) || !slices.Equal(required, decision.RequiredInputs) {
+		if !reviewed || !slices.Equal(extra, decision.DSLOnlyInputs) || !slices.Equal(required, decision.RequiredInputs) || !maps.Equal(metadataOnly, decision.MetadataOnlyFields) {
 			return Product{}, fmt.Errorf("darabonba: unreviewed metadata/DSL difference: %s", op.Name)
 		}
 		for _, f := range op.Inputs {
@@ -308,6 +353,65 @@ func LoadProduct(dir string) (Product, error) {
 	}
 	p.DSL = &d
 	return p, nil
+}
+
+func indexedDSLLeaf(root *DSLShape, suffix string) (*DSLShape, error) {
+	parts := strings.Split(suffix, ".")
+	if len(parts) > 32 {
+		return nil, errors.New("darabonba: deep indexed binding")
+	}
+	for _, part := range parts {
+		if root != nil && root.Type == "array" {
+			valid := len(part) > 0 && part[0] >= '1' && part[0] <= '9'
+			for _, c := range part {
+				valid = valid && c >= '0' && c <= '9'
+			}
+			if !valid {
+				return nil, fmt.Errorf("darabonba: invalid array index: %s", suffix)
+			}
+			root = root.Items
+		} else if root != nil && root.Type == "object" && root.Properties[part] != nil {
+			root = root.Properties[part]
+		} else {
+			return nil, fmt.Errorf("darabonba: wire path/case differs: %s", suffix)
+		}
+	}
+	if root == nil {
+		return nil, errors.New("darabonba: missing indexed leaf")
+	}
+	return root, nil
+}
+
+// compatibleBinding checks all metadata input members, recording only optional missing members.
+// The caller must compare that inventory with explicit compatibility approvals before writes.
+func compatibleBinding(snapshot Snapshot, metadata *Schema, wire *DSLShape, location string, missing *map[string]string, depth int) error {
+	if depth >= 32 {
+		return errors.New("darabonba: deep input binding")
+	}
+	metadata, err := snapshot.resolve(metadata)
+	if err != nil {
+		return err
+	}
+	if metadata == nil || wire == nil || metadata.Type != wire.Type || wire.Type == "unsupported" {
+		return fmt.Errorf("darabonba: wire type differs: %s", location)
+	}
+	if wire.Type == "array" {
+		return compatibleBinding(snapshot, metadata.Items, wire.Items, location+"[]", missing, depth+1)
+	}
+	for name, schema := range metadata.Properties {
+		member := location + "." + name
+		if wire.Properties[name] == nil && missing != nil && schema != nil && !schema.Required {
+			if schema.Type != "string" && schema.Type != "integer" && schema.Type != "number" && schema.Type != "boolean" {
+				return fmt.Errorf("darabonba: unsupported metadata-only member: %s", member)
+			}
+			(*missing)[member] = schema.Type
+			continue
+		}
+		if err := compatibleBinding(snapshot, schema, wire.Properties[name], member, missing, depth+1); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 func compatibleDSL(metadata *Schema, wire *DSLShape) error {

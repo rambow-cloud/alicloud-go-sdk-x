@@ -5,6 +5,11 @@ const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
 const parser = require("@darabonba/parser");
+const {
+  bindInputs,
+  verifyCanonical,
+  normalizeCanonical,
+} = require("./normalization.cjs");
 const repository = path.resolve(__dirname, "../..");
 const sourceRoot = path.join(repository, "sources/darabonba");
 const sha = (data) => crypto.createHash("sha256").update(data).digest("hex");
@@ -389,10 +394,14 @@ function lowerOperation(ast, operation) {
 
 function reviewInputs(pkg, op, snapshot, decisions) {
   const parameters = new Map(snapshot.parameters.map((p) => [p.name, p]));
+  const bindings = bindInputs(op.inputs, snapshot.parameters);
   for (const input of op.inputs) {
+    const aliases = bindings.get(input.wire).aliases;
+    if (aliases.length) input.metadataBindings = aliases;
+    else delete input.metadataBindings;
     const metadata = parameters.get(input.wire);
     requireProfile(
-      metadata || !input.schema.required,
+      metadata || aliases.length || !input.schema.required,
       "unselected required DSL input " + input.wire,
     );
     if (metadata && !!input.schema.required !== !!metadata.schema.required) {
@@ -404,7 +413,9 @@ function reviewInputs(pkg, op, snapshot, decisions) {
   }
   const actual = {
     dslOnlyInputs: op.inputs
-      .filter((i) => !parameters.has(i.wire))
+      .filter(
+        (i) => !parameters.has(i.wire) && !bindings.get(i.wire).aliases.length,
+      )
       .map((i) => i.wire)
       .sort(),
     requiredInputs: op.inputs
@@ -415,14 +426,27 @@ function reviewInputs(pkg, op, snapshot, decisions) {
       )
       .map((i) => i.wire)
       .sort(),
+    metadataOnlyFields: Object.fromEntries(
+      Object.entries(bindings.metadataOnlyFields).sort(([a], [b]) =>
+        a < b ? -1 : a > b ? 1 : 0,
+      ),
+    ),
   };
   const approved = decisions.operations[pkg + "/" + op.name];
   requireProfile(
     approved &&
-      Object.keys(approved).length === 2 &&
-      Object.entries(actual).every(
-        ([key, value]) =>
-          JSON.stringify(value) === JSON.stringify(approved[key]),
+      Object.keys(approved).every((key) => Object.hasOwn(actual, key)) &&
+      Object.entries(actual).every(([key, value]) =>
+        key === "metadataOnlyFields"
+          ? JSON.stringify(value) ===
+            JSON.stringify(
+              Object.fromEntries(
+                Object.entries(approved[key] || {}).sort(([a], [b]) =>
+                  a < b ? -1 : a > b ? 1 : 0,
+                ),
+              ),
+            )
+          : JSON.stringify(value) === JSON.stringify(approved[key] || []),
       ),
     "unreviewed metadata/DSL difference " + op.name,
   );
@@ -431,6 +455,28 @@ function reviewInputs(pkg, op, snapshot, decisions) {
 function project(root = repository) {
   const sourceDir = path.join(root, "sources/darabonba");
   const verified = verifySources(sourceDir);
+  // CLI metadata is optional enrichment, never an operation-discovery prerequisite.
+  // These pinned fixtures exercise its versioned adapter before any bridge writes.
+  const canonicalRoot = path.join(root, "sources/openapi-meta");
+  const canonical = new Map();
+  if (fs.existsSync(canonicalRoot)) {
+    const lock = verifyCanonical(canonicalRoot);
+    for (const file of lock.manifest.files.filter(
+      (f) => f.file.endsWith(".json") && !f.file.endsWith("/version.json"),
+    )) {
+      const normalized = normalizeCanonical(
+        JSON.parse(fs.readFileSync(path.join(canonicalRoot, file.file))),
+        {
+          repository: lock.manifest.repository,
+          revision: lock.manifest.revision,
+          file: file.file,
+          sha256: file.sha256,
+          license: lock.manifest.license,
+        },
+      );
+      canonical.set("ecs/" + normalized.protocol.action, normalized);
+    }
+  }
   const files = {};
   const decisionData = fs.readFileSync(
     path.join(root, "metadata/darabonba-decisions.json"),
@@ -470,6 +516,27 @@ function project(root = repository) {
         fs.readFileSync(path.join(metaDir, op.name + ".json"), "utf8"),
       );
       reviewInputs(pkg, op, snapshot, decisions);
+      const enrichment = canonical.get(pkg + "/" + op.name);
+      if (enrichment) {
+        requireProfile(
+          Object.entries(enrichment.protocol).every(
+            ([key, value]) => op.protocol[key] === value,
+          ),
+          "canonical protocol differs",
+        );
+        reviewInputs(
+          pkg,
+          structuredClone(op),
+          {
+            parameters: enrichment.inputs.map((i) => ({
+              name: i.wire,
+              in: i.location,
+              schema: i.schema,
+            })),
+          },
+          decisions,
+        );
+      }
     }
     const data = Buffer.from(JSON.stringify(projection, null, 2) + "\n");
     files["metadata/" + pkg + "/dsl.json"] = data;
