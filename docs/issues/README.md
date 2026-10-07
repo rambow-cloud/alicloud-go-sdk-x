@@ -17,6 +17,9 @@ GitHub owns current state; this table records dependencies. Existing #3 HTTP dep
 | #18 | [Feature]: Add an explicit composable credential chain | None |
 | #19 | [Maintenance]: Validate the unified runtime foundation before enabling generator development | #3, #4, #5, #6, #7, #9, #10, #11, #12, #13, #14, #15, #16, #17, #18 |
 | #20 | [Maintenance]: Establish reproducible runtime and dependency comparison benchmarks | #19 |
+| #21 | Pinned metadata importer and validated IR | #19 |
+| #22 | Generated clients, models and paginator/waiter adapters | #21 |
+| #23 | Deterministic regeneration and CI acceptance | #22 |
 
 ## 中文
 
@@ -35,3 +38,6 @@ GitHub owns current state; this table records dependencies. Existing #3 HTTP dep
 | #18 | 区分凭据来源不存在与来源不完整/无效。 | None |
 | #19 | 用手写 ECS/STS 参考验证十一项能力。 | #3, #4, #5, #6, #7, #9, #10, #11, #12, #13, #14, #15, #16, #17, #18 |
 | #20 | 固定 Go、OS、架构和官方 SDK 版本。 | #19 |
+| #21 | 固定元数据导入及校验 IR。 | #19 |
+| #22 | 生成客户端、模型及分页/waiter 适配器。 | #21 |
+| #23 | 确定性再生成与 CI 验收。 | #22 |

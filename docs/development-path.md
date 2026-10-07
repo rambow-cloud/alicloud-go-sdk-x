@@ -15,7 +15,7 @@ imports remain standard-library-only; OpenTelemetry is an optional integration.
 | C: resilience and identity | explicit credential chain, expiry-aware cache, bounded retries, STS AssumeRole helper | cancellation, freshness, replayability, idempotency |
 | D: reference behavior | handwritten ECS reads, unified pagination, bounded waiters, optional OTel | typed usage and cross-capability integration |
 | E: foundation acceptance | eleven capabilities, runnable examples, paired guides, Linux race and Windows CI | implementations and tests, not interface presence |
-| F: generation | frozen metadata to typed clients/codecs/docs/policies | issue #8 blocked until E passes |
+| F: generation | frozen metadata to typed clients/codecs/docs/policies | #19 passed; follow #21 -> #22 -> #23 under #8 |
 
 Dependency order: testing/middleware/endpoints/errors and signing -> HTTP runtime ->
 ECS/STS clients -> paginator/waiter/AssumeRole integration. Credential chain/cache and
@@ -42,6 +42,9 @@ GitHub is the source of execution status. #1/#2 are historical bootstrap complet
 #3-#7/#9 are refined foundation tasks; #8 is generation only. Benchmark work is separate.
 New foundation issues are listed in the issue index and GitHub milestone; record actual numbers, never assume them.
 
+Generator architecture, supported profile, provenance and acceptance are defined in
+[generator.md](generator.md). The foundation gate passed on commit 28684e4 before #21.
+
 Sources: [ACS3](https://help.aliyun.com/zh/sdk/product-overview/v3-request-structure-and-signature),
 [metadata](https://help.aliyun.com/zh/sdk/product-overview/openapi-metadata/),
 [AWS middleware](https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/middleware.html),
@@ -59,7 +62,7 @@ Sources: [ACS3](https://help.aliyun.com/zh/sdk/product-overview/v3-request-struc
 | C：可靠性与身份 | 显式凭据链、过期缓存、有界重试、STS helper | 取消、新鲜度、可重放与幂等性 |
 | D：参考行为 | 手写 ECS、统一分页、waiter、可选 OTel | 类型化用法与跨能力集成 |
 | E：基础验收 | 十一项能力、示例、双语指南、Linux race 与 Windows CI | 实现及测试，而非仅有接口 |
-| F：生成器 | 固定元数据生成类型化客户端、编码、文档与规则 | E 通过前 #8 保持阻塞 |
+| F：生成器 | 固定元数据生成类型化客户端、编码、文档与规则 | #19 已通过，按 #8 下 #21 → #22 → #23 执行 |
 
 依赖顺序：测试/middleware/endpoint/错误及签名 → HTTP runtime → ECS/STS → 分页/waiter/AssumeRole 集成。
 凭据链/缓存与重试策略可先独立实现，再接 runtime；OTel 依赖 middleware 和请求元数据。
@@ -79,3 +82,5 @@ Waiter 总期限与单次重试分开；凭据刷新有界并合并并发，一�
 每项 issue 包含包文档、确定性外部 Example、对应双语指南。GitHub 是执行状态来源。
 #1/#2 保留历史完成记录，#3-#7/#9 细化为基础任务，#8 只负责生成器；基准独立跟踪。
 新增 issue 的真实编号在索引与里程碑中登记，不预设编号。协议及设计参考来源与英文章节相同。
+
+生成器架构、支持范围、来源及验收见 [generator.md](generator.md)；#21 开始前，基础门槛已在 28684e4 通过。
