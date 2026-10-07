@@ -241,8 +241,14 @@ func LoadProduct(dir string) (Product, error) {
 		}
 		for name, input := range inputs {
 			if schema := parameters[name]; schema == nil {
+				if input.Required {
+					return Product{}, fmt.Errorf("darabonba: unselected required DSL input: %s", name)
+				}
 				extra = append(extra, name)
 			} else if schema.Required != input.Required {
+				if !schema.Required || input.Required {
+					return Product{}, fmt.Errorf("darabonba: unreviewed requiredness direction: %s", name)
+				}
 				required = append(required, name)
 			}
 		}

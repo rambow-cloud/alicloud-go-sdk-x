@@ -7,7 +7,12 @@ const path = require("node:path");
 const os = require("node:os");
 const crypto = require("node:crypto");
 const parser = require("@darabonba/parser");
-const { project, verifySources, lowerOperation } = require("./frontend.cjs");
+const {
+  project,
+  verifySources,
+  lowerOperation,
+  reviewInputs,
+} = require("./frontend.cjs");
 const root = path.resolve(__dirname, "../..");
 const main = path.join(root, "sources/darabonba/products/sts/main.tea");
 const source = fs.readFileSync(main, "utf8");
@@ -51,6 +56,40 @@ test("official parser performs semantic checking, including imported declaration
   );
   assert.throws(() =>
     parser.parse(source.replace("import Util;", "import Unknown;"), main),
+  );
+});
+
+test("approved hidden fields cannot silently become required", () => {
+  const op = JSON.parse(
+    fs.readFileSync(path.join(root, "metadata/ecs/dsl.json")),
+  ).operations.find((o) => o.name === "DescribeRegions");
+  const snapshot = JSON.parse(
+    fs.readFileSync(path.join(root, "metadata/ecs/DescribeRegions.json")),
+  );
+  const decisions = JSON.parse(
+    fs.readFileSync(path.join(root, "metadata/darabonba-decisions.json")),
+  );
+  op.inputs.find((i) => i.wire === "OwnerId").schema.required = true;
+  assert.throws(
+    () => reviewInputs("ecs", op, snapshot, decisions),
+    /unselected required DSL input/,
+  );
+});
+test("approved requiredness differences cannot reverse direction", () => {
+  const op = JSON.parse(
+    fs.readFileSync(path.join(root, "metadata/sts/dsl.json")),
+  ).operations[0];
+  const snapshot = JSON.parse(
+    fs.readFileSync(path.join(root, "metadata/sts/AssumeRole.json")),
+  );
+  const decisions = JSON.parse(
+    fs.readFileSync(path.join(root, "metadata/darabonba-decisions.json")),
+  );
+  op.inputs.find((i) => i.wire === "RoleArn").schema.required = true;
+  snapshot.parameters.find((p) => p.name === "RoleArn").schema.required = false;
+  assert.throws(
+    () => reviewInputs("sts", op, snapshot, decisions),
+    /unreviewed requiredness direction/,
   );
 });
 

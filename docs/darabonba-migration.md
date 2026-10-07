@@ -48,7 +48,7 @@ Implementation under [#31](https://github.com/rambow-cloud/alicloud-go-sdk-x/iss
 
 Recorded local acceptance, 2026-10-07 (Windows, Go 1.27.1, Node 22.21.1): pinned
 npm ci succeeded; official offline semantic projection check passed; frontend tests
-12/12 and repository automation tests 11/11 passed; doccheck passed for 13 public
+14/14 and repository automation tests 11/11 passed; doccheck passed for 13 public
 packages, vet and all Go packages/examples passed; sdkgen check, project Go formatting,
 bilingual structure and diff whitespace checks passed. The contract comparison confirms
 all regenerated Go service files equal the prior backend output. Linux race and Windows
@@ -94,7 +94,7 @@ CI 再生成通过，发布实际证据。
 [跨来源决策及 Explorer 步骤](darabonba-decisions.md)。
 
 2026-10-07 本地验收（Windows、Go 1.27.1、Node 22.21.1）：固定 npm ci 成功，官方
-离线语义投影检查通过，前端测试 12/12、仓库自动化测试 11/11；13 个公共包 doccheck、
+离线语义投影检查通过，前端测试 14/14、仓库自动化测试 11/11；13 个公共包 doccheck、
 vet、全部 Go 包/Example、sdkgen check、项目 Go 格式、双语结构及 diff 空白检查通过。
 契约比较确认所有再生成 Go 服务文件与旧后端输出一致。Linux race 和 Windows CI
 执行相同前端及 Go 门禁，结果在关联 PR 跟踪。Explorer 浏览器核验为 NOT RUN，

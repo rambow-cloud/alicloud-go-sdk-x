@@ -387,6 +387,47 @@ function lowerOperation(ast, operation) {
   };
 }
 
+function reviewInputs(pkg, op, snapshot, decisions) {
+  const parameters = new Map(snapshot.parameters.map((p) => [p.name, p]));
+  for (const input of op.inputs) {
+    const metadata = parameters.get(input.wire);
+    requireProfile(
+      metadata || !input.schema.required,
+      "unselected required DSL input " + input.wire,
+    );
+    if (metadata && !!input.schema.required !== !!metadata.schema.required) {
+      requireProfile(
+        metadata.schema.required && !input.schema.required,
+        "unreviewed requiredness direction " + input.wire,
+      );
+    }
+  }
+  const actual = {
+    dslOnlyInputs: op.inputs
+      .filter((i) => !parameters.has(i.wire))
+      .map((i) => i.wire)
+      .sort(),
+    requiredInputs: op.inputs
+      .filter(
+        (i) =>
+          parameters.has(i.wire) &&
+          !!i.schema.required !== !!parameters.get(i.wire).schema.required,
+      )
+      .map((i) => i.wire)
+      .sort(),
+  };
+  const approved = decisions.operations[pkg + "/" + op.name];
+  requireProfile(
+    approved &&
+      Object.keys(approved).length === 2 &&
+      Object.entries(actual).every(
+        ([key, value]) =>
+          JSON.stringify(value) === JSON.stringify(approved[key]),
+      ),
+    "unreviewed metadata/DSL difference " + op.name,
+  );
+}
+
 function project(root = repository) {
   const sourceDir = path.join(root, "sources/darabonba");
   const verified = verifySources(sourceDir);
@@ -428,26 +469,7 @@ function project(root = repository) {
       const snapshot = JSON.parse(
         fs.readFileSync(path.join(metaDir, op.name + ".json"), "utf8"),
       );
-      const parameters = new Map(snapshot.parameters.map((p) => [p.name, p]));
-      const actual = {
-        dslOnlyInputs: op.inputs
-          .filter((i) => !parameters.has(i.wire))
-          .map((i) => i.wire)
-          .sort(),
-        requiredInputs: op.inputs
-          .filter(
-            (i) =>
-              parameters.has(i.wire) &&
-              !!i.schema.required !== !!parameters.get(i.wire).schema.required,
-          )
-          .map((i) => i.wire)
-          .sort(),
-      };
-      requireProfile(
-        JSON.stringify(actual) ===
-          JSON.stringify(decisions.operations[pkg + "/" + op.name]),
-        "unreviewed metadata/DSL difference " + op.name,
-      );
+      reviewInputs(pkg, op, snapshot, decisions);
     }
     const data = Buffer.from(JSON.stringify(projection, null, 2) + "\n");
     files["metadata/" + pkg + "/dsl.json"] = data;
@@ -489,4 +511,11 @@ if (require.main === module) {
     process.exitCode = 1;
   }
 }
-module.exports = { verifySources, lowerOperation, shape, project, run };
+module.exports = {
+  verifySources,
+  lowerOperation,
+  shape,
+  reviewInputs,
+  project,
+  run,
+};

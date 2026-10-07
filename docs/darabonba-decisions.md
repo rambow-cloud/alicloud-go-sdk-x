@@ -9,6 +9,8 @@ Machine-readable approvals live in metadata/darabonba-decisions.json, pinned by
 each product manifest. Both frontend and Go checks reject new input coverage or
 requiredness differences; selected wire type/path/binding differences also fail.
 Approval edits require issue evidence and an equivalent update to this document.
+Approved DSL-only fields must remain optional. Requiredness approvals only allow API
+required / DSL optional; reversing that direction requires a new supported policy.
 
 | Difference | Reviewed disposition | Behavior evidence |
 | --- | --- | --- |
@@ -57,6 +59,8 @@ SHA-256 在 metadata/{ecs,sts,vpc}/manifest.json。机器审核记录在
 metadata/darabonba-decisions.json，由各产品 manifest 固定；前端和 Go 检查均拒绝
 新输入范围/必填差异，选定线类型、路径、绑定变化也失败。修改批准记录必须有 issue
 证据并同步本文对应语言。
+批准的 DSL 独有字段必须保持可选；必填差异只允许 API 必填、DSL 可选，反转方向
+需要建立新的支持策略。
 
 | 偏差 | 审核处理 | 行为证据 |
 | --- | --- | --- |

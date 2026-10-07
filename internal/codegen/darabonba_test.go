@@ -47,9 +47,9 @@ func TestOfficialDSLJoinsAllProductsWithoutChangingGoContracts(t *testing.T) {
 	}
 }
 
-func mutateDSL(t *testing.T, root string, change func(*DSLProduct)) {
+func mutateDSL(t *testing.T, root, pkg string, change func(*DSLProduct)) {
 	t.Helper()
-	dir := filepath.Join(root, "metadata", "sts")
+	dir := filepath.Join(root, "metadata", pkg)
 	var projection DSLProduct
 	if err := readJSON(filepath.Join(dir, "dsl.json"), &projection, true); err != nil {
 		t.Fatal(err)
@@ -59,7 +59,7 @@ func mutateDSL(t *testing.T, root string, change func(*DSLProduct)) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	writeTestFile(t, root, "metadata/sts/dsl.json", data)
+	writeTestFile(t, root, "metadata/"+pkg+"/dsl.json", data)
 	var manifest Manifest
 	if err := readJSON(filepath.Join(dir, "manifest.json"), &manifest, true); err != nil {
 		t.Fatal(err)
@@ -69,7 +69,7 @@ func mutateDSL(t *testing.T, root string, change func(*DSLProduct)) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	writeTestFile(t, root, "metadata/sts/manifest.json", data)
+	writeTestFile(t, root, "metadata/"+pkg+"/manifest.json", data)
 }
 
 func TestDSLProjectionRejectsUnreviewedContracts(t *testing.T) {
@@ -89,7 +89,7 @@ func TestDSLProjectionRejectsUnreviewedContracts(t *testing.T) {
 	for name, change := range cases {
 		t.Run(name, func(t *testing.T) {
 			root := fixtureRepository(t)
-			mutateDSL(t, root, change)
+			mutateDSL(t, root, "sts", change)
 			if err := Generate(context.Background(), root, false); err == nil {
 				t.Fatal("unreviewed change accepted")
 			}
@@ -97,6 +97,52 @@ func TestDSLProjectionRejectsUnreviewedContracts(t *testing.T) {
 				t.Fatal("wrote outputs before cross-check")
 			}
 		})
+	}
+}
+
+func TestApprovedHiddenInputCannotBecomeRequired(t *testing.T) {
+	root := fixtureRepository(t)
+	mutateDSL(t, root, "ecs", func(d *DSLProduct) {
+		for i := range d.Operations {
+			if d.Operations[i].Name == "DescribeRegions" {
+				for j := range d.Operations[i].Inputs {
+					if d.Operations[i].Inputs[j].Wire == "OwnerId" {
+						d.Operations[i].Inputs[j].Schema.Required = true
+					}
+				}
+			}
+		}
+	})
+	if err := Generate(context.Background(), root, false); err == nil || !strings.Contains(err.Error(), "unselected required DSL input") {
+		t.Fatal(err)
+	}
+	if _, err := os.Stat(filepath.Join(root, "services")); !os.IsNotExist(err) {
+		t.Fatal("wrote before validation")
+	}
+}
+
+func TestApprovedRequirednessCannotReverseDirection(t *testing.T) {
+	root := fixtureRepository(t)
+	mutateDSL(t, root, "sts", func(d *DSLProduct) {
+		for i := range d.Operations[0].Inputs {
+			if d.Operations[0].Inputs[i].Wire == "RoleArn" {
+				d.Operations[0].Inputs[i].Schema.Required = true
+			}
+		}
+	})
+	mutateSnapshot(t, filepath.Join(root, "metadata", "sts"), "AssumeRole", func(d map[string]any) {
+		for _, raw := range d["parameters"].([]any) {
+			p := raw.(map[string]any)
+			if p["name"] == "RoleArn" {
+				p["schema"].(map[string]any)["required"] = false
+			}
+		}
+	})
+	if err := Generate(context.Background(), root, false); err == nil || !strings.Contains(err.Error(), "unreviewed requiredness direction") {
+		t.Fatal(err)
+	}
+	if _, err := os.Stat(filepath.Join(root, "services")); !os.IsNotExist(err) {
+		t.Fatal("wrote before validation")
 	}
 }
 
