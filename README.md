@@ -2,6 +2,8 @@
 
 [中文](README.zh-CN.md)
 
+- [Full-DSL live evidence](docs/product-live-validation.md): Historical full-DSL ECS/VPC read-only evidence (#47): two image pages; empty instance/VPC pages; live waiter skipped. Product acceptance #74/#75 remains separate.
+
 - Delivery: #60 agent STS acceptance -> ECS #74 -> VPC #75 -> #61 publication. Independent human UX is optional #76; see [the route](docs/sts-ecs-vpc-path.md).
 
 - An independent Alibaba Cloud SDK for Go.

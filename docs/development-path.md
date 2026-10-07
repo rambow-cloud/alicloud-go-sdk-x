@@ -2,6 +2,8 @@
 
 [中文](development-path.zh-CN.md)
 
+- [Full-DSL live evidence](product-live-validation.md): Historical full-DSL ECS/VPC read-only evidence (#47): two image pages; empty instance/VPC pages; live waiter skipped. Product acceptance #74/#75 remains separate.
+
 ## Current delivery route (2026-10-09)
 
 - Follow [STS/ECS/VPC delivery](sts-ecs-vpc-path.md): finish #60, then ECS #74 and VPC #75, then #61 release/indexing.

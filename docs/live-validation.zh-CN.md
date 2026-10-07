@@ -2,6 +2,8 @@
 
 [English](live-validation.md)
 
+- [完整 DSL 真实调用证据](product-live-validation.zh-CN.md): 完整 DSL ECS/VPC 的历史只读证据（#47）：镜像读取两页，实例和 VPC 返回空页，真实 waiter 检查跳过；#74/#75 产品验收仍单独进行。
+
 - 本路径在当前生成 SDK 的真实验收之前建立。
 - 显式选择本地 Aliyun CLI Profile 及其地域， 使用相同只读参数对比 ECS DescribeRegions、DescribeInstances（原生 token 和旧页码）、 DescribeInstanceStatus 与 VPC DescribeVpcs。
 - OpenAPI Explorer 各 API 调试页提供 CLI 示例； CLI 对比不代表操作过 Explorer 浏览器页面。
