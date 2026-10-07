@@ -45,4 +45,3 @@ illustrate invocation only, not valid cloud parameter sets or complete server ex
 完整原生响应结构。新产品分页/waiter 属于 #37，不凭 token 字段猜能力。授权语义
 说明自动化属于 #38，当前 Go 注释说明准确绑定/所有权。每操作有脚本 HTTP transport
 的离线外部 Example；空 mock 请求/响应仅演示调用，不表示有效云参数或完整服务示例。
-
