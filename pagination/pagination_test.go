@@ -55,9 +55,26 @@ func TestCyclesAndCancellation(t *testing.T) {
 		t.Fatal(err)
 	}
 	_, _ = p.NextPage(context.Background())
-	_, err = p.NextPage(context.Background())
-	if !errors.Is(err, pagination.ErrRepeatedCursor) || p.HasMorePages() {
+	value, err := p.NextPage(context.Background())
+	if err != nil || value != 2 || p.HasMorePages() {
 		t.Fatal("cycle not stopped")
+	}
+}
+
+func TestDuplicateProtectionOptOut(t *testing.T) {
+	p, _ := pagination.New(pagination.Cursor{Token: "same"}, func(context.Context, pagination.Cursor) (pagination.Page[int], error) {
+		return pagination.Page[int]{Value: 42, HasMore: true, Next: pagination.Cursor{Token: "same"}}, nil
+	}, func(o *pagination.Options) { o.StopOnDuplicateCursor = false })
+	for range 2 {
+		value, err := p.NextPage(context.Background())
+		if err != nil || value != 42 || !p.HasMorePages() {
+			t.Fatal(value, err)
+		}
+	}
+	if _, err := pagination.New(pagination.Cursor{}, func(context.Context, pagination.Cursor) (pagination.Page[int], error) {
+		return pagination.Page[int]{}, nil
+	}, nil); err == nil {
+		t.Fatal("nil option accepted")
 	}
 }
 func ExampleNew() {

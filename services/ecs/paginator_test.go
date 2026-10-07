@@ -2,8 +2,6 @@ package ecs_test
 
 import (
 	"context"
-	"errors"
-	"github.com/rambow-cloud/alicloud-go-sdk-x/pagination"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/sdktest"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/services/ecs"
 	"net/http"
@@ -59,11 +57,11 @@ func TestLegacyPagesInputCopyAndRepeatedToken(t *testing.T) {
 		t.Fatal(calls)
 	}
 	repeated := listFunc(func(context.Context, *ecs.DescribeInstancesInput, ...func(*ecs.Options)) (*ecs.DescribeInstancesOutput, error) {
-		return &ecs.DescribeInstancesOutput{NextToken: "same"}, nil
+		return &ecs.DescribeInstancesOutput{NextToken: "same", Instances: []ecs.Instance{{InstanceID: "delivered"}}}, nil
 	})
 	p, _ = ecs.NewDescribeInstancesPaginator(repeated, &ecs.DescribeInstancesInput{NextToken: "same"})
-	_, err := p.NextPage(context.Background())
-	if !errors.Is(err, pagination.ErrRepeatedCursor) {
-		t.Fatal(err)
+	out, err := p.NextPage(context.Background())
+	if err != nil || len(out.Instances) != 1 || out.Instances[0].InstanceID != "delivered" || p.HasMorePages() {
+		t.Fatal(out, err)
 	}
 }

@@ -446,32 +446,45 @@
       "validator": "validateStatus"
     }
   ],
-  "paginator": {
-    "operation": "DescribeInstances",
-    "items": "Instances",
-    "token": "NextToken",
-    "limit": "MaxResults",
-    "page": "PageNumber",
-    "size": "PageSize",
-    "total": "TotalCount",
-    "defaultSize": 10
-  },
-  "waiter": {
-    "name": "InstanceRunningWaiter",
-    "operation": "DescribeInstanceStatus",
-    "ids": "InstanceIDs",
-    "items": "InstanceStatuses",
-    "id": "InstanceID",
-    "state": "Status",
-    "page": "PageNumber",
-    "size": "PageSize",
-    "maxIDs": 50,
-    "success": "Running",
-    "retry": [
-      "Pending",
-      "Starting",
-      "Stopping",
-      "Stopped"
-    ]
-  }
+  "paginators": [
+    {
+      "operation": "DescribeInstances",
+      "items": "Instances",
+      "token": "NextToken",
+      "limit": "MaxResults",
+      "page": "PageNumber",
+      "size": "PageSize",
+      "total": "TotalCount",
+      "defaultSize": 10
+    },
+    {
+      "mode": "pages",
+      "operation": "DescribeInstanceStatus",
+      "items": "InstanceStatuses",
+      "page": "PageNumber",
+      "size": "PageSize",
+      "total": "TotalCount",
+      "defaultSize": 50
+    }
+  ],
+  "waiters": [
+    {
+      "name": "InstanceRunningWaiter",
+      "operation": "DescribeInstanceStatus",
+      "ids": "InstanceIDs",
+      "items": "InstanceStatuses",
+      "id": "InstanceID",
+      "state": "Status",
+      "page": "PageNumber",
+      "size": "PageSize",
+      "maxIDs": 50,
+      "success": "Running",
+      "retry": [
+        "Pending",
+        "Starting",
+        "Stopping",
+        "Stopped"
+      ]
+    }
+  ]
 }

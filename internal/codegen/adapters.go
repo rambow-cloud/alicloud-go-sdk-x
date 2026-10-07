@@ -13,16 +13,36 @@ var adapterTemplate string
 
 func emitAdapters(p Product) ([]byte, error) {
 	imports := map[string]string{"context": "", "errors": ""}
-	if p.Overlay.Paginator != nil {
+	if len(p.Overlay.paginatorSpecs()) > 0 {
 		imports[module+"/pagination"] = ""
 	}
-	if p.Overlay.Waiter != nil {
+	if len(p.Overlay.waiterSpecs()) > 0 {
 		imports[module+"/waiter"] = ""
 		imports["time"] = ""
 	}
 	var b bytes.Buffer
 	preamble(&b, p.Manifest.Package, imports)
 	functions := template.FuncMap{
+		"bounds": func(operation, name, expression string) string {
+			var code bytes.Buffer
+			for _, op := range p.Operations {
+				if op.Name != operation {
+					continue
+				}
+				for _, f := range op.Inputs {
+					if f.Name != name {
+						continue
+					}
+					if f.Minimum != nil {
+						fmt.Fprintf(&code, "if %s<%d{return nil,errors.New(\"paginator parameter below minimum\")};", expression, *f.Minimum)
+					}
+					if f.Maximum != nil {
+						fmt.Fprintf(&code, "if %s>%d{return nil,errors.New(\"paginator parameter above maximum\")};", expression, *f.Maximum)
+					}
+				}
+			}
+			return code.String()
+		},
 		"q": quote,
 		"copies": func(operation, dst, src string) string {
 			var code bytes.Buffer
@@ -46,7 +66,11 @@ func emitAdapters(p Product) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	if err := t.Execute(&b, p.Overlay); err != nil {
+	policies := struct {
+		Paginators []PaginatorSpec
+		Waiters    []WaiterSpec
+	}{p.Overlay.paginatorSpecs(), p.Overlay.waiterSpecs()}
+	if err := t.Execute(&b, policies); err != nil {
 		return nil, err
 	}
 	code, err := format.Source(b.Bytes())

@@ -195,9 +195,9 @@ func TestPinnedProductsAndSchemaDrift(t *testing.T) {
 
 func TestPolicyBoundsAreValidated(t *testing.T) {
 	for _, change := range []func(*Overlay){
-		func(o *Overlay) { o.Waiter.MaxIDs = 51 },
-		func(o *Overlay) { o.Paginator.DefaultSize = 101 },
-		func(o *Overlay) { o.Waiter.Retry = append(o.Waiter.Retry, o.Waiter.Success) },
+		func(o *Overlay) { o.Waiters[0].MaxIDs = 51 },
+		func(o *Overlay) { o.Paginators[0].DefaultSize = 101 },
+		func(o *Overlay) { o.Waiters[0].Retry = append(o.Waiters[0].Retry, o.Waiters[0].Success) },
 	} {
 		dir := copyFixture(t, "ecs")
 		var o Overlay

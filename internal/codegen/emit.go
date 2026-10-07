@@ -35,7 +35,7 @@ func Render(p Product) (map[string][]byte, error) {
 		return nil, err
 	}
 	files[base+"doc.go"] = code
-	if p.Overlay.Paginator != nil || p.Overlay.Waiter != nil {
+	if len(p.Overlay.paginatorSpecs()) > 0 || len(p.Overlay.waiterSpecs()) > 0 {
 		code, err = emitAdapters(p)
 		if err != nil {
 			return nil, err
@@ -379,12 +379,19 @@ func emitGuideLanguage(b *bytes.Buffer, p Product, chinese bool) {
 	} else {
 		fmt.Fprintf(b, "API version `%s`; RPC/HTTPS/POST. Only explicitly reviewed idempotent operations permit retries. Endpoints use the shared resolver; metadata does not expand region coverage. Pagination follows reviewed token/page policies. Waiters require all requested IDs, retry missing/transitional states and fail unknown/duplicate states or API errors. Adapters are emitted only when configured in the overlay.\n\n", p.Manifest.Version)
 	}
-	if pager := p.Overlay.Paginator; pager != nil {
+	for _, pager := range p.Overlay.paginatorSpecs() {
+		fmt.Fprintf(b, "`%sPaginator`: ", pager.Operation)
 		if pager.Mode == "pages" {
 			if chinese {
 				fmt.Fprintf(b, "分页仅使用页码，默认页 1/大小 %d；空页或总数到达时结束。\n\n", pager.DefaultSize)
 			} else {
 				fmt.Fprintf(b, "Pagination is page-only, defaulting to page 1/size %d; empty pages or reaching the total end traversal.\n\n", pager.DefaultSize)
+			}
+		} else if pager.Mode == "tokens" {
+			if chinese {
+				b.WriteString("分页仅使用服务原生 token；空条目仍可继续，空 token 结束。\n\n")
+			} else {
+				b.WriteString("Pagination uses native tokens only; empty items may continue and an empty token ends traversal.\n\n")
 			}
 		} else {
 			if chinese {

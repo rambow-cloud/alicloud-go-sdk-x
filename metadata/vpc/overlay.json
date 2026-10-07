@@ -389,13 +389,15 @@
       }
     }
   ],
-  "paginator": {
-    "mode": "pages",
-    "operation": "DescribeVpcs",
-    "items": "VPCs",
-    "page": "PageNumber",
-    "size": "PageSize",
-    "total": "TotalCount",
-    "defaultSize": 10
-  }
+  "paginators": [
+    {
+      "mode": "pages",
+      "operation": "DescribeVpcs",
+      "items": "VPCs",
+      "page": "PageNumber",
+      "size": "PageSize",
+      "total": "TotalCount",
+      "defaultSize": 10
+    }
+  ]
 }

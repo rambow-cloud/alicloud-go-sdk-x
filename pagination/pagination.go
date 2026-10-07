@@ -8,8 +8,16 @@ import (
 // ErrNoMorePages indicates exhaustion without calling the fetcher.
 var ErrNoMorePages = errors.New("pagination: no more pages")
 
-// ErrRepeatedCursor indicates a duplicate or cyclic continuation cursor.
+// ErrRepeatedCursor is the former strict duplicate-continuation diagnostic.
+// Deprecated: duplicate protection now returns the fetched page and stops successfully.
 var ErrRepeatedCursor = errors.New("pagination: repeated cursor")
+
+// Options controls continuation protection. New defaults to stopping duplicates.
+type Options struct {
+	// StopOnDuplicateCursor stops after returning a page with an already seen cursor.
+	// Explicit false disables cycle protection and may allow unbounded traversal.
+	StopOnDuplicateCursor bool
+}
 
 // Cursor represents a token, a one-based page number, or both as defined by an adapter.
 type Cursor struct {
@@ -34,25 +42,38 @@ type Fetcher[T any] func(context.Context, Cursor) (Page[T], error)
 
 // Paginator tracks cursors for one consumer. Construct with New; do not copy or share it.
 type Paginator[T any] struct {
-	fetch  Fetcher[T]
-	cursor Cursor
-	seen   map[Cursor]bool
-	done   bool
+	fetch   Fetcher[T]
+	cursor  Cursor
+	seen    map[Cursor]bool
+	done    bool
+	options Options
 }
 
 // New constructs a paginator at initial and rejects a nil fetcher.
-func New[T any](initial Cursor, fetch Fetcher[T]) (*Paginator[T], error) {
+func New[T any](initial Cursor, fetch Fetcher[T], optFns ...func(*Options)) (*Paginator[T], error) {
 	if fetch == nil {
 		return nil, errors.New("pagination: nil fetcher")
 	}
-	return &Paginator[T]{fetch: fetch, cursor: initial, seen: map[Cursor]bool{initial: true}}, nil
+	options := Options{StopOnDuplicateCursor: true}
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("pagination: nil option")
+		}
+		f(&options)
+	}
+	var seen map[Cursor]bool
+	if options.StopOnDuplicateCursor {
+		seen = map[Cursor]bool{initial: true}
+	}
+	return &Paginator[T]{fetch: fetch, cursor: initial, seen: seen, options: options}, nil
 }
 
 // HasMorePages reports whether another page can be requested; initially true.
 func (p *Paginator[T]) HasMorePages() bool { return !p.done }
 
 // NextPage retrieves a result, preserving cursor state on fetch or context failure.
-// A repeated continuation returns ErrRepeatedCursor and permanently stops iteration.
+// With duplicate protection, the repeated continuation's page is returned and
+// iteration stops successfully. No fetched page is discarded by this protection.
 func (p *Paginator[T]) NextPage(ctx context.Context) (T, error) {
 	var zero T
 	if err := ctx.Err(); err != nil {
@@ -69,11 +90,13 @@ func (p *Paginator[T]) NextPage(ctx context.Context) (T, error) {
 		return zero, err
 	}
 	if page.HasMore {
-		if p.seen[page.Next] {
+		if p.options.StopOnDuplicateCursor && p.seen[page.Next] {
 			p.done = true
-			return zero, ErrRepeatedCursor
+			return page.Value, nil
 		}
-		p.seen[page.Next] = true
+		if p.options.StopOnDuplicateCursor {
+			p.seen[page.Next] = true
+		}
 		p.cursor = page.Next
 	} else {
 		p.done = true

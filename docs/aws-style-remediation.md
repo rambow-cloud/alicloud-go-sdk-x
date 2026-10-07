@@ -15,9 +15,8 @@ This is an independent SDK; neither upstream SDK's source compatibility is promi
 | 3 | pagination and generator policy collections | current page delivered on repeated continuation, configurable stop; overflow-safe pages; dedicated options and NextPage call options; multiple token-only/page-only/dual adapters without invented wire fields |
 | 4 | reusable waiter API | inputs on Wait/WaitForOutput, independent concurrent waits, dedicated options/default acceptor override, all-ID safety and cancellation preserved |
 
-Create actual GitHub issues and record their dependency order before code. Each issue
-is tracked as #26 -> #27 -> #28 -> #29. Each issue
-gets its own branch/commit, tests and equivalent English/Chinese documentation. Regenerate
+Actual GitHub issues were created before code, ordered #26 -> #27 -> #28 -> #29.
+Each issue gets its own branch/commit, tests and equivalent English/Chinese documentation. Regenerate
 through the emitter/templates; do not patch generated code. Close only after full local
 gates and exact-commit Linux race/Windows CI. Benchmarks, ROA/body, default discovery and
 changes to default retry/timeout policies are separate work.
@@ -55,9 +54,9 @@ Alibaba protocol evidence remains pinned under metadata/ with paired operation g
 | 3 | 分页及生成策略集合 | 重复游标先返回当前页且停止策略可配置；页码防溢出；专属 options、NextPage 调用选项；多个纯 token/纯页码/双模式适配器且不造字段 |
 | 4 | 可复用 waiter API | Wait/WaitForOutput 接收输入；并发等待独立；专属选项、默认 acceptor 可覆盖；保留全 ID 安全及取消 |
 
-代码前创建真实 GitHub issues 并记录依赖；每 issue 独立分支/提交、测试及对应双语文档。通过模板
-实际编号顺序为 #26 → #27 → #28 → #29。
-再生成，不直接编辑生成文件。全量本地门禁和同一提交的 Linux race/Windows CI 通过后关闭。
+代码前已创建真实 GitHub issues，依赖顺序为 #26 → #27 → #28 → #29。
+每 issue 独立分支/提交、测试及对应双语文档。通过模板再生成，不直接编辑生成文件。
+全量本地门禁和同一提交的 Linux race/Windows CI 通过后关闭。
 基准、ROA/body、默认凭据发现及默认重试/超时策略调整独立跟踪。
 
 Review 已复现跨重试旧解码输出、重复 token 丢当前页、ECS 旧分页整数溢出及 io.ErrUnexpectedEOF

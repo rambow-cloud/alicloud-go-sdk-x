@@ -67,8 +67,11 @@ fields and exact response paths, mark idempotency, supply bilingual guidance and
 offline example, then generate and run the existing gates. Validators name local
 handwritten functions of `func(OperationInput) error`; they are compiled by tests, not
 executed by the generator. Policy fields are checked against selected input/output
-models. One reviewed paginator (dual-mode or page-only) and one all-ID bounded waiter per product are
-supported in schema version 1; paginator mode=pages selects page-only traversal. Optional
+models. Schema version 1 supports reviewed `paginators` and `waiters` collections per product.
+Paginator mode `tokens` selects token-only, `pages` selects page-only, and omitted mode selects
+dual traversal. Legacy singular policies remain readable but cannot be mixed with their
+collection counterparts. Generated names must be unique; native policy fields are required.
+Dedicated paginator options and per-page service options are described in [pagination](pagination.md). Optional
 scalar pointers preserve explicit false/empty/zero; location=input models bind repeatList
 items and are deeply copied. Nested response projections use generated JSON v2 methods.
 Local #/components/schemas chains have a 32-node bound; external/dangling/cyclic references
@@ -128,8 +131,10 @@ Check 模式不写文件，报告缺失、变化和多余生成文件。输出�
 新增操作：先建 issue 和协议证据，显式导入元数据（[命令](../metadata/README.md)），评审 manifest/overlay，
 选择具名字段与准确响应路径，明确幂等性，提供双语说明及离线示例，再生成并运行门禁。
 Validator 指向 `func(OperationInput) error` 的本地手写函数；测试负责编译，生成器不执行。
-规则字段对选定输入/输出模型检查。schema v1 每产品支持一个审核 paginator（双模式或纯页码）和一个有界全 ID waiter。
-mode=pages 选择纯页码；可选标量指针保留显式 false/空/零，location=input 模型绑定 repeatList 项并深复制。
+规则字段对选定输入/输出模型检查。schema v1 每产品支持审核后的 `paginators` 与 `waiters` 集合。
+mode=tokens 为纯 token、pages 为纯页码、省略为双模式；旧单项策略仍可读取，但不能与对应集合混用。
+生成名称须唯一，策略必须引用原生字段；专属分页及每页服务选项见[分页指南](pagination.md)。
+可选标量指针保留显式 false/空/零，location=input 模型绑定 repeatList 项并深复制。
 嵌套响应投影使用生成 JSON v2 方法。本地 #/components/schemas 引用最多 32 个节点，外部/缺失/循环及结构兄弟
 成员失败；composition/map/通用嵌套 query 对象不支持。端点继续复用共享 resolver。
 

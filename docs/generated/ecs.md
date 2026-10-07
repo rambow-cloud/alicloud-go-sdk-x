@@ -9,7 +9,9 @@ NewFromConfig and the retained New accept shared Config and service functional o
 
 API version `2014-05-26`; RPC/HTTPS/POST. Only explicitly reviewed idempotent operations permit retries. Endpoints use the shared resolver; metadata does not expand region coverage. Pagination follows reviewed token/page policies. Waiters require all requested IDs, retry missing/transitional states and fail unknown/duplicate states or API errors. Adapters are emitted only when configured in the overlay.
 
-Pagination defaults to token mode; explicit page/size selects legacy pages.
+`DescribeInstancesPaginator`: Pagination defaults to token mode; explicit page/size selects legacy pages.
+
+`DescribeInstanceStatusPaginator`: Pagination is page-only, defaulting to page 1/size 50; empty pages or reaching the total end traversal.
 
 ### DescribeInstanceStatus
 
@@ -103,7 +105,9 @@ NewFromConfig/保留的 New 接收共享 Config 和服务 functional options，�
 
 API 版本 `2014-05-26`，协议 RPC/HTTPS/POST；只有审核操作可幂等重试。端点由共享 resolver 决定，元数据不自动扩大地域范围。分页使用审核 token/页码规则；waiter 等待所有指定 ID，缺失/过渡状态继续，未知或重复状态及 API 错误失败。仅配置了相应 overlay 时生成适配器。
 
-分页默认 token 模式，显式页码或大小选择旧页码模式。
+`DescribeInstancesPaginator`: 分页默认 token 模式，显式页码或大小选择旧页码模式。
+
+`DescribeInstanceStatusPaginator`: 分页仅使用页码，默认页 1/大小 50；空页或总数到达时结束。
 
 ### DescribeInstanceStatus
 

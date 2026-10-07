@@ -9,83 +9,298 @@ import (
 	"time"
 )
 
-// DescribeInstancesPaginator adapts the shared engine with reviewed token/page policies.
-// It defaults to token mode; explicit page or size selects legacy mode. Use one consumer.
-type DescribeInstancesPaginator struct {
-	engine *pagination.Paginator[*DescribeInstancesOutput]
+// DescribeInstancesPaginatorOptions controls page size and continuation protection.
+// Constructor defaults stop duplicate tokens; callbacks must not retain options.
+type DescribeInstancesPaginatorOptions struct {
+	// Limit overrides the native page size when positive; zero preserves input/default.
+	Limit int
+	// StopOnDuplicateToken stops after returning a page with an already seen cursor.
+	// Defaults to true. Explicit false may allow unbounded cyclic traversal.
+	StopOnDuplicateToken bool
+	// ClientOptions applies service options to every fetch; NextPage options run last.
+	ClientOptions []func(*Options)
 }
 
-// NewDescribeInstancesPaginator copies input/options and starts at the supplied cursor.
-// Nil input selects token mode with the reviewed default result count.
-func NewDescribeInstancesPaginator(api DescribeInstancesAPI, input *DescribeInstancesInput, opts ...func(*Options)) (*DescribeInstancesPaginator, error) {
+// DescribeInstancesPaginator traverses reviewed native pagination with one consumer.
+// Input pointers/slices and option registrations are copied; do not share or copy it.
+type DescribeInstancesPaginator struct {
+	engine         *pagination.Paginator[*DescribeInstancesOutput]
+	clientOptions  []func(*Options)
+	pendingOptions []func(*Options)
+}
+
+// NewDescribeInstancesPaginator copies input and applies dedicated paginator options.
+// Zero size uses the reviewed default; errors/cancellation do not advance the cursor.
+func NewDescribeInstancesPaginator(api DescribeInstancesAPI, input *DescribeInstancesInput, optFns ...func(*DescribeInstancesPaginatorOptions)) (*DescribeInstancesPaginator, error) {
 	if api == nil {
 		return nil, errors.New("nil paginator API")
+	}
+	options := DescribeInstancesPaginatorOptions{StopOnDuplicateToken: true}
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil paginator option")
+		}
+		f(&options)
+	}
+	if options.Limit < 0 {
+		return nil, errors.New("negative paginator limit")
+	}
+	for _, f := range options.ClientOptions {
+		if f == nil {
+			return nil, errors.New("nil paginator client option")
+		}
 	}
 	var in DescribeInstancesInput
 	if input != nil {
 		in = *input
 		in.InstanceIDs = append([]string(nil), input.InstanceIDs...)
 	}
-	if err := validateInstances(in); err != nil {
-		return nil, err
-	}
-	copiedOptions := append([]func(*Options){}, opts...)
 	pageMode := in.PageNumber != 0 || in.PageSize != 0
-	initial := pagination.Cursor{Token: in.NextToken}
+	initial := pagination.Cursor{}
+
 	if pageMode {
+		if in.PageNumber < 0 || in.PageSize < 0 {
+			return nil, errors.New("negative page parameters")
+		}
 		if in.PageNumber == 0 {
 			in.PageNumber = 1
 		}
 		if in.PageSize == 0 {
 			in.PageSize = 10
 		}
+		if options.Limit > 0 {
+			in.PageSize = options.Limit
+		}
+		if in.PageNumber < 1 {
+			return nil, errors.New("paginator parameter below minimum")
+		}
+		if in.PageSize < 1 {
+			return nil, errors.New("paginator parameter below minimum")
+		}
+		if in.PageSize > 100 {
+			return nil, errors.New("paginator parameter above maximum")
+		}
 		initial = pagination.Cursor{PageNumber: in.PageNumber}
-	} else {
+	}
+
+	if !pageMode {
+		if in.MaxResults < 0 {
+			return nil, errors.New("negative token limit")
+		}
 		if in.MaxResults == 0 {
 			in.MaxResults = 10
 		}
+		if options.Limit > 0 {
+			in.MaxResults = options.Limit
+		}
+		if in.MaxResults < 1 {
+			return nil, errors.New("paginator parameter below minimum")
+		}
+		if in.MaxResults > 100 {
+			return nil, errors.New("paginator parameter above maximum")
+		}
+		initial = pagination.Cursor{Token: in.NextToken}
 	}
+
+	if err := validateInstances(in); err != nil {
+		return nil, err
+	}
+	p := &DescribeInstancesPaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
 	engine, err := pagination.New(initial, func(ctx context.Context, cursor pagination.Cursor) (pagination.Page[*DescribeInstancesOutput], error) {
 		request := in
 		request.InstanceIDs = append([]string(nil), in.InstanceIDs...)
 
 		if pageMode {
 			request.PageNumber = cursor.PageNumber
-		} else {
+		}
+		if !pageMode {
 			request.NextToken = cursor.Token
 		}
-		out, err := api.DescribeInstances(ctx, &request, copiedOptions...)
+		out, err := api.DescribeInstances(ctx, &request, p.pendingOptions...)
 		if err != nil {
 			return pagination.Page[*DescribeInstancesOutput]{}, err
 		}
 		if out == nil {
 			return pagination.Page[*DescribeInstancesOutput]{}, errors.New("nil paginator response")
 		}
-		page := pagination.Page[*DescribeInstancesOutput]{Value: out, Next: pagination.Cursor{Token: out.NextToken}, HasMore: out.NextToken != ""}
+		page := pagination.Page[*DescribeInstancesOutput]{Value: out}
+		if !pageMode {
+			page.Next = pagination.Cursor{Token: out.NextToken}
+			page.HasMore = out.NextToken != ""
+		}
+
 		if pageMode {
-			if out.TotalCount < 0 || (out.PageNumber != 0 && out.PageNumber != cursor.PageNumber) {
-				return pagination.Page[*DescribeInstancesOutput]{}, errors.New("inconsistent pagination metadata")
+			if out.TotalCount < 0 || out.PageSize < 0 || (out.PageNumber != 0 && out.PageNumber != cursor.PageNumber) {
+				return pagination.Page[*DescribeInstancesOutput]{}, errors.New("inconsistent page response")
 			}
 			size := out.PageSize
-			if size <= 0 {
+			if size == 0 {
 				size = in.PageSize
 			}
-			page.Next = pagination.Cursor{PageNumber: cursor.PageNumber + 1}
-			page.HasMore = len(out.Instances) > 0 && int64(cursor.PageNumber)*int64(size) < int64(out.TotalCount)
+			// Division avoids signed multiplication overflow; a next page exists only below MaxInt.
+			page.HasMore = len(out.Instances) > 0 && out.TotalCount > 0 && cursor.PageNumber <= (out.TotalCount-1)/size
+			if page.HasMore {
+				page.Next = pagination.Cursor{PageNumber: cursor.PageNumber + 1}
+			}
 		}
+
 		return page, nil
-	})
+	}, func(o *pagination.Options) { o.StopOnDuplicateCursor = options.StopOnDuplicateToken })
 	if err != nil {
 		return nil, err
 	}
-	return &DescribeInstancesPaginator{engine: engine}, nil
+	p.engine = engine
+	return p, nil
 }
 
 // HasMorePages reports whether another service page is available.
 func (p *DescribeInstancesPaginator) HasMorePages() bool { return p.engine.HasMorePages() }
 
-// NextPage fetches without changing the original input; errors do not advance.
-func (p *DescribeInstancesPaginator) NextPage(ctx context.Context) (*DescribeInstancesOutput, error) {
+// NextPage fetches with isolated per-call options; failed/canceled calls preserve state.
+// Options run after ClientOptions and do not persist into later pages.
+func (p *DescribeInstancesPaginator) NextPage(ctx context.Context, optFns ...func(*Options)) (*DescribeInstancesOutput, error) {
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil page option")
+		}
+	}
+	p.pendingOptions = append(append([]func(*Options){}, p.clientOptions...), optFns...)
+	defer func() { p.pendingOptions = nil }()
+	return p.engine.NextPage(ctx)
+}
+
+// DescribeInstanceStatusPaginatorOptions controls page size and continuation protection.
+// Constructor defaults stop duplicate tokens; callbacks must not retain options.
+type DescribeInstanceStatusPaginatorOptions struct {
+	// Limit overrides the native page size when positive; zero preserves input/default.
+	Limit int
+	// StopOnDuplicateToken stops after returning a page with an already seen cursor.
+	// Defaults to true. Explicit false may allow unbounded cyclic traversal.
+	StopOnDuplicateToken bool
+	// ClientOptions applies service options to every fetch; NextPage options run last.
+	ClientOptions []func(*Options)
+}
+
+// DescribeInstanceStatusPaginator traverses reviewed native pagination with one consumer.
+// Input pointers/slices and option registrations are copied; do not share or copy it.
+type DescribeInstanceStatusPaginator struct {
+	engine         *pagination.Paginator[*DescribeInstanceStatusOutput]
+	clientOptions  []func(*Options)
+	pendingOptions []func(*Options)
+}
+
+// NewDescribeInstanceStatusPaginator copies input and applies dedicated paginator options.
+// Zero size uses the reviewed default; errors/cancellation do not advance the cursor.
+func NewDescribeInstanceStatusPaginator(api DescribeInstanceStatusAPI, input *DescribeInstanceStatusInput, optFns ...func(*DescribeInstanceStatusPaginatorOptions)) (*DescribeInstanceStatusPaginator, error) {
+	if api == nil {
+		return nil, errors.New("nil paginator API")
+	}
+	options := DescribeInstanceStatusPaginatorOptions{StopOnDuplicateToken: true}
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil paginator option")
+		}
+		f(&options)
+	}
+	if options.Limit < 0 {
+		return nil, errors.New("negative paginator limit")
+	}
+	for _, f := range options.ClientOptions {
+		if f == nil {
+			return nil, errors.New("nil paginator client option")
+		}
+	}
+	var in DescribeInstanceStatusInput
+	if input != nil {
+		in = *input
+		in.InstanceIDs = append([]string(nil), input.InstanceIDs...)
+	}
+	pageMode := true
+	initial := pagination.Cursor{}
+
+	if pageMode {
+		if in.PageNumber < 0 || in.PageSize < 0 {
+			return nil, errors.New("negative page parameters")
+		}
+		if in.PageNumber == 0 {
+			in.PageNumber = 1
+		}
+		if in.PageSize == 0 {
+			in.PageSize = 50
+		}
+		if options.Limit > 0 {
+			in.PageSize = options.Limit
+		}
+		if in.PageNumber < 1 {
+			return nil, errors.New("paginator parameter below minimum")
+		}
+		if in.PageSize < 1 {
+			return nil, errors.New("paginator parameter below minimum")
+		}
+		if in.PageSize > 50 {
+			return nil, errors.New("paginator parameter above maximum")
+		}
+		initial = pagination.Cursor{PageNumber: in.PageNumber}
+	}
+
+	if err := validateStatus(in); err != nil {
+		return nil, err
+	}
+	p := &DescribeInstanceStatusPaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
+	engine, err := pagination.New(initial, func(ctx context.Context, cursor pagination.Cursor) (pagination.Page[*DescribeInstanceStatusOutput], error) {
+		request := in
+		request.InstanceIDs = append([]string(nil), in.InstanceIDs...)
+
+		if pageMode {
+			request.PageNumber = cursor.PageNumber
+		}
+
+		out, err := api.DescribeInstanceStatus(ctx, &request, p.pendingOptions...)
+		if err != nil {
+			return pagination.Page[*DescribeInstanceStatusOutput]{}, err
+		}
+		if out == nil {
+			return pagination.Page[*DescribeInstanceStatusOutput]{}, errors.New("nil paginator response")
+		}
+		page := pagination.Page[*DescribeInstanceStatusOutput]{Value: out}
+
+		if pageMode {
+			if out.TotalCount < 0 || out.PageSize < 0 || (out.PageNumber != 0 && out.PageNumber != cursor.PageNumber) {
+				return pagination.Page[*DescribeInstanceStatusOutput]{}, errors.New("inconsistent page response")
+			}
+			size := out.PageSize
+			if size == 0 {
+				size = in.PageSize
+			}
+			// Division avoids signed multiplication overflow; a next page exists only below MaxInt.
+			page.HasMore = len(out.InstanceStatuses) > 0 && out.TotalCount > 0 && cursor.PageNumber <= (out.TotalCount-1)/size
+			if page.HasMore {
+				page.Next = pagination.Cursor{PageNumber: cursor.PageNumber + 1}
+			}
+		}
+
+		return page, nil
+	}, func(o *pagination.Options) { o.StopOnDuplicateCursor = options.StopOnDuplicateToken })
+	if err != nil {
+		return nil, err
+	}
+	p.engine = engine
+	return p, nil
+}
+
+// HasMorePages reports whether another service page is available.
+func (p *DescribeInstanceStatusPaginator) HasMorePages() bool { return p.engine.HasMorePages() }
+
+// NextPage fetches with isolated per-call options; failed/canceled calls preserve state.
+// Options run after ClientOptions and do not persist into later pages.
+func (p *DescribeInstanceStatusPaginator) NextPage(ctx context.Context, optFns ...func(*Options)) (*DescribeInstanceStatusOutput, error) {
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil page option")
+		}
+	}
+	p.pendingOptions = append(append([]func(*Options){}, p.clientOptions...), optFns...)
+	defer func() { p.pendingOptions = nil }()
 	return p.engine.NextPage(ctx)
 }
 

@@ -61,7 +61,7 @@ type OperationSpec struct {
 	Example       ExampleSpec `json:"example"`
 }
 
-// PaginatorSpec selects the reviewed dual token/page-number profile.
+// PaginatorSpec selects native token-only, page-only or dual pagination.
 type PaginatorSpec struct {
 	Mode        string `json:"mode,omitempty"`
 	Operation   string `json:"operation"`
@@ -97,6 +97,21 @@ type Overlay struct {
 	Operations    []OperationSpec `json:"operations"`
 	Paginator     *PaginatorSpec  `json:"paginator,omitempty"`
 	Waiter        *WaiterSpec     `json:"waiter,omitempty"`
+	Paginators    []PaginatorSpec `json:"paginators,omitempty"`
+	Waiters       []WaiterSpec    `json:"waiters,omitempty"`
+}
+
+func (o Overlay) paginatorSpecs() []PaginatorSpec {
+	if o.Paginator != nil {
+		return []PaginatorSpec{*o.Paginator}
+	}
+	return o.Paginators
+}
+func (o Overlay) waiterSpecs() []WaiterSpec {
+	if o.Waiter != nil {
+		return []WaiterSpec{*o.Waiter}
+	}
+	return o.Waiters
 }
 
 // Field is a validated field with its source constraints retained.
@@ -174,7 +189,7 @@ func Load(dir string) (Product, error) {
 		snapshots[source.Operation] = s
 	}
 	p := Product{Manifest: m, Overlay: o}
-	names := map[string]bool{"Client": true, "Options": true, "New": true}
+	names := map[string]bool{"Client": true, "Options": true, "New": true, "NewFromConfig": true}
 	models := map[string]ModelSpec{}
 	claim := func(name string) error {
 		if !exportedName.MatchString(name) || names[name] {
@@ -600,6 +615,9 @@ func checkExample(spec OperationSpec, inputs, outputs []Field, models map[string
 }
 
 func checkPolicies(p Product, claim func(string) error) error {
+	if p.Overlay.Paginator != nil && len(p.Overlay.Paginators) > 0 || p.Overlay.Waiter != nil && len(p.Overlay.Waiters) > 0 {
+		return errors.New("codegen: legacy and collection policies cannot be combined")
+	}
 	find := func(name string) (Operation, error) {
 		for _, op := range p.Operations {
 			if op.Name == name {
@@ -616,12 +634,15 @@ func checkPolicies(p Product, claim func(string) error) error {
 		}
 		return fmt.Errorf("codegen: policy field %s must be %s", name, typ)
 	}
-	if spec := p.Overlay.Paginator; spec != nil {
-		if spec.Mode != "" && spec.Mode != "pages" {
+	for _, spec := range p.Overlay.paginatorSpecs() {
+		if spec.Mode != "" && spec.Mode != "pages" && spec.Mode != "tokens" {
 			return errors.New("codegen: unsupported paginator mode")
 		}
 		if spec.Mode == "pages" && (spec.Token != "" || spec.Limit != "") {
 			return errors.New("codegen: page-only policy cannot include token fields")
+		}
+		if spec.Mode == "tokens" && (spec.Page != "" || spec.Size != "" || spec.Total != "") {
+			return errors.New("codegen: token-only policy cannot include page fields")
 		}
 		op, err := find(spec.Operation)
 		if err != nil {
@@ -643,7 +664,13 @@ func checkPolicies(p Product, claim func(string) error) error {
 		if err := claim("New" + spec.Operation + "Paginator"); err != nil {
 			return err
 		}
-		numeric := []string{spec.Page, spec.Size}
+		if err := claim(spec.Operation + "PaginatorOptions"); err != nil {
+			return err
+		}
+		numeric := []string{}
+		if spec.Mode != "tokens" {
+			numeric = append(numeric, spec.Page, spec.Size)
+		}
 		if spec.Mode != "pages" {
 			numeric = append(numeric, spec.Limit)
 		}
@@ -657,7 +684,11 @@ func checkPolicies(p Product, claim func(string) error) error {
 				return err
 			}
 		}
-		for _, name := range []string{spec.Page, spec.Size, spec.Total} {
+		outputNumeric := []string{}
+		if spec.Mode != "tokens" {
+			outputNumeric = []string{spec.Page, spec.Size, spec.Total}
+		}
+		for _, name := range outputNumeric {
 			if err := field(op.Outputs, name, "int"); err != nil {
 				return err
 			}
@@ -677,7 +708,7 @@ func checkPolicies(p Product, claim func(string) error) error {
 			return errors.New("codegen: paginator items missing")
 		}
 	}
-	if spec := p.Overlay.Waiter; spec != nil {
+	for _, spec := range p.Overlay.waiterSpecs() {
 		op, err := find(spec.Operation)
 		if err != nil {
 			return err
