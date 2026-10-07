@@ -56,6 +56,10 @@ type Config struct {
 // CallOptions overrides client defaults for one invocation. Middleware is appended
 // to client registrations; callbacks must not retain this options value.
 type CallOptions struct {
+	// Config replaces the base client configuration for this call when non-nil.
+	// It is copied and validated; Middleware below appends to its registrations.
+	// Providers and other extension objects remain shared and concurrency safe.
+	Config *Config
 	// Region overrides the operation's region and its RegionId query parameter.
 	Region string
 	// BaseEndpoint overrides endpoint resolution with an explicit HTTPS origin.
@@ -156,11 +160,46 @@ func NewClient(config Config) (*Client, error) {
 // Region returns the configured default region without exposing mutable configuration.
 func (c *Client) Region() string { return c.config.Region }
 
+// Config returns a configuration snapshot with copied middleware registrations.
+// Extension objects are shared; mutating the snapshot never changes this client.
+func (c *Client) Config() Config {
+	config := c.config
+	config.Middleware = append([]middleware.Registration(nil), config.Middleware...)
+	return config
+}
+
+// Codec binds an owned model input and output to reviewed wire serialization.
+// Functions must honor context, use JSON v2 and avoid retaining model pointers.
+type Codec struct {
+	// Encode converts the owned typed input into a new request after Initialize.
+	Encode func(context.Context, any) (Request, error)
+	// Decode assigns a fresh typed output after successful response decoding.
+	// On error the temporary output is discarded before publication.
+	Decode func(context.Context, []byte, any) error
+}
+
+type modelBinding struct {
+	input any
+	codec Codec
+}
+
+// InvokeModel executes a typed operation with Initialize and Serialize hooks.
+// Input must be a private owned snapshot; generated clients copy caller models.
+// Output must be a non-nil pointer. Hooks may replace models with the exact same
+// pointer type; they must not retain them. Publication is atomic on success.
+func (c *Client) InvokeModel(ctx context.Context, op Operation, input any, request Request, output any, codec Codec, optFns ...func(*CallOptions)) (Metadata, error) {
+	return c.invoke(ctx, op, request, output, &modelBinding{input: input, codec: codec}, optFns...)
+}
+
 // Invoke sends copied wire data and decodes into a non-nil pointer. Output is
 // assigned only after successful JSON v2 decoding; unknown fields are ignored,
 // duplicate names and invalid UTF-8 fail. All operation failures wrap OperationError.
 // Callers must not concurrently mutate request inputs or share output pointers.
 func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output any, optFns ...func(*CallOptions)) (meta Metadata, err error) {
+	return c.invoke(ctx, op, input, output, nil, optFns...)
+}
+
+func (c *Client) invoke(ctx context.Context, op Operation, input Request, output any, binding *modelBinding, optFns ...func(*CallOptions)) (meta Metadata, err error) {
 	defer func() {
 		if err != nil {
 			err = &OperationError{Service: op.Service, Operation: op.Name, Metadata: meta, Err: err}
@@ -179,6 +218,15 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 		return
 	}
 	var decoded reflect.Value
+	if binding != nil && (binding.codec.Encode == nil || binding.codec.Decode == nil || binding.input == nil) {
+		err = errors.New("alicloud: incomplete model codec")
+		return
+	}
+	if binding != nil && (reflect.ValueOf(binding.input).Kind() != reflect.Pointer || reflect.ValueOf(binding.input).IsNil()) {
+		err = errors.New("alicloud: model input must be a non-nil pointer")
+		return
+	}
+	config := c.config
 	region := input.Region
 	if region == "" {
 		region = c.config.Region
@@ -191,8 +239,25 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 		}
 		f(&options)
 	}
+	if options.Config != nil {
+		configured, configErr := NewClient(*options.Config)
+		if configErr != nil {
+			err = configErr
+			return
+		}
+		config = configured.config
+		if options.Region == region && input.Region == "" {
+			options.Region = config.Region
+		}
+		if options.BaseEndpoint == c.config.BaseEndpoint {
+			options.BaseEndpoint = config.BaseEndpoint
+		}
+		if options.Timeout == c.config.Timeout {
+			options.Timeout = config.Timeout
+		}
+	}
 	if options.Timeout == 0 {
-		options.Timeout = c.config.Timeout
+		options.Timeout = config.Timeout
 	}
 	if options.Timeout < 0 {
 		err = errors.New("alicloud: timeout must be positive")
@@ -201,14 +266,23 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 	callCtx, cancel := context.WithTimeout(ctx, options.Timeout)
 	defer cancel()
 	stack := c.stack
+	if options.Config != nil {
+		stack, err = middleware.NewStack(config.Middleware)
+		if err != nil {
+			return
+		}
+	}
 	if len(options.Middleware) > 0 {
-		regs := append(append([]middleware.Registration(nil), c.config.Middleware...), options.Middleware...)
+		regs := append(append([]middleware.Registration(nil), config.Middleware...), options.Middleware...)
 		stack, err = middleware.NewStack(regs)
 		if err != nil {
 			return
 		}
 	}
 	e := &middleware.Exchange{Service: op.Service, Operation: op.Name, Region: options.Region}
+	if binding != nil {
+		e.Input = binding.input
+	}
 	body := append([]byte(nil), input.Body...)
 	query := cloneQuery(input.Query)
 	headers := input.Header.Clone()
@@ -217,13 +291,47 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 		return
 	}
 	err = stack.Run(callCtx, middleware.Initialize, e, func(ctx context.Context, e *middleware.Exchange) error {
+		serialized := binding == nil
+		serializeErr := stack.Run(ctx, middleware.Serialize, e, func(ctx context.Context, e *middleware.Exchange) error {
+			if binding == nil {
+				return nil
+			}
+			if reflect.TypeOf(e.Input) != reflect.TypeOf(binding.input) || reflect.ValueOf(e.Input).IsNil() {
+				return errors.New("alicloud: invalid middleware input type")
+			}
+			encoded, encodeErr := binding.codec.Encode(ctx, e.Input)
+			if encodeErr != nil {
+				return encodeErr
+			}
+			input = encoded
+			query = cloneQuery(encoded.Query)
+			headers = encoded.Header.Clone()
+			body = append([]byte(nil), encoded.Body...)
+			serialized = true
+			if len(body) > 8<<20 {
+				return errors.New("alicloud: request exceeds eight MiB")
+			}
+			if encoded.Region != "" && options.Region == region && e.Region == region {
+				e.Region = encoded.Region
+			}
+			return nil
+		})
+		if serializeErr != nil {
+			return serializeErr
+		}
+		if !serialized {
+			if e.Output == nil {
+				return ErrIncompleteOperation
+			}
+			return nil
+		}
 		if _, ok := query["RegionId"]; ok {
 			if e.Region == "" {
 				return errors.New("alicloud: region required for RegionId")
 			}
 			query.Set("RegionId", e.Region)
 		}
-		resolved, resolveErr := c.config.EndpointResolver.ResolveEndpoint(ctx, endpoint.Parameters{Service: op.Service, Region: e.Region, BaseEndpoint: options.BaseEndpoint})
+		resolved, resolveErr := config.EndpointResolver.ResolveEndpoint(ctx, endpoint.Parameters{Service: op.Service, Region: e.Region, BaseEndpoint: options.BaseEndpoint})
 		if resolveErr != nil {
 			return resolveErr
 		}
@@ -267,7 +375,7 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 			if readErr != nil {
 				return readErr
 			}
-			attempts := c.config.Retryer.MaxAttempts()
+			attempts := config.Retryer.MaxAttempts()
 			if attempts < 1 || attempts > 100 {
 				return errors.New("alicloud: invalid retry limit")
 			}
@@ -277,6 +385,7 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 				}
 				e.Attempt = number
 				decoded = reflect.Value{}
+				e.Output = nil
 				meta.Attempts = number
 				e.Response = nil
 				e.RequestID = ""
@@ -294,7 +403,7 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 						return readErr
 					}
 					setBody(e.Request, actual)
-					value, credErr := c.config.CredentialsProvider.Retrieve(ctx)
+					value, credErr := config.CredentialsProvider.Retrieve(ctx)
 					if credErr != nil {
 						return credErr
 					}
@@ -311,7 +420,7 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 					if signErr := signing.Sign(e.Request, actual, value, op.Name, op.Version, time.Now(), hex.EncodeToString(nonce[:])); signErr != nil {
 						return signErr
 					}
-					response, sendErr := c.config.HTTPClient.Do(e.Request)
+					response, sendErr := config.HTTPClient.Do(e.Request)
 					if response != nil && response.Body != nil {
 						defer response.Body.Close()
 					}
@@ -327,11 +436,11 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 						if ctx.Err() != nil {
 							return ctx.Err()
 						}
-						data, readErr := io.ReadAll(io.LimitReader(response.Body, c.config.MaxResponseBytes+1))
+						data, readErr := io.ReadAll(io.LimitReader(response.Body, config.MaxResponseBytes+1))
 						if readErr != nil {
 							return &retry.ResponseReadError{Err: readErr}
 						}
-						if int64(len(data)) > c.config.MaxResponseBytes {
+						if int64(len(data)) > config.MaxResponseBytes {
 							return ErrResponseTooLarge
 						}
 						envelope := struct {
@@ -356,10 +465,16 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 							return decodeErr
 						}
 						temporary := reflect.New(target.Elem().Type())
-						if decodeErr = json.Unmarshal(data, temporary.Interface()); decodeErr != nil {
+						if binding == nil {
+							decodeErr = json.Unmarshal(data, temporary.Interface())
+						} else {
+							decodeErr = binding.codec.Decode(ctx, data, temporary.Interface())
+						}
+						if decodeErr != nil {
 							return decodeErr
 						}
 						decoded = temporary.Elem()
+						e.Output = temporary.Interface()
 						return nil
 					})
 				})
@@ -367,10 +482,12 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 					return ctx.Err()
 				}
 				if attemptErr == nil {
-					if !decoded.IsValid() {
+					result := reflect.ValueOf(e.Output)
+					if !result.IsValid() || result.Type() != target.Type() || result.IsNil() {
 						return ErrIncompleteOperation
 					}
-					c.config.Retryer.RecordSuccess()
+					decoded = result.Elem()
+					config.Retryer.RecordSuccess()
 					return nil
 				}
 				a := retry.Attempt{Number: number, Err: attemptErr, StatusCode: meta.HTTPStatusCode, Idempotent: op.Idempotent, Replayable: true}
@@ -382,14 +499,14 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 				if e.Response != nil {
 					a.RetryAfter = retry.ParseRetryAfter(e.Response.Header.Get("Retry-After"), time.Now())
 				}
-				if number == attempts || !c.config.Retryer.ShouldRetry(a) {
+				if number == attempts || !config.Retryer.ShouldRetry(a) {
 					return attemptErr
 				}
-				delay := c.config.Retryer.Delay(a)
+				delay := config.Retryer.Delay(a)
 				if delay < 0 {
 					return errors.New("alicloud: negative retry delay")
 				}
-				if sleepErr := c.config.Sleep(ctx, delay); sleepErr != nil {
+				if sleepErr := config.Sleep(ctx, delay); sleepErr != nil {
 					return sleepErr
 				}
 			}
@@ -399,8 +516,13 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 	if callCtx.Err() != nil {
 		err = callCtx.Err()
 	}
-	if err == nil && !decoded.IsValid() {
-		err = ErrIncompleteOperation
+	if err == nil {
+		result := reflect.ValueOf(e.Output)
+		if !result.IsValid() || result.Type() != target.Type() || result.IsNil() {
+			err = ErrIncompleteOperation
+		} else {
+			decoded = result.Elem()
+		}
 	}
 	if err == nil && decoded.IsValid() {
 		target.Elem().Set(decoded)

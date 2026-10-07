@@ -6,23 +6,61 @@ import (
 	"encoding/json/v2"
 	"errors"
 	alicloud "github.com/rambow-cloud/alicloud-go-sdk-x"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/middleware"
 	"net/url"
 	"strconv"
 )
 
-// Options aliases shared per-call runtime options.
-type Options = alicloud.CallOptions
+// Options configures this service and individual calls. Fields follow alicloud.Config.
+// Options values are copied; extension objects must be concurrency safe.
+type Options alicloud.Config
 
-// Client is a concurrency-safe Ecs client. Construct it with New.
+// Client is a concurrency-safe Ecs client. Construct it with NewFromConfig or New.
 type Client struct{ runtime *alicloud.Client }
 
-// New validates and copies runtime configuration. Custom extension objects must be concurrency safe.
-func New(config alicloud.Config) (*Client, error) {
-	c, err := alicloud.NewClient(config)
+// New validates shared configuration and applies service options.
+// It is the convenience alias of NewFromConfig.
+func New(config alicloud.Config, opts ...func(*Options)) (*Client, error) {
+	return NewFromConfig(config, opts...)
+}
+
+// NewFromConfig copies configuration and applies service options before validation.
+// Providers, transports and hooks remain shared and must be concurrency safe.
+func NewFromConfig(config alicloud.Config, opts ...func(*Options)) (*Client, error) {
+	o := Options(config)
+	o.Middleware = append([]middleware.Registration(nil), o.Middleware...)
+	for _, f := range opts {
+		if f == nil {
+			return nil, errors.New("nil service option")
+		}
+		f(&o)
+	}
+	c, err := alicloud.NewClient(alicloud.Config(o))
 	if err != nil {
 		return nil, err
 	}
 	return &Client{runtime: c}, nil
+}
+
+// Options returns a configuration snapshot with copied middleware registrations.
+// Extension objects remain shared; changing this value never changes the client.
+func (c *Client) Options() Options { return Options(c.runtime.Config()) }
+func (c *Client) callOptions(region string, opts []func(*Options)) ([]func(*alicloud.CallOptions), error) {
+	if len(opts) == 0 {
+		return nil, nil
+	}
+	o := c.Options()
+	if region != "" {
+		o.Region = region
+	}
+	for _, f := range opts {
+		if f == nil {
+			return nil, errors.New("nil call option")
+		}
+		f(&o)
+	}
+	config := alicloud.Config(o)
+	return []func(*alicloud.CallOptions){func(call *alicloud.CallOptions) { call.Config = &config; call.Region = o.Region }}, nil
 }
 
 // Instance contains selected response properties.
@@ -110,53 +148,74 @@ func (c *Client) DescribeInstanceStatus(ctx context.Context, input *DescribeInst
 		in = *input
 		in.InstanceIDs = append([]string(nil), input.InstanceIDs...)
 	}
-	if err := validateStatus(in); err != nil {
+	requestRegion := ""
+	requestRegion = in.RegionID
+	callOptions, err := c.callOptions(requestRegion, opts)
+	if err != nil {
 		return fail(err)
 	}
-	region := ""
-	q := url.Values{}
-	region = in.RegionID
-	if region == "" {
-		region = c.runtime.Region()
-	}
-	q.Set("RegionId", region)
-	if len(in.InstanceIDs) > 100 {
-		return fail(errors.New("array too large: InstanceId"))
-	}
-	for i, value := range in.InstanceIDs {
-		q.Set("InstanceId."+strconv.Itoa(i+1), value)
-	}
-	if in.ZoneID != "" {
-		q.Set("ZoneId", in.ZoneID)
-	}
-	if in.PageNumber != 0 && in.PageNumber < 1 {
-		return fail(errors.New("parameter below minimum: PageNumber"))
-	}
-	if in.PageNumber != 0 {
-		q.Set("PageNumber", strconv.Itoa(in.PageNumber))
-	}
-	if in.PageSize != 0 && in.PageSize < 1 {
-		return fail(errors.New("parameter below minimum: PageSize"))
-	}
-	if in.PageSize != 0 && in.PageSize > 50 {
-		return fail(errors.New("parameter above maximum: PageSize"))
-	}
-	if in.PageSize != 0 {
-		q.Set("PageSize", strconv.Itoa(in.PageSize))
-	}
-	var wire struct {
-		W0 struct {
-			W0 []InstanceStatus `json:"InstanceStatus"`
-		} `json:"InstanceStatuses"`
-		W1 int `json:"PageNumber"`
-		W2 int `json:"PageSize"`
-		W3 int `json:"TotalCount"`
-	}
-	meta, err := c.runtime.Invoke(ctx, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceStatus", Version: "2014-05-26", Idempotent: true}, alicloud.Request{Method: "POST", Path: "/", Region: region, Query: q, Header: map[string][]string{"Content-Type": {"application/x-www-form-urlencoded"}}}, &wire, opts...)
+	codec := alicloud.Codec{Encode: func(ctx context.Context, value any) (alicloud.Request, error) {
+		in := *value.(*DescribeInstanceStatusInput)
+		in.InstanceIDs = append([]string(nil), in.InstanceIDs...)
+		fail := func(err error) (alicloud.Request, error) { return alicloud.Request{}, err }
+		_ = fail
+		if err := validateStatus(in); err != nil {
+			return fail(err)
+		}
+		region := ""
+		q := url.Values{}
+		region = in.RegionID
+		if region == "" {
+			region = c.runtime.Region()
+		}
+		q.Set("RegionId", region)
+		if len(in.InstanceIDs) > 100 {
+			return fail(errors.New("array too large: InstanceId"))
+		}
+		for i, value := range in.InstanceIDs {
+			q.Set("InstanceId."+strconv.Itoa(i+1), value)
+		}
+		if in.ZoneID != "" {
+			q.Set("ZoneId", in.ZoneID)
+		}
+		if in.PageNumber != 0 && in.PageNumber < 1 {
+			return fail(errors.New("parameter below minimum: PageNumber"))
+		}
+		if in.PageNumber != 0 {
+			q.Set("PageNumber", strconv.Itoa(in.PageNumber))
+		}
+		if in.PageSize != 0 && in.PageSize < 1 {
+			return fail(errors.New("parameter below minimum: PageSize"))
+		}
+		if in.PageSize != 0 && in.PageSize > 50 {
+			return fail(errors.New("parameter above maximum: PageSize"))
+		}
+		if in.PageSize != 0 {
+			q.Set("PageSize", strconv.Itoa(in.PageSize))
+		}
+		return alicloud.Request{Method: "POST", Path: "/", Region: region, Query: q, Header: map[string][]string{"Content-Type": {"application/x-www-form-urlencoded"}}}, nil
+	}, Decode: func(ctx context.Context, data []byte, value any) error {
+		var wire struct {
+			W0 struct {
+				W0 []InstanceStatus `json:"InstanceStatus"`
+			} `json:"InstanceStatuses"`
+			W1 int `json:"PageNumber"`
+			W2 int `json:"PageSize"`
+			W3 int `json:"TotalCount"`
+		}
+		if err := json.Unmarshal(data, &wire); err != nil {
+			return err
+		}
+		*value.(*DescribeInstanceStatusOutput) = DescribeInstanceStatusOutput{InstanceStatuses: wire.W0.W0, TotalCount: wire.W3, PageNumber: wire.W1, PageSize: wire.W2}
+		return nil
+	}}
+	out := new(DescribeInstanceStatusOutput)
+	meta, err := c.runtime.InvokeModel(ctx, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceStatus", Version: "2014-05-26", Idempotent: true}, &in, alicloud.Request{Region: requestRegion}, out, codec, callOptions...)
 	if err != nil {
 		return nil, err
 	}
-	return &DescribeInstanceStatusOutput{Metadata: meta, InstanceStatuses: wire.W0.W0, TotalCount: wire.W3, PageNumber: wire.W1, PageSize: wire.W2}, nil
+	out.Metadata = meta
+	return out, nil
 }
 
 // DescribeInstancesInput contains the selected query parameters; zero optional values are omitted.
@@ -220,70 +279,91 @@ func (c *Client) DescribeInstances(ctx context.Context, input *DescribeInstances
 		in = *input
 		in.InstanceIDs = append([]string(nil), input.InstanceIDs...)
 	}
-	if err := validateInstances(in); err != nil {
+	requestRegion := ""
+	requestRegion = in.RegionID
+	callOptions, err := c.callOptions(requestRegion, opts)
+	if err != nil {
 		return fail(err)
 	}
-	region := ""
-	q := url.Values{}
-	region = in.RegionID
-	if region == "" {
-		region = c.runtime.Region()
-	}
-	q.Set("RegionId", region)
-	if len(in.InstanceIDs) > 0 {
-		encoded, err := json.Marshal(in.InstanceIDs)
-		if err != nil {
+	codec := alicloud.Codec{Encode: func(ctx context.Context, value any) (alicloud.Request, error) {
+		in := *value.(*DescribeInstancesInput)
+		in.InstanceIDs = append([]string(nil), in.InstanceIDs...)
+		fail := func(err error) (alicloud.Request, error) { return alicloud.Request{}, err }
+		_ = fail
+		if err := validateInstances(in); err != nil {
 			return fail(err)
 		}
-		q.Set("InstanceIds", string(encoded))
-	}
-	if in.ZoneID != "" {
-		q.Set("ZoneId", in.ZoneID)
-	}
-	if in.Status != "" {
-		q.Set("Status", in.Status)
-	}
-	if in.NextToken != "" {
-		q.Set("NextToken", in.NextToken)
-	}
-	if in.MaxResults != 0 && in.MaxResults < 1 {
-		return fail(errors.New("parameter below minimum: MaxResults"))
-	}
-	if in.MaxResults != 0 && in.MaxResults > 100 {
-		return fail(errors.New("parameter above maximum: MaxResults"))
-	}
-	if in.MaxResults != 0 {
-		q.Set("MaxResults", strconv.Itoa(in.MaxResults))
-	}
-	if in.PageNumber != 0 && in.PageNumber < 1 {
-		return fail(errors.New("parameter below minimum: PageNumber"))
-	}
-	if in.PageNumber != 0 {
-		q.Set("PageNumber", strconv.Itoa(in.PageNumber))
-	}
-	if in.PageSize != 0 && in.PageSize < 1 {
-		return fail(errors.New("parameter below minimum: PageSize"))
-	}
-	if in.PageSize != 0 && in.PageSize > 100 {
-		return fail(errors.New("parameter above maximum: PageSize"))
-	}
-	if in.PageSize != 0 {
-		q.Set("PageSize", strconv.Itoa(in.PageSize))
-	}
-	var wire struct {
-		W0 struct {
-			W0 []Instance `json:"Instance"`
-		} `json:"Instances"`
-		W1 string `json:"NextToken"`
-		W2 int    `json:"PageNumber"`
-		W3 int    `json:"PageSize"`
-		W4 int    `json:"TotalCount"`
-	}
-	meta, err := c.runtime.Invoke(ctx, alicloud.Operation{Service: "ecs", Name: "DescribeInstances", Version: "2014-05-26", Idempotent: true}, alicloud.Request{Method: "POST", Path: "/", Region: region, Query: q, Header: map[string][]string{"Content-Type": {"application/x-www-form-urlencoded"}}}, &wire, opts...)
+		region := ""
+		q := url.Values{}
+		region = in.RegionID
+		if region == "" {
+			region = c.runtime.Region()
+		}
+		q.Set("RegionId", region)
+		if len(in.InstanceIDs) > 0 {
+			encoded, err := json.Marshal(in.InstanceIDs)
+			if err != nil {
+				return fail(err)
+			}
+			q.Set("InstanceIds", string(encoded))
+		}
+		if in.ZoneID != "" {
+			q.Set("ZoneId", in.ZoneID)
+		}
+		if in.Status != "" {
+			q.Set("Status", in.Status)
+		}
+		if in.NextToken != "" {
+			q.Set("NextToken", in.NextToken)
+		}
+		if in.MaxResults != 0 && in.MaxResults < 1 {
+			return fail(errors.New("parameter below minimum: MaxResults"))
+		}
+		if in.MaxResults != 0 && in.MaxResults > 100 {
+			return fail(errors.New("parameter above maximum: MaxResults"))
+		}
+		if in.MaxResults != 0 {
+			q.Set("MaxResults", strconv.Itoa(in.MaxResults))
+		}
+		if in.PageNumber != 0 && in.PageNumber < 1 {
+			return fail(errors.New("parameter below minimum: PageNumber"))
+		}
+		if in.PageNumber != 0 {
+			q.Set("PageNumber", strconv.Itoa(in.PageNumber))
+		}
+		if in.PageSize != 0 && in.PageSize < 1 {
+			return fail(errors.New("parameter below minimum: PageSize"))
+		}
+		if in.PageSize != 0 && in.PageSize > 100 {
+			return fail(errors.New("parameter above maximum: PageSize"))
+		}
+		if in.PageSize != 0 {
+			q.Set("PageSize", strconv.Itoa(in.PageSize))
+		}
+		return alicloud.Request{Method: "POST", Path: "/", Region: region, Query: q, Header: map[string][]string{"Content-Type": {"application/x-www-form-urlencoded"}}}, nil
+	}, Decode: func(ctx context.Context, data []byte, value any) error {
+		var wire struct {
+			W0 struct {
+				W0 []Instance `json:"Instance"`
+			} `json:"Instances"`
+			W1 string `json:"NextToken"`
+			W2 int    `json:"PageNumber"`
+			W3 int    `json:"PageSize"`
+			W4 int    `json:"TotalCount"`
+		}
+		if err := json.Unmarshal(data, &wire); err != nil {
+			return err
+		}
+		*value.(*DescribeInstancesOutput) = DescribeInstancesOutput{Instances: wire.W0.W0, NextToken: wire.W1, PageNumber: wire.W2, PageSize: wire.W3, TotalCount: wire.W4}
+		return nil
+	}}
+	out := new(DescribeInstancesOutput)
+	meta, err := c.runtime.InvokeModel(ctx, alicloud.Operation{Service: "ecs", Name: "DescribeInstances", Version: "2014-05-26", Idempotent: true}, &in, alicloud.Request{Region: requestRegion}, out, codec, callOptions...)
 	if err != nil {
 		return nil, err
 	}
-	return &DescribeInstancesOutput{Metadata: meta, Instances: wire.W0.W0, NextToken: wire.W1, PageNumber: wire.W2, PageSize: wire.W3, TotalCount: wire.W4}, nil
+	out.Metadata = meta
+	return out, nil
 }
 
 // DescribeRegionsInput contains the selected query parameters; zero optional values are omitted.
@@ -323,27 +403,46 @@ func (c *Client) DescribeRegions(ctx context.Context, input *DescribeRegionsInpu
 	if input != nil {
 		in = *input
 	}
-	region := ""
-	q := url.Values{}
-	if in.AcceptLanguage != "" {
-		q.Set("AcceptLanguage", in.AcceptLanguage)
+	requestRegion := ""
+	callOptions, err := c.callOptions(requestRegion, opts)
+	if err != nil {
+		return fail(err)
 	}
-	if in.InstanceChargeType != "" {
-		q.Set("InstanceChargeType", in.InstanceChargeType)
-	}
-	if in.ResourceType != "" {
-		q.Set("ResourceType", in.ResourceType)
-	}
-	var wire struct {
-		W0 struct {
-			W0 []Region `json:"Region"`
-		} `json:"Regions"`
-	}
-	meta, err := c.runtime.Invoke(ctx, alicloud.Operation{Service: "ecs", Name: "DescribeRegions", Version: "2014-05-26", Idempotent: true}, alicloud.Request{Method: "POST", Path: "/", Region: region, Query: q, Header: map[string][]string{"Content-Type": {"application/x-www-form-urlencoded"}}}, &wire, opts...)
+	codec := alicloud.Codec{Encode: func(ctx context.Context, value any) (alicloud.Request, error) {
+		in := *value.(*DescribeRegionsInput)
+		fail := func(err error) (alicloud.Request, error) { return alicloud.Request{}, err }
+		_ = fail
+		region := ""
+		q := url.Values{}
+		if in.AcceptLanguage != "" {
+			q.Set("AcceptLanguage", in.AcceptLanguage)
+		}
+		if in.InstanceChargeType != "" {
+			q.Set("InstanceChargeType", in.InstanceChargeType)
+		}
+		if in.ResourceType != "" {
+			q.Set("ResourceType", in.ResourceType)
+		}
+		return alicloud.Request{Method: "POST", Path: "/", Region: region, Query: q, Header: map[string][]string{"Content-Type": {"application/x-www-form-urlencoded"}}}, nil
+	}, Decode: func(ctx context.Context, data []byte, value any) error {
+		var wire struct {
+			W0 struct {
+				W0 []Region `json:"Region"`
+			} `json:"Regions"`
+		}
+		if err := json.Unmarshal(data, &wire); err != nil {
+			return err
+		}
+		*value.(*DescribeRegionsOutput) = DescribeRegionsOutput{Regions: wire.W0.W0}
+		return nil
+	}}
+	out := new(DescribeRegionsOutput)
+	meta, err := c.runtime.InvokeModel(ctx, alicloud.Operation{Service: "ecs", Name: "DescribeRegions", Version: "2014-05-26", Idempotent: true}, &in, alicloud.Request{Region: requestRegion}, out, codec, callOptions...)
 	if err != nil {
 		return nil, err
 	}
-	return &DescribeRegionsOutput{Metadata: meta, Regions: wire.W0.W0}, nil
+	out.Metadata = meta
+	return out, nil
 }
 func generatedValidation(ctx context.Context, name string, err error) error {
 	if ctx.Err() != nil {

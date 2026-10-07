@@ -64,7 +64,7 @@ func preamble(b *bytes.Buffer, pkg string, imports map[string]string) {
 }
 
 func emitClient(p Product) ([]byte, error) {
-	imports := map[string]string{"context": "", "net/url": "", module: "alicloud"}
+	imports := map[string]string{"context": "", "errors": "", "encoding/json/v2": "", "net/url": "", module: "alicloud"}
 	for _, model := range p.Models {
 		for _, f := range model.Fields {
 			if strings.TrimPrefix(strings.TrimPrefix(f.Type, "[]"), "*") == "time.Time" {
@@ -108,10 +108,15 @@ func emitClient(p Product) ([]byte, error) {
 		}
 	}
 	var b bytes.Buffer
+	imports[module+"/middleware"] = ""
 	preamble(&b, p.Manifest.Package, imports)
-	b.WriteString("// Options aliases shared per-call runtime options.\ntype Options = alicloud.CallOptions\n")
-	fmt.Fprintf(&b, "// Client is a concurrency-safe %s client. Construct it with New.\ntype Client struct { runtime *alicloud.Client }\n", p.Manifest.Product)
-	b.WriteString("// New validates and copies runtime configuration. Custom extension objects must be concurrency safe.\nfunc New(config alicloud.Config)(*Client,error){c,err:=alicloud.NewClient(config);if err!=nil{return nil,err};return &Client{runtime:c},nil}\n")
+	b.WriteString("// Options configures this service and individual calls. Fields follow alicloud.Config.\n// Options values are copied; extension objects must be concurrency safe.\ntype Options alicloud.Config\n")
+	fmt.Fprintf(&b, "// Client is a concurrency-safe %s client. Construct it with NewFromConfig or New.\ntype Client struct { runtime *alicloud.Client }\n", p.Manifest.Product)
+	b.WriteString("// New validates shared configuration and applies service options.\n// It is the convenience alias of NewFromConfig.\nfunc New(config alicloud.Config,opts ...func(*Options))(*Client,error){return NewFromConfig(config,opts...)}\n")
+	b.WriteString("// NewFromConfig copies configuration and applies service options before validation.\n// Providers, transports and hooks remain shared and must be concurrency safe.\nfunc NewFromConfig(config alicloud.Config,opts ...func(*Options))(*Client,error){o:=Options(config);o.Middleware=append([]middleware.Registration(nil),o.Middleware...);for _,f:=range opts{if f==nil{return nil,errors.New(\"nil service option\")};f(&o)};c,err:=alicloud.NewClient(alicloud.Config(o));if err!=nil{return nil,err};return &Client{runtime:c},nil}\n")
+	b.WriteString("// Options returns a configuration snapshot with copied middleware registrations.\n// Extension objects remain shared; changing this value never changes the client.\nfunc(c *Client)Options()Options{return Options(c.runtime.Config())}\n")
+	b.WriteString("func(c *Client)callOptions(region string,opts []func(*Options))([]func(*alicloud.CallOptions),error){if len(opts)==0{return nil,nil};o:=c.Options();if region!=\"\"{o.Region=region};for _,f:=range opts{if f==nil{return nil,errors.New(\"nil call option\")};f(&o)};config:=alicloud.Config(o);return []func(*alicloud.CallOptions){func(call *alicloud.CallOptions){call.Config=&config;call.Region=o.Region}},nil}\n")
+
 	for _, m := range p.Models {
 		fmt.Fprintf(&b, "// %s %s\ntype %s struct {\n", m.Name, lowerFirst(m.Doc.English), m.Name)
 		for _, f := range m.Fields {
@@ -260,6 +265,16 @@ func emitOperation(b *bytes.Buffer, p Product, op Operation) error {
 	fmt.Fprintf(b, "var in %sInput\nif input!=nil{in=*input\n", op.Name)
 	copySlices(b, op.Inputs, "in", "input", p.Models)
 	b.WriteString("}\n")
+	b.WriteString("requestRegion:=\"\"\n")
+	for _, f := range op.Inputs {
+		if f.Region {
+			fmt.Fprintf(b, "requestRegion=in.%s\n", f.Name)
+		}
+	}
+	b.WriteString("callOptions,err:=c.callOptions(requestRegion,opts);if err!=nil{return fail(err)}\n")
+	fmt.Fprintf(b, "codec:=alicloud.Codec{Encode:func(ctx context.Context,value any)(alicloud.Request,error){in:=*value.(*%sInput)\n", op.Name)
+	copySlices(b, op.Inputs, "in", "in", p.Models)
+	b.WriteString("fail:=func(err error)(alicloud.Request,error){return alicloud.Request{},err}\n_ = fail\n")
 	if op.Validator != "" {
 		fmt.Fprintf(b, "if err:=%s(in);err!=nil{return fail(err)}\n", op.Validator)
 	}
@@ -298,16 +313,17 @@ func emitOperation(b *bytes.Buffer, p Product, op Operation) error {
 			}
 		}
 	}
+	b.WriteString("return alicloud.Request{Method:\"POST\",Path:\"/\",Region:region,Query:q,Header:map[string][]string{\"Content-Type\":{\"application/x-www-form-urlencoded\"}}},nil},Decode:func(ctx context.Context,data []byte,value any)error{\n")
 	root := wireTree(op.Outputs)
 	b.WriteString("var wire ")
 	emitWire(b, root)
-	b.WriteString("\n")
-	fmt.Fprintf(b, "meta,err:=c.runtime.Invoke(ctx,alicloud.Operation{Service:%q,Name:%q,Version:%q,Idempotent:%t},alicloud.Request{Method:\"POST\",Path:\"/\",Region:region,Query:q,Header:map[string][]string{\"Content-Type\":{\"application/x-www-form-urlencoded\"}}},&wire,opts...)\nif err!=nil{return nil,err}\n", p.Manifest.Service, op.Name, p.Manifest.Version, *op.Idempotent)
-	fmt.Fprintf(b, "return &%sOutput{Metadata:meta,", op.Name)
+	b.WriteString("\nif err:=json.Unmarshal(data,&wire);err!=nil{return err}\n")
+	fmt.Fprintf(b, "*value.(*%sOutput)=%sOutput{", op.Name, op.Name)
 	for _, f := range op.Outputs {
 		fmt.Fprintf(b, "%s:%s,", f.Name, wireAccess(root, f.Wire))
 	}
-	b.WriteString("},nil\n}\n")
+	b.WriteString("};return nil}}\n")
+	fmt.Fprintf(b, "out:=new(%sOutput)\nmeta,err:=c.runtime.InvokeModel(ctx,alicloud.Operation{Service:%q,Name:%q,Version:%q,Idempotent:%t},&in,alicloud.Request{Region:requestRegion},out,codec,callOptions...)\nif err!=nil{return nil,err};out.Metadata=meta;return out,nil\n}\n", op.Name, p.Manifest.Service, op.Name, p.Manifest.Version, *op.Idempotent)
 	return nil
 }
 
@@ -353,6 +369,11 @@ func emitGuide(p Product) []byte {
 }
 
 func emitGuideLanguage(b *bytes.Buffer, p Product, chinese bool) {
+	if chinese {
+		b.WriteString("NewFromConfig/保留的 New 接收共享 Config 和服务 functional options，校验后返回客户端与 error。服务 Options 是独立类型，Client.Options 返回配置快照。调用选项（含重试/transport）只作用于当前调用；模型编码前运行 Initialize/Serialize，Deserialize hook 可访问类型化输出。默认重试/超时/凭据规则保持，迁移见 [runtime](../runtime.md) 和 [修复路径](../aws-style-remediation.md)。\n\n")
+	} else {
+		b.WriteString("NewFromConfig and the retained New accept shared Config and service functional options, returning a validated client and error. Service Options is concrete; Client.Options returns a configuration snapshot. Call options including retries/transports remain isolated. Initialize/Serialize precede model encoding; Deserialize hooks expose typed output. Default retry/timeout/credential policies remain; see [runtime](../runtime.md) and [migration](../aws-style-remediation.md).\n\n")
+	}
 	if chinese {
 		fmt.Fprintf(b, "API 版本 `%s`，协议 RPC/HTTPS/POST；只有审核操作可幂等重试。端点由共享 resolver 决定，元数据不自动扩大地域范围。分页使用审核 token/页码规则；waiter 等待所有指定 ID，缺失/过渡状态继续，未知或重复状态及 API 错误失败。仅配置了相应 overlay 时生成适配器。\n\n", p.Manifest.Version)
 	} else {

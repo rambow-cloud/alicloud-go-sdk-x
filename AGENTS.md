@@ -29,6 +29,12 @@ before changing the public API.
 
 ## Go API rules
 
+- Follow AWS Go SDK v2 calling conventions for service Options, NewFromConfig,
+  operation functional options, paginators and reusable Wait/WaitForOutput. Preserve
+  Alibaba OpenAPI operation names, exact wire fields and native pagination semantics;
+  never invent NextToken for a page-only API. Document intentional defaults and v0
+  migration differences rather than claiming upstream source compatibility.
+
 - Every blocking operation accepts `context.Context` as its first argument and
   preserves cancellation/deadline errors for `errors.Is`.
 - Use standard `net/http`, injectable HTTP clients, and `time.Duration` for timeouts.
@@ -109,6 +115,10 @@ before changing the public API.
 - 不编造 issue 编号、检查结果、兼容性或服务覆盖。
 
 ### Go API
+
+- 服务 Options、NewFromConfig、操作 functional options、分页及可复用 Wait/WaitForOutput
+  采用 AWS Go SDK v2 调用范式；操作名、准确线字段和原生分页语义保留阿里云 OpenAPI 规则，
+  不为纯页码 API 造 NextToken。明确默认策略与 v0 迁移差异，不宣称上游源码兼容。
 
 - 阻塞操作第一参数为 context.Context，errors.Is 能识别取消和超时。
 - 使用标准 net/http、可注入 HTTP 客户端与 time.Duration；最低 Go 1.27，JSON 直接使用 encoding/json/v2，

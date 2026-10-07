@@ -6,23 +6,61 @@ import (
 	"encoding/json/v2"
 	"errors"
 	alicloud "github.com/rambow-cloud/alicloud-go-sdk-x"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/middleware"
 	"net/url"
 	"strconv"
 )
 
-// Options aliases shared per-call runtime options.
-type Options = alicloud.CallOptions
+// Options configures this service and individual calls. Fields follow alicloud.Config.
+// Options values are copied; extension objects must be concurrency safe.
+type Options alicloud.Config
 
-// Client is a concurrency-safe Vpc client. Construct it with New.
+// Client is a concurrency-safe Vpc client. Construct it with NewFromConfig or New.
 type Client struct{ runtime *alicloud.Client }
 
-// New validates and copies runtime configuration. Custom extension objects must be concurrency safe.
-func New(config alicloud.Config) (*Client, error) {
-	c, err := alicloud.NewClient(config)
+// New validates shared configuration and applies service options.
+// It is the convenience alias of NewFromConfig.
+func New(config alicloud.Config, opts ...func(*Options)) (*Client, error) {
+	return NewFromConfig(config, opts...)
+}
+
+// NewFromConfig copies configuration and applies service options before validation.
+// Providers, transports and hooks remain shared and must be concurrency safe.
+func NewFromConfig(config alicloud.Config, opts ...func(*Options)) (*Client, error) {
+	o := Options(config)
+	o.Middleware = append([]middleware.Registration(nil), o.Middleware...)
+	for _, f := range opts {
+		if f == nil {
+			return nil, errors.New("nil service option")
+		}
+		f(&o)
+	}
+	c, err := alicloud.NewClient(alicloud.Config(o))
 	if err != nil {
 		return nil, err
 	}
 	return &Client{runtime: c}, nil
+}
+
+// Options returns a configuration snapshot with copied middleware registrations.
+// Extension objects remain shared; changing this value never changes the client.
+func (c *Client) Options() Options { return Options(c.runtime.Config()) }
+func (c *Client) callOptions(region string, opts []func(*Options)) ([]func(*alicloud.CallOptions), error) {
+	if len(opts) == 0 {
+		return nil, nil
+	}
+	o := c.Options()
+	if region != "" {
+		o.Region = region
+	}
+	for _, f := range opts {
+		if f == nil {
+			return nil, errors.New("nil call option")
+		}
+		f(&o)
+	}
+	config := alicloud.Config(o)
+	return []func(*alicloud.CallOptions){func(call *alicloud.CallOptions) { call.Config = &config; call.Region = o.Region }}, nil
 }
 
 // IPv6Block contains a selected IPv6 block and its ISP.
@@ -236,80 +274,116 @@ func (c *Client) DescribeVpcs(ctx context.Context, input *DescribeVpcsInput, opt
 			in.Tags[i] = cloneTagFilter(in.Tags[i])
 		}
 	}
-	if err := validateDescribeVpcs(in); err != nil {
+	requestRegion := ""
+	requestRegion = in.RegionID
+	callOptions, err := c.callOptions(requestRegion, opts)
+	if err != nil {
 		return fail(err)
 	}
-	region := ""
-	q := url.Values{}
-	region = in.RegionID
-	if region == "" {
-		region = c.runtime.Region()
-	}
-	q.Set("RegionId", region)
-	if in.VPCID != "" {
-		q.Set("VpcId", in.VPCID)
-	}
-	if in.Name != "" {
-		q.Set("VpcName", in.Name)
-	}
-	if in.ResourceGroupID != "" {
-		q.Set("ResourceGroupId", in.ResourceGroupID)
-	}
-	if in.DhcpOptionsSetID != "" {
-		q.Set("DhcpOptionsSetId", in.DhcpOptionsSetID)
-	}
-	if in.IsDefault != nil {
-		q.Set("IsDefault", strconv.FormatBool(*in.IsDefault))
-	}
-	if in.DryRun != nil {
-		q.Set("DryRun", strconv.FormatBool(*in.DryRun))
-	}
-	if in.IPv6Enabled != nil {
-		q.Set("EnableIpv6", strconv.FormatBool(*in.IPv6Enabled))
-	}
-	if in.OwnerID != 0 {
-		q.Set("VpcOwnerId", strconv.FormatInt(in.OwnerID, 10))
-	}
-	if in.PageNumber != 0 && in.PageNumber < 1 {
-		return fail(errors.New("parameter below minimum: PageNumber"))
-	}
-	if in.PageNumber != 0 {
-		q.Set("PageNumber", strconv.Itoa(in.PageNumber))
-	}
-	if in.PageSize != 0 && in.PageSize < 1 {
-		return fail(errors.New("parameter below minimum: PageSize"))
-	}
-	if in.PageSize != 0 && in.PageSize > 50 {
-		return fail(errors.New("parameter above maximum: PageSize"))
-	}
-	if in.PageSize != 0 {
-		q.Set("PageSize", strconv.Itoa(in.PageSize))
-	}
-	if len(in.Tags) > 20 {
-		return fail(errors.New("array too large: Tag"))
-	}
-	for i, item := range in.Tags {
-		prefix := "Tag." + strconv.Itoa(i+1) + "."
-		if item.Key != "" {
-			q.Set(prefix+"Key", item.Key)
+	codec := alicloud.Codec{Encode: func(ctx context.Context, value any) (alicloud.Request, error) {
+		in := *value.(*DescribeVpcsInput)
+		if in.IsDefault != nil {
+			copied := *in.IsDefault
+			in.IsDefault = &copied
 		}
-		if item.Value != nil {
-			q.Set(prefix+"Value", *item.Value)
+		if in.DryRun != nil {
+			copied := *in.DryRun
+			in.DryRun = &copied
 		}
-	}
-	var wire struct {
-		W0 int `json:"PageNumber"`
-		W1 int `json:"PageSize"`
-		W2 int `json:"TotalCount"`
-		W3 struct {
-			W0 []VPC `json:"Vpc"`
-		} `json:"Vpcs"`
-	}
-	meta, err := c.runtime.Invoke(ctx, alicloud.Operation{Service: "vpc", Name: "DescribeVpcs", Version: "2016-04-28", Idempotent: true}, alicloud.Request{Method: "POST", Path: "/", Region: region, Query: q, Header: map[string][]string{"Content-Type": {"application/x-www-form-urlencoded"}}}, &wire, opts...)
+		if in.IPv6Enabled != nil {
+			copied := *in.IPv6Enabled
+			in.IPv6Enabled = &copied
+		}
+		in.Tags = append([]TagFilter(nil), in.Tags...)
+		for i := range in.Tags {
+			in.Tags[i] = cloneTagFilter(in.Tags[i])
+		}
+		fail := func(err error) (alicloud.Request, error) { return alicloud.Request{}, err }
+		_ = fail
+		if err := validateDescribeVpcs(in); err != nil {
+			return fail(err)
+		}
+		region := ""
+		q := url.Values{}
+		region = in.RegionID
+		if region == "" {
+			region = c.runtime.Region()
+		}
+		q.Set("RegionId", region)
+		if in.VPCID != "" {
+			q.Set("VpcId", in.VPCID)
+		}
+		if in.Name != "" {
+			q.Set("VpcName", in.Name)
+		}
+		if in.ResourceGroupID != "" {
+			q.Set("ResourceGroupId", in.ResourceGroupID)
+		}
+		if in.DhcpOptionsSetID != "" {
+			q.Set("DhcpOptionsSetId", in.DhcpOptionsSetID)
+		}
+		if in.IsDefault != nil {
+			q.Set("IsDefault", strconv.FormatBool(*in.IsDefault))
+		}
+		if in.DryRun != nil {
+			q.Set("DryRun", strconv.FormatBool(*in.DryRun))
+		}
+		if in.IPv6Enabled != nil {
+			q.Set("EnableIpv6", strconv.FormatBool(*in.IPv6Enabled))
+		}
+		if in.OwnerID != 0 {
+			q.Set("VpcOwnerId", strconv.FormatInt(in.OwnerID, 10))
+		}
+		if in.PageNumber != 0 && in.PageNumber < 1 {
+			return fail(errors.New("parameter below minimum: PageNumber"))
+		}
+		if in.PageNumber != 0 {
+			q.Set("PageNumber", strconv.Itoa(in.PageNumber))
+		}
+		if in.PageSize != 0 && in.PageSize < 1 {
+			return fail(errors.New("parameter below minimum: PageSize"))
+		}
+		if in.PageSize != 0 && in.PageSize > 50 {
+			return fail(errors.New("parameter above maximum: PageSize"))
+		}
+		if in.PageSize != 0 {
+			q.Set("PageSize", strconv.Itoa(in.PageSize))
+		}
+		if len(in.Tags) > 20 {
+			return fail(errors.New("array too large: Tag"))
+		}
+		for i, item := range in.Tags {
+			prefix := "Tag." + strconv.Itoa(i+1) + "."
+			if item.Key != "" {
+				q.Set(prefix+"Key", item.Key)
+			}
+			if item.Value != nil {
+				q.Set(prefix+"Value", *item.Value)
+			}
+		}
+		return alicloud.Request{Method: "POST", Path: "/", Region: region, Query: q, Header: map[string][]string{"Content-Type": {"application/x-www-form-urlencoded"}}}, nil
+	}, Decode: func(ctx context.Context, data []byte, value any) error {
+		var wire struct {
+			W0 int `json:"PageNumber"`
+			W1 int `json:"PageSize"`
+			W2 int `json:"TotalCount"`
+			W3 struct {
+				W0 []VPC `json:"Vpc"`
+			} `json:"Vpcs"`
+		}
+		if err := json.Unmarshal(data, &wire); err != nil {
+			return err
+		}
+		*value.(*DescribeVpcsOutput) = DescribeVpcsOutput{VPCs: wire.W3.W0, PageNumber: wire.W0, PageSize: wire.W1, TotalCount: wire.W2}
+		return nil
+	}}
+	out := new(DescribeVpcsOutput)
+	meta, err := c.runtime.InvokeModel(ctx, alicloud.Operation{Service: "vpc", Name: "DescribeVpcs", Version: "2016-04-28", Idempotent: true}, &in, alicloud.Request{Region: requestRegion}, out, codec, callOptions...)
 	if err != nil {
 		return nil, err
 	}
-	return &DescribeVpcsOutput{Metadata: meta, VPCs: wire.W3.W0, PageNumber: wire.W0, PageSize: wire.W1, TotalCount: wire.W2}, nil
+	out.Metadata = meta
+	return out, nil
 }
 func generatedValidation(ctx context.Context, name string, err error) error {
 	if ctx.Err() != nil {

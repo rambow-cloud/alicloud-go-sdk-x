@@ -12,6 +12,8 @@ type Stage uint8
 const (
 	// Initialize surrounds the entire operation, including retries.
 	Initialize Stage = iota
+	// Serialize converts an owned model input to wire data once per operation.
+	Serialize
 	// Build surrounds request construction once per operation.
 	Build
 	// Finalize surrounds signing and transport once per attempt.
@@ -22,6 +24,13 @@ const (
 
 // Exchange is mutable state owned by a single operation.
 type Exchange struct {
+	// Input is the owned typed input for model operations, or nil for wire Invoke.
+	// Hooks may modify it before serialization and must not retain it after Handle.
+	Input any
+	// Output is the current attempt's typed result after decoding. A successful
+	// short circuit must supply the operation's exact non-nil output pointer type.
+	// Hooks may modify it after next; no result is published on pipeline failure.
+	Output any
 	// Service is the service identifier.
 	Service string
 	// Operation is the action name.
@@ -73,13 +82,13 @@ type Registration struct {
 }
 
 // Stack is an immutable set of registrations. Its zero value passes through.
-type Stack struct{ stages [4][]Middleware }
+type Stack struct{ stages [5][]Middleware }
 
 // NewStack copies registrations and rejects unknown stages, empty or duplicate IDs,
 // and nil interceptors. Earlier registrations execute outside later ones.
 func NewStack(registrations []Registration) (*Stack, error) {
 	s := &Stack{}
-	seen := [4]map[string]bool{}
+	seen := [5]map[string]bool{}
 	for _, r := range registrations {
 		if r.Stage > Deserialize || r.Middleware == nil {
 			return nil, fmt.Errorf("middleware: invalid registration")

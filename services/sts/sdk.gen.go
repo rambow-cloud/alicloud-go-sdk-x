@@ -3,26 +3,65 @@ package sts
 
 import (
 	"context"
+	"encoding/json/v2"
 	"errors"
 	alicloud "github.com/rambow-cloud/alicloud-go-sdk-x"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/middleware"
 	"net/url"
 	"strconv"
 	"time"
 )
 
-// Options aliases shared per-call runtime options.
-type Options = alicloud.CallOptions
+// Options configures this service and individual calls. Fields follow alicloud.Config.
+// Options values are copied; extension objects must be concurrency safe.
+type Options alicloud.Config
 
-// Client is a concurrency-safe Sts client. Construct it with New.
+// Client is a concurrency-safe Sts client. Construct it with NewFromConfig or New.
 type Client struct{ runtime *alicloud.Client }
 
-// New validates and copies runtime configuration. Custom extension objects must be concurrency safe.
-func New(config alicloud.Config) (*Client, error) {
-	c, err := alicloud.NewClient(config)
+// New validates shared configuration and applies service options.
+// It is the convenience alias of NewFromConfig.
+func New(config alicloud.Config, opts ...func(*Options)) (*Client, error) {
+	return NewFromConfig(config, opts...)
+}
+
+// NewFromConfig copies configuration and applies service options before validation.
+// Providers, transports and hooks remain shared and must be concurrency safe.
+func NewFromConfig(config alicloud.Config, opts ...func(*Options)) (*Client, error) {
+	o := Options(config)
+	o.Middleware = append([]middleware.Registration(nil), o.Middleware...)
+	for _, f := range opts {
+		if f == nil {
+			return nil, errors.New("nil service option")
+		}
+		f(&o)
+	}
+	c, err := alicloud.NewClient(alicloud.Config(o))
 	if err != nil {
 		return nil, err
 	}
 	return &Client{runtime: c}, nil
+}
+
+// Options returns a configuration snapshot with copied middleware registrations.
+// Extension objects remain shared; changing this value never changes the client.
+func (c *Client) Options() Options { return Options(c.runtime.Config()) }
+func (c *Client) callOptions(region string, opts []func(*Options)) ([]func(*alicloud.CallOptions), error) {
+	if len(opts) == 0 {
+		return nil, nil
+	}
+	o := c.Options()
+	if region != "" {
+		o.Region = region
+	}
+	for _, f := range opts {
+		if f == nil {
+			return nil, errors.New("nil call option")
+		}
+		f(&o)
+	}
+	config := alicloud.Config(o)
+	return []func(*alicloud.CallOptions){func(call *alicloud.CallOptions) { call.Config = &config; call.Region = o.Region }}, nil
 }
 
 // AssumedRoleUser contains selected response properties.
@@ -102,45 +141,64 @@ func (c *Client) AssumeRole(ctx context.Context, input *AssumeRoleInput, opts ..
 	if input != nil {
 		in = *input
 	}
-	if err := validateAssumeRole(in); err != nil {
+	requestRegion := ""
+	callOptions, err := c.callOptions(requestRegion, opts)
+	if err != nil {
 		return fail(err)
 	}
-	region := ""
-	q := url.Values{}
-	if in.RoleARN == "" {
-		return fail(errors.New("required parameter RoleArn"))
-	}
-	if in.RoleARN != "" {
-		q.Set("RoleArn", in.RoleARN)
-	}
-	if in.RoleSessionName == "" {
-		return fail(errors.New("required parameter RoleSessionName"))
-	}
-	if in.RoleSessionName != "" {
-		q.Set("RoleSessionName", in.RoleSessionName)
-	}
-	if in.DurationSeconds != 0 {
-		q.Set("DurationSeconds", strconv.FormatInt(in.DurationSeconds, 10))
-	}
-	if in.Policy != "" {
-		q.Set("Policy", in.Policy)
-	}
-	if in.ExternalID != "" {
-		q.Set("ExternalId", in.ExternalID)
-	}
-	if in.SourceIdentity != "" {
-		q.Set("SourceIdentity", in.SourceIdentity)
-	}
-	var wire struct {
-		W0 AssumedRoleUser `json:"AssumedRoleUser"`
-		W1 RoleCredentials `json:"Credentials"`
-		W2 string          `json:"SourceIdentity"`
-	}
-	meta, err := c.runtime.Invoke(ctx, alicloud.Operation{Service: "sts", Name: "AssumeRole", Version: "2015-04-01", Idempotent: false}, alicloud.Request{Method: "POST", Path: "/", Region: region, Query: q, Header: map[string][]string{"Content-Type": {"application/x-www-form-urlencoded"}}}, &wire, opts...)
+	codec := alicloud.Codec{Encode: func(ctx context.Context, value any) (alicloud.Request, error) {
+		in := *value.(*AssumeRoleInput)
+		fail := func(err error) (alicloud.Request, error) { return alicloud.Request{}, err }
+		_ = fail
+		if err := validateAssumeRole(in); err != nil {
+			return fail(err)
+		}
+		region := ""
+		q := url.Values{}
+		if in.RoleARN == "" {
+			return fail(errors.New("required parameter RoleArn"))
+		}
+		if in.RoleARN != "" {
+			q.Set("RoleArn", in.RoleARN)
+		}
+		if in.RoleSessionName == "" {
+			return fail(errors.New("required parameter RoleSessionName"))
+		}
+		if in.RoleSessionName != "" {
+			q.Set("RoleSessionName", in.RoleSessionName)
+		}
+		if in.DurationSeconds != 0 {
+			q.Set("DurationSeconds", strconv.FormatInt(in.DurationSeconds, 10))
+		}
+		if in.Policy != "" {
+			q.Set("Policy", in.Policy)
+		}
+		if in.ExternalID != "" {
+			q.Set("ExternalId", in.ExternalID)
+		}
+		if in.SourceIdentity != "" {
+			q.Set("SourceIdentity", in.SourceIdentity)
+		}
+		return alicloud.Request{Method: "POST", Path: "/", Region: region, Query: q, Header: map[string][]string{"Content-Type": {"application/x-www-form-urlencoded"}}}, nil
+	}, Decode: func(ctx context.Context, data []byte, value any) error {
+		var wire struct {
+			W0 AssumedRoleUser `json:"AssumedRoleUser"`
+			W1 RoleCredentials `json:"Credentials"`
+			W2 string          `json:"SourceIdentity"`
+		}
+		if err := json.Unmarshal(data, &wire); err != nil {
+			return err
+		}
+		*value.(*AssumeRoleOutput) = AssumeRoleOutput{Credentials: wire.W1, AssumedRoleUser: wire.W0, SourceIdentity: wire.W2}
+		return nil
+	}}
+	out := new(AssumeRoleOutput)
+	meta, err := c.runtime.InvokeModel(ctx, alicloud.Operation{Service: "sts", Name: "AssumeRole", Version: "2015-04-01", Idempotent: false}, &in, alicloud.Request{Region: requestRegion}, out, codec, callOptions...)
 	if err != nil {
 		return nil, err
 	}
-	return &AssumeRoleOutput{Metadata: meta, Credentials: wire.W1, AssumedRoleUser: wire.W0, SourceIdentity: wire.W2}, nil
+	out.Metadata = meta
+	return out, nil
 }
 func generatedValidation(ctx context.Context, name string, err error) error {
 	if ctx.Err() != nil {

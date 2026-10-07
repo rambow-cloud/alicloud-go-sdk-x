@@ -5,6 +5,8 @@
 
 Provides selected STS RPC operations generated from pinned metadata. Clients are concurrency safe; inputs are copied. Shared runtime errors and cancellation preserve their identity. Coverage is limited to the listed operations and fields.
 
+NewFromConfig and the retained New accept shared Config and service functional options, returning a validated client and error. Service Options is concrete; Client.Options returns a configuration snapshot. Call options including retries/transports remain isolated. Initialize/Serialize precede model encoding; Deserialize hooks expose typed output. Default retry/timeout/credential policies remain; see [runtime](../runtime.md) and [migration](../aws-style-remediation.md).
+
 API version `2015-04-01`; RPC/HTTPS/POST. Only explicitly reviewed idempotent operations permit retries. Endpoints use the shared resolver; metadata does not expand region coverage. Pagination follows reviewed token/page policies. Waiters require all requested IDs, retry missing/transitional states and fail unknown/duplicate states or API errors. Adapters are emitted only when configured in the overlay.
 
 ### AssumeRole
@@ -49,6 +51,8 @@ Sources: [AssumeRole](https://api.aliyun.com/meta/v1/products/Sts/versions/2015-
 ## 中文
 
 由固定元数据生成选定 STS RPC 操作。客户端并发安全，输入被复制；共享运行时保留错误及取消的身份。覆盖限于列出的操作和字段。
+
+NewFromConfig/保留的 New 接收共享 Config 和服务 functional options，校验后返回客户端与 error。服务 Options 是独立类型，Client.Options 返回配置快照。调用选项（含重试/transport）只作用于当前调用；模型编码前运行 Initialize/Serialize，Deserialize hook 可访问类型化输出。默认重试/超时/凭据规则保持，迁移见 [runtime](../runtime.md) 和 [修复路径](../aws-style-remediation.md)。
 
 API 版本 `2015-04-01`，协议 RPC/HTTPS/POST；只有审核操作可幂等重试。端点由共享 resolver 决定，元数据不自动扩大地域范围。分页使用审核 token/页码规则；waiter 等待所有指定 ID，缺失/过渡状态继续，未知或重复状态及 API 错误失败。仅配置了相应 overlay 时生成适配器。
 
