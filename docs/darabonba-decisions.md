@@ -15,7 +15,8 @@ required / DSL optional; reversing that direction requires a new supported polic
 | Difference | Reviewed disposition | Behavior evidence |
 | --- | --- | --- |
 | ECS/VPC DSL adds OwnerAccount, OwnerId, ResourceOwnerAccount, ResourceOwnerId absent from public snapshots | Keep outside the public subset. DSL presence does not grant a supported contract | Source comparison; no live owner-override calls |
-| DescribeInstances DSL has a repeated Filter model; snapshots expose Filter.1.Key/Value through Filter.4.Key/Value | Representation mismatch, not an established hidden field. Preserve the legacy Go subset while stage 1 normalizes bindings; indexes are not inferred server limits | Both sources checked; Filter not tested live |
+| DescribeInstances DSL has a repeated Filter model; snapshots expose Filter.1.Key/Value through Filter.4.Key/Value | #34 normalizes eight aliases and removes Filter from DSL-only approvals. Preserve the legacy Go subset; indexes are not inferred server limits | Both sources checked and offline leaf/type/case/requiredness tests; Filter not tested live |
+| DescribeInstances.Tag metadata contains optional lowercase key/value, absent from current DSL | Explicit metadataOnlyFields approval for optional string Tag[].key and Tag[].value; retain exact case and keep outside the public subset. Other missing fields or type/requiredness changes fail | Pinned canonical/public snapshot and semantic DSL comparison; no live deprecated-field calls |
 | DescribeInstances, DescribeInstanceStatus, DescribeVpcs DSL marks RegionId optional; metadata requires it | Retain API requiredness and existing configured-region fallback | Offline missing-region checks and prior #30 authorized reads with configured region |
 | AssumeRole DSL marks RoleArn/RoleSessionName optional; metadata requires both | Retain local required-field validation before HTTP; DSL optionality models unset values, not successful omission | Existing offline STS tests; live AssumeRole skipped without an explicit role |
 | Metadata allows GET and POST; DSL fixes POST for these operations | Use DSL POST and preserve current signed RPC encoding | Existing signed-wire fixtures and prior #30 reads; GET not exposed |
@@ -65,7 +66,8 @@ metadata/darabonba-decisions.json，由各产品 manifest 固定；前端和 Go 
 | 偏差 | 审核处理 | 行为证据 |
 | --- | --- | --- |
 | ECS/VPC DSL 多出 OwnerAccount、OwnerId、ResourceOwnerAccount、ResourceOwnerId，公共快照没有 | 不进入公开子集；DSL 出现不等于支持契约 | 源码比较；未真实调用 owner 覆盖 |
-| DescribeInstances DSL 使用重复 Filter 模型，快照列 Filter.1.Key/Value 到 Filter.4.Key/Value | 表示差异，不是已确认隐藏字段；兼容阶段保留旧 Go 子集，阶段 1 规范化绑定，不由索引推断服务上限 | 已核查两个来源，Filter 未真实测试 |
+| DescribeInstances DSL 使用重复 Filter 模型，快照列 Filter.1.Key/Value 到 Filter.4.Key/Value | #34 规范化八个绑定，移除 Filter 的 DSL 独有批准；保留旧 Go 子集，不由索引推断服务上限 | 两来源及离线叶子/类型/大小写/必填测试；Filter 未真实测试 |
+| DescribeInstances.Tag 元数据包含当前 DSL 没有的可选小写 key/value | metadataOnlyFields 明确批准可选字符串 Tag[].key 和 Tag[].value，保留大小写、不进入公共子集；其他缺成员或类型/必填变化失败 | 固定 canonical/公共快照和语义 DSL 对照；未真实调用弃用字段 |
 | DescribeInstances、DescribeInstanceStatus、DescribeVpcs 的 RegionId 在 DSL 可选、元数据必填 | 保留 API 必填及既有配置地域回退 | 离线缺地域检查和此前 #30 配置地域真实读取 |
 | AssumeRole 的 RoleArn/RoleSessionName 在 DSL 可选、元数据必填 | 保留 HTTP 前本地必填校验；DSL 表达可 unset，不表示省略后成功 | 既有 STS 离线测试；未提供明确 role，真实调用跳过 |
 | 元数据允许 GET/POST，DSL 固定 POST | 使用 DSL POST，保留既有签名 RPC 编码 | 既有签名协议测试和此前 #30 读取；不公开 GET |

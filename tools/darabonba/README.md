@@ -2,6 +2,11 @@
 
 ## English
 
+The [product roadmap](../../docs/product-generator-roadmap.md) overrides conflicting
+older per-operation prerequisites. #31 remains a five-operation bridge; #34 adds
+[source normalization](../../docs/source-normalization.md), and #35 will discover
+complete products without per-operation snapshots/overlays.
+
 Issue [#31](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/31) replaces the
 metadata-only production frontend with real official product DSL. Requires Node 22
 and Go 1.27. The official parser 2.2.1 performs syntax and imported-module semantic
@@ -18,7 +23,7 @@ cd ../..
 node tools/darabonba/frontend.cjs generate
 go run ./internal/cmd/sdkgen generate
 node tools/darabonba/frontend.cjs check
-node --test tools/darabonba/frontend.test.cjs
+node --test tools/darabonba/frontend.test.cjs tools/darabonba/normalization.test.cjs
 go run ./internal/cmd/sdkgen check
 ```
 
@@ -33,6 +38,7 @@ Only explicit import accesses upstream services:
 
 ```sh
 node tools/darabonba/import.cjs
+node tools/darabonba/import-canonical.cjs
 ```
 
 The product commit is a constant in import.cjs. Imported Teafile wildcard specs are
@@ -57,6 +63,10 @@ Read [migration](../../docs/darabonba-migration.md),
 
 ## 中文
 
+[产品路线](../../docs/product-generator-roadmap.md) 优先于冲突旧逐操作前置要求。
+#31 仍为五操作兼容桥；#34 增加[来源规范化](../../docs/source-normalization.md)，
+#35 将无需逐操作快照/overlay 发现完整产品。
+
 Issue [#31](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/31) 将生产前端
 从纯元数据改为真实官方产品 DSL。要求 Node 22、Go 1.27；官方 parser 2.2.1 执行语法
 及导入模块语义检查，官方 repo-client 1.0.3 负责显式联网解析，tar 7.5.22 解包经校验
@@ -69,7 +79,8 @@ Go 使用者无需 Node。Go 生成消费哈希固定的投影、验证来源锁
 CI 在 Linux/Windows 独立重解析 DSL。两层均先完成所有产品检查再写输出；系统写入
 失败可能留下部分更新，解决原因后再生成。
 
-只有 `node tools/darabonba/import.cjs` 显式访问上游。产品 commit 固定在 import.cjs，
+只有英文章节两条显式 import 命令访问上游；import-canonical 固定 CLI 样本和许可证。
+产品 commit 固定在 import.cjs，
 Teafile 保留原始通配符，manifest.json 与 .libraries.json 固定实际模块版本及本地路径。
 重新 import 可能解析到新版模块，必须在 issue 下审核源码、模块、许可变化，更新
 metadata/darabonba-decisions.json 后再投影。导入随获取写源码，网络失败可能需要修复

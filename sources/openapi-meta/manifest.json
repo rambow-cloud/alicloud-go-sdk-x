@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/aliyun/aliyun-openapi-meta",
+  "revision": "51286a65c79d008436eb314e636f9c9ad4b1ca08",
+  "license": "Apache-2.0",
+  "adapterVersion": 1,
+  "files": [
+    {
+      "file": "LICENSE",
+      "url": "https://raw.githubusercontent.com/aliyun/aliyun-openapi-meta/51286a65c79d008436eb314e636f9c9ad4b1ca08/LICENSE",
+      "sha256": "479818324be726e5596a2a9fb6fd9e5c5edfe2fa967dc69c23ff1bba707e84bb"
+    },
+    {
+      "file": "canonical/ecs/2014-05-26/DescribeImages.json",
+      "url": "https://raw.githubusercontent.com/aliyun/aliyun-openapi-meta/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeImages.json",
+      "sha256": "269634a9c9e8f8c7883d2e307b012aeb14dac9a6936c09d9dd07134dbdf6f4c9"
+    },
+    {
+      "file": "canonical/ecs/2014-05-26/DescribeInstances.json",
+      "url": "https://raw.githubusercontent.com/aliyun/aliyun-openapi-meta/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeInstances.json",
+      "sha256": "77d27774422621da35feedd352181f19b74d5efd33708b36432ad03105cbe8e3"
+    },
+    {
+      "file": "canonical/ecs/2014-05-26/DescribeRegions.json",
+      "url": "https://raw.githubusercontent.com/aliyun/aliyun-openapi-meta/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeRegions.json",
+      "sha256": "f46086c46498f745d61301a1fc4a9566af93fbe836f95bb50d1e9d9de15c33d0"
+    },
+    {
+      "file": "canonical/ecs/2014-05-26/version.json",
+      "url": "https://raw.githubusercontent.com/aliyun/aliyun-openapi-meta/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/version.json",
+      "sha256": "7580b1ea9aec6eb6887ee0b3c85edbcfefa50d04d5b8522f142939f8a663b06b"
+    }
+  ]
+}

@@ -120,7 +120,8 @@ before changing the public API.
   semantic parser projection. Run the frontend check/tests with Node 22 before Go gates.
   Never silently resolve DSL/metadata conflicts; maintain the paired decision document
   and machine-readable approvals. Explorer browser evidence and CLI evidence are distinct.
-- Preserve third-party source, README and license notice bytes under sources/darabonba;
+- Preserve third-party source, README and license notice bytes under sources/darabonba
+  and sources/openapi-meta;
   their upstream documents are source artifacts. All project-authored source/tool guides
   and decisions remain bilingual; upstream notices are not relabeled under our MIT license.
 
@@ -200,5 +201,6 @@ before changing the public API.
 - 生产生成使用固定官方 Darabonba 源码、导入模块及官方语义 parser 投影；Go 门禁前执行 Node 22
   前端检查/测试。不静默解决 DSL/元数据冲突，维护双语决策及机器可读审核记录；Explorer 浏览器
   与 CLI 证据分别记录。
-- sources/darabonba 下的第三方源码、README、许可证通知保留上游原始字节，作为源码产物；
+- sources/darabonba 和 sources/openapi-meta 下的第三方源码、README、许可证通知
+  保留上游原始字节，作为源码产物；
   本项目编写的来源/工具指南及决策仍需双语，不把上游通知重新标为本项目 MIT。
