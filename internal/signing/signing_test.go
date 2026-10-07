@@ -43,7 +43,7 @@ func TestEscapingBodyAndToken(t *testing.T) {
 	if r.Header.Get("X-Acs-Security-Token") != "" || r.Header.Get("Authorization") == before {
 		t.Fatal("body/token not signed")
 	}
-	if got := CanonicalQuery(url.Values{"a": {"~ *+"}, "中": {"文"}}); got != "%E4%B8%AD=%E6%96%87&a=~%20%2A%2B" {
+	if got := CanonicalQuery(url.Values{"a": {"~ *+"}, "中": {"文"}}); got != "a=~%20%2A%2B&%E4%B8%AD=%E6%96%87" {
 		t.Fatal(got)
 	}
 }

@@ -20,19 +20,29 @@ const algorithm = "ACS3-HMAC-SHA256"
 func digest(data []byte) string { sum := sha256.Sum256(data); return hex.EncodeToString(sum[:]) }
 func escape(s string) string    { return strings.ReplaceAll(url.QueryEscape(s), "+", "%20") }
 
-// CanonicalQuery encodes names and values with RFC3986 escaping. Repeated values
-// are sorted by their encoded form so the transmitted query matches the signature.
+// CanonicalQuery sorts original parameter names before RFC3986 encoding, as
+// required by ACS3. Repeated values are ordered by their encoded form.
 func CanonicalQuery(q url.Values) string {
 	var pairs []string
-	for k, values := range q {
+	keys := make([]string, 0, len(q))
+	for k := range q {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	for _, k := range keys {
+		values := q[k]
 		if len(values) == 0 {
 			values = []string{""}
 		}
-		for _, v := range values {
-			pairs = append(pairs, escape(k)+"="+escape(v))
+		encoded := make([]string, len(values))
+		for i, v := range values {
+			encoded[i] = escape(v)
+		}
+		sort.Strings(encoded)
+		for _, v := range encoded {
+			pairs = append(pairs, escape(k)+"="+v)
 		}
 	}
-	sort.Strings(pairs)
 	return strings.Join(pairs, "&")
 }
 
