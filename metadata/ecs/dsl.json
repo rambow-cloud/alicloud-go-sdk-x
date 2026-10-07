@@ -1,0 +1,1412 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": "2.2.1",
+  "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
+  "revision": "ec489e5c3deae95496daae2b41503ac58b221adb",
+  "product": "Ecs",
+  "version": "2014-05-26",
+  "operations": [
+    {
+      "name": "DescribeInstances",
+      "protocol": {
+        "action": "DescribeInstances",
+        "version": "2014-05-26",
+        "protocol": "HTTPS",
+        "pathname": "/",
+        "method": "POST",
+        "authType": "AK",
+        "style": "RPC",
+        "reqBodyType": "formData",
+        "bodyType": "json"
+      },
+      "inputs": [
+        {
+          "wire": "AdditionalAttributes",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": false
+          }
+        },
+        {
+          "wire": "DeviceAvailable",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "boolean",
+            "required": false
+          }
+        },
+        {
+          "wire": "DryRun",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "boolean",
+            "required": false
+          }
+        },
+        {
+          "wire": "EipAddresses",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "Filter",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Key": {
+                  "type": "string",
+                  "required": false
+                },
+                "Value": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            },
+            "required": false
+          }
+        },
+        {
+          "wire": "HpcClusterId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "HttpEndpoint",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "HttpPutResponseHopLimit",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        },
+        {
+          "wire": "HttpTokens",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "ImageId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "InnerIpAddresses",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "InstanceChargeType",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "InstanceIds",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "InstanceName",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "InstanceNetworkType",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "InstanceType",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "InstanceTypeFamily",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "InternetChargeType",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "IoOptimized",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "boolean",
+            "required": false
+          }
+        },
+        {
+          "wire": "Ipv6Address",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": false
+          }
+        },
+        {
+          "wire": "KeyPairName",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "LockReason",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "MaxResults",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        },
+        {
+          "wire": "NeedSaleCycle",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "boolean",
+            "required": false
+          }
+        },
+        {
+          "wire": "NextToken",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "OwnerAccount",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "OwnerId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        },
+        {
+          "wire": "PageNumber",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        },
+        {
+          "wire": "PageSize",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        },
+        {
+          "wire": "PrivateIpAddresses",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "PublicIpAddresses",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "RdmaIpAddresses",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "RegionId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "ResourceGroupId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "ResourceOwnerAccount",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "ResourceOwnerId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        },
+        {
+          "wire": "SecurityGroupId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "Status",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "Tag",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Key": {
+                  "type": "string",
+                  "required": false
+                },
+                "Value": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            },
+            "required": false
+          }
+        },
+        {
+          "wire": "VpcId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "VSwitchId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "ZoneId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        }
+      ],
+      "response": {
+        "type": "object",
+        "properties": {
+          "Instances": {
+            "type": "object",
+            "properties": {
+              "Instance": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "AdditionalInfo": {
+                      "type": "object",
+                      "properties": {
+                        "EnableHighDensityMode": {
+                          "type": "boolean",
+                          "required": false
+                        },
+                        "ManagedHostId": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "NodeSerialNumber": {
+                          "type": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "AutoReleaseTime": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "ClockOptions": {
+                      "type": "object",
+                      "properties": {
+                        "PtpStatus": {
+                          "type": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "ClusterId": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "Cpu": {
+                      "type": "integer",
+                      "required": false
+                    },
+                    "CpuOptions": {
+                      "type": "object",
+                      "properties": {
+                        "CoreCount": {
+                          "type": "integer",
+                          "required": false
+                        },
+                        "EnableVISST": {
+                          "type": "boolean",
+                          "required": false
+                        },
+                        "EnableVRDT": {
+                          "type": "boolean",
+                          "required": false
+                        },
+                        "NestedVirtualization": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "Numa": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "ThreadsPerCore": {
+                          "type": "integer",
+                          "required": false
+                        },
+                        "TopologyType": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "TurboMode": {
+                          "type": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "CreationTime": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "CreditSpecification": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "DedicatedHostAttribute": {
+                      "type": "object",
+                      "properties": {
+                        "DedicatedHostClusterId": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "DedicatedHostId": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "DedicatedHostName": {
+                          "type": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "DedicatedInstanceAttribute": {
+                      "type": "object",
+                      "properties": {
+                        "Affinity": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "Tenancy": {
+                          "type": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "DeletionProtection": {
+                      "type": "boolean",
+                      "required": false
+                    },
+                    "DeploymentSetGroupNo": {
+                      "type": "integer",
+                      "required": false
+                    },
+                    "DeploymentSetId": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "Description": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "DeviceAvailable": {
+                      "type": "boolean",
+                      "required": false
+                    },
+                    "EcsCapacityReservationAttr": {
+                      "type": "object",
+                      "properties": {
+                        "CapacityReservationId": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "CapacityReservationPreference": {
+                          "type": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "EipAddress": {
+                      "type": "object",
+                      "properties": {
+                        "AllocationId": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "Bandwidth": {
+                          "type": "integer",
+                          "required": false
+                        },
+                        "InternetChargeType": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "IpAddress": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "IsSupportUnassociate": {
+                          "type": "boolean",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "EnableNVS": {
+                      "type": "boolean",
+                      "required": false
+                    },
+                    "ExpiredTime": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "GPUAmount": {
+                      "type": "integer",
+                      "required": false
+                    },
+                    "GPUSpec": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "HibernationOptions": {
+                      "type": "object",
+                      "properties": {
+                        "Configured": {
+                          "type": "boolean",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "HostName": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "HpcClusterId": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "ISP": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "ImageId": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "ImageOptions": {
+                      "type": "object",
+                      "properties": {
+                        "CurrentOSNVMeSupported": {
+                          "type": "boolean",
+                          "required": false
+                        },
+                        "LoginAsNonRoot": {
+                          "type": "boolean",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "InnerIpAddress": {
+                      "type": "object",
+                      "properties": {
+                        "IpAddress": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "InstanceChargeType": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "InstanceId": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "InstanceName": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "InstanceNetworkType": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "InstanceType": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "InstanceTypeFamily": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "InternetChargeType": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "InternetMaxBandwidthIn": {
+                      "type": "integer",
+                      "required": false
+                    },
+                    "InternetMaxBandwidthOut": {
+                      "type": "integer",
+                      "required": false
+                    },
+                    "IoOptimized": {
+                      "type": "boolean",
+                      "required": false
+                    },
+                    "KeyPairName": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "LocalStorageAmount": {
+                      "type": "integer",
+                      "required": false
+                    },
+                    "LocalStorageCapacity": {
+                      "type": "integer",
+                      "required": false
+                    },
+                    "Memory": {
+                      "type": "integer",
+                      "required": false
+                    },
+                    "MetadataOptions": {
+                      "type": "object",
+                      "properties": {
+                        "HttpEndpoint": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "HttpPutResponseHopLimit": {
+                          "type": "integer",
+                          "required": false
+                        },
+                        "HttpTokens": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "InstanceMetadataTags": {
+                          "type": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "NetworkInterfaces": {
+                      "type": "object",
+                      "properties": {
+                        "NetworkInterface": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "Ipv4PrefixSets": {
+                                "type": "object",
+                                "properties": {
+                                  "Ipv4PrefixSet": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "Ipv4Prefix": {
+                                          "type": "string",
+                                          "required": false
+                                        }
+                                      }
+                                    },
+                                    "required": false
+                                  }
+                                },
+                                "required": false
+                              },
+                              "Ipv6PrefixSets": {
+                                "type": "object",
+                                "properties": {
+                                  "Ipv6PrefixSet": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "Ipv6Prefix": {
+                                          "type": "string",
+                                          "required": false
+                                        }
+                                      }
+                                    },
+                                    "required": false
+                                  }
+                                },
+                                "required": false
+                              },
+                              "Ipv6Sets": {
+                                "type": "object",
+                                "properties": {
+                                  "Ipv6Set": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "Ipv6Address": {
+                                          "type": "string",
+                                          "required": false
+                                        },
+                                        "Primary": {
+                                          "type": "boolean",
+                                          "required": false
+                                        }
+                                      }
+                                    },
+                                    "required": false
+                                  }
+                                },
+                                "required": false
+                              },
+                              "MacAddress": {
+                                "type": "string",
+                                "required": false
+                              },
+                              "NetworkInterfaceId": {
+                                "type": "string",
+                                "required": false
+                              },
+                              "PrimaryIpAddress": {
+                                "type": "string",
+                                "required": false
+                              },
+                              "PrivateIpSets": {
+                                "type": "object",
+                                "properties": {
+                                  "PrivateIpSet": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "Primary": {
+                                          "type": "boolean",
+                                          "required": false
+                                        },
+                                        "PrivateDnsName": {
+                                          "type": "string",
+                                          "required": false
+                                        },
+                                        "PrivateIpAddress": {
+                                          "type": "string",
+                                          "required": false
+                                        }
+                                      }
+                                    },
+                                    "required": false
+                                  }
+                                },
+                                "required": false
+                              },
+                              "Type": {
+                                "type": "string",
+                                "required": false
+                              }
+                            }
+                          },
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "OSName": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "OSNameEn": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "OSType": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "OperationLocks": {
+                      "type": "object",
+                      "properties": {
+                        "LockReason": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "LockMsg": {
+                                "type": "string",
+                                "required": false
+                              },
+                              "LockReason": {
+                                "type": "string",
+                                "required": false
+                              }
+                            }
+                          },
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "PrivateDnsNameOptions": {
+                      "type": "object",
+                      "properties": {
+                        "EnableInstanceIdDnsAAAARecord": {
+                          "type": "boolean",
+                          "required": false
+                        },
+                        "EnableInstanceIdDnsARecord": {
+                          "type": "boolean",
+                          "required": false
+                        },
+                        "EnableIpDnsARecord": {
+                          "type": "boolean",
+                          "required": false
+                        },
+                        "EnableIpDnsPtrRecord": {
+                          "type": "boolean",
+                          "required": false
+                        },
+                        "HostnameType": {
+                          "type": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "PublicIpAddress": {
+                      "type": "object",
+                      "properties": {
+                        "IpAddress": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "RdmaIpAddress": {
+                      "type": "object",
+                      "properties": {
+                        "IpAddress": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "Recyclable": {
+                      "type": "boolean",
+                      "required": false
+                    },
+                    "RegionId": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "ResourceGroupId": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "SaleCycle": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "SecurityGroupIds": {
+                      "type": "object",
+                      "properties": {
+                        "SecurityGroupId": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "SecurityOptions": {
+                      "type": "object",
+                      "properties": {
+                        "EnableSecureBoot": {
+                          "type": "boolean",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "SerialNumber": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "SpotDuration": {
+                      "type": "integer",
+                      "required": false
+                    },
+                    "SpotInterruptionBehavior": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "SpotPriceLimit": {
+                      "type": "number",
+                      "required": false
+                    },
+                    "SpotStrategy": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "StartTime": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "Status": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "StoppedMode": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "Tags": {
+                      "type": "object",
+                      "properties": {
+                        "Tag": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "TagKey": {
+                                "type": "string",
+                                "required": false
+                              },
+                              "TagValue": {
+                                "type": "string",
+                                "required": false
+                              }
+                            }
+                          },
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "VlanId": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "VpcAttributes": {
+                      "type": "object",
+                      "properties": {
+                        "NatIpAddress": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "PrivateIpAddress": {
+                          "type": "object",
+                          "properties": {
+                            "IpAddress": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              },
+                              "required": false
+                            }
+                          },
+                          "required": false
+                        },
+                        "VSwitchId": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "VpcId": {
+                          "type": "string",
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "ZoneId": {
+                      "type": "string",
+                      "required": false
+                    }
+                  }
+                },
+                "required": false
+              }
+            },
+            "required": false
+          },
+          "NextToken": {
+            "type": "string",
+            "required": false
+          },
+          "PageNumber": {
+            "type": "integer",
+            "required": false
+          },
+          "PageSize": {
+            "type": "integer",
+            "required": false
+          },
+          "RequestId": {
+            "type": "string",
+            "required": false
+          },
+          "TotalCount": {
+            "type": "integer",
+            "required": false
+          }
+        }
+      }
+    },
+    {
+      "name": "DescribeInstanceStatus",
+      "protocol": {
+        "action": "DescribeInstanceStatus",
+        "version": "2014-05-26",
+        "protocol": "HTTPS",
+        "pathname": "/",
+        "method": "POST",
+        "authType": "AK",
+        "style": "RPC",
+        "reqBodyType": "formData",
+        "bodyType": "json"
+      },
+      "inputs": [
+        {
+          "wire": "ClusterId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "InstanceId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": false
+          }
+        },
+        {
+          "wire": "OwnerAccount",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "OwnerId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        },
+        {
+          "wire": "PageNumber",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        },
+        {
+          "wire": "PageSize",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        },
+        {
+          "wire": "RegionId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "ResourceOwnerAccount",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "ResourceOwnerId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        },
+        {
+          "wire": "ZoneId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        }
+      ],
+      "response": {
+        "type": "object",
+        "properties": {
+          "InstanceStatuses": {
+            "type": "object",
+            "properties": {
+              "InstanceStatus": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "InstanceId": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "Status": {
+                      "type": "string",
+                      "required": false
+                    }
+                  }
+                },
+                "required": false
+              }
+            },
+            "required": false
+          },
+          "PageNumber": {
+            "type": "integer",
+            "required": false
+          },
+          "PageSize": {
+            "type": "integer",
+            "required": false
+          },
+          "RequestId": {
+            "type": "string",
+            "required": false
+          },
+          "TotalCount": {
+            "type": "integer",
+            "required": false
+          }
+        }
+      }
+    },
+    {
+      "name": "DescribeRegions",
+      "protocol": {
+        "action": "DescribeRegions",
+        "version": "2014-05-26",
+        "protocol": "HTTPS",
+        "pathname": "/",
+        "method": "POST",
+        "authType": "AK",
+        "style": "RPC",
+        "reqBodyType": "formData",
+        "bodyType": "json"
+      },
+      "inputs": [
+        {
+          "wire": "AcceptLanguage",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "InstanceChargeType",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "OwnerAccount",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "OwnerId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        },
+        {
+          "wire": "ResourceOwnerAccount",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "ResourceOwnerId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        },
+        {
+          "wire": "ResourceType",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        }
+      ],
+      "response": {
+        "type": "object",
+        "properties": {
+          "Regions": {
+            "type": "object",
+            "properties": {
+              "Region": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "LocalName": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "RegionEndpoint": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "RegionId": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "Status": {
+                      "type": "string",
+                      "required": false
+                    }
+                  }
+                },
+                "required": false
+              }
+            },
+            "required": false
+          },
+          "RequestId": {
+            "type": "string",
+            "required": false
+          }
+        }
+      }
+    }
+  ]
+}

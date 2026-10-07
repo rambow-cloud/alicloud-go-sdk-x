@@ -1,0 +1,12 @@
+{
+  "name": "alicloud-go-sdk-x-darabonba-tools",
+  "private": true,
+  "version": "0.0.0",
+  "engines": { "node": ">=22" },
+  "scripts": { "project": "node frontend.cjs generate", "check": "node frontend.cjs check", "test": "node --test frontend.test.cjs" },
+  "dependencies": {
+    "@darabonba/parser": "2.2.1",
+    "@darabonba/repo-client": "1.0.3",
+    "tar": "7.5.22"
+  }
+}

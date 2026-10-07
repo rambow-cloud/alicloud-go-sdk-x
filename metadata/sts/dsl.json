@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": "2.2.1",
+  "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
+  "revision": "ec489e5c3deae95496daae2b41503ac58b221adb",
+  "product": "Sts",
+  "version": "2015-04-01",
+  "operations": [
+    {
+      "name": "AssumeRole",
+      "protocol": {
+        "action": "AssumeRole",
+        "version": "2015-04-01",
+        "protocol": "HTTPS",
+        "pathname": "/",
+        "method": "POST",
+        "authType": "AK",
+        "style": "RPC",
+        "reqBodyType": "formData",
+        "bodyType": "json"
+      },
+      "inputs": [
+        {
+          "wire": "DurationSeconds",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        },
+        {
+          "wire": "ExternalId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "Policy",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "RoleArn",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "RoleSessionName",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "SourceIdentity",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        }
+      ],
+      "response": {
+        "type": "object",
+        "properties": {
+          "AssumedRoleUser": {
+            "type": "object",
+            "properties": {
+              "Arn": {
+                "type": "string",
+                "required": false
+              },
+              "AssumedRoleId": {
+                "type": "string",
+                "required": false
+              }
+            },
+            "required": false
+          },
+          "Credentials": {
+            "type": "object",
+            "properties": {
+              "AccessKeyId": {
+                "type": "string",
+                "required": false
+              },
+              "AccessKeySecret": {
+                "type": "string",
+                "required": false
+              },
+              "Expiration": {
+                "type": "string",
+                "required": false
+              },
+              "SecurityToken": {
+                "type": "string",
+                "required": false
+              }
+            },
+            "required": false
+          },
+          "RequestId": {
+            "type": "string",
+            "required": false
+          },
+          "SourceIdentity": {
+            "type": "string",
+            "required": false
+          }
+        }
+      }
+    }
+  ]
+}

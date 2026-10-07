@@ -14,5 +14,11 @@
       "rawSHA256": "2e6066d014bbe236d5b1fbcf4a417f633d1a24e3d73fd2a63ce8e45ee4d4ebe6",
       "sha256": "0f06adf9507ae0fa5d159fe83527a653dea1683036c76b4bb07c140f18aed5b0"
     }
-  ]
+  ],
+  "dsl": {
+    "file": "dsl.json",
+    "sha256": "64dc8900f38c1279df4a50a0da8dc2c1e3b947520baeaba30953ab159526f76b",
+    "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
+    "decisionsSHA256": "4bca258c346f0ee862ad17cf4018f9bd4537481e0bdc9c860cb8ba235ee71c69"
+  }
 }

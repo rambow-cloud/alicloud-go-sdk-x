@@ -132,6 +132,7 @@ type Model struct {
 type Operation struct {
 	OperationSpec
 	Inputs, Outputs []Field
+	Protocol        WireProtocol
 }
 
 // Product is the normalized input to emitters. It contains no network clients.
@@ -140,6 +141,7 @@ type Product struct {
 	Overlay    Overlay
 	Models     []Model
 	Operations []Operation
+	DSL        *DSLProduct
 }
 
 var exportedName = regexp.MustCompile(`^[A-Z][A-Za-z0-9]*$`)

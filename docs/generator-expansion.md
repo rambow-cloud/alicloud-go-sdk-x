@@ -2,6 +2,9 @@
 
 ## English
 
+Historical #24/#25 expansion plan. The [new product route](product-generator-roadmap.md)
+takes precedence; per-operation metadata is not a future DSL discovery prerequisite.
+
 After #8/#21–#23 passed, the next gate is a real RPC product outside ECS/STS.
 Use Vpc API 2016-04-28 DescribeVpcs: reviewed read-only/idempotent query, POST `/`,
 JSON response. Pin official operation metadata before implementing the client. Generic
@@ -49,6 +52,9 @@ Sources: [DescribeVpcs](https://help.aliyun.com/en/vpc/developer-reference/api-v
 [official metadata](https://help.aliyun.com/zh/sdk/product-overview/openapi-metadata/).
 
 ## 中文
+
+这是 #24/#25 历史计划；以[新产品路线](product-generator-roadmap.md)为准，后续 DSL
+发现不以逐操作元数据为前提。
 
 #8/#21–#23 验收后，下一门槛是 ECS/STS 之外的真实 RPC 产品。
 选 Vpc 2016-04-28 DescribeVpcs：审核为只读/幂等 query、POST `/`、JSON 响应。

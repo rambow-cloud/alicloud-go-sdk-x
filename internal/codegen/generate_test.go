@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"errors"
+	"io/fs"
 	"os"
 	"path/filepath"
 	"testing"
@@ -25,6 +26,32 @@ func fixtureRepository(t *testing.T) string {
 			}
 			writeTestFile(t, root, filepath.Join("metadata", pkg, entry.Name()), data)
 		}
+	}
+	data, err := os.ReadFile(filepath.Join("..", "..", "metadata", "darabonba-decisions.json"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	writeTestFile(t, root, "metadata/darabonba-decisions.json", data)
+	source := filepath.Join("..", "..", "sources", "darabonba")
+	if err := filepath.WalkDir(source, func(path string, entry fs.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if entry.IsDir() {
+			return nil
+		}
+		relative, err := filepath.Rel(source, path)
+		if err != nil {
+			return err
+		}
+		data, err := os.ReadFile(path)
+		if err != nil {
+			return err
+		}
+		writeTestFile(t, root, filepath.Join("sources", "darabonba", relative), data)
+		return nil
+	}); err != nil {
+		t.Fatal(err)
 	}
 	return root
 }

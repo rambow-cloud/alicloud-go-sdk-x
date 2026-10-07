@@ -80,6 +80,25 @@ before changing the public API.
 
 ## Language and development sequence
 
+- The user-approved 2026-10-07 route in docs/development-path.md and
+  docs/product-generator-roadmap.md is authoritative and overrides conflicting older
+  metadata-first, per-operation snapshot/overlay and handwritten-doc prerequisites.
+  Historical acceptance remains recorded; superseded plans must not constrain new work.
+- Execute source normalization -> complete DSL operation/model discovery and IR -> batch
+  Go emission -> sparse capability policy -> documentation automation/profile expansion.
+  Complete official DSL and the official semantic parser are primary; canonical metadata
+  is optional enrichment/cross-check input after representation normalization.
+- Discover operations/reachable models automatically without per-API metadata, field/model
+  selection or handwritten-doc overlays. Overlays supply reviewed policy and compatibility
+  exceptions. #31 is a five-operation bridge, not product-wide acceptance or a permanent
+  per-API authoring workflow. Preserve runtime/AWS conventions, Go 1.27 and JSON v2.
+- Publish deterministic coverage/reasons; discovered, lowered, emitted, compiled and live
+  coverage are distinct. Selected unsupported behavior fails before writes. Normalize
+  indexed inputs/itemName wrappers before source conflict decisions.
+- Establish bilingual route docs, then actual issue dependencies, then stage implementation
+  on separate issue branches. Each stage includes docs/tests/Examples/pkg.go.dev acceptance;
+  the documentation automation stage does not postpone earlier documentation.
+
 - All human-facing Markdown documentation must contain equivalent English and Chinese
   sections, or explicitly linked language counterparts, updated in the same change.
 - GitHub issue and PR titles/bodies, identifiers, diagnostics, and code comments are
@@ -97,6 +116,13 @@ before changing the public API.
 - Generator changes also run `go run ./internal/cmd/sdkgen check`. Edit pinned metadata,
   overlays, templates or handwritten validators under an issue; do not edit generated
   files directly. Review schema drift and rerun generation before public API checks.
+- Production generation uses pinned official Darabonba sources/imports and the official
+  semantic parser projection. Run the frontend check/tests with Node 22 before Go gates.
+  Never silently resolve DSL/metadata conflicts; maintain the paired decision document
+  and machine-readable approvals. Explorer browser evidence and CLI evidence are distinct.
+- Preserve third-party source, README and license notice bytes under sources/darabonba;
+  their upstream documents are source artifacts. All project-authored source/tool guides
+  and decisions remain bilingual; upstream notices are not relabeled under our MIT license.
 
 ## 中文
 
@@ -148,6 +174,20 @@ before changing the public API.
 
 ### 语言与开发顺序
 
+- 用户于 2026-10-07 确认的 docs/development-path.md 和 docs/product-generator-roadmap.md
+  为权威路线，优先于冲突旧元数据优先、逐操作 snapshot/overlay、手写说明前置要求；
+  保留历史验收，不用已被替代的计划约束新工作。
+- 按来源规范化 → 完整 DSL 操作/模型发现与 IR → 批量 Go 输出 → 少量能力策略 →
+  文档自动化/协议扩展执行。完整官方 DSL/官方语义 parser 为主，canonical 元数据
+  规范化后可选补充/交叉验证。
+- 自动发现操作/可达模型，不以逐 API 元数据、字段/模型选择、手写说明 overlay 为前提。
+  Overlay 只补审核策略和兼容例外；#31 为五操作兼容桥，不是产品全量验收或永久逐 API
+  手写流程。保留 runtime/AWS 范式、Go 1.27、JSON v2。
+- 输出确定性覆盖/原因，区分发现/降低/输出/编译/真实验收；选中不支持行为写前失败。
+  先规范化索引输入/itemName 包装，再判断来源冲突。
+- 先落实双语路线，再建真实 issue 依赖，然后各 issue 分支实现阶段；每阶段同步文档/
+  测试/Example/pkg.go.dev，文档自动化阶段不表示前面可推迟文档。
+
 - 所有面向人的 Markdown 文档必须有语义对应的英文与中文章节，或明确互链的语言版本，并在同一变更更新。
 - GitHub issue/PR 标题正文、标识符、诊断和代码注释以英文为主；中文可补充，但不能替代英文的问题、
   范围、依赖、验收或验证证据。
@@ -157,3 +197,8 @@ before changing the public API.
 - 每项能力包含实现、行为测试、可执行示例、双语文档与验证记录；生成器与基准分开跟踪。
 - 生成器变更还需运行 `go run ./internal/cmd/sdkgen check`。在 issue 下修改固定元数据、overlay、
   模板或手写 validator，不直接修改生成文件；评审 schema 漂移并重新生成后执行公共 API 检查。
+- 生产生成使用固定官方 Darabonba 源码、导入模块及官方语义 parser 投影；Go 门禁前执行 Node 22
+  前端检查/测试。不静默解决 DSL/元数据冲突，维护双语决策及机器可读审核记录；Explorer 浏览器
+  与 CLI 证据分别记录。
+- sources/darabonba 下的第三方源码、README、许可证通知保留上游原始字节，作为源码产物；
+  本项目编写的来源/工具指南及决策仍需双语，不把上游通知重新标为本项目 MIT。

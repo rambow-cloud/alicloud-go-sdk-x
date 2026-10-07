@@ -1,8 +1,36 @@
-# Runtime-first development path / 基础优先开发路径
+# Development path / 开发路线
 
 [English](#english) | [中文](#中文)
 
 ## English
+
+Authoritative route revised at the user's direction on 2026-10-07: complete official
+product DSL -> official Darabonba semantic parser -> normalized operation/model/binding
+IR -> our Go backend -> existing runtime. [product-generator-roadmap.md](product-generator-roadmap.md)
+and AGENTS.md govern this route and supersede conflicting older metadata-first,
+per-operation snapshot/overlay, field-selection and handwritten-doc prerequisites.
+The older stages and issue references below describe historical acceptance only.
+
+Execute source normalization -> complete operation/model discovery and IR -> batch Go
+emission -> sparse capability policy -> documentation automation/profile expansion.
+Every stage includes paired docs, relevant tests, Examples and pkg.go.dev acceptance;
+documentation automation at the last stage does not postpone earlier documentation.
+Optional pinned canonical metadata enriches/cross-checks DSL after representation
+normalization. New discovery cannot require metadata/overlay entries for each API.
+
+First milestone: normalize real source representations and publish complete pinned
+ECS inventory/coverage; then batch generate supported RPC operations. #31/PR #32 are
+the five-operation compatibility bridge, not a product-wide generator acceptance gate.
+Overlay supplies reviewed compatibility exceptions, pagination/waiters, idempotency,
+sensitive fields and special validators, rather than re-declaring each model/field.
+Unsupported operations have explicit reasons; selected unsupported behavior fails
+before writes. Normalize Filter indexed bindings and itemName response wrappers before
+classifying conflicts. Browser, CLI-local validation and actual HTTP evidence are distinct.
+
+Document -> establish/update actual issue dependencies -> one reviewable branch per
+issue -> implement, validate and record -> linked PR. Keep the roadmap parent open
+until all stages meet acceptance, preserve accepted runtime/AWS calling conventions,
+Go 1.27/JSON v2 and standard-library core. Benchmarks remain separate.
 
 The goal is a unified Go runtime, validated by a small handwritten ECS/STS reference,
 followed by product generation. Go 1.27 and encoding/json/v2 are required. Core runtime
@@ -48,12 +76,36 @@ The next real-product gate is #24 -> #25; see [generator-expansion.md](generator
 After that acceptance, resolve the review under #26 -> #27 -> #28 -> #29 before wider
 profiles: [AWS-style remediation](aws-style-remediation.md).
 
+The frontend refactor #31 uses official product DSL and the official parser; its
+ordered delivery and conflict verification are defined in [darabonba-migration.md](darabonba-migration.md).
+
 Sources: [ACS3](https://help.aliyun.com/zh/sdk/product-overview/v3-request-structure-and-signature),
 [metadata](https://help.aliyun.com/zh/sdk/product-overview/openapi-metadata/),
 [AWS middleware](https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/middleware.html),
 [AWS testing](https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/unit-testing.html).
 
 ## 中文
+
+用户于 2026-10-07 确认的权威路线：完整官方产品 DSL → 官方 Darabonba 语义 parser →
+规范化操作/模型/绑定 IR → 本项目 Go 后端 → 已有 runtime。
+[product-generator-roadmap.md](product-generator-roadmap.md) 和 AGENTS.md 规定新路线，
+优先于冲突的旧元数据优先、逐操作 snapshot/overlay、字段选择、手写说明前置要求。
+下文旧阶段及 issue 引用仅作为历史验收记录。
+
+按来源规范化 → 完整操作/模型发现及 IR → 批量 Go 输出 → 少量能力策略 → 文档自动化/
+协议扩展推进。每阶段同步双语文档、相关测试、Example 及 pkg.go.dev，最后的文档
+自动化不表示前面可以推迟文档。固定 canonical 元数据在规范化后可选补充/交叉验证，
+新扫描不以每 API 的元数据/overlay 为前提。
+
+首个里程碑是规范化真实表示并交付完整固定 ECS 的 inventory/覆盖报告，再批量生成
+支持的 RPC。#31/PR #32 是五操作兼容桥，不是产品全量验收。Overlay 仅补审核的兼容
+例外、分页/waiter、幂等、敏感字段及特殊校验，不重述每个模型/字段。未支持操作明确
+列原因，选中不支持行为写前失败；先规范化 Filter 索引绑定及 itemName 响应包装再判
+冲突，浏览器、CLI 本地校验、真实 HTTP 证据分别记录。
+
+文档 → 建/更新真实 issue 依赖 → 每项独立分支 → 实现/验证/记录 → 关联 PR。路线父
+任务在所有阶段验收前保持打开，保留已验收 runtime/AWS 范式、Go 1.27/JSON v2、
+标准库核心；基准独立。
 
 目标是先完成统一 Go runtime，用少量手写 ECS/STS 参考操作验证，然后建设产品生成器。
 要求 Go 1.27、直接使用 encoding/json/v2；核心运行时导入保持标准库，OpenTelemetry 为可选集成。
@@ -90,3 +142,5 @@ Waiter 总期限与单次重试分开；凭据刷新有界并合并并发，一�
 下一真实产品门槛为 #24 → #25，见 [generator-expansion.md](generator-expansion.md)。
 验收后，扩展更多 profile 前按 #26 → #27 → #28 → #29 修复 review，见
 [AWS 风格修复路径](aws-style-remediation.md)。
+后续前端重构使用官方产品 DSL 与官方 parser，交付顺序及偏差验证见
+[Darabonba 迁移路径](darabonba-migration.md)。

@@ -2,6 +2,10 @@
 
 ## English
 
+Production manifests also pin the official parser's dsl.json projection, source lock
+and reviewed divergence decisions. Refreshing metadata alone requires re-projecting
+DSL and reviewing differences before Go generation; see [Darabonba tools](../tools/darabonba/README.md).
+
 Each product directory contains manifest.json, a reviewed overlay.json and protocol-only
 operation snapshots. Official source URLs, retrieval times, raw-source SHA-256 and
 snapshot SHA-256 are in the manifest. Generation verifies snapshot hashes offline;
@@ -30,6 +34,9 @@ operation API does not itself carry product Info/style; import supports RPC only
 Do not import credentials, account responses, upstream prose or guessed endpoint rules.
 
 ## 中文
+
+生产 manifest 同时固定官方 parser 的 dsl.json 投影、来源锁及审核偏差决策。只刷新
+元数据后也需重投影 DSL 并审核差异，再生成 Go；见 [Darabonba 工具](../tools/darabonba/README.md)。
 
 每个产品目录包含 manifest.json、审核 overlay.json 和仅协议操作快照。manifest 记录官方 URL、
 获取时间、原始源与快照 SHA-256。生成离线验证快照 hash；原始 hash 是来源记录，不保证当前远端响应相同。
