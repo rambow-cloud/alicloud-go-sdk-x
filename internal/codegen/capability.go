@@ -225,6 +225,23 @@ func (r *productRenderer) scalarPath(root, wire, variable, typ string) (capabili
 	}
 	return p, nil
 }
+
+// Compare roles only within a model; request/response and separate adapters may
+// intentionally use identical native paths. Empty paths belong to inactive modes.
+func distinctCapabilityRoles(scope string, paths ...string) error {
+	seen := map[string]bool{}
+	for _, path := range paths {
+		if path == "" {
+			continue
+		}
+		if seen[path] {
+			return fmt.Errorf("policy: %s roles must be distinct", scope)
+		}
+		seen[path] = true
+	}
+	return nil
+}
+
 func (r *productRenderer) validateCapabilityPolicy() error {
 	policy := r.p.Policy
 	if policy == nil {
@@ -337,6 +354,12 @@ func (r *productRenderer) validateCapabilityPolicy() error {
 			} else if p.Page != "" || p.Size != "" || p.Total != "" {
 				return errors.New("policy: token mode cannot declare page fields")
 			}
+			if err := distinctCapabilityRoles("paginator request", p.Page, p.Size, p.Limit); err != nil {
+				return err
+			}
+			if err := distinctCapabilityRoles("paginator response", p.Page, p.Size, p.Total); err != nil {
+				return err
+			}
 			for _, symbol := range []string{name + "Paginator", name + "PaginatorOptions", "New" + name + "Paginator"} {
 				if err := reserve(symbol); err != nil {
 					return err
@@ -374,6 +397,12 @@ func (r *productRenderer) validateCapabilityPolicy() error {
 				if _, err := r.scalarPath(request, path, "in", "int32"); err != nil {
 					return err
 				}
+			}
+			if err := distinctCapabilityRoles("waiter request", w.Page, w.Size); err != nil {
+				return err
+			}
+			if err := distinctCapabilityRoles("waiter member", w.ID, w.State); err != nil {
+				return err
 			}
 			states := map[string]bool{w.Success: true}
 			for _, state := range w.Retry {

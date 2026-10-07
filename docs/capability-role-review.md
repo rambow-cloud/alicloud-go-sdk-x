@@ -35,6 +35,14 @@ both generation checks, doccheck, vet, full Go tests and formatting once after t
 fix; Linux race and Windows CI provide platform acceptance. No live cloud calls
 are needed for invalid local policy rejection.
 
+Local verification, 2026-10-08: all eight invalid-role cases were accepted before
+the fix. After the fix, full Go tests (including isolated product compilation and
+Examples), official frontend/discovery checks, all 50 Node tests, both generation
+checks, 16-package doccheck, vet and formatting passed. Existing generated SDK
+artifacts have no drift. New tests verify legal cross-model/adapter reuse and
+read-only/failing-write preservation. CI and integration evidence belongs to the
+linked PR; local results alone do not imply Linux race acceptance or a main merge.
+
 ## 中文
 
 跟踪 [#44](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/44)，基于 #38 /
@@ -60,3 +68,9 @@ Waiter 的 `page`/`size` 重叠会覆盖强制首页，`id`/`state` 重叠会把
 验证现有策略及合法跨模型 token 同名仍可输出，SDK 生成产物保持不变。修复后各
 运行一次前端检查/测试、新旧生成检查、doccheck、vet、完整 Go 测试与格式检查，
 Linux race 和 Windows CI 提供平台验收；本地策略拒绝无需真实云调用。
+
+2026-10-08 本地验证：修复前八项非法角色映射均被接受；修复后完整 Go 测试（含
+隔离产品编译和 Example）、官方前端/发现检查、50 项 Node 测试、新旧生成检查、
+16 包 doccheck、vet 和格式通过，已有生成 SDK 产物无漂移。新增测试验证合法跨
+模型/适配器共用路径及只读/写入失败时的产物保护。CI 和集成证据记录在关联 PR，
+本地结果不表示 Linux race 已验收或已合并 main。
