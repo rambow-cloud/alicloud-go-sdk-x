@@ -15,8 +15,9 @@ English/Chinese guides. It is not an official SDK. APIs may change before v1.
 The full-DSL [batch backend](docs/batch-go-emission.md) now emits 579 supported
 operations in `service/ecs`, `service/vpc` and `service/sts`, with complete native
 models, operation interfaces and offline Examples. Existing `services/` imports
-remain the five-operation reference bridge described below. New full-product paginator/
-waiter policies are tracked by #37; unsupported actions and separate acceptance
+remain the five-operation reference bridge described below. The [sparse policy backend](docs/capability-policy.md)
+adds four native paginators, an ECS waiter and seven reviewed operation policies (#37).
+Unsupported actions and separate acceptance
 levels are recorded in [product guides](docs/products/ecs.md).
 
 The eleven shared foundation capabilities were accepted with handwritten references and are now exercised by generated
@@ -94,7 +95,8 @@ Read AGENTS.md and CONTRIBUTING.md before contributing. MIT: see LICENSE.
 
 完整 DSL [批量后端](docs/batch-go-emission.md) 已在 `service/ecs`、`service/vpc`、
 `service/sts` 输出 579 个支持操作、完整原生模型、操作小接口和离线 Example。
-原 `services/` 导入仍为下文五操作参考桥；新完整产品分页/waiter 策略由 #37 跟踪，
+原 `services/` 导入仍为下文五操作参考桥；[稀疏策略后端](docs/capability-policy.md)
+在 #37 新增四个原生分页器、ECS waiter 和七项已审核操作策略，
 不支持操作与不同验收层次见[产品指南](docs/products/ecs.md)。
 
 生产前端使用固定官方 Darabonba 产品 DSL 与官方语义 parser，结合公共元数据及本项目

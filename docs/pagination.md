@@ -4,10 +4,12 @@
 
 Historical implementation was committed directly to main: shared engine `61d2581`
 (issue #7), generated native adapters `89e1d07` (issue #28); neither issue is a PR.
-This guide describes `services/` reference adapters. The #36 full-DSL `service/`
-backend provides complete operation models and interfaces; native paginator/waiter
-policy adapters for those packages are a separate #37 PR, not delivered by #36.
-The paired [batch specification](batch-go-emission.md) records this boundary.
+The #36 full-DSL `service/` backend provides complete operation models and interfaces.
+#37 adds sparse-policy native adapters for ECS DescribeInstances, DescribeInstanceStatus,
+DescribeImages and VPC DescribeVpcs, reusing this engine. The earlier `services/`
+reference adapters remain available. See the [policy specification](capability-policy.md).
+New inputs use optional pointers: nil selects defaults; explicit PageNumber: 0 fails
+the reviewed positive bound. DescribeImages defaults to page one/size ten (maximum 100).
 
 `pagination.Paginator[T]` uses a typed fetcher, comparable Cursor and explicit HasMore.
 Native token/page adapters decide termination from service metadata. Empty items can
@@ -43,9 +45,11 @@ each fetch. No NextToken is invented for page-only APIs. See the
 ## 中文
 
 历史实现直接提交 main：共享引擎 `61d2581`（issue #7），原生生成适配器 `89e1d07`
-（issue #28）；issue 编号不是 PR。本指南描述原 `services/` 参考适配器。#36 完整
-DSL 的 `service/` 后端交付完整操作模型和接口；对应原生分页/waiter 策略适配器由
-独立 #37 PR 交付，不属于 #36，边界见[双语批量规格](batch-go-emission.md)。
+（issue #28）；issue 编号不是 PR。#36 的 `service/` 后端交付完整操作模型和接口。
+#37 新增 ECS DescribeInstances、DescribeInstanceStatus、DescribeImages 及 VPC
+DescribeVpcs 的稀疏策略原生适配器，复用此引擎。原 `services/` 参考适配器仍可用。
+见[策略规格](capability-policy.md)。新输入使用可选指针：nil 选择默认值，显式
+PageNumber: 0 违反正数下限而失败。DescribeImages 默认页一/大小十，上限 100。
 
 `pagination.Paginator[T]` 使用类型化 fetcher、可比较 Cursor 和明确 HasMore，根据服务 token/页元数据
 决定终止。有 token 时空条目可继续；失败/取消保留游标。重复/循环游标默认成功返回当前页后停止，

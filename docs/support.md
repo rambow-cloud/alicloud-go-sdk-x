@@ -5,8 +5,11 @@
 The `service/` full-DSL backend emits 283 ECS, 295 VPC and one STS action with complete
 models and small operation interfaces; see [batch emission](batch-go-emission.md) and
 [product coverage](products/ecs.coverage.json). The matrix below records accepted shared
-foundation and the earlier `services/` reference adapters. New `service/` paginator/
-waiter policy adapters remain #37; emitted actions do not imply product policy/live acceptance.
+foundation and the earlier `services/` reference adapters. #37 adds four `service/`
+paginators (including DescribeImages), InstanceRunningWaiter, five retry-safe reads,
+an AllocateDedicatedHosts token helper/validator and four sensitive STS models.
+Seven actions have reviewed policy; the remaining 572 emitted actions remain unreviewed.
+See [policy](capability-policy.md); emission does not imply live acceptance.
 
 All entries have implementations, offline behavior tests, public Go documentation and external executable examples. APIs are early v0 contracts. This matrix records code coverage, not real-account acceptance or full parity with AWS SDK v2.
 
@@ -42,8 +45,10 @@ RPC uses POST `/` with reviewed query encoding and ACS3. ROA path encoding is te
 
 完整 DSL 后端在 `service/` 输出 ECS 283、VPC 295、STS 1 个操作、完整模型及操作小
 接口，见[批量输出](batch-go-emission.md)和[覆盖报告](products/ecs.coverage.json)。下表
-记录已验收公共基础及原 `services/` 参考适配器。新 `service/` 分页/waiter 策略适配器
-属于 #37；已输出不等于产品策略/真实验收。
+记录已验收公共基础及原 `services/` 参考适配器。#37 在 `service/` 新增四个分页器
+（含 DescribeImages）、InstanceRunningWaiter、五项安全读重试、AllocateDedicatedHosts
+token helper/validator 与四个 STS 敏感模型。七项操作已审核，其余 572 个已输出操作
+仍未审核。见[策略](capability-policy.md)；已输出不等于真实验收。
 
 每项均有实现、离线行为测试、公共 Go 文档和外部可运行示例。API 属于早期 v0 契约。矩阵记录代码覆盖，不代表真实账号验收或与 AWS SDK v2 完全等价。
 

@@ -10,7 +10,8 @@
   "models": 1453,
   "compilation": "not-assessed",
   "live": "not-assessed",
-  "capabilityPolicy": "not-assessed",
+  "capabilityPolicy": "sparse-reviewed",
+  "policySHA256": "fae0ff0fe206eae652af2a902b4434d95b11b43ca89cecd68962e04519ff46b5",
   "operations": [
     {
       "name": "AcceptInquiredSystemEvent",
@@ -46,7 +47,14 @@
         "endLine": 182,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AddBandwidthPackageIps",
@@ -58,7 +66,14 @@
         "endLine": 262,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AddTags",
@@ -70,7 +85,14 @@
         "endLine": 383,
         "endColumn": 34
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AllocateDedicatedHosts",
@@ -82,7 +104,15 @@
         "endLine": 599,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "reviewed",
+        "idempotent": false,
+        "clientToken": "ClientToken",
+        "validator": true,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AllocateEipAddress",
@@ -94,7 +124,14 @@
         "endLine": 749,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AllocatePublicIpAddress",
@@ -106,7 +143,14 @@
         "endLine": 860,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ApplyAutoSnapshotPolicy",
@@ -118,7 +162,14 @@
         "endLine": 958,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AssignIpv6Addresses",
@@ -178,7 +229,14 @@
         "endLine": 1311,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AssociateHaVip",
@@ -190,7 +248,14 @@
         "endLine": 1400,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AttachClassicLinkVpc",
@@ -202,7 +267,14 @@
         "endLine": 1495,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AttachDisk",
@@ -214,7 +286,14 @@
         "endLine": 1648,
         "endColumn": 37
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AttachInstanceRamRole",
@@ -226,7 +305,14 @@
         "endLine": 1783,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AttachKeyPair",
@@ -238,7 +324,14 @@
         "endLine": 1894,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AttachNetworkInterface",
@@ -322,7 +415,14 @@
         "endLine": 2804,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CancelCopyImage",
@@ -334,7 +434,14 @@
         "endLine": 2887,
         "endColumn": 42
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CancelImagePipelineExecution",
@@ -370,7 +477,14 @@
         "endLine": 3066,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CancelSimulatedSystemEvents",
@@ -406,7 +520,14 @@
         "endLine": 3235,
         "endColumn": 37
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CloneDisks",
@@ -418,7 +539,14 @@
         "endLine": 3409,
         "endColumn": 37
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ConnectRouterInterface",
@@ -430,7 +558,14 @@
         "endLine": 3543,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ConvertNatPublicIpToEip",
@@ -442,7 +577,14 @@
         "endLine": 3631,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CopyImage",
@@ -454,7 +596,14 @@
         "endLine": 3755,
         "endColumn": 36
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CopySnapshot",
@@ -466,7 +615,14 @@
         "endLine": 3916,
         "endColumn": 39
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateActivation",
@@ -526,7 +682,14 @@
         "endLine": 5558,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateCapacityReservation",
@@ -538,7 +701,14 @@
         "endLine": 5729,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateCommand",
@@ -574,7 +744,14 @@
         "endLine": 6091,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateDeploymentSet",
@@ -586,7 +763,14 @@
         "endLine": 6214,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateDiagnosticMetricSet",
@@ -598,7 +782,14 @@
         "endLine": 6324,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateDiagnosticReport",
@@ -634,7 +825,14 @@
         "endLine": 6641,
         "endColumn": 37
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateElasticityAssurance",
@@ -646,7 +844,14 @@
         "endLine": 6884,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateForwardEntry",
@@ -658,7 +863,14 @@
         "endLine": 7018,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateHaVip",
@@ -670,7 +882,14 @@
         "endLine": 7118,
         "endColumn": 38
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateHpcCluster",
@@ -706,7 +925,14 @@
         "endLine": 7422,
         "endColumn": 38
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateImageComponent",
@@ -766,7 +992,14 @@
         "endLine": 8518,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateKeyPair",
@@ -778,7 +1011,14 @@
         "endLine": 8802,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateLaunchTemplate",
@@ -838,7 +1078,14 @@
         "endLine": 10124,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateNetworkInterface",
@@ -994,7 +1241,14 @@
         "endLine": 11382,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateRouterInterface",
@@ -1030,7 +1284,14 @@
         "endLine": 11647,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateSecurityGroup",
@@ -1042,7 +1303,14 @@
         "endLine": 11765,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateSimulatedSystemEvents",
@@ -1078,7 +1346,14 @@
         "endLine": 12062,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateSnapshotGroup",
@@ -1090,7 +1365,14 @@
         "endLine": 12238,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateStorageSet",
@@ -1102,7 +1384,14 @@
         "endLine": 12367,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVSwitch",
@@ -1114,7 +1403,14 @@
         "endLine": 12469,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVirtualBorderRouter",
@@ -1150,7 +1446,14 @@
         "endLine": 12697,
         "endColumn": 36
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVsc",
@@ -1162,7 +1465,14 @@
         "endLine": 12809,
         "endColumn": 36
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeactivateRouterInterface",
@@ -1174,7 +1484,14 @@
         "endLine": 12910,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteActivation",
@@ -1210,7 +1527,14 @@
         "endLine": 13096,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteAutoSnapshotPolicy",
@@ -1222,7 +1546,14 @@
         "endLine": 13177,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteBandwidthPackage",
@@ -1234,7 +1565,14 @@
         "endLine": 13249,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteCommand",
@@ -1270,7 +1608,14 @@
         "endLine": 13410,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteDeploymentSet",
@@ -1282,7 +1627,14 @@
         "endLine": 13491,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteDiagnosticMetricSets",
@@ -1294,7 +1646,14 @@
         "endLine": 13568,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteDiagnosticReports",
@@ -1306,7 +1665,14 @@
         "endLine": 13633,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteDisk",
@@ -1318,7 +1684,14 @@
         "endLine": 13705,
         "endColumn": 37
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteForwardEntry",
@@ -1330,7 +1703,14 @@
         "endLine": 13787,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteHaVip",
@@ -1342,7 +1722,14 @@
         "endLine": 13872,
         "endColumn": 38
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteHpcCluster",
@@ -1378,7 +1765,14 @@
         "endLine": 14052,
         "endColumn": 38
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteImageComponent",
@@ -1438,7 +1832,14 @@
         "endLine": 14343,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteInstances",
@@ -1450,7 +1851,14 @@
         "endLine": 14476,
         "endColumn": 42
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteKeyPairs",
@@ -1462,7 +1870,14 @@
         "endLine": 14584,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteLaunchTemplate",
@@ -1474,7 +1889,14 @@
         "endLine": 14677,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteLaunchTemplateVersion",
@@ -1486,7 +1908,14 @@
         "endLine": 14778,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteNatGateway",
@@ -1498,7 +1927,14 @@
         "endLine": 14867,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteNetworkInterface",
@@ -1558,7 +1994,14 @@
         "endLine": 15145,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeletePlanMaintenanceWindow",
@@ -1570,7 +2013,14 @@
         "endLine": 15226,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeletePortRangeList",
@@ -1630,7 +2080,14 @@
         "endLine": 15470,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteRouterInterface",
@@ -1642,7 +2099,14 @@
         "endLine": 15562,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteSecurityGroup",
@@ -1654,7 +2118,14 @@
         "endLine": 15655,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteSnapshot",
@@ -1666,7 +2137,14 @@
         "endLine": 15748,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteSnapshotGroup",
@@ -1678,7 +2156,14 @@
         "endLine": 15851,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteStorageSet",
@@ -1690,7 +2175,14 @@
         "endLine": 15929,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteVSwitch",
@@ -1702,7 +2194,14 @@
         "endLine": 16010,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteVirtualBorderRouter",
@@ -1714,7 +2213,14 @@
         "endLine": 16093,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteVpc",
@@ -1726,7 +2232,14 @@
         "endLine": 16180,
         "endColumn": 36
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteVsc",
@@ -1738,7 +2251,14 @@
         "endLine": 16269,
         "endColumn": 36
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeregisterManagedInstance",
@@ -1774,7 +2294,14 @@
         "endLine": 16486,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeAccountAttributes",
@@ -1786,7 +2313,14 @@
         "endLine": 16616,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeActivations",
@@ -1822,7 +2356,14 @@
         "endLine": 16913,
         "endColumn": 63
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeAutoProvisioningGroupInstances",
@@ -1834,7 +2375,14 @@
         "endLine": 17035,
         "endColumn": 65
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeAutoProvisioningGroups",
@@ -1846,7 +2394,14 @@
         "endLine": 17212,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeAutoSnapshotPolicyAssociations",
@@ -1858,7 +2413,14 @@
         "endLine": 17328,
         "endColumn": 65
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeAutoSnapshotPolicyEx",
@@ -1870,7 +2432,14 @@
         "endLine": 17479,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeAvailableResource",
@@ -1882,7 +2451,14 @@
         "endLine": 17744,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeBandwidthLimitation",
@@ -1894,7 +2470,14 @@
         "endLine": 17947,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeBandwidthPackages",
@@ -1906,7 +2489,14 @@
         "endLine": 18068,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeCapacityReservationInstances",
@@ -1918,7 +2508,14 @@
         "endLine": 18174,
         "endColumn": 63
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeCapacityReservations",
@@ -1930,7 +2527,14 @@
         "endLine": 18359,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeClassicLinkInstances",
@@ -1942,7 +2546,14 @@
         "endLine": 18485,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeCloudAssistantSettings",
@@ -1954,7 +2565,14 @@
         "endLine": 18623,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeCloudAssistantStatus",
@@ -1990,7 +2608,14 @@
         "endLine": 18842,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeCommands",
@@ -2026,7 +2651,14 @@
         "endLine": 19163,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeDedicatedHostClusters",
@@ -2038,7 +2670,14 @@
         "endLine": 19317,
         "endColumn": 56
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeDedicatedHostTypes",
@@ -2050,7 +2689,14 @@
         "endLine": 19447,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeDedicatedHosts",
@@ -2062,7 +2708,14 @@
         "endLine": 19691,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeDeploymentSetSupportedInstanceTypeFamily",
@@ -2074,7 +2727,14 @@
         "endLine": 19830,
         "endColumn": 75
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeDeploymentSets",
@@ -2086,7 +2746,14 @@
         "endLine": 19970,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeDiagnosticMetricSets",
@@ -2098,7 +2765,14 @@
         "endLine": 20095,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeDiagnosticMetrics",
@@ -2110,7 +2784,14 @@
         "endLine": 20192,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeDiagnosticReportAttributes",
@@ -2122,7 +2803,14 @@
         "endLine": 20307,
         "endColumn": 61
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeDiagnosticReports",
@@ -2134,7 +2822,14 @@
         "endLine": 20415,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeDiskDefaultKMSKeyId",
@@ -2146,7 +2841,14 @@
         "endLine": 20493,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeDiskEncryptionByDefaultStatus",
@@ -2158,7 +2860,14 @@
         "endLine": 20567,
         "endColumn": 64
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeDiskMonitorData",
@@ -2170,7 +2879,14 @@
         "endLine": 20683,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeDisks",
@@ -2182,7 +2898,14 @@
         "endLine": 21017,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeDisksFullStatus",
@@ -2218,7 +2941,14 @@
         "endLine": 21420,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeEipMonitorData",
@@ -2230,7 +2960,14 @@
         "endLine": 21546,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeElasticityAssuranceAutoRenewAttribute",
@@ -2242,7 +2979,14 @@
         "endLine": 21650,
         "endColumn": 72
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeElasticityAssuranceInstances",
@@ -2254,7 +2998,14 @@
         "endLine": 21749,
         "endColumn": 63
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeElasticityAssurances",
@@ -2266,7 +3017,14 @@
         "endLine": 21939,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeEniMonitorData",
@@ -2278,7 +3036,14 @@
         "endLine": 22081,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeForwardTableEntries",
@@ -2290,7 +3055,14 @@
         "endLine": 22196,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeHaVips",
@@ -2302,7 +3074,14 @@
         "endLine": 22317,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeHpcClusters",
@@ -2362,7 +3141,14 @@
         "endLine": 22760,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeImagePipelineExecutions",
@@ -2422,7 +3208,14 @@
         "endLine": 23245,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeImageSupportInstanceTypes",
@@ -2434,7 +3227,14 @@
         "endLine": 23354,
         "endColumn": 60
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeImages",
@@ -2446,7 +3246,15 @@
         "endLine": 23642,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "pages",
+        "validator": true,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeInstanceAttachmentAttributes",
@@ -2458,7 +3266,14 @@
         "endLine": 23818,
         "endColumn": 63
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeInstanceAttribute",
@@ -2470,7 +3285,14 @@
         "endLine": 24030,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeInstanceAutoRenewAttribute",
@@ -2482,7 +3304,14 @@
         "endLine": 24141,
         "endColumn": 61
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeInstanceHistoryEvents",
@@ -2518,7 +3347,14 @@
         "endLine": 24559,
         "endColumn": 64
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeInstanceModificationPrice",
@@ -2530,7 +3366,14 @@
         "endLine": 24743,
         "endColumn": 60
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeInstanceMonitorData",
@@ -2542,7 +3385,14 @@
         "endLine": 24893,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeInstanceRamRole",
@@ -2554,7 +3404,14 @@
         "endLine": 25008,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeInstanceStatus",
@@ -2566,7 +3423,16 @@
         "endLine": 25136,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "pages",
+        "waiter": "InstanceRunningWaiter",
+        "validator": true,
+        "sensitiveFormatting": false,
+        "namingException": true
+      }
     },
     {
       "name": "DescribeInstanceTopology",
@@ -2578,7 +3444,14 @@
         "endLine": 25250,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeInstanceTypeFamilies",
@@ -2590,7 +3463,14 @@
         "endLine": 25344,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeInstanceTypes",
@@ -2602,7 +3482,14 @@
         "endLine": 25655,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeInstanceVncUrl",
@@ -2614,7 +3501,14 @@
         "endLine": 25886,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeInstances",
@@ -2626,7 +3520,15 @@
         "endLine": 26283,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "dual",
+        "validator": true,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeInstancesFullStatus",
@@ -2710,7 +3612,14 @@
         "endLine": 27254,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeLaunchTemplateVersions",
@@ -2722,7 +3631,14 @@
         "endLine": 27497,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeLaunchTemplates",
@@ -2734,7 +3650,14 @@
         "endLine": 27650,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeLimitation",
@@ -2746,7 +3669,14 @@
         "endLine": 27744,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeLockedSnapshots",
@@ -2758,7 +3688,14 @@
         "endLine": 27852,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeManagedInstances",
@@ -2794,7 +3731,14 @@
         "endLine": 28179,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeNetworkInterfaceAttribute",
@@ -2878,7 +3822,14 @@
         "endLine": 28952,
         "endColumn": 59
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribePhysicalConnections",
@@ -2890,7 +3841,14 @@
         "endLine": 29078,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribePlanMaintenanceWindows",
@@ -3070,7 +4028,14 @@
         "endLine": 30302,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeRecommendInstanceType",
@@ -3082,7 +4047,14 @@
         "endLine": 30584,
         "endColumn": 56
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeRegions",
@@ -3094,7 +4066,14 @@
         "endLine": 30736,
         "endColumn": 42
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "reviewed",
+        "idempotent": true,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeRenewalPrice",
@@ -3106,7 +4085,14 @@
         "endLine": 30895,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeReservedInstanceAutoRenewAttribute",
@@ -3118,7 +4104,14 @@
         "endLine": 31001,
         "endColumn": 69
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeReservedInstances",
@@ -3154,7 +4147,14 @@
         "endLine": 31385,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeResourcesModification",
@@ -3166,7 +4166,14 @@
         "endLine": 31599,
         "endColumn": 56
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeRouteTables",
@@ -3178,7 +4185,14 @@
         "endLine": 31778,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeRouterInterfaces",
@@ -3190,7 +4204,14 @@
         "endLine": 31917,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSavingsPlanEstimation",
@@ -3202,7 +4223,14 @@
         "endLine": 32009,
         "endColumn": 56
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSavingsPlanPrice",
@@ -3214,7 +4242,14 @@
         "endLine": 32107,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSecurityGroupAttribute",
@@ -3226,7 +4261,14 @@
         "endLine": 32268,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSecurityGroupReferences",
@@ -3238,7 +4280,14 @@
         "endLine": 32379,
         "endColumn": 58
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSecurityGroups",
@@ -3250,7 +4299,14 @@
         "endLine": 32545,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSendFileResults",
@@ -3286,7 +4342,14 @@
         "endLine": 32937,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSnapshotLinks",
@@ -3298,7 +4361,14 @@
         "endLine": 33081,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSnapshotMonitorData",
@@ -3310,7 +4380,14 @@
         "endLine": 33213,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSnapshotPackage",
@@ -3322,7 +4399,14 @@
         "endLine": 33322,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSnapshots",
@@ -3334,7 +4418,14 @@
         "endLine": 33550,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSnapshotsUsage",
@@ -3346,7 +4437,14 @@
         "endLine": 33721,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSpotAdvice",
@@ -3358,7 +4456,14 @@
         "endLine": 33847,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSpotPriceHistory",
@@ -3394,7 +4499,14 @@
         "endLine": 34177,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeStorageSetDetails",
@@ -3406,7 +4518,14 @@
         "endLine": 34295,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeStorageSets",
@@ -3418,7 +4537,14 @@
         "endLine": 34421,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeTags",
@@ -3430,7 +4556,14 @@
         "endLine": 34578,
         "endColumn": 39
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeTaskAttribute",
@@ -3442,7 +4575,14 @@
         "endLine": 34704,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeTasks",
@@ -3454,7 +4594,14 @@
         "endLine": 34827,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeTerminalSessions",
@@ -3466,7 +4613,14 @@
         "endLine": 34964,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeUserBusinessBehavior",
@@ -3478,7 +4632,14 @@
         "endLine": 35054,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeUserData",
@@ -3490,7 +4651,14 @@
         "endLine": 35140,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVRouters",
@@ -3502,7 +4670,14 @@
         "endLine": 35235,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVSwitches",
@@ -3514,7 +4689,14 @@
         "endLine": 35347,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVirtualBorderRouters",
@@ -3526,7 +4708,14 @@
         "endLine": 35478,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVirtualBorderRoutersForPhysicalConnection",
@@ -3538,7 +4727,14 @@
         "endLine": 35586,
         "endColumn": 76
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVpcs",
@@ -3550,7 +4746,14 @@
         "endLine": 35700,
         "endColumn": 39
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVscs",
@@ -3562,7 +4765,14 @@
         "endLine": 35843,
         "endColumn": 39
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeZones",
@@ -3574,7 +4784,14 @@
         "endLine": 36023,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DetachClassicLinkVpc",
@@ -3586,7 +4803,14 @@
         "endLine": 36115,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DetachDisk",
@@ -3598,7 +4822,14 @@
         "endLine": 36217,
         "endColumn": 37
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DetachInstanceRamRole",
@@ -3610,7 +4841,14 @@
         "endLine": 36325,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DetachKeyPair",
@@ -3622,7 +4860,14 @@
         "endLine": 36423,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DetachNetworkInterface",
@@ -3682,7 +4927,14 @@
         "endLine": 36724,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DisableNetworkInterfaceQoS",
@@ -3718,7 +4970,14 @@
         "endLine": 36895,
         "endColumn": 56
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "EnableNetworkInterfaceQoS",
@@ -3754,7 +5013,14 @@
         "endLine": 37090,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "EndTerminalSession",
@@ -3766,7 +5032,14 @@
         "endLine": 37181,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ExportImage",
@@ -3778,7 +5051,14 @@
         "endLine": 37323,
         "endColumn": 38
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ExportSnapshot",
@@ -3790,7 +5070,14 @@
         "endLine": 37460,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "GetInstanceConsoleOutput",
@@ -3850,7 +5137,14 @@
         "endLine": 37974,
         "endColumn": 38
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ImportKeyPair",
@@ -3862,7 +5156,14 @@
         "endLine": 38209,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "InstallCloudAssistant",
@@ -3922,7 +5223,14 @@
         "endLine": 38914,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "JoinSecurityGroup",
@@ -3934,7 +5242,14 @@
         "endLine": 39016,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "LeaveSecurityGroup",
@@ -3946,7 +5261,14 @@
         "endLine": 39122,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListPluginStatus",
@@ -4006,7 +5328,14 @@
         "endLine": 39596,
         "endColumn": 39
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyAutoProvisioningGroup",
@@ -4018,7 +5347,14 @@
         "endLine": 39732,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyAutoSnapshotPolicyEx",
@@ -4030,7 +5366,14 @@
         "endLine": 39908,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyBandwidthPackageSpec",
@@ -4042,7 +5385,14 @@
         "endLine": 40016,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyCapacityReservation",
@@ -4054,7 +5404,14 @@
         "endLine": 40122,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyCloudAssistantSettings",
@@ -4114,7 +5471,14 @@
         "endLine": 40591,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyDedicatedHostAutoReleaseTime",
@@ -4126,7 +5490,14 @@
         "endLine": 40704,
         "endColumn": 61
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyDedicatedHostAutoRenewAttribute",
@@ -4138,7 +5509,14 @@
         "endLine": 40851,
         "endColumn": 64
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyDedicatedHostClusterAttribute",
@@ -4150,7 +5528,14 @@
         "endLine": 40950,
         "endColumn": 62
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyDedicatedHostsChargeType",
@@ -4162,7 +5547,14 @@
         "endLine": 41075,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyDeploymentSetAttribute",
@@ -4174,7 +5566,14 @@
         "endLine": 41179,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyDiagnosticMetricSet",
@@ -4186,7 +5585,14 @@
         "endLine": 41267,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyDiskAttribute",
@@ -4198,7 +5604,14 @@
         "endLine": 41380,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyDiskChargeType",
@@ -4210,7 +5623,14 @@
         "endLine": 41506,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyDiskDefaultKMSKeyId",
@@ -4222,7 +5642,14 @@
         "endLine": 41608,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyDiskDeployment",
@@ -4234,7 +5661,14 @@
         "endLine": 41714,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyDiskSpec",
@@ -4246,7 +5680,14 @@
         "endLine": 41891,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyEipAddressAttribute",
@@ -4258,7 +5699,14 @@
         "endLine": 42002,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyElasticityAssurance",
@@ -4270,7 +5718,14 @@
         "endLine": 42114,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyElasticityAssuranceAutoRenewAttribute",
@@ -4282,7 +5737,14 @@
         "endLine": 42233,
         "endColumn": 70
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyForwardEntry",
@@ -4294,7 +5756,14 @@
         "endLine": 42326,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyHaVipAttribute",
@@ -4306,7 +5775,14 @@
         "endLine": 42427,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyHpcClusterAttribute",
@@ -4342,7 +5818,14 @@
         "endLine": 42655,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyImageShareGroupPermission",
@@ -4354,7 +5837,14 @@
         "endLine": 42759,
         "endColumn": 58
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyImageSharePermission",
@@ -4366,7 +5856,14 @@
         "endLine": 42871,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyInstanceAttachmentAttributes",
@@ -4378,7 +5875,14 @@
         "endLine": 42999,
         "endColumn": 61
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyInstanceAttribute",
@@ -4390,7 +5894,14 @@
         "endLine": 43215,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyInstanceAutoReleaseTime",
@@ -4402,7 +5913,14 @@
         "endLine": 43345,
         "endColumn": 56
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyInstanceAutoRenewAttribute",
@@ -4414,7 +5932,14 @@
         "endLine": 43486,
         "endColumn": 59
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyInstanceChargeType",
@@ -4426,7 +5951,14 @@
         "endLine": 43665,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyInstanceClockOptions",
@@ -4438,7 +5970,14 @@
         "endLine": 43806,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyInstanceDeployment",
@@ -4450,7 +5989,14 @@
         "endLine": 43959,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyInstanceMaintenanceAttributes",
@@ -4462,7 +6008,14 @@
         "endLine": 44095,
         "endColumn": 62
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyInstanceMetadataOptions",
@@ -4474,7 +6027,14 @@
         "endLine": 44210,
         "endColumn": 56
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyInstanceNetworkOptions",
@@ -4486,7 +6046,14 @@
         "endLine": 44303,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyInstanceNetworkSpec",
@@ -4498,7 +6065,14 @@
         "endLine": 44438,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyInstanceSecurityOptions",
@@ -4510,7 +6084,14 @@
         "endLine": 44560,
         "endColumn": 56
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyInstanceSpec",
@@ -4522,7 +6103,14 @@
         "endLine": 44708,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyInstanceVncPasswd",
@@ -4534,7 +6122,14 @@
         "endLine": 44837,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyInstanceVpcAttribute",
@@ -4546,7 +6141,14 @@
         "endLine": 44966,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyInvocationAttribute",
@@ -4582,7 +6184,14 @@
         "endLine": 45371,
         "endColumn": 61
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyManagedInstance",
@@ -4738,7 +6347,14 @@
         "endLine": 46379,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyReservedInstanceAttribute",
@@ -4750,7 +6366,14 @@
         "endLine": 46514,
         "endColumn": 58
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyReservedInstanceAutoRenewAttribute",
@@ -4762,7 +6385,14 @@
         "endLine": 46617,
         "endColumn": 67
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyReservedInstances",
@@ -4774,7 +6404,14 @@
         "endLine": 46785,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyRouterInterfaceAttribute",
@@ -4786,7 +6423,14 @@
         "endLine": 46926,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyRouterInterfaceSpec",
@@ -4798,7 +6442,14 @@
         "endLine": 47032,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifySecurityGroupAttribute",
@@ -4810,7 +6461,14 @@
         "endLine": 47129,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifySecurityGroupEgressRule",
@@ -4846,7 +6504,14 @@
         "endLine": 47446,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifySecurityGroupRule",
@@ -4882,7 +6547,14 @@
         "endLine": 47772,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifySnapshotCategory",
@@ -4894,7 +6566,14 @@
         "endLine": 47874,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifySnapshotGroup",
@@ -4906,7 +6585,14 @@
         "endLine": 47964,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyStorageCapacityUnitAttribute",
@@ -4918,7 +6604,14 @@
         "endLine": 48051,
         "endColumn": 61
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyStorageSetAttribute",
@@ -4930,7 +6623,14 @@
         "endLine": 48135,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifySystemEventAttribute",
@@ -4942,7 +6642,14 @@
         "endLine": 48230,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyUserBusinessBehavior",
@@ -4954,7 +6661,14 @@
         "endLine": 48308,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVRouterAttribute",
@@ -4966,7 +6680,14 @@
         "endLine": 48394,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVSwitchAttribute",
@@ -4978,7 +6699,14 @@
         "endLine": 48483,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVirtualBorderRouterAttribute",
@@ -4990,7 +6718,14 @@
         "endLine": 48579,
         "endColumn": 61
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVpcAttribute",
@@ -5002,7 +6737,14 @@
         "endLine": 48691,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "OpenSnapshotService",
@@ -5014,7 +6756,14 @@
         "endLine": 48781,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "PurchaseReservedInstancesOffering",
@@ -5026,7 +6775,14 @@
         "endLine": 48967,
         "endColumn": 60
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "PurchaseStorageCapacityUnit",
@@ -5038,7 +6794,14 @@
         "endLine": 49161,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ReActivateInstances",
@@ -5050,7 +6813,14 @@
         "endLine": 49279,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ReInitDisk",
@@ -5062,7 +6832,14 @@
         "endLine": 49394,
         "endColumn": 37
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RebootInstance",
@@ -5074,7 +6851,14 @@
         "endLine": 49505,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RebootInstances",
@@ -5086,7 +6870,14 @@
         "endLine": 49630,
         "endColumn": 42
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RecoverVirtualBorderRouter",
@@ -5098,7 +6889,14 @@
         "endLine": 49724,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RedeployDedicatedHost",
@@ -5110,7 +6908,14 @@
         "endLine": 49821,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RedeployInstance",
@@ -5122,7 +6927,14 @@
         "endLine": 49933,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ReleaseCapacityReservation",
@@ -5134,7 +6946,14 @@
         "endLine": 50040,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ReleaseDedicatedHost",
@@ -5146,7 +6965,14 @@
         "endLine": 50132,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ReleaseEipAddress",
@@ -5158,7 +6984,14 @@
         "endLine": 50215,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ReleasePublicIpAddress",
@@ -5170,7 +7003,14 @@
         "endLine": 50297,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RemoveBandwidthPackageIps",
@@ -5182,7 +7022,14 @@
         "endLine": 50371,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RemoveTags",
@@ -5194,7 +7041,14 @@
         "endLine": 50482,
         "endColumn": 37
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RenewDedicatedHosts",
@@ -5206,7 +7060,14 @@
         "endLine": 50603,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RenewElasticityAssurances",
@@ -5218,7 +7079,14 @@
         "endLine": 50745,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RenewInstance",
@@ -5230,7 +7098,14 @@
         "endLine": 50873,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RenewReservedInstances",
@@ -5242,7 +7117,14 @@
         "endLine": 51016,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ReplaceSystemDisk",
@@ -5254,7 +7136,14 @@
         "endLine": 51198,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ReportInstancesStatus",
@@ -5290,7 +7179,14 @@
         "endLine": 51478,
         "endColumn": 36
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ResetDiskDefaultKMSKeyId",
@@ -5302,7 +7198,14 @@
         "endLine": 51565,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ResetDisks",
@@ -5314,7 +7217,14 @@
         "endLine": 51668,
         "endColumn": 37
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ResizeDisk",
@@ -5326,7 +7236,14 @@
         "endLine": 51800,
         "endColumn": 37
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RevokeSecurityGroup",
@@ -5434,7 +7351,14 @@
         "endLine": 54527,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "SendFile",
@@ -5494,7 +7418,14 @@
         "endLine": 54928,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "StartInstances",
@@ -5506,7 +7437,14 @@
         "endLine": 55048,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "StartTerminalSession",
@@ -5542,7 +7480,14 @@
         "endLine": 55373,
         "endColumn": 39
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "StopInstances",
@@ -5554,7 +7499,14 @@
         "endLine": 55522,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "StopInvocation",
@@ -5614,7 +7566,14 @@
         "endLine": 55838,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "TerminateVirtualBorderRouter",
@@ -5626,7 +7585,14 @@
         "endLine": 55927,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UnassignIpv6Addresses",
@@ -5686,7 +7652,14 @@
         "endLine": 56214,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UnassociateHaVip",
@@ -5698,7 +7671,14 @@
         "endLine": 56304,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UnlockSnapshot",
@@ -5710,7 +7690,14 @@
         "endLine": 56399,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UntagResources",

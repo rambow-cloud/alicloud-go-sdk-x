@@ -17,12 +17,11 @@ Outputs preserve full native response body containers and add Metadata. DSL resp
 envelope types are retained separately. Small OperationAPI interfaces support mocks.
 Errors retain cancellation and APIError/OperationError. Clients are concurrency safe;
 do not mutate caller inputs during calls or retain hook models/options. Standard retry
-is conservatively disabled for these operations pending reviewed #37 policy.
+is available only for explicitly reviewed idempotent operations with a configured Retryer.
 
 The older `services/sts` is the bounded reference bridge, including its existing
 paginator/waiter adapters; changing imports also requires adapting scalar pointers
-and complete native response shapes. New product paginators/waiters are #37, not
-inferred from token fields. Licensed semantic prose automation belongs to #38; current
+and complete native response shapes. Reviewed native adapters are listed below; token fields alone do not grant support. Licensed semantic prose automation belongs to #38; current
 Go comments document exact bindings and ownership. Each operation has an offline
 external Example using a scripted HTTP transport; empty mock requests/responses
 illustrate invocation only, not valid cloud parameter sets or complete server examples.
@@ -39,9 +38,36 @@ illustrate invocation only, not valid cloud parameter sets or complete server ex
 保持字符串。RegionId 使用配置默认地区及操作地区选项。Output 保留完整原生响应体
 容器并增加 Metadata；DSL response envelope 类型单独保留。小 OperationAPI 接口
 支持 mock；错误保留取消及 APIError/OperationError。Client 可并发，调用中不要修改
-输入或保留 hooks 模型/选项。审核 #37 策略前，Standard 不重试这些操作。
+输入或保留 hooks 模型/选项。Standard 仅对明确审核幂等的操作、配置 Retryer 后允许重试。
 
 原 `services/sts` 为有界参考桥，含已有分页/waiter；迁移导入时同步适配标量指针及
-完整原生响应结构。新产品分页/waiter 属于 #37，不凭 token 字段猜能力。授权语义
+完整原生响应结构。已审核原生适配器见下表，不凭 token 字段猜能力。授权语义
 说明自动化属于 #38，当前 Go 注释说明准确绑定/所有权。每操作有脚本 HTTP transport
 的离线外部 Example；空 mock 请求/响应仅演示调用，不表示有效云参数或完整服务示例。
+
+## Capability policy / 能力策略
+
+### English
+
+Sparse policies are optional, source-bound and reviewed independently. Unlisted actions
+remain unreviewed and non-idempotent for Standard retry. Retry stays opt-in. Constructor
+errors, native cursors, copied per-page options and reusable waiters follow the shared
+engines. See [behavior specification](../capability-policy.md). Invalid explicit positive-
+bound zero pointers fail; nil fields remain optional. Status paginator defaults to 50
+by SDK policy (service default 10); other initial defaults are 10. Token writes remain
+non-retrying even with generated tokens; absent tokens are filled once on owned input.
+Sensitive String/GoString hide whole models; JSON/direct fields remain raw.
+
+| Action | Paginator | Waiter | Retry-safe read | Token | Validator | Sensitive formatting |
+| --- | --- | --- | --- | --- | --- | --- |
+| AssumeRole | — | — | false |  | false | true |
+
+### 中文
+
+稀疏策略可选，绑定来源且独立审核；未列操作保持未审核，不被 Standard 重试，重试仍
+需显式启用。构造错误、原生游标、单页选项复制及可复用 waiter 复用公共引擎，详见
+[行为规格](../capability-policy.md)。正数约束拒绝显式零指针，nil 字段仍可选。状态
+分页刻意默认 50（服务默认 10），其余首批默认 10。写操作有生成 token 也不被自动
+重试；缺 token 在独占输入上生成一次。敏感 String/GoString 隐藏整个模型，JSON/
+直接字段仍为原始数据。能力表逐操作对应英文章节各列：操作、分页、waiter、可安全
+读重试、token、validator、敏感格式化；其余操作不宣称已审核。

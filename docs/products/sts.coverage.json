@@ -10,7 +10,8 @@
   "models": 5,
   "compilation": "not-assessed",
   "live": "not-assessed",
-  "capabilityPolicy": "not-assessed",
+  "capabilityPolicy": "sparse-reviewed",
+  "policySHA256": "4f8bc9825382d62b9a14542f4194063d32dc4d33e529f98ed626f07cad8567e3",
   "operations": [
     {
       "name": "AssumeRole",
@@ -22,7 +23,14 @@
         "endLine": 147,
         "endColumn": 37
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": true,
+        "namingException": false
+      }
     },
     {
       "name": "AssumeRoleWithOIDC",

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "product": "sts",
+  "version": "2015-04-01",
+  "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
+  "operations": {
+    "AssumeRole": {
+      "idempotent": false,
+      "evidence": ["sources/darabonba/products/sts/main.tea", "docs/credentials.md"],
+      "sensitiveModels": ["AssumeRoleRequest", "AssumeRoleResponse", "AssumeRoleResponseBody", "AssumeRoleResponseBody.credentials"]
+    }
+  }
+}

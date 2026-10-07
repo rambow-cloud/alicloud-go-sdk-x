@@ -11980,8 +11980,8 @@ type DescribeInstanceStatusInput struct {
 	// ClusterID maps to the exact wire member ClusterId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	ClusterID *string `json:"ClusterId,omitzero"`
-	// InstanceID maps to the exact wire member InstanceId.
-	InstanceID []string `json:"InstanceId,omitzero"`
+	// InstanceIDs maps to the exact wire member InstanceId.
+	InstanceIDs []string `json:"InstanceId,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	OwnerAccount *string `json:"OwnerAccount,omitzero"`

@@ -98,7 +98,11 @@ before changing the public API.
 - Full-DSL products use `service/<product>`; `services/<product>` retains the bounded
   compatibility/reference bridge. Follow docs/batch-go-emission.md for explicit migration.
   Product changes also run `sdkgen product-check`; old/new generators must preserve each
-  other's owned outputs. New product paginator/waiter policy generation is #37.
+  other's owned outputs. Product capabilities use optional source-bound policies under
+  policies/ (#37); resolve exact wire paths against complete IR, fail invalid policy
+  before writes, and report unlisted actions as unreviewed. Never infer retry safety or
+  paginator/waiter behavior from operation names or token-shaped fields. Follow
+  docs/capability-policy.md; caller inputs stay owned copies and retry remains opt-in.
 - Establish bilingual route docs, then actual issue dependencies, then stage implementation
   on separate issue branches. Each stage includes docs/tests/Examples/pkg.go.dev acceptance;
   the documentation automation stage does not postpone earlier documentation.
@@ -192,7 +196,10 @@ before changing the public API.
   先规范化索引输入/itemName 包装，再判断来源冲突。
 - 完整 DSL 产品使用 `service/<product>`，原 `services/<product>` 保留有界兼容/参考桥；
   明确迁移见 docs/batch-go-emission.md。产品变更还需运行 `sdkgen product-check`，新旧
-  生成器相互保留各自产物；新产品分页/waiter 策略生成属于 #37。
+  生成器相互保留各自产物。产品能力使用 policies/ 下可选且绑定来源的策略（#37），
+  按完整 IR 解析准确线路径，无效策略写前失败，未列操作报告未审核。不从操作名称
+  或形似 token 的字段推断重试安全/分页/waiter。遵循 docs/capability-policy.md，
+  输入保持独占副本，重试仍显式启用。
 - 先落实双语路线，再建真实 issue 依赖，然后各 issue 分支实现阶段；每阶段同步文档/
   测试/Example/pkg.go.dev，文档自动化阶段不表示前面可推迟文档。
 

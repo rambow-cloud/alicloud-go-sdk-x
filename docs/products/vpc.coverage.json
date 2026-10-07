@@ -10,7 +10,8 @@
   "models": 1240,
   "compilation": "not-assessed",
   "live": "not-assessed",
-  "capabilityPolicy": "not-assessed",
+  "capabilityPolicy": "sparse-reviewed",
+  "policySHA256": "d5c1511fe4ba20ccb76975c995c45e891838fe89f1dea318879dc2ce7dd54db1",
   "operations": [
     {
       "name": "ActivateRouterInterface",
@@ -22,7 +23,14 @@
         "endLine": 105,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ActiveFlowLog",
@@ -34,7 +42,14 @@
         "endLine": 194,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AddBgpNetwork",
@@ -46,7 +61,14 @@
         "endLine": 289,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AddCommonBandwidthPackageIp",
@@ -58,7 +80,14 @@
         "endLine": 400,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AddCommonBandwidthPackageIps",
@@ -70,7 +99,14 @@
         "endLine": 522,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AddGlobalAccelerationInstanceIp",
@@ -82,7 +118,14 @@
         "endLine": 626,
         "endColumn": 58
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AddIPv6TranslatorAclListEntry",
@@ -94,7 +137,14 @@
         "endLine": 718,
         "endColumn": 56
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AddPublicIpAddressPoolCidrBlock",
@@ -106,7 +156,14 @@
         "endLine": 831,
         "endColumn": 58
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AddSourcesToTrafficMirrorSession",
@@ -118,7 +175,14 @@
         "endLine": 952,
         "endColumn": 59
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AllocateEipAddress",
@@ -130,7 +194,14 @@
         "endLine": 1158,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AllocateEipAddressPro",
@@ -142,7 +213,14 @@
         "endLine": 1394,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AllocateEipSegmentAddress",
@@ -154,7 +232,14 @@
         "endLine": 1573,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AllocateIpv6Address",
@@ -262,7 +347,14 @@
         "endLine": 2312,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AssociateEipAddressBatch",
@@ -298,7 +390,14 @@
         "endLine": 2567,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AssociateMacSecKey",
@@ -310,7 +409,14 @@
         "endLine": 2690,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AssociateNetworkAcl",
@@ -346,7 +452,14 @@
         "endLine": 2931,
         "endColumn": 75
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AssociateRouteTable",
@@ -406,7 +519,14 @@
         "endLine": 3284,
         "endColumn": 69
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AssociateVpcCidrBlock",
@@ -442,7 +562,14 @@
         "endLine": 3564,
         "endColumn": 61
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AttachDhcpOptionsSetToVpc",
@@ -454,7 +581,14 @@
         "endLine": 3674,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AttachVbrToVpconn",
@@ -466,7 +600,14 @@
         "endLine": 3778,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CancelCommonBandwidthPackageIpBandwidth",
@@ -478,7 +619,14 @@
         "endLine": 3861,
         "endColumn": 66
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CancelPhysicalConnection",
@@ -490,7 +638,14 @@
         "endLine": 3954,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ChangeResourceGroup",
@@ -502,7 +657,14 @@
         "endLine": 4050,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CheckCanAllocateVpcPrivateIpAddress",
@@ -514,7 +676,14 @@
         "endLine": 4140,
         "endColumn": 62
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CheckVpnBgpEnabled",
@@ -526,7 +695,14 @@
         "endLine": 4234,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CompletePhysicalConnectionLOA",
@@ -562,7 +738,14 @@
         "endLine": 4443,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ConnectRouterInterface",
@@ -574,7 +757,14 @@
         "endLine": 4532,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CopyNetworkAclEntries",
@@ -610,7 +800,14 @@
         "endLine": 4771,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateBgpPeer",
@@ -622,7 +819,14 @@
         "endLine": 4910,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateCommonBandwidthPackage",
@@ -634,7 +838,14 @@
         "endLine": 5080,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateCustomerGateway",
@@ -646,7 +857,14 @@
         "endLine": 5254,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateDefaultVSwitch",
@@ -658,7 +876,14 @@
         "endLine": 5376,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateDefaultVpc",
@@ -670,7 +895,14 @@
         "endLine": 5500,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateDhcpOptionsSet",
@@ -682,7 +914,14 @@
         "endLine": 5653,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateEnhancedVpnGateway",
@@ -694,7 +933,14 @@
         "endLine": 5803,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateExpressCloudConnection",
@@ -706,7 +952,14 @@
         "endLine": 5945,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateExpressConnectTrafficQos",
@@ -814,7 +1067,14 @@
         "endLine": 6772,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateForwardEntry",
@@ -826,7 +1086,14 @@
         "endLine": 6963,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateFullNatEntry",
@@ -838,7 +1105,14 @@
         "endLine": 7122,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateGlobalAccelerationInstance",
@@ -850,7 +1124,14 @@
         "endLine": 7275,
         "endColumn": 59
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateHaVip",
@@ -862,7 +1143,14 @@
         "endLine": 7406,
         "endColumn": 38
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateHighReliablePhysicalConnection",
@@ -898,7 +1186,14 @@
         "endLine": 7770,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateIPv6TranslatorAclList",
@@ -910,7 +1205,14 @@
         "endLine": 7878,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateIPv6TranslatorEntry",
@@ -922,7 +1224,14 @@
         "endLine": 7999,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateIpsecServer",
@@ -934,7 +1243,14 @@
         "endLine": 8185,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateIpv4Gateway",
@@ -1090,7 +1406,14 @@
         "endLine": 9396,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreatePhysicalConnection",
@@ -1126,7 +1449,14 @@
         "endLine": 9742,
         "endColumn": 65
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreatePhysicalConnectionSetupOrder",
@@ -1210,7 +1540,14 @@
         "endLine": 10428,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateRouteTable",
@@ -1246,7 +1583,14 @@
         "endLine": 10763,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateRouterInterface",
@@ -1282,7 +1626,14 @@
         "endLine": 11232,
         "endColumn": 42
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateSslVpnClientCert",
@@ -1294,7 +1645,14 @@
         "endLine": 11359,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateSslVpnServer",
@@ -1306,7 +1664,14 @@
         "endLine": 11570,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateTrafficMirrorFilter",
@@ -1318,7 +1683,14 @@
         "endLine": 11787,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateTrafficMirrorFilterRules",
@@ -1330,7 +1702,14 @@
         "endLine": 11973,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateTrafficMirrorSession",
@@ -1342,7 +1721,14 @@
         "endLine": 12131,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVSwitch",
@@ -1354,7 +1740,14 @@
         "endLine": 12312,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVSwitchCidrReservation",
@@ -1366,7 +1759,14 @@
         "endLine": 12494,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVbrHa",
@@ -1378,7 +1778,14 @@
         "endLine": 12630,
         "endColumn": 38
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVcoRouteEntry",
@@ -1390,7 +1797,14 @@
         "endLine": 12772,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVirtualBorderRouter",
@@ -1402,7 +1816,14 @@
         "endLine": 12946,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVirtualPhysicalConnection",
@@ -1414,7 +1835,14 @@
         "endLine": 13143,
         "endColumn": 58
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVpc",
@@ -1426,7 +1854,14 @@
         "endLine": 13326,
         "endColumn": 36
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVpcGatewayEndpoint",
@@ -1438,7 +1873,14 @@
         "endLine": 13515,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVpcPrefixList",
@@ -1450,7 +1892,14 @@
         "endLine": 13664,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVpconnFromVbr",
@@ -1462,7 +1911,14 @@
         "endLine": 13786,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVpnAttachment",
@@ -1522,7 +1978,14 @@
         "endLine": 14709,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVpnPbrRouteEntry",
@@ -1534,7 +1997,14 @@
         "endLine": 14916,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVpnRouteEntry",
@@ -1546,7 +2016,14 @@
         "endLine": 15108,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeactivateRouterInterface",
@@ -1558,7 +2035,14 @@
         "endLine": 15223,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeactiveFlowLog",
@@ -1570,7 +2054,14 @@
         "endLine": 15308,
         "endColumn": 42
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteBgpGroup",
@@ -1582,7 +2073,14 @@
         "endLine": 15399,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteBgpNetwork",
@@ -1594,7 +2092,14 @@
         "endLine": 15493,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteBgpPeer",
@@ -1606,7 +2111,14 @@
         "endLine": 15587,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteCommonBandwidthPackage",
@@ -1618,7 +2130,14 @@
         "endLine": 15678,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteCustomerGateway",
@@ -1630,7 +2149,14 @@
         "endLine": 15769,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteDhcpOptionsSet",
@@ -1642,7 +2168,14 @@
         "endLine": 15868,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteEnhancedVpnGateway",
@@ -1654,7 +2187,14 @@
         "endLine": 15965,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteExpressConnect",
@@ -1666,7 +2206,14 @@
         "endLine": 16057,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteExpressConnectTrafficQos",
@@ -1774,7 +2321,14 @@
         "endLine": 16529,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteForwardEntry",
@@ -1786,7 +2340,14 @@
         "endLine": 16628,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteFullNatEntry",
@@ -1798,7 +2359,14 @@
         "endLine": 16736,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteGlobalAccelerationInstance",
@@ -1810,7 +2378,14 @@
         "endLine": 16835,
         "endColumn": 59
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteHaVip",
@@ -1822,7 +2397,14 @@
         "endLine": 16933,
         "endColumn": 38
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteIPv6Translator",
@@ -1834,7 +2416,14 @@
         "endLine": 17027,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteIPv6TranslatorAclList",
@@ -1846,7 +2435,14 @@
         "endLine": 17115,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteIPv6TranslatorEntry",
@@ -1858,7 +2454,14 @@
         "endLine": 17207,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteIpsecServer",
@@ -1870,7 +2473,14 @@
         "endLine": 17306,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteIpv4Gateway",
@@ -1978,7 +2588,14 @@
         "endLine": 17851,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteNatIp",
@@ -2062,7 +2679,14 @@
         "endLine": 18272,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeletePublicIpAddressPool",
@@ -2074,7 +2698,14 @@
         "endLine": 18369,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeletePublicIpAddressPoolCidrBlock",
@@ -2086,7 +2717,14 @@
         "endLine": 18477,
         "endColumn": 61
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteRouteEntries",
@@ -2122,7 +2760,14 @@
         "endLine": 18731,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteRouteTable",
@@ -2158,7 +2803,14 @@
         "endLine": 18946,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteRouterInterface",
@@ -2170,7 +2822,14 @@
         "endLine": 19037,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteSnatEntry",
@@ -2182,7 +2841,14 @@
         "endLine": 19138,
         "endColumn": 42
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteSslVpnClientCert",
@@ -2194,7 +2860,14 @@
         "endLine": 19244,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteSslVpnServer",
@@ -2206,7 +2879,14 @@
         "endLine": 19347,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteTrafficMirrorFilter",
@@ -2218,7 +2898,14 @@
         "endLine": 19448,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteTrafficMirrorFilterRules",
@@ -2230,7 +2917,14 @@
         "endLine": 19556,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteTrafficMirrorSession",
@@ -2242,7 +2936,14 @@
         "endLine": 19664,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteVSwitch",
@@ -2254,7 +2955,14 @@
         "endLine": 19766,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteVSwitchCidrReservation",
@@ -2266,7 +2974,14 @@
         "endLine": 19872,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteVbrHa",
@@ -2278,7 +2993,14 @@
         "endLine": 19967,
         "endColumn": 38
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteVcoRouteEntry",
@@ -2290,7 +3012,14 @@
         "endLine": 20073,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteVirtualBorderRouter",
@@ -2302,7 +3031,14 @@
         "endLine": 20177,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteVpc",
@@ -2314,7 +3050,14 @@
         "endLine": 20289,
         "endColumn": 36
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteVpcGatewayEndpoint",
@@ -2326,7 +3069,14 @@
         "endLine": 20396,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteVpcPrefixList",
@@ -2338,7 +3088,14 @@
         "endLine": 20493,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteVpnAttachment",
@@ -2350,7 +3107,14 @@
         "endLine": 20595,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteVpnConnection",
@@ -2362,7 +3126,14 @@
         "endLine": 20690,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteVpnGateway",
@@ -2374,7 +3145,14 @@
         "endLine": 20787,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteVpnPbrRouteEntry",
@@ -2386,7 +3164,14 @@
         "endLine": 20902,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteVpnRouteEntry",
@@ -2398,7 +3183,14 @@
         "endLine": 21031,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeletionProtection",
@@ -2434,7 +3226,14 @@
         "endLine": 21276,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeAccessPoints",
@@ -2446,7 +3245,14 @@
         "endLine": 21390,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeBgpGroups",
@@ -2458,7 +3264,14 @@
         "endLine": 21502,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeBgpNetworks",
@@ -2470,7 +3283,14 @@
         "endLine": 21608,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeBgpPeers",
@@ -2482,7 +3302,14 @@
         "endLine": 21734,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeCommonBandwidthPackages",
@@ -2494,7 +3321,14 @@
         "endLine": 21908,
         "endColumn": 58
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeCustomerGateway",
@@ -2506,7 +3340,14 @@
         "endLine": 22033,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeCustomerGateways",
@@ -2518,7 +3359,14 @@
         "endLine": 22158,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeEcGrantRelation",
@@ -2530,7 +3378,14 @@
         "endLine": 22284,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeEipAddresses",
@@ -2542,7 +3397,14 @@
         "endLine": 22455,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeEipGatewayInfo",
@@ -2578,7 +3440,14 @@
         "endLine": 22716,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeEipSegment",
@@ -2590,7 +3459,14 @@
         "endLine": 22831,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeExpressConnectTrafficQos",
@@ -2722,7 +3598,14 @@
         "endLine": 23917,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeForwardTableEntries",
@@ -2734,7 +3617,14 @@
         "endLine": 24089,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeGlobalAccelerationInstances",
@@ -2746,7 +3636,14 @@
         "endLine": 24270,
         "endColumn": 62
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeGrantRulesToCen",
@@ -2758,7 +3655,14 @@
         "endLine": 24405,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeGrantRulesToEcr",
@@ -2770,7 +3674,14 @@
         "endLine": 24519,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeHaVips",
@@ -2782,7 +3693,14 @@
         "endLine": 24668,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeHighDefinitionMonitorLogAttribute",
@@ -2794,7 +3712,14 @@
         "endLine": 24770,
         "endColumn": 68
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeIPv6TranslatorAclListAttributes",
@@ -2806,7 +3731,14 @@
         "endLine": 24868,
         "endColumn": 66
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeIPv6TranslatorAclLists",
@@ -2818,7 +3750,14 @@
         "endLine": 24968,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeIPv6TranslatorEntries",
@@ -2830,7 +3769,14 @@
         "endLine": 25107,
         "endColumn": 56
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeIPv6Translators",
@@ -2842,7 +3788,14 @@
         "endLine": 25286,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeIpv6Addresses",
@@ -2974,7 +3927,14 @@
         "endLine": 26304,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeNetworkAclAttributes",
@@ -3034,7 +3994,14 @@
         "endLine": 26828,
         "endColumn": 56
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribePhysicalConnections",
@@ -3046,7 +4013,14 @@
         "endLine": 27049,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribePublicIpAddress",
@@ -3082,7 +4056,14 @@
         "endLine": 27268,
         "endColumn": 42
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeRouteEntryList",
@@ -3118,7 +4099,14 @@
         "endLine": 27615,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeRouteTables",
@@ -3130,7 +4118,14 @@
         "endLine": 27792,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeRouterInterfaceAttribute",
@@ -3142,7 +4137,14 @@
         "endLine": 28040,
         "endColumn": 59
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeRouterInterfaces",
@@ -3154,7 +4156,14 @@
         "endLine": 28219,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeServerRelatedGlobalAccelerationInstances",
@@ -3166,7 +4175,14 @@
         "endLine": 28329,
         "endColumn": 75
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSnatTableEntries",
@@ -3178,7 +4194,14 @@
         "endLine": 28453,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSslVpnClientCert",
@@ -3190,7 +4213,14 @@
         "endLine": 28602,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSslVpnClientCerts",
@@ -3202,7 +4232,14 @@
         "endLine": 28705,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSslVpnClients",
@@ -3214,7 +4251,14 @@
         "endLine": 28829,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeSslVpnServers",
@@ -3226,7 +4270,14 @@
         "endLine": 28956,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeTagKeys",
@@ -3238,7 +4289,14 @@
         "endLine": 29075,
         "endColumn": 42
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeTagKeysForExpressConnect",
@@ -3250,7 +4308,14 @@
         "endLine": 29189,
         "endColumn": 59
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeTags",
@@ -3262,7 +4327,14 @@
         "endLine": 29331,
         "endColumn": 39
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVRouters",
@@ -3274,7 +4346,14 @@
         "endLine": 29447,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVSwitchAttributes",
@@ -3286,7 +4365,14 @@
         "endLine": 29582,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVSwitches",
@@ -3298,7 +4384,14 @@
         "endLine": 29740,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVbrHa",
@@ -3310,7 +4403,14 @@
         "endLine": 29880,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVcoRouteEntries",
@@ -3322,7 +4422,14 @@
         "endLine": 30029,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVirtualBorderRouters",
@@ -3334,7 +4441,14 @@
         "endLine": 30219,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVirtualBorderRoutersForPhysicalConnection",
@@ -3346,7 +4460,14 @@
         "endLine": 30364,
         "endColumn": 76
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVpcAttribute",
@@ -3382,7 +4503,14 @@
         "endLine": 30683,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVpcs",
@@ -3394,7 +4522,15 @@
         "endLine": 30874,
         "endColumn": 39
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "pages",
+        "validator": true,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVpnAttachments",
@@ -3406,7 +4542,14 @@
         "endLine": 31025,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVpnConnection",
@@ -3418,7 +4561,14 @@
         "endLine": 31260,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVpnConnectionLogs",
@@ -3430,7 +4580,14 @@
         "endLine": 31365,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVpnConnections",
@@ -3442,7 +4599,14 @@
         "endLine": 31601,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVpnCrossAccountAuthorizations",
@@ -3454,7 +4618,14 @@
         "endLine": 31723,
         "endColumn": 64
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVpnGateway",
@@ -3466,7 +4637,14 @@
         "endLine": 31965,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVpnGatewayAvailableZones",
@@ -3502,7 +4680,14 @@
         "endLine": 32230,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVpnPbrRouteEntries",
@@ -3514,7 +4699,14 @@
         "endLine": 32358,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVpnRouteEntries",
@@ -3526,7 +4718,14 @@
         "endLine": 32480,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVpnSslServerLogs",
@@ -3538,7 +4737,14 @@
         "endLine": 32591,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeZones",
@@ -3550,7 +4756,14 @@
         "endLine": 32702,
         "endColumn": 40
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DetachDhcpOptionsSetFromVpc",
@@ -3562,7 +4775,14 @@
         "endLine": 32802,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DiagnoseVpnConnections",
@@ -3574,7 +4794,14 @@
         "endLine": 32922,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DiagnoseVpnGateway",
@@ -3586,7 +4813,14 @@
         "endLine": 33028,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DisableVpcClassicLink",
@@ -3598,7 +4832,14 @@
         "endLine": 33119,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DisassociateMacSecKey",
@@ -3610,7 +4851,14 @@
         "endLine": 33208,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DissociateRouteTableFromGateway",
@@ -3646,7 +4894,14 @@
         "endLine": 33401,
         "endColumn": 70
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DissociateVpnGatewayWithCertificate",
@@ -3658,7 +4913,14 @@
         "endLine": 33515,
         "endColumn": 62
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DownloadVpnConnectionConfig",
@@ -3670,7 +4932,14 @@
         "endLine": 33665,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "EnablePhysicalConnection",
@@ -3682,7 +4951,14 @@
         "endLine": 33759,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "EnableVpcClassicLink",
@@ -3694,7 +4970,14 @@
         "endLine": 33861,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "EnableVpcIpv4Gateway",
@@ -3730,7 +5013,14 @@
         "endLine": 34105,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "GetFlowLogServiceStatus",
@@ -3814,7 +5104,14 @@
         "endLine": 34605,
         "endColumn": 61
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "GetPublicIpAddressPoolServiceStatus",
@@ -3850,7 +5147,14 @@
         "endLine": 34840,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "GetTrafficMirrorServiceStatus",
@@ -3886,7 +5190,14 @@
         "endLine": 35025,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "GetVpcGatewayEndpointAttribute",
@@ -3898,7 +5209,14 @@
         "endLine": 35140,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "GetVpcPrefixListAssociations",
@@ -3910,7 +5228,14 @@
         "endLine": 35254,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "GetVpcPrefixListEntries",
@@ -3922,7 +5247,14 @@
         "endLine": 35358,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "GetVpcRouteEntrySummary",
@@ -3934,7 +5266,14 @@
         "endLine": 35478,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "GetVpnGatewayDiagnoseResult",
@@ -3946,7 +5285,14 @@
         "endLine": 35636,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "GrantInstanceToCen",
@@ -3958,7 +5304,14 @@
         "endLine": 35735,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "GrantInstanceToVbr",
@@ -4018,7 +5371,14 @@
         "endLine": 36093,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListDhcpOptionsSets",
@@ -4030,7 +5390,14 @@
         "endLine": 36222,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListEnhanhcedNatGatewayAvailableZones",
@@ -4066,7 +5433,14 @@
         "endLine": 36491,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListGatewayRouteTableEntries",
@@ -4126,7 +5500,14 @@
         "endLine": 36803,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListIpsecServers",
@@ -4138,7 +5519,14 @@
         "endLine": 36952,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListIpv4Gateways",
@@ -4222,7 +5610,14 @@
         "endLine": 37524,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListPrefixLists",
@@ -4234,7 +5629,14 @@
         "endLine": 37669,
         "endColumn": 42
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListPublicIpAddressPoolCidrBlocks",
@@ -4246,7 +5648,14 @@
         "endLine": 37788,
         "endColumn": 60
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListPublicIpAddressPools",
@@ -4258,7 +5667,14 @@
         "endLine": 37994,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListRouteTargetGroups",
@@ -4270,7 +5686,14 @@
         "endLine": 38179,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListTagResources",
@@ -4282,7 +5705,14 @@
         "endLine": 38331,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListTagResourcesForExpressConnect",
@@ -4294,7 +5724,14 @@
         "endLine": 38466,
         "endColumn": 60
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListTrafficMirrorFilters",
@@ -4306,7 +5743,14 @@
         "endLine": 38682,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListTrafficMirrorSessions",
@@ -4318,7 +5762,14 @@
         "endLine": 38855,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListVSwitchCidrReservations",
@@ -4330,7 +5781,14 @@
         "endLine": 39024,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListVirtualPhysicalConnections",
@@ -4342,7 +5800,14 @@
         "endLine": 39252,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListVpcEndpointServicesByEndUser",
@@ -4354,7 +5819,14 @@
         "endLine": 39370,
         "endColumn": 59
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListVpcGatewayEndpoints",
@@ -4366,7 +5838,14 @@
         "endLine": 39509,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListVpcPublishedRouteEntries",
@@ -4402,7 +5881,14 @@
         "endLine": 39771,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyBgpGroupAttribute",
@@ -4414,7 +5900,14 @@
         "endLine": 39889,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyBgpPeerAttribute",
@@ -4426,7 +5919,14 @@
         "endLine": 40015,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyCommonBandwidthPackageAttribute",
@@ -4438,7 +5938,14 @@
         "endLine": 40113,
         "endColumn": 64
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyCommonBandwidthPackageIpBandwidth",
@@ -4450,7 +5957,14 @@
         "endLine": 40211,
         "endColumn": 66
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyCommonBandwidthPackageSpec",
@@ -4462,7 +5976,14 @@
         "endLine": 40323,
         "endColumn": 59
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyCustomerGatewayAttribute",
@@ -4474,7 +5995,14 @@
         "endLine": 40441,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyEipAddressAttribute",
@@ -4486,7 +6014,14 @@
         "endLine": 40549,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyEipForwardMode",
@@ -4522,7 +6057,14 @@
         "endLine": 40743,
         "endColumn": 64
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyExpressCloudConnectionBandwidth",
@@ -4534,7 +6076,14 @@
         "endLine": 40838,
         "endColumn": 64
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyExpressConnectTrafficQos",
@@ -4618,7 +6167,14 @@
         "endLine": 41407,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyForwardEntry",
@@ -4630,7 +6186,14 @@
         "endLine": 41553,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyFullNatEntryAttribute",
@@ -4642,7 +6205,14 @@
         "endLine": 41702,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyGlobalAccelerationInstanceAttributes",
@@ -4654,7 +6224,14 @@
         "endLine": 41830,
         "endColumn": 69
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyGlobalAccelerationInstanceSpec",
@@ -4666,7 +6243,14 @@
         "endLine": 41923,
         "endColumn": 63
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyHaVipAttribute",
@@ -4678,7 +6262,14 @@
         "endLine": 42023,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyIPv6TranslatorAclAttribute",
@@ -4690,7 +6281,14 @@
         "endLine": 42122,
         "endColumn": 59
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyIPv6TranslatorAclListEntry",
@@ -4702,7 +6300,14 @@
         "endLine": 42218,
         "endColumn": 59
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyIPv6TranslatorAttribute",
@@ -4714,7 +6319,14 @@
         "endLine": 42308,
         "endColumn": 56
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyIPv6TranslatorBandwidth",
@@ -4726,7 +6338,14 @@
         "endLine": 42408,
         "endColumn": 56
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyIPv6TranslatorEntry",
@@ -4738,7 +6357,14 @@
         "endLine": 42524,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyIpv6AddressAttribute",
@@ -4846,7 +6472,14 @@
         "endLine": 43182,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyNatIpAttribute",
@@ -4954,7 +6587,14 @@
         "endLine": 43829,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyRouteTableAttributes",
@@ -4966,7 +6606,14 @@
         "endLine": 43949,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyRouterInterfaceAttribute",
@@ -4978,7 +6625,14 @@
         "endLine": 44072,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyRouterInterfaceSpec",
@@ -4990,7 +6644,14 @@
         "endLine": 44246,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifySnatEntry",
@@ -5002,7 +6663,14 @@
         "endLine": 44376,
         "endColumn": 42
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifySslVpnClientCert",
@@ -5014,7 +6682,14 @@
         "endLine": 44494,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifySslVpnServer",
@@ -5026,7 +6701,14 @@
         "endLine": 44718,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyTunnelAttribute",
@@ -5038,7 +6720,14 @@
         "endLine": 45009,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVRouterAttribute",
@@ -5050,7 +6739,14 @@
         "endLine": 45105,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVSwitchAttribute",
@@ -5062,7 +6758,14 @@
         "endLine": 45213,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVSwitchCidrReservationAttribute",
@@ -5074,7 +6777,14 @@
         "endLine": 45333,
         "endColumn": 64
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVcoRouteEntryWeight",
@@ -5086,7 +6796,14 @@
         "endLine": 45456,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVirtualBorderRouterAttribute",
@@ -5098,7 +6815,14 @@
         "endLine": 45642,
         "endColumn": 61
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVpcAttribute",
@@ -5110,7 +6834,14 @@
         "endLine": 45817,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVpcCidrBlock",
@@ -5122,7 +6853,14 @@
         "endLine": 45933,
         "endColumn": 45
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVpcPrefixList",
@@ -5134,7 +6872,14 @@
         "endLine": 46050,
         "endColumn": 46
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVpnAttachmentAttribute",
@@ -5194,7 +6939,14 @@
         "endLine": 47107,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVpnPbrRouteEntryAttribute",
@@ -5206,7 +6958,14 @@
         "endLine": 47254,
         "endColumn": 58
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVpnPbrRouteEntryPriority",
@@ -5218,7 +6977,14 @@
         "endLine": 47399,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVpnPbrRouteEntryWeight",
@@ -5230,7 +6996,14 @@
         "endLine": 47544,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVpnRouteEntryWeight",
@@ -5242,7 +7015,14 @@
         "endLine": 47687,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "MoveResourceGroup",
@@ -5254,7 +7034,14 @@
         "endLine": 47818,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "MoveVpnResourceGroup",
@@ -5266,7 +7053,14 @@
         "endLine": 47921,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "OpenFlowLogService",
@@ -5302,7 +7096,14 @@
         "endLine": 48099,
         "endColumn": 56
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "OpenPublicIpAddressPoolService",
@@ -5386,7 +7187,14 @@
         "endLine": 48496,
         "endColumn": 47
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RecoverPhysicalConnection",
@@ -5398,7 +7206,14 @@
         "endLine": 48600,
         "endColumn": 52
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RecoverVirtualBorderRouter",
@@ -5410,7 +7225,14 @@
         "endLine": 48687,
         "endColumn": 53
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ReleaseEipAddress",
@@ -5422,7 +7244,14 @@
         "endLine": 48782,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ReleaseEipSegmentAddress",
@@ -5434,7 +7263,14 @@
         "endLine": 48886,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ReleaseIpv6Address",
@@ -5470,7 +7306,14 @@
         "endLine": 49086,
         "endColumn": 57
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RemoveGlobalAccelerationInstanceIp",
@@ -5482,7 +7325,14 @@
         "endLine": 49179,
         "endColumn": 61
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RemoveIPv6TranslatorAclListEntry",
@@ -5494,7 +7344,14 @@
         "endLine": 49267,
         "endColumn": 59
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RemoveSourcesFromTrafficMirrorSession",
@@ -5506,7 +7363,14 @@
         "endLine": 49370,
         "endColumn": 64
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ReplaceVpcDhcpOptionsSet",
@@ -5518,7 +7382,14 @@
         "endLine": 49481,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RetryVpcPrefixListAssociation",
@@ -5530,7 +7401,14 @@
         "endLine": 49602,
         "endColumn": 56
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RevokeInstanceFromCen",
@@ -5542,7 +7420,14 @@
         "endLine": 49727,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RevokeInstanceFromVbr",
@@ -5578,7 +7463,14 @@
         "endLine": 49982,
         "endColumn": 59
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "SetHighDefinitionMonitorLogStatus",
@@ -5590,7 +7482,14 @@
         "endLine": 50105,
         "endColumn": 60
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "StartFailoverTestJob",
@@ -5650,7 +7549,14 @@
         "endLine": 50389,
         "endColumn": 50
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "TagResources",
@@ -5662,7 +7568,14 @@
         "endLine": 50516,
         "endColumn": 39
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "TagResourcesForExpressConnect",
@@ -5674,7 +7587,14 @@
         "endLine": 50638,
         "endColumn": 56
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "TerminatePhysicalConnection",
@@ -5686,7 +7606,14 @@
         "endLine": 50742,
         "endColumn": 54
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "TerminateVirtualBorderRouter",
@@ -5698,7 +7625,14 @@
         "endLine": 50839,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "TransformEipSegmentToPublicIpAddressPool",
@@ -5710,7 +7644,14 @@
         "endLine": 50934,
         "endColumn": 67
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UnTagResources",
@@ -5722,7 +7663,14 @@
         "endLine": 51045,
         "endColumn": 41
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UnassociateEipAddress",
@@ -5734,7 +7682,14 @@
         "endLine": 51162,
         "endColumn": 48
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UnassociateGlobalAccelerationInstance",
@@ -5746,7 +7701,14 @@
         "endLine": 51270,
         "endColumn": 64
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UnassociateHaVip",
@@ -5758,7 +7720,14 @@
         "endLine": 51380,
         "endColumn": 43
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UnassociateNetworkAcl",
@@ -5794,7 +7763,14 @@
         "endLine": 51608,
         "endColumn": 79
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UnassociateRouteTable",
@@ -5854,7 +7830,14 @@
         "endLine": 51917,
         "endColumn": 58
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UpdateDhcpOptionsSetAttribute",
@@ -5866,7 +7849,14 @@
         "endLine": 52041,
         "endColumn": 56
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UpdateEnhancedVpnGateway",
@@ -5878,7 +7868,14 @@
         "endLine": 52211,
         "endColumn": 51
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UpdateFailoverTestJob",
@@ -5938,7 +7935,14 @@
         "endLine": 52625,
         "endColumn": 44
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UpdateIpv4GatewayAttribute",
@@ -6022,7 +8026,14 @@
         "endLine": 53214,
         "endColumn": 61
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UpdateRouteTargetGroup",
@@ -6034,7 +8045,14 @@
         "endLine": 53337,
         "endColumn": 49
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UpdateTrafficMirrorFilterAttribute",
@@ -6046,7 +8064,14 @@
         "endLine": 53439,
         "endColumn": 61
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UpdateTrafficMirrorFilterRuleAttribute",
@@ -6058,7 +8083,14 @@
         "endLine": 53571,
         "endColumn": 65
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UpdateTrafficMirrorSessionAttribute",
@@ -6070,7 +8102,14 @@
         "endLine": 53723,
         "endColumn": 62
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UpdateVirtualBorderBandwidth",
@@ -6082,7 +8121,14 @@
         "endLine": 53858,
         "endColumn": 55
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UpdateVirtualPhysicalConnection",
@@ -6094,7 +8140,14 @@
         "endLine": 53971,
         "endColumn": 58
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UpdateVpcGatewayEndpointAttribute",
@@ -6106,7 +8159,14 @@
         "endLine": 54076,
         "endColumn": 60
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "VpcDescribeVpcNatGatewayNetworkInterfaceQuota",
@@ -6118,7 +8178,14 @@
         "endLine": 54182,
         "endColumn": 72
       },
-      "reasons": []
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "WithdrawVpcPublishedRouteEntries",
