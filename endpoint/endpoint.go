@@ -102,11 +102,11 @@ func (r *Rules) ResolveEndpoint(ctx context.Context, p Parameters) (Endpoint, er
 	return Endpoint{URL: strings.TrimSuffix(raw, "/")}, nil
 }
 
-// DefaultResolver returns fresh ECS/STS public rules for cn-hangzhou, cn-shanghai,
-// cn-beijing, cn-shenzhen and ap-southeast-1. VPC and other partitions require custom rules.
+// DefaultResolver returns fresh ECS/STS/VPC public rules for cn-hangzhou, cn-shanghai,
+// cn-beijing, cn-shenzhen and ap-southeast-1. Other regions/partitions require custom rules.
 func DefaultResolver() *Rules {
 	var rules []Rule
-	for _, service := range []string{"ecs", "sts"} {
+	for _, service := range []string{"ecs", "sts", "vpc"} {
 		for _, region := range []string{"cn-hangzhou", "cn-shanghai", "cn-beijing", "cn-shenzhen", "ap-southeast-1"} {
 			rules = append(rules, Rule{Service: service, Region: region, URL: "https://" + service + "." + region + ".aliyuncs.com"})
 		}

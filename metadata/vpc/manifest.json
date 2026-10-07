@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "product": "Vpc",
+  "version": "2016-04-28",
+  "style": "RPC",
+  "package": "vpc",
+  "service": "vpc",
+  "sources": [
+    {
+      "operation": "DescribeVpcs",
+      "file": "DescribeVpcs.json",
+      "url": "https://api.aliyun.com/meta/v1/products/Vpc/versions/2016-04-28/apis/DescribeVpcs/api.json?language=EN_US",
+      "retrievedAt": "2026-10-07T03:19:07Z",
+      "rawSHA256": "10c22aa16bf8b170f93edabbe101e0f71d9f941319aea1f163334d2194b88b9a",
+      "sha256": "998ee1cb0e48a4095a3649d62bcbffac99215b64a8a806e848e65bbc4a663e11"
+    }
+  ]
+}

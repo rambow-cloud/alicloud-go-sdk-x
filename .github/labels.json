@@ -158,5 +158,10 @@
     "name": "module:telemetry",
     "color": "1d76db",
     "description": "Shared telemetry capability and public extension contracts"
+  },
+  {
+    "name": "module:vpc",
+    "color": "1d76db",
+    "description": "VPC models, operation protocols and generated adapters"
   }
 ]

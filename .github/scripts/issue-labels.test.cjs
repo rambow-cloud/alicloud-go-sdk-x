@@ -26,3 +26,9 @@ test('new issues receive defaults; missing area fields preserve manual areas', (
   const plan = planLabels({ title: '[Bug]: failure', body: '', state: 'open', labels: ['module:ecs'] }, 'opened');
   assert.deepEqual(plan, { add: ['bug', 'priority:p2', 'status:triage'], remove: [] });
 });
+
+test('VPC structured areas replace stale modules and preserve active state', () => {
+  const plan = planLabels({ title: '[Feature]: VPC paginator', body: '### Affected areas\n\nvpc, endpoints, tools\n\n### Scope\n\necs is only a reference', state: 'open',
+    labels: ['enhancement', 'module:ecs', 'priority:p2', 'status:in-progress'] }, 'edited');
+  assert.deepEqual(plan, { add: ['module:vpc', 'module:endpoints', 'module:tools'], remove: ['module:ecs'] });
+});

@@ -14,7 +14,8 @@ overlay -> validated intermediate representation (IR) -> formatted Go and paired
 The first supported profile is RPC over HTTPS, POST `/`, query parameters and a JSON
 200 response. Initial operations are ECS DescribeRegions, DescribeInstances,
 DescribeInstanceStatus and STS AssumeRole. Unsupported selected shapes fail generation;
-the generator does not guess ROA, body serialization or endpoints. Expansion #24 supports
+the generator does not guess ROA, body serialization or endpoints. Expansion #25 adds
+VPC DescribeVpcs with a page-only paginator. Expansion #24 supports
 bounded offline local schema references; see [the schema matrix](generator-expansion.md).
 
 The importer is an explicit network command. Generation and verification are offline.
@@ -36,7 +37,7 @@ selected reference forms, invalid identifiers and missing policy fields fail bef
 Generated clients delegate execution, signing, retries, credentials, endpoints,
 middleware, errors and tracing to the existing runtime. Paginator/waiter adapters
 delegate their engines to the shared packages. Validation extensions stay handwritten
-where constraints are prose-only (STS syntax and ECS mutually exclusive paging modes).
+where constraints are prose-only (STS syntax, ECS mutually exclusive paging modes and VPC tag syntax).
 Existing public names and selected fields are preserved. Default endpoint rules stay
 in the foundation resolver; metadata hosts are not automatically trusted or expanded.
 
@@ -66,7 +67,7 @@ fields and exact response paths, mark idempotency, supply bilingual guidance and
 offline example, then generate and run the existing gates. Validators name local
 handwritten functions of `func(OperationInput) error`; they are compiled by tests, not
 executed by the generator. Policy fields are checked against selected input/output
-models. One reviewed dual-mode paginator and one all-ID bounded waiter per product are
+models. One reviewed paginator (dual-mode or page-only) and one all-ID bounded waiter per product are
 supported in schema version 1; paginator mode=pages selects page-only traversal. Optional
 scalar pointers preserve explicit false/empty/zero; location=input models bind repeatList
 items and are deeply copied. Nested response projections use generated JSON v2 methods.
@@ -78,6 +79,9 @@ Acceptance mapping: #21 -> metadata_test.go (including synthetic IR and schema d
 #22 -> emit_test.go (isolated synthetic client compilation with GOPROXY=off), existing
 ECS/STS protocol and paginator/waiter/helper tests plus foundation_test.go;
 #23 -> generate_test.go, CLI tests, CI check and docs/language gates.
+Expansion #24 -> expansion_test.go (isolated generated compilation, presence/copying,
+nested JSON and bounded local references); #25 -> services/vpc tests (signed wire, retry
+ownership, page boundaries, errors and runnable Examples) and label-classifier tests.
 
 Next profiles (ROA/body encodings, general nested requests and wider service coverage)
 require separate issues and protocol evidence; this first working generator is not
@@ -96,7 +100,8 @@ Sources: [official metadata guide](https://help.aliyun.com/zh/sdk/product-overvi
 流水线为官方操作元数据 → 固定协议快照 → 审核 overlay → 校验 IR → 格式化 Go 代码及双语指南。
 首版支持 RPC、HTTPS、POST `/`、query 参数、JSON 200 响应；操作为 ECS 的 DescribeRegions、
 DescribeInstances、DescribeInstanceStatus 和 STS AssumeRole。选中但不支持的结构直接失败，
-不猜测 ROA、body 编码或端点。#24 扩展支持有界离线本地 schema 引用，见[结构矩阵](generator-expansion.md)。
+不猜测 ROA、body 编码或端点。#25 添加 VPC DescribeVpcs 和纯页码 paginator。
+#24 扩展支持有界离线本地 schema 引用，见[结构矩阵](generator-expansion.md)。
 
 导入是显式联网命令，生成与检查离线。manifest 记录产品/版本、官方 URL、获取时间、原始及
 提取快照的 SHA-256。快照只保留协议事实，不保留上游说明/示例。官方页面未为说明文字声明再分发
@@ -108,7 +113,7 @@ overlay 不能静默发明线字段或改变类型。manifest/overlay 未知成�
 选中字段删除、类型/style 改变、新必填输入、不支持的选中引用、非法标识符或规则字段缺失均在写入前失败。
 
 生成客户端复用 runtime 的执行、签名、重试、凭据、端点、middleware、错误和 tracing；
-分页/waiter 适配器复用共享引擎。仅存在于说明中的校验保留手写扩展（STS 语法和 ECS 分页参数互斥）。
+分页/waiter 适配器复用共享引擎。仅存在于说明中的校验保留手写扩展（STS 语法、ECS 分页参数互斥和 VPC tag 语法）。
 保留现有公共名称及字段。默认端点规则继续由基础 resolver 管理，不自动信任或扩展元数据里的 host。
 
 生成器管理明确的文件集合，使用 `Code generated` 标记，先渲染全部产品再写入，拒绝覆盖无标记文件。
@@ -123,7 +128,7 @@ Check 模式不写文件，报告缺失、变化和多余生成文件。输出�
 新增操作：先建 issue 和协议证据，显式导入元数据（[命令](../metadata/README.md)），评审 manifest/overlay，
 选择具名字段与准确响应路径，明确幂等性，提供双语说明及离线示例，再生成并运行门禁。
 Validator 指向 `func(OperationInput) error` 的本地手写函数；测试负责编译，生成器不执行。
-规则字段对选定输入/输出模型检查。schema v1 每产品支持一个审核双模式 paginator 和一个有界全 ID waiter。
+规则字段对选定输入/输出模型检查。schema v1 每产品支持一个审核 paginator（双模式或纯页码）和一个有界全 ID waiter。
 mode=pages 选择纯页码；可选标量指针保留显式 false/空/零，location=input 模型绑定 repeatList 项并深复制。
 嵌套响应投影使用生成 JSON v2 方法。本地 #/components/schemas 引用最多 32 个节点，外部/缺失/循环及结构兄弟
 成员失败；composition/map/通用嵌套 query 对象不支持。端点继续复用共享 resolver。
@@ -131,6 +136,8 @@ mode=pages 选择纯页码；可选标量指针保留显式 false/空/零，loca
 验收映射：#21 对应 metadata_test.go（含合成 IR 和 schema 漂移）；#22 对应 emit_test.go
 （GOPROXY=off 的隔离合成客户端编译）、已有 ECS/STS 协议和分页/waiter/helper 测试及 foundation_test.go；
 #23 对应 generate_test.go、CLI 测试、CI 再生成及文档/语言门禁。
+扩展 #24 对应 expansion_test.go（隔离生成编译、存在语义/复制、嵌套 JSON 和有界本地引用）；
+#25 对应 services/vpc 测试（签名线编码、重试所有权、分页边界、错误及可执行 Example）和标签分类测试。
 
 后续 ROA/body、通用嵌套请求及更多产品须独立 issue 和协议证据；首个可用 generator 不代表全量
 阿里云 schema 覆盖，也不代表 v1 前公共 API 稳定承诺。官方来源与英文章节一致。

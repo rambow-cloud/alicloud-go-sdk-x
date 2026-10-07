@@ -15,6 +15,7 @@ body:
         - transport
         - signing
         - ecs
+        - vpc
         - tools
         - middleware
         - endpoints
