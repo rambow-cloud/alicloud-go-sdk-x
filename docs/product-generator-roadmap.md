@@ -20,13 +20,13 @@ and hashes and use versioned adapters. Licensed descriptions may seed English Go
 and equivalent Chinese guides with attribution/license preserved. Web metadata and imported
 modules have separate provenance; do not label the entire corpus MIT.
 
-| Stage | Delivery | Acceptance |
-| --- | --- | --- |
-| 1: normalization | Exact wire names/case; indexed request models; itemName response wrappers; raw provenance and CLI-only attributes | Filter model and Filter.1.Key/Value correspond; true name/type/requiredness changes remain visible |
-| 2: discovery/IR | Every product operation and reachable model; protocol/bindings/source locations; versioned deterministic IR and coverage | No per-operation metadata/overlay dependency; discovered/lowered/unsupported counts and reasons |
-| 3: batch emission | Complete supported inputs/outputs/models/methods, small interfaces, generic codecs/naming with sparse compatibility exceptions | Compiles; signed-wire/copy/presence tests; deterministic output; selected unsupported behavior fails before writes |
-| 4: capability policy | Native token/page pagination, waiter acceptors, idempotency/client tokens, sensitive fields and special validators | Shared engines and AWS conventions; conservative defaults, no invented pagination or guessed write retry |
-| 5: docs/expansion | Licensed bilingual doc automation, English Go comments, corresponding guides and offline Examples; further profiles/products | pkg.go.dev, Linux race/Windows, honest coverage and separate live evidence |
+| Stage                | Delivery                                                                                                                       | Acceptance                                                                                                         |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| 1: normalization     | Exact wire names/case; indexed request models; itemName response wrappers; raw provenance and CLI-only attributes              | Filter model and Filter.1.Key/Value correspond; true name/type/requiredness changes remain visible                 |
+| 2: discovery/IR      | Every product operation and reachable model; protocol/bindings/source locations; versioned deterministic IR and coverage       | No per-operation metadata/overlay dependency; discovered/lowered/unsupported counts and reasons                    |
+| 3: batch emission    | Complete supported inputs/outputs/models/methods, small interfaces, generic codecs/naming with sparse compatibility exceptions | Compiles; signed-wire/copy/presence tests; deterministic output; selected unsupported behavior fails before writes |
+| 4: capability policy | Native token/page pagination, waiter acceptors, idempotency/client tokens, sensitive fields and special validators             | Shared engines and AWS conventions; conservative defaults, no invented pagination or guessed write retry           |
+| 5: docs/expansion    | Licensed bilingual doc automation, English Go comments, corresponding guides and offline Examples; further profiles/products   | pkg.go.dev, Linux race/Windows, honest coverage and separate live evidence                                         |
 
 Stage 1 retains raw_name separately from CLI name/options, case-sensitive Key/key and
 repeatList element fields. Indexes are declared positions, not inferred server limits.
@@ -55,7 +55,9 @@ open roadmap parent with real child issues created before code and dependencies
 1 -> 2 -> 3 -> 4 -> 5. Record returned issue numbers in docs/issues/README.md.
 Created tracking: parent [#33](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/33),
 stages #34 (normalization) -> #35 (discovery/IR) -> #36 (emission) -> #37 (policy) ->
-#38 (docs). These are planned deliveries, not a claim that all stages are implemented.
+#38 (docs). All five stages and review fix #44 are integrated into main as of
+2026-10-08; [review/integration evidence](generator-integration.md) records the
+accepted pinned RPC scope, merge commits and remaining coverage limits.
 Keep #31 focused on the compatibility bridge and benchmarks separate. Each issue uses
 its own branch; stacked PRs name dependencies and do not imply main contains unmerged work.
 Do not close the parent while batch emission, capability policies or docs remain unfinished.
@@ -77,13 +79,13 @@ Do not close the parent while batch emission, capability policies or docs remain
 说明可作为英文 Go 注释和对应中文指南输入，保留归属/许可。网页元数据与导入模块
 单独记录来源，不将整体源码标为 MIT。
 
-| 阶段 | 交付 | 验收 |
-| --- | --- | --- |
-| 1：规范化 | 准确线名/大小写、索引请求模型、itemName 响应包装、原始来源与 CLI 属性 | Filter 模型与 Filter.1.Key/Value 对应，真实名称/类型/必填变化可见 |
-| 2：发现/IR | 产品全部操作与可达模型、协议/绑定/来源位置、版本化确定性 IR/覆盖 | 无逐操作元数据/overlay 前提，分别统计发现/降低/不支持及原因 |
-| 3：批量输出 | 完整支持输入/输出/模型/方法、小接口、通用编码/命名及少量兼容例外 | 编译、签名/复制/存在测试、确定性；选中不支持行为写前失败 |
-| 4：能力策略 | 原生 token/页码分页、waiter、幂等/client token、敏感字段及特殊校验 | 复用引擎/AWS 范式，保守默认，不造分页、不猜写重试 |
-| 5：文档/扩展 | 授权双语文档自动化、英文 Go 注释、对应指南/离线 Example、更多协议产品 | pkg.go.dev、Linux race/Windows、准确覆盖及单独真实证据 |
+| 阶段         | 交付                                                                  | 验收                                                              |
+| ------------ | --------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| 1：规范化    | 准确线名/大小写、索引请求模型、itemName 响应包装、原始来源与 CLI 属性 | Filter 模型与 Filter.1.Key/Value 对应，真实名称/类型/必填变化可见 |
+| 2：发现/IR   | 产品全部操作与可达模型、协议/绑定/来源位置、版本化确定性 IR/覆盖      | 无逐操作元数据/overlay 前提，分别统计发现/降低/不支持及原因       |
+| 3：批量输出  | 完整支持输入/输出/模型/方法、小接口、通用编码/命名及少量兼容例外      | 编译、签名/复制/存在测试、确定性；选中不支持行为写前失败          |
+| 4：能力策略  | 原生 token/页码分页、waiter、幂等/client token、敏感字段及特殊校验    | 复用引擎/AWS 范式，保守默认，不造分页、不猜写重试                 |
+| 5：文档/扩展 | 授权双语文档自动化、英文 Go 注释、对应指南/离线 Example、更多协议产品 | pkg.go.dev、Linux race/Windows、准确覆盖及单独真实证据            |
 
 阶段 1 保留 raw_name 和 CLI name/options 的区别、Key/key 大小写及 repeatList element
 字段；索引是声明位置，不推断服务上限。array+itemName 表示需恢复对象/数组包装，
@@ -107,5 +109,6 @@ RPC。以保持打开的路线父任务及代码前创建的真实子 issue 跟�
 返回编号写入索引；#31 聚焦兼容桥，基准独立。每项独立分支，堆叠 PR 明确依赖，
 不宣称未合并代码已在 main；批量输出、能力策略、文档未验收前不关闭父任务。
 已建立父任务 [#33](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/33)，阶段为
-#34（规范化）→ #35（发现/IR）→ #36（输出）→ #37（策略）→ #38（文档）。这是计划交付，
-不表示全部阶段已实现。
+#34（规范化）→ #35（发现/IR）→ #36（输出）→ #37（策略）→ #38（文档）。五阶段及
+评审修复 #44 已于 2026-10-08 集成 main；[评审/集成证据](generator-integration.md)
+记录已验收固定 RPC 范围、合并提交及剩余覆盖边界。

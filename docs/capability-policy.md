@@ -3,8 +3,9 @@
 ## English
 
 Stage #37 follows #36 / PR #41 on `issue/37-capability-policies`, stacked on
-`issue/36-batch-go-emission`. Dependencies #41 -> #40 -> #39 -> #32 remain unmerged.
-This specification precedes code. Policy files under `policies/` are sparse reviewed
+`issue/36-batch-go-emission`. This original dependency stack and follow-up #44 are
+now [integrated into main](generator-integration.md). This specification preceded code.
+Policy files under `policies/` are sparse reviewed
 exceptions, never a required list of every API/model/field. Bind policy to product,
 API version and source-manifest hash; each operation entry has evidence references.
 Missing policy means unreviewed, no generated capabilities and no Standard retry.
@@ -101,7 +102,8 @@ conservative write retry are our reviewed SDK policy, not official waiter declar
 各不相同。
 
 阶段 #37 继 #36 / PR #41，在 `issue/37-capability-policies` 叠加
-`issue/36-batch-go-emission`；依赖 #41 → #40 → #39 → #32 未合并。本规格先于代码。
+`issue/36-batch-go-emission`；原依赖链及后续 #44 现已[集成 main](generator-integration.md)。
+本规格先于代码。
 `policies/` 为少量审核例外，不是全部 API/模型/字段清单；绑定产品、版本和来源 manifest
 哈希，各操作策略有证据。无策略表示未审核、不生成能力、不被 Standard 重试。未知/
 不支持操作、路径、类型、名称、模式、约束在写前失败；缺策略不妨碍完整支持 Go 输出。

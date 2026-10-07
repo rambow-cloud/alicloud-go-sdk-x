@@ -8,6 +8,10 @@
 [CI](https://github.com/rambow-cloud/alicloud-go-sdk-x/actions/workflows/ci.yml) ·
 [Development path](docs/development-path.md)
 
+The initial generator route and review fix are integrated into `main`; see the paired
+[review and integration record](docs/generator-integration.md) for commits, CI evidence
+and the accepted scope.
+
 An independent Alibaba Cloud SDK for Go. Requires Go 1.27 and encoding/json/v2.
 Development is issue-driven, runtime-first, with English-primary Go docs and paired
 English/Chinese guides. It is not an official SDK. APIs may change before v1.
@@ -98,6 +102,9 @@ Local documentation checks do not imply pkg.go.dev indexing.
 Read AGENTS.md and CONTRIBUTING.md before contributing. MIT: see LICENSE.
 
 ## 中文
+
+初始生成路线和评审修复已集成 `main`；双语[评审与集成记录](docs/generator-integration.md)
+提供合并提交、CI 证据及已验收范围。
 
 完整 DSL [批量后端](docs/batch-go-emission.md) 已在 `service/ecs`、`service/vpc`、
 `service/sts` 输出 579 个支持操作、完整原生模型、操作小接口和离线 Example。

@@ -5,6 +5,9 @@
 Tracking: [#44](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/44),
 based on #38 / PR #43 (`issue/38-licensed-product-docs`). Refs roadmap #33.
 
+Review and [main integration](generator-integration.md) completed on 2026-10-08 in
+PR #45. The branch/dependency plan below records the pre-implementation scope.
+
 Review of the full-DSL PR stack found that `validateCapabilityPolicy` checks paths
 and scalar types independently but does not distinguish the roles sharing a model.
 For example, changing DescribeImages paginator `page` to `PageSize` leaves both
@@ -47,6 +50,9 @@ linked PR; local results alone do not imply Linux race acceptance or a main merg
 
 跟踪 [#44](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/44)，基于 #38 /
 PR #43（`issue/38-licensed-product-docs`），关联路线父任务 #33。
+
+评审及 [main 集成](generator-integration.md) 已于 2026-10-08 在 PR #45 完成，
+下述分支/依赖计划保留实现前范围。
 
 评审完整 DSL 的 PR 栈时发现，`validateCapabilityPolicy` 分别检查路径和标量类型，
 却没有区分同一模型内的不同职责。例如把 DescribeImages 分页策略的 `page` 改为

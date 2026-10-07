@@ -3,8 +3,9 @@
 ## English
 
 Stage #38 follows #37 / PR #42 on `issue/38-licensed-product-docs`, stacked on
-`issue/37-capability-policies`. Dependencies #42 -> #41 -> #40 -> #39 -> #32 remain
-unmerged. This specification precedes implementation. Keep the existing supported RPC
+`issue/37-capability-policies`. The original dependency stack is now
+[integrated into main](generator-integration.md). This specification preceded implementation.
+Keep the existing supported RPC
 profile and operation/model counts; broader protocols require separate scoped work.
 
 Use the official semantic parser's field description strings and operation annotation
@@ -54,7 +55,7 @@ and [Apache-2.0 terms](https://www.apache.org/licenses/LICENSE-2.0.txt), inspect
 ## 中文
 
 阶段 #38 继 #37 / PR #42，在 `issue/38-licensed-product-docs` 叠加
-`issue/37-capability-policies`；#42 → #41 → #40 → #39 → #32 尚未合并。本规格
+`issue/37-capability-policies`；原依赖链现已[集成 main](generator-integration.md)。本规格
 先于实现。保持当前 RPC 支持范围及操作/模型数量，更多协议另行明确范围。
 
 复用官方语义 parser 的字段 description 字符串及操作 annotation token，从哈希固定

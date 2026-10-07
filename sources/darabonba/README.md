@@ -48,8 +48,10 @@ do not relabel the entire corpus MIT or infer one implementation's license for a
 Build-tool package licenses/integrities are separately recorded in package-lock.json.
 
 Complete product/import semantic analysis does not mean every operation is lowered
-or every helper is executed. We recognize five SDK functions and use our own runtime;
-module sources supply parser declarations and type checks. The pinned Paginator
+or every helper is executed. The compatibility bridge recognizes five SDK functions;
+the complete product backend now emits 579 supported RPC operations using our runtime.
+[Review/integration evidence](../../docs/generator-integration.md) records scope and
+remaining unsupported behavior. Module sources supply parser declarations and type checks. The pinned Paginator
 module is a params factory declaration, not our unified paginator/waiter engine.
 No imported Go Tea runtime implementation is added to the SDK.
 
@@ -85,8 +87,10 @@ Apache-2.0。Credential 的注册归档未提供许可声明，引用的 Node ru
 发布评审需保留此来源区别，不把整体源码标为 MIT，不由某语言实现推断另一份源码
 许可。构建工具依赖许可及完整性单独记录在 package-lock.json。
 
-全产品及导入模块语义解析不代表全操作降低或执行全部 helper。当前识别五个 SDK
-函数并使用本项目运行时；导入源码提供 parser 声明及类型检查。固定 Paginator 模块
+全产品及导入模块语义解析不代表全操作降低或执行全部 helper。兼容桥识别五个 SDK
+函数，完整产品后端现输出 579 个支持 RPC 操作并使用本项目运行时；
+[评审/集成证据](../../docs/generator-integration.md) 记录范围及剩余不支持行为。
+导入源码提供 parser 声明及类型检查。固定 Paginator 模块
 是 params factory 声明，不是本项目统一分页/waiter 引擎；SDK 不引入 Go Tea 运行时。
 
 详见[工具](../../tools/darabonba/README.md)、[迁移](../../docs/darabonba-migration.md)
