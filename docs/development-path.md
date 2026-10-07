@@ -11,6 +11,11 @@ and AGENTS.md govern this route and supersede conflicting older metadata-first,
 per-operation snapshot/overlay, field-selection and handwritten-doc prerequisites.
 The older stages and issue references below describe historical acceptance only.
 
+Before expanding the generated capability inventory, complete the stacked-PR review
+fix [#44](capability-role-review.md): reject aliased cursor and waiter roles within
+the same model before writes. This follows #38, preserves valid policies and the
+five-stage route, and does not imply dependency PRs have been integrated.
+
 Execute source normalization -> complete operation/model discovery and IR -> batch Go
 emission -> sparse capability policy -> documentation automation/profile expansion.
 Every stage includes paired docs, relevant tests, Examples and pkg.go.dev acceptance;
@@ -36,14 +41,14 @@ The goal is a unified Go runtime, validated by a small handwritten ECS/STS refer
 followed by product generation. Go 1.27 and encoding/json/v2 are required. Core runtime
 imports remain standard-library-only; OpenTelemetry is an optional integration.
 
-| Stage | Deliverables | Gate |
-| --- | --- | --- |
-| A: specification | bilingual docs, English issues, acyclic dependencies, language policy | documented before code |
-| B: request foundation | staged middleware, endpoint resolver, ACS3 signing, HTTP execution, structured errors, testing helpers | offline request/response and concurrency contracts |
-| C: resilience and identity | explicit credential chain, expiry-aware cache, bounded retries, STS AssumeRole helper | cancellation, freshness, replayability, idempotency |
-| D: reference behavior | handwritten ECS reads, unified pagination, bounded waiters, optional OTel | typed usage and cross-capability integration |
-| E: foundation acceptance | eleven capabilities, runnable examples, paired guides, Linux race and Windows CI | implementations and tests, not interface presence |
-| F: generation | frozen metadata to typed clients/codecs/docs/policies | #19 passed; follow #21 -> #22 -> #23 under #8 |
+| Stage                      | Deliverables                                                                                           | Gate                                                |
+| -------------------------- | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------- |
+| A: specification           | bilingual docs, English issues, acyclic dependencies, language policy                                  | documented before code                              |
+| B: request foundation      | staged middleware, endpoint resolver, ACS3 signing, HTTP execution, structured errors, testing helpers | offline request/response and concurrency contracts  |
+| C: resilience and identity | explicit credential chain, expiry-aware cache, bounded retries, STS AssumeRole helper                  | cancellation, freshness, replayability, idempotency |
+| D: reference behavior      | handwritten ECS reads, unified pagination, bounded waiters, optional OTel                              | typed usage and cross-capability integration        |
+| E: foundation acceptance   | eleven capabilities, runnable examples, paired guides, Linux race and Windows CI                       | implementations and tests, not interface presence   |
+| F: generation              | frozen metadata to typed clients/codecs/docs/policies                                                  | #19 passed; follow #21 -> #22 -> #23 under #8       |
 
 Dependency order: testing/middleware/endpoints/errors and signing -> HTTP runtime ->
 ECS/STS clients -> paginator/waiter/AssumeRole integration. Credential chain/cache and
@@ -86,6 +91,10 @@ Sources: [ACS3](https://help.aliyun.com/zh/sdk/product-overview/v3-request-struc
 
 ## 中文
 
+扩展生成能力清单前，完成叠加 PR 评审修复 [#44](capability-role-review.md)：同一
+模型内的游标及 waiter 角色重叠须在写前拒绝。此任务继 #38，保留有效策略与五阶段
+路线，不表示依赖 PR 已集成。
+
 用户于 2026-10-07 确认的权威路线：完整官方产品 DSL → 官方 Darabonba 语义 parser →
 规范化操作/模型/绑定 IR → 本项目 Go 后端 → 已有 runtime。
 [product-generator-roadmap.md](product-generator-roadmap.md) 和 AGENTS.md 规定新路线，
@@ -110,14 +119,14 @@ Sources: [ACS3](https://help.aliyun.com/zh/sdk/product-overview/v3-request-struc
 目标是先完成统一 Go runtime，用少量手写 ECS/STS 参考操作验证，然后建设产品生成器。
 要求 Go 1.27、直接使用 encoding/json/v2；核心运行时导入保持标准库，OpenTelemetry 为可选集成。
 
-| 阶段 | 交付 | 门槛 |
-| --- | --- | --- |
-| A：规格 | 双语文档、英文 issue、无环依赖与语言规则 | 写在代码之前 |
-| B：请求基础 | 分阶段 middleware、endpoint、ACS3、HTTP、结构化错误、测试辅助 | 离线请求/响应与并发契约 |
-| C：可靠性与身份 | 显式凭据链、过期缓存、有界重试、STS helper | 取消、新鲜度、可重放与幂等性 |
-| D：参考行为 | 手写 ECS、统一分页、waiter、可选 OTel | 类型化用法与跨能力集成 |
-| E：基础验收 | 十一项能力、示例、双语指南、Linux race 与 Windows CI | 实现及测试，而非仅有接口 |
-| F：生成器 | 固定元数据生成类型化客户端、编码、文档与规则 | #19 已通过，按 #8 下 #21 → #22 → #23 执行 |
+| 阶段            | 交付                                                          | 门槛                                      |
+| --------------- | ------------------------------------------------------------- | ----------------------------------------- |
+| A：规格         | 双语文档、英文 issue、无环依赖与语言规则                      | 写在代码之前                              |
+| B：请求基础     | 分阶段 middleware、endpoint、ACS3、HTTP、结构化错误、测试辅助 | 离线请求/响应与并发契约                   |
+| C：可靠性与身份 | 显式凭据链、过期缓存、有界重试、STS helper                    | 取消、新鲜度、可重放与幂等性              |
+| D：参考行为     | 手写 ECS、统一分页、waiter、可选 OTel                         | 类型化用法与跨能力集成                    |
+| E：基础验收     | 十一项能力、示例、双语指南、Linux race 与 Windows CI          | 实现及测试，而非仅有接口                  |
+| F：生成器       | 固定元数据生成类型化客户端、编码、文档与规则                  | #19 已通过，按 #8 下 #21 → #22 → #23 执行 |
 
 依赖顺序：测试/middleware/endpoint/错误及签名 → HTTP runtime → ECS/STS → 分页/waiter/AssumeRole 集成。
 凭据链/缓存与重试策略可先独立实现，再接 runtime；OTel 依赖 middleware 和请求元数据。

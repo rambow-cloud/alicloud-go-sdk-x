@@ -11,6 +11,12 @@ Missing policy means unreviewed, no generated capabilities and no Standard retry
 Unknown/unsupported actions, paths, types, names, modes or constraints fail before
 writes. Optional policy absence must not prevent complete supported Go emission.
 
+Role validation under [review fix #44](capability-role-review.md) rejects same-model
+aliases between paginator request page/size/limit, response page/size/total, waiter
+request page/size and member ID/state. Identical paths in different request/response
+models or separate adapters remain valid. Path existence and type matching alone
+are insufficient evidence for distinct behavioral roles.
+
 Initial coverage: native paginators for ECS DescribeInstances (token by default,
 explicit page fields choose pages), DescribeInstanceStatus and DescribeImages, plus
 VPC DescribeVpcs; ECS InstanceRunningWaiter; reviewed idempotency for these four
@@ -88,6 +94,11 @@ behavior evidence, not embedded mutable generation inputs. Waiter acceptance and
 conservative write retry are our reviewed SDK policy, not official waiter declarations.
 
 ## 中文
+
+[评审修复 #44](capability-role-review.md) 拒绝同一模型内的分页请求页码/页大小/limit、
+响应页码/页大小/总数、waiter 请求页码/页大小及成员 ID/状态重叠；不同请求/响应
+模型或独立适配器之间的同名路径仍有效。路径存在且类型匹配不足以证明行为角色
+各不相同。
 
 阶段 #37 继 #36 / PR #41，在 `issue/37-capability-policies` 叠加
 `issue/36-batch-go-emission`；依赖 #41 → #40 → #39 → #32 未合并。本规格先于代码。
