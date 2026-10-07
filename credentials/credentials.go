@@ -11,6 +11,10 @@ import (
 // Use errors.Is to recognize it. Error text never contains credential values.
 var ErrMissingCredentials = errors.New("alicloud: access key ID and secret are required")
 
+// ErrNotFound means a provider is not configured. Chains only skip this error;
+// incomplete credentials and retrieval failures stop resolution.
+var ErrNotFound = errors.New("alicloud: credential source not configured")
+
 // Credentials is a snapshot of an access key pair and an optional STS token.
 // The zero value is invalid. Values are returned by copy; strings must not be logged.
 type Credentials struct {
@@ -89,6 +93,10 @@ func (EnvProvider) Retrieve(ctx context.Context) (Credentials, error) {
 		AccessKeyID:     os.Getenv("ALIBABA_CLOUD_ACCESS_KEY_ID"),
 		AccessKeySecret: os.Getenv("ALIBABA_CLOUD_ACCESS_KEY_SECRET"),
 		SecurityToken:   os.Getenv("ALIBABA_CLOUD_SECURITY_TOKEN"),
+	}
+
+	if value.AccessKeyID == "" && value.AccessKeySecret == "" && value.SecurityToken == "" {
+		return Credentials{}, ErrNotFound
 	}
 	if err := validate(value); err != nil {
 		return Credentials{}, err
