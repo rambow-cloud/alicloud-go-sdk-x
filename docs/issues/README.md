@@ -25,6 +25,9 @@ GitHub owns current state; this table records dependencies. Existing #3 HTTP dep
 
 ## 中文
 
+Review 修复按 #26 → #27 → #28 → #29 执行，详见 [修复路径](../aws-style-remediation.md)。
+对应草稿记录每尝试隔离、类型化 pipeline、分页策略集合和可复用 waiter 验收。
+
 状态以 GitHub 为准，本表记录依赖。已有 #3 HTTP 依赖 #4/#11/#12/#13/#15，#5 ECS 依赖 #3，#7 分页集成依赖 #5，#9 缓存在 #18 后完成，#8 generator 被 #19 阻塞。#4 签名及 #6 重试可独立测试。
 
 | Issue | 能力 | 依赖 |

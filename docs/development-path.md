@@ -45,6 +45,8 @@ New foundation issues are listed in the issue index and GitHub milestone; record
 Generator architecture, supported profile, provenance and acceptance are defined in
 [generator.md](generator.md). The foundation gate passed on commit 28684e4 before #21.
 The next real-product gate is #24 -> #25; see [generator-expansion.md](generator-expansion.md).
+After that acceptance, resolve the review under #26 -> #27 -> #28 -> #29 before wider
+profiles: [AWS-style remediation](aws-style-remediation.md).
 
 Sources: [ACS3](https://help.aliyun.com/zh/sdk/product-overview/v3-request-structure-and-signature),
 [metadata](https://help.aliyun.com/zh/sdk/product-overview/openapi-metadata/),
@@ -86,3 +88,5 @@ Waiter 总期限与单次重试分开；凭据刷新有界并合并并发，一�
 
 生成器架构、支持范围、来源及验收见 [generator.md](generator.md)；#21 开始前，基础门槛已在 28684e4 通过。
 下一真实产品门槛为 #24 → #25，见 [generator-expansion.md](generator-expansion.md)。
+验收后，扩展更多 profile 前按 #26 → #27 → #28 → #29 修复 review，见
+[AWS 风格修复路径](aws-style-remediation.md)。
