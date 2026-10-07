@@ -53,6 +53,9 @@ First milestone: normalize real representations and publish complete pinned ECS
 inventory/coverage, then batch generate supported RPC operations. Track stages under an
 open roadmap parent with real child issues created before code and dependencies
 1 -> 2 -> 3 -> 4 -> 5. Record returned issue numbers in docs/issues/README.md.
+Created tracking: parent [#33](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/33),
+stages #34 (normalization) -> #35 (discovery/IR) -> #36 (emission) -> #37 (policy) ->
+#38 (docs). These are planned deliveries, not a claim that all stages are implemented.
 Keep #31 focused on the compatibility bridge and benchmarks separate. Each issue uses
 its own branch; stacked PRs name dependencies and do not imply main contains unmerged work.
 Do not close the parent while batch emission, capability policies or docs remain unfinished.
@@ -103,3 +106,6 @@ backendName/nullToEmpty/valueMapping 作为来源属性，不自动用于 SDK �
 RPC。以保持打开的路线父任务及代码前创建的真实子 issue 跟踪 1 → 2 → 3 → 4 → 5，
 返回编号写入索引；#31 聚焦兼容桥，基准独立。每项独立分支，堆叠 PR 明确依赖，
 不宣称未合并代码已在 main；批量输出、能力策略、文档未验收前不关闭父任务。
+已建立父任务 [#33](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/33)，阶段为
+#34（规范化）→ #35（发现/IR）→ #36（输出）→ #37（策略）→ #38（文档）。这是计划交付，
+不表示全部阶段已实现。

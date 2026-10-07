@@ -2,7 +2,10 @@
 
 ## English
 
-GitHub owns current state; this table records dependencies. Existing #3 HTTP depends on #4/#11/#12/#13/#15; #5 ECS on #3; #7 paginator integration on #5; #9 cache follows #18; #8 generator is blocked by #19. #4 signing and #6 retry are independently testable.
+GitHub owns current state; this table records historical and current dependencies, not
+current blocking state. The authoritative full-DSL route is tracked by #33, with
+#34 -> #35 -> #36 -> #37 -> #38. #31 remains the compatibility bridge. Older accepted
+foundation/generator issues are history, not new per-operation prerequisites.
 
 | Issue | Capability | Dependencies |
 | --- | --- | --- |
@@ -28,13 +31,21 @@ GitHub owns current state; this table records dependencies. Existing #3 HTTP dep
 | #29 | Reusable Wait/WaitForOutput and waiter options | #28 |
 | #30 | Live local-profile reads and Explorer CLI comparison | #29 |
 | #31 | Official Darabonba semantic frontend and reviewed DSL/metadata decisions | #29, #30 |
+| #33 | Full-DSL product generator roadmap (parent) | Stages #34-#38 |
+| #34 | Source representation normalization | #31 |
+| #35 | Complete DSL discovery, reachable IR and coverage | #34 |
+| #36 | Batch Go emission from product IR | #35 |
+| #37 | Sparse capability policies | #36 |
+| #38 | Licensed bilingual/pkg.go.dev documentation automation | #37 |
 
 ## 中文
 
 Review 修复按 #26 → #27 → #28 → #29 执行，详见 [修复路径](../aws-style-remediation.md)。
 对应草稿记录每尝试隔离、类型化 pipeline、分页策略集合和可复用 waiter 验收。
 
-状态以 GitHub 为准，本表记录依赖。已有 #3 HTTP 依赖 #4/#11/#12/#13/#15，#5 ECS 依赖 #3，#7 分页集成依赖 #5，#9 缓存在 #18 后完成，#8 generator 被 #19 阻塞。#4 签名及 #6 重试可独立测试。
+状态以 GitHub 为准，本表记录历史/当前依赖，不表示当前阻塞状态。权威完整 DSL
+路线由 #33 跟踪，按 #34 → #35 → #36 → #37 → #38 执行；#31 保留为兼容桥，已验收
+基础/生成任务为历史，不作为新增逐操作前置要求。
 
 | Issue | 能力 | 依赖 |
 | --- | --- | --- |
@@ -60,3 +71,9 @@ Review 修复按 #26 → #27 → #28 → #29 执行，详见 [修复路径](../a
 | #29 | 可复用 Wait/WaitForOutput 和 waiter 选项。 | #28 |
 | #30 | 本地 Profile 真实读取及 Explorer CLI 对比。 | #29 |
 | #31 | 官方 Darabonba 语义前端与审核后的 DSL/元数据决策。 | #29, #30 |
+| #33 | 完整 DSL 产品生成路线父任务。 | 阶段 #34-#38 |
+| #34 | 来源表示规范化。 | #31 |
+| #35 | 完整 DSL 发现、可达 IR 及覆盖。 | #34 |
+| #36 | 产品 IR 批量 Go 输出。 | #35 |
+| #37 | 少量能力策略。 | #36 |
+| #38 | 授权双语/pkg.go.dev 文档自动化。 | #37 |
