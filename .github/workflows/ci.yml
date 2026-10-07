@@ -43,10 +43,10 @@ jobs:
       - name: Install pinned build tools
         working-directory: tools/darabonba
         run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Check official semantic frontend offline
+      - name: Check official semantic frontend and complete product IR offline
         working-directory: tools/darabonba
         run: npm run check
-      - name: Test official frontend rejection and determinism
+      - name: Test frontend, normalization and complete discovery contracts
         working-directory: tools/darabonba
         run: npm test
       - name: Check formatting

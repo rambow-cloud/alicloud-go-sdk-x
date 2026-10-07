@@ -1,0 +1,6576 @@
+{
+  "schemaVersion": 1,
+  "product": "vpc",
+  "version": "2016-04-28",
+  "provenance": {
+    "repository": "https://github.com/aliyun/alibabacloud-sdk",
+    "revision": "ec489e5c3deae95496daae2b41503ac58b221adb",
+    "license": "Apache-2.0",
+    "parserVersion": "2.2.1",
+    "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
+    "sourceSHA256": "31718672523e4804bb17a44e963ff991aeb4b3cd7a54a35b436b9caeee0203ba",
+    "apiInfoSHA256": "914ff757e4bc54683eccd9f82261fb0305a9c0ce4603b0e35fc35dd09ec1083d"
+  },
+  "counts": {
+    "discovered": 403,
+    "lowered": 295,
+    "unsupported": 108,
+    "dslOperations": 403,
+    "catalogOnlyOperations": 0,
+    "dslOnlyOperations": 0,
+    "declaredModels": 1212,
+    "reachableNamedModels": 1208,
+    "reachableAnonymousModels": 520,
+    "unusedNamedModels": 4
+  },
+  "acceptance": {
+    "lowering": "assessed",
+    "goEmission": "not-assessed",
+    "compilation": "not-assessed",
+    "live": "not-assessed"
+  },
+  "reasonCounts": {
+    "DSL_MODEL_ATTRIBUTE": 2,
+    "DSL_OPERATION_SIGNATURE": 5,
+    "DSL_QUERY_BINDING": 96,
+    "DSL_QUERY_INITIALIZATION": 1,
+    "DSL_UNBOUND_INPUT": 4
+  },
+  "operations": [
+    {
+      "name": "ActivateRouterInterface",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 105,
+        "column": 16,
+        "endLine": 105,
+        "endColumn": 50
+      },
+      "reasons": []
+    },
+    {
+      "name": "ActiveFlowLog",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 194,
+        "column": 16,
+        "endLine": 194,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "AddBgpNetwork",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 289,
+        "column": 16,
+        "endLine": 289,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "AddCommonBandwidthPackageIp",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 400,
+        "column": 16,
+        "endLine": 400,
+        "endColumn": 54
+      },
+      "reasons": []
+    },
+    {
+      "name": "AddCommonBandwidthPackageIps",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 522,
+        "column": 16,
+        "endLine": 522,
+        "endColumn": 55
+      },
+      "reasons": []
+    },
+    {
+      "name": "AddGlobalAccelerationInstanceIp",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 626,
+        "column": 16,
+        "endLine": 626,
+        "endColumn": 58
+      },
+      "reasons": []
+    },
+    {
+      "name": "AddIPv6TranslatorAclListEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 718,
+        "column": 16,
+        "endLine": 718,
+        "endColumn": 56
+      },
+      "reasons": []
+    },
+    {
+      "name": "AddPublicIpAddressPoolCidrBlock",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 831,
+        "column": 16,
+        "endLine": 831,
+        "endColumn": 58
+      },
+      "reasons": []
+    },
+    {
+      "name": "AddSourcesToTrafficMirrorSession",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 952,
+        "column": 16,
+        "endLine": 952,
+        "endColumn": 59
+      },
+      "reasons": []
+    },
+    {
+      "name": "AllocateEipAddress",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 1158,
+        "column": 16,
+        "endLine": 1158,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "AllocateEipAddressPro",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 1394,
+        "column": 16,
+        "endLine": 1394,
+        "endColumn": 48
+      },
+      "reasons": []
+    },
+    {
+      "name": "AllocateEipSegmentAddress",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 1573,
+        "column": 16,
+        "endLine": 1573,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "AllocateIpv6Address",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 1716,
+        "column": 16,
+        "endLine": 1716,
+        "endColumn": 46
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 1716,
+            "column": 16,
+            "endLine": 1716,
+            "endColumn": 46
+          }
+        }
+      ]
+    },
+    {
+      "name": "AllocateIpv6InternetBandwidth",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 1878,
+        "column": 16,
+        "endLine": 1878,
+        "endColumn": 56
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 1878,
+            "column": 16,
+            "endLine": 1878,
+            "endColumn": 56
+          }
+        }
+      ]
+    },
+    {
+      "name": "AllocateVpcIpv6Cidr",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 2014,
+        "column": 16,
+        "endLine": 2014,
+        "endColumn": 46
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 2014,
+            "column": 16,
+            "endLine": 2014,
+            "endColumn": 46
+          }
+        }
+      ]
+    },
+    {
+      "name": "ApplyPhysicalConnectionLOA",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 2153,
+        "column": 16,
+        "endLine": 2153,
+        "endColumn": 53
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 2153,
+            "column": 16,
+            "endLine": 2153,
+            "endColumn": 53
+          }
+        }
+      ]
+    },
+    {
+      "name": "AssociateEipAddress",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 2312,
+        "column": 16,
+        "endLine": 2312,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "AssociateEipAddressBatch",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 2444,
+        "column": 16,
+        "endLine": 2444,
+        "endColumn": 51
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 2444,
+            "column": 16,
+            "endLine": 2444,
+            "endColumn": 51
+          }
+        }
+      ]
+    },
+    {
+      "name": "AssociateHaVip",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 2567,
+        "column": 16,
+        "endLine": 2567,
+        "endColumn": 41
+      },
+      "reasons": []
+    },
+    {
+      "name": "AssociateMacSecKey",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 2690,
+        "column": 16,
+        "endLine": 2690,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "AssociateNetworkAcl",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 2796,
+        "column": 16,
+        "endLine": 2796,
+        "endColumn": 46
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 2796,
+            "column": 16,
+            "endLine": 2796,
+            "endColumn": 46
+          }
+        }
+      ]
+    },
+    {
+      "name": "AssociatePhysicalConnectionToVirtualBorderRouter",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 2931,
+        "column": 16,
+        "endLine": 2931,
+        "endColumn": 75
+      },
+      "reasons": []
+    },
+    {
+      "name": "AssociateRouteTable",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 3057,
+        "column": 16,
+        "endLine": 3057,
+        "endColumn": 46
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 3057,
+            "column": 16,
+            "endLine": 3057,
+            "endColumn": 46
+          }
+        }
+      ]
+    },
+    {
+      "name": "AssociateRouteTableWithGateway",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 3165,
+        "column": 16,
+        "endLine": 3165,
+        "endColumn": 57
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 3165,
+            "column": 16,
+            "endLine": 3165,
+            "endColumn": 57
+          }
+        }
+      ]
+    },
+    {
+      "name": "AssociateRouteTablesWithVpcGatewayEndpoint",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 3284,
+        "column": 16,
+        "endLine": 3284,
+        "endColumn": 69
+      },
+      "reasons": []
+    },
+    {
+      "name": "AssociateVpcCidrBlock",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 3424,
+        "column": 16,
+        "endLine": 3424,
+        "endColumn": 48
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 3424,
+            "column": 16,
+            "endLine": 3424,
+            "endColumn": 48
+          }
+        }
+      ]
+    },
+    {
+      "name": "AssociateVpnGatewayWithCertificate",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 3564,
+        "column": 16,
+        "endLine": 3564,
+        "endColumn": 61
+      },
+      "reasons": []
+    },
+    {
+      "name": "AttachDhcpOptionsSetToVpc",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 3674,
+        "column": 16,
+        "endLine": 3674,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "AttachVbrToVpconn",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 3778,
+        "column": 16,
+        "endLine": 3778,
+        "endColumn": 44
+      },
+      "reasons": []
+    },
+    {
+      "name": "CancelCommonBandwidthPackageIpBandwidth",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 3861,
+        "column": 16,
+        "endLine": 3861,
+        "endColumn": 66
+      },
+      "reasons": []
+    },
+    {
+      "name": "CancelPhysicalConnection",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 3954,
+        "column": 16,
+        "endLine": 3954,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "ChangeResourceGroup",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 4050,
+        "column": 16,
+        "endLine": 4050,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "CheckCanAllocateVpcPrivateIpAddress",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 4140,
+        "column": 16,
+        "endLine": 4140,
+        "endColumn": 62
+      },
+      "reasons": []
+    },
+    {
+      "name": "CheckVpnBgpEnabled",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 4234,
+        "column": 16,
+        "endLine": 4234,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "CompletePhysicalConnectionLOA",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 4332,
+        "column": 16,
+        "endLine": 4332,
+        "endColumn": 56
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 4332,
+            "column": 16,
+            "endLine": 4332,
+            "endColumn": 56
+          }
+        }
+      ]
+    },
+    {
+      "name": "ConfirmPhysicalConnection",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 4443,
+        "column": 16,
+        "endLine": 4443,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "ConnectRouterInterface",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 4532,
+        "column": 16,
+        "endLine": 4532,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "CopyNetworkAclEntries",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 4630,
+        "column": 16,
+        "endLine": 4630,
+        "endColumn": 48
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 4630,
+            "column": 16,
+            "endLine": 4630,
+            "endColumn": 48
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateBgpGroup",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 4771,
+        "column": 16,
+        "endLine": 4771,
+        "endColumn": 41
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateBgpPeer",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 4910,
+        "column": 16,
+        "endLine": 4910,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateCommonBandwidthPackage",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 5080,
+        "column": 16,
+        "endLine": 5080,
+        "endColumn": 55
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateCustomerGateway",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 5254,
+        "column": 16,
+        "endLine": 5254,
+        "endColumn": 48
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateDefaultVSwitch",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 5376,
+        "column": 16,
+        "endLine": 5376,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateDefaultVpc",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 5500,
+        "column": 16,
+        "endLine": 5500,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateDhcpOptionsSet",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 5653,
+        "column": 16,
+        "endLine": 5653,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateEnhancedVpnGateway",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 5803,
+        "column": 16,
+        "endLine": 5803,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateExpressCloudConnection",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 5945,
+        "column": 16,
+        "endLine": 5945,
+        "endColumn": 55
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateExpressConnectTrafficQos",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 6078,
+        "column": 16,
+        "endLine": 6078,
+        "endColumn": 57
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 6078,
+            "column": 16,
+            "endLine": 6078,
+            "endColumn": 57
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateExpressConnectTrafficQosQueue",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 6206,
+        "column": 16,
+        "endLine": 6206,
+        "endColumn": 62
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 6206,
+            "column": 16,
+            "endLine": 6206,
+            "endColumn": 62
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateExpressConnectTrafficQosRule",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 6412,
+        "column": 16,
+        "endLine": 6412,
+        "endColumn": 61
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 6412,
+            "column": 16,
+            "endLine": 6412,
+            "endColumn": 61
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateFailoverTestJob",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 6584,
+        "column": 16,
+        "endLine": 6584,
+        "endColumn": 48
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 6584,
+            "column": 16,
+            "endLine": 6584,
+            "endColumn": 48
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateFlowLog",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 6772,
+        "column": 16,
+        "endLine": 6772,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateForwardEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 6963,
+        "column": 16,
+        "endLine": 6963,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateFullNatEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 7122,
+        "column": 16,
+        "endLine": 7122,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateGlobalAccelerationInstance",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 7275,
+        "column": 16,
+        "endLine": 7275,
+        "endColumn": 59
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateHaVip",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 7406,
+        "column": 16,
+        "endLine": 7406,
+        "endColumn": 38
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateHighReliablePhysicalConnection",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 7634,
+        "column": 16,
+        "endLine": 7634,
+        "endColumn": 63
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 7634,
+            "column": 16,
+            "endLine": 7634,
+            "endColumn": 63
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateIPv6Translator",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 7770,
+        "column": 16,
+        "endLine": 7770,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateIPv6TranslatorAclList",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 7878,
+        "column": 16,
+        "endLine": 7878,
+        "endColumn": 54
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateIPv6TranslatorEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 7999,
+        "column": 16,
+        "endLine": 7999,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateIpsecServer",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 8185,
+        "column": 16,
+        "endLine": 8185,
+        "endColumn": 44
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateIpv4Gateway",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 8325,
+        "column": 16,
+        "endLine": 8325,
+        "endColumn": 44
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 8325,
+            "column": 16,
+            "endLine": 8325,
+            "endColumn": 44
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateIpv6EgressOnlyRule",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 8456,
+        "column": 16,
+        "endLine": 8456,
+        "endColumn": 51
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 8456,
+            "column": 16,
+            "endLine": 8456,
+            "endColumn": 51
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateIpv6Gateway",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 8595,
+        "column": 16,
+        "endLine": 8595,
+        "endColumn": 44
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 8595,
+            "column": 16,
+            "endLine": 8595,
+            "endColumn": 44
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateNatGateway",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 8881,
+        "column": 16,
+        "endLine": 8881,
+        "endColumn": 43
+      },
+      "reasons": [
+        {
+          "code": "DSL_OPERATION_SIGNATURE",
+          "message": "operation signature",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 8881,
+            "column": 16,
+            "endLine": 8881,
+            "endColumn": 43
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateNatIp",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 9082,
+        "column": 16,
+        "endLine": 9082,
+        "endColumn": 38
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 9082,
+            "column": 16,
+            "endLine": 9082,
+            "endColumn": 38
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateNatIpCidr",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 9222,
+        "column": 16,
+        "endLine": 9222,
+        "endColumn": 42
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 9222,
+            "column": 16,
+            "endLine": 9222,
+            "endColumn": 42
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateNetworkAcl",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 9396,
+        "column": 16,
+        "endLine": 9396,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreatePhysicalConnection",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 9581,
+        "column": 16,
+        "endLine": 9581,
+        "endColumn": 51
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 9581,
+            "column": 16,
+            "endLine": 9581,
+            "endColumn": 51
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreatePhysicalConnectionOccupancyOrder",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 9742,
+        "column": 16,
+        "endLine": 9742,
+        "endColumn": 65
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreatePhysicalConnectionSetupOrder",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 9892,
+        "column": 16,
+        "endLine": 9892,
+        "endColumn": 61
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 9892,
+            "column": 16,
+            "endLine": 9892,
+            "endColumn": 61
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreatePublicIpAddressPool",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 10042,
+        "column": 16,
+        "endLine": 10042,
+        "endColumn": 52
+      },
+      "reasons": [
+        {
+          "code": "DSL_MODEL_ATTRIBUTE",
+          "message": "unreviewed model attribute",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 10042,
+            "column": 16,
+            "endLine": 10042,
+            "endColumn": 52
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateRouteEntries",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 10235,
+        "column": 16,
+        "endLine": 10235,
+        "endColumn": 45
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 10235,
+            "column": 16,
+            "endLine": 10235,
+            "endColumn": 45
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateRouteEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 10428,
+        "column": 16,
+        "endLine": 10428,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateRouteTable",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 10603,
+        "column": 16,
+        "endLine": 10603,
+        "endColumn": 43
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 10603,
+            "column": 16,
+            "endLine": 10603,
+            "endColumn": 43
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateRouteTargetGroup",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 10763,
+        "column": 16,
+        "endLine": 10763,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateRouterInterface",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 11000,
+        "column": 16,
+        "endLine": 11000,
+        "endColumn": 48
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 11000,
+            "column": 16,
+            "endLine": 11000,
+            "endColumn": 48
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateSnatEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 11232,
+        "column": 16,
+        "endLine": 11232,
+        "endColumn": 42
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateSslVpnClientCert",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 11359,
+        "column": 16,
+        "endLine": 11359,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateSslVpnServer",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 11570,
+        "column": 16,
+        "endLine": 11570,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateTrafficMirrorFilter",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 11787,
+        "column": 16,
+        "endLine": 11787,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateTrafficMirrorFilterRules",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 11973,
+        "column": 16,
+        "endLine": 11973,
+        "endColumn": 57
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateTrafficMirrorSession",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 12131,
+        "column": 16,
+        "endLine": 12131,
+        "endColumn": 53
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateVSwitch",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 12312,
+        "column": 16,
+        "endLine": 12312,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateVSwitchCidrReservation",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 12494,
+        "column": 16,
+        "endLine": 12494,
+        "endColumn": 55
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateVbrHa",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 12630,
+        "column": 16,
+        "endLine": 12630,
+        "endColumn": 38
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateVcoRouteEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 12772,
+        "column": 16,
+        "endLine": 12772,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateVirtualBorderRouter",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 12946,
+        "column": 16,
+        "endLine": 12946,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateVirtualPhysicalConnection",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 13143,
+        "column": 16,
+        "endLine": 13143,
+        "endColumn": 58
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateVpc",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 13326,
+        "column": 16,
+        "endLine": 13326,
+        "endColumn": 36
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateVpcGatewayEndpoint",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 13515,
+        "column": 16,
+        "endLine": 13515,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateVpcPrefixList",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 13664,
+        "column": 16,
+        "endLine": 13664,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateVpconnFromVbr",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 13786,
+        "column": 16,
+        "endLine": 13786,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateVpnAttachment",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 14062,
+        "column": 16,
+        "endLine": 14062,
+        "endColumn": 46
+      },
+      "reasons": [
+        {
+          "code": "DSL_UNBOUND_INPUT",
+          "message": "unbound model input",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 14062,
+            "column": 16,
+            "endLine": 14062,
+            "endColumn": 46
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateVpnConnection",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 14478,
+        "column": 16,
+        "endLine": 14478,
+        "endColumn": 46
+      },
+      "reasons": [
+        {
+          "code": "DSL_UNBOUND_INPUT",
+          "message": "unbound model input",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 14478,
+            "column": 16,
+            "endLine": 14478,
+            "endColumn": 46
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateVpnGateway",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 14709,
+        "column": 16,
+        "endLine": 14709,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateVpnPbrRouteEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 14916,
+        "column": 16,
+        "endLine": 14916,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateVpnRouteEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 15108,
+        "column": 16,
+        "endLine": 15108,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeactivateRouterInterface",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 15223,
+        "column": 16,
+        "endLine": 15223,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeactiveFlowLog",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 15308,
+        "column": 16,
+        "endLine": 15308,
+        "endColumn": 42
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteBgpGroup",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 15399,
+        "column": 16,
+        "endLine": 15399,
+        "endColumn": 41
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteBgpNetwork",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 15493,
+        "column": 16,
+        "endLine": 15493,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteBgpPeer",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 15587,
+        "column": 16,
+        "endLine": 15587,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteCommonBandwidthPackage",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 15678,
+        "column": 16,
+        "endLine": 15678,
+        "endColumn": 55
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteCustomerGateway",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 15769,
+        "column": 16,
+        "endLine": 15769,
+        "endColumn": 48
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteDhcpOptionsSet",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 15868,
+        "column": 16,
+        "endLine": 15868,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteEnhancedVpnGateway",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 15965,
+        "column": 16,
+        "endLine": 15965,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteExpressConnect",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 16057,
+        "column": 16,
+        "endLine": 16057,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteExpressConnectTrafficQos",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 16150,
+        "column": 16,
+        "endLine": 16150,
+        "endColumn": 57
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 16150,
+            "column": 16,
+            "endLine": 16150,
+            "endColumn": 57
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteExpressConnectTrafficQosQueue",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 16243,
+        "column": 16,
+        "endLine": 16243,
+        "endColumn": 62
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 16243,
+            "column": 16,
+            "endLine": 16243,
+            "endColumn": 62
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteExpressConnectTrafficQosRule",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 16340,
+        "column": 16,
+        "endLine": 16340,
+        "endColumn": 61
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 16340,
+            "column": 16,
+            "endLine": 16340,
+            "endColumn": 61
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteFailoverTestJob",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 16434,
+        "column": 16,
+        "endLine": 16434,
+        "endColumn": 48
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 16434,
+            "column": 16,
+            "endLine": 16434,
+            "endColumn": 48
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteFlowLog",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 16529,
+        "column": 16,
+        "endLine": 16529,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteForwardEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 16628,
+        "column": 16,
+        "endLine": 16628,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteFullNatEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 16736,
+        "column": 16,
+        "endLine": 16736,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteGlobalAccelerationInstance",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 16835,
+        "column": 16,
+        "endLine": 16835,
+        "endColumn": 59
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteHaVip",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 16933,
+        "column": 16,
+        "endLine": 16933,
+        "endColumn": 38
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteIPv6Translator",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 17027,
+        "column": 16,
+        "endLine": 17027,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteIPv6TranslatorAclList",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 17115,
+        "column": 16,
+        "endLine": 17115,
+        "endColumn": 54
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteIPv6TranslatorEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 17207,
+        "column": 16,
+        "endLine": 17207,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteIpsecServer",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 17306,
+        "column": 16,
+        "endLine": 17306,
+        "endColumn": 44
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteIpv4Gateway",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 17404,
+        "column": 16,
+        "endLine": 17404,
+        "endColumn": 44
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 17404,
+            "column": 16,
+            "endLine": 17404,
+            "endColumn": 44
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteIpv6EgressOnlyRule",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 17512,
+        "column": 16,
+        "endLine": 17512,
+        "endColumn": 51
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 17512,
+            "column": 16,
+            "endLine": 17512,
+            "endColumn": 51
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteIpv6Gateway",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 17621,
+        "column": 16,
+        "endLine": 17621,
+        "endColumn": 44
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 17621,
+            "column": 16,
+            "endLine": 17621,
+            "endColumn": 44
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteIpv6InternetBandwidth",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 17728,
+        "column": 16,
+        "endLine": 17728,
+        "endColumn": 54
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 17728,
+            "column": 16,
+            "endLine": 17728,
+            "endColumn": 54
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteNatGateway",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 17851,
+        "column": 16,
+        "endLine": 17851,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteNatIp",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 17956,
+        "column": 16,
+        "endLine": 17956,
+        "endColumn": 38
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 17956,
+            "column": 16,
+            "endLine": 17956,
+            "endColumn": 38
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteNatIpCidr",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 18072,
+        "column": 16,
+        "endLine": 18072,
+        "endColumn": 42
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 18072,
+            "column": 16,
+            "endLine": 18072,
+            "endColumn": 42
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteNetworkAcl",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 18175,
+        "column": 16,
+        "endLine": 18175,
+        "endColumn": 43
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 18175,
+            "column": 16,
+            "endLine": 18175,
+            "endColumn": 43
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeletePhysicalConnection",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 18272,
+        "column": 16,
+        "endLine": 18272,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeletePublicIpAddressPool",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 18369,
+        "column": 16,
+        "endLine": 18369,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeletePublicIpAddressPoolCidrBlock",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 18477,
+        "column": 16,
+        "endLine": 18477,
+        "endColumn": 61
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteRouteEntries",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 18611,
+        "column": 16,
+        "endLine": 18611,
+        "endColumn": 45
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 18611,
+            "column": 16,
+            "endLine": 18611,
+            "endColumn": 45
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteRouteEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 18731,
+        "column": 16,
+        "endLine": 18731,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteRouteTable",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 18841,
+        "column": 16,
+        "endLine": 18841,
+        "endColumn": 43
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 18841,
+            "column": 16,
+            "endLine": 18841,
+            "endColumn": 43
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteRouteTargetGroup",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 18946,
+        "column": 16,
+        "endLine": 18946,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteRouterInterface",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 19037,
+        "column": 16,
+        "endLine": 19037,
+        "endColumn": 48
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteSnatEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 19138,
+        "column": 16,
+        "endLine": 19138,
+        "endColumn": 42
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteSslVpnClientCert",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 19244,
+        "column": 16,
+        "endLine": 19244,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteSslVpnServer",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 19347,
+        "column": 16,
+        "endLine": 19347,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteTrafficMirrorFilter",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 19448,
+        "column": 16,
+        "endLine": 19448,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteTrafficMirrorFilterRules",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 19556,
+        "column": 16,
+        "endLine": 19556,
+        "endColumn": 57
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteTrafficMirrorSession",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 19664,
+        "column": 16,
+        "endLine": 19664,
+        "endColumn": 53
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteVSwitch",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 19766,
+        "column": 16,
+        "endLine": 19766,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteVSwitchCidrReservation",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 19872,
+        "column": 16,
+        "endLine": 19872,
+        "endColumn": 55
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteVbrHa",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 19967,
+        "column": 16,
+        "endLine": 19967,
+        "endColumn": 38
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteVcoRouteEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 20073,
+        "column": 16,
+        "endLine": 20073,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteVirtualBorderRouter",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 20177,
+        "column": 16,
+        "endLine": 20177,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteVpc",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 20289,
+        "column": 16,
+        "endLine": 20289,
+        "endColumn": 36
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteVpcGatewayEndpoint",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 20396,
+        "column": 16,
+        "endLine": 20396,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteVpcPrefixList",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 20493,
+        "column": 16,
+        "endLine": 20493,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteVpnAttachment",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 20595,
+        "column": 16,
+        "endLine": 20595,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteVpnConnection",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 20690,
+        "column": 16,
+        "endLine": 20690,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteVpnGateway",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 20787,
+        "column": 16,
+        "endLine": 20787,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteVpnPbrRouteEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 20902,
+        "column": 16,
+        "endLine": 20902,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteVpnRouteEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 21031,
+        "column": 16,
+        "endLine": 21031,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeletionProtection",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 21153,
+        "column": 16,
+        "endLine": 21153,
+        "endColumn": 45
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 21153,
+            "column": 16,
+            "endLine": 21153,
+            "endColumn": 45
+          }
+        }
+      ]
+    },
+    {
+      "name": "Describe95Traffic",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 21276,
+        "column": 16,
+        "endLine": 21276,
+        "endColumn": 44
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeAccessPoints",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 21390,
+        "column": 16,
+        "endLine": 21390,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeBgpGroups",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 21502,
+        "column": 16,
+        "endLine": 21502,
+        "endColumn": 44
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeBgpNetworks",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 21608,
+        "column": 16,
+        "endLine": 21608,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeBgpPeers",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 21734,
+        "column": 16,
+        "endLine": 21734,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeCommonBandwidthPackages",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 21908,
+        "column": 16,
+        "endLine": 21908,
+        "endColumn": 58
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeCustomerGateway",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 22033,
+        "column": 16,
+        "endLine": 22033,
+        "endColumn": 50
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeCustomerGateways",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 22158,
+        "column": 16,
+        "endLine": 22158,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeEcGrantRelation",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 22284,
+        "column": 16,
+        "endLine": 22284,
+        "endColumn": 50
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeEipAddresses",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 22455,
+        "column": 16,
+        "endLine": 22455,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeEipGatewayInfo",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 22606,
+        "column": 16,
+        "endLine": 22606,
+        "endColumn": 49
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 22606,
+            "column": 16,
+            "endLine": 22606,
+            "endColumn": 49
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribeEipMonitorData",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 22716,
+        "column": 16,
+        "endLine": 22716,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeEipSegment",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 22831,
+        "column": 16,
+        "endLine": 22831,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeExpressConnectTrafficQos",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 23022,
+        "column": 16,
+        "endLine": 23022,
+        "endColumn": 59
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 23022,
+            "column": 16,
+            "endLine": 23022,
+            "endColumn": 59
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribeExpressConnectTrafficQosQueue",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 23264,
+        "column": 16,
+        "endLine": 23264,
+        "endColumn": 64
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 23264,
+            "column": 16,
+            "endLine": 23264,
+            "endColumn": 64
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribeExpressConnectTrafficQosRule",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 23467,
+        "column": 16,
+        "endLine": 23467,
+        "endColumn": 63
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 23467,
+            "column": 16,
+            "endLine": 23467,
+            "endColumn": 63
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribeFailoverTestJob",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 23592,
+        "column": 16,
+        "endLine": 23592,
+        "endColumn": 50
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 23592,
+            "column": 16,
+            "endLine": 23592,
+            "endColumn": 50
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribeFailoverTestJobs",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 23743,
+        "column": 16,
+        "endLine": 23743,
+        "endColumn": 51
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 23743,
+            "column": 16,
+            "endLine": 23743,
+            "endColumn": 51
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribeFlowLogs",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 23917,
+        "column": 16,
+        "endLine": 23917,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeForwardTableEntries",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 24089,
+        "column": 16,
+        "endLine": 24089,
+        "endColumn": 54
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeGlobalAccelerationInstances",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 24270,
+        "column": 16,
+        "endLine": 24270,
+        "endColumn": 62
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeGrantRulesToCen",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 24405,
+        "column": 16,
+        "endLine": 24405,
+        "endColumn": 50
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeGrantRulesToEcr",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 24519,
+        "column": 16,
+        "endLine": 24519,
+        "endColumn": 50
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeHaVips",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 24668,
+        "column": 16,
+        "endLine": 24668,
+        "endColumn": 41
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeHighDefinitionMonitorLogAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 24770,
+        "column": 16,
+        "endLine": 24770,
+        "endColumn": 68
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeIPv6TranslatorAclListAttributes",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 24868,
+        "column": 16,
+        "endLine": 24868,
+        "endColumn": 66
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeIPv6TranslatorAclLists",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 24968,
+        "column": 16,
+        "endLine": 24968,
+        "endColumn": 57
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeIPv6TranslatorEntries",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 25107,
+        "column": 16,
+        "endLine": 25107,
+        "endColumn": 56
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeIPv6Translators",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 25286,
+        "column": 16,
+        "endLine": 25286,
+        "endColumn": 50
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeIpv6Addresses",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 25483,
+        "column": 16,
+        "endLine": 25483,
+        "endColumn": 48
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 25483,
+            "column": 16,
+            "endLine": 25483,
+            "endColumn": 48
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribeIpv6EgressOnlyRules",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 25634,
+        "column": 16,
+        "endLine": 25634,
+        "endColumn": 54
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 25634,
+            "column": 16,
+            "endLine": 25634,
+            "endColumn": 54
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribeIpv6GatewayAttribute",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 25770,
+        "column": 16,
+        "endLine": 25770,
+        "endColumn": 55
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 25770,
+            "column": 16,
+            "endLine": 25770,
+            "endColumn": 55
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribeIpv6Gateways",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 25896,
+        "column": 16,
+        "endLine": 25896,
+        "endColumn": 47
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 25896,
+            "column": 16,
+            "endLine": 25896,
+            "endColumn": 47
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribeNatGatewayAssociateNetworkInterfaces",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 26062,
+        "column": 16,
+        "endLine": 26062,
+        "endColumn": 71
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 26062,
+            "column": 16,
+            "endLine": 26062,
+            "endColumn": 71
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribeNatGateways",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 26304,
+        "column": 16,
+        "endLine": 26304,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeNetworkAclAttributes",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 26497,
+        "column": 16,
+        "endLine": 26497,
+        "endColumn": 55
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 26497,
+            "column": 16,
+            "endLine": 26497,
+            "endColumn": 55
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribeNetworkAcls",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 26671,
+        "column": 16,
+        "endLine": 26671,
+        "endColumn": 46
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 26671,
+            "column": 16,
+            "endLine": 26671,
+            "endColumn": 46
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribePhysicalConnectionLOA",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 26828,
+        "column": 16,
+        "endLine": 26828,
+        "endColumn": 56
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribePhysicalConnections",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 27049,
+        "column": 16,
+        "endLine": 27049,
+        "endColumn": 54
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribePublicIpAddress",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 27169,
+        "column": 16,
+        "endLine": 27169,
+        "endColumn": 50
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 27169,
+            "column": 16,
+            "endLine": 27169,
+            "endColumn": 50
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribeRegions",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 27268,
+        "column": 16,
+        "endLine": 27268,
+        "endColumn": 42
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeRouteEntryList",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 27434,
+        "column": 16,
+        "endLine": 27434,
+        "endColumn": 49
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 27434,
+            "column": 16,
+            "endLine": 27434,
+            "endColumn": 49
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribeRouteTableList",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 27615,
+        "column": 16,
+        "endLine": 27615,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeRouteTables",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 27792,
+        "column": 16,
+        "endLine": 27792,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeRouterInterfaceAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 28040,
+        "column": 16,
+        "endLine": 28040,
+        "endColumn": 59
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeRouterInterfaces",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 28219,
+        "column": 16,
+        "endLine": 28219,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeServerRelatedGlobalAccelerationInstances",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 28329,
+        "column": 16,
+        "endLine": 28329,
+        "endColumn": 75
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeSnatTableEntries",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 28453,
+        "column": 16,
+        "endLine": 28453,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeSslVpnClientCert",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 28602,
+        "column": 16,
+        "endLine": 28602,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeSslVpnClientCerts",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 28705,
+        "column": 16,
+        "endLine": 28705,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeSslVpnClients",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 28829,
+        "column": 16,
+        "endLine": 28829,
+        "endColumn": 48
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeSslVpnServers",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 28956,
+        "column": 16,
+        "endLine": 28956,
+        "endColumn": 48
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeTagKeys",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 29075,
+        "column": 16,
+        "endLine": 29075,
+        "endColumn": 42
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeTagKeysForExpressConnect",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 29189,
+        "column": 16,
+        "endLine": 29189,
+        "endColumn": 59
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeTags",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 29331,
+        "column": 16,
+        "endLine": 29331,
+        "endColumn": 39
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVRouters",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 29447,
+        "column": 16,
+        "endLine": 29447,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVSwitchAttributes",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 29582,
+        "column": 16,
+        "endLine": 29582,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVSwitches",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 29740,
+        "column": 16,
+        "endLine": 29740,
+        "endColumn": 44
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVbrHa",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 29880,
+        "column": 16,
+        "endLine": 29880,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVcoRouteEntries",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 30029,
+        "column": 16,
+        "endLine": 30029,
+        "endColumn": 50
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVirtualBorderRouters",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 30219,
+        "column": 16,
+        "endLine": 30219,
+        "endColumn": 55
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVirtualBorderRoutersForPhysicalConnection",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 30364,
+        "column": 16,
+        "endLine": 30364,
+        "endColumn": 76
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVpcAttribute",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 30557,
+        "column": 16,
+        "endLine": 30557,
+        "endColumn": 47
+      },
+      "reasons": [
+        {
+          "code": "DSL_MODEL_ATTRIBUTE",
+          "message": "unreviewed model attribute",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 30557,
+            "column": 16,
+            "endLine": 30557,
+            "endColumn": 47
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribeVpcGrantRulesToEcr",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 30683,
+        "column": 16,
+        "endLine": 30683,
+        "endColumn": 53
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVpcs",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 30874,
+        "column": 16,
+        "endLine": 30874,
+        "endColumn": 39
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVpnAttachments",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 31025,
+        "column": 16,
+        "endLine": 31025,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVpnConnection",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 31260,
+        "column": 16,
+        "endLine": 31260,
+        "endColumn": 48
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVpnConnectionLogs",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 31365,
+        "column": 16,
+        "endLine": 31365,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVpnConnections",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 31601,
+        "column": 16,
+        "endLine": 31601,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVpnCrossAccountAuthorizations",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 31723,
+        "column": 16,
+        "endLine": 31723,
+        "endColumn": 64
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVpnGateway",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 31965,
+        "column": 16,
+        "endLine": 31965,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVpnGatewayAvailableZones",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 32075,
+        "column": 16,
+        "endLine": 32075,
+        "endColumn": 59
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_INITIALIZATION",
+          "message": "query initialization",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 32075,
+            "column": 16,
+            "endLine": 32075,
+            "endColumn": 59
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribeVpnGateways",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 32230,
+        "column": 16,
+        "endLine": 32230,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVpnPbrRouteEntries",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 32358,
+        "column": 16,
+        "endLine": 32358,
+        "endColumn": 53
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVpnRouteEntries",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 32480,
+        "column": 16,
+        "endLine": 32480,
+        "endColumn": 50
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeVpnSslServerLogs",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 32591,
+        "column": 16,
+        "endLine": 32591,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeZones",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 32702,
+        "column": 16,
+        "endLine": 32702,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "DetachDhcpOptionsSetFromVpc",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 32802,
+        "column": 16,
+        "endLine": 32802,
+        "endColumn": 54
+      },
+      "reasons": []
+    },
+    {
+      "name": "DiagnoseVpnConnections",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 32922,
+        "column": 16,
+        "endLine": 32922,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "DiagnoseVpnGateway",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 33028,
+        "column": 16,
+        "endLine": 33028,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "DisableVpcClassicLink",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 33119,
+        "column": 16,
+        "endLine": 33119,
+        "endColumn": 48
+      },
+      "reasons": []
+    },
+    {
+      "name": "DisassociateMacSecKey",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 33208,
+        "column": 16,
+        "endLine": 33208,
+        "endColumn": 48
+      },
+      "reasons": []
+    },
+    {
+      "name": "DissociateRouteTableFromGateway",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 33295,
+        "column": 16,
+        "endLine": 33295,
+        "endColumn": 58
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 33295,
+            "column": 16,
+            "endLine": 33295,
+            "endColumn": 58
+          }
+        }
+      ]
+    },
+    {
+      "name": "DissociateRouteTablesFromVpcGatewayEndpoint",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 33401,
+        "column": 16,
+        "endLine": 33401,
+        "endColumn": 70
+      },
+      "reasons": []
+    },
+    {
+      "name": "DissociateVpnGatewayWithCertificate",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 33515,
+        "column": 16,
+        "endLine": 33515,
+        "endColumn": 62
+      },
+      "reasons": []
+    },
+    {
+      "name": "DownloadVpnConnectionConfig",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 33665,
+        "column": 16,
+        "endLine": 33665,
+        "endColumn": 54
+      },
+      "reasons": []
+    },
+    {
+      "name": "EnablePhysicalConnection",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 33759,
+        "column": 16,
+        "endLine": 33759,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "EnableVpcClassicLink",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 33861,
+        "column": 16,
+        "endLine": 33861,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "EnableVpcIpv4Gateway",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 33962,
+        "column": 16,
+        "endLine": 33962,
+        "endColumn": 47
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 33962,
+            "column": 16,
+            "endLine": 33962,
+            "endColumn": 47
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetDhcpOptionsSet",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 34105,
+        "column": 16,
+        "endLine": 34105,
+        "endColumn": 44
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetFlowLogServiceStatus",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 34193,
+        "column": 16,
+        "endLine": 34193,
+        "endColumn": 50
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 34193,
+            "column": 16,
+            "endLine": 34193,
+            "endColumn": 50
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetIpv4GatewayAttribute",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 34308,
+        "column": 16,
+        "endLine": 34308,
+        "endColumn": 50
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 34308,
+            "column": 16,
+            "endLine": 34308,
+            "endColumn": 50
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetNatGatewayAttribute",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 34515,
+        "column": 16,
+        "endLine": 34515,
+        "endColumn": 49
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 34515,
+            "column": 16,
+            "endLine": 34515,
+            "endColumn": 49
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetPhysicalConnectionServiceStatus",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 34605,
+        "column": 16,
+        "endLine": 34605,
+        "endColumn": 61
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetPublicIpAddressPoolServiceStatus",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 34693,
+        "column": 16,
+        "endLine": 34693,
+        "endColumn": 62
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 34693,
+            "column": 16,
+            "endLine": 34693,
+            "endColumn": 62
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetRouteTargetGroup",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 34840,
+        "column": 16,
+        "endLine": 34840,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetTrafficMirrorServiceStatus",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 34922,
+        "column": 16,
+        "endLine": 34922,
+        "endColumn": 56
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 34922,
+            "column": 16,
+            "endLine": 34922,
+            "endColumn": 56
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetVSwitchCidrReservationUsage",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 35025,
+        "column": 16,
+        "endLine": 35025,
+        "endColumn": 57
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetVpcGatewayEndpointAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 35140,
+        "column": 16,
+        "endLine": 35140,
+        "endColumn": 57
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetVpcPrefixListAssociations",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 35254,
+        "column": 16,
+        "endLine": 35254,
+        "endColumn": 55
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetVpcPrefixListEntries",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 35358,
+        "column": 16,
+        "endLine": 35358,
+        "endColumn": 50
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetVpcRouteEntrySummary",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 35478,
+        "column": 16,
+        "endLine": 35478,
+        "endColumn": 50
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetVpnGatewayDiagnoseResult",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 35636,
+        "column": 16,
+        "endLine": 35636,
+        "endColumn": 54
+      },
+      "reasons": []
+    },
+    {
+      "name": "GrantInstanceToCen",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 35735,
+        "column": 16,
+        "endLine": 35735,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "GrantInstanceToVbr",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 35878,
+        "column": 16,
+        "endLine": 35878,
+        "endColumn": 45
+      },
+      "reasons": [
+        {
+          "code": "DSL_OPERATION_SIGNATURE",
+          "message": "operation signature",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 35878,
+            "column": 16,
+            "endLine": 35878,
+            "endColumn": 45
+          }
+        }
+      ]
+    },
+    {
+      "name": "ListBusinessAccessPoints",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 36024,
+        "column": 16,
+        "endLine": 36024,
+        "endColumn": 51
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 36024,
+            "column": 16,
+            "endLine": 36024,
+            "endColumn": 51
+          }
+        }
+      ]
+    },
+    {
+      "name": "ListBusinessRegions",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 36093,
+        "column": 16,
+        "endLine": 36093,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListDhcpOptionsSets",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 36222,
+        "column": 16,
+        "endLine": 36222,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListEnhanhcedNatGatewayAvailableZones",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 36339,
+        "column": 16,
+        "endLine": 36339,
+        "endColumn": 64
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 36339,
+            "column": 16,
+            "endLine": 36339,
+            "endColumn": 64
+          }
+        }
+      ]
+    },
+    {
+      "name": "ListFullNatEntries",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 36491,
+        "column": 16,
+        "endLine": 36491,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListGatewayRouteTableEntries",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 36651,
+        "column": 16,
+        "endLine": 36651,
+        "endColumn": 55
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 36651,
+            "column": 16,
+            "endLine": 36651,
+            "endColumn": 55
+          }
+        }
+      ]
+    },
+    {
+      "name": "ListGeographicSubRegions",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 36730,
+        "column": 16,
+        "endLine": 36730,
+        "endColumn": 51
+      },
+      "reasons": [
+        {
+          "code": "DSL_OPERATION_SIGNATURE",
+          "message": "operation signature",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 36730,
+            "column": 16,
+            "endLine": 36730,
+            "endColumn": 51
+          }
+        }
+      ]
+    },
+    {
+      "name": "ListIpsecServerLogs",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 36803,
+        "column": 16,
+        "endLine": 36803,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListIpsecServers",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 36952,
+        "column": 16,
+        "endLine": 36952,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListIpv4Gateways",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 37085,
+        "column": 16,
+        "endLine": 37085,
+        "endColumn": 43
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 37085,
+            "column": 16,
+            "endLine": 37085,
+            "endColumn": 43
+          }
+        }
+      ]
+    },
+    {
+      "name": "ListNatIpCidrs",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 37224,
+        "column": 16,
+        "endLine": 37224,
+        "endColumn": 41
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 37224,
+            "column": 16,
+            "endLine": 37224,
+            "endColumn": 41
+          }
+        }
+      ]
+    },
+    {
+      "name": "ListNatIps",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 37387,
+        "column": 16,
+        "endLine": 37387,
+        "endColumn": 37
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 37387,
+            "column": 16,
+            "endLine": 37387,
+            "endColumn": 37
+          }
+        }
+      ]
+    },
+    {
+      "name": "ListPhysicalConnectionFeatures",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 37524,
+        "column": 16,
+        "endLine": 37524,
+        "endColumn": 57
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListPrefixLists",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 37669,
+        "column": 16,
+        "endLine": 37669,
+        "endColumn": 42
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListPublicIpAddressPoolCidrBlocks",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 37788,
+        "column": 16,
+        "endLine": 37788,
+        "endColumn": 60
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListPublicIpAddressPools",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 37994,
+        "column": 16,
+        "endLine": 37994,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListRouteTargetGroups",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 38179,
+        "column": 16,
+        "endLine": 38179,
+        "endColumn": 48
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListTagResources",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 38331,
+        "column": 16,
+        "endLine": 38331,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListTagResourcesForExpressConnect",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 38466,
+        "column": 16,
+        "endLine": 38466,
+        "endColumn": 60
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListTrafficMirrorFilters",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 38682,
+        "column": 16,
+        "endLine": 38682,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListTrafficMirrorSessions",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 38855,
+        "column": 16,
+        "endLine": 38855,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListVSwitchCidrReservations",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 39024,
+        "column": 16,
+        "endLine": 39024,
+        "endColumn": 54
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListVirtualPhysicalConnections",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 39252,
+        "column": 16,
+        "endLine": 39252,
+        "endColumn": 57
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListVpcEndpointServicesByEndUser",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 39370,
+        "column": 16,
+        "endLine": 39370,
+        "endColumn": 59
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListVpcGatewayEndpoints",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 39509,
+        "column": 16,
+        "endLine": 39509,
+        "endColumn": 50
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListVpcPublishedRouteEntries",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 39634,
+        "column": 16,
+        "endLine": 39634,
+        "endColumn": 55
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 39634,
+            "column": 16,
+            "endLine": 39634,
+            "endColumn": 55
+          }
+        }
+      ]
+    },
+    {
+      "name": "ListVpnCertificateAssociations",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 39771,
+        "column": 16,
+        "endLine": 39771,
+        "endColumn": 57
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyBgpGroupAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 39889,
+        "column": 16,
+        "endLine": 39889,
+        "endColumn": 50
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyBgpPeerAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 40015,
+        "column": 16,
+        "endLine": 40015,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyCommonBandwidthPackageAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 40113,
+        "column": 16,
+        "endLine": 40113,
+        "endColumn": 64
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyCommonBandwidthPackageIpBandwidth",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 40211,
+        "column": 16,
+        "endLine": 40211,
+        "endColumn": 66
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyCommonBandwidthPackageSpec",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 40323,
+        "column": 16,
+        "endLine": 40323,
+        "endColumn": 59
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyCustomerGatewayAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 40441,
+        "column": 16,
+        "endLine": 40441,
+        "endColumn": 57
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyEipAddressAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 40549,
+        "column": 16,
+        "endLine": 40549,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyEipForwardMode",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 40653,
+        "column": 16,
+        "endLine": 40653,
+        "endColumn": 47
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 40653,
+            "column": 16,
+            "endLine": 40653,
+            "endColumn": 47
+          }
+        }
+      ]
+    },
+    {
+      "name": "ModifyExpressCloudConnectionAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 40743,
+        "column": 16,
+        "endLine": 40743,
+        "endColumn": 64
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyExpressCloudConnectionBandwidth",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 40838,
+        "column": 16,
+        "endLine": 40838,
+        "endColumn": 64
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyExpressConnectTrafficQos",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 40950,
+        "column": 16,
+        "endLine": 40950,
+        "endColumn": 57
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 40950,
+            "column": 16,
+            "endLine": 40950,
+            "endColumn": 57
+          }
+        }
+      ]
+    },
+    {
+      "name": "ModifyExpressConnectTrafficQosQueue",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 41068,
+        "column": 16,
+        "endLine": 41068,
+        "endColumn": 62
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 41068,
+            "column": 16,
+            "endLine": 41068,
+            "endColumn": 62
+          }
+        }
+      ]
+    },
+    {
+      "name": "ModifyExpressConnectTrafficQosRule",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 41262,
+        "column": 16,
+        "endLine": 41262,
+        "endColumn": 61
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 41262,
+            "column": 16,
+            "endLine": 41262,
+            "endColumn": 61
+          }
+        }
+      ]
+    },
+    {
+      "name": "ModifyFlowLogAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 41407,
+        "column": 16,
+        "endLine": 41407,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyForwardEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 41553,
+        "column": 16,
+        "endLine": 41553,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyFullNatEntryAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 41702,
+        "column": 16,
+        "endLine": 41702,
+        "endColumn": 54
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyGlobalAccelerationInstanceAttributes",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 41830,
+        "column": 16,
+        "endLine": 41830,
+        "endColumn": 69
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyGlobalAccelerationInstanceSpec",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 41923,
+        "column": 16,
+        "endLine": 41923,
+        "endColumn": 63
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyHaVipAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 42023,
+        "column": 16,
+        "endLine": 42023,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyIPv6TranslatorAclAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 42122,
+        "column": 16,
+        "endLine": 42122,
+        "endColumn": 59
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyIPv6TranslatorAclListEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 42218,
+        "column": 16,
+        "endLine": 42218,
+        "endColumn": 59
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyIPv6TranslatorAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 42308,
+        "column": 16,
+        "endLine": 42308,
+        "endColumn": 56
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyIPv6TranslatorBandwidth",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 42408,
+        "column": 16,
+        "endLine": 42408,
+        "endColumn": 56
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyIPv6TranslatorEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 42524,
+        "column": 16,
+        "endLine": 42524,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyIpv6AddressAttribute",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 42650,
+        "column": 16,
+        "endLine": 42650,
+        "endColumn": 53
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 42650,
+            "column": 16,
+            "endLine": 42650,
+            "endColumn": 53
+          }
+        }
+      ]
+    },
+    {
+      "name": "ModifyIpv6GatewayAttribute",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 42760,
+        "column": 16,
+        "endLine": 42760,
+        "endColumn": 53
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 42760,
+            "column": 16,
+            "endLine": 42760,
+            "endColumn": 53
+          }
+        }
+      ]
+    },
+    {
+      "name": "ModifyIpv6InternetBandwidth",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 42881,
+        "column": 16,
+        "endLine": 42881,
+        "endColumn": 54
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 42881,
+            "column": 16,
+            "endLine": 42881,
+            "endColumn": 54
+          }
+        }
+      ]
+    },
+    {
+      "name": "ModifyNatGatewayAttribute",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 43046,
+        "column": 16,
+        "endLine": 43046,
+        "endColumn": 52
+      },
+      "reasons": [
+        {
+          "code": "DSL_OPERATION_SIGNATURE",
+          "message": "operation signature",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 43046,
+            "column": 16,
+            "endLine": 43046,
+            "endColumn": 52
+          }
+        }
+      ]
+    },
+    {
+      "name": "ModifyNatGatewaySpec",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 43182,
+        "column": 16,
+        "endLine": 43182,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyNatIpAttribute",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 43303,
+        "column": 16,
+        "endLine": 43303,
+        "endColumn": 47
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 43303,
+            "column": 16,
+            "endLine": 43303,
+            "endColumn": 47
+          }
+        }
+      ]
+    },
+    {
+      "name": "ModifyNatIpCidrAttribute",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 43420,
+        "column": 16,
+        "endLine": 43420,
+        "endColumn": 51
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 43420,
+            "column": 16,
+            "endLine": 43420,
+            "endColumn": 51
+          }
+        }
+      ]
+    },
+    {
+      "name": "ModifyNetworkAclAttributes",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 43533,
+        "column": 16,
+        "endLine": 43533,
+        "endColumn": 53
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 43533,
+            "column": 16,
+            "endLine": 43533,
+            "endColumn": 53
+          }
+        }
+      ]
+    },
+    {
+      "name": "ModifyPhysicalConnectionAttribute",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 43669,
+        "column": 16,
+        "endLine": 43669,
+        "endColumn": 60
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 43669,
+            "column": 16,
+            "endLine": 43669,
+            "endColumn": 60
+          }
+        }
+      ]
+    },
+    {
+      "name": "ModifyRouteEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 43829,
+        "column": 16,
+        "endLine": 43829,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyRouteTableAttributes",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 43949,
+        "column": 16,
+        "endLine": 43949,
+        "endColumn": 53
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyRouterInterfaceAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 44072,
+        "column": 16,
+        "endLine": 44072,
+        "endColumn": 57
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyRouterInterfaceSpec",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 44246,
+        "column": 16,
+        "endLine": 44246,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifySnatEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 44376,
+        "column": 16,
+        "endLine": 44376,
+        "endColumn": 42
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifySslVpnClientCert",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 44494,
+        "column": 16,
+        "endLine": 44494,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifySslVpnServer",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 44718,
+        "column": 16,
+        "endLine": 44718,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyTunnelAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 45009,
+        "column": 16,
+        "endLine": 45009,
+        "endColumn": 48
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyVRouterAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 45105,
+        "column": 16,
+        "endLine": 45105,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyVSwitchAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 45213,
+        "column": 16,
+        "endLine": 45213,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyVSwitchCidrReservationAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 45333,
+        "column": 16,
+        "endLine": 45333,
+        "endColumn": 64
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyVcoRouteEntryWeight",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 45456,
+        "column": 16,
+        "endLine": 45456,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyVirtualBorderRouterAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 45642,
+        "column": 16,
+        "endLine": 45642,
+        "endColumn": 61
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyVpcAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 45817,
+        "column": 16,
+        "endLine": 45817,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyVpcCidrBlock",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 45933,
+        "column": 16,
+        "endLine": 45933,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyVpcPrefixList",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 46050,
+        "column": 16,
+        "endLine": 46050,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyVpnAttachmentAttribute",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 46440,
+        "column": 16,
+        "endLine": 46440,
+        "endColumn": 55
+      },
+      "reasons": [
+        {
+          "code": "DSL_UNBOUND_INPUT",
+          "message": "unbound model input",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 46440,
+            "column": 16,
+            "endLine": 46440,
+            "endColumn": 55
+          }
+        }
+      ]
+    },
+    {
+      "name": "ModifyVpnConnectionAttribute",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 46892,
+        "column": 16,
+        "endLine": 46892,
+        "endColumn": 55
+      },
+      "reasons": [
+        {
+          "code": "DSL_UNBOUND_INPUT",
+          "message": "unbound model input",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 46892,
+            "column": 16,
+            "endLine": 46892,
+            "endColumn": 55
+          }
+        }
+      ]
+    },
+    {
+      "name": "ModifyVpnGatewayAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 47107,
+        "column": 16,
+        "endLine": 47107,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyVpnPbrRouteEntryAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 47254,
+        "column": 16,
+        "endLine": 47254,
+        "endColumn": 58
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyVpnPbrRouteEntryPriority",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 47399,
+        "column": 16,
+        "endLine": 47399,
+        "endColumn": 57
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyVpnPbrRouteEntryWeight",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 47544,
+        "column": 16,
+        "endLine": 47544,
+        "endColumn": 55
+      },
+      "reasons": []
+    },
+    {
+      "name": "ModifyVpnRouteEntryWeight",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 47687,
+        "column": 16,
+        "endLine": 47687,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "MoveResourceGroup",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 47818,
+        "column": 16,
+        "endLine": 47818,
+        "endColumn": 44
+      },
+      "reasons": []
+    },
+    {
+      "name": "MoveVpnResourceGroup",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 47921,
+        "column": 16,
+        "endLine": 47921,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "OpenFlowLogService",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 48015,
+        "column": 16,
+        "endLine": 48015,
+        "endColumn": 45
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 48015,
+            "column": 16,
+            "endLine": 48015,
+            "endColumn": 45
+          }
+        }
+      ]
+    },
+    {
+      "name": "OpenPhysicalConnectionService",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 48099,
+        "column": 16,
+        "endLine": 48099,
+        "endColumn": 56
+      },
+      "reasons": []
+    },
+    {
+      "name": "OpenPublicIpAddressPoolService",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 48184,
+        "column": 16,
+        "endLine": 48184,
+        "endColumn": 57
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 48184,
+            "column": 16,
+            "endLine": 48184,
+            "endColumn": 57
+          }
+        }
+      ]
+    },
+    {
+      "name": "OpenTrafficMirrorService",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 48275,
+        "column": 16,
+        "endLine": 48275,
+        "endColumn": 51
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 48275,
+            "column": 16,
+            "endLine": 48275,
+            "endColumn": 51
+          }
+        }
+      ]
+    },
+    {
+      "name": "PublishVpcRouteEntries",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 48375,
+        "column": 16,
+        "endLine": 48375,
+        "endColumn": 49
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 48375,
+            "column": 16,
+            "endLine": 48375,
+            "endColumn": 49
+          }
+        }
+      ]
+    },
+    {
+      "name": "PublishVpnRouteEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 48496,
+        "column": 16,
+        "endLine": 48496,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "RecoverPhysicalConnection",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 48600,
+        "column": 16,
+        "endLine": 48600,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "RecoverVirtualBorderRouter",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 48687,
+        "column": 16,
+        "endLine": 48687,
+        "endColumn": 53
+      },
+      "reasons": []
+    },
+    {
+      "name": "ReleaseEipAddress",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 48782,
+        "column": 16,
+        "endLine": 48782,
+        "endColumn": 44
+      },
+      "reasons": []
+    },
+    {
+      "name": "ReleaseEipSegmentAddress",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 48886,
+        "column": 16,
+        "endLine": 48886,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "ReleaseIpv6Address",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 48985,
+        "column": 16,
+        "endLine": 48985,
+        "endColumn": 45
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 48985,
+            "column": 16,
+            "endLine": 48985,
+            "endColumn": 45
+          }
+        }
+      ]
+    },
+    {
+      "name": "RemoveCommonBandwidthPackageIp",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 49086,
+        "column": 16,
+        "endLine": 49086,
+        "endColumn": 57
+      },
+      "reasons": []
+    },
+    {
+      "name": "RemoveGlobalAccelerationInstanceIp",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 49179,
+        "column": 16,
+        "endLine": 49179,
+        "endColumn": 61
+      },
+      "reasons": []
+    },
+    {
+      "name": "RemoveIPv6TranslatorAclListEntry",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 49267,
+        "column": 16,
+        "endLine": 49267,
+        "endColumn": 59
+      },
+      "reasons": []
+    },
+    {
+      "name": "RemoveSourcesFromTrafficMirrorSession",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 49370,
+        "column": 16,
+        "endLine": 49370,
+        "endColumn": 64
+      },
+      "reasons": []
+    },
+    {
+      "name": "ReplaceVpcDhcpOptionsSet",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 49481,
+        "column": 16,
+        "endLine": 49481,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "RetryVpcPrefixListAssociation",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 49602,
+        "column": 16,
+        "endLine": 49602,
+        "endColumn": 56
+      },
+      "reasons": []
+    },
+    {
+      "name": "RevokeInstanceFromCen",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 49727,
+        "column": 16,
+        "endLine": 49727,
+        "endColumn": 48
+      },
+      "reasons": []
+    },
+    {
+      "name": "RevokeInstanceFromVbr",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 49858,
+        "column": 16,
+        "endLine": 49858,
+        "endColumn": 48
+      },
+      "reasons": [
+        {
+          "code": "DSL_OPERATION_SIGNATURE",
+          "message": "operation signature",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 49858,
+            "column": 16,
+            "endLine": 49858,
+            "endColumn": 48
+          }
+        }
+      ]
+    },
+    {
+      "name": "SecondApplyPhysicalConnectionLOA",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 49982,
+        "column": 16,
+        "endLine": 49982,
+        "endColumn": 59
+      },
+      "reasons": []
+    },
+    {
+      "name": "SetHighDefinitionMonitorLogStatus",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 50105,
+        "column": 16,
+        "endLine": 50105,
+        "endColumn": 60
+      },
+      "reasons": []
+    },
+    {
+      "name": "StartFailoverTestJob",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 50204,
+        "column": 16,
+        "endLine": 50204,
+        "endColumn": 47
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 50204,
+            "column": 16,
+            "endLine": 50204,
+            "endColumn": 47
+          }
+        }
+      ]
+    },
+    {
+      "name": "StopFailoverTestJob",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 50294,
+        "column": 16,
+        "endLine": 50294,
+        "endColumn": 46
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 50294,
+            "column": 16,
+            "endLine": 50294,
+            "endColumn": 46
+          }
+        }
+      ]
+    },
+    {
+      "name": "SwitchActiveRouteTarget",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 50389,
+        "column": 16,
+        "endLine": 50389,
+        "endColumn": 50
+      },
+      "reasons": []
+    },
+    {
+      "name": "TagResources",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 50516,
+        "column": 16,
+        "endLine": 50516,
+        "endColumn": 39
+      },
+      "reasons": []
+    },
+    {
+      "name": "TagResourcesForExpressConnect",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 50638,
+        "column": 16,
+        "endLine": 50638,
+        "endColumn": 56
+      },
+      "reasons": []
+    },
+    {
+      "name": "TerminatePhysicalConnection",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 50742,
+        "column": 16,
+        "endLine": 50742,
+        "endColumn": 54
+      },
+      "reasons": []
+    },
+    {
+      "name": "TerminateVirtualBorderRouter",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 50839,
+        "column": 16,
+        "endLine": 50839,
+        "endColumn": 55
+      },
+      "reasons": []
+    },
+    {
+      "name": "TransformEipSegmentToPublicIpAddressPool",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 50934,
+        "column": 16,
+        "endLine": 50934,
+        "endColumn": 67
+      },
+      "reasons": []
+    },
+    {
+      "name": "UnTagResources",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 51045,
+        "column": 16,
+        "endLine": 51045,
+        "endColumn": 41
+      },
+      "reasons": []
+    },
+    {
+      "name": "UnassociateEipAddress",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 51162,
+        "column": 16,
+        "endLine": 51162,
+        "endColumn": 48
+      },
+      "reasons": []
+    },
+    {
+      "name": "UnassociateGlobalAccelerationInstance",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 51270,
+        "column": 16,
+        "endLine": 51270,
+        "endColumn": 64
+      },
+      "reasons": []
+    },
+    {
+      "name": "UnassociateHaVip",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 51380,
+        "column": 16,
+        "endLine": 51380,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "UnassociateNetworkAcl",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 51502,
+        "column": 16,
+        "endLine": 51502,
+        "endColumn": 48
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 51502,
+            "column": 16,
+            "endLine": 51502,
+            "endColumn": 48
+          }
+        }
+      ]
+    },
+    {
+      "name": "UnassociatePhysicalConnectionFromVirtualBorderRouter",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 51608,
+        "column": 16,
+        "endLine": 51608,
+        "endColumn": 79
+      },
+      "reasons": []
+    },
+    {
+      "name": "UnassociateRouteTable",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 51708,
+        "column": 16,
+        "endLine": 51708,
+        "endColumn": 48
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 51708,
+            "column": 16,
+            "endLine": 51708,
+            "endColumn": 48
+          }
+        }
+      ]
+    },
+    {
+      "name": "UnassociateVpcCidrBlock",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 51812,
+        "column": 16,
+        "endLine": 51812,
+        "endColumn": 50
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 51812,
+            "column": 16,
+            "endLine": 51812,
+            "endColumn": 50
+          }
+        }
+      ]
+    },
+    {
+      "name": "UntagResourcesForExpressConnect",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 51917,
+        "column": 16,
+        "endLine": 51917,
+        "endColumn": 58
+      },
+      "reasons": []
+    },
+    {
+      "name": "UpdateDhcpOptionsSetAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 52041,
+        "column": 16,
+        "endLine": 52041,
+        "endColumn": 56
+      },
+      "reasons": []
+    },
+    {
+      "name": "UpdateEnhancedVpnGateway",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 52211,
+        "column": 16,
+        "endLine": 52211,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "UpdateFailoverTestJob",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 52325,
+        "column": 16,
+        "endLine": 52325,
+        "endColumn": 48
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 52325,
+            "column": 16,
+            "endLine": 52325,
+            "endColumn": 48
+          }
+        }
+      ]
+    },
+    {
+      "name": "UpdateGatewayRouteTableEntryAttribute",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 52457,
+        "column": 16,
+        "endLine": 52457,
+        "endColumn": 64
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 52457,
+            "column": 16,
+            "endLine": 52457,
+            "endColumn": 64
+          }
+        }
+      ]
+    },
+    {
+      "name": "UpdateIpsecServer",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 52625,
+        "column": 16,
+        "endLine": 52625,
+        "endColumn": 44
+      },
+      "reasons": []
+    },
+    {
+      "name": "UpdateIpv4GatewayAttribute",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 52742,
+        "column": 16,
+        "endLine": 52742,
+        "endColumn": 53
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 52742,
+            "column": 16,
+            "endLine": 52742,
+            "endColumn": 53
+          }
+        }
+      ]
+    },
+    {
+      "name": "UpdateNatGatewayNatType",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 52872,
+        "column": 16,
+        "endLine": 52872,
+        "endColumn": 50
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 52872,
+            "column": 16,
+            "endLine": 52872,
+            "endColumn": 50
+          }
+        }
+      ]
+    },
+    {
+      "name": "UpdateNetworkAclEntries",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 53093,
+        "column": 16,
+        "endLine": 53093,
+        "endColumn": 50
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 53093,
+            "column": 16,
+            "endLine": 53093,
+            "endColumn": 50
+          }
+        }
+      ]
+    },
+    {
+      "name": "UpdatePublicIpAddressPoolAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 53214,
+        "column": 16,
+        "endLine": 53214,
+        "endColumn": 61
+      },
+      "reasons": []
+    },
+    {
+      "name": "UpdateRouteTargetGroup",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 53337,
+        "column": 16,
+        "endLine": 53337,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "UpdateTrafficMirrorFilterAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 53439,
+        "column": 16,
+        "endLine": 53439,
+        "endColumn": 61
+      },
+      "reasons": []
+    },
+    {
+      "name": "UpdateTrafficMirrorFilterRuleAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 53571,
+        "column": 16,
+        "endLine": 53571,
+        "endColumn": 65
+      },
+      "reasons": []
+    },
+    {
+      "name": "UpdateTrafficMirrorSessionAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 53723,
+        "column": 16,
+        "endLine": 53723,
+        "endColumn": 62
+      },
+      "reasons": []
+    },
+    {
+      "name": "UpdateVirtualBorderBandwidth",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 53858,
+        "column": 16,
+        "endLine": 53858,
+        "endColumn": 55
+      },
+      "reasons": []
+    },
+    {
+      "name": "UpdateVirtualPhysicalConnection",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 53971,
+        "column": 16,
+        "endLine": 53971,
+        "endColumn": 58
+      },
+      "reasons": []
+    },
+    {
+      "name": "UpdateVpcGatewayEndpointAttribute",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 54076,
+        "column": 16,
+        "endLine": 54076,
+        "endColumn": 60
+      },
+      "reasons": []
+    },
+    {
+      "name": "VpcDescribeVpcNatGatewayNetworkInterfaceQuota",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 54182,
+        "column": 16,
+        "endLine": 54182,
+        "endColumn": 72
+      },
+      "reasons": []
+    },
+    {
+      "name": "WithdrawVpcPublishedRouteEntries",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/vpc/main.tea",
+        "line": 54284,
+        "column": 16,
+        "endLine": 54284,
+        "endColumn": 59
+      },
+      "reasons": [
+        {
+          "code": "DSL_QUERY_BINDING",
+          "message": "query alias/duplicate",
+          "source": {
+            "file": "products/vpc/main.tea",
+            "line": 54284,
+            "column": 16,
+            "endLine": 54284,
+            "endColumn": 59
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -7,8 +7,9 @@
   },
   "scripts": {
     "project": "node frontend.cjs generate",
-    "check": "node frontend.cjs check",
-    "test": "node --test frontend.test.cjs normalization.test.cjs"
+    "discover": "node discovery.cjs",
+    "check": "node frontend.cjs check && node discovery.cjs check",
+    "test": "node --test frontend.test.cjs normalization.test.cjs discovery.test.cjs"
   },
   "dependencies": {
     "@darabonba/parser": "2.2.1",

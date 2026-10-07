@@ -4,8 +4,9 @@
 
 The [product roadmap](../../docs/product-generator-roadmap.md) overrides conflicting
 older per-operation prerequisites. #31 remains a five-operation bridge; #34 adds
-[source normalization](../../docs/source-normalization.md), and #35 will discover
-complete products without per-operation snapshots/overlays.
+[source normalization](../../docs/source-normalization.md), and #35 discovers
+complete products without per-operation snapshots/overlays. Its offline command and
+coverage/IR contract are in [product discovery](../../docs/product-discovery.md).
 
 Issue [#31](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/31) replaces the
 metadata-only production frontend with real official product DSL. Requires Node 22
@@ -23,7 +24,10 @@ cd ../..
 node tools/darabonba/frontend.cjs generate
 go run ./internal/cmd/sdkgen generate
 node tools/darabonba/frontend.cjs check
-node --test tools/darabonba/frontend.test.cjs tools/darabonba/normalization.test.cjs
+node tools/darabonba/discovery.cjs generate
+node tools/darabonba/discovery.cjs report ecs
+node tools/darabonba/discovery.cjs check
+node --test tools/darabonba/frontend.test.cjs tools/darabonba/normalization.test.cjs tools/darabonba/discovery.test.cjs
 go run ./internal/cmd/sdkgen check
 ```
 
@@ -65,7 +69,8 @@ Read [migration](../../docs/darabonba-migration.md),
 
 [产品路线](../../docs/product-generator-roadmap.md) 优先于冲突旧逐操作前置要求。
 #31 仍为五操作兼容桥；#34 增加[来源规范化](../../docs/source-normalization.md)，
-#35 将无需逐操作快照/overlay 发现完整产品。
+#35 已提供无需逐操作快照/overlay 的完整产品发现；离线命令与覆盖/IR 契约见
+[产品发现](../../docs/product-discovery.md)。
 
 Issue [#31](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/31) 将生产前端
 从纯元数据改为真实官方产品 DSL。要求 Node 22、Go 1.27；官方 parser 2.2.1 执行语法
