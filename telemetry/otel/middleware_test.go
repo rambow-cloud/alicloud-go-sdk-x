@@ -96,6 +96,17 @@ func TestTransportErrorDoesNotRecordURL(t *testing.T) {
 	}
 }
 func ExampleNewMiddleware() {
-	fmt.Println(len(sdkotel.NewMiddleware(sdkotel.Options{})))
+	exporter := tracetest.NewInMemoryExporter()
+	provider := sdktrace.NewTracerProvider(sdktrace.WithSyncer(exporter))
+	defer provider.Shutdown(context.Background())
+	credentialsProvider, _ := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	transport := sdktest.NewTransport(sdktest.Step{Body: `{"RequestId":"offline"}`})
+	client, _ := alicloud.NewClient(alicloud.Config{Region: "cn-hangzhou", CredentialsProvider: credentialsProvider, HTTPClient: &http.Client{Transport: transport}, Middleware: sdkotel.NewMiddleware(sdkotel.Options{TracerProvider: provider})})
+	var output struct{}
+	_, err := client.Invoke(context.Background(), alicloud.Operation{Service: "ecs", Name: "DescribeRegions", Version: "2014-05-26"}, alicloud.Request{}, &output)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(len(exporter.GetSpans()))
 	// Output: 2
 }

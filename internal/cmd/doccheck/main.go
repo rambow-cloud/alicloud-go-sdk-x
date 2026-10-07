@@ -46,6 +46,7 @@ func run() error {
 	decoder := jsontext.NewDecoder(bytes.NewReader(data))
 	var failures []string
 	count := 0
+	var corePackages []string
 	for {
 		var pkg packageInfo
 		if err := json.UnmarshalDecode(decoder, &pkg); err != nil {
@@ -61,12 +62,27 @@ func run() error {
 		failures = append(failures, problems...)
 		if isPublic(pkg) {
 			count++
+			if !strings.Contains(pkg.ImportPath, "/telemetry/") {
+				corePackages = append(corePackages, pkg.ImportPath)
+			}
 		}
 	}
 	if len(failures) > 0 {
 		return fmt.Errorf("documentation policy failed:\n%s", strings.Join(failures, "\n"))
 	}
-	fmt.Printf("Documentation policy passed for %d public packages; JSON imports use v2.\n", count)
+	args := append([]string{"list", "-deps", "-f", "{{if not .Standard}}{{.ImportPath}}{{end}}"}, corePackages...)
+	dependencies := exec.Command("go", args...)
+	dependencies.Stderr = os.Stderr
+	dependencyData, err := dependencies.Output()
+	if err != nil {
+		return fmt.Errorf("list core dependencies: %w", err)
+	}
+	for _, path := range strings.Fields(string(dependencyData)) {
+		if path != "github.com/rambow-cloud/alicloud-go-sdk-x" && !strings.HasPrefix(path, "github.com/rambow-cloud/alicloud-go-sdk-x/") {
+			return fmt.Errorf("core imports non-standard dependency: %s", path)
+		}
+	}
+	fmt.Printf("Documentation policy passed for %d public packages; JSON imports use v2; core imports only the standard library.\n", count)
 	return nil
 }
 

@@ -76,7 +76,9 @@ func TestValidationAndServiceError(t *testing.T) {
 	}
 }
 func ExampleClient_DescribeRegions() {
-	c := clientFor(sdktest.NewTransport(sdktest.Step{Body: `{"Regions":{"Region":[{"RegionId":"cn-hangzhou"}]}}`}))
+	provider, _ := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	transport := sdktest.NewTransport(sdktest.Step{Body: `{"Regions":{"Region":[{"RegionId":"cn-hangzhou"}]}}`})
+	c, _ := ecs.New(alicloud.Config{Region: "cn-hangzhou", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
 	out, err := c.DescribeRegions(context.Background(), nil)
 	if err != nil {
 		panic(err)

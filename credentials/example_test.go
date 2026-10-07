@@ -22,3 +22,24 @@ func ExampleNewStaticProvider() {
 	fmt.Println(value)
 	// Output: Credentials(<redacted>)
 }
+
+func ExampleNewCache() {
+	calls := 0
+	source := credentials.ProviderFunc(func(context.Context) (credentials.Credentials, error) {
+		calls++
+		return credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"}, nil
+	})
+	cache, _ := credentials.NewCache(source, credentials.CacheOptions{})
+	for range 2 {
+		value, err := cache.Retrieve(context.Background())
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println(value)
+	}
+	fmt.Println("source calls:", calls)
+	// Output:
+	// Credentials(<redacted>)
+	// Credentials(<redacted>)
+	// source calls: 1
+}

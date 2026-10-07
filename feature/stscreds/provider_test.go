@@ -81,9 +81,9 @@ func TestProviderRejectsInvalidResponsesAndPreservesErrors(t *testing.T) {
 	}
 }
 func ExampleNewAssumeRoleProvider() {
-	api := assumeFunc(func(context.Context, *sts.AssumeRoleInput, ...func(*sts.Options)) (*sts.AssumeRoleOutput, error) {
-		return &sts.AssumeRoleOutput{Credentials: sts.RoleCredentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder", SecurityToken: "placeholder", ExpiresAt: time.Date(2099, 1, 1, 0, 0, 0, 0, time.UTC)}}, nil
-	})
+	source, _ := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	transport := sdktest.NewTransport(sdktest.Step{Body: `{"Credentials":{"AccessKeyId":"placeholder","AccessKeySecret":"placeholder","SecurityToken":"placeholder","Expiration":"2099-01-01T00:00:00Z"}}`})
+	api, _ := sts.New(alicloud.Config{Region: "cn-hangzhou", CredentialsProvider: source, HTTPClient: &http.Client{Transport: transport}})
 	p, _ := stscreds.NewAssumeRoleProvider(api, sts.AssumeRoleInput{RoleARN: "acs:ram::123:role/example", RoleSessionName: "example"})
 	v, _ := p.Retrieve(context.Background())
 	fmt.Println(v.Source)

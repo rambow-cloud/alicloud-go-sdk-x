@@ -12,19 +12,69 @@ An independent Alibaba Cloud SDK for Go. Requires Go 1.27 and encoding/json/v2.
 Development is issue-driven, runtime-first, with English-primary Go docs and paired
 English/Chinese guides. It is not an official SDK. APIs may change before v1.
 
-The runtime foundation is being implemented; check the GitHub issue milestone and
-supported-operation matrix for actual completed coverage. Do not assume full product
-coverage or live-cloud acceptance. No version tag is published by this task.
+The eleven shared foundation capabilities are implemented and exercised by handwritten
+ECS/STS clients. See the [supported-operation matrix](docs/support.md) and
+[acceptance mapping](docs/foundation-acceptance.md). Coverage is limited to the documented
+reference operations; no full-product or live-cloud acceptance is claimed. Generator #8
+and benchmarks #20 are separate follow-ups. No version tag is published by this task.
 
 Foundation: shared middleware, endpoints, structured errors, bounded retry, credential
 providers/cache/chain, STS helper, unified pagination/waiters, mock interfaces, testing
 helpers and opt-in OpenTelemetry. Generator implementation follows foundation acceptance.
 See docs/design.md, docs/research.md, docs/issue-management.md and docs/releasing.md.
 
+Defaults: HTTPS, disabled redirects, no retries, a 30-second total operation deadline
+and eight-MiB response limit. Core imports use only the standard library; telemetry is
+optional. Default endpoint rules cover five reviewed public regions. APIs are early v0.
+
+This complete example runs offline:
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "net/http"
+
+    alicloud "github.com/rambow-cloud/alicloud-go-sdk-x"
+    "github.com/rambow-cloud/alicloud-go-sdk-x/credentials"
+    "github.com/rambow-cloud/alicloud-go-sdk-x/sdktest"
+    "github.com/rambow-cloud/alicloud-go-sdk-x/services/ecs"
+)
+
+func main() {
+    provider, err := credentials.NewStaticProvider(credentials.Credentials{
+        AccessKeyID: "placeholder", AccessKeySecret: "placeholder",
+    })
+    if err != nil { panic(err) }
+    transport := sdktest.NewTransport(sdktest.Step{
+        Body: `{"Regions":{"Region":[{"RegionId":"cn-hangzhou"}]}}`,
+    })
+    client, err := ecs.New(alicloud.Config{
+        Region: "cn-hangzhou", CredentialsProvider: provider,
+        HTTPClient: &http.Client{Transport: transport},
+    })
+    if err != nil { panic(err) }
+    output, err := client.DescribeRegions(context.Background(), nil)
+    if err != nil { panic(err) }
+    fmt.Println(output.Regions[0].RegionID)
+}
+```
+
+Output: `cn-hangzhou`. Real calls require authorized credentials and a reviewed endpoint;
+remove the scripted HTTP client. Guides: [runtime](docs/runtime.md),
+[credentials](docs/credentials.md), [cache](docs/credential-cache.md), [STS](docs/sts.md),
+[retry](docs/retry.md), [pagination](docs/pagination.md), [waiters](docs/waiters.md),
+[middleware](docs/middleware.md), [endpoints](docs/endpoints.md), [errors](docs/errors.md),
+[testing](docs/testing.md), [telemetry](docs/telemetry.md).
+
 Run go run ./internal/cmd/doccheck, node .github/scripts/check-doc-language.cjs,
 go vet ./..., go test ./..., and node --test .github/scripts/*.test.cjs.
 Linux CI runs race detection; Windows CI verifies portability. Public packages provide
 offline external Examples. Documentation checks cover structure; reviewers check semantics.
+The checker also enforces JSON v2 and standard-library core dependencies.
+Local documentation checks do not imply pkg.go.dev indexing.
 Read AGENTS.md and CONTRIBUTING.md before contributing. MIT: see LICENSE.
 
 ## 中文
@@ -36,10 +86,57 @@ Read AGENTS.md and CONTRIBUTING.md before contributing. MIT: see LICENSE.
 独立阿里云 Go SDK，要求 Go 1.27 和直接使用 JSON v2。采用 issue 驱动、runtime 优先，
 Go 注释英文为主，使用指南中英文对应。本项目非官方 SDK，v1 前 API 可能变化。
 
-基础运行时正在实现，实际完成范围以 GitHub 里程碑和支持矩阵为准，不假定全产品覆盖或真实云验收。
+十一项共享基础能力已经实现，并由手写 ECS/STS 客户端验证。参见[支持矩阵](docs/support.md)和
+[验收映射](docs/foundation-acceptance.md)。覆盖限于记载的参考操作，不宣称全产品或真实云验收。
+生成器 #8 与基准 #20 是独立后续任务。
 本次任务不发布版本标签。基础包括共享 middleware、endpoint、结构化错误、有界重试、凭据 provider/cache/chain、
 STS helper、统一分页/waiter、mock 接口、测试辅助和可选 OpenTelemetry；基础验收后才建设 generator。
 设计、调研、issue 维护和发布步骤见英文章节所列文档。
 
+默认 HTTPS、禁用重定向、不重试、操作总期限 30 秒、每响应八 MiB。核心导入仅标准库，
+telemetry 可选。默认端点覆盖五个核实的公网地域。API 属于早期 v0。
+
+以下完整示例无需网络：
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "net/http"
+
+    alicloud "github.com/rambow-cloud/alicloud-go-sdk-x"
+    "github.com/rambow-cloud/alicloud-go-sdk-x/credentials"
+    "github.com/rambow-cloud/alicloud-go-sdk-x/sdktest"
+    "github.com/rambow-cloud/alicloud-go-sdk-x/services/ecs"
+)
+
+func main() {
+    provider, err := credentials.NewStaticProvider(credentials.Credentials{
+        AccessKeyID: "placeholder", AccessKeySecret: "placeholder",
+    })
+    if err != nil { panic(err) }
+    transport := sdktest.NewTransport(sdktest.Step{
+        Body: `{"Regions":{"Region":[{"RegionId":"cn-hangzhou"}]}}`,
+    })
+    client, err := ecs.New(alicloud.Config{
+        Region: "cn-hangzhou", CredentialsProvider: provider,
+        HTTPClient: &http.Client{Transport: transport},
+    })
+    if err != nil { panic(err) }
+    output, err := client.DescribeRegions(context.Background(), nil)
+    if err != nil { panic(err) }
+    fmt.Println(output.Regions[0].RegionID)
+}
+```
+
+输出 `cn-hangzhou`。真实调用需要有权限的凭据和核实端点，并移除脚本 HTTP 客户端。
+使用指南：[运行时](docs/runtime.md)、[凭据](docs/credentials.md)、[缓存](docs/credential-cache.md)、
+[STS](docs/sts.md)、[重试](docs/retry.md)、[分页](docs/pagination.md)、[waiter](docs/waiters.md)、
+[middleware](docs/middleware.md)、[端点](docs/endpoints.md)、[错误](docs/errors.md)、
+[测试](docs/testing.md)、[telemetry](docs/telemetry.md)。
+
 运行英文章节的文档、双语、vet、Go 与自动化测试命令；Linux CI 使用 race，Windows 验证可移植性。
 公共包提供离线外部 Examples；检查工具验证结构，评审检查语义。贡献前阅读约束与贡献指南，MIT 许可证见 LICENSE。
+检查器也约束 JSON v2 和核心标准库依赖。本地文档检查不代表 pkg.go.dev 已索引。
