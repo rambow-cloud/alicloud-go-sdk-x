@@ -7,6 +7,7 @@
 // Unsupported DSL actions are listed in docs/products/ecs.coverage.json.
 // Reviewed native adapters and operation policies are listed in the product guide.
 // See docs/products/ecs.md for bilingual usage, coverage and migration guidance.
-// Models derive from pinned Apache-2.0 Alibaba Cloud DSL; upstream notices remain
-// under sources/darabonba/licenses. No Tea runtime dependency is required.
+// Models and service descriptions derive from pinned Apache-2.0 Alibaba Cloud DSL.
+// Package LICENSE and NOTICE preserve terms and attribution; see documentation coverage.
+// Service prose is informational and does not create SDK validation. No Tea runtime is required.
 package ecs

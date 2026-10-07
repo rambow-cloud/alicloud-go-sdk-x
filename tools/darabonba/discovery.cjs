@@ -27,6 +27,31 @@ function source(file, token) {
       : {}),
   };
 }
+// Consume the official parser's annotation token; prose never affects lowering.
+function annotationDocuments(node, file) {
+  if (!node.annotation) return [];
+  const lines = node.annotation.value
+    .replace(/^\/\*\*/, "")
+    .replace(/\*\/$/, "")
+    .split(/\r?\n/)
+    .map((line) => line.replace(/^\s*\* ?/, ""));
+  const docs = [];
+  let current;
+  for (const line of lines) {
+    const tag = line.match(/^\s*@([A-Za-z]+)\b\s*(.*)$/);
+    if (tag) {
+      current = ["summary", "description"].includes(tag[1])
+        ? {
+            attribute: tag[1],
+            text: tag[2],
+            source: source(file, node.annotation),
+          }
+        : null;
+      if (current) docs.push(current);
+    } else if (current) current.text += "\n" + line;
+  }
+  return docs.map((doc) => ({ ...doc, text: doc.text.trim() }));
+}
 function walk(node, visit, seen = new WeakSet()) {
   if (!node || typeof node !== "object" || seen.has(node)) return;
   seen.add(node);
@@ -182,6 +207,7 @@ function modelGraph(ast, file) {
           documentation.push({
             attribute: name,
             source: source(file, attr.attrValue),
+            ...(name === "description" ? { text: attr.attrValue.string } : {}),
           });
         } else {
           const literal = attr.attrValue;
@@ -368,6 +394,9 @@ function buildProduct(ast, { pkg, identifier, info, file, provenance }) {
         protocolEvidence: d.evidence,
         bindingEvidence: d.bindings,
       })),
+      documentation: declarations.flatMap((d) =>
+        annotationDocuments(d.node, file),
+      ),
       status: "unsupported",
       reasons: [],
       parameters: [],
@@ -698,6 +727,7 @@ if (require.main === module) {
   }
 }
 module.exports = {
+  annotationDocuments,
   discoverCandidates,
   modelGraph,
   buildProduct,

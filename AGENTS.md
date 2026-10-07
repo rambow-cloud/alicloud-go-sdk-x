@@ -106,6 +106,10 @@ before changing the public API.
 - Establish bilingual route docs, then actual issue dependencies, then stage implementation
   on separate issue branches. Each stage includes docs/tests/Examples/pkg.go.dev acceptance;
   the documentation automation stage does not postpone earlier documentation.
+- Follow docs/product-documentation.md for #38 documentation: reuse official parser
+  prose with source coordinates and Apache notices; generate English Go comments and
+  paired usage/contracts/source indexes. Report missing language/prose coverage, never
+  infer runtime policy or promote upstream account/resource examples into Go tests.
 
 - All human-facing Markdown documentation must contain equivalent English and Chinese
   sections, or explicitly linked language counterparts, updated in the same change.
@@ -202,6 +206,9 @@ before changing the public API.
   输入保持独占副本，重试仍显式启用。
 - 先落实双语路线，再建真实 issue 依赖，然后各 issue 分支实现阶段；每阶段同步文档/
   测试/Example/pkg.go.dev，文档自动化阶段不表示前面可推迟文档。
+- #38 文档遵循 docs/product-documentation.md：复用官方 parser 说明，保留来源坐标及
+  Apache 通知；输出英文 Go 注释和对应双语使用/契约/来源索引。明确缺失语言/说明
+  覆盖，不推断 runtime 策略、不将上游账号/资源示例提升为 Go 测试。
 
 - 所有面向人的 Markdown 文档必须有语义对应的英文与中文章节，或明确互链的语言版本，并在同一变更更新。
 - GitHub issue/PR 标题正文、标识符、诊断和代码注释以英文为主；中文可补充，但不能替代英文的问题、

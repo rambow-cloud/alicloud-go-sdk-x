@@ -26,16 +26,24 @@ type productType struct {
 	Values   *productType `json:"values"`
 }
 type productField struct {
-	DSLName  string      `json:"dslName"`
-	WireName string      `json:"wireName"`
-	Required bool        `json:"required"`
-	Type     productType `json:"type"`
+	DSLName       string            `json:"dslName"`
+	WireName      string            `json:"wireName"`
+	Required      bool              `json:"required"`
+	Type          productType       `json:"type"`
+	Source        productSource     `json:"source"`
+	Documentation []productDocument `json:"documentation"`
+}
+type productDocument struct {
+	Attribute string        `json:"attribute"`
+	Text      string        `json:"text"`
+	Source    productSource `json:"source"`
 }
 type productModel struct {
 	ID              string         `json:"id"`
 	Fields          []productField `json:"fields"`
 	Extends         *productType   `json:"extends"`
 	InheritedFields []productField `json:"inheritedFields"`
+	Source          productSource  `json:"source"`
 }
 type productSource struct {
 	File      string `json:"file"`
@@ -57,11 +65,12 @@ type productCoverageOperation struct {
 	Capabilities *capabilityCoverage `json:"capabilities,omitempty"`
 }
 type productOperation struct {
-	Name    string          `json:"name"`
-	Status  string          `json:"status"`
-	Source  productSource   `json:"source"`
-	Reasons []productReason `json:"reasons"`
-	Roots   struct {
+	Name          string            `json:"name"`
+	Status        string            `json:"status"`
+	Source        productSource     `json:"source"`
+	Reasons       []productReason   `json:"reasons"`
+	Documentation []productDocument `json:"documentation"`
+	Roots         struct {
 		Request  productType `json:"request"`
 		Response productType `json:"response"`
 		Body     productType `json:"body"`
