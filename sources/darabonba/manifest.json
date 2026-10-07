@@ -1,0 +1,525 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/aliyun/alibabacloud-sdk",
+  "revision": "ec489e5c3deae95496daae2b41503ac58b221adb",
+  "license": "Apache-2.0",
+  "parserVersion": "2.2.1",
+  "products": {
+    "ecs": "ecs-20140526",
+    "sts": "sts-20150401",
+    "vpc": "vpc-20160428"
+  },
+  "modules": [
+    {
+      "spec": "alibabacloud:Credential:*",
+      "directory": "modules/alibabacloud_Credential_0.5.17",
+      "archiveSHA256": "612e27d0be09775e17ad85fb7387a85f23ba6c90e140eceb24e01b7d61463f18",
+      "archiveSHA1": "a5d2e13440d4e82509f66b866bbcb7b133bfdde8",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/Credential-0.5.17.tar.gz",
+      "scope": "alibabacloud",
+      "name": "Credential",
+      "version": "0.5.17",
+      "license": {
+        "repository": "https://github.com/aliyun/credentials-nodejs",
+        "spdx": "MIT",
+        "file": "licenses/credentials-nodejs.NOTICE",
+        "gitBlobSHA": "98f58de00a19cc28557a053d22ae326982e44b52",
+        "evidence": "related-runtime-repository",
+        "sourceSPDX": "NOASSERTION"
+      }
+    },
+    {
+      "spec": "alibabacloud:EndpointUtil:*",
+      "directory": "modules/alibabacloud_EndpointUtil_0.2.1",
+      "archiveSHA256": "c6136c15064c535a67b94974255254fe0b1d973e36f966e9fb2ef68f71670f47",
+      "archiveSHA1": "936d2fe022ac1650470b7471330fe4d1a447c5c6",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/EndpointUtil-0.2.1.tar.gz",
+      "scope": "alibabacloud",
+      "name": "EndpointUtil",
+      "version": "0.2.1",
+      "license": {
+        "repository": "https://github.com/aliyun/endpoint-util",
+        "spdx": "Apache-2.0",
+        "file": "licenses/endpoint-util.NOTICE",
+        "gitBlobSHA": "694a12a36e65f3b43f5585fcfc5c32a6a1bbf009",
+        "evidence": "module-source-repository"
+      }
+    },
+    {
+      "spec": "alibabacloud:GatewayPOP:*",
+      "directory": "modules/alibabacloud_GatewayPOP_0.1.4",
+      "archiveSHA256": "b78f523dc920b2303d03756f4eeed77fc57e4407aba21536d033e5d582f4ee39",
+      "archiveSHA1": "97c8025062bffbd55bdb85b687ce70b53f040281",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/GatewayPOP-0.1.4.tar.gz",
+      "scope": "alibabacloud",
+      "name": "GatewayPOP",
+      "version": "0.1.4",
+      "license": {
+        "repository": "https://github.com/aliyun/alibabacloud-gateway",
+        "spdx": "Apache-2.0",
+        "file": "licenses/alibabacloud-gateway.NOTICE",
+        "gitBlobSHA": "0c44dcefe3df7e146aeb9717c5f96c4f5b2afbc0",
+        "evidence": "module-source-repository"
+      }
+    },
+    {
+      "spec": "alibabacloud:GatewaySPI:*",
+      "directory": "modules/alibabacloud_GatewaySPI_0.0.15",
+      "archiveSHA256": "7bed20af6e8d826687bbd3e3d376849dc713608fd869d6d5a01bbcff47549f2e",
+      "archiveSHA1": "9a8f3a4e9a66f93d012855e3adf8d96e7037238e",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/GatewaySPI-0.0.15.tar.gz",
+      "scope": "alibabacloud",
+      "name": "GatewaySPI",
+      "version": "0.0.15",
+      "license": {
+        "repository": "https://github.com/aliyun/alibabacloud-gateway",
+        "spdx": "Apache-2.0",
+        "file": "licenses/alibabacloud-gateway.NOTICE",
+        "gitBlobSHA": "0c44dcefe3df7e146aeb9717c5f96c4f5b2afbc0",
+        "evidence": "module-source-repository"
+      }
+    },
+    {
+      "spec": "alibabacloud:OpenApi:*",
+      "directory": "modules/alibabacloud_OpenApi_0.3.23",
+      "archiveSHA256": "d7ae1375f8797ca180df0753ec6ea4c5dc4020cd2234b4588428a59e99fecd9d",
+      "archiveSHA1": "3b8a80e415738c2ab12dc1341209aafce8b42a59",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/OpenApi-0.3.23.tar.gz",
+      "scope": "alibabacloud",
+      "name": "OpenApi",
+      "version": "0.3.23",
+      "license": {
+        "repository": "https://github.com/aliyun/darabonba-openapi",
+        "spdx": "Apache-2.0",
+        "file": "licenses/darabonba-openapi.NOTICE",
+        "gitBlobSHA": "0ffc28aab673424d924585ad02fccd3d93e9acf3",
+        "evidence": "module-source-repository"
+      }
+    },
+    {
+      "spec": "alibabacloud:OpenApiUtil:*",
+      "directory": "modules/alibabacloud_OpenApiUtil_0.2.11",
+      "archiveSHA256": "11433521417b1222779854753c0c29f3cfe4bb816c1272ccf9d246db38dc6134",
+      "archiveSHA1": "b84600cd4ad27e53483a3d0f26166e5e8a1d9bcb",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/OpenApiUtil-0.2.11.tar.gz",
+      "scope": "alibabacloud",
+      "name": "OpenApiUtil",
+      "version": "0.2.11",
+      "license": {
+        "repository": "https://github.com/aliyun/darabonba-openapi-util",
+        "spdx": "Apache-2.0",
+        "file": "licenses/darabonba-openapi-util.NOTICE",
+        "gitBlobSHA": "5e0ae186c671eb0d980a3d9dc6387e1a4791978d",
+        "evidence": "module-source-repository"
+      }
+    },
+    {
+      "spec": "alibabacloud:Paginator:*",
+      "directory": "modules/alibabacloud_Paginator_0.0.3",
+      "archiveSHA256": "3d7b43c02a7cb6cc19b34b612fe1a5bee2137ef8149ad304210d46b5b5dc7202",
+      "archiveSHA1": "1bc921049f07068fc92d5131c1dedb934390e575",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/Paginator-0.0.3.tar.gz",
+      "scope": "alibabacloud",
+      "name": "Paginator",
+      "version": "0.0.3",
+      "license": {
+        "repository": "https://github.com/aliyun/alibabacloud-openapi-paginator",
+        "spdx": "Apache-2.0",
+        "file": "licenses/alibabacloud-openapi-paginator.NOTICE",
+        "gitBlobSHA": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+        "evidence": "module-source-repository"
+      }
+    },
+    {
+      "spec": "darabonba:Array:*",
+      "directory": "modules/darabonba_Array_0.1.1",
+      "archiveSHA256": "659cb2e837e60b74d5056362160f249f0e884c887293b72e6044693aed2eca9f",
+      "archiveSHA1": "7effdf04a7573145180298e6a18e1010f31f1996",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/darabonba/Array-0.1.1.tar.gz",
+      "scope": "darabonba",
+      "name": "Array",
+      "version": "0.1.1",
+      "license": {
+        "repository": "https://github.com/aliyun/darabonba-array",
+        "spdx": "Apache-2.0",
+        "file": "licenses/darabonba-array.NOTICE",
+        "gitBlobSHA": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+        "evidence": "module-source-repository"
+      }
+    },
+    {
+      "spec": "darabonba:EncodeUtil:*",
+      "directory": "modules/darabonba_EncodeUtil_0.0.6",
+      "archiveSHA256": "75120a547f1d3f5bd676078bcdc0260ccc2f73ee443b59ab6d96d22103679153",
+      "archiveSHA1": "de7127ac4b1113fadc836e169bff3513dc148a2f",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/darabonba/EncodeUtil-0.0.6.tar.gz",
+      "scope": "darabonba",
+      "name": "EncodeUtil",
+      "version": "0.0.6",
+      "license": {
+        "repository": "https://github.com/aliyun/darabonba-crypto-util",
+        "spdx": "Apache-2.0",
+        "file": "licenses/darabonba-crypto-util.NOTICE",
+        "gitBlobSHA": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+        "evidence": "module-source-repository"
+      }
+    },
+    {
+      "spec": "darabonba:Map:*",
+      "directory": "modules/darabonba_Map_0.0.5",
+      "archiveSHA256": "9cb16029e67e8ea3adb350fa21a88b578c386f9434d2f7780fa9eaef0b19bcf3",
+      "archiveSHA1": "1a91dbf78b75797b7820656e7705086e552d7ac6",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/darabonba/Map-0.0.5.tar.gz",
+      "scope": "darabonba",
+      "name": "Map",
+      "version": "0.0.5",
+      "license": {
+        "repository": "https://github.com/aliyun/darabonba-map",
+        "spdx": "Apache-2.0",
+        "file": "licenses/darabonba-map.NOTICE",
+        "gitBlobSHA": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+        "evidence": "module-source-repository"
+      }
+    },
+    {
+      "spec": "darabonba:SignatureUtil:*",
+      "directory": "modules/darabonba_SignatureUtil_0.0.11",
+      "archiveSHA256": "7ccdbf5a4d4792f2031ab11d80bbb5bc78dc7727fd6972a4c957814749ed02e4",
+      "archiveSHA1": "c2d553a22b7a1994c13666b0f0fd1894406ce8a5",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/darabonba/SignatureUtil-0.0.11.tar.gz",
+      "scope": "darabonba",
+      "name": "SignatureUtil",
+      "version": "0.0.11",
+      "license": {
+        "repository": "https://github.com/aliyun/darabonba-crypto-util",
+        "spdx": "Apache-2.0",
+        "file": "licenses/darabonba-crypto-util.NOTICE",
+        "gitBlobSHA": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+        "evidence": "module-source-repository"
+      }
+    },
+    {
+      "spec": "darabonba:String:*",
+      "directory": "modules/darabonba_String_0.0.13",
+      "archiveSHA256": "2707fd404b662293048ec08fda3fbc1f6e73892cefb0b841b8c8000d7f718225",
+      "archiveSHA1": "9d78eb45c544fc03224c29e059d709fae0fde42d",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/darabonba/String-0.0.13.tar.gz",
+      "scope": "darabonba",
+      "name": "String",
+      "version": "0.0.13",
+      "license": {
+        "repository": "https://github.com/aliyun/darabonba-string",
+        "spdx": "Apache-2.0",
+        "file": "licenses/darabonba-string.NOTICE",
+        "gitBlobSHA": "f512a5651f8e390a8fd900c2ce7d540d0aa6f6ee",
+        "evidence": "module-source-repository"
+      }
+    },
+    {
+      "spec": "darabonba:Util:*",
+      "directory": "modules/darabonba_Util_0.2.19",
+      "archiveSHA256": "27941a227cbcea5a40e75ccaaa545582106ef04462785e41c82beeb7c6067066",
+      "archiveSHA1": "b5fce7a067aabab65581ef999e7ceba7a247559a",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/darabonba/Util-0.2.19.tar.gz",
+      "scope": "darabonba",
+      "name": "Util",
+      "version": "0.2.19",
+      "license": {
+        "repository": "https://github.com/aliyun/tea-util",
+        "spdx": "Apache-2.0",
+        "file": "licenses/tea-util.NOTICE",
+        "gitBlobSHA": "0c44dcefe3df7e146aeb9717c5f96c4f5b2afbc0",
+        "evidence": "module-source-repository"
+      }
+    },
+    {
+      "spec": "darabonba:XML:*",
+      "directory": "modules/darabonba_XML_0.1.14",
+      "archiveSHA256": "46ad2634b4510083e52b4d2afe3cece1e48f289fb100377a272ecad6d4e974be",
+      "archiveSHA1": "fb02a67e5fb5261ddb753b82c3b43526cc8332f2",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/darabonba/XML-0.1.14.tar.gz",
+      "scope": "darabonba",
+      "name": "XML",
+      "version": "0.1.14",
+      "license": {
+        "repository": "https://github.com/aliyun/tea-xml",
+        "spdx": "Apache-2.0",
+        "file": "licenses/tea-xml.NOTICE",
+        "gitBlobSHA": "cf7c72d2ae19395cf8f157bc5e2f75cd73c72b51",
+        "evidence": "module-source-repository"
+      }
+    }
+  ],
+  "files": [
+    {
+      "file": "LICENSE.upstream",
+      "sha256": "feabec55b48586911d33f66053e9619fe33de486d2e91929547cea1f79d7568e",
+      "url": "https://raw.githubusercontent.com/aliyun/alibabacloud-sdk/ec489e5c3deae95496daae2b41503ac58b221adb/LICENSE"
+    },
+    {
+      "file": "licenses/alibabacloud-gateway.NOTICE",
+      "sha256": "aefc84881757b27b42ed6998db23e877b7d630956816f85bc11dd25452de5367",
+      "url": "https://api.github.com/repos/aliyun/alibabacloud-gateway/git/blobs/0c44dcefe3df7e146aeb9717c5f96c4f5b2afbc0"
+    },
+    {
+      "file": "licenses/alibabacloud-openapi-paginator.NOTICE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "url": "https://api.github.com/repos/aliyun/alibabacloud-openapi-paginator/git/blobs/261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+    },
+    {
+      "file": "licenses/credentials-nodejs.NOTICE",
+      "sha256": "380c1373456fa8ddf751d383c34e7789ff914b47145844e811e3fbfdd08ebf95",
+      "url": "https://api.github.com/repos/aliyun/credentials-nodejs/git/blobs/98f58de00a19cc28557a053d22ae326982e44b52"
+    },
+    {
+      "file": "licenses/darabonba-array.NOTICE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "url": "https://api.github.com/repos/aliyun/darabonba-array/git/blobs/261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+    },
+    {
+      "file": "licenses/darabonba-crypto-util.NOTICE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "url": "https://api.github.com/repos/aliyun/darabonba-crypto-util/git/blobs/261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+    },
+    {
+      "file": "licenses/darabonba-map.NOTICE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "url": "https://api.github.com/repos/aliyun/darabonba-map/git/blobs/261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+    },
+    {
+      "file": "licenses/darabonba-openapi-util.NOTICE",
+      "sha256": "07661b0420bcc3bff24d60f9f0086ddeb570977979a826decfde40ef1ba00bb2",
+      "url": "https://api.github.com/repos/aliyun/darabonba-openapi-util/git/blobs/5e0ae186c671eb0d980a3d9dc6387e1a4791978d"
+    },
+    {
+      "file": "licenses/darabonba-openapi.NOTICE",
+      "sha256": "2869049c374c51d3e5aac05e2ee7191c71cc07533ed9e9cf60fcf1149bbecae7",
+      "url": "https://api.github.com/repos/aliyun/darabonba-openapi/git/blobs/0ffc28aab673424d924585ad02fccd3d93e9acf3"
+    },
+    {
+      "file": "licenses/darabonba-string.NOTICE",
+      "sha256": "70b8e1206f3691753d211a5f7d7ae2d0f80ef968d7832e2a416ca00d1d7f2331",
+      "url": "https://api.github.com/repos/aliyun/darabonba-string/git/blobs/f512a5651f8e390a8fd900c2ce7d540d0aa6f6ee"
+    },
+    {
+      "file": "licenses/endpoint-util.NOTICE",
+      "sha256": "a75a4f34e8ea2ff76264f9a64d14900892c4437c43c0aa00774e8c4ffcf93e07",
+      "url": "https://api.github.com/repos/aliyun/endpoint-util/git/blobs/694a12a36e65f3b43f5585fcfc5c32a6a1bbf009"
+    },
+    {
+      "file": "licenses/tea-util.NOTICE",
+      "sha256": "aefc84881757b27b42ed6998db23e877b7d630956816f85bc11dd25452de5367",
+      "url": "https://api.github.com/repos/aliyun/tea-util/git/blobs/0c44dcefe3df7e146aeb9717c5f96c4f5b2afbc0"
+    },
+    {
+      "file": "licenses/tea-xml.NOTICE",
+      "sha256": "ea9615520e0e3d47a2289d86ac9d67d06a70a55bb811b0d4135ae298e588841f",
+      "url": "https://api.github.com/repos/aliyun/tea-xml/git/blobs/cf7c72d2ae19395cf8f157bc5e2f75cd73c72b51"
+    },
+    {
+      "file": "modules/alibabacloud_Credential_0.5.17/credential_test.tea",
+      "sha256": "bf8af70d117aae241430048fa6c1d7fc80528f32f5c0e75f361503e87ebf7edc"
+    },
+    {
+      "file": "modules/alibabacloud_Credential_0.5.17/credential.tea",
+      "sha256": "fec695790de46ad86d2af70b2b72a9d75f8e4da72b6bca68a776f41e142e74fe"
+    },
+    {
+      "file": "modules/alibabacloud_Credential_0.5.17/README.md",
+      "sha256": "814e13cf32a260e6b47105ec5d425c9e3609d2623b84e5461fdcba2c7db1861a"
+    },
+    {
+      "file": "modules/alibabacloud_Credential_0.5.17/Teafile",
+      "sha256": "72f203bccba107deeacd5b7a63a9f6e810f976421d53460488b1f01d3b30553e"
+    },
+    {
+      "file": "modules/alibabacloud_EndpointUtil_0.2.1/main.tea",
+      "sha256": "dd46de0024f5171c30c8e491a7878681a2d1aae45fe0b38948fbdd98a2a1e75f"
+    },
+    {
+      "file": "modules/alibabacloud_EndpointUtil_0.2.1/README.md",
+      "sha256": "a75a4f34e8ea2ff76264f9a64d14900892c4437c43c0aa00774e8c4ffcf93e07"
+    },
+    {
+      "file": "modules/alibabacloud_EndpointUtil_0.2.1/Teafile",
+      "sha256": "c79d8f80b97eead8a06b46ef8f523ed5efa549aef3b6e87895151f32f04b9812"
+    },
+    {
+      "file": "modules/alibabacloud_GatewayPOP_0.1.4/main.tea",
+      "sha256": "e8f91d525484e86f01d439ac35434d04d179f9a225735d5364b27fa3ce089889"
+    },
+    {
+      "file": "modules/alibabacloud_GatewayPOP_0.1.4/roa.tea",
+      "sha256": "deafa0080afd9ae27ec532398f4ccaef9dc213496df155120b1d100cbcbb3239"
+    },
+    {
+      "file": "modules/alibabacloud_GatewayPOP_0.1.4/Teafile",
+      "sha256": "d696f203bcaaa077bf90eb5f4f1594b04607627507d263ce336a6b58981f04a5"
+    },
+    {
+      "file": "modules/alibabacloud_GatewaySPI_0.0.15/main.tea",
+      "sha256": "89ca97404e28b7ec0de4ec9e82c98d928c733a678cd48f53940742b42d8969cc"
+    },
+    {
+      "file": "modules/alibabacloud_GatewaySPI_0.0.15/Teafile",
+      "sha256": "f41db2fed15e1da4e6fd1b897c95b1559e056058ca0ebceca9395d6833067976"
+    },
+    {
+      "file": "modules/alibabacloud_OpenApi_0.3.23/main.tea",
+      "sha256": "5a4faa08ebe9cad77a9510473bfc6a8bc94d650b1a12b28c9100831f1f9d4d8a"
+    },
+    {
+      "file": "modules/alibabacloud_OpenApi_0.3.23/README.md",
+      "sha256": "2869049c374c51d3e5aac05e2ee7191c71cc07533ed9e9cf60fcf1149bbecae7"
+    },
+    {
+      "file": "modules/alibabacloud_OpenApi_0.3.23/Teafile",
+      "sha256": "be3f41b12f701a733022c3c5924f9f3c8cd76673105ed726c8d8c86cdd9d91f7"
+    },
+    {
+      "file": "modules/alibabacloud_OpenApiUtil_0.2.11/main.tea",
+      "sha256": "a29973aa4aefeb04cbf53b01427477fb2d1369e42554d37e532a8f396dcfd65b"
+    },
+    {
+      "file": "modules/alibabacloud_OpenApiUtil_0.2.11/README.md",
+      "sha256": "07661b0420bcc3bff24d60f9f0086ddeb570977979a826decfde40ef1ba00bb2"
+    },
+    {
+      "file": "modules/alibabacloud_OpenApiUtil_0.2.11/Teafile",
+      "sha256": "d544e8e5ea8789197aa48fdbf6ce0b87aa76e41007ac3c93e441e36d4e1b39f4"
+    },
+    {
+      "file": "modules/alibabacloud_Paginator_0.0.3/Darafile",
+      "sha256": "387b5b32862750d92174e16f94b8a5d6d1cca2773f00de08ae46aacbfb5a20f1"
+    },
+    {
+      "file": "modules/alibabacloud_Paginator_0.0.3/main.dara",
+      "sha256": "f4d8853bf3ad3a874b8de5e70f95b0c92622c9f7bfe75a4e230da63f896a2b59"
+    },
+    {
+      "file": "modules/darabonba_Array_0.1.1/main.tea",
+      "sha256": "91e3fe65b8482e10dcb1ff20c55aa870e28989a8939b20e2db23c257fe40cfa9"
+    },
+    {
+      "file": "modules/darabonba_Array_0.1.1/Teafile",
+      "sha256": "32559762e0904e1318a85ad648a62b46f4e14b280abc8ad1163f633bfc64caa2"
+    },
+    {
+      "file": "modules/darabonba_EncodeUtil_0.0.6/Darafile",
+      "sha256": "c52aa0c438de7c3a81b7c2ae8a5c03517f2a5fb35f1ec9e3556a5d864b9542aa"
+    },
+    {
+      "file": "modules/darabonba_EncodeUtil_0.0.6/encode.dara",
+      "sha256": "346314dc3b6079ca181ea42ef03fc9532f934b25e2c9a97c0596d5cbf1030cf9"
+    },
+    {
+      "file": "modules/darabonba_Map_0.0.5/main.tea",
+      "sha256": "221906c86b0e572b778f201c177b62749cb4f5770848b9873b9ec361a6372a21"
+    },
+    {
+      "file": "modules/darabonba_Map_0.0.5/Teafile",
+      "sha256": "364b9c00166dbb9a5d517fde06625d1db00c5bf39c1288702bb9da8fc843da80"
+    },
+    {
+      "file": "modules/darabonba_SignatureUtil_0.0.11/Darafile",
+      "sha256": "5f33c6be6ccd2c1e6a403ae40749d65846d3c1d55d8e6e180edc80a6e2974517"
+    },
+    {
+      "file": "modules/darabonba_SignatureUtil_0.0.11/signature.dara",
+      "sha256": "db5c9113482412e7446fed3630cdb958b26c03c14fec49973e452debb7debc89"
+    },
+    {
+      "file": "modules/darabonba_String_0.0.13/main.tea",
+      "sha256": "485c63d8e16ff1330c50d83eb5f46ef82079e38b3dbec10d4604349cf96357ae"
+    },
+    {
+      "file": "modules/darabonba_String_0.0.13/README.md",
+      "sha256": "70b8e1206f3691753d211a5f7d7ae2d0f80ef968d7832e2a416ca00d1d7f2331"
+    },
+    {
+      "file": "modules/darabonba_String_0.0.13/Teafile",
+      "sha256": "e7a6168319d019ad906cd4ed90a71a035f18928d1b23c5da63afbdcebe99d4e0"
+    },
+    {
+      "file": "modules/darabonba_Util_0.2.19/main.tea",
+      "sha256": "1fcdcde1885bf1d331470a28e436b816fd48e07c504e81185c4caf37d90eb407"
+    },
+    {
+      "file": "modules/darabonba_Util_0.2.19/README.md",
+      "sha256": "146e08b9d662ca465dd1d17d3854c3149b95798f473b43a4c491a5571b4849d3"
+    },
+    {
+      "file": "modules/darabonba_Util_0.2.19/Teafile",
+      "sha256": "7369e4737f0d7b56abd90f25aae5b1e85640043a07e1b7e5ca908c86ef59621c"
+    },
+    {
+      "file": "modules/darabonba_XML_0.1.14/main.tea",
+      "sha256": "9180b9bfce7a078978b454eb241bf5048c41167863697f58cccb9924a0542d96"
+    },
+    {
+      "file": "modules/darabonba_XML_0.1.14/README.md",
+      "sha256": "ea9615520e0e3d47a2289d86ac9d67d06a70a55bb811b0d4135ae298e588841f"
+    },
+    {
+      "file": "modules/darabonba_XML_0.1.14/Teafile",
+      "sha256": "7aa638b1bdd4fa6213c24ff861a51bd3bfad5c0c482231fccf56e7174cfe4a7a"
+    },
+    {
+      "file": "products/ecs/.libraries.json",
+      "sha256": "12ef9e70a292c2be6b66faf46c5ce1b73d328f9c06145503dbb837bdd62b9192"
+    },
+    {
+      "file": "products/ecs/api-info.json",
+      "sha256": "680f0fb4096990d02589d6ad18256931ecf8f9970d4efbc4068d0ba31253fee5",
+      "url": "https://raw.githubusercontent.com/aliyun/alibabacloud-sdk/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/api-info.json"
+    },
+    {
+      "file": "products/ecs/main.tea",
+      "sha256": "795c4b8a905f3b0940fe80cab085f769b0f1239b384bb8c564772d39bd210c2f",
+      "url": "https://raw.githubusercontent.com/aliyun/alibabacloud-sdk/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea"
+    },
+    {
+      "file": "products/ecs/Teafile",
+      "sha256": "8f22249efd155db69ddaed48a94f6cb3f26a5a5d704cf4c60e9b307c1a603895",
+      "url": "https://raw.githubusercontent.com/aliyun/alibabacloud-sdk/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/Teafile"
+    },
+    {
+      "file": "products/sts/.libraries.json",
+      "sha256": "12ef9e70a292c2be6b66faf46c5ce1b73d328f9c06145503dbb837bdd62b9192"
+    },
+    {
+      "file": "products/sts/api-info.json",
+      "sha256": "9fe5ac3ce2f5fb81f033ef33a2e8205fbe7895907b8ea8d521414fb281f9a2f3",
+      "url": "https://raw.githubusercontent.com/aliyun/alibabacloud-sdk/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/api-info.json"
+    },
+    {
+      "file": "products/sts/main.tea",
+      "sha256": "99e3d971f8c80993650253b123c5851ffc757c7a2b729ba290eb823f37d654a4",
+      "url": "https://raw.githubusercontent.com/aliyun/alibabacloud-sdk/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea"
+    },
+    {
+      "file": "products/sts/Teafile",
+      "sha256": "a7f374f972cf9d03dae8f3727fac59a7a4c248925dc3098690c0b834bbd20cd4",
+      "url": "https://raw.githubusercontent.com/aliyun/alibabacloud-sdk/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/Teafile"
+    },
+    {
+      "file": "products/vpc/.libraries.json",
+      "sha256": "12ef9e70a292c2be6b66faf46c5ce1b73d328f9c06145503dbb837bdd62b9192"
+    },
+    {
+      "file": "products/vpc/api-info.json",
+      "sha256": "914ff757e4bc54683eccd9f82261fb0305a9c0ce4603b0e35fc35dd09ec1083d",
+      "url": "https://raw.githubusercontent.com/aliyun/alibabacloud-sdk/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/api-info.json"
+    },
+    {
+      "file": "products/vpc/main.tea",
+      "sha256": "31718672523e4804bb17a44e963ff991aeb4b3cd7a54a35b436b9caeee0203ba",
+      "url": "https://raw.githubusercontent.com/aliyun/alibabacloud-sdk/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea"
+    },
+    {
+      "file": "products/vpc/Teafile",
+      "sha256": "78775ac8134458bcfc026c54fb1f582de2b8b98b1533db70c19fdd42747972b1",
+      "url": "https://raw.githubusercontent.com/aliyun/alibabacloud-sdk/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/Teafile"
+    }
+  ]
+}

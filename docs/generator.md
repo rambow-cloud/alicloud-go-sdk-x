@@ -9,8 +9,10 @@ and acceptance. Benchmarks #20 remain separate. Issues are created before code.
 Execution dependencies: #19 -> #21 (metadata/IR) -> #22 (emission/integration) ->
 #23 (regeneration/CI). Parent #8 closes only after all three pass acceptance.
 
-The pipeline is official operation metadata -> pinned protocol snapshots -> reviewed
+After #31, production uses official product DSL -> official Darabonba semantic parser
+-> deterministic protocol/binding/model projection + pinned public metadata + reviewed
 overlay -> validated intermediate representation (IR) -> formatted Go and paired guides.
+See [migration/tools](darabonba-migration.md) and [source decisions](darabonba-decisions.md).
 The first supported profile is RPC over HTTPS, POST `/`, query parameters and a JSON
 200 response. Initial operations are ECS DescribeRegions, DescribeInstances,
 DescribeInstanceStatus and STS AssumeRole. Unsupported selected shapes fail generation;
@@ -28,8 +30,10 @@ comments are original project work under LICENSE. Keep source attribution with s
 Overlays select the public API subset and supply English/Chinese field guidance,
 idiomatic names, explicit idempotency, JSON-string-array conversions, time conversions,
 sensitive-model redaction, validation hooks and reviewed paginator/waiter rules.
-Metadata controls supported methods, parameter locations, required fields, wire types
-and response paths. Overlays cannot silently invent a wire field or change its type.
+DSL supplies operation constants, guarded bindings and model shapes; metadata
+cross-checks supported methods, locations, API requiredness, types and response paths.
+Explicit approved differences preserve the public contract; new differences fail.
+Overlays cannot silently invent a wire field or change its type.
 Unknown JSON members in an overlay/manifest fail; unselected upstream additions are
 tolerated. Removed selected fields, changed types/styles, new required inputs, unsupported
 selected reference forms, invalid identifiers and missing policy fields fail before output.
@@ -54,6 +58,11 @@ Commands from the repository root:
 go run ./internal/cmd/sdkgen generate
 go run ./internal/cmd/sdkgen check
 ```
+
+For source/projection changes, first run the Node installation and frontend commands
+in [tools/darabonba](../tools/darabonba/README.md). Production Go generation requires
+an official pinned projection; metadata-only Load/Render remains for synthetic backend
+tests. CI checks full official semantic projection independently of Go regeneration.
 
 Both are offline; `-root PATH` selects another repository root. Check never writes.
 Generate repairs owned drift and removes stale files bearing sdkgen's exact marker;
@@ -100,7 +109,9 @@ Sources: [official metadata guide](https://help.aliyun.com/zh/sdk/product-overvi
 
 执行依赖：#19 → #21（元数据/IR）→ #22（生成/集成）→ #23（再生成/CI）；全部验收后关闭父任务 #8。
 
-流水线为官方操作元数据 → 固定协议快照 → 审核 overlay → 校验 IR → 格式化 Go 代码及双语指南。
+#31 后生产流水线为官方产品 DSL → 官方 Darabonba 语义 parser → 确定性协议/绑定/模型投影
++ 固定公共元数据 + 审核 overlay → 校验 IR → 格式化 Go 代码及双语指南。
+见[迁移/工具](darabonba-migration.md)和[来源决策](darabonba-decisions.md)。
 首版支持 RPC、HTTPS、POST `/`、query 参数、JSON 200 响应；操作为 ECS 的 DescribeRegions、
 DescribeInstances、DescribeInstanceStatus 和 STS AssumeRole。选中但不支持的结构直接失败，
 不猜测 ROA、body 编码或端点。#25 添加 VPC DescribeVpcs 和纯页码 paginator。
@@ -111,7 +122,8 @@ DescribeInstances、DescribeInstanceStatus 和 STS AssumeRole。选中但不支�
 许可证，不将其标成 MIT；本项目的提取、overlay、模板、生成注释为原创，遵循 LICENSE，快照保留来源。
 
 Overlay 选择公开字段子集，提供中英文说明、Go 命名、显式幂等性、JSON 字符串数组转换、时间转换、
-敏感模型脱敏、校验扩展和分页/waiter 规则。方法、参数位置、必填属性、线类型、响应路径由元数据确定；
+敏感模型脱敏、校验扩展和分页/waiter 规则。DSL 提供操作常量、判空绑定及模型结构，元数据
+交叉校验方法、位置、API 必填、类型和响应路径；明确批准的差异保留公共契约，新差异直接失败；
 overlay 不能静默发明线字段或改变类型。manifest/overlay 未知成员报错；未选中的上游新增字段允许存在。
 选中字段删除、类型/style 改变、新必填输入、不支持的选中引用、非法标识符或规则字段缺失均在写入前失败。
 
@@ -127,6 +139,10 @@ Check 模式不写文件，报告缺失、变化和多余生成文件。输出�
 均离线；`-root PATH` 可指定另一根目录。Check 不写文件。Generate 修复生成文件差异，删除带本生成器
 准确标记的多余文件；无标记手写文件受到保护。输入及所有权在写入前检查；系统 I/O 失败可能留下部分多文件
 更新，修复原因后再运行 generate。每个文件通过临时文件和 rename 替换。
+
+源码/投影变化时先执行 [tools/darabonba](../tools/darabonba/README.md) 的 Node 安装与前端
+命令。生产 Go 生成必须有官方固定投影；纯元数据 Load/Render 仅保留用于合成后端测试。
+CI 在 Go 再生成之外独立检查完整官方语义投影。
 
 新增操作：先建 issue 和协议证据，显式导入元数据（[命令](../metadata/README.md)），评审 manifest/overlay，
 选择具名字段与准确响应路径，明确幂等性，提供双语说明及离线示例，再生成并运行门禁。

@@ -313,7 +313,11 @@ func emitOperation(b *bytes.Buffer, p Product, op Operation) error {
 			}
 		}
 	}
-	b.WriteString("return alicloud.Request{Method:\"POST\",Path:\"/\",Region:region,Query:q,Header:map[string][]string{\"Content-Type\":{\"application/x-www-form-urlencoded\"}}},nil},Decode:func(ctx context.Context,data []byte,value any)error{\n")
+	method, path := "POST", "/"
+	if op.Protocol.Method != "" {
+		method, path = op.Protocol.Method, op.Protocol.Path
+	}
+	fmt.Fprintf(b, "return alicloud.Request{Method:%q,Path:%q,Region:region,Query:q,Header:map[string][]string{\"Content-Type\":{\"application/x-www-form-urlencoded\"}}},nil},Decode:func(ctx context.Context,data []byte,value any)error{\n", method, path)
 	root := wireTree(op.Outputs)
 	b.WriteString("var wire ")
 	emitWire(b, root)
@@ -323,7 +327,11 @@ func emitOperation(b *bytes.Buffer, p Product, op Operation) error {
 		fmt.Fprintf(b, "%s:%s,", f.Name, wireAccess(root, f.Wire))
 	}
 	b.WriteString("};return nil}}\n")
-	fmt.Fprintf(b, "out:=new(%sOutput)\nmeta,err:=c.runtime.InvokeModel(ctx,alicloud.Operation{Service:%q,Name:%q,Version:%q,Idempotent:%t},&in,alicloud.Request{Region:requestRegion},out,codec,callOptions...)\nif err!=nil{return nil,err};out.Metadata=meta;return out,nil\n}\n", op.Name, p.Manifest.Service, op.Name, p.Manifest.Version, *op.Idempotent)
+	action, version := op.Name, p.Manifest.Version
+	if op.Protocol.Action != "" {
+		action, version = op.Protocol.Action, op.Protocol.Version
+	}
+	fmt.Fprintf(b, "out:=new(%sOutput)\nmeta,err:=c.runtime.InvokeModel(ctx,alicloud.Operation{Service:%q,Name:%q,Version:%q,Idempotent:%t},&in,alicloud.Request{Region:requestRegion},out,codec,callOptions...)\nif err!=nil{return nil,err};out.Metadata=meta;return out,nil\n}\n", op.Name, p.Manifest.Service, action, version, *op.Idempotent)
 	return nil
 }
 
@@ -369,6 +377,13 @@ func emitGuide(p Product) []byte {
 }
 
 func emitGuideLanguage(b *bytes.Buffer, p Product, chinese bool) {
+	if p.DSL != nil {
+		if chinese {
+			fmt.Fprintf(b, "官方 DSL（revision `%s`）通过 Darabonba parser `%s` 的完整模块语义检查，协议/绑定/选定模型与公共元数据及审核策略共同进入 IR。来源、限制与偏差见 [Darabonba 迁移](../darabonba-migration.md) 和 [决策记录](../darabonba-decisions.md)。\n\n", p.DSL.Revision, p.DSL.ParserVersion)
+		} else {
+			fmt.Fprintf(b, "Official DSL at revision `%s` passes full imported-module semantic checks with Darabonba parser `%s`. Protocol, bindings and selected models join public metadata and reviewed policy in the IR. See [Darabonba migration](../darabonba-migration.md) and [decisions](../darabonba-decisions.md) for provenance, limits and discrepancies.\n\n", p.DSL.Revision, p.DSL.ParserVersion)
+		}
+	}
 	if chinese {
 		b.WriteString("NewFromConfig/保留的 New 接收共享 Config 和服务 functional options，校验后返回客户端与 error。服务 Options 是独立类型，Client.Options 返回配置快照。调用选项（含重试/transport）只作用于当前调用；模型编码前运行 Initialize/Serialize，Deserialize hook 可访问类型化输出。默认重试/超时/凭据规则保持，迁移见 [runtime](../runtime.md) 和 [修复路径](../aws-style-remediation.md)。\n\n")
 	} else {

@@ -27,6 +27,7 @@ GitHub owns current state; this table records dependencies. Existing #3 HTTP dep
 | #28 | Native paginator options and multiple policy profiles | #27 |
 | #29 | Reusable Wait/WaitForOutput and waiter options | #28 |
 | #30 | Live local-profile reads and Explorer CLI comparison | #29 |
+| #31 | Official Darabonba semantic frontend and reviewed DSL/metadata decisions | #29, #30 |
 
 ## 中文
 
@@ -58,3 +59,4 @@ Review 修复按 #26 → #27 → #28 → #29 执行，详见 [修复路径](../a
 | #28 | 原生分页选项及多策略 profile。 | #27 |
 | #29 | 可复用 Wait/WaitForOutput 和 waiter 选项。 | #28 |
 | #30 | 本地 Profile 真实读取及 Explorer CLI 对比。 | #29 |
+| #31 | 官方 Darabonba 语义前端与审核后的 DSL/元数据决策。 | #29, #30 |

@@ -36,13 +36,14 @@ type Source struct {
 
 // Manifest identifies a pinned metadata product and its supported protocol.
 type Manifest struct {
-	SchemaVersion int      `json:"schemaVersion"`
-	Product       string   `json:"product"`
-	Version       string   `json:"version"`
-	Style         string   `json:"style"`
-	Package       string   `json:"package"`
-	Service       string   `json:"service"`
-	Sources       []Source `json:"sources"`
+	SchemaVersion int        `json:"schemaVersion"`
+	Product       string     `json:"product"`
+	Version       string     `json:"version"`
+	Style         string     `json:"style"`
+	Package       string     `json:"package"`
+	Service       string     `json:"service"`
+	Sources       []Source   `json:"sources"`
+	DSL           *DSLSource `json:"dsl,omitempty"`
 }
 
 // Schema contains supported wire structure and evidence of unsupported shapes.

@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "revision": "ec489e5c3deae95496daae2b41503ac58b221adb",
+  "operations": {
+    "ecs/DescribeRegions": { "dslOnlyInputs": ["OwnerAccount", "OwnerId", "ResourceOwnerAccount", "ResourceOwnerId"], "requiredInputs": [] },
+    "ecs/DescribeInstances": { "dslOnlyInputs": ["Filter", "OwnerAccount", "OwnerId", "ResourceOwnerAccount", "ResourceOwnerId"], "requiredInputs": ["RegionId"] },
+    "ecs/DescribeInstanceStatus": { "dslOnlyInputs": ["OwnerAccount", "OwnerId", "ResourceOwnerAccount", "ResourceOwnerId"], "requiredInputs": ["RegionId"] },
+    "sts/AssumeRole": { "dslOnlyInputs": [], "requiredInputs": ["RoleArn", "RoleSessionName"] },
+    "vpc/DescribeVpcs": { "dslOnlyInputs": ["OwnerAccount", "OwnerId", "ResourceOwnerAccount", "ResourceOwnerId"], "requiredInputs": ["RegionId"] }
+  }
+}

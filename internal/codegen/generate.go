@@ -26,6 +26,9 @@ func (e *DriftError) Error() string {
 // stale sdkgen-owned files. Invalid inputs/preflight failures leave output untouched;
 // OS I/O errors can leave a partial multi-file update, repaired by rerunning generation.
 func Generate(ctx context.Context, root string, check bool) error {
+	if err := ctx.Err(); err != nil {
+		return err
+	}
 	root, err := filepath.Abs(root)
 	if err != nil {
 		return err
@@ -35,6 +38,23 @@ func Generate(ctx context.Context, root string, check bool) error {
 		return err
 	}
 	files := map[string][]byte{}
+	pins := map[string]bool{}
+	for _, entry := range entries {
+		if !entry.IsDir() {
+			continue
+		}
+		var manifest Manifest
+		if err := readJSON(filepath.Join(root, "metadata", entry.Name(), "manifest.json"), &manifest, true); err != nil {
+			return err
+		}
+		if manifest.DSL == nil {
+			return errors.New("darabonba: production generation requires an official projection")
+		}
+		pins[manifest.DSL.SourceManifestSHA256] = true
+	}
+	if err := verifyDSLSource(root, pins); err != nil {
+		return err
+	}
 	for _, entry := range entries {
 		if err := ctx.Err(); err != nil {
 			return err
@@ -42,7 +62,7 @@ func Generate(ctx context.Context, root string, check bool) error {
 		if !entry.IsDir() {
 			continue
 		}
-		p, err := Load(filepath.Join(root, "metadata", entry.Name()))
+		p, err := LoadProduct(filepath.Join(root, "metadata", entry.Name()))
 		if err != nil {
 			return fmt.Errorf("product %s: %w", entry.Name(), err)
 		}

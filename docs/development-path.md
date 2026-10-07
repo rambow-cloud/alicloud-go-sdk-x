@@ -48,6 +48,9 @@ The next real-product gate is #24 -> #25; see [generator-expansion.md](generator
 After that acceptance, resolve the review under #26 -> #27 -> #28 -> #29 before wider
 profiles: [AWS-style remediation](aws-style-remediation.md).
 
+The frontend refactor #31 uses official product DSL and the official parser; its
+ordered delivery and conflict verification are defined in [darabonba-migration.md](darabonba-migration.md).
+
 Sources: [ACS3](https://help.aliyun.com/zh/sdk/product-overview/v3-request-structure-and-signature),
 [metadata](https://help.aliyun.com/zh/sdk/product-overview/openapi-metadata/),
 [AWS middleware](https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/middleware.html),
@@ -90,3 +93,5 @@ Waiter 总期限与单次重试分开；凭据刷新有界并合并并发，一�
 下一真实产品门槛为 #24 → #25，见 [generator-expansion.md](generator-expansion.md)。
 验收后，扩展更多 profile 前按 #26 → #27 → #28 → #29 修复 review，见
 [AWS 风格修复路径](aws-style-remediation.md)。
+后续前端重构使用官方产品 DSL 与官方 parser，交付顺序及偏差验证见
+[Darabonba 迁移路径](darabonba-migration.md)。

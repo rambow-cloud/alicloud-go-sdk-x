@@ -1,0 +1,398 @@
+{
+  "schemaVersion": 1,
+  "parserVersion": "2.2.1",
+  "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
+  "revision": "ec489e5c3deae95496daae2b41503ac58b221adb",
+  "product": "Vpc",
+  "version": "2016-04-28",
+  "operations": [
+    {
+      "name": "DescribeVpcs",
+      "protocol": {
+        "action": "DescribeVpcs",
+        "version": "2016-04-28",
+        "protocol": "HTTPS",
+        "pathname": "/",
+        "method": "POST",
+        "authType": "AK",
+        "style": "RPC",
+        "reqBodyType": "formData",
+        "bodyType": "json"
+      },
+      "inputs": [
+        {
+          "wire": "DhcpOptionsSetId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "DryRun",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "boolean",
+            "required": false
+          }
+        },
+        {
+          "wire": "EnableIpv6",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "boolean",
+            "required": false
+          }
+        },
+        {
+          "wire": "IsDefault",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "boolean",
+            "required": false
+          }
+        },
+        {
+          "wire": "OwnerAccount",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "OwnerId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        },
+        {
+          "wire": "PageNumber",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        },
+        {
+          "wire": "PageSize",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        },
+        {
+          "wire": "RegionId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "ResourceGroupId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "ResourceOwnerAccount",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "ResourceOwnerId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        },
+        {
+          "wire": "Tag",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Key": {
+                  "type": "string",
+                  "required": false
+                },
+                "Value": {
+                  "type": "string",
+                  "required": false
+                }
+              }
+            },
+            "required": false
+          }
+        },
+        {
+          "wire": "VpcId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "VpcName",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "string",
+            "required": false
+          }
+        },
+        {
+          "wire": "VpcOwnerId",
+          "location": "query",
+          "guard": "isUnset",
+          "schema": {
+            "type": "integer",
+            "required": false
+          }
+        }
+      ],
+      "response": {
+        "type": "object",
+        "properties": {
+          "PageNumber": {
+            "type": "integer",
+            "required": false
+          },
+          "PageSize": {
+            "type": "integer",
+            "required": false
+          },
+          "RequestId": {
+            "type": "string",
+            "required": false
+          },
+          "TotalCount": {
+            "type": "integer",
+            "required": false
+          },
+          "Vpcs": {
+            "type": "object",
+            "properties": {
+              "Vpc": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "CenStatus": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "CidrBlock": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "CreationTime": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "Description": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "DhcpOptionsSetId": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "DhcpOptionsSetStatus": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "DnsHostnameStatus": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "EnabledIpv6": {
+                      "type": "boolean",
+                      "required": false
+                    },
+                    "Ipv6CidrBlock": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "Ipv6CidrBlocks": {
+                      "type": "object",
+                      "properties": {
+                        "Ipv6CidrBlock": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "Ipv6CidrBlock": {
+                                "type": "string",
+                                "required": false
+                              },
+                              "Ipv6Isp": {
+                                "type": "string",
+                                "required": false
+                              }
+                            }
+                          },
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "IsDefault": {
+                      "type": "boolean",
+                      "required": false
+                    },
+                    "NatGatewayIds": {
+                      "type": "object",
+                      "properties": {
+                        "NatGatewayIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "OwnerId": {
+                      "type": "integer",
+                      "required": false
+                    },
+                    "RegionId": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "ResourceGroupId": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "RouterTableIds": {
+                      "type": "object",
+                      "properties": {
+                        "RouterTableIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "SecondaryCidrBlocks": {
+                      "type": "object",
+                      "properties": {
+                        "SecondaryCidrBlock": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "Status": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "Tags": {
+                      "type": "object",
+                      "properties": {
+                        "Tag": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "Key": {
+                                "type": "string",
+                                "required": false
+                              },
+                              "Value": {
+                                "type": "string",
+                                "required": false
+                              }
+                            }
+                          },
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "UserCidrs": {
+                      "type": "object",
+                      "properties": {
+                        "UserCidr": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "VRouterId": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "VSwitchIds": {
+                      "type": "object",
+                      "properties": {
+                        "VSwitchId": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "required": false
+                        }
+                      },
+                      "required": false
+                    },
+                    "VpcId": {
+                      "type": "string",
+                      "required": false
+                    },
+                    "VpcName": {
+                      "type": "string",
+                      "required": false
+                    }
+                  }
+                },
+                "required": false
+              }
+            },
+            "required": false
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,2 +1,6 @@
 * text=auto eol=lf
 *.go text eol=lf
+sources/darabonba/** -text
+sources/darabonba/products/** -whitespace
+sources/darabonba/modules/** -whitespace
+sources/darabonba/licenses/** -whitespace

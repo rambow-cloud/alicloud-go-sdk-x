@@ -20,6 +20,10 @@ reference operations; no full-product or live-cloud acceptance is claimed. The f
 interfaces, paginator/waiter adapters, Go docs, offline Examples and bilingual guides.
 Benchmarks #20 remain separate. No version tag is published by this task.
 
+The production frontend now uses pinned official Darabonba product DSL and the official
+semantic parser, joined with public metadata and our reviewed policies. See
+[migration and tools](docs/darabonba-migration.md) and [DSL/metadata decisions](docs/darabonba-decisions.md).
+
 Foundation: shared middleware, endpoints, structured errors, bounded retry, credential
 providers/cache/chain, STS helper, unified pagination/waiters, mock interfaces, testing
 helpers and opt-in OpenTelemetry. Generator implementation follows foundation acceptance.
@@ -80,6 +84,9 @@ Local documentation checks do not imply pkg.go.dev indexing.
 Read AGENTS.md and CONTRIBUTING.md before contributing. MIT: see LICENSE.
 
 ## 中文
+
+生产前端使用固定官方 Darabonba 产品 DSL 与官方语义 parser，结合公共元数据及本项目
+审核策略；见[迁移/工具](docs/darabonba-migration.md)及[DSL/元数据决策](docs/darabonba-decisions.md)。
 
 [Go 文档](https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x) ·
 [CI](https://github.com/rambow-cloud/alicloud-go-sdk-x/actions/workflows/ci.yml) ·

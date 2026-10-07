@@ -5,6 +5,8 @@
 
 Provides generated DescribeVpcs and a page-number paginator for Vpc API 2016-04-28. Coverage includes selected fields only. Use New with shared Config; clients are concurrency safe and inputs are copied. Errors preserve structured service causes and context cancellation.
 
+Official DSL at revision `ec489e5c3deae95496daae2b41503ac58b221adb` passes full imported-module semantic checks with Darabonba parser `2.2.1`. Protocol, bindings and selected models join public metadata and reviewed policy in the IR. See [Darabonba migration](../darabonba-migration.md) and [decisions](../darabonba-decisions.md) for provenance, limits and discrepancies.
+
 NewFromConfig and the retained New accept shared Config and service functional options, returning a validated client and error. Service Options is concrete; Client.Options returns a configuration snapshot. Call options including retries/transports remain isolated. Initialize/Serialize precede model encoding; Deserialize hooks expose typed output. Default retry/timeout/credential policies remain; see [runtime](../runtime.md) and [migration](../aws-style-remediation.md).
 
 API version `2016-04-28`; RPC/HTTPS/POST. Only explicitly reviewed idempotent operations permit retries. Endpoints use the shared resolver; metadata does not expand region coverage. Pagination follows reviewed token/page policies. Waiters require all requested IDs, retry missing/transitional states and fail unknown/duplicate states or API errors. Adapters are emitted only when configured in the overlay.
@@ -80,6 +82,8 @@ Sources: [DescribeVpcs](https://api.aliyun.com/meta/v1/products/Vpc/versions/201
 ## 中文
 
 提供 Vpc 2016-04-28 的生成 DescribeVpcs 和页码 paginator，仅覆盖选定字段。使用共享 Config 构造 New；客户端并发安全，复制输入；错误保留结构化服务原因及 context 取消。
+
+官方 DSL（revision `ec489e5c3deae95496daae2b41503ac58b221adb`）通过 Darabonba parser `2.2.1` 的完整模块语义检查，协议/绑定/选定模型与公共元数据及审核策略共同进入 IR。来源、限制与偏差见 [Darabonba 迁移](../darabonba-migration.md) 和 [决策记录](../darabonba-decisions.md)。
 
 NewFromConfig/保留的 New 接收共享 Config 和服务 functional options，校验后返回客户端与 error。服务 Options 是独立类型，Client.Options 返回配置快照。调用选项（含重试/transport）只作用于当前调用；模型编码前运行 Initialize/Serialize，Deserialize hook 可访问类型化输出。默认重试/超时/凭据规则保持，迁移见 [runtime](../runtime.md) 和 [修复路径](../aws-style-remediation.md)。
 

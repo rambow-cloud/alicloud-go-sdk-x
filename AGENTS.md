@@ -97,6 +97,13 @@ before changing the public API.
 - Generator changes also run `go run ./internal/cmd/sdkgen check`. Edit pinned metadata,
   overlays, templates or handwritten validators under an issue; do not edit generated
   files directly. Review schema drift and rerun generation before public API checks.
+- Production generation uses pinned official Darabonba sources/imports and the official
+  semantic parser projection. Run the frontend check/tests with Node 22 before Go gates.
+  Never silently resolve DSL/metadata conflicts; maintain the paired decision document
+  and machine-readable approvals. Explorer browser evidence and CLI evidence are distinct.
+- Preserve third-party source, README and license notice bytes under sources/darabonba;
+  their upstream documents are source artifacts. All project-authored source/tool guides
+  and decisions remain bilingual; upstream notices are not relabeled under our MIT license.
 
 ## 中文
 
@@ -157,3 +164,8 @@ before changing the public API.
 - 每项能力包含实现、行为测试、可执行示例、双语文档与验证记录；生成器与基准分开跟踪。
 - 生成器变更还需运行 `go run ./internal/cmd/sdkgen check`。在 issue 下修改固定元数据、overlay、
   模板或手写 validator，不直接修改生成文件；评审 schema 漂移并重新生成后执行公共 API 检查。
+- 生产生成使用固定官方 Darabonba 源码、导入模块及官方语义 parser 投影；Go 门禁前执行 Node 22
+  前端检查/测试。不静默解决 DSL/元数据冲突，维护双语决策及机器可读审核记录；Explorer 浏览器
+  与 CLI 证据分别记录。
+- sources/darabonba 下的第三方源码、README、许可证通知保留上游原始字节，作为源码产物；
+  本项目编写的来源/工具指南及决策仍需双语，不把上游通知重新标为本项目 MIT。
