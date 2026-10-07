@@ -719,6 +719,9 @@ func checkPolicies(p Product, claim func(string) error) error {
 		if err := claim("New" + spec.Name); err != nil {
 			return err
 		}
+		if err := claim(spec.Name + "Options"); err != nil {
+			return err
+		}
 		if spec.MaxIDs <= 0 || spec.Success == "" || len(spec.Retry) == 0 {
 			return errors.New("codegen: explicit waiter bounds and states required")
 		}

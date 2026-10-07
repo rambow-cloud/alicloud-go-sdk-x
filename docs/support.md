@@ -7,7 +7,7 @@ All entries have implementations, offline behavior tests, public Go documentatio
 | Capability | Package / API | Scope and limits |
 | --- | --- | --- |
 | Unified paginator | pagination.Paginator[T]; ECS DescribeInstances/DescribeInstanceStatusPaginator; VPC DescribeVpcsPaginator | native tokens/page numbers; dedicated/per-page options; current page delivered before cycle stop; single consumer |
-| Unified waiter | waiter.Waiter[T]; ECS InstanceRunningWaiter | bounded total time; explicit acceptors; 1..50 distinct reference IDs |
+| Unified waiter | waiter.Waiter[T]; ECS InstanceRunningWaiter | reusable Wait/WaitForOutput; concurrent input isolation; dedicated options/acceptor; bounded time; 1..50 distinct IDs |
 | Retry/backoff | retry.Standard | opt-in; jitter, Retry-After, budget; idempotent/replayable only |
 | Mock interfaces | HTTPClient, Provider, Resolver, Retryer, ECS/STS/VPC operation APIs | small handwritten fakes |
 | Credential provider | credentials static/env/Chain/Cache | explicit order; bounded shared refresh; no implicit file/process/metadata discovery |
@@ -35,7 +35,7 @@ RPC uses POST `/` with reviewed query encoding and ACS3. ROA path encoding is te
 | 能力 | 包 / API | 范围与限制 |
 | --- | --- | --- |
 | 统一 paginator | pagination.Paginator[T]；ECS DescribeInstances/DescribeInstanceStatusPaginator；VPC DescribeVpcsPaginator | 原生 token/页码、专属/每页选项、交付当前页后停止循环、单消费者 |
-| 统一 waiter | waiter.Waiter[T]；ECS InstanceRunningWaiter | 总时长有界，明确 acceptor，参考支持 1..50 个不同 ID |
+| 统一 waiter | waiter.Waiter[T]；ECS InstanceRunningWaiter | 可复用 Wait/WaitForOutput、并发输入隔离、专属选项/acceptor、总时长有界、1..50 个不同 ID |
 | retry/backoff | retry.Standard | 显式启用，jitter、Retry-After、预算，仅幂等/可重放 |
 | mock 接口 | HTTPClient、Provider、Resolver、Retryer、ECS/STS/VPC 操作 API | 小型手写 fake |
 | 凭据 provider | credentials static/env/Chain/Cache | 明确顺序，共享有界刷新，无隐式文件/进程/metadata 发现 |

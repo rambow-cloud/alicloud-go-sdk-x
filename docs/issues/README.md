@@ -37,7 +37,7 @@ Review 修复按 #26 → #27 → #28 → #29 执行，详见 [修复路径](../a
 | Issue | 能力 | 依赖 |
 | --- | --- | --- |
 | #10 | 交付语义对应的中英文开发路径与项目文档。 | None |
-| #11 | 提供 Initialize、Build、Finalize、Deserialize 阶段，以及具名 middleware 和函数适配器。 | None |
+| #11 | 提供 Initialize、Serialize、Build、Finalize、Deserialize 阶段，以及具名 middleware 和函数适配器。 | None |
 | #12 | 提供 context-aware resolver 和函数适配器；显式 endpoint 优先。 | None |
 | #13 | 保留 APIError，增加可 Unwrap 的操作错误。 | None |
 | #14 | 提供类型化轮询及成功、重试、失败 acceptor。 | #5 |

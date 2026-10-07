@@ -13,6 +13,8 @@ API version `2014-05-26`; RPC/HTTPS/POST. Only explicitly reviewed idempotent op
 
 `DescribeInstanceStatusPaginator`: Pagination is page-only, defaulting to page 1/size 50; empty pages or reaching the total end traversal.
 
+`InstanceRunningWaiter` binds only API/dedicated options; Wait(ctx,input,maxWait,opts...) returns error and WaitForOutput returns the successful output. Waits copy input/options independently and may share the waiter concurrently. ClientOptions applies per poll; Retryable overrides default acceptance. See [waiters and migration](../waiters.md).
+
 ### DescribeInstanceStatus
 
 Executes one RPC request through the shared runtime; nil input uses zero values unless required. Callers must not mutate input concurrently. Input required: `false`; idempotent: `true`.
@@ -108,6 +110,8 @@ API 版本 `2014-05-26`，协议 RPC/HTTPS/POST；只有审核操作可幂等重
 `DescribeInstancesPaginator`: 分页默认 token 模式，显式页码或大小选择旧页码模式。
 
 `DescribeInstanceStatusPaginator`: 分页仅使用页码，默认页 1/大小 50；空页或总数到达时结束。
+
+`InstanceRunningWaiter` 仅绑定 API/专属选项；Wait(ctx,input,maxWait,opts...) 返回 error，WaitForOutput 返回成功输出。每次等待独立复制输入/选项，可并发复用；ClientOptions 每轮生效，Retryable 可覆盖默认 acceptor。详见 [waiter 与迁移](../waiters.md)。
 
 ### DescribeInstanceStatus
 

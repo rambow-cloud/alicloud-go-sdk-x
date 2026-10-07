@@ -34,13 +34,12 @@ func TestRunningWaiterRequiresEveryInstanceAndCopiesInput(t *testing.T) {
 		return out, nil
 	})
 	input := &ecs.DescribeInstanceStatusInput{InstanceIDs: []string{"i-a", "i-b"}}
-	w, err := ecs.NewInstanceRunningWaiter(api, input, waiter.Options{Now: clock.Now, Sleep: clock.Sleep})
+	w, err := ecs.NewInstanceRunningWaiter(api, func(o *ecs.InstanceRunningWaiterOptions) { o.Now = clock.Now; o.Sleep = clock.Sleep })
 	if err != nil {
 		t.Fatal(err)
 	}
-	input.InstanceIDs[0] = "caller-change"
-	_, err = w.Wait(context.Background(), time.Minute)
-	if err != nil || calls != 3 {
+	err = w.Wait(context.Background(), input, time.Minute)
+	if err != nil || calls != 3 || input.InstanceIDs[0] != "i-a" {
 		t.Fatal(err, calls)
 	}
 }
@@ -50,8 +49,8 @@ func TestRunningWaiterTimeoutUnknownAndErrors(t *testing.T) {
 		api := statusFunc(func(context.Context, *ecs.DescribeInstanceStatusInput, ...func(*ecs.Options)) (*ecs.DescribeInstanceStatusOutput, error) {
 			return &ecs.DescribeInstanceStatusOutput{InstanceStatuses: []ecs.InstanceStatus{{InstanceID: "i", Status: state}}}, nil
 		})
-		w, _ := ecs.NewInstanceRunningWaiter(api, &ecs.DescribeInstanceStatusInput{InstanceIDs: []string{"i"}}, waiter.Options{Now: clock.Now, Sleep: clock.Sleep})
-		_, err := w.Wait(context.Background(), 2*time.Second)
+		w, _ := ecs.NewInstanceRunningWaiter(api, func(o *ecs.InstanceRunningWaiterOptions) { o.Now = clock.Now; o.Sleep = clock.Sleep })
+		err := w.Wait(context.Background(), &ecs.DescribeInstanceStatusInput{InstanceIDs: []string{"i"}}, 2*time.Second)
 		expected := waiter.ErrTimeout
 		if state == "Unknown" {
 			expected = waiter.ErrFailure
@@ -61,16 +60,16 @@ func TestRunningWaiterTimeoutUnknownAndErrors(t *testing.T) {
 		}
 	}
 	c := clientFor(sdktest.NewTransport(sdktest.Step{Body: `{"InstanceStatuses":{"InstanceStatus":[{"InstanceId":"i","Status":"Running"}]}}`}))
-	w, _ := ecs.NewInstanceRunningWaiter(c, &ecs.DescribeInstanceStatusInput{InstanceIDs: []string{"i"}}, waiter.Options{})
-	if _, err := w.Wait(context.Background(), time.Minute); err != nil {
+	w, _ := ecs.NewInstanceRunningWaiter(c)
+	if err := w.Wait(context.Background(), &ecs.DescribeInstanceStatusInput{InstanceIDs: []string{"i"}}, time.Minute); err != nil {
 		t.Fatal(err)
 	}
-	if _, err := ecs.NewInstanceRunningWaiter(c, &ecs.DescribeInstanceStatusInput{}, waiter.Options{}); err == nil {
+	if err := w.Wait(context.Background(), &ecs.DescribeInstanceStatusInput{}, time.Minute); err == nil {
 		t.Fatal("empty IDs accepted")
 	}
 	ctx, cancel := context.WithCancel(context.Background())
 	cancel()
-	_, err := w.Wait(ctx, time.Minute)
+	err := w.Wait(ctx, &ecs.DescribeInstanceStatusInput{InstanceIDs: []string{"i"}}, time.Minute)
 	if !errors.Is(err, context.Canceled) {
 		t.Fatal(err)
 	}

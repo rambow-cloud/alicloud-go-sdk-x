@@ -401,6 +401,13 @@ func emitGuideLanguage(b *bytes.Buffer, p Product, chinese bool) {
 			}
 		}
 	}
+	for _, policy := range p.Overlay.waiterSpecs() {
+		if chinese {
+			fmt.Fprintf(b, "`%s` 仅绑定 API/专属选项；Wait(ctx,input,maxWait,opts...) 返回 error，WaitForOutput 返回成功输出。每次等待独立复制输入/选项，可并发复用；ClientOptions 每轮生效，Retryable 可覆盖默认 acceptor。详见 [waiter 与迁移](../waiters.md)。\n\n", policy.Name)
+		} else {
+			fmt.Fprintf(b, "`%s` binds only API/dedicated options; Wait(ctx,input,maxWait,opts...) returns error and WaitForOutput returns the successful output. Waits copy input/options independently and may share the waiter concurrently. ClientOptions applies per poll; Retryable overrides default acceptance. See [waiters and migration](../waiters.md).\n\n", policy.Name)
+		}
+	}
 	for _, op := range p.Operations {
 		fmt.Fprintf(b, "### %s\n\n", op.Name)
 		if chinese {

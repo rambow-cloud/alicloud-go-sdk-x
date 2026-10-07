@@ -70,3 +70,20 @@ func ExampleNew() {
 	fmt.Println(value)
 	// Output: 2
 }
+
+func TestAcceptorCannotSucceedAfterOwnDeadline(t *testing.T) {
+	clock := sdktest.NewClock(time.Unix(0, 0))
+	w, err := waiter.New(func(context.Context) (int, error) { return 42, nil }, func(int, error) waiter.Decision {
+		if err := clock.Sleep(context.Background(), time.Minute); err != nil {
+			t.Fatal(err)
+		}
+		return waiter.Success
+	}, waiter.Options{Now: clock.Now, Sleep: clock.Sleep})
+	if err != nil {
+		t.Fatal(err)
+	}
+	out, err := w.Wait(context.Background(), time.Second)
+	if out != 0 || !errors.Is(err, waiter.ErrTimeout) {
+		t.Fatal("late acceptance succeeded", out, err)
+	}
+}

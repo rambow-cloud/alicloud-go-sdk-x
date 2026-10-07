@@ -304,16 +304,85 @@ func (p *DescribeInstanceStatusPaginator) NextPage(ctx context.Context, optFns .
 	return p.engine.NextPage(ctx)
 }
 
-// InstanceRunningWaiter waits until all explicitly requested identities have the reviewed success state.
-// Missing identities and reviewed retry states continue; unknown or duplicate states fail.
-type InstanceRunningWaiter struct {
-	engine *waiter.Waiter[*DescribeInstanceStatusOutput]
+// InstanceRunningWaiterOptions controls polling and the reviewed acceptor.
+// Callbacks must not retain options; shared extensions must be concurrency safe.
+type InstanceRunningWaiterOptions struct {
+	// MinDelay is the initial delay; zero selects one second.
+	MinDelay time.Duration
+	// MaxDelay caps exponential delay; zero selects five seconds.
+	MaxDelay time.Duration
+	// Now supplies a concurrency-safe clock; nil selects time.Now.
+	Now func() time.Time
+	// Sleep must honor cancellation; nil selects the shared context-aware sleep.
+	Sleep func(context.Context, time.Duration) error
+	// ClientOptions applies service options to every poll; registrations are copied.
+	ClientOptions []func(*Options)
+	// Retryable overrides the default all-ID acceptor. True retries, false succeeds,
+	// and an error fails with an inspectable cause. Nil preserves reviewed states.
+	// It receives the bounded poll context and a fresh input copy; it must not block.
+	// Cancellation/expiry and failed fetches cannot be converted into success.
+	Retryable func(context.Context, *DescribeInstanceStatusInput, *DescribeInstanceStatusOutput, error) (bool, error)
 }
 
-// NewInstanceRunningWaiter copies input/options and polls one bounded first page.
-// All IDs must be nonempty and distinct; operation errors fail immediately.
-func NewInstanceRunningWaiter(api DescribeInstanceStatusAPI, input *DescribeInstanceStatusInput, options waiter.Options, opts ...func(*Options)) (*InstanceRunningWaiter, error) {
-	if api == nil || input == nil || len(input.InstanceIDs) == 0 || len(input.InstanceIDs) > 50 || input.PageNumber > 1 || input.PageNumber < 0 {
+// InstanceRunningWaiter retains API/options and supports independent concurrent waits.
+// Input is copied per invocation and per poll; do not mutate caller input concurrently.
+// Default acceptance requires every requested ID in the reviewed success state.
+type InstanceRunningWaiter struct {
+	api     DescribeInstanceStatusAPI
+	options InstanceRunningWaiterOptions
+}
+
+// NewInstanceRunningWaiter binds API and copies options without binding a request.
+// Unlike AWS constructors, invalid API/options return an error in this early v0 SDK.
+func NewInstanceRunningWaiter(api DescribeInstanceStatusAPI, optFns ...func(*InstanceRunningWaiterOptions)) (*InstanceRunningWaiter, error) {
+	if api == nil {
+		return nil, errors.New("nil waiter API")
+	}
+	options := InstanceRunningWaiterOptions{}
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil waiter option")
+		}
+		f(&options)
+	}
+	minimum, maximum := options.MinDelay, options.MaxDelay
+	if minimum == 0 {
+		minimum = time.Second
+	}
+	if maximum == 0 {
+		maximum = 5 * time.Second
+	}
+	if minimum < 0 || maximum < 0 || minimum > maximum {
+		return nil, errors.New("invalid waiter delays")
+	}
+	for _, f := range options.ClientOptions {
+		if f == nil {
+			return nil, errors.New("nil waiter client option")
+		}
+	}
+	options.ClientOptions = append([]func(*Options){}, options.ClientOptions...)
+	return &InstanceRunningWaiter{api: api, options: options}, nil
+}
+
+// Wait waits for success and discards the output. Input/overrides belong to this wait.
+// A positive maxWait includes polls, operation retries and sleeps.
+func (w *InstanceRunningWaiter) Wait(ctx context.Context, input *DescribeInstanceStatusInput, maxWait time.Duration, optFns ...func(*InstanceRunningWaiterOptions)) error {
+	_, err := w.WaitForOutput(ctx, input, maxWait, optFns...)
+	return err
+}
+
+// WaitForOutput returns the successful response, or nil and an inspectable error.
+// It requires 1..50 distinct IDs on the first page. Default acceptance retries
+// missing/transitional states and fails unknown/duplicate states or API errors.
+// Cancellation passes through; own expiry preserves waiter.ErrTimeout.
+func (w *InstanceRunningWaiter) WaitForOutput(ctx context.Context, input *DescribeInstanceStatusInput, maxWait time.Duration, optFns ...func(*InstanceRunningWaiterOptions)) (*DescribeInstanceStatusOutput, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	if maxWait <= 0 {
+		return nil, errors.New("waiter requires positive maximum wait")
+	}
+	if input == nil || len(input.InstanceIDs) == 0 || len(input.InstanceIDs) > 50 || input.PageNumber > 1 || input.PageNumber < 0 {
 		return nil, errors.New("waiter requires a bounded distinct ID list on the first page")
 	}
 	in := *input
@@ -321,7 +390,20 @@ func NewInstanceRunningWaiter(api DescribeInstanceStatusAPI, input *DescribeInst
 
 	in.PageNumber = 1
 	in.PageSize = 50
-	copiedOptions := append([]func(*Options){}, opts...)
+	options := w.options
+	options.ClientOptions = append([]func(*Options){}, options.ClientOptions...)
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil waiter option")
+		}
+		f(&options)
+	}
+	for _, f := range options.ClientOptions {
+		if f == nil {
+			return nil, errors.New("nil waiter client option")
+		}
+	}
+	copiedOptions := append([]func(*Options){}, options.ClientOptions...)
 	required := map[string]bool{}
 	for _, id := range in.InstanceIDs {
 		if id == "" || required[id] {
@@ -329,11 +411,35 @@ func NewInstanceRunningWaiter(api DescribeInstanceStatusAPI, input *DescribeInst
 		}
 		required[id] = true
 	}
+	if err := validateStatus(in); err != nil {
+		return nil, err
+	}
+	var pollContext context.Context
+	var decisionError error
 	engine, err := waiter.New(func(ctx context.Context) (*DescribeInstanceStatusOutput, error) {
+		pollContext = ctx
 		request := in
 		request.InstanceIDs = append([]string(nil), in.InstanceIDs...)
-		return api.DescribeInstanceStatus(ctx, &request, copiedOptions...)
+		return w.api.DescribeInstanceStatus(ctx, &request, append([]func(*Options){}, copiedOptions...)...)
 	}, func(out *DescribeInstanceStatusOutput, err error) waiter.Decision {
+		decisionError = nil
+		if options.Retryable != nil {
+			acceptInput := in
+			acceptInput.InstanceIDs = append([]string(nil), in.InstanceIDs...)
+
+			again, cause := options.Retryable(pollContext, &acceptInput, out, err)
+			if cause != nil {
+				decisionError = cause
+				return waiter.Failure
+			}
+			if again {
+				return waiter.Retry
+			}
+			if err != nil || out == nil {
+				return waiter.Failure
+			}
+			return waiter.Success
+		}
 		if err != nil || out == nil {
 			return waiter.Failure
 		}
@@ -365,15 +471,13 @@ func NewInstanceRunningWaiter(api DescribeInstanceStatusAPI, input *DescribeInst
 			return waiter.Success
 		}
 		return waiter.Retry
-	}, options)
+	}, waiter.Options{MinDelay: options.MinDelay, MaxDelay: options.MaxDelay, Now: options.Now, Sleep: options.Sleep})
 	if err != nil {
 		return nil, err
 	}
-	return &InstanceRunningWaiter{engine: engine}, nil
-}
-
-// Wait requires a positive total duration; caller context bounds each operation.
-// Waiter expiry preserves waiter.ErrTimeout independently of operation retry timeouts.
-func (w *InstanceRunningWaiter) Wait(ctx context.Context, maxWait time.Duration) (*DescribeInstanceStatusOutput, error) {
-	return w.engine.Wait(ctx, maxWait)
+	out, err := engine.Wait(ctx, maxWait)
+	if decisionError != nil && errors.Is(err, waiter.ErrFailure) {
+		return nil, &waiter.FailureError{Err: decisionError}
+	}
+	return out, err
 }

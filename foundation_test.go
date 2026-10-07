@@ -10,7 +10,6 @@ import (
 	"github.com/rambow-cloud/alicloud-go-sdk-x/services/ecs"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/services/sts"
 	sdkotel "github.com/rambow-cloud/alicloud-go-sdk-x/telemetry/otel"
-	"github.com/rambow-cloud/alicloud-go-sdk-x/waiter"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	"go.opentelemetry.io/otel/sdk/trace/tracetest"
 	"net/http"
@@ -78,11 +77,11 @@ func TestFoundationSTSCacheRetryPaginationWaiterAndTelemetry(t *testing.T) {
 	if err != nil || second.Metadata.Attempts != 1 || second.Instances[0].InstanceID != "i-b" || pages.HasMorePages() {
 		t.Fatal("second page", err)
 	}
-	running, err := ecs.NewInstanceRunningWaiter(ecsClient, &ecs.DescribeInstanceStatusInput{InstanceIDs: []string{"i-a"}}, waiter.Options{Now: clock.Now, Sleep: clock.Sleep})
+	running, err := ecs.NewInstanceRunningWaiter(ecsClient, func(o *ecs.InstanceRunningWaiterOptions) { o.Now = clock.Now; o.Sleep = clock.Sleep })
 	if err != nil {
 		t.Fatal(err)
 	}
-	out, err := running.Wait(ctx, time.Minute)
+	out, err := running.WaitForOutput(ctx, &ecs.DescribeInstanceStatusInput{InstanceIDs: []string{"i-a"}}, time.Minute)
 	if err != nil || out.InstanceStatuses[0].Status != "Running" {
 		t.Fatal("waiter", err)
 	}

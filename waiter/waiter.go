@@ -141,7 +141,14 @@ func (w *Waiter[T]) Wait(ctx context.Context, maxWait time.Duration) (T, error) 
 		if expired() {
 			return zero, &TimeoutError{LastError: err}
 		}
-		switch w.accept(value, err) {
+		decision := w.accept(value, err)
+		if ctx.Err() != nil {
+			return zero, ctx.Err()
+		}
+		if expired() {
+			return zero, &TimeoutError{LastError: err}
+		}
+		switch decision {
 		case Success:
 			if err != nil {
 				return zero, &FailureError{Err: err}

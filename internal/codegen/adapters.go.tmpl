@@ -84,21 +84,75 @@ func(p *{{.Operation}}Paginator)NextPage(ctx context.Context,optFns ...func(*Opt
 {{end}}
 
 {{range .Waiters}}
-// {{.Name}} waits until all explicitly requested identities have the reviewed success state.
-// Missing identities and reviewed retry states continue; unknown or duplicate states fail.
-type {{.Name}} struct{engine *waiter.Waiter[*{{.Operation}}Output]}
-// New{{.Name}} copies input/options and polls one bounded first page.
-// All IDs must be nonempty and distinct; operation errors fail immediately.
-func New{{.Name}}(api {{.Operation}}API,input *{{.Operation}}Input,options waiter.Options,opts ...func(*Options))(*{{.Name}},error){
- if api==nil||input==nil||len(input.{{.IDs}})==0||len(input.{{.IDs}})>{{.MaxIDs}}||input.{{.Page}}>1||input.{{.Page}}<0{return nil,errors.New("waiter requires a bounded distinct ID list on the first page")}
+// {{.Name}}Options controls polling and the reviewed acceptor.
+// Callbacks must not retain options; shared extensions must be concurrency safe.
+type {{.Name}}Options struct {
+ // MinDelay is the initial delay; zero selects one second.
+ MinDelay time.Duration
+ // MaxDelay caps exponential delay; zero selects five seconds.
+ MaxDelay time.Duration
+ // Now supplies a concurrency-safe clock; nil selects time.Now.
+ Now func()time.Time
+ // Sleep must honor cancellation; nil selects the shared context-aware sleep.
+ Sleep func(context.Context,time.Duration)error
+ // ClientOptions applies service options to every poll; registrations are copied.
+ ClientOptions []func(*Options)
+ // Retryable overrides the default all-ID acceptor. True retries, false succeeds,
+ // and an error fails with an inspectable cause. Nil preserves reviewed states.
+ // It receives the bounded poll context and a fresh input copy; it must not block.
+ // Cancellation/expiry and failed fetches cannot be converted into success.
+ Retryable func(context.Context,*{{.Operation}}Input,*{{.Operation}}Output,error)(bool,error)
+}
+// {{.Name}} retains API/options and supports independent concurrent waits.
+// Input is copied per invocation and per poll; do not mutate caller input concurrently.
+// Default acceptance requires every requested ID in the reviewed success state.
+type {{.Name}} struct{api {{.Operation}}API;options {{.Name}}Options}
+// New{{.Name}} binds API and copies options without binding a request.
+// Unlike AWS constructors, invalid API/options return an error in this early v0 SDK.
+func New{{.Name}}(api {{.Operation}}API,optFns ...func(*{{.Name}}Options))(*{{.Name}},error){
+ if api==nil{return nil,errors.New("nil waiter API")}
+ options:={{.Name}}Options{}
+ for _,f:=range optFns{if f==nil{return nil,errors.New("nil waiter option")};f(&options)}
+ minimum,maximum:=options.MinDelay,options.MaxDelay;if minimum==0{minimum=time.Second};if maximum==0{maximum=5*time.Second}
+ if minimum<0||maximum<0||minimum>maximum{return nil,errors.New("invalid waiter delays")}
+ for _,f:=range options.ClientOptions{if f==nil{return nil,errors.New("nil waiter client option")}}
+ options.ClientOptions=append([]func(*Options){},options.ClientOptions...)
+ return &{{.Name}}{api:api,options:options},nil
+}
+// Wait waits for success and discards the output. Input/overrides belong to this wait.
+// A positive maxWait includes polls, operation retries and sleeps.
+func(w *{{.Name}})Wait(ctx context.Context,input *{{.Operation}}Input,maxWait time.Duration,optFns ...func(*{{.Name}}Options))error{
+ _,err:=w.WaitForOutput(ctx,input,maxWait,optFns...);return err
+}
+// WaitForOutput returns the successful response, or nil and an inspectable error.
+// It requires 1..{{.MaxIDs}} distinct IDs on the first page. Default acceptance retries
+// missing/transitional states and fails unknown/duplicate states or API errors.
+// Cancellation passes through; own expiry preserves waiter.ErrTimeout.
+func(w *{{.Name}})WaitForOutput(ctx context.Context,input *{{.Operation}}Input,maxWait time.Duration,optFns ...func(*{{.Name}}Options))(*{{.Operation}}Output,error){
+ if err:=ctx.Err();err!=nil{return nil,err}
+ if maxWait<=0{return nil,errors.New("waiter requires positive maximum wait")}
+ if input==nil||len(input.{{.IDs}})==0||len(input.{{.IDs}})>{{.MaxIDs}}||input.{{.Page}}>1||input.{{.Page}}<0{return nil,errors.New("waiter requires a bounded distinct ID list on the first page")}
  in:=*input;{{copies .Operation "in" "input"}}
  in.{{.Page}}=1;in.{{.Size}}={{.MaxIDs}}
- copiedOptions:=append([]func(*Options){},opts...)
+ options:=w.options;options.ClientOptions=append([]func(*Options){},options.ClientOptions...)
+ for _,f:=range optFns{if f==nil{return nil,errors.New("nil waiter option")};f(&options)}
+ for _,f:=range options.ClientOptions{if f==nil{return nil,errors.New("nil waiter client option")}}
+ copiedOptions:=append([]func(*Options){},options.ClientOptions...)
  required:=map[string]bool{}
  for _,id:=range in.{{.IDs}}{if id==""||required[id]{return nil,errors.New("invalid waiter IDs")};required[id]=true}
+ {{validate .Operation}}
+ var pollContext context.Context
+ var decisionError error
  engine,err:=waiter.New(func(ctx context.Context)(*{{.Operation}}Output,error){
-  request:=in;{{copies .Operation "request" "in"}};return api.{{.Operation}}(ctx,&request,copiedOptions...)
+  pollContext=ctx;request:=in;{{copies .Operation "request" "in"}};return w.api.{{.Operation}}(ctx,&request,append([]func(*Options){},copiedOptions...)...)
  },func(out *{{.Operation}}Output,err error)waiter.Decision{
+  decisionError=nil
+  if options.Retryable!=nil{
+   acceptInput:=in;{{copies .Operation "acceptInput" "in"}}
+   again,cause:=options.Retryable(pollContext,&acceptInput,out,err)
+   if cause!=nil{decisionError=cause;return waiter.Failure};if again{return waiter.Retry}
+   if err!=nil||out==nil{return waiter.Failure};return waiter.Success
+  }
   if err!=nil||out==nil{return waiter.Failure}
   states:=map[string]string{}
   for _,entry:=range out.{{.Items}}{
@@ -110,10 +164,10 @@ func New{{.Name}}(api {{.Operation}}API,input *{{.Operation}}Input,options waite
    switch state{case {{q .Success}}:success++;case {{range $i,$v:=.Retry}}{{if $i}},{{end}}{{q $v}}{{end}}:;default:return waiter.Failure}
   }
   if success==len(required){return waiter.Success};return waiter.Retry
- },options)
- if err!=nil{return nil,err};return &{{.Name}}{engine:engine},nil
+ },waiter.Options{MinDelay:options.MinDelay,MaxDelay:options.MaxDelay,Now:options.Now,Sleep:options.Sleep})
+ if err!=nil{return nil,err}
+ out,err:=engine.Wait(ctx,maxWait)
+ if decisionError!=nil&&errors.Is(err,waiter.ErrFailure){return nil,&waiter.FailureError{Err:decisionError}}
+ return out,err
 }
-// Wait requires a positive total duration; caller context bounds each operation.
-// Waiter expiry preserves waiter.ErrTimeout independently of operation retry timeouts.
-func(w *{{.Name}})Wait(ctx context.Context,maxWait time.Duration)(*{{.Operation}}Output,error){return w.engine.Wait(ctx,maxWait)}
 {{end}}

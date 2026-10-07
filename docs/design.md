@@ -23,7 +23,7 @@ Use encoding/json/v2 directly and retain strict duplicate-name/UTF-8 handling; u
 response fields are tolerated for forward compatibility. Optional scalars use pointers
 only where absence matters. Do not expose generic maps as product request/response APIs.
 
-Middleware separates once-per-operation Initialize/Build from per-attempt Finalize/Deserialize.
+Middleware separates once-per-operation Initialize/Serialize/Build from per-attempt Finalize/Deserialize.
 Every attempt obtains credentials and signs its actual endpoint, query and payload bytes.
 Default retries are off. An opt-in standard policy has at most three attempts, bounded
 full-jitter backoff and a per-policy retry budget; non-idempotent writes are not retried.
@@ -56,7 +56,7 @@ pagination.Paginator[T]、waiter.Waiter[T]、ECS/STS 参考客户端、测试辅
 直接使用 JSON v2，保留重复名称和 UTF-8 严格检查，容忍未知响应字段以兼容后续扩展。
 只有有意义的缺失使用指针；产品输入输出不采用通用 map。
 
-Initialize/Build 每操作一次，Finalize/Deserialize 每尝试一次；每次获取凭据并对实际 endpoint/query/body 签名。
+Initialize/Serialize/Build 每操作一次，Finalize/Deserialize 每尝试一次；每次获取凭据并对实际 endpoint/query/body 签名。
 默认不重试；显式标准策略最多三次、full-jitter 有界退避及每策略预算，非幂等写入不重试。
 
 保留 APIError，新增可 Unwrap 的 OperationError。默认字符串不含原始 message/body/query；errors.As 获取字段，
