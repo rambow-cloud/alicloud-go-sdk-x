@@ -1,0 +1,64 @@
+name: Documentation
+description: 改进 pkg.go.dev 或项目使用文档
+title: "[Docs]: "
+labels: [documentation, 'status:triage']
+body:
+  - type: dropdown
+    id: areas
+    attributes:
+      label: Affected areas
+      description: 这些是单一 Go module 内的职责分组，可多选。
+      multiple: true
+      options:
+        - core
+        - credentials
+        - transport
+        - signing
+        - ecs
+        - tools
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 文档问题
+      description: 哪些包、符号或示例缺失、不准确或难以使用。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 证据与来源
+      description: 文档位置及正确行为的依据。
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 改进范围
+      description: 需要交付哪些包注释、示例或说明。
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 验收条件
+      description: 使用可观察的结果或测试说明完成标准，列出前置依赖。
+    validations:
+      required: true
+  - type: textarea
+    id: docs
+    attributes:
+      label: pkg.go.dev 文档要求
+      description: 指定 doc.go、导出符号及字段注释、可执行外部 Example、README 的交付；无需修改时解释原因。
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 提交前检查
+      options:
+        - label: 已搜索现有 issue 与路线图。
+          required: true
+        - label: 已移除凭据及私有数据。
+          required: true

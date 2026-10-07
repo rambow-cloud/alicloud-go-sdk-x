@@ -1,0 +1,132 @@
+[
+  {
+    "name": "bug",
+    "color": "d73a4a",
+    "description": "Unexpected behavior requiring a regression fix"
+  },
+  {
+    "name": "enhancement",
+    "color": "a2eeef",
+    "description": "New capability or intentional behavior change"
+  },
+  {
+    "name": "documentation",
+    "color": "0075ca",
+    "description": "Package docs, examples, or contributor documentation"
+  },
+  {
+    "name": "maintenance",
+    "color": "ededed",
+    "description": "Repository upkeep, tooling, and refactoring"
+  },
+  {
+    "name": "cicd",
+    "color": "5319e7",
+    "description": "GitHub Actions, quality gates, and automation"
+  },
+  {
+    "name": "release",
+    "color": "0e8a16",
+    "description": "Version preparation and publication tracking"
+  },
+  {
+    "name": "question",
+    "color": "d876e3",
+    "description": "Usage or design question needing clarification"
+  },
+  {
+    "name": "duplicate",
+    "color": "cfd3d7",
+    "description": "Already tracked by another issue"
+  },
+  {
+    "name": "invalid",
+    "color": "e4e669",
+    "description": "Cannot be accepted as a valid issue"
+  },
+  {
+    "name": "wontfix",
+    "color": "ffffff",
+    "description": "Deliberately outside accepted scope"
+  },
+  {
+    "name": "good first issue",
+    "color": "7057ff",
+    "description": "Small, well-defined task suitable for newcomers"
+  },
+  {
+    "name": "help wanted",
+    "color": "008672",
+    "description": "Contribution or specialist input is requested"
+  },
+  {
+    "name": "module:core",
+    "color": "1d76db",
+    "description": "Root package and shared error/API contracts"
+  },
+  {
+    "name": "module:credentials",
+    "color": "1d76db",
+    "description": "Credential providers, caching, and refresh"
+  },
+  {
+    "name": "module:transport",
+    "color": "1d76db",
+    "description": "HTTP, endpoints, retry, and response handling"
+  },
+  {
+    "name": "module:signing",
+    "color": "1d76db",
+    "description": "Signing protocols and request canonicalization"
+  },
+  {
+    "name": "module:ecs",
+    "color": "1d76db",
+    "description": "ECS operation models and pagination"
+  },
+  {
+    "name": "module:tools",
+    "color": "1d76db",
+    "description": "Generators, benchmarks, and developer tools"
+  },
+  {
+    "name": "priority:p1",
+    "color": "b60205",
+    "description": "Required for the next agreed milestone or blocking correctness"
+  },
+  {
+    "name": "priority:p2",
+    "color": "fbca04",
+    "description": "Planned work after current prerequisites"
+  },
+  {
+    "name": "priority:p3",
+    "color": "c2e0c6",
+    "description": "Useful follow-up without a current delivery commitment"
+  },
+  {
+    "name": "status:triage",
+    "color": "ededed",
+    "description": "Scope, evidence, or acceptance criteria need review"
+  },
+  {
+    "name": "status:ready",
+    "color": "0e8a16",
+    "description": "Scope accepted and prerequisites satisfied"
+  },
+  {
+    "name": "status:in-progress",
+    "color": "0052cc",
+    "description": "Implementation or review is actively in progress"
+  },
+  {
+    "name": "status:blocked",
+    "color": "d93f0b",
+    "description": "Waiting for explicitly recorded prerequisite work or information"
+  },
+  {
+    "name": "status:done",
+    "color": "6f42c1",
+    "description": "Issue acceptance criteria delivered; not a release guarantee"
+  }
+]

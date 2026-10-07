@@ -1,0 +1,35 @@
+name: Issue labels
+
+on:
+  issues:
+    types: [opened, edited, reopened, closed]
+  push:
+    branches: [main]
+    paths:
+      - '.github/labels.json'
+      - '.github/scripts/issue-labels.cjs'
+      - '.github/workflows/issue-labels.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: issue-labels
+  cancel-in-progress: false
+
+jobs:
+  labels:
+    runs-on: ubuntu-latest
+    steps:
+      # Only execute trusted default-branch code; issue text is data.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const { run } = require('./.github/scripts/issue-labels.cjs');
+            await run({ github, context, core });

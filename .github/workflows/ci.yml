@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  automation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '22'
+      - run: node --test .github/scripts/*.test.cjs
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            go: '1.27.x'
+            test_flags: '-race'
+          - os: windows-latest
+            go: '1.27.x'
+            test_flags: ''
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: ${{ matrix.go }}
+          cache: false
+      - name: Check formatting
+        shell: bash
+        run: |
+          files=$(gofmt -l .)
+          if [ -n "$files" ]; then
+            echo "$files"
+            exit 1
+          fi
+      - name: Check documentation and JSON v2 policy
+        run: go run ./internal/cmd/doccheck
+      - name: Vet
+        run: go vet ./...
+      - name: Test packages and runnable examples
+        run: go test ${{ matrix.test_flags }} ./...

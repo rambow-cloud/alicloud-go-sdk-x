@@ -1,0 +1,25 @@
+name: Issue link
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
+jobs:
+  linked-issue:
+    runs-on: ubuntu-latest
+    steps:
+      # Check only trusted default-branch code, including for fork pull requests.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const { run } = require('./.github/scripts/issue-link.cjs');
+            await run({ github, context, core });
