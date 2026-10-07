@@ -7,7 +7,7 @@ const types = new Map([
   ['maintenance', 'maintenance'], ['ci', 'maintenance'], ['release', 'release'],
   ['question', 'question'],
 ]);
-const areas = new Set(['core', 'credentials', 'transport', 'signing', 'ecs', 'tools']);
+const areas = new Set(['core', 'credentials', 'transport', 'signing', 'ecs', 'tools', 'middleware', 'endpoints', 'waiter', 'testing', 'sts', 'telemetry']);
 
 function classify(issue) {
   const match = issue.title.match(/^\[([^\]]+)\]:/);

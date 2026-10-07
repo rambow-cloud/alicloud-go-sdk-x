@@ -1,13 +1,13 @@
-name: Maintenance and CI
-description: 维护工具、依赖或仓库流程
+name: Maintenance
+description: Improve repository or CI tooling / 改进仓库与 CI
 title: "[Maintenance]: "
-labels: [maintenance, 'status:triage']
+labels: [maintenance, "status:triage"]
 body:
   - type: dropdown
     id: areas
     attributes:
       label: Affected areas
-      description: 这些是单一 Go module 内的职责分组，可多选。
+      description: Select all responsibilities / 选择相关职责
       multiple: true
       options:
         - core
@@ -16,49 +16,39 @@ body:
         - signing
         - ecs
         - tools
+        - middleware
+        - endpoints
+        - waiter
+        - testing
+        - sts
+        - telemetry
     validations:
       required: true
   - type: textarea
     id: problem
     attributes:
-      label: 维护问题
-      description: 当前流程有什么具体不足。
-    validations:
-      required: true
-  - type: textarea
-    id: evidence
-    attributes:
-      label: 证据与来源
-      description: 失败日志或维护成本的依据，移除敏感信息。
+      label: Problem and evidence
+      description: Explain the user impact and cite sources / 说明影响并提供证据
     validations:
       required: true
   - type: textarea
     id: scope
     attributes:
-      label: 范围
-      description: 改动、依赖、兼容性以及不包含的工作。
+      label: Scope and dependencies
+      description: State behavior, prerequisites and exclusions / 说明行为、前置与排除项
     validations:
       required: true
   - type: textarea
     id: acceptance
     attributes:
-      label: 验收条件
-      description: 使用可观察的结果或测试说明完成标准，列出前置依赖。
+      label: Acceptance criteria
+      description: List observable outcomes / 列出可观察结果
     validations:
       required: true
   - type: textarea
     id: docs
     attributes:
-      label: pkg.go.dev 文档要求
-      description: 指定 doc.go、导出符号及字段注释、可执行外部 Example、README 的交付；无需修改时解释原因。
+      label: Documentation requirements
+      description: English Go comments and equivalent bilingual guides / 英文注释与对应双语指南
     validations:
       required: true
-  - type: checkboxes
-    id: checks
-    attributes:
-      label: 提交前检查
-      options:
-        - label: 已搜索现有 issue 与路线图。
-          required: true
-        - label: 已移除凭据及私有数据。
-          required: true

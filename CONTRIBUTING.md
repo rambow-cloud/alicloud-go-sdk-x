@@ -1,30 +1,38 @@
-# 贡献流程
+# Contributing / 贡献流程
 
-本项目采用 issue-driven development。代码、文档与验收属于同一交付。
+[English](#english) | [中文](#中文)
 
-1. 先创建 issue，填写问题、证据、范围、验收条件与文档要求。
-   大范围设计先固定协议或 schema，讨论结论写回 issue。
-2. 使用 `issue/<number>-<slug>` 分支；初始化工作作为 bootstrap 例外。
-3. 针对验收条件实现最小完整改动；行为缺陷添加可复现的回归测试。
-4. 同时更新包注释、导出符号文档、可执行 Example 和 README。
-5. 运行下列检查各一次；只在失败原因已理解或实现改变时重跑。
-6. PR 正文完整交付写 `Closes #<number>`，部分交付写 `Refs #<number>`，说明用户行为、验证结果与限制。
-   CI 会检查引用的本仓库 issue 确实存在。维护者确认验收后合并。
+## English
 
-```sh
-gofmt -w .
+Start every behavior change with an issue describing evidence, scope, dependencies,
+observable acceptance criteria, and documentation requirements. Use issue/<number>-<slug>.
+Keep issue and PR content English-primary. Complete PRs use Closes #N; partial work uses Refs #N.
+Keep English and Chinese Markdown sections equivalent and Go comments English-primary.
+Provide doc.go, exported symbol/field comments, and runnable external Examples together.
+
+Run relevant checks once after a meaningful change:
+```
 go run ./internal/cmd/doccheck
+node .github/scripts/check-doc-language.cjs
 go vet ./...
 go test ./...
+node --test .github/scripts/*.test.cjs
 ```
+Use gofmt before checking formatting; Linux CI adds race detection. Never run live cloud
+tests with real credentials as part of unit tests. Do not change global Go/Git configuration.
+Only repeat checks after a meaningful change or a understood failure. Documentation checks
+verify structure; reviewers verify accuracy, compatibility, defaults and limitations.
+Offline drafts under docs/issues/ must be synchronized before a PR; draft IDs are not issue numbers.
+Read AGENTS.md and docs/development-path.md before implementing. Generator work is gated on the runtime foundation.
 
-Linux CI 额外使用 race detector；本地有兼容 C 工具链时可使用
-`go test -race ./...`。不为本项目修改系统级 Go/Git 配置，不使用真实云凭据运行单元测试。
-文档质量检查只覆盖注释与示例的结构，准确性、默认值和限制由评审检查。
+## 中文
 
-没有 GitHub 访问时，先在 `docs/issues/` 放置待同步草稿，联网后用
-`gh issue create --repo rambow-cloud/alicloud-go-sdk-x --title "标题" --body-file docs/issues/文件.md`
-同步，在打开 PR 前记录真实 issue URL。草稿 ID 不等于 GitHub issue 编号。
+每项行为修改先建 issue，写明证据、范围、依赖、可观察的验收条件及文档要求。分支使用 issue/<number>-<slug>。
+Issue/PR 以英文为主；完整交付使用 Closes #N，部分交付使用 Refs #N。
+Markdown 的中英文章节保持语义对应，Go 注释以英文为主；doc.go、导出符号/字段注释和可执行外部 Example 一起交付。
 
-公共 API 变更需说明兼容性；协议/生成代码变更需提供固定输入与来源。
-任何功能不应只有代码实现而缺少 pkg.go.dev 可读的使用说明。
+有意义的变更后，文档检查、双语检查、vet、Go 测试及自动化测试各运行一次，命令见上方英文章节。
+格式检查前使用 gofmt；Linux CI 增加 race。单元测试不使用真实凭据访问云资源，也不修改全局 Go/Git 配置。
+仅在有意义的修改或已理解的失败后重复检查。检查工具验证结构，评审验证准确性、兼容性、默认值与限制。
+离线草稿放 docs/issues/，PR 前同步；草稿 ID 不是 GitHub 编号。
+实现前阅读 AGENTS.md 与开发路径；基础 runtime 验收后才开发 generator。

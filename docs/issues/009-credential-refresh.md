@@ -1,39 +1,19 @@
-# 实现临时凭据缓存与可取消的并发刷新
+# Implement expiry-aware shared credential caching
 
-### Affected areas
+[English](#english) | [中文](#中文)
 
-credentials
+## English
 
-### 前置依赖
+GitHub issue: #9.
 
-先固定 STS/RAM role 凭据来源协议和过期契约。
+Extend credentials with expiration; coalesce bounded refreshes, refresh early and never serve expired values. One canceled waiter must not cancel other waiters. Test with an injected clock/source and integrate the STS provider separately.
 
-状态：GitHub issue #9（执行状态以 GitHub 为准）。
+Acceptance includes implementation, meaningful offline behavior tests, English Go comments, executable Examples and equivalent bilingual guides. GitHub remains the source of execution status.
 
-## 问题与证据
+## 中文
 
-静态与环境 provider 不跟踪过期时间，不能满足 STS/RAM role 长时运行应用。
-刷新与请求重试的生命周期不同，应独立交付。
+GitHub issue：#9。
 
-## 范围
+增加凭据过期信息，合并有界刷新、提前刷新、不返回已过期值；一个等待者取消不影响其他人。注入时钟/来源测试，STS provider 单独集成。
 
-定义可刷新 provider、过期信息、并发请求合并与明确的缓存所有权。
-具体 STS/metadata 来源须先固定官方协议；不隐式创建自动凭据链。
-
-## 验收条件
-
-- [ ] 官方来源、过期字段与刷新提前量有明确协议依据
-- [ ] 刷新并发合并；缓存有效时请求可读取快照；无锁内长时 I/O
-- [ ] 一个等待者取消不错误终止其他等待者；过期凭据不被无条件继续使用
-- [ ] 刷新失败、提前刷新、并发取消、时钟边界的离线测试与 race 检查
-- [ ] 不在错误或默认日志中暴露 credential/token；公开并发契约明确
-
-## 文档要求
-
-更新 credentials 的 doc.go、公开符号与字段说明，提供可执行外部 Example，
-明确过期、缓存和错误语义。
-
-## 验证计划
-
-可注入时钟和 fake source，测试不访问云环境，不依赖长时间 sleep。
-相关测试、vet 和文档检查各运行一次；并发由 Linux CI 验证。
+验收包含实现、有意义的离线行为测试、英文 Go 注释、可执行示例和对应双语指南；执行状态以 GitHub 为准。

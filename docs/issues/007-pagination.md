@@ -1,39 +1,19 @@
-# 实现可取消且防重复 token 的分页器
+# Implement a unified paginator
 
-### Affected areas
+[English](#english) | [中文](#中文)
 
-ecs
+## English
 
-### 前置依赖
+GitHub issue: #7.
 
-依赖 #5 的类型化操作与官方分页模型。
+Implement a typed generic cursor engine supporting tokens and page numbers; detect repeated cursors, preserve input ownership and cancellation. Connect handwritten ECS pagination after #5 and test success/error/empty/repeated pages.
 
-状态：GitHub issue #7（执行状态以 GitHub 为准）。
+Acceptance includes implementation, meaningful offline behavior tests, English Go comments, executable Examples and equivalent bilingual guides. GitHub remains the source of execution status.
 
-## 问题与证据
+## 中文
 
-V1 #669 报告部分模型缺少 NextToken，应用需要可维护的分页支持。
+GitHub issue：#7。
 
-来源：[上游证据](https://github.com/aliyun/alibaba-cloud-sdk-go/issues/669)。具体边界见 [调研](../research.md)。
+实现支持 token/页码的泛型 cursor 引擎，检测重复cursor，保留输入所有权和取消；#5 后接手写 ECS，测试成功/错误/空页/重复页。
 
-## 范围
-
-随 ECS 已实现操作提供官方支持的分页方式；不假定每个操作均有 NextToken。
-
-## 验收条件
-
-- [ ] 按 schema 区分 token 与 page-number 分页
-- [ ] ctx 取消停止请求；重复 token 返回明确错误，避免无限循环
-- [ ] 不修改原始输入；单页、多页、空页、错误和重复 token 均有离线测试
-- [ ] 文档说明分页器并发/状态契约，外部 Example 展示遍历
-- [ ] 请求次数、内存行为和服务端 page-size 限制写入说明
-
-## 文档要求
-
-每项公开 API 同时交付 doc.go、导出符号/字段注释和可执行外部 Example。
-更新 README 支持范围与相关设计/发布说明。文档完成与代码完成属于同一交付。
-
-## 验证计划
-
-按验收条件建立离线行为测试，运行文档检查、vet 和相关测试一次。
-涉及并发时由 Linux CI 运行 race；上线或 pkg.go.dev 页面由浏览器确认。
+验收包含实现、有意义的离线行为测试、英文 Go 注释、可执行示例和对应双语指南；执行状态以 GitHub 为准。

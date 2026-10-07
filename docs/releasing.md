@@ -1,33 +1,28 @@
-# 发布与 pkg.go.dev
+# Releasing and pkg.go.dev / 发布与索引
 
-公开 module：`github.com/rambow-cloud/alicloud-go-sdk-x`。使用标准 MIT LICENSE。
-本次初始化不创建版本标签或 GitHub Release；首次发布仍需检查实际功能范围。
+[English](#english) | [中文](#中文)
 
-## 版本发布
+## English
 
-1. 在 issue 中确定发布范围；检查 CI、LICENSE、module 路径、导入和文档。
-2. 更新 README 与版本说明，列出已支持操作、未支持内容和破坏性变更。
-3. 首个初始化预览可用 `v0.1.0`；仅在维护者明确批准发布后创建并 push tag。
-   标签索引后不可复用或改写；错误版本使用新版本及必要的 retract 修正。
-4. v0 阶段 API 可以变动但必须记录；v1 承诺兼容；v2 及以后遵循 Go module
-   主版本路径规则。不要在未支持产品调用时宣称可替代官方 SDK。
+Canonical public module: github.com/rambow-cloud/alicloud-go-sdk-x, MIT license, Go 1.27.
+This work does not create a release tag. Release only the documented operation coverage
+after CI and foundation acceptance; update equivalent English/Chinese release notes.
+Use v0 for experimental APIs. Never overwrite indexed tags; use a new version and retract
+when necessary. v1 promises compatibility; later major modules use Go's versioned paths.
 
-## 索引与浏览器验收
+Open https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x in a browser. If absent,
+click Request. Inspect version, license, overview, exported field docs and external Examples,
+then inspect credentials and the other public packages. The badge is an indexing entry point,
+not evidence that indexing occurred. Do not use local curl/DNS to verify the page.
+If indexing fails, diagnose public access, module path, Go support and license before retrying.
+Sources: https://pkg.go.dev/about#adding-a-package and https://pkg.go.dev/license-policy.
 
-pkg.go.dev 从 Go Module Mirror 与 Index 获取源码，注释并不需要单独上传。
-公开仓库和可访问的 module 是前提；有版本标签能提高可预测性。
+## 中文
 
-打开 <https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x>。
-若尚未收录，点击 Request，等待索引后重新打开。
-随后打开 <https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x/credentials>。
+公开 module 为 github.com/rambow-cloud/alicloud-go-sdk-x，MIT 许可证、Go 1.27。本次工作不创建发布标签。
+CI 和基础验收通过后，只发布明确记载的操作范围，并同步中英文版本说明。实验 API 使用 v0；
+索引标签不能改写，必要时用新版本及 retract。v1 承诺兼容，后续主版本遵守 Go 版本路径规则。
 
-确认：module 路径、版本、MIT 许可证、Overview、APIError 字段说明、credentials
-包说明、Provider 的取消/并发契约、静态凭据 Example 与可展开的输出。
-README badge 指向文档入口；其存在不代表已经被索引。初始化阶段页面可能尚未出现。
-
-无需 curl 验证页面。若索引失败，按网页提示检查公开可见性、module 路径、支持的 Go
-版本和许可证，修复根因后再请求；不要重复点击代替诊断。
-
-参考：[索引与文档说明](https://pkg.go.dev/about#adding-a-package)、
-[LICENSE 检测规则](https://pkg.go.dev/license-policy)、
-[原生 Go 文档语法](https://go.dev/doc/comment)。
+在浏览器打开上述 pkg.go.dev 地址，缺失时点击 Request，检查版本、许可证、概述、导出字段文档及 Examples，
+再检查 credentials 和其他公共包。badge 是索引入口，不是已索引证据；不用本地 curl/DNS 验证页面。
+索引失败先诊断公开访问、module 路径、Go 支持与许可证，再重试；参考来源与英文章节相同。

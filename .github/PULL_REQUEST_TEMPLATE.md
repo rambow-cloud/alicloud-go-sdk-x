@@ -1,16 +1,21 @@
-## 问题与结果
+# Pull request / 合并请求
 
-<!-- 完整交付填写 Closes #N，部分交付填写 Refs #N；在此注释之外写真实编号。 -->
+[English](#english) | [中文](#中文)
 
-说明具体触发条件，以及用户现在会得到什么行为。
+## English
 
-## 验证
+<!-- Outside this comment, write Closes #N for complete work or Refs #N for partial work. -->
+### Problem and result
+Describe the trigger, resulting behavior, scope and remaining limitations.
+### Verification
+Record checks actually run and results; explain omitted checks.
+### Documentation and compatibility
+- [ ] English-primary API comments and runnable external Examples are current.
+- [ ] English/Chinese Markdown sections are equivalent.
+- [ ] Issue acceptance, dependency status and supported coverage are current.
 
-记录实际运行的相关检查及结果；未运行的检查说明原因。
+## 中文
 
-## 文档与兼容性
-
-- [ ] 包/符号/字段文档与默认值已同步
-- [ ] 可执行外部 Example 已同步（或明确无需新增的原因）
-- [ ] README 支持范围及兼容性说明已同步
-- [ ] issue 验收条件已满足，限制已明确
+在上方注释外填写完整交付 Closes #N 或部分交付 Refs #N。
+描述触发条件、结果行为、范围及剩余限制；记录实际运行检查与结果，并解释未运行项。
+确认英文 API 注释与可执行示例已同步，中英文 Markdown 语义对应，issue 验收、依赖状态和支持范围准确。

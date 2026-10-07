@@ -128,5 +128,35 @@
     "name": "status:done",
     "color": "6f42c1",
     "description": "Issue acceptance criteria delivered; not a release guarantee"
+  },
+  {
+    "name": "module:middleware",
+    "color": "1d76db",
+    "description": "Shared middleware capability and public extension contracts"
+  },
+  {
+    "name": "module:endpoints",
+    "color": "1d76db",
+    "description": "Shared endpoints capability and public extension contracts"
+  },
+  {
+    "name": "module:waiter",
+    "color": "1d76db",
+    "description": "Shared waiter capability and public extension contracts"
+  },
+  {
+    "name": "module:testing",
+    "color": "1d76db",
+    "description": "Shared testing capability and public extension contracts"
+  },
+  {
+    "name": "module:sts",
+    "color": "1d76db",
+    "description": "Shared sts capability and public extension contracts"
+  },
+  {
+    "name": "module:telemetry",
+    "color": "1d76db",
+    "description": "Shared telemetry capability and public extension contracts"
   }
 ]
