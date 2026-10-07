@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/credentials"
 	"testing"
+	"time"
 )
 
 func TestChainFallbackStopsOnFailure(t *testing.T) {
@@ -55,4 +56,19 @@ func ExampleNewChain() {
 	v, _ := chain.Retrieve(context.Background())
 	fmt.Println(v)
 	// Output: Credentials(<redacted>)
+}
+
+func TestChainStopsAtExpiredSource(t *testing.T) {
+	expired := credentials.ProviderFunc(func(context.Context) (credentials.Credentials, error) {
+		return credentials.Credentials{AccessKeyID: "x", AccessKeySecret: "y", ExpiresAt: time.Unix(0, 0)}, nil
+	})
+	fallback := credentials.ProviderFunc(func(context.Context) (credentials.Credentials, error) {
+		t.Fatal("expired source fell through")
+		return credentials.Credentials{}, nil
+	})
+	chain, _ := credentials.NewChain(expired, fallback)
+	_, err := chain.Retrieve(context.Background())
+	if !errors.Is(err, credentials.ErrExpired) {
+		t.Fatal(err)
+	}
 }

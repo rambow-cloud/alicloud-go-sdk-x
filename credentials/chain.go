@@ -3,6 +3,7 @@ package credentials
 import (
 	"context"
 	"errors"
+	"time"
 )
 
 // ProviderFunc adapts a concurrent-safe, context-aware retrieval function.
@@ -48,6 +49,9 @@ func (c *Chain) Retrieve(ctx context.Context) (Credentials, error) {
 		}
 		if err = validate(v); err != nil {
 			return Credentials{}, err
+		}
+		if !v.ExpiresAt.IsZero() && !time.Now().Before(v.ExpiresAt) {
+			return Credentials{}, ErrExpired
 		}
 		return v, nil
 	}

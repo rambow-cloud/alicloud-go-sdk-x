@@ -93,8 +93,9 @@ func (p *StaticProvider) Retrieve(ctx context.Context) (Credentials, error) {
 type EnvProvider struct{}
 
 // Retrieve reads ALIBABA_CLOUD_ACCESS_KEY_ID, ALIBABA_CLOUD_ACCESS_KEY_SECRET,
-// and optional ALIBABA_CLOUD_SECURITY_TOKEN. Incomplete or whitespace-only keys
-// return ErrMissingCredentials; a context already done returns ctx.Err first.
+// and optional ALIBABA_CLOUD_SECURITY_TOKEN. All absent returns ErrNotFound;
+// incomplete or whitespace-only keys return ErrMissingCredentials. A context
+// already done returns ctx.Err first.
 // It does not fall back to files, roles, or other credential sources.
 func (EnvProvider) Retrieve(ctx context.Context) (Credentials, error) {
 	if err := ctx.Err(); err != nil {
