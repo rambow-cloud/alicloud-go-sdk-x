@@ -191,7 +191,10 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 		}
 		f(&options)
 	}
-	if options.Timeout <= 0 {
+	if options.Timeout == 0 {
+		options.Timeout = c.config.Timeout
+	}
+	if options.Timeout < 0 {
 		err = errors.New("alicloud: timeout must be positive")
 		return
 	}
@@ -213,10 +216,13 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 		err = errors.New("alicloud: request exceeds eight MiB")
 		return
 	}
-	if _, ok := query["RegionId"]; ok {
-		query.Set("RegionId", options.Region)
-	}
 	err = stack.Run(callCtx, middleware.Initialize, e, func(ctx context.Context, e *middleware.Exchange) error {
+		if _, ok := query["RegionId"]; ok {
+			if e.Region == "" {
+				return errors.New("alicloud: region required for RegionId")
+			}
+			query.Set("RegionId", e.Region)
+		}
 		resolved, resolveErr := c.config.EndpointResolver.ResolveEndpoint(ctx, endpoint.Parameters{Service: op.Service, Region: e.Region, BaseEndpoint: options.BaseEndpoint})
 		if resolveErr != nil {
 			return resolveErr
@@ -238,6 +244,9 @@ func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output
 		method := input.Method
 		if method == "" {
 			method = http.MethodPost
+		}
+		if method != strings.ToUpper(method) {
+			return errors.New("alicloud: method must be uppercase")
 		}
 		r, newErr := http.NewRequestWithContext(ctx, method, u.String(), bytes.NewReader(body))
 		if newErr != nil {

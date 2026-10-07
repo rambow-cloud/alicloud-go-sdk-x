@@ -226,12 +226,30 @@ func TestConcurrentClient(t *testing.T) {
 	wg.Wait()
 }
 func ExampleNewClient() {
-	c, _ := alicloud.NewClient(fixtureConfig(sdktest.NewTransport(sdktest.Step{Body: `{"RequestId":"offline"}`})))
+	provider, _ := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	transport := sdktest.NewTransport(sdktest.Step{Body: `{"RequestId":"offline"}`})
+	c, _ := alicloud.NewClient(alicloud.Config{Region: "cn-hangzhou", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
 	var out struct{}
-	meta, err := c.Invoke(context.Background(), readOp, alicloud.Request{}, &out)
+	meta, err := c.Invoke(context.Background(), alicloud.Operation{Service: "ecs", Name: "DescribeRegions", Version: "2014-05-26", Idempotent: true}, alicloud.Request{}, &out)
 	if err != nil {
 		panic(err)
 	}
 	fmt.Println(meta.RequestID, meta.Attempts)
 	// Output: offline 1
+}
+
+func TestRegionRequiredAndZeroCallTimeoutUsesDefault(t *testing.T) {
+	tr := sdktest.NewTransport(sdktest.Step{Body: `{}`})
+	cfg := fixtureConfig(tr)
+	cfg.Region = ""
+	c, _ := alicloud.NewClient(cfg)
+	var out struct{}
+	meta, err := c.Invoke(context.Background(), readOp, alicloud.Request{Query: url.Values{"RegionId": {""}}}, &out)
+	if err == nil || meta.Attempts != 0 || tr.Calls() != 0 {
+		t.Fatal("missing region sent")
+	}
+	_, err = c.Invoke(context.Background(), readOp, alicloud.Request{Query: url.Values{"RegionId": {""}}}, &out, func(o *alicloud.CallOptions) { o.Region = "cn-hangzhou"; o.Timeout = 0 })
+	if err != nil {
+		t.Fatal(err)
+	}
 }
