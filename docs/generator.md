@@ -2,6 +2,12 @@
 
 ## English
 
+The authoritative new direction is [product-generator-roadmap.md](product-generator-roadmap.md).
+It supersedes conflicting instructions below: complete DSL is primary, metadata is optional,
+operations/models are discovered automatically and overlays are sparse policy/compatibility
+exceptions. Below describes the five-operation bridge and historical acceptance, not future
+product-generator prerequisites.
+
 Foundation #19 passed before this work. Generator #8 is delivered in three ordered,
 independently reviewable issues: metadata/IR, emission/integration, then regeneration
 and acceptance. Benchmarks #20 remain separate. Issues are created before code.
@@ -103,6 +109,10 @@ Sources: [official metadata guide](https://help.aliyun.com/zh/sdk/product-overvi
 [ACS3](https://help.aliyun.com/zh/sdk/product-overview/v3-request-structure-and-signature).
 
 ## 中文
+
+新方向以 [product-generator-roadmap.md](product-generator-roadmap.md) 为准，优先于下文
+冲突要求：完整 DSL 为主、元数据可选、自动发现操作/模型、overlay 仅补策略/兼容。
+下文描述五操作兼容桥与历史验收，不作为未来产品生成器前置要求。
 
 基础 #19 验收通过后开始本阶段。#8 分成三个顺序执行、可独立评审的 issue：元数据/IR、
 生成/集成、再生成门禁/验收。基准 #20 独立；先创建 issue 再写代码。

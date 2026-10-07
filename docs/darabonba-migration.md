@@ -2,6 +2,11 @@
 
 ## English
 
+This records #31's five-operation compatibility bridge. The newer
+[product-generator-roadmap.md](product-generator-roadmap.md) governs subsequent work and
+supersedes conflicting snapshot/overlay prerequisites. Product discovery uses complete DSL,
+optional normalized metadata and automatic reachable models; #31 is not full-product acceptance.
+
 Use the official product DSL corpus at aliyun/alibabacloud-sdk and the official
 Darabonba parser as the build-time frontend. Keep our reviewed public API subset,
 IR, Go emitter and shared runtime. Node dependencies are development tools only;
@@ -56,6 +61,10 @@ CI run the same frontend plus Go gates; their results are tracked on the linked 
 Explorer browser verification is NOT RUN, with precise user steps in the decision guide.
 
 ## 中文
+
+本文件记录 #31 五操作兼容桥；后续以更新的
+[product-generator-roadmap.md](product-generator-roadmap.md) 为准，优先于冲突 snapshot/
+overlay 前置要求。产品发现使用完整 DSL、可选规范化元数据及自动可达模型，#31 不等于全量验收。
 
 以 aliyun/alibabacloud-sdk 的官方产品 DSL 和 Darabonba parser 为构建期前端，保留
 本项目审核后的公开 API 子集、IR、Go 后端及共享运行时。Node 依赖仅用于开发工具；

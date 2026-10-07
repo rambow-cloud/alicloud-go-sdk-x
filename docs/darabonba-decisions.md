@@ -15,7 +15,7 @@ required / DSL optional; reversing that direction requires a new supported polic
 | Difference | Reviewed disposition | Behavior evidence |
 | --- | --- | --- |
 | ECS/VPC DSL adds OwnerAccount, OwnerId, ResourceOwnerAccount, ResourceOwnerId absent from public snapshots | Keep outside the public subset. DSL presence does not grant a supported contract | Source comparison; no live owner-override calls |
-| DescribeInstances DSL adds Filter absent from its public snapshot | Keep unexposed; do not guess serialization or access semantics | Source comparison; not tested live |
+| DescribeInstances DSL has a repeated Filter model; snapshots expose Filter.1.Key/Value through Filter.4.Key/Value | Representation mismatch, not an established hidden field. Preserve the legacy Go subset while stage 1 normalizes bindings; indexes are not inferred server limits | Both sources checked; Filter not tested live |
 | DescribeInstances, DescribeInstanceStatus, DescribeVpcs DSL marks RegionId optional; metadata requires it | Retain API requiredness and existing configured-region fallback | Offline missing-region checks and prior #30 authorized reads with configured region |
 | AssumeRole DSL marks RoleArn/RoleSessionName optional; metadata requires both | Retain local required-field validation before HTTP; DSL optionality models unset values, not successful omission | Existing offline STS tests; live AssumeRole skipped without an explicit role |
 | Metadata allows GET and POST; DSL fixes POST for these operations | Use DSL POST and preserve current signed RPC encoding | Existing signed-wire fixtures and prior #30 reads; GET not exposed |
@@ -65,7 +65,7 @@ metadata/darabonba-decisions.json，由各产品 manifest 固定；前端和 Go 
 | 偏差 | 审核处理 | 行为证据 |
 | --- | --- | --- |
 | ECS/VPC DSL 多出 OwnerAccount、OwnerId、ResourceOwnerAccount、ResourceOwnerId，公共快照没有 | 不进入公开子集；DSL 出现不等于支持契约 | 源码比较；未真实调用 owner 覆盖 |
-| DescribeInstances DSL 多出 Filter，公共快照没有 | 不公开，不猜编码或访问语义 | 源码比较，未真实测试 |
+| DescribeInstances DSL 使用重复 Filter 模型，快照列 Filter.1.Key/Value 到 Filter.4.Key/Value | 表示差异，不是已确认隐藏字段；兼容阶段保留旧 Go 子集，阶段 1 规范化绑定，不由索引推断服务上限 | 已核查两个来源，Filter 未真实测试 |
 | DescribeInstances、DescribeInstanceStatus、DescribeVpcs 的 RegionId 在 DSL 可选、元数据必填 | 保留 API 必填及既有配置地域回退 | 离线缺地域检查和此前 #30 配置地域真实读取 |
 | AssumeRole 的 RoleArn/RoleSessionName 在 DSL 可选、元数据必填 | 保留 HTTP 前本地必填校验；DSL 表达可 unset，不表示省略后成功 | 既有 STS 离线测试；未提供明确 role，真实调用跳过 |
 | 元数据允许 GET/POST，DSL 固定 POST | 使用 DSL POST，保留既有签名 RPC 编码 | 既有签名协议测试和此前 #30 读取；不公开 GET |

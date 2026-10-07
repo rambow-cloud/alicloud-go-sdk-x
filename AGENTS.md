@@ -80,6 +80,25 @@ before changing the public API.
 
 ## Language and development sequence
 
+- The user-approved 2026-10-07 route in docs/development-path.md and
+  docs/product-generator-roadmap.md is authoritative and overrides conflicting older
+  metadata-first, per-operation snapshot/overlay and handwritten-doc prerequisites.
+  Historical acceptance remains recorded; superseded plans must not constrain new work.
+- Execute source normalization -> complete DSL operation/model discovery and IR -> batch
+  Go emission -> sparse capability policy -> documentation automation/profile expansion.
+  Complete official DSL and the official semantic parser are primary; canonical metadata
+  is optional enrichment/cross-check input after representation normalization.
+- Discover operations/reachable models automatically without per-API metadata, field/model
+  selection or handwritten-doc overlays. Overlays supply reviewed policy and compatibility
+  exceptions. #31 is a five-operation bridge, not product-wide acceptance or a permanent
+  per-API authoring workflow. Preserve runtime/AWS conventions, Go 1.27 and JSON v2.
+- Publish deterministic coverage/reasons; discovered, lowered, emitted, compiled and live
+  coverage are distinct. Selected unsupported behavior fails before writes. Normalize
+  indexed inputs/itemName wrappers before source conflict decisions.
+- Establish bilingual route docs, then actual issue dependencies, then stage implementation
+  on separate issue branches. Each stage includes docs/tests/Examples/pkg.go.dev acceptance;
+  the documentation automation stage does not postpone earlier documentation.
+
 - All human-facing Markdown documentation must contain equivalent English and Chinese
   sections, or explicitly linked language counterparts, updated in the same change.
 - GitHub issue and PR titles/bodies, identifiers, diagnostics, and code comments are
@@ -154,6 +173,20 @@ before changing the public API.
 - 用户未明确要求时不启动子代理。
 
 ### 语言与开发顺序
+
+- 用户于 2026-10-07 确认的 docs/development-path.md 和 docs/product-generator-roadmap.md
+  为权威路线，优先于冲突旧元数据优先、逐操作 snapshot/overlay、手写说明前置要求；
+  保留历史验收，不用已被替代的计划约束新工作。
+- 按来源规范化 → 完整 DSL 操作/模型发现与 IR → 批量 Go 输出 → 少量能力策略 →
+  文档自动化/协议扩展执行。完整官方 DSL/官方语义 parser 为主，canonical 元数据
+  规范化后可选补充/交叉验证。
+- 自动发现操作/可达模型，不以逐 API 元数据、字段/模型选择、手写说明 overlay 为前提。
+  Overlay 只补审核策略和兼容例外；#31 为五操作兼容桥，不是产品全量验收或永久逐 API
+  手写流程。保留 runtime/AWS 范式、Go 1.27、JSON v2。
+- 输出确定性覆盖/原因，区分发现/降低/输出/编译/真实验收；选中不支持行为写前失败。
+  先规范化索引输入/itemName 包装，再判断来源冲突。
+- 先落实双语路线，再建真实 issue 依赖，然后各 issue 分支实现阶段；每阶段同步文档/
+  测试/Example/pkg.go.dev，文档自动化阶段不表示前面可推迟文档。
 
 - 所有面向人的 Markdown 文档必须有语义对应的英文与中文章节，或明确互链的语言版本，并在同一变更更新。
 - GitHub issue/PR 标题正文、标识符、诊断和代码注释以英文为主；中文可补充，但不能替代英文的问题、
