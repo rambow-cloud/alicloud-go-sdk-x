@@ -44,6 +44,7 @@ New foundation issues are listed in the issue index and GitHub milestone; record
 
 Generator architecture, supported profile, provenance and acceptance are defined in
 [generator.md](generator.md). The foundation gate passed on commit 28684e4 before #21.
+The next real-product gate is #24 -> #25; see [generator-expansion.md](generator-expansion.md).
 
 Sources: [ACS3](https://help.aliyun.com/zh/sdk/product-overview/v3-request-structure-and-signature),
 [metadata](https://help.aliyun.com/zh/sdk/product-overview/openapi-metadata/),
@@ -84,3 +85,4 @@ Waiter 总期限与单次重试分开；凭据刷新有界并合并并发，一�
 新增 issue 的真实编号在索引与里程碑中登记，不预设编号。协议及设计参考来源与英文章节相同。
 
 生成器架构、支持范围、来源及验收见 [generator.md](generator.md)；#21 开始前，基础门槛已在 28684e4 通过。
+下一真实产品门槛为 #24 → #25，见 [generator-expansion.md](generator-expansion.md)。

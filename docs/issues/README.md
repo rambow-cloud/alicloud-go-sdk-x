@@ -20,6 +20,8 @@ GitHub owns current state; this table records dependencies. Existing #3 HTTP dep
 | #21 | Pinned metadata importer and validated IR | #19 |
 | #22 | Generated clients, models and paginator/waiter adapters | #21 |
 | #23 | Deterministic regeneration and CI acceptance | #22 |
+| #24 | Scalar presence, object lists, local references and page-only generation | #23 |
+| #25 | Generated VPC DescribeVpcs client and paginator | #24 |
 
 ## 中文
 
@@ -41,3 +43,5 @@ GitHub owns current state; this table records dependencies. Existing #3 HTTP dep
 | #21 | 固定元数据导入及校验 IR。 | #19 |
 | #22 | 生成客户端、模型及分页/waiter 适配器。 | #21 |
 | #23 | 确定性再生成与 CI 验收。 | #22 |
+| #24 | 标量存在语义、对象数组、本地引用及纯页码生成。 | #23 |
+| #25 | 生成 VPC DescribeVpcs 客户端及分页。 | #24 |
