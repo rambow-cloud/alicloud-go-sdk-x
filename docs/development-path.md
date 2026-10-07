@@ -11,10 +11,11 @@ and AGENTS.md govern this route and supersede conflicting older metadata-first,
 per-operation snapshot/overlay, field-selection and handwritten-doc prerequisites.
 The older stages and issue references below describe historical acceptance only.
 
-Before expanding the generated capability inventory, complete the stacked-PR review
-fix [#44](capability-role-review.md): reject aliased cursor and waiter roles within
-the same model before writes. This follows #38, preserves valid policies and the
-five-stage route, and does not imply dependency PRs have been integrated.
+The five-stage implementation and review fix [#44](capability-role-review.md) were
+integrated into main on 2026-10-08; [review evidence](generator-integration.md) records
+the accepted scope and merge commits. Same-model cursor/waiter aliases fail before
+writes. Further capability or protocol expansion needs separately scoped issues;
+the accepted pinned RPC implementation is the starting point.
 
 Execute source normalization -> complete operation/model discovery and IR -> batch Go
 emission -> sparse capability policy -> documentation automation/profile expansion.
@@ -91,9 +92,9 @@ Sources: [ACS3](https://help.aliyun.com/zh/sdk/product-overview/v3-request-struc
 
 ## 中文
 
-扩展生成能力清单前，完成叠加 PR 评审修复 [#44](capability-role-review.md)：同一
-模型内的游标及 waiter 角色重叠须在写前拒绝。此任务继 #38，保留有效策略与五阶段
-路线，不表示依赖 PR 已集成。
+五阶段实现和评审修复 [#44](capability-role-review.md) 已于 2026-10-08 集成 main，
+[评审证据](generator-integration.md) 记录验收范围与合并提交；同模型游标/waiter
+角色重叠写前拒绝。后续能力或协议扩展另建明确 issue，以当前固定 RPC 实现为起点。
 
 用户于 2026-10-07 确认的权威路线：完整官方产品 DSL → 官方 Darabonba 语义 parser →
 规范化操作/模型/绑定 IR → 本项目 Go 后端 → 已有 runtime。

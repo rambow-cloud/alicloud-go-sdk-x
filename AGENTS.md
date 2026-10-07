@@ -84,6 +84,9 @@ before changing the public API.
   docs/product-generator-roadmap.md is authoritative and overrides conflicting older
   metadata-first, per-operation snapshot/overlay and handwritten-doc prerequisites.
   Historical acceptance remains recorded; superseded plans must not constrain new work.
+- The initial five-stage route and #44 review fix are integrated into main as recorded
+  in docs/generator-integration.md (2026-10-08). New product/protocol/capability expansion
+  starts with a separate issue and acceptance scope; preserve this accepted baseline.
 - Execute source normalization -> complete DSL operation/model discovery and IR -> batch
   Go emission -> sparse capability policy -> documentation automation/profile expansion.
   Complete official DSL and the official semantic parser are primary; canonical metadata
@@ -190,6 +193,8 @@ before changing the public API.
 - 用户于 2026-10-07 确认的 docs/development-path.md 和 docs/product-generator-roadmap.md
   为权威路线，优先于冲突旧元数据优先、逐操作 snapshot/overlay、手写说明前置要求；
   保留历史验收，不用已被替代的计划约束新工作。
+- 初始五阶段路线及 #44 评审修复已集成 main，证据见 docs/generator-integration.md
+  （2026-10-08）。更多产品/协议/能力先建独立 issue 和验收范围，保留此已接受基线。
 - 按来源规范化 → 完整 DSL 操作/模型发现与 IR → 批量 Go 输出 → 少量能力策略 →
   文档自动化/协议扩展执行。完整官方 DSL/官方语义 parser 为主，canonical 元数据
   规范化后可选补充/交叉验证。

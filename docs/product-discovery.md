@@ -5,7 +5,8 @@
 Stage [#35](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/35) follows the
 [authoritative roadmap](product-generator-roadmap.md) and #34 normalization. Branch
 issue/35-product-discovery is stacked on issue/34-source-normalization / PR #39,
-which depends on unmerged #32. This specification is committed before implementation.
+which originally depended on #32. This specification was committed before implementation;
+the complete dependency stack is now [integrated into main](generator-integration.md).
 
 The build-time command uses Node 22, official parser 2.2.1 and the complete pinned
 product/import corpus. It verifies source hashes and import resolution, then performs
@@ -69,7 +70,7 @@ Examples. Browser/live calls are not part of this stage; full product Go emissio
 阶段 [#35](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/35) 按
 [权威路线](product-generator-roadmap.md) 继 #34 规范化执行。
 issue/35-product-discovery 分支叠加在 issue/34-source-normalization / PR #39，后者
-依赖未合并 #32。本规格在实现前提交。
+原先依赖 #32。本规格在实现前提交，完整依赖链现已[集成 main](generator-integration.md)。
 
 构建命令使用 Node 22、官方 parser 2.2.1、完整固定产品/导入源码；先核验来源哈希
 和导入路径，再离线语义解析。不读取旧 metadata manifest、决策、快照或 overlay，
