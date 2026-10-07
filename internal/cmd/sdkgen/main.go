@@ -26,6 +26,20 @@ func run(ctx context.Context, args []string) error {
 		return errors.New("usage: sdkgen import|generate|check [flags]")
 	}
 	switch args[0] {
+	case "generate", "check":
+		flags := flag.NewFlagSet(args[0], flag.ContinueOnError)
+		root := flags.String("root", ".", "Repository root containing metadata and generated outputs")
+		if err := flags.Parse(args[1:]); err != nil {
+			return err
+		}
+		if flags.NArg() != 0 {
+			return errors.New("codegen: no positional arguments expected")
+		}
+		if err := codegen.Generate(ctx, *root, args[0] == "check"); err != nil {
+			return err
+		}
+		fmt.Println("Generation " + args[0] + " passed (offline).")
+		return nil
 	case "import":
 		flags := flag.NewFlagSet("import", flag.ContinueOnError)
 		product := flags.String("product", "", "Official product code")

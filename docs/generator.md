@@ -6,6 +6,9 @@ Foundation #19 passed before this work. Generator #8 is delivered in three order
 independently reviewable issues: metadata/IR, emission/integration, then regeneration
 and acceptance. Benchmarks #20 remain separate. Issues are created before code.
 
+Execution dependencies: #19 -> #21 (metadata/IR) -> #22 (emission/integration) ->
+#23 (regeneration/CI). Parent #8 closes only after all three pass acceptance.
+
 The pipeline is official operation metadata -> pinned protocol snapshots -> reviewed
 overlay -> validated intermediate representation (IR) -> formatted Go and paired guides.
 The first supported profile is RPC over HTTPS, POST `/`, query parameters and a JSON
@@ -43,6 +46,33 @@ timestamps/absolute paths; stable sorting and go/format remove map-order differe
 CI checks regeneration, existing protocol fixtures, cross-capability integration,
 Examples, public docs, bilingual guides, race tests and Windows portability.
 
+Commands from the repository root:
+
+```sh
+go run ./internal/cmd/sdkgen generate
+go run ./internal/cmd/sdkgen check
+```
+
+Both are offline; `-root PATH` selects another repository root. Check never writes.
+Generate repairs owned drift and removes stale files bearing sdkgen's exact marker;
+unmarked handwritten files remain protected. Inputs and ownership are preflighted
+before mutation. An OS I/O failure can leave a partial multi-file update; rerun generate
+after resolving it. Files are replaced individually using temporary files and rename.
+
+To add an operation: establish an issue and protocol evidence, explicitly import its
+metadata ([commands](../metadata/README.md)), review the manifest/overlay, select named
+fields and exact response paths, mark idempotency, supply bilingual guidance and an
+offline example, then generate and run the existing gates. Validators name local
+handwritten functions of `func(OperationInput) error`; they are compiled by tests, not
+executed by the generator. Policy fields are checked against selected input/output
+models. One reviewed dual-mode paginator and one all-ID bounded waiter per product are
+supported in schema version 1. Endpoints continue to use the shared resolver.
+
+Acceptance mapping: #21 -> metadata_test.go (including synthetic IR and schema drift);
+#22 -> emit_test.go (isolated synthetic client compilation with GOPROXY=off), existing
+ECS/STS protocol and paginator/waiter/helper tests plus foundation_test.go;
+#23 -> generate_test.go, CLI tests, CI check and docs/language gates.
+
 Next profiles (ROA/body encodings, general nested requests and wider service coverage)
 require separate issues and protocol evidence; this first working generator is not
 full Alibaba Cloud schema coverage or an API compatibility guarantee before v1.
@@ -54,6 +84,8 @@ Sources: [official metadata guide](https://help.aliyun.com/zh/sdk/product-overvi
 
 基础 #19 验收通过后开始本阶段。#8 分成三个顺序执行、可独立评审的 issue：元数据/IR、
 生成/集成、再生成门禁/验收。基准 #20 独立；先创建 issue 再写代码。
+
+执行依赖：#19 → #21（元数据/IR）→ #22（生成/集成）→ #23（再生成/CI）；全部验收后关闭父任务 #8。
 
 流水线为官方操作元数据 → 固定协议快照 → 审核 overlay → 校验 IR → 格式化 Go 代码及双语指南。
 首版支持 RPC、HTTPS、POST `/`、query 参数、JSON 200 响应；操作为 ECS 的 DescribeRegions、
@@ -76,6 +108,21 @@ overlay 不能静默发明线字段或改变类型。manifest/overlay 未知成�
 生成器管理明确的文件集合，使用 `Code generated` 标记，先渲染全部产品再写入，拒绝覆盖无标记文件。
 Check 模式不写文件，报告缺失、变化和多余生成文件。输出不含本地时间或绝对路径；排序及 go/format
 消除 map 顺序差异。CI 检查再生成、已有协议测试、跨能力集成、Examples、公共注释、双语指南、race 及 Windows。
+
+仓库根目录执行 `go run ./internal/cmd/sdkgen generate` 或 `go run ./internal/cmd/sdkgen check`，
+均离线；`-root PATH` 可指定另一根目录。Check 不写文件。Generate 修复生成文件差异，删除带本生成器
+准确标记的多余文件；无标记手写文件受到保护。输入及所有权在写入前检查；系统 I/O 失败可能留下部分多文件
+更新，修复原因后再运行 generate。每个文件通过临时文件和 rename 替换。
+
+新增操作：先建 issue 和协议证据，显式导入元数据（[命令](../metadata/README.md)），评审 manifest/overlay，
+选择具名字段与准确响应路径，明确幂等性，提供双语说明及离线示例，再生成并运行门禁。
+Validator 指向 `func(OperationInput) error` 的本地手写函数；测试负责编译，生成器不执行。
+规则字段对选定输入/输出模型检查。schema v1 每产品支持一个审核双模式 paginator 和一个有界全 ID waiter。
+端点继续复用共享 resolver。
+
+验收映射：#21 对应 metadata_test.go（含合成 IR 和 schema 漂移）；#22 对应 emit_test.go
+（GOPROXY=off 的隔离合成客户端编译）、已有 ECS/STS 协议和分页/waiter/helper 测试及 foundation_test.go；
+#23 对应 generate_test.go、CLI 测试、CI 再生成及文档/语言门禁。
 
 后续 ROA/body、通用嵌套请求及更多产品须独立 issue 和协议证据；首个可用 generator 不代表全量
 阿里云 schema 覆盖，也不代表 v1 前公共 API 稳定承诺。官方来源与英文章节一致。

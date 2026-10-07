@@ -24,7 +24,7 @@ Implement a bounded explicit metadata importer, protocol-only snapshots, source/
 
 ### Affected areas
 
-module:tools
+tools
 
 ## 中文
 

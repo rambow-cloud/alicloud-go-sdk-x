@@ -151,6 +151,14 @@ func TestPinnedProductsAndSchemaDrift(t *testing.T) {
 				}
 			}
 		},
+		"invalid numeric constraint": func(d map[string]any) {
+			for _, raw := range d["parameters"].([]any) {
+				p := raw.(map[string]any)
+				if p["name"] == "AcceptLanguage" {
+					p["schema"].(map[string]any)["minimum"] = "1"
+				}
+			}
+		},
 	}
 	for name, change := range cases {
 		t.Run(name, func(t *testing.T) {
@@ -182,6 +190,31 @@ func TestPinnedProductsAndSchemaDrift(t *testing.T) {
 	os.WriteFile(path, data, 0600)
 	if _, err := Load(dir); err == nil {
 		t.Fatal("unknown overlay member accepted")
+	}
+}
+
+func TestPolicyBoundsAreValidated(t *testing.T) {
+	for _, change := range []func(*Overlay){
+		func(o *Overlay) { o.Waiter.MaxIDs = 51 },
+		func(o *Overlay) { o.Paginator.DefaultSize = 101 },
+		func(o *Overlay) { o.Waiter.Retry = append(o.Waiter.Retry, o.Waiter.Success) },
+	} {
+		dir := copyFixture(t, "ecs")
+		var o Overlay
+		if err := readJSON(filepath.Join(dir, "overlay.json"), &o, true); err != nil {
+			t.Fatal(err)
+		}
+		change(&o)
+		data, err := json.Marshal(o)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(filepath.Join(dir, "overlay.json"), data, 0600); err != nil {
+			t.Fatal(err)
+		}
+		if _, err := Load(dir); err == nil {
+			t.Fatal("invalid reviewed policy accepted")
+		}
 	}
 }
 

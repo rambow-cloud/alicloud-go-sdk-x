@@ -12,11 +12,13 @@ An independent Alibaba Cloud SDK for Go. Requires Go 1.27 and encoding/json/v2.
 Development is issue-driven, runtime-first, with English-primary Go docs and paired
 English/Chinese guides. It is not an official SDK. APIs may change before v1.
 
-The eleven shared foundation capabilities are implemented and exercised by handwritten
+The eleven shared foundation capabilities were accepted with handwritten references and are now exercised by generated
 ECS/STS clients. See the [supported-operation matrix](docs/support.md) and
 [acceptance mapping](docs/foundation-acceptance.md). Coverage is limited to the documented
-reference operations; no full-product or live-cloud acceptance is claimed. Generator #8
-and benchmarks #20 are separate follow-ups. No version tag is published by this task.
+reference operations; no full-product or live-cloud acceptance is claimed. The first
+[generator profile](docs/generator.md) generates four operations, models, codecs, mock
+interfaces, paginator/waiter adapters, Go docs, offline Examples and bilingual guides.
+Benchmarks #20 remain separate. No version tag is published by this task.
 
 Foundation: shared middleware, endpoints, structured errors, bounded retry, credential
 providers/cache/chain, STS helper, unified pagination/waiters, mock interfaces, testing
@@ -69,7 +71,7 @@ remove the scripted HTTP client. Guides: [runtime](docs/runtime.md),
 [middleware](docs/middleware.md), [endpoints](docs/endpoints.md), [errors](docs/errors.md),
 [testing](docs/testing.md), [telemetry](docs/telemetry.md).
 
-Run go run ./internal/cmd/doccheck, node .github/scripts/check-doc-language.cjs,
+Run go run ./internal/cmd/sdkgen check, go run ./internal/cmd/doccheck, node .github/scripts/check-doc-language.cjs,
 go vet ./..., go test ./..., and node --test .github/scripts/*.test.cjs.
 Linux CI runs race detection; Windows CI verifies portability. Public packages provide
 offline external Examples. Documentation checks cover structure; reviewers check semantics.
@@ -86,9 +88,10 @@ Read AGENTS.md and CONTRIBUTING.md before contributing. MIT: see LICENSE.
 独立阿里云 Go SDK，要求 Go 1.27 和直接使用 JSON v2。采用 issue 驱动、runtime 优先，
 Go 注释英文为主，使用指南中英文对应。本项目非官方 SDK，v1 前 API 可能变化。
 
-十一项共享基础能力已经实现，并由手写 ECS/STS 客户端验证。参见[支持矩阵](docs/support.md)和
+十一项共享基础能力已由手写参考验收，现由生成的 ECS/STS 客户端继续验证。参见[支持矩阵](docs/support.md)和
 [验收映射](docs/foundation-acceptance.md)。覆盖限于记载的参考操作，不宣称全产品或真实云验收。
-生成器 #8 与基准 #20 是独立后续任务。
+[首版生成器](docs/generator.md) 生成四个操作、模型、编码、小 mock 接口、分页/waiter 适配器、Go 注释、
+离线 Example 和双语指南；基准 #20 继续独立。
 本次任务不发布版本标签。基础包括共享 middleware、endpoint、结构化错误、有界重试、凭据 provider/cache/chain、
 STS helper、统一分页/waiter、mock 接口、测试辅助和可选 OpenTelemetry；基础验收后才建设 generator。
 设计、调研、issue 维护和发布步骤见英文章节所列文档。

@@ -416,6 +416,12 @@ func inputFields(s Snapshot, specs []FieldSpec) ([]Field, error) {
 		if field.Minimum != nil && field.Maximum != nil && *field.Minimum > *field.Maximum {
 			return nil, errors.New("codegen: inconsistent numeric constraints")
 		}
+		if (field.Minimum != nil || field.Maximum != nil) && spec.Type != "int" && spec.Type != "int64" {
+			return nil, errors.New("codegen: numeric constraints on a non-integer input")
+		}
+		if field.MaxItems < 0 || (field.MaxItems != 0 && spec.Type != "[]string") {
+			return nil, errors.New("codegen: invalid array bound")
+		}
 		selected[spec.Wire] = true
 		result = append(result, field)
 	}
@@ -604,6 +610,13 @@ func checkPolicies(p Product, claim func(string) error) error {
 		if spec.DefaultSize <= 0 {
 			return errors.New("codegen: positive paginator size required")
 		}
+		for _, f := range op.Inputs {
+			if f.Name == spec.Limit || f.Name == spec.Size {
+				if (f.Minimum != nil && int64(spec.DefaultSize) < *f.Minimum) || (f.Maximum != nil && int64(spec.DefaultSize) > *f.Maximum) {
+					return errors.New("codegen: paginator default exceeds schema bounds")
+				}
+			}
+		}
 		if err := claim(spec.Operation + "Paginator"); err != nil {
 			return err
 		}
@@ -649,6 +662,14 @@ func checkPolicies(p Product, claim func(string) error) error {
 		}
 		if spec.MaxIDs <= 0 || spec.Success == "" || len(spec.Retry) == 0 {
 			return errors.New("codegen: explicit waiter bounds and states required")
+		}
+		for _, f := range op.Inputs {
+			if f.Name == spec.IDs && f.MaxItems > 0 && spec.MaxIDs > f.MaxItems {
+				return errors.New("codegen: waiter ID bound exceeds schema limit")
+			}
+			if f.Name == spec.Size && ((f.Minimum != nil && int64(spec.MaxIDs) < *f.Minimum) || (f.Maximum != nil && int64(spec.MaxIDs) > *f.Maximum)) {
+				return errors.New("codegen: waiter page size exceeds schema bounds")
+			}
 		}
 		states := map[string]bool{spec.Success: true}
 		for _, state := range spec.Retry {

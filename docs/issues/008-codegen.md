@@ -12,7 +12,7 @@ The first working profile generates four RPC operations, selected models, codecs
 
 ### Affected areas
 
-module:tools
+tools
 
 ## 中文
 

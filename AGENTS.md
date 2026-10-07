@@ -88,6 +88,9 @@ before changing the public API.
   update the issue, then implement. Keep the issue dependency graph acyclic.
 - Every capability includes implementation, behavior tests, executable examples, paired
   documentation, and recorded verification. Keep generator and benchmark issues separate.
+- Generator changes also run `go run ./internal/cmd/sdkgen check`. Edit pinned metadata,
+  overlays, templates or handwritten validators under an issue; do not edit generated
+  files directly. Review schema drift and rerun generation before public API checks.
 
 ## 中文
 
@@ -142,3 +145,5 @@ before changing the public API.
 - 十一项公共基础能力及手写 ECS/STS 契约测试验收后才能开发 generator；之前可以调研元数据，接口存在不等于验收完成。
 - 选取 issue 前阅读开发路径；先写路径、再建或更新 issue、然后实现；依赖图保持无环。
 - 每项能力包含实现、行为测试、可执行示例、双语文档与验证记录；生成器与基准分开跟踪。
+- 生成器变更还需运行 `go run ./internal/cmd/sdkgen check`。在 issue 下修改固定元数据、overlay、
+  模板或手写 validator，不直接修改生成文件；评审 schema 漂移并重新生成后执行公共 API 检查。

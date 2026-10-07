@@ -24,7 +24,7 @@ Implement offline write/check commands with an explicit owned file set, full ren
 
 ### Affected areas
 
-module:tools, module:docs, module:ci
+tools
 
 ## 中文
 

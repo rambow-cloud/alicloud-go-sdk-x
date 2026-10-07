@@ -47,6 +47,8 @@ jobs:
           fi
       - name: Check documentation and JSON v2 policy
         run: go run ./internal/cmd/doccheck
+      - name: Check offline regeneration
+        run: go run ./internal/cmd/sdkgen check
       - name: Vet
         run: go vet ./...
       - name: Test packages and runnable examples

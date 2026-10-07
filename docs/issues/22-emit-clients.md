@@ -24,7 +24,7 @@ Emit formatted models, request codecs, operation methods, minimal mock interface
 
 ### Affected areas
 
-module:tools, module:ecs, module:sts
+tools, ecs, sts
 
 ## 中文
 
