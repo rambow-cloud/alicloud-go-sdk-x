@@ -1,6 +1,11 @@
 // Package alicloud provides a shared ACS3 HTTP runtime and structured errors for
 // an independent Alibaba Cloud SDK for Go. Construct NewClient with explicit
-// credentials and use handwritten service clients in services/ecs and services/sts.
+// credential providers and use generated service clients in service/ecs and service/sts.
+// Prefer renewable STS role credentials wrapped in credentials.Cache. Long-lived
+// access keys require an explicit StaticProvider; environment credentials require
+// an explicit EnvProvider. Custom providers remain supported. Config never accepts
+// bare keys or discovers an implicit credential source. Construction rejects nil
+// and typed-nil providers without retrieving credentials.
 //
 // # Project status
 //

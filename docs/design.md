@@ -36,6 +36,12 @@ Provider precedence is explicit. EnvProvider reports absent vs incomplete keys; 
 skips only absent providers. Cache expiry/early refresh and concurrent refresh ownership
 are documented. STS helpers live outside credentials to avoid import cycles.
 
+Application guidance is STS-first: generated STS -> renewable role provider/cache ->
+service client. Config/service Options accept providers only. Static/env sources
+require explicit registration; custom providers remain supported. No implicit source
+fallback or STS-only enforcement is introduced. Reject nil/typed-nil providers before
+requests without credential retrieval during construction; see [credential contracts](credentials.md).
+
 Human-facing Markdown is paired English/Chinese; Go comments and GitHub issues are English-primary.
 Every public package has doc.go and a runnable external Example. Internal-only packages
 do not pretend to have user APIs. Metadata/schema licensing and version provenance are
@@ -64,5 +70,9 @@ errors.Is 检查取消。禁止凭据日志，不配置全局 OTel provider/expo
 
 凭据优先级显式；环境来源区分不存在与不完整，链只跳过不存在。缓存说明过期/提前刷新/并发所有权。
 STS helper 位于 credentials 外避免 import cycle。所有 Markdown 中英文对应，注释与 issues 英文为主。
+
+应用指南优先采用生成 STS→可刷新 role provider/cache→服务客户端。Config/服务 Options 只接受
+provider；静态/环境来源需显式注册，保留自定义 provider，不引入隐式来源回退或 STS-only 限制。
+请求前拒绝 nil/typed-nil provider，构造期间不读取凭据，见[凭据契约](credentials.md)。
 每个公共包有 doc.go 和外部可执行 Example；内部包不伪装用户 API。生成前固定 schema 来源、版本与许可证。
 发布和浏览器索引步骤见 releasing.md。

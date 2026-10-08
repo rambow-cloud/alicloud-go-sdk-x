@@ -16,15 +16,12 @@ func (f ProviderFunc) Retrieve(ctx context.Context) (Credentials, error) { retur
 // or metadata implicitly. Its zero value returns ErrNotFound.
 type Chain struct{ providers []Provider }
 
-// NewChain copies providers and rejects nil sources. Sources remain shared and
+// NewChain copies providers and rejects nil and typed-nil sources. Sources remain shared and
 // must obey Provider's concurrency and cancellation contract.
 func NewChain(providers ...Provider) (*Chain, error) {
 	for _, p := range providers {
-		if p == nil {
+		if isNilProvider(p) {
 			return nil, errors.New("credentials: nil provider")
-		}
-		if f, ok := p.(ProviderFunc); ok && f == nil {
-			return nil, errors.New("credentials: nil function")
 		}
 	}
 	return &Chain{providers: append([]Provider(nil), providers...)}, nil

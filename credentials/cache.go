@@ -37,11 +37,9 @@ type Cache struct {
 // NewCache validates options and wraps a shared provider. A zero expiration
 // snapshot is cached until Invalidate; a near-expiry valid snapshot is returned
 // immediately while one refresh runs in the background.
+// Nil and typed-nil sources are rejected without retrieval.
 func NewCache(source Provider, options CacheOptions) (*Cache, error) {
-	if source == nil {
-		return nil, errors.New("credentials: nil cache source")
-	}
-	if f, ok := source.(ProviderFunc); ok && f == nil {
+	if isNilProvider(source) {
 		return nil, errors.New("credentials: nil cache source")
 	}
 	if options.ExpiryWindow < 0 || options.RefreshTimeout < 0 {

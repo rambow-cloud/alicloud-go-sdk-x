@@ -60,6 +60,12 @@ comparison -> authorized live gaps -> source-update rehearsal -> release sequenc
   extension contract. Do not implement cloud operations without protocol evidence.
 - Never log credentials, authorization headers, or raw request/response bodies by
   default. Do not commit real credentials or make live cloud calls in unit tests.
+- Make renewable STS role providers with credentials.Cache the primary application
+  guidance. Config/service Options accept providers only, never bare AK/SK/token
+  fields. Long-lived keys and environment sources require explicit StaticProvider
+  or EnvProvider registration; preserve deliberate custom providers. Do not add
+  implicit discovery or enforce an STS-only runtime. Reject nil/typed-nil providers
+  before requests without retrieving credentials during construction.
 
 ## pkg.go.dev definition of done
 
@@ -183,6 +189,10 @@ PASS/FAIL/SKIP/NOT RUN，必需项跳过则门槛未通过。生成/编译数量
 - 新依赖须有 issue 依据；核心运行时保持标准库依赖，除非具体需求证明无法做到。
 - 签名、编码及重试实现保持内部，实际需要用户扩展时公开稳定契约；云操作必须有协议依据。
 - 默认不记录凭据、授权头或原始请求/响应体；不提交真实凭据，单元测试不访问真实云资源。
+- 应用指南优先采用可刷新的 STS role provider 与 credentials.Cache；Config/服务 Options
+  只接受 provider，不增加裸 AK/SK/token 字段。长期密钥及环境来源必须显式注册
+  StaticProvider/EnvProvider，保留有意注入的自定义 provider；不隐式发现来源，不强制运行时
+  仅接受 STS。请求前拒绝 nil/typed-nil provider，构造期间不读取凭据。
 
 ### pkg.go.dev 完成标准
 

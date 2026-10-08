@@ -34,6 +34,9 @@ type Config struct {
 	// Region is the default operation region; individual operations may override it.
 	Region string
 	// CredentialsProvider is required and must honor the Provider contract.
+	// Prefer a cached STS role provider. Long-lived keys and environment sources
+	// require explicit providers; nil and typed-nil providers are rejected.
+	// Construction never retrieves credentials or discovers a fallback source.
 	CredentialsProvider credentials.Provider
 	// HTTPClient is optional; nil uses a private http.Client with redirects disabled.
 	HTTPClient HTTPClient
@@ -108,7 +111,15 @@ type Client struct {
 // NewClient validates configuration. Supplied *http.Client values are shallow
 // copied and redirects are disabled without modifying the caller's client.
 func NewClient(config Config) (*Client, error) {
-	if config.CredentialsProvider == nil {
+	provider := reflect.ValueOf(config.CredentialsProvider)
+	missingProvider := !provider.IsValid()
+	if provider.IsValid() {
+		switch provider.Kind() {
+		case reflect.Chan, reflect.Func, reflect.Interface, reflect.Map, reflect.Pointer, reflect.Slice:
+			missingProvider = provider.IsNil()
+		}
+	}
+	if missingProvider {
 		return nil, errors.New("alicloud: credentials provider required")
 	}
 	if config.Timeout < 0 || config.MaxResponseBytes < 0 || config.MaxResponseBytes == int64(1<<63-1) {

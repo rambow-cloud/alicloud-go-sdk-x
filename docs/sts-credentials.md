@@ -13,6 +13,14 @@ NewAssumeRoleProvider keeps its services/sts reference-bridge convention.
 
 ### Composition
 
+This is the primary application credential path. The README and external
+ExampleAssumeRoleProvider provide a complete offline STS-to-ECS program, including
+role signing assertions and cache reuse. A long-lived source is optional and must
+be explicitly constructed with credentials.NewStaticProvider; an environment source
+must be explicitly declared as credentials.EnvProvider{}. Custom sources remain
+supported. Config/Options never accept bare keys, discover a fallback or retrieve
+credentials during construction; nil/typed-nil providers fail before requests.
+
 ```go
 // Function body: the application supplies ctx and a separate source provider.
 api, err := sts.NewFromConfig(alicloud.Config{
@@ -86,6 +94,12 @@ service/sts 窄接口和完整原生输入/options，直接组合 credentials.Ca
 响应转换。旧构造器继续保留 services/sts 参考桥调用方式。
 
 ### 组合
+
+这是应用凭据的主要使用路径。README 与外部 ExampleAssumeRoleProvider 提供完整离线
+STS→ECS 程序，包含角色签名断言与缓存复用。长期来源为可选项，必须显式调用
+credentials.NewStaticProvider；环境来源必须显式声明 credentials.EnvProvider{}，仍支持
+自定义来源。Config/Options 不接受裸密钥、不发现回退、不在构造期间读取凭据；发送请求前
+拒绝 nil/typed-nil provider。
 
 英文代码为函数体，应用传入 ctx 与独立 source provider，导入根包 alicloud、credentials、
 feature/stscreds、service/sts、service/ecs。按 STS client→role provider→cache→生成 ECS

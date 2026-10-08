@@ -14,6 +14,14 @@ The first follow-up is [full-DSL STS provider composition #51](sts-credentials.m
 for AC-05/UX-04; it preserves the reference helper and establishes offline integration,
 while real role/refresh and independent developer-task evidence remain separate.
 
+The next user-directed credential step [#53](credentials.md) makes STS provider/cache the primary documented
+application path. Long-lived AK/SK and environment sources require explicit provider
+registration, following AWS's provider injection convention; Config/Options must never
+gain bare key fields or implicit environment fallback. Preserve custom providers and
+the existing StaticProvider API. Reject nil and typed-nil sources before requests,
+prove the rule through runtime/generated-client and per-call tests, and ship a complete
+offline STS-to-ECS Example with paired guidance before resuming UX comparisons.
+
 Authoritative route revised at the user's direction on 2026-10-07: complete official
 product DSL -> official Darabonba semantic parser -> normalized operation/model/binding
 IR -> our Go backend -> existing runtime. [product-generator-roadmap.md](product-generator-roadmap.md)
@@ -101,6 +109,12 @@ Sources: [ACS3](https://help.aliyun.com/zh/sdk/product-overview/v3-request-struc
 [AWS testing](https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/unit-testing.html).
 
 ## 中文
+
+用户指定的下一项凭据工作 [#53](credentials.md) 将 STS provider/cache 作为主要应用指南。长期 AK/SK 和环境来源必须
+显式注册 provider，遵循 AWS 的 provider 注入范式；Config/Options 不新增裸密钥字段或隐式
+环境回退。保留自定义 provider 与现有 StaticProvider API，发送请求前拒绝 nil/typed-nil 来源，
+通过运行时/生成客户端及操作覆盖测试证明，并提供完整离线 STS→ECS Example 和配对指南，
+然后继续体验对照。
 
 后续 issue 依照[产品验收](product-acceptance.md)（#49），候选 Beta 范围、AC/UX 编号、
 离线/真实/用户体验/发布证据及必需项状态共同决定完成。下一步为完整 DSL STS provider

@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"os"
+	"reflect"
 	"strings"
 	"time"
 )
@@ -50,8 +51,9 @@ type Provider interface {
 }
 
 // StaticProvider holds an immutable copy of explicitly supplied credentials.
-// Construct one with NewStaticProvider. A zero provider returns ErrMissingCredentials.
+// Construct one with NewStaticProvider. A zero or nil provider returns ErrMissingCredentials.
 // Static credentials are not refreshed; known expiration is checked on retrieval.
+// Prefer a renewable role provider with Cache for application service clients.
 type StaticProvider struct {
 	value Credentials
 }
@@ -73,10 +75,13 @@ func NewStaticProvider(value Credentials) (*StaticProvider, error) {
 }
 
 // Retrieve returns the stored copy, or ctx.Err if the context is already done.
-// It performs no I/O and returns ErrMissingCredentials for a zero provider.
+// It performs no I/O and returns ErrMissingCredentials for a zero or nil provider.
 func (p *StaticProvider) Retrieve(ctx context.Context) (Credentials, error) {
 	if err := ctx.Err(); err != nil {
 		return Credentials{}, err
+	}
+	if p == nil {
+		return Credentials{}, ErrMissingCredentials
 	}
 	if err := validate(p.value); err != nil {
 		return Credentials{}, err
@@ -121,4 +126,16 @@ func validate(value Credentials) error {
 		return ErrMissingCredentials
 	}
 	return nil
+}
+
+func isNilProvider(provider Provider) bool {
+	if provider == nil {
+		return true
+	}
+	v := reflect.ValueOf(provider)
+	switch v.Kind() {
+	case reflect.Chan, reflect.Func, reflect.Interface, reflect.Map, reflect.Pointer, reflect.Slice:
+		return v.IsNil()
+	}
+	return false
 }

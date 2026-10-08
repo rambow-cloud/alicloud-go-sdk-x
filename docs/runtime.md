@@ -2,9 +2,14 @@
 
 ## English
 
+Credential configuration follows [STS-first provider contracts](credentials.md).
+Config and service Options never accept bare AK/SK/token fields. Explicit static,
+environment and custom providers remain valid; nil/typed-nil providers fail before
+requests, without implicit fallback or retrieval during construction.
+
 Generated services expose a concrete Options type with the alicloud.Config fields,
 NewFromConfig(config, optFns...) and the existing New(config, optFns...) convenience
-path. Both validate and return (*Client, error). Client.Options returns a snapshot
+path. Both validate and return (\*Client, error). Client.Options returns a snapshot
 with copied middleware registrations. Operation options apply to an isolated copy of
 configuration, including Retryer/HTTPClient/EndpointResolver, before execution; nil
 functions and invalid limits fail. Explicit NoRetry disables a retry override. Hooks,
@@ -16,8 +21,12 @@ Construct `alicloud.Client` with an explicit credential provider. Defaults are a
 
 ## 中文
 
+凭据配置遵循[STS 优先的 provider 契约](credentials.md)。Config/服务 Options 不接受裸
+AK/SK/token 字段；显式静态/环境/自定义 provider 均可用，nil/typed-nil 来源在请求前失败，
+不隐式回退、不在构造期间读取凭据。
+
 生成服务提供含 alicloud.Config 字段的独立 Options、NewFromConfig(config, optFns...) 和
-保留的 New(config, optFns...)；两者校验并返回 (*Client, error)。Client.Options 返回复制
+保留的 New(config, optFns...)；两者校验并返回 (\*Client, error)。Client.Options 返回复制
 middleware 注册项的快照。操作选项在执行前作用于独立配置副本，可覆盖 Retryer/HTTPClient/
 EndpointResolver；nil 函数及非法限制失败。显式 NoRetry 可禁用重试覆盖。Hook/provider/transport
 仍共享且遵守并发契约。根 InvokeModel 提供类型化 Serialize 边界，线调用的 CallOptions.Config
