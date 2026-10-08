@@ -10,4 +10,8 @@
 // configured source, generated STS client, cached role provider and generated ECS
 // client. Long-lived source keys are a deliberate bootstrap option; application
 // requests use role credentials. No source discovery or fallback occurs implicitly.
+// Raw operations, models and protocol bindings are generated from the official
+// Darabonba DSL. This package supplies reusable credential adaptation and reviewed
+// helper validation; credentials.Cache owns refresh scheduling. Native Profile
+// composition in feature/profilecreds uses the same generated-client adapter.
 package stscreds

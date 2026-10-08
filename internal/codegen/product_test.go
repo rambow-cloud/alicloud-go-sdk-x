@@ -28,6 +28,52 @@ func readProductIR(t *testing.T, pkg string) productIR {
 	return p
 }
 
+func readReuseFixture(t *testing.T) productIR {
+	t.Helper()
+	repository, err := filepath.Abs(filepath.Join("..", ".."))
+	if err != nil {
+		t.Fatal(err)
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+	cmd := exec.CommandContext(ctx, "node", filepath.Join(repository, "tools", "darabonba", "reuse-fixture.cjs"), repository)
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		t.Fatalf("official parser reuse fixture failed: %v\n%s", err, output)
+	}
+	var p productIR
+	if err := json.Unmarshal(output, &p); err != nil {
+		t.Fatal(err)
+	}
+	return p
+}
+
+func TestRenamedProductUsesSharedEmitterAndGuide(t *testing.T) {
+	p := readReuseFixture(t)
+	files, err := renderProduct(p)
+	if err != nil {
+		t.Fatal(err)
+	}
+	methods := string(files["service/authfixture/operations.gen.go"])
+	if strings.Count(methods, "Authentication: alicloud.AuthenticationAnonymousRPC") != 2 {
+		t.Fatal("anonymous protocol not reused")
+	}
+	if !strings.Contains(string(files["service/authfixture/types.gen.go"]), "type InspectIdentityInput struct{}") {
+		t.Fatal("requestless convention not reused")
+	}
+	for _, language := range []string{".md", ".zh-CN.md"} {
+		guide := string(files["docs/products/authfixture"+language])
+		for _, name := range []string{"ExchangeIdentity", "ExchangeAssertion"} {
+			if !strings.Contains(guide, "`"+name+"`") {
+				t.Fatal("guide omits native anonymous action", name)
+			}
+		}
+		if strings.Contains(guide, "sts-anonymous-rpc") || strings.Contains(guide, "v0.1.0") || strings.Contains(guide, "AssumeRoleWithOIDC/SAML") {
+			t.Fatal("STS-only acceptance leaked into another product")
+		}
+	}
+}
+
 func TestCompleteProductsDeterministicModelsMethodsAndExamples(t *testing.T) {
 	for pkg, want := range map[string]int{"ecs": 283, "sts": 4, "vpc": 296} {
 		t.Run(pkg, func(t *testing.T) {
@@ -297,6 +343,14 @@ func TestFullProductEmissionCompilesInIsolatedModule(t *testing.T) {
 			writeTestFile(t, root, name, data)
 		}
 	}
+	fixtureFiles, err := renderProduct(readReuseFixture(t))
+	if err != nil {
+		t.Fatal(err)
+	}
+	for name, data := range fixtureFiles {
+		writeTestFile(t, root, name, data)
+	}
+	writeTestFile(t, root, "service/authfixture/reuse_test.go", []byte(reuseRuntimeTest))
 	ctx, cancel := context.WithTimeout(context.Background(), 180*time.Second)
 	defer cancel()
 	cmd := exec.CommandContext(ctx, "go", "test", "-p", "1", "./service/...")
@@ -306,6 +360,58 @@ func TestFullProductEmissionCompilesInIsolatedModule(t *testing.T) {
 		t.Fatalf("isolated products do not compile/run: %v\n%s", err, output)
 	}
 }
+
+const reuseRuntimeTest = `package authfixture_test
+
+import (
+ "context"
+ "encoding/json/v2"
+ "fmt"
+ "net/http"
+ "sync/atomic"
+ "testing"
+ alicloud "github.com/rambow-cloud/alicloud-go-sdk-x"
+ "github.com/rambow-cloud/alicloud-go-sdk-x/credentials"
+ "github.com/rambow-cloud/alicloud-go-sdk-x/sdktest"
+ "github.com/rambow-cloud/alicloud-go-sdk-x/service/authfixture"
+)
+
+func TestRenamedActionsKeepWireAndAuthentication(t *testing.T) {
+ var reads atomic.Int32
+ source := credentials.ProviderFunc(func(context.Context)(credentials.Credentials,error){
+  reads.Add(1)
+  return credentials.Credentials{AccessKeyID:"synthetic-key",AccessKeySecret:"synthetic-secret"},nil
+ })
+ step := func(action, wire, value string, signed bool) sdktest.Step {
+  return sdktest.Step{Body:"{}",Check:func(r *http.Request)error{
+   if r.Header.Get("x-acs-action")!=action{return fmt.Errorf("wrong native action")}
+   if (r.Header.Get("Authorization")!="")!=signed{return fmt.Errorf("wrong authentication")}
+   if wire!="" && r.URL.Query().Get(wire)!=value{return fmt.Errorf("wire value lost")}
+   if action=="InspectIdentity" && len(r.URL.Query())!=0{return fmt.Errorf("requestless query changed")}
+   return nil
+  }}
+ }
+ transport:=sdktest.NewTransport(
+  step("ObtainRole","RoleArn","acs:ram::123:role/example",true),
+  step("InspectIdentity","","",true),
+  step("ExchangeIdentity","OIDCToken","synthetic-oidc",false),
+  step("ExchangeAssertion","SAMLAssertion","synthetic-saml",false),
+ )
+ client,err:=authfixture.NewFromConfig(alicloud.Config{Region:"cn-hangzhou",BaseEndpoint:"https://example.invalid",CredentialsProvider:source,HTTPClient:&http.Client{Transport:transport}})
+ if err!=nil{t.Fatal(err)}
+ role:=new(authfixture.ObtainRoleInput)
+ if err:=json.Unmarshal([]byte("{\"RoleArn\":\"acs:ram::123:role/example\",\"RoleSessionName\":\"example\"}"),role);err!=nil{t.Fatal(err)}
+ if _,err:=client.ObtainRole(context.Background(),role);err!=nil{t.Fatal(err)}
+ if _,err:=client.InspectIdentity(context.Background(),nil);err!=nil{t.Fatal(err)}
+ oidc:=new(authfixture.ExchangeIdentityInput)
+ if err:=json.Unmarshal([]byte("{\"OIDCToken\":\"synthetic-oidc\"}"),oidc);err!=nil{t.Fatal(err)}
+ if _,err:=client.ExchangeIdentity(context.Background(),oidc);err!=nil{t.Fatal(err)}
+ saml:=new(authfixture.ExchangeAssertionInput)
+ if err:=json.Unmarshal([]byte("{\"SAMLAssertion\":\"synthetic-saml\"}"),saml);err!=nil{t.Fatal(err)}
+ if _,err:=client.ExchangeAssertion(context.Background(),saml);err!=nil{t.Fatal(err)}
+ if reads.Load()!=2 || transport.Calls()!=4{t.Fatal("anonymous calls retrieved signing credentials or calls were lost")}
+}
+`
 
 func TestAnonymousProductRejectsAuthHandoffDrift(t *testing.T) {
 	for _, mutate := range []func(*productOperation){func(o *productOperation) { o.Handoff = "callApi" }, func(o *productOperation) { o.Protocol.AuthType = "AK" }, func(o *productOperation) { o.Protocol.AuthType = "FutureAuth" }} {

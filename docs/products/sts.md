@@ -33,10 +33,12 @@
 
 ## Anonymous RPC
 
-- AssumeRoleWithOIDC/SAML use reviewed anonymous RPC. Set credentials.AnonymousProvider{} explicitly; nil providers fail.
+- `AssumeRoleWithOIDC`, `AssumeRoleWithSAML` use reviewed anonymous RPC. Set credentials.AnonymousProvider{} explicitly; nil providers fail.
 - These actions never retrieve source credentials or sign. Signed actions still need signing credentials.
-- Supply tokens/assertions explicitly. Do not log fields or raw JSON.
-- No automatic retry or federation discovery.
+- Supply operation fields explicitly. Do not log sensitive fields or raw JSON.
+- Retry requires an explicit Retryer and reviewed idempotency policy.
+
+- Supply federation tokens/assertions explicitly; there is no federation discovery. Issuance actions do not retry.
 - Live federation: NOT RUN, outside the required v0.1.0 live scope. See [anonymous protocol](../sts-anonymous-rpc.md).
 
 ## Capability policy

@@ -453,14 +453,24 @@ func (r *productRenderer) guide(chinese bool) []byte {
 	} else {
 		fmt.Fprintf(&b, "%s# %s SDK guide\n\n[中文](%s.zh-CN.md)\n\n## Source and coverage\n\n- Import \x60%s/service/%s\x60.\n- Official DSL commit: \x60%s\x60. License: Apache-2.0. Source files and licenses are in \x60sources/darabonba\x60.\n- %d actions found; %d generated; %d unsupported; %d complete models.\n- Generation does not prove compilation or live behavior. See \x60%s.coverage.json\x60 and the PR checks.\n\n## Calls and data\n\n- Construct with \x60NewFromConfig(config)\x60. Call \x60client.Operation(ctx, &OperationInput{}, optFns...)\x60.\n- Nil input means an empty request. Required parameters still apply.\n- Nil optional pointers omit fields. Non-nil pointers preserve 0, false and empty strings.\n- Inputs are copied before middleware. Do not change inputs during calls or retain hook models/options.\n- Array query indexes start at 1. API field case and DSL string types stay unchanged.\n- RegionId defaults to the configured region. Operation options can override it.\n- Outputs keep the full response body and add Metadata. DSL envelope types remain separate.\n- Clients support concurrent calls. Small OperationAPI interfaces support mocks.\n- Use errors.Is for cancellation and errors.As for APIError/OperationError.\n- Set Retryer to enable retry. Only reviewed idempotent actions allow it.\n\n## Migration and examples\n\n- \x60services/%s\x60 is the older bridge for a few operations and its existing paginator/waiter adapters.\n- Changing imports also requires pointer-field and response-shape changes.\n- The tables below list reviewed adapters. Token-shaped fields do not imply support.\n- The generator extracts licensed descriptions and source indexes. Go comments keep source and ownership details.\n- Each action has an offline Example with scripted HTTP. Empty sample requests show calling syntax; they are not valid cloud requests.\n\n", productMarkdown, r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product)
 	}
+	var anonymous []string
 	for _, op := range r.operations {
 		if op.Protocol.AuthType == "Anonymous" {
+			anonymous = append(anonymous, "`"+op.Name+"`")
+		}
+	}
+	if len(anonymous) != 0 {
+		if chinese {
+			fmt.Fprintf(&b, "## 匿名 RPC\n\n- %s 使用已审核的匿名 RPC 协议。显式配置 credentials.AnonymousProvider{}；nil provider 无效。\n- 这些操作不读取来源凭据，也不签名。签名操作仍需要签名凭据。\n- 显式传入操作参数，不记录敏感字段或原始 JSON。\n- 只有配置 Retryer 且策略明确允许幂等重试时，才会重试。\n\n", strings.Join(anonymous, ", "))
+		} else {
+			fmt.Fprintf(&b, "## Anonymous RPC\n\n- %s use reviewed anonymous RPC. Set credentials.AnonymousProvider{} explicitly; nil providers fail.\n- These actions never retrieve source credentials or sign. Signed actions still need signing credentials.\n- Supply operation fields explicitly. Do not log sensitive fields or raw JSON.\n- Retry requires an explicit Retryer and reviewed idempotency policy.\n\n", strings.Join(anonymous, ", "))
+		}
+		if r.p.Product == "sts" {
 			if chinese {
-				b.WriteString("## 匿名 RPC\n\n- AssumeRoleWithOIDC/SAML 使用已审核的匿名 RPC 协议。显式配置 credentials.AnonymousProvider{}；nil provider 无效。\n- 即使配置了来源凭据，这两个操作也不读取凭据、不签名。签名操作仍需要签名凭据。\n- token 和身份断言由调用者传入；不要记录字段或原始 JSON。\n- 不自动重试，也不自动发现联邦身份。\n- 真实联邦调用尚未运行（NOT RUN），不属于 v0.1.0 的必需真实验收范围。见 [匿名协议](../sts-anonymous-rpc.zh-CN.md)。\n\n")
+				b.WriteString("- 联邦身份 token 和断言由调用者提供，不自动发现联邦身份。凭据签发操作不重试。\n- 真实联邦调用尚未运行（NOT RUN），不属于 v0.1.0 的必需真实验收范围。见 [匿名协议](../sts-anonymous-rpc.zh-CN.md)。\n\n")
 			} else {
-				b.WriteString("## Anonymous RPC\n\n- AssumeRoleWithOIDC/SAML use reviewed anonymous RPC. Set credentials.AnonymousProvider{} explicitly; nil providers fail.\n- These actions never retrieve source credentials or sign. Signed actions still need signing credentials.\n- Supply tokens/assertions explicitly. Do not log fields or raw JSON.\n- No automatic retry or federation discovery.\n- Live federation: NOT RUN, outside the required v0.1.0 live scope. See [anonymous protocol](../sts-anonymous-rpc.md).\n\n")
+				b.WriteString("- Supply federation tokens/assertions explicitly; there is no federation discovery. Issuance actions do not retry.\n- Live federation: NOT RUN, outside the required v0.1.0 live scope. See [anonymous protocol](../sts-anonymous-rpc.md).\n\n")
 			}
-			break
 		}
 	}
 	r.appendCapabilityGuide(&b, chinese)

@@ -7,8 +7,8 @@ import (
 
 	"github.com/rambow-cloud/alicloud-go-sdk-x/credentials"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/internal/rpcmodel"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/internal/stsrole"
 	productsts "github.com/rambow-cloud/alicloud-go-sdk-x/service/sts"
-	bridgests "github.com/rambow-cloud/alicloud-go-sdk-x/services/sts"
 )
 
 // NewAssumeRoleProviderFromClient adapts the complete service/sts AssumeRoleAPI
@@ -34,9 +34,8 @@ func NewAssumeRoleProviderFromClient(api productsts.AssumeRoleAPI, input product
 	if owned.DurationSeconds != nil && *owned.DurationSeconds < 900 {
 		return nil, errors.New("stscreds: duration must be at least 900 seconds")
 	}
-	// Reuse the accepted helper rules only for validation. The original full-DSL
-	// snapshot, including optional presence and int64 width, is sent unchanged.
-	validation := bridgests.AssumeRoleInput{
+	// Shared helper policy does not transform the native wire model.
+	validation := stsrole.Input{
 		RoleARN: value(owned.RoleARN), RoleSessionName: value(owned.RoleSessionName),
 		DurationSeconds: value(owned.DurationSeconds), Policy: value(owned.Policy),
 		ExternalID: value(owned.ExternalID), SourceIdentity: value(owned.SourceIdentity),
@@ -50,15 +49,12 @@ func NewAssumeRoleProviderFromClient(api productsts.AssumeRoleAPI, input product
 		}
 	}
 	registrations := append([]func(*productsts.Options){}, options...)
-	return &AssumeRoleProvider{productRetrieve: func(ctx context.Context) (credentials.Credentials, error) {
+	return &AssumeRoleProvider{retrieve: func(ctx context.Context) (credentials.Credentials, error) {
 		request, err := rpcmodel.Snapshot(ctx, owned)
 		if err != nil {
 			return credentials.Credentials{}, err
 		}
 		out, err := api.AssumeRole(ctx, request, append([]func(*productsts.Options){}, registrations...)...)
-		if ctx.Err() != nil {
-			return credentials.Credentials{}, ctx.Err()
-		}
 		if err != nil {
 			return credentials.Credentials{}, err
 		}

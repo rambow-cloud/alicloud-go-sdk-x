@@ -33,10 +33,12 @@
 
 ## 匿名 RPC
 
-- AssumeRoleWithOIDC/SAML 使用已审核的匿名 RPC 协议。显式配置 credentials.AnonymousProvider{}；nil provider 无效。
-- 即使配置了来源凭据，这两个操作也不读取凭据、不签名。签名操作仍需要签名凭据。
-- token 和身份断言由调用者传入；不要记录字段或原始 JSON。
-- 不自动重试，也不自动发现联邦身份。
+- `AssumeRoleWithOIDC`, `AssumeRoleWithSAML` 使用已审核的匿名 RPC 协议。显式配置 credentials.AnonymousProvider{}；nil provider 无效。
+- 这些操作不读取来源凭据，也不签名。签名操作仍需要签名凭据。
+- 显式传入操作参数，不记录敏感字段或原始 JSON。
+- 只有配置 Retryer 且策略明确允许幂等重试时，才会重试。
+
+- 联邦身份 token 和断言由调用者提供，不自动发现联邦身份。凭据签发操作不重试。
 - 真实联邦调用尚未运行（NOT RUN），不属于 v0.1.0 的必需真实验收范围。见 [匿名协议](../sts-anonymous-rpc.zh-CN.md)。
 
 ## 能力策略
