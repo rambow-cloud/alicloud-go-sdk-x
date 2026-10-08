@@ -8,6 +8,10 @@
 [CI](https://github.com/rambow-cloud/alicloud-go-sdk-x/actions/workflows/ci.yml) ·
 [Development path](docs/development-path.md)
 
+[Product acceptance](docs/product-acceptance.md) defines candidate Beta scope,
+developer tasks and separate foundation/live/UX/release evidence; compilation and
+generation counts alone are not a product acceptance result.
+
 The initial generator route and review fix are integrated into `main`; see the paired
 [review and integration record](docs/generator-integration.md) for commits, CI evidence
 and the accepted scope.
@@ -122,6 +126,9 @@ Read AGENTS.md and CONTRIBUTING.md before contributing. MIT: see LICENSE.
 [Go 文档](https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x) ·
 [CI](https://github.com/rambow-cloud/alicloud-go-sdk-x/actions/workflows/ci.yml) ·
 [开发路径](docs/development-path.md)
+
+[产品验收](docs/product-acceptance.md)明确候选 Beta、开发者任务和独立的基础/真实/
+体验/发布证据，编译及生成数量本身不表示产品验收通过。
 
 独立阿里云 Go SDK，要求 Go 1.27 和直接使用 JSON v2。采用 issue 驱动、runtime 优先，
 Go 注释英文为主，使用指南中英文对应。本项目非官方 SDK，v1 前 API 可能变化。

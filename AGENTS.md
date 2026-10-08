@@ -13,6 +13,13 @@ predictable request behavior, and documentation available on pkg.go.dev. This pr
 is not an official Alibaba Cloud SDK. Read `docs/research.md` and `docs/design.md`
 before changing the public API.
 
+Follow docs/product-acceptance.md for candidate Beta/release scope, AC/UX criterion
+IDs and required evidence. Record PASS/FAIL/SKIP/NOT RUN per case; skipped required
+cases keep the gate open. Generated/compiled counts, local PoCs and closed implementation
+issues do not establish Beta/release acceptance. Keep Smithy isolated until a separately
+approved route decision; follow the full-DSL STS composition -> consumer/official-v2
+comparison -> authorized live gaps -> source-update rehearsal -> release sequence.
+
 ## Issue-driven development
 
 - Every code or behavior change starts with an issue containing the problem, evidence,
@@ -146,6 +153,11 @@ before changing the public API.
 
 构建独立的阿里云 Go SDK，提供 Go 原生 API、小依赖核心、可预测请求行为和 pkg.go.dev 文档。
 本项目不是阿里云官方 SDK。修改公共 API 前阅读调研、设计和开发路径。
+
+候选 Beta/发布范围、AC/UX 标准编号和证据遵循 docs/product-acceptance.md，逐项记录
+PASS/FAIL/SKIP/NOT RUN，必需项跳过则门槛未通过。生成/编译数量、本地 PoC 或实现 issue
+关闭不代表 Beta/发布验收。Smithy 保持隔离，改变路线需独立批准的决策；继续按完整 DSL STS
+组合→消费者/官方 v2 对比→授权真实缺口→来源升级演练→发布执行。
 
 ### Issue 驱动
 

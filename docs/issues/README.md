@@ -38,6 +38,7 @@ foundation/generator issues are history, not new per-operation prerequisites.
 | #37   | Sparse capability policies                                                                   | #36                                                                 |
 | #38   | Licensed bilingual/pkg.go.dev documentation automation                                       | #37                                                                 |
 | #44   | Reject aliased pagination and waiter policy roles                                            | #38                                                                 |
+| #49   | Scoped product Beta/release criteria and developer experience definition                     | #33, #44; #47 evidence tracked separately                           |
 
 ## 中文
 
@@ -79,3 +80,4 @@ Review 修复按 #26 → #27 → #28 → #29 执行，详见 [修复路径](../a
 | #37   | 少量能力策略。                                                                                    | #36                                                                 |
 | #38   | 授权双语/pkg.go.dev 文档自动化。                                                                  | #37                                                                 |
 | #44   | 拒绝分页与 waiter 策略的同模型角色重叠。                                                          | #38                                                                 |
+| #49   | 限定产品 Beta/发布标准及开发者体验定义。                                                          | #33、#44；#47 证据独立跟踪                                          |

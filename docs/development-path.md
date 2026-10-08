@@ -4,6 +4,12 @@
 
 ## English
 
+Future scoped issues follow [product acceptance](product-acceptance.md) (#49):
+candidate Beta boundaries, AC/UX IDs, distinct offline/live/UX/publication evidence
+and required-case status govern completion. Next: full-DSL STS provider composition,
+consumer/official-v2 comparison, authorized live gaps, source-update rehearsal and
+release. Benchmark #20 remains separate; Smithy is an isolated experiment.
+
 Authoritative route revised at the user's direction on 2026-10-07: complete official
 product DSL -> official Darabonba semantic parser -> normalized operation/model/binding
 IR -> our Go backend -> existing runtime. [product-generator-roadmap.md](product-generator-roadmap.md)
@@ -91,6 +97,11 @@ Sources: [ACS3](https://help.aliyun.com/zh/sdk/product-overview/v3-request-struc
 [AWS testing](https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/unit-testing.html).
 
 ## 中文
+
+后续 issue 依照[产品验收](product-acceptance.md)（#49），候选 Beta 范围、AC/UX 编号、
+离线/真实/用户体验/发布证据及必需项状态共同决定完成。下一步为完整 DSL STS provider
+组合、消费者/官方 v2 对比、授权真实缺口、来源升级演练及发布。基准 #20 独立，Smithy
+仍为隔离实验。
 
 五阶段实现和评审修复 [#44](capability-role-review.md) 已于 2026-10-08 集成 main，
 [评审证据](generator-integration.md) 记录验收范围与合并提交；同模型游标/waiter
