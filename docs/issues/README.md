@@ -41,6 +41,7 @@ foundation/generator issues are history, not new per-operation prerequisites.
 | #49   | Scoped product Beta/release criteria and developer experience definition                     | #33, #44; #47 evidence tracked separately                           |
 | #51   | Full-DSL STS client -> provider/cache -> generated consumer composition                      | #49; accepted foundation and generator                              |
 | #53   | STS-first application guidance and explicit credential-provider configuration                | #49, #51                                                            |
+| #55   | Dedicated-role live STS issuance, cache reuse, forced refresh and real expiry renewal        | #49, #51, #53                                                       |
 
 ## 中文
 
@@ -85,3 +86,4 @@ Review 修复按 #26 → #27 → #28 → #29 执行，详见 [修复路径](../a
 | #49   | 限定产品 Beta/发布标准及开发者体验定义。                                                          | #33、#44；#47 证据独立跟踪                                          |
 | #51   | 完整 DSL STS client→provider/cache→生成消费者组合。                                               | #49；已接受基础和生成器                                             |
 | #53   | STS 优先应用指南与显式凭据 provider 配置。                                                        | #49, #51                                                            |
+| #55   | 专用角色真实 STS 签发、缓存复用、强制刷新和真实到期续期。                                         | #49, #51, #53                                                       |

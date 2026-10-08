@@ -75,7 +75,14 @@ not altered. Wrap with credentials.NewCache for bounded/shared early refresh per
 [cache contracts](credential-cache.md); canceling a caller does not cancel the shared
 refresh. AssumeRole remains non-retrying even with Standard. No Profile/OAuth discovery,
 new dependency, generated-file edit, live role execution or cloud write is included.
-Live role/refresh, independent UX-04 and overall Beta/release acceptance remain open.
+#51 itself did not exercise live role/refresh. Independent UX-04 and overall
+Beta/release acceptance remain open.
+
+The separate [live renewal record #55](live-sts-renewal.md) now establishes scoped real
+issuance/reuse, forced Invalidate and automatic renewal after genuine 900-second
+expiration with generated ECS reads and full temporary-IAM cleanup. It does not
+replace independent UX-04 or overall Beta/release acceptance, and does not establish
+live background/concurrent refresh or native Profile/OAuth renewal.
 
 ### Evidence
 
@@ -122,8 +129,12 @@ ErrExpired，非法时间诊断不带值。按 RFC3339 解析 UTC，要求未来
 
 STS 使用独立 source 以避免递归，来源不变。通过 credentials.NewCache 按[缓存契约](credential-cache.md)
 有界/合并/提前刷新，某个等待者取消不取消共享刷新。AssumeRole 配置 Standard 仍不重试。
-不加入 Profile/OAuth 发现、新依赖、生成文件修改、真实角色/云写调用；真实角色/刷新、独立
+#51 不加入 Profile/OAuth 发现、新依赖、生成文件修改，也未执行真实角色/刷新或云写调用；独立
 UX-04 和 Beta/发布仍待验收。
+
+独立[真实续期记录 #55](live-sts-renewal.md)现证明限定真实签发/复用、强制 Invalidate、等待
+真正 900 秒到期后的自动续期、生成 ECS 读取及全部临时 IAM 清理。不替代独立 UX-04 或整体
+Beta/发布验收，也不证明真实后台/并发刷新或原生 Profile/OAuth 续期。
 
 ### 证据
 
