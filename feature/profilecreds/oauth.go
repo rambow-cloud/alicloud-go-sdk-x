@@ -130,15 +130,34 @@ func (s *oauthSource) Retrieve(ctx context.Context) (credentials.Credentials, er
 	}
 	req.Header.Set("Authorization", "Bearer "+s.profile.OAuthAccessToken)
 	req.Header.Set("Content-Type", "application/json")
-	var result struct {
-		AccessKeyID     string `json:"accessKeyId"`
-		AccessKeySecret string `json:"accessKeySecret"`
-		SecurityToken   string `json:"securityToken"`
-		Expiration      string `json:"expiration"`
+	var wire struct {
+		NativeID     *string `json:"AccessKeyId"`
+		NativeSecret *string `json:"AccessKeySecret"`
+		NativeToken  *string `json:"SecurityToken"`
+		NativeExpiry *string `json:"Expiration"`
+		LegacyID     *string `json:"accessKeyId"`
+		LegacySecret *string `json:"accessKeySecret"`
+		LegacyToken  *string `json:"securityToken"`
+		LegacyExpiry *string `json:"expiration"`
 	}
-	if err := s.do(req, "exchange", &result); err != nil {
+	if err := s.do(req, "exchange", &wire); err != nil {
 		return credentials.Credentials{}, err
 	}
+	// Live CN responses use PascalCase; the pinned CLI uses camelCase tags with
+	// its legacy decoder's case folding. Accept only these complete wire variants.
+	legacy := wire.LegacyID != nil || wire.LegacySecret != nil || wire.LegacyToken != nil || wire.LegacyExpiry != nil
+	native := wire.NativeID != nil || wire.NativeSecret != nil || wire.NativeToken != nil || wire.NativeExpiry != nil
+	if legacy && native {
+		return credentials.Credentials{}, &OAuthError{Stage: "exchange", StatusCode: 200, Err: ErrInvalidConfiguration}
+	}
+	id, secret, token, expiry := wire.NativeID, wire.NativeSecret, wire.NativeToken, wire.NativeExpiry
+	if legacy {
+		id, secret, token, expiry = wire.LegacyID, wire.LegacySecret, wire.LegacyToken, wire.LegacyExpiry
+	}
+	if id == nil || secret == nil || token == nil || expiry == nil {
+		return credentials.Credentials{}, &OAuthError{Stage: "exchange", StatusCode: 200, Err: credentials.ErrMissingCredentials}
+	}
+	result := struct{ AccessKeyID, AccessKeySecret, SecurityToken, Expiration string }{*id, *secret, *token, *expiry}
 	expires, err := time.Parse(time.RFC3339, result.Expiration)
 	if err != nil {
 		return credentials.Credentials{}, &OAuthError{Stage: "exchange", StatusCode: 200, Err: ErrInvalidConfiguration}

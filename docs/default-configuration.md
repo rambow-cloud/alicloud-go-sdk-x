@@ -95,6 +95,13 @@ CLI modes need their own scoped issues, not silent claims.
 
 ### Acceptance and release impact
 
+Live inspection after reauthentication found the CN exchange returns PascalCase
+`AccessKeyId`, `AccessKeySecret`, `SecurityToken`, `Expiration`, while the pinned CLI
+uses camelCase JSON tags. Its legacy JSON decoder folds case; JSON v2 is exact by
+default. Accept these two explicit complete schemas, reject mixed or ambiguous
+variants, and preserve strict JSON v2 decoding. This is a reviewed protocol
+compatibility exception, not general case-insensitive decoding.
+
 Implement route/docs and real issue before code. Require deterministic external
 Examples and tests for precedence, explicit AK opt-in, missing/incomplete config,
 typed-nil overrides, profile cycles, copied state, role composition, OAuth reuse,
@@ -165,6 +172,11 @@ Profile 配置，替换前发现外部修改则失败；token 刷新成功即持
 单独 issue，不静默宣称已实现。
 
 ### 验收与发布影响
+
+重新登录后的真实 CN exchange 返回 PascalCase 的 AccessKeyId、AccessKeySecret、
+SecurityToken、Expiration，而固定 CLI 源码使用 camelCase 标签。其旧 JSON 解码器
+自动忽略大小写，JSON v2 默认精确匹配。仅支持这两个明确且完整的结构，拒绝混用或
+歧义，保留严格 JSON v2；这是已审核的协议兼容例外，不开启通用大小写忽略。
 
 先落路线/文档与真实 issue，再开发。同步离线外部 Example 和行为测试，覆盖优先级、AK
 显式启用、缺失/不完整/typed-nil、来源循环、输入副本、角色组合、OAuth 复用/刷新/交换/

@@ -57,6 +57,31 @@ func exchangeBody(now time.Time) string {
 	return fmt.Sprintf(`{"accessKeyId":"synthetic-issued","accessKeySecret":"synthetic-secret","securityToken":"synthetic-token","expiration":%q,"extra":true}`, now.Add(20*time.Minute).Format(time.RFC3339))
 }
 
+func TestOAuthExchangeExactWireVariants(t *testing.T) {
+	for _, tc := range []struct {
+		name, body string
+		want       error
+	}{
+		{"native-pascal", `{"AccessKeyId":"synthetic-issued","AccessKeySecret":"synthetic-secret","SecurityToken":"synthetic-token","Expiration":"2099-01-01T00:00:00Z"}`, nil},
+		{"cli-camel", `{"accessKeyId":"synthetic-issued","accessKeySecret":"synthetic-secret","securityToken":"synthetic-token","expiration":"2099-01-01T00:00:00Z"}`, nil},
+		{"ambiguous", `{"AccessKeyId":"native","accessKeyId":"legacy","accessKeySecret":"secret","securityToken":"token","expiration":"2099-01-01T00:00:00Z"}`, profilecreds.ErrInvalidConfiguration},
+		{"empty-alias", `{"AccessKeyId":"","accessKeyId":"legacy","accessKeySecret":"secret","securityToken":"token","expiration":"2099-01-01T00:00:00Z"}`, profilecreds.ErrInvalidConfiguration},
+		{"mixed", `{"AccessKeyId":"issued","accessKeySecret":"secret","securityToken":"token","expiration":"2099-01-01T00:00:00Z"}`, profilecreds.ErrInvalidConfiguration},
+		{"unreviewed-casing", `{"ACCESSKEYID":"issued","ACCESSKEYSECRET":"secret","SECURITYTOKEN":"token","EXPIRATION":"2099-01-01T00:00:00Z"}`, credentials.ErrMissingCredentials},
+		{"duplicate", `{"AccessKeyId":"one","AccessKeyId":"two","AccessKeySecret":"secret","SecurityToken":"token","Expiration":"2099-01-01T00:00:00Z"}`, profilecreds.ErrInvalidConfiguration},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			profile := oauth()
+			profile["oauth_access_token_expire"] = time.Now().Add(time.Hour).Unix()
+			p := provider(t, file(t, profile), &http.Client{Transport: transport(func(r *http.Request) (*http.Response, error) { return response(r, 200, tc.body), nil })}, nil)
+			value, err := p.Retrieve(context.Background())
+			if !errors.Is(err, tc.want) || tc.want == nil && (value.AccessKeyID != "synthetic-issued" || value.SecurityToken != "synthetic-token") {
+				t.Fatal("exchange wire variant classification failed")
+			}
+		})
+	}
+}
+
 func TestOAuthSeedRefreshRotationAndFileOwnership(t *testing.T) {
 	var seconds atomic.Int64
 	seconds.Store(1893456000)
