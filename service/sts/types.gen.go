@@ -213,6 +213,529 @@ type AssumeRoleOutputCredentials struct {
 	SecurityToken *string `json:"SecurityToken,omitzero"`
 }
 
+// AssumeRoleWithOIDCInput represents the complete DSL model AssumeRoleWithOIDCRequest.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type AssumeRoleWithOIDCInput struct {
+	// DurationSeconds maps to the exact wire member DurationSeconds.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The validity period of the STS token. Unit: seconds.
+	//
+	// Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter.
+	//
+	// For more information about how to specify MaxSessionDuration, see CreateRole (https://help.aliyun.com/document_detail/28710.html) or UpdateRole (https://help.aliyun.com/document_detail/28712.html).
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L208
+	DurationSeconds *int64 `json:"DurationSeconds,omitzero"`
+	// OIDCProviderARN maps to the exact wire member OIDCProviderArn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Alibaba Cloud Resource Name (ARN) of the OIDC IdP.
+	//
+	// You can view the ARN in the RAM console or by calling operations.
+	//
+	// *   For more information about how to view the ARN in the RAM console, see View the information about an OIDC IdP (https://help.aliyun.com/document_detail/327123.html).
+	// *   For more information about how to view the ARN by calling operations, see GetOIDCProvider (https://help.aliyun.com/document_detail/327126.html) or ListOIDCProviders (https://help.aliyun.com/document_detail/327127.html).
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L213
+	OIDCProviderARN *string `json:"OIDCProviderArn,omitzero"`
+	// OIDCToken maps to the exact wire member OIDCToken.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The OIDC token that is issued by the external IdP.
+	//
+	// The OIDC token must be 4 to 20,000 characters in length.
+	//
+	// > You must enter the original OIDC token. You do not need to enter the Base64-encoded OIDC token.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L219
+	OIDCToken *string `json:"OIDCToken,omitzero"`
+	// Policy maps to the exact wire member Policy.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
+	//
+	// *   If you specify this parameter, the permissions of the returned STS token are the permissions that are included in the value of this parameter and owned by the RAM role.
+	// *   If you do not specify this parameter, the returned STS token has all the permissions of the RAM role.
+	//
+	// The value must be 1 to 2,048 characters in length.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L224
+	Policy *string `json:"Policy,omitzero"`
+	// RoleARN maps to the exact wire member RoleArn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ARN of the RAM role.
+	//
+	// You can view the ARN in the RAM console or by calling operations.
+	//
+	// *   For more information about how to view the ARN in the RAM console, see How do I view the ARN of the RAM role? (https://help.aliyun.com/document_detail/39744.html)
+	// *   For more information about how to view the ARN by calling operations, see ListRoles (https://help.aliyun.com/document_detail/28713.html) or GetRole (https://help.aliyun.com/document_detail/28711.html).
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L230
+	RoleARN *string `json:"RoleArn,omitzero"`
+	// RoleSessionName maps to the exact wire member RoleSessionName.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The custom name of the role session.
+	//
+	// Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username. In ActionTrail logs, you can distinguish the users who assume the same RAM role to perform operations based on the value of the RoleSessionName parameter. This way, you can perform user-specific auditing.
+	//
+	// The value can contain letters, digits, periods (.), at signs (@), hyphens (-), and underscores (_).
+	//
+	// The value must be 2 to 64 characters in length.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L236
+	RoleSessionName *string `json:"RoleSessionName,omitzero"`
+}
+
+// AssumeRoleWithOIDCResponse represents the complete DSL model AssumeRoleWithOIDCResponse.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type AssumeRoleWithOIDCResponse struct {
+	// Headers maps to the exact wire member headers.
+	Headers map[string]string `json:"headers,omitzero"`
+	// StatusCode maps to the exact wire member statusCode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	StatusCode *int32 `json:"statusCode,omitzero"`
+	// Body maps to the exact wire member body.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	Body *AssumeRoleWithOIDCOutput `json:"body,omitzero"`
+}
+
+// AssumeRoleWithOIDCOutput represents the complete DSL model AssumeRoleWithOIDCResponseBody.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type AssumeRoleWithOIDCOutput struct {
+	// AssumedRoleUser maps to the exact wire member AssumedRoleUser.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The temporary identity that you use to assume the RAM role.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L249
+	AssumedRoleUser *AssumeRoleWithOIDCOutputAssumedRoleUser `json:"AssumedRoleUser,omitzero"`
+	// Credentials maps to the exact wire member Credentials.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The access credentials.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L257
+	Credentials *AssumeRoleWithOIDCOutputCredentials `json:"Credentials,omitzero"`
+	// OIDCTokenInfo maps to the exact wire member OIDCTokenInfo.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The information about the OIDC token.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L271
+	OIDCTokenInfo *AssumeRoleWithOIDCOutputOIDCTokenInfo `json:"OIDCTokenInfo,omitzero"`
+	// RequestID maps to the exact wire member RequestId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the request.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L272
+	RequestID *string `json:"RequestId,omitzero"`
+	// SourceIdentity maps to the exact wire member SourceIdentity.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	SourceIdentity *string `json:"SourceIdentity,omitzero"`
+	// Metadata contains request identity, HTTP status and attempt count.
+	Metadata alicloud.Metadata `json:"-"`
+}
+
+// AssumeRoleWithOIDCOutputOIDCTokenInfo represents the complete DSL model AssumeRoleWithOIDCResponseBody.OIDCTokenInfo.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type AssumeRoleWithOIDCOutputOIDCTokenInfo struct {
+	// ClientIDs maps to the exact wire member ClientIds.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The audience. If multiple audiences are returned, the audiences are separated by commas (,).
+	//
+	// The audience is represented by the aud field in the OIDC Token.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L259
+	ClientIDs *string `json:"ClientIds,omitzero"`
+	// ExpirationTime maps to the exact wire member ExpirationTime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The time when the OIDC token expires.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L262
+	ExpirationTime *string `json:"ExpirationTime,omitzero"`
+	// IssuanceTime maps to the exact wire member IssuanceTime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The time when the OIDC token was issued.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L263
+	IssuanceTime *string `json:"IssuanceTime,omitzero"`
+	// Issuer maps to the exact wire member Issuer.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The URL of the issuer,
+	//
+	// which is represented by the iss field in the OIDC Token.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L264
+	Issuer *string `json:"Issuer,omitzero"`
+	// Subject maps to the exact wire member Subject.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The subject,
+	//
+	// which is represented by the sub field in the OIDC Token.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L267
+	Subject *string `json:"Subject,omitzero"`
+	// VerificationInfo maps to the exact wire member VerificationInfo.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The verification information about the OIDC token. For more information, see Manage an OIDC IdP (https://help.aliyun.com/document_detail/327123.html).
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L270
+	VerificationInfo *string `json:"VerificationInfo,omitzero"`
+}
+
+// AssumeRoleWithOIDCOutputAssumedRoleUser represents the complete DSL model AssumeRoleWithOIDCResponseBody.assumedRoleUser.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type AssumeRoleWithOIDCOutputAssumedRoleUser struct {
+	// ARN maps to the exact wire member Arn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ARN of the temporary identity that you use to assume the RAM role.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L247
+	ARN *string `json:"Arn,omitzero"`
+	// AssumedRoleID maps to the exact wire member AssumedRoleId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the temporary identity that you use to assume the RAM role.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L248
+	AssumedRoleID *string `json:"AssumedRoleId,omitzero"`
+}
+
+// AssumeRoleWithOIDCOutputCredentials represents the complete DSL model AssumeRoleWithOIDCResponseBody.credentials.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type AssumeRoleWithOIDCOutputCredentials struct {
+	// AccessKeyID maps to the exact wire member AccessKeyId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The AccessKey ID.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L251
+	AccessKeyID *string `json:"AccessKeyId,omitzero"`
+	// AccessKeySecret maps to the exact wire member AccessKeySecret.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The AccessKey secret.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L252
+	AccessKeySecret *string `json:"AccessKeySecret,omitzero"`
+	// Expiration maps to the exact wire member Expiration.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The time when the STS token expires. The time is displayed in UTC.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L253
+	Expiration *string `json:"Expiration,omitzero"`
+	// SecurityToken maps to the exact wire member SecurityToken.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The STS token.
+	//
+	// > Alibaba Cloud STS does not impose limits on the length of STS tokens. We strongly recommend that you do not specify a maximum length for STS tokens.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L254
+	SecurityToken *string `json:"SecurityToken,omitzero"`
+}
+
+// AssumeRoleWithSAMLInput represents the complete DSL model AssumeRoleWithSAMLRequest.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type AssumeRoleWithSAMLInput struct {
+	// DurationSeconds maps to the exact wire member DurationSeconds.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The validity period of the STS token. Unit: seconds.
+	//
+	// Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter. Default value: 3600.
+	//
+	// You can call the CreateRole or UpdateRole operation to configure the MaxSessionDuration parameter. For more information, see CreateRole (https://help.aliyun.com/document_detail/28710.html) or UpdateRole (https://help.aliyun.com/document_detail/28712.html).
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L349
+	DurationSeconds *int64 `json:"DurationSeconds,omitzero"`
+	// Policy maps to the exact wire member Policy.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The policy that specifies the permissions of the returned STS token. You can use this parameter to grant the STS token fewer permissions than the permissions granted to the RAM role.
+	//
+	// *   If you specify this parameter, the permissions of the returned STS token are the permissions that are included in the value of this parameter and owned by the RAM role.
+	// *   If you do not specify this parameter, the returned STS token has all the permissions of the RAM role.
+	//
+	// The value must be 1 to 2,048 characters in length.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L354
+	Policy *string `json:"Policy,omitzero"`
+	// RoleARN maps to the exact wire member RoleArn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ARN of the RAM role.
+	//
+	// The trust entity of the RAM role is a SAML IdP. For more information, see Create a RAM role for a trusted IdP (https://help.aliyun.com/document_detail/116805.html) or CreateRole (https://help.aliyun.com/document_detail/28710.html).
+	//
+	// Format: acs:ram::<account_id>:role/<role_name>.
+	//
+	// You can view the ARN in the RAM console or by calling operations.
+	//
+	// *   For more information about how to view the ARN in the RAM console, see How do I view the ARN of the RAM role? (https://help.aliyun.com/document_detail/39744.html).
+	// *   For more information about how to view the ARN by calling operations, see ListRoles (https://help.aliyun.com/document_detail/28713.html) or GetRole (https://help.aliyun.com/document_detail/28711.html).
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L360
+	RoleARN *string `json:"RoleArn,omitzero"`
+	// SAMLAssertion maps to the exact wire member SAMLAssertion.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Base64-encoded SAML assertion.
+	//
+	// The value must be 4 to 100,000 characters in length.
+	//
+	// > A complete SAML response rather than a single SAMLAssertion field must be retrieved from the external IdP.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L370
+	SAMLAssertion *string `json:"SAMLAssertion,omitzero"`
+	// SAMLProviderARN maps to the exact wire member SAMLProviderArn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Alibaba Cloud Resource Name (ARN) of the SAML IdP that is created in the RAM console.
+	//
+	// Format: acs:ram::<account_id>:saml-provider/<saml_provider_id>.
+	//
+	// You can view the ARN in the RAM console or by calling operations.
+	//
+	// *   For more information about how to view the ARN in the RAM console, see How do I view the ARN of a RAM role? (https://help.aliyun.com/document_detail/116795.html)
+	// *   For more information about how to view the ARN by calling operations, see GetSAMLProvider (https://help.aliyun.com/document_detail/186833.html) or ListSAMLProviders (https://help.aliyun.com/document_detail/186851.html).
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L375
+	SAMLProviderARN *string `json:"SAMLProviderArn,omitzero"`
+}
+
+// AssumeRoleWithSAMLResponse represents the complete DSL model AssumeRoleWithSAMLResponse.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type AssumeRoleWithSAMLResponse struct {
+	// Headers maps to the exact wire member headers.
+	Headers map[string]string `json:"headers,omitzero"`
+	// StatusCode maps to the exact wire member statusCode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	StatusCode *int32 `json:"statusCode,omitzero"`
+	// Body maps to the exact wire member body.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	Body *AssumeRoleWithSAMLOutput `json:"body,omitzero"`
+}
+
+// AssumeRoleWithSAMLOutput represents the complete DSL model AssumeRoleWithSAMLResponseBody.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type AssumeRoleWithSAMLOutput struct {
+	// AssumedRoleUser maps to the exact wire member AssumedRoleUser.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The temporary identity that you use to assume the RAM role.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L389
+	AssumedRoleUser *AssumeRoleWithSAMLOutputAssumedRoleUser `json:"AssumedRoleUser,omitzero"`
+	// Credentials maps to the exact wire member Credentials.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The STS credentials.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L397
+	Credentials *AssumeRoleWithSAMLOutputCredentials `json:"Credentials,omitzero"`
+	// RequestID maps to the exact wire member RequestId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the request.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L398
+	RequestID *string `json:"RequestId,omitzero"`
+	// SAMLAssertionInfo maps to the exact wire member SAMLAssertionInfo.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The information in the SAML assertion.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L404
+	SAMLAssertionInfo *AssumeRoleWithSAMLOutputSAMLAssertionInfo `json:"SAMLAssertionInfo,omitzero"`
+	// SourceIdentity maps to the exact wire member SourceIdentity.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	SourceIdentity *string `json:"SourceIdentity,omitzero"`
+	// Metadata contains request identity, HTTP status and attempt count.
+	Metadata alicloud.Metadata `json:"-"`
+}
+
+// AssumeRoleWithSAMLOutputSAMLAssertionInfo represents the complete DSL model AssumeRoleWithSAMLResponseBody.SAMLAssertionInfo.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type AssumeRoleWithSAMLOutputSAMLAssertionInfo struct {
+	// Issuer maps to the exact wire member Issuer.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The value in the Issuer element in the SAML assertion.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L400
+	Issuer *string `json:"Issuer,omitzero"`
+	// Recipient maps to the exact wire member Recipient.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Recipient attribute of the SubjectConfirmationData sub-element. SubjectConfirmationData is a sub-element of the Subject element in the SAML assertion.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L401
+	Recipient *string `json:"Recipient,omitzero"`
+	// Subject maps to the exact wire member Subject.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The value in the NameID sub-element of the Subject element in the SAML assertion.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L402
+	Subject *string `json:"Subject,omitzero"`
+	// SubjectType maps to the exact wire member SubjectType.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Format attribute of the NameID element in the SAML assertion. If the Format attribute is prefixed with urn:oasis:names:tc:SAML:2.0:nameid-format:, the prefix is not included in the value of this parameter. For example, if the value of the Format attribute is urn:oasis:names:tc:SAML:2.0:nameid-format:persistent/transient, the value of this parameter is persistent/transient.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L403
+	SubjectType *string `json:"SubjectType,omitzero"`
+}
+
+// AssumeRoleWithSAMLOutputAssumedRoleUser represents the complete DSL model AssumeRoleWithSAMLResponseBody.assumedRoleUser.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type AssumeRoleWithSAMLOutputAssumedRoleUser struct {
+	// ARN maps to the exact wire member Arn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ARN of the temporary identity that you use to assume the RAM role.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L387
+	ARN *string `json:"Arn,omitzero"`
+	// AssumedRoleID maps to the exact wire member AssumedRoleId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the temporary identity that you use to assume the RAM role.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L388
+	AssumedRoleID *string `json:"AssumedRoleId,omitzero"`
+}
+
+// AssumeRoleWithSAMLOutputCredentials represents the complete DSL model AssumeRoleWithSAMLResponseBody.credentials.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type AssumeRoleWithSAMLOutputCredentials struct {
+	// AccessKeyID maps to the exact wire member AccessKeyId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The AccessKey ID.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L391
+	AccessKeyID *string `json:"AccessKeyId,omitzero"`
+	// AccessKeySecret maps to the exact wire member AccessKeySecret.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The AccessKey secret.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L392
+	AccessKeySecret *string `json:"AccessKeySecret,omitzero"`
+	// Expiration maps to the exact wire member Expiration.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The time when the STS token expires. The time is displayed in UTC.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L393
+	Expiration *string `json:"Expiration,omitzero"`
+	// SecurityToken maps to the exact wire member SecurityToken.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The STS token.
+	//
+	// > Alibaba Cloud STS does not impose limits on the length of STS tokens. We strongly recommend that you do not specify a maximum length for STS tokens.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L394
+	SecurityToken *string `json:"SecurityToken,omitzero"`
+}
+
 // GetCallerIdentityResponse represents the complete DSL model GetCallerIdentityResponse.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type GetCallerIdentityResponse struct {

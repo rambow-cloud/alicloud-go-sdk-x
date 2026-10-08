@@ -381,7 +381,7 @@ test("strict unknown/unsupported selections fail before creating outputs", (t) =
   const temporary = sourceFixture(t);
   for (const target of [
     "ecs/DoesNotExist",
-    "sts/AssumeRoleWithOIDC",
+    "ecs/RunInstances",
     "../AssumeRole",
   ]) {
     assert.throws(
@@ -428,12 +428,9 @@ test("output directory symlinks fail during path preflight without writing targe
 });
 test("report distinguishes lowering from Go/live acceptance and prints reason locations", () => {
   const text = run("report", { product: "sts" });
-  assert.match(text, /^sts: 4 discovered, 2 lowered, 2 unsupported/);
+  assert.match(text, /^sts: 4 discovered, 4 lowered, 0 unsupported/);
   assert.match(text, /Go emission\/compilation\/live: not assessed/);
-  assert.match(
-    text,
-    /AssumeRoleWithOIDC: DSL_PROTOCOL_PROFILE:.*products\/sts\/main.tea:\d+/,
-  );
+  assert.match(run("report", { product: "ecs" }), /RunInstances: DSL_/);
 });
 
 test("requestless discovery retains absent source model without a synthetic DSL declaration", () => {

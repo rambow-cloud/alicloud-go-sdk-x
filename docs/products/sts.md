@@ -5,7 +5,7 @@
 
 Import `github.com/rambow-cloud/alicloud-go-sdk-x/service/sts`. Generated from pinned Apache-2.0 official DSL at
 `ec489e5c3deae95496daae2b41503ac58b221adb`; upstream licenses and source bytes remain in `sources/darabonba`.
-4 discovered actions, 2 lowered/emitted, 2 unsupported; 7 complete reachable models.
+4 discovered actions, 4 lowered/emitted, 0 unsupported; 19 complete reachable models.
 Emission is not compilation or live acceptance; see `sts.coverage.json` and PR validation.
 
 Use `NewFromConfig(config)` and `client.Operation(ctx, &OperationInput{}, optFns...)`.
@@ -29,8 +29,8 @@ illustrate invocation only, not valid cloud parameter sets or complete server ex
 ## 中文
 
 导入 `github.com/rambow-cloud/alicloud-go-sdk-x/service/sts`，由 Apache-2.0 官方 DSL 的固定版本 `ec489e5c3deae95496daae2b41503ac58b221adb` 生成；上游许可及
-源码原始字节保留在 `sources/darabonba`。发现 4 操作，降低/输出 2，不支持 2，
-完整可达模型 7；输出不等于编译或真实验收，详见 `sts.coverage.json` 和 PR 检查。
+源码原始字节保留在 `sources/darabonba`。发现 4 操作，降低/输出 4，不支持 0，
+完整可达模型 19；输出不等于编译或真实验收，详见 `sts.coverage.json` 和 PR 检查。
 
 通过 `NewFromConfig(config)` 和 `client.Operation(ctx, &OperationInput{}, optFns...)`
 调用。nil 输入表示空请求；可选标量/模型指针表达缺失，非 nil 标量保留零/false/空串，
@@ -44,6 +44,24 @@ illustrate invocation only, not valid cloud parameter sets or complete server ex
 完整原生响应结构。已审核原生适配器见下表，不凭 token 字段猜能力。授权语义说明及来源索引
 由 #38 自动化，Go 注释保留准确绑定/所有权。每操作有脚本 HTTP transport
 的离线外部 Example；空 mock 请求/响应仅演示调用，不表示有效云参数或完整服务示例。
+
+## Anonymous RPC / 匿名 RPC
+
+### English
+
+AssumeRoleWithOIDC/SAML use the reviewed anonymous RPC protocol. Configure explicit
+credentials.AnonymousProvider{}; nil providers remain invalid. These operations never
+retrieve a provider or sign, even with source credentials configured. Supply tokens/assertions
+explicitly; never log fields or raw JSON. Signed actions still require signing credentials.
+No automatic retries or federation discovery. Successful live federation is NOT RUN and
+outside the v0.1.0 required live scope; see ../sts-anonymous-rpc.md.
+
+### 中文
+
+AssumeRoleWithOIDC/SAML 使用已审核匿名 RPC，显式配置 credentials.AnonymousProvider{}；
+nil provider 仍无效。即使配置来源凭据也不读取或签名，token/assertion 由调用者显式传入，
+不能记录字段或原始 JSON。签名操作仍需签名凭据，不自动重试或发现联邦身份。
+成功真实联邦调用记录为 NOT RUN，位于 v0.1.0 必需真实验收范围外，见 ../sts-anonymous-rpc.md。
 
 ## Capability policy / 能力策略
 
@@ -61,6 +79,8 @@ Sensitive String/GoString hide whole models; JSON/direct fields remain raw.
 | Action | Paginator | Waiter | Retry-safe read | Token | Validator | Sensitive formatting |
 | --- | --- | --- | --- | --- | --- | --- |
 | AssumeRole | — | — | false |  | false | true |
+| AssumeRoleWithOIDC | — | — | false |  | false | true |
+| AssumeRoleWithSAML | — | — | false |  | false | true |
 
 ### 中文
 
@@ -76,8 +96,8 @@ Sensitive String/GoString hide whole models; JSON/direct fields remain raw.
 
 ### English
 
-English Go comments reuse licensed parser descriptions and summaries: 2/2 operations
-and 14/29 fields have emitted prose. Missing/empty/non-English descriptions are retained
+English Go comments reuse licensed parser descriptions and summaries: 4/4 operations
+and 55/78 fields have emitted prose. Missing/empty/non-English descriptions are retained
 in `sts.documentation.json`; comments do not create validators or requiredness. This
 paired guide covers usage/contracts and the same source index in both languages.
 Chinese semantic translations are not available in the pinned input; none are invented.
@@ -86,7 +106,7 @@ See [documentation rules](../product-documentation.md), package LICENSE and NOTI
 
 ### 中文
 
-英文 Go 注释复用授权 parser 说明/摘要：2/2 操作、14/29 字段有已输出说明。
+英文 Go 注释复用授权 parser 说明/摘要：4/4 操作、55/78 字段有已输出说明。
 缺失/空/纯非英文说明保留在 `sts.documentation.json`，说明不自动变为校验或必填。
 本指南中英文同步使用/契约及相同来源索引；固定输入没有中文语义翻译，不编造。
 所有可执行 Example 使用离线脚本响应，不使用上游 example 值。规则见
@@ -95,6 +115,8 @@ See [documentation rules](../product-documentation.md), package LICENSE and NOTI
 | Operation / 操作 | English prose / 英文说明 | Pinned source / 固定来源 |
 | --- | --- | --- |
 | AssumeRole | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L147) |
+| AssumeRoleWithOIDC | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L294) |
+| AssumeRoleWithSAML | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L426) |
 | GetCallerIdentity | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L500) |
 
 

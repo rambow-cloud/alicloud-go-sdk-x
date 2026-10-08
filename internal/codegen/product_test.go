@@ -29,7 +29,7 @@ func readProductIR(t *testing.T, pkg string) productIR {
 }
 
 func TestCompleteProductsDeterministicModelsMethodsAndExamples(t *testing.T) {
-	for pkg, want := range map[string]int{"ecs": 283, "sts": 2, "vpc": 296} {
+	for pkg, want := range map[string]int{"ecs": 283, "sts": 4, "vpc": 296} {
 		t.Run(pkg, func(t *testing.T) {
 			p := readProductIR(t, pkg)
 			r, err := newProductRenderer(p)
@@ -136,7 +136,7 @@ func fullProductFixture(t *testing.T) string {
 
 func TestProductSupportAndCorruptionFailBeforeWrites(t *testing.T) {
 	root := fullProductFixture(t)
-	for _, selected := range [][]string{{"ecs/Unknown"}, {"ecs/RunInstances"}, {"sts/AssumeRoleWithOIDC"}, {"DescribeImages"}, {"ecs/DescribeImages", "sts/AssumeRoleWithSAML"}} {
+	for _, selected := range [][]string{{"ecs/Unknown"}, {"ecs/RunInstances"}, {"DescribeImages"}, {"ecs/DescribeImages", "ecs/RunInstances"}} {
 		if err := GenerateProducts(context.Background(), root, false, selected); err == nil {
 			t.Fatal("invalid selection accepted", selected)
 		}
@@ -304,5 +304,19 @@ func TestFullProductEmissionCompilesInIsolatedModule(t *testing.T) {
 	cmd.Env = append(os.Environ(), "GOPROXY=off", "GOSUMDB=off", "GOWORK=off")
 	if output, err := cmd.CombinedOutput(); err != nil {
 		t.Fatalf("isolated products do not compile/run: %v\n%s", err, output)
+	}
+}
+
+func TestAnonymousProductRejectsAuthHandoffDrift(t *testing.T) {
+	for _, mutate := range []func(*productOperation){func(o *productOperation) { o.Handoff = "callApi" }, func(o *productOperation) { o.Protocol.AuthType = "AK" }, func(o *productOperation) { o.Protocol.AuthType = "FutureAuth" }} {
+		p := readProductIR(t, "sts")
+		for i := range p.Operations {
+			if p.Operations[i].Name == "AssumeRoleWithOIDC" {
+				mutate(&p.Operations[i])
+			}
+		}
+		if _, err := renderProduct(p); err == nil {
+			t.Fatal("unreviewed authentication rendered")
+		}
 	}
 }

@@ -13,11 +13,11 @@
     },
     {
       "file": "models/sts/ir.json",
-      "sha256": "8734325f4eb2825341a16fb9a340d23e6e016ba2c6da191a313e4c382ef4f755"
+      "sha256": "7560b3c8cf32482dd32de26bfe2385772fe438c13d68ebbb448dc4b59d4fd5b0"
     },
     {
       "file": "models/sts/coverage.json",
-      "sha256": "e1f9a27e3ee3e9d3217ba853c4d618450c2c9bcb454fe54abde075a41b6a661a"
+      "sha256": "587bfe85cf13ab0f03a32b4b02e0c1d1ed1030e09ee559df7898e32d25d6c647"
     },
     {
       "file": "models/vpc/ir.json",

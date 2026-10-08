@@ -22,6 +22,61 @@ const operation = (a) =>
     (n) => n.functionName?.lexeme === "assumeRoleWithOptions",
   );
 
+test("anonymous RPC accepts exact official handoff and rejects auth/argument drift", () => {
+  for (const name of ["AssumeRoleWithOIDC", "AssumeRoleWithSAML"]) {
+    const lower = lowerOperation(ast, name);
+    assert.equal(lower.protocol.authType, "Anonymous");
+    assert.equal(lower.handoff, "doRPCRequest");
+    assert.ok(
+      lower.inputs.some(
+        (i) =>
+          i.wire === (name.endsWith("OIDC") ? "OIDCToken" : "SAMLAssertion"),
+      ),
+    );
+    for (const change of [
+      (fn) => {
+        fn.functionBody.stmts.stmts.at(-1).expr.args.reverse();
+      },
+      (fn) => {
+        fn.functionBody.stmts.stmts.at(-1).expr.args[0].propertyPath[0].lexeme =
+          "other";
+      },
+      (fn) => {
+        fn.functionBody.stmts.stmts.at(-1).expr.left.id.lexeme = "callApi";
+      },
+      (fn) => {
+        fn.functionBody.stmts.stmts
+          .find((s) => s.id?.lexeme === "params")
+          .expr.object.fields.find(
+            (f) => f.fieldName.lexeme === "authType",
+          ).expr.value.string = "AK";
+      },
+      (fn) => {
+        fn.functionBody.stmts.stmts
+          .find((s) => s.id?.lexeme === "params")
+          .expr.object.fields.find(
+            (f) => f.fieldName.lexeme === "authType",
+          ).expr.value.string = "FutureAuth";
+      },
+      (fn) => {
+        fn.functionBody.stmts.stmts.push({ type: "declare" });
+      },
+    ]) {
+      const changed = structuredClone(ast);
+      const fn = changed.moduleBody.nodes.find(
+        (n) =>
+          n.functionName?.lexeme ===
+          name[0].toLowerCase() + name.slice(1) + "WithOptions",
+      );
+      change(fn);
+      assert.throws(
+        () => lowerOperation(changed, name),
+        /unsupported SDK pattern/,
+      );
+    }
+  }
+});
+
 test("requestless RPC accepts only the exact runtime-only and empty request contract", () => {
   const lowered = lowerOperation(ast, "GetCallerIdentity");
   assert.deepEqual(lowered.inputs, []);

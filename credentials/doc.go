@@ -10,6 +10,10 @@
 // restriction is imposed. NewChain/NewCache reject nil and typed-nil sources
 // without retrieval.
 //
+// AnonymousProvider is an explicit marker for reviewed anonymous RPC operations.
+// Those operations skip retrieval; signed operations reject its missing credentials.
+// Nil providers remain invalid. No federation token discovery occurs.
+//
 // Provider.Retrieve accepts a context and returns a credential snapshot. StaticProvider
 // copies credentials at construction. EnvProvider reads ALIBABA_CLOUD_ACCESS_KEY_ID,
 // ALIBABA_CLOUD_ACCESS_KEY_SECRET, and optional ALIBABA_CLOUD_SECURITY_TOKEN on each

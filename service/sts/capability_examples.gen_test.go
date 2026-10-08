@@ -30,3 +30,75 @@ func ExampleAssumeRoleOutputCredentials() {
 	// AssumeRoleOutputCredentials (sensitive fields redacted)
 	// AssumeRoleOutputCredentials (sensitive fields redacted)
 }
+func ExampleAssumeRoleWithOIDCInput() {
+	fmt.Printf("%v\n%#v\n", sts.AssumeRoleWithOIDCInput{}, sts.AssumeRoleWithOIDCInput{})
+	// Output:
+	// AssumeRoleWithOIDCInput (sensitive fields redacted)
+	// AssumeRoleWithOIDCInput (sensitive fields redacted)
+}
+func ExampleAssumeRoleWithOIDCResponse() {
+	fmt.Printf("%v\n%#v\n", sts.AssumeRoleWithOIDCResponse{}, sts.AssumeRoleWithOIDCResponse{})
+	// Output:
+	// AssumeRoleWithOIDCResponse (sensitive fields redacted)
+	// AssumeRoleWithOIDCResponse (sensitive fields redacted)
+}
+func ExampleAssumeRoleWithOIDCOutput() {
+	fmt.Printf("%v\n%#v\n", sts.AssumeRoleWithOIDCOutput{}, sts.AssumeRoleWithOIDCOutput{})
+	// Output:
+	// AssumeRoleWithOIDCOutput (sensitive fields redacted)
+	// AssumeRoleWithOIDCOutput (sensitive fields redacted)
+}
+func ExampleAssumeRoleWithOIDCOutputOIDCTokenInfo() {
+	fmt.Printf("%v\n%#v\n", sts.AssumeRoleWithOIDCOutputOIDCTokenInfo{}, sts.AssumeRoleWithOIDCOutputOIDCTokenInfo{})
+	// Output:
+	// AssumeRoleWithOIDCOutputOIDCTokenInfo (sensitive fields redacted)
+	// AssumeRoleWithOIDCOutputOIDCTokenInfo (sensitive fields redacted)
+}
+func ExampleAssumeRoleWithOIDCOutputAssumedRoleUser() {
+	fmt.Printf("%v\n%#v\n", sts.AssumeRoleWithOIDCOutputAssumedRoleUser{}, sts.AssumeRoleWithOIDCOutputAssumedRoleUser{})
+	// Output:
+	// AssumeRoleWithOIDCOutputAssumedRoleUser (sensitive fields redacted)
+	// AssumeRoleWithOIDCOutputAssumedRoleUser (sensitive fields redacted)
+}
+func ExampleAssumeRoleWithOIDCOutputCredentials() {
+	fmt.Printf("%v\n%#v\n", sts.AssumeRoleWithOIDCOutputCredentials{}, sts.AssumeRoleWithOIDCOutputCredentials{})
+	// Output:
+	// AssumeRoleWithOIDCOutputCredentials (sensitive fields redacted)
+	// AssumeRoleWithOIDCOutputCredentials (sensitive fields redacted)
+}
+func ExampleAssumeRoleWithSAMLInput() {
+	fmt.Printf("%v\n%#v\n", sts.AssumeRoleWithSAMLInput{}, sts.AssumeRoleWithSAMLInput{})
+	// Output:
+	// AssumeRoleWithSAMLInput (sensitive fields redacted)
+	// AssumeRoleWithSAMLInput (sensitive fields redacted)
+}
+func ExampleAssumeRoleWithSAMLResponse() {
+	fmt.Printf("%v\n%#v\n", sts.AssumeRoleWithSAMLResponse{}, sts.AssumeRoleWithSAMLResponse{})
+	// Output:
+	// AssumeRoleWithSAMLResponse (sensitive fields redacted)
+	// AssumeRoleWithSAMLResponse (sensitive fields redacted)
+}
+func ExampleAssumeRoleWithSAMLOutput() {
+	fmt.Printf("%v\n%#v\n", sts.AssumeRoleWithSAMLOutput{}, sts.AssumeRoleWithSAMLOutput{})
+	// Output:
+	// AssumeRoleWithSAMLOutput (sensitive fields redacted)
+	// AssumeRoleWithSAMLOutput (sensitive fields redacted)
+}
+func ExampleAssumeRoleWithSAMLOutputSAMLAssertionInfo() {
+	fmt.Printf("%v\n%#v\n", sts.AssumeRoleWithSAMLOutputSAMLAssertionInfo{}, sts.AssumeRoleWithSAMLOutputSAMLAssertionInfo{})
+	// Output:
+	// AssumeRoleWithSAMLOutputSAMLAssertionInfo (sensitive fields redacted)
+	// AssumeRoleWithSAMLOutputSAMLAssertionInfo (sensitive fields redacted)
+}
+func ExampleAssumeRoleWithSAMLOutputAssumedRoleUser() {
+	fmt.Printf("%v\n%#v\n", sts.AssumeRoleWithSAMLOutputAssumedRoleUser{}, sts.AssumeRoleWithSAMLOutputAssumedRoleUser{})
+	// Output:
+	// AssumeRoleWithSAMLOutputAssumedRoleUser (sensitive fields redacted)
+	// AssumeRoleWithSAMLOutputAssumedRoleUser (sensitive fields redacted)
+}
+func ExampleAssumeRoleWithSAMLOutputCredentials() {
+	fmt.Printf("%v\n%#v\n", sts.AssumeRoleWithSAMLOutputCredentials{}, sts.AssumeRoleWithSAMLOutputCredentials{})
+	// Output:
+	// AssumeRoleWithSAMLOutputCredentials (sensitive fields redacted)
+	// AssumeRoleWithSAMLOutputCredentials (sensitive fields redacted)
+}

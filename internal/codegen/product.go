@@ -77,6 +77,7 @@ type productOperation struct {
 	} `json:"roots"`
 	ReachableModels []string     `json:"reachableModels"`
 	Protocol        WireProtocol `json:"protocol"`
+	Handoff         string       `json:"handoff,omitempty"`
 	Bindings        []struct {
 		Wire     string `json:"wire"`
 		Location string `json:"location"`

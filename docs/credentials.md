@@ -96,3 +96,13 @@ NewChain 复制显式有序列表，只跳过 ErrNotFound，其他失败/无效�
 构造/操作覆盖拒绝，以及离线角色签名/缓存复用。合成 Example 和 CI 不证明真实角色续期或整体 Beta 验收。
 独立的[真实 STS 证据 #55](live-sts-renewal.md)现记录最小权限专用角色的真实签发/复用、强制刷新、
 自然到期续期和清理，不新增原生 Profile/OAuth 支持。
+
+## Anonymous RPC / 匿名 RPC
+
+### English
+
+Explicit `credentials.AnonymousProvider{}` is a marker for reviewed anonymous STS OIDC/SAML operations. Those operations never retrieve even a configured source provider. Signed operations reject the marker; nil/typed-nil remain invalid everywhere. No implicit key discovery is added. See [protocol contracts](sts-anonymous-rpc.md).
+
+### 中文
+
+显式 `credentials.AnonymousProvider{}` 是已审核 STS OIDC/SAML 匿名操作的标记，这些操作不读取任何已配置来源 provider。签名操作拒绝该标记；所有位置的 nil/typed-nil 仍无效，不引入隐式密钥发现。见[协议契约](sts-anonymous-rpc.md)。

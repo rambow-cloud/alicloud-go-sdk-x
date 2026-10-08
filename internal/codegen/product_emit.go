@@ -62,7 +62,7 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 			return nil, errors.New("unrecognized operation status")
 		}
 		pr := op.Protocol
-		if pr.Action != op.Name || pr.Version != p.Version || pr.Protocol != "HTTPS" || pr.Path != "/" || pr.Method != "POST" || pr.AuthType != "AK" || pr.Style != "RPC" || pr.RequestBodyType != "formData" || pr.BodyType != "json" {
+		if pr.Action != op.Name || pr.Version != p.Version || pr.Protocol != "HTTPS" || pr.Path != "/" || pr.Method != "POST" || (pr.AuthType != "AK" && pr.AuthType != "Anonymous") || pr.Style != "RPC" || pr.RequestBodyType != "formData" || pr.BodyType != "json" || (pr.AuthType == "Anonymous" && op.Handoff != "doRPCRequest") || (pr.AuthType == "AK" && op.Handoff != "") {
 			return nil, fmt.Errorf("%s: unsupported protocol", op.Name)
 		}
 		roots := []productType{op.Roots.Response, op.Roots.Body}
@@ -108,6 +108,12 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 		}
 		bound := map[string]bool{}
 		for _, binding := range op.Bindings {
+			if pr.AuthType == "Anonymous" {
+				switch strings.ToLower(binding.Wire) {
+				case "action", "version", "format", "timestamp", "signaturenonce", "accesskeyid", "accesskeysecret", "securitytoken", "signature", "signaturemethod", "signatureversion", "signaturetype", "bearertoken":
+					return nil, errors.New("anonymous reserved query member")
+				}
+			}
 			if binding.Location != "query" || binding.Guard != "isUnset" || bound[binding.Field] {
 				return nil, errors.New("unsupported query binding")
 			}
@@ -313,6 +319,9 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 		if cfg.ClientToken != "" {
 			methods.WriteString("// An absent client token is filled once on the owned input; caller input remains unchanged.\n")
 		}
+		if op.Protocol.AuthType == "Anonymous" {
+			methods.WriteString("// This anonymous RPC action never retrieves source credentials or signs the request.\n")
+		}
 		r.appendProse(&methods, op.Documentation)
 		fmt.Fprintf(&methods, "func(c *Client)%s(ctx context.Context,input *%sInput,optFns ...func(*Options))(*%sOutput,error){\n", op.Name, op.Name, op.Name)
 		hasRegion := false
@@ -331,7 +340,11 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 		if hasValidator(cfg) {
 			validate = "Validate" + op.Name + "Input"
 		}
-		fmt.Fprintf(&methods, "out,meta,err:=invoke[%sInput,%sOutput](ctx,c,input,alicloud.Operation{Service:%q,Name:%q,Version:%q,Idempotent:%t},%t,%s,%s,optFns);if err!=nil{return nil,err};out.Metadata=meta;return out,nil}\n", op.Name, op.Name, p.Product, op.Protocol.Action, op.Protocol.Version, idempotent, hasRegion, prepare, validate)
+		authentication := ""
+		if op.Protocol.AuthType == "Anonymous" {
+			authentication = ",Authentication:alicloud.AuthenticationAnonymousRPC"
+		}
+		fmt.Fprintf(&methods, "out,meta,err:=invoke[%sInput,%sOutput](ctx,c,input,alicloud.Operation{Service:%q,Name:%q,Version:%q,Idempotent:%t%s},%t,%s,%s,optFns);if err!=nil{return nil,err};out.Metadata=meta;return out,nil}\n", op.Name, op.Name, p.Product, op.Protocol.Action, op.Protocol.Version, idempotent, authentication, hasRegion, prepare, validate)
 	}
 	files[base+"operations.gen.go"], err = productFormat(&methods)
 	if err != nil {
@@ -369,7 +382,11 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 	var examples bytes.Buffer
 	fmt.Fprintf(&examples, "%spackage %s_test\nimport(\"context\";\"fmt\";\"net/http\";alicloud %q;%q;%q;%q)\n", productGenerated, p.Product, module, module+"/credentials", module+"/sdktest", module+"/service/"+p.Product)
 	for _, op := range r.operations {
-		fmt.Fprintf(&examples, "func ExampleClient_%s(){provider,err:=credentials.NewStaticProvider(credentials.Credentials{AccessKeyID:\"placeholder\",AccessKeySecret:\"placeholder\"});if err!=nil{panic(err)};transport:=sdktest.NewTransport(sdktest.Step{Body:\"{}\"});client,err:=%s.NewFromConfig(alicloud.Config{Region:\"cn-hangzhou\",BaseEndpoint:\"https://example.invalid\",CredentialsProvider:provider,HTTPClient:&http.Client{Transport:transport}});if err!=nil{panic(err)};var api %s.%sAPI=client;out,err:=api.%s(context.Background(),&%s.%sInput{});if err!=nil{panic(err)};fmt.Println(out.Metadata.HTTPStatusCode)\n// Output: 200\n}\n", op.Name, p.Product, p.Product, op.Name, op.Name, p.Product, op.Name)
+		provider := "provider,err:=credentials.NewStaticProvider(credentials.Credentials{AccessKeyID:\"placeholder\",AccessKeySecret:\"placeholder\"});if err!=nil{panic(err)};"
+		if op.Protocol.AuthType == "Anonymous" {
+			provider = "provider:=credentials.AnonymousProvider{};"
+		}
+		fmt.Fprintf(&examples, "func ExampleClient_%s(){%stransport:=sdktest.NewTransport(sdktest.Step{Body:\"{}\"});client,err:=%s.NewFromConfig(alicloud.Config{Region:\"cn-hangzhou\",BaseEndpoint:\"https://example.invalid\",CredentialsProvider:provider,HTTPClient:&http.Client{Transport:transport}});if err!=nil{panic(err)};var api %s.%sAPI=client;out,err:=api.%s(context.Background(),&%s.%sInput{});if err!=nil{panic(err)};fmt.Println(out.Metadata.HTTPStatusCode)\n// Output: 200\n}\n", op.Name, provider, p.Product, p.Product, op.Name, op.Name, p.Product, op.Name)
 	}
 	files[base+"examples.gen_test.go"], err = productFormat(&examples)
 	if err != nil {
@@ -431,6 +448,12 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 func (r *productRenderer) guide() []byte {
 	var b bytes.Buffer
 	fmt.Fprintf(&b, "%s# %s complete models / %s 完整模型\n\n## English\n\nImport `%s/service/%s`. Generated from pinned Apache-2.0 official DSL at\n`%s`; upstream licenses and source bytes remain in `sources/darabonba`.\n%d discovered actions, %d lowered/emitted, %d unsupported; %d complete reachable models.\nEmission is not compilation or live acceptance; see `%s.coverage.json` and PR validation.\n\nUse `NewFromConfig(config)` and `client.Operation(ctx, &OperationInput{}, optFns...)`.\nNil input is empty; optional scalar/model pointers preserve absence, non-nil scalars\npreserve zero/false/empty, and input graphs are copied before middleware. Arrays use\none-based query indexes and exact member case; DSL string fields stay strings.\nRegionId defaults to configured region and follows operation region options.\nOutputs preserve full native response body containers and add Metadata. DSL response\nenvelope types are retained separately. Small OperationAPI interfaces support mocks.\nErrors retain cancellation and APIError/OperationError. Clients are concurrency safe;\ndo not mutate caller inputs during calls or retain hook models/options. Standard retry\nis available only for explicitly reviewed idempotent operations with a configured Retryer.\n\nThe older `services/%s` is the bounded reference bridge, including its existing\npaginator/waiter adapters; changing imports also requires adapting scalar pointers\nand complete native response shapes. Reviewed native adapters are listed below; token fields alone do not grant support. Licensed semantic prose and source indexes are automated under #38; Go comments\nretain exact bindings and ownership. Each operation has an offline\nexternal Example using a scripted HTTP transport; empty mock requests/responses\nillustrate invocation only, not valid cloud parameter sets or complete server examples.\n\n## 中文\n\n导入 `%s/service/%s`，由 Apache-2.0 官方 DSL 的固定版本 `%s` 生成；上游许可及\n源码原始字节保留在 `sources/darabonba`。发现 %d 操作，降低/输出 %d，不支持 %d，\n完整可达模型 %d；输出不等于编译或真实验收，详见 `%s.coverage.json` 和 PR 检查。\n\n通过 `NewFromConfig(config)` 和 `client.Operation(ctx, &OperationInput{}, optFns...)`\n调用。nil 输入表示空请求；可选标量/模型指针表达缺失，非 nil 标量保留零/false/空串，\n在 middleware 前深复制输入。数组使用从 1 起的 query 索引与准确大小写，DSL 字符串\n保持字符串。RegionId 使用配置默认地区及操作地区选项。Output 保留完整原生响应体\n容器并增加 Metadata；DSL response envelope 类型单独保留。小 OperationAPI 接口\n支持 mock；错误保留取消及 APIError/OperationError。Client 可并发，调用中不要修改\n输入或保留 hooks 模型/选项。Standard 仅对明确审核幂等的操作、配置 Retryer 后允许重试。\n\n原 `services/%s` 为有界参考桥，含已有分页/waiter；迁移导入时同步适配标量指针及\n完整原生响应结构。已审核原生适配器见下表，不凭 token 字段猜能力。授权语义说明及来源索引\n由 #38 自动化，Go 注释保留准确绑定/所有权。每操作有脚本 HTTP transport\n的离线外部 Example；空 mock 请求/响应仅演示调用，不表示有效云参数或完整服务示例。\n\n", productMarkdown, r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product)
+	for _, op := range r.operations {
+		if op.Protocol.AuthType == "Anonymous" {
+			fmt.Fprint(&b, "## Anonymous RPC / 匿名 RPC\n\n### English\n\nAssumeRoleWithOIDC/SAML use the reviewed anonymous RPC protocol. Configure explicit\ncredentials.AnonymousProvider{}; nil providers remain invalid. These operations never\nretrieve a provider or sign, even with source credentials configured. Supply tokens/assertions\nexplicitly; never log fields or raw JSON. Signed actions still require signing credentials.\nNo automatic retries or federation discovery. Successful live federation is NOT RUN and\noutside the v0.1.0 required live scope; see ../sts-anonymous-rpc.md.\n\n### 中文\n\nAssumeRoleWithOIDC/SAML 使用已审核匿名 RPC，显式配置 credentials.AnonymousProvider{}；\nnil provider 仍无效。即使配置来源凭据也不读取或签名，token/assertion 由调用者显式传入，\n不能记录字段或原始 JSON。签名操作仍需签名凭据，不自动重试或发现联邦身份。\n成功真实联邦调用记录为 NOT RUN，位于 v0.1.0 必需真实验收范围外，见 ../sts-anonymous-rpc.md。\n\n")
+			break
+		}
+	}
 	r.appendCapabilityGuide(&b)
 	r.appendDocumentationGuide(&b)
 	for _, op := range r.operations {

@@ -13,8 +13,8 @@
   },
   "counts": {
     "discovered": 4,
-    "lowered": 2,
-    "unsupported": 2,
+    "lowered": 4,
+    "unsupported": 0,
     "dslOperations": 4,
     "catalogOnlyOperations": 0,
     "dslOnlyOperations": 0,
@@ -29,9 +29,7 @@
     "compilation": "not-assessed",
     "live": "not-assessed"
   },
-  "reasonCounts": {
-    "DSL_PROTOCOL_PROFILE": 2
-  },
+  "reasonCounts": {},
   "operations": [
     {
       "name": "AssumeRole",
@@ -48,7 +46,7 @@
     },
     {
       "name": "AssumeRoleWithOIDC",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/sts/main.tea",
@@ -57,23 +55,11 @@
         "endLine": 294,
         "endColumn": 45
       },
-      "reasons": [
-        {
-          "code": "DSL_PROTOCOL_PROFILE",
-          "message": "RPC profile",
-          "source": {
-            "file": "products/sts/main.tea",
-            "line": 294,
-            "column": 16,
-            "endLine": 294,
-            "endColumn": 45
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "AssumeRoleWithSAML",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/sts/main.tea",
@@ -82,19 +68,7 @@
         "endLine": 426,
         "endColumn": 45
       },
-      "reasons": [
-        {
-          "code": "DSL_PROTOCOL_PROFILE",
-          "message": "RPC profile",
-          "source": {
-            "file": "products/sts/main.tea",
-            "line": 426,
-            "column": 16,
-            "endLine": 426,
-            "endColumn": 45
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "GetCallerIdentity",

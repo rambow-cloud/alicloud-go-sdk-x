@@ -6,8 +6,46 @@
   "operations": {
     "AssumeRole": {
       "idempotent": false,
-      "evidence": ["sources/darabonba/products/sts/main.tea", "docs/credentials.md"],
-      "sensitiveModels": ["AssumeRoleRequest", "AssumeRoleResponse", "AssumeRoleResponseBody", "AssumeRoleResponseBody.credentials"]
+      "evidence": [
+        "sources/darabonba/products/sts/main.tea",
+        "docs/credentials.md"
+      ],
+      "sensitiveModels": [
+        "AssumeRoleRequest",
+        "AssumeRoleResponse",
+        "AssumeRoleResponseBody",
+        "AssumeRoleResponseBody.credentials"
+      ]
+    },
+    "AssumeRoleWithOIDC": {
+      "idempotent": false,
+      "evidence": [
+        "sources/darabonba/products/sts/main.tea",
+        "docs/sts-anonymous-rpc.md"
+      ],
+      "sensitiveModels": [
+        "AssumeRoleWithOIDCRequest",
+        "AssumeRoleWithOIDCResponse",
+        "AssumeRoleWithOIDCResponseBody",
+        "AssumeRoleWithOIDCResponseBody.assumedRoleUser",
+        "AssumeRoleWithOIDCResponseBody.credentials",
+        "AssumeRoleWithOIDCResponseBody.OIDCTokenInfo"
+      ]
+    },
+    "AssumeRoleWithSAML": {
+      "idempotent": false,
+      "evidence": [
+        "sources/darabonba/products/sts/main.tea",
+        "docs/sts-anonymous-rpc.md"
+      ],
+      "sensitiveModels": [
+        "AssumeRoleWithSAMLRequest",
+        "AssumeRoleWithSAMLResponse",
+        "AssumeRoleWithSAMLResponseBody",
+        "AssumeRoleWithSAMLResponseBody.assumedRoleUser",
+        "AssumeRoleWithSAMLResponseBody.credentials",
+        "AssumeRoleWithSAMLResponseBody.SAMLAssertionInfo"
+      ]
     }
   }
 }
