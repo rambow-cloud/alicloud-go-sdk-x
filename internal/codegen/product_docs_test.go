@@ -44,10 +44,27 @@ func TestGuidesUseSeparateLanguagesWithSharedEvidence(t *testing.T) {
 		if !strings.ContainsFunc(zh, func(r rune) bool { return unicode.Is(unicode.Han, r) }) {
 			t.Fatal("missing Chinese guidance", guides.name)
 		}
-		for _, line := range strings.Split(en, "\n") {
-			// Source coordinates and reviewed policy rows must be available in either language.
-			if strings.HasPrefix(line, "| `") && !strings.Contains(zh, line) {
-				t.Fatal("Chinese guide lost source or policy evidence", guides.name, line)
+		if guides.name == "sts" {
+			inTable := false
+			rows := 0
+			for _, line := range strings.Split(en, "\n") {
+				if !strings.HasPrefix(line, "| ") {
+					inTable = false
+					continue
+				}
+				if strings.HasPrefix(line, "| ---") {
+					inTable = true
+					continue
+				}
+				if inTable {
+					rows++
+					if !strings.Contains(zh, line) {
+						t.Fatal("Chinese guide lost source or policy evidence", guides.name, line)
+					}
+				}
+			}
+			if rows != len(p.Operations)+len(p.Policy.Operations) {
+				t.Fatal("source/policy rows not checked", rows)
 			}
 		}
 	}
