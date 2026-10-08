@@ -122,3 +122,13 @@ RPC。以保持打开的路线父任务及代码前创建的真实子 issue 跟�
 #34（规范化）→ #35（发现/IR）→ #36（输出）→ #37（策略）→ #38（文档）。五阶段及
 评审修复 #44 已于 2026-10-08 集成 main；[评审/集成证据](generator-integration.md)
 记录已验收固定 RPC 范围、合并提交及剩余覆盖边界。
+
+## STS delivery status / STS 交付状态
+
+### English
+
+#58/PR #63 and #59/PR #64 are merged: all four pinned STS actions emit with native signed/anonymous separation. #60 delivers consumer/real-source/live-identity evidence and the independent developer handoff; keep its UX gate open until the user-arranged Go developer records actual results. #61 publication/indexing follows that required acceptance. Historical planning counts below describe the earlier baseline, not current coverage. See [acceptance evidence](sts-v010-acceptance-report.md).
+
+### 中文
+
+#58/PR #63 与 #59/PR #64 已合并，四个固定 STS 操作输出并保留原生签名/匿名分离。#60 交付消费者/真实来源/真实 identity 证据及独立开发者验收包，用户安排的 Go 开发者提交实际结果前 UX 门槛保持开放。#61 发布/索引以此必需验收为前提，下文规划数量是旧基线不是当前覆盖。见[验收证据](sts-v010-acceptance-report.md)。

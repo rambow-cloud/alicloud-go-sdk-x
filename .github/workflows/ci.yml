@@ -49,6 +49,19 @@ jobs:
       - name: Test frontend, normalization and complete discovery contracts
         working-directory: tools/darabonba
         run: npm test
+      - name: Rehearse real STS source drift, safe rejection and reviewed regeneration
+        shell: bash
+        run: |
+          node tools/darabonba/rehearse-sts.cjs .git/sts-source-rehearsal
+          if go run ./internal/cmd/sdkgen product-generate -root .git/sts-source-rehearsal/candidate; then exit 1; fi
+          test ! -d .git/sts-source-rehearsal/candidate/service
+          if go run ./internal/cmd/sdkgen product-generate -root .git/sts-source-rehearsal/baseline -operations sts/AssumeRole; then exit 1; fi
+          test ! -d .git/sts-source-rehearsal/baseline/service
+          cp .git/sts-source-rehearsal/reviewed-sts-policy.json .git/sts-source-rehearsal/candidate/policies/sts.json
+          go run ./internal/cmd/sdkgen product-generate -root .git/sts-source-rehearsal/candidate
+          go run ./internal/cmd/sdkgen product-check -root .git/sts-source-rehearsal/candidate
+          node tools/darabonba/rehearse-sts.cjs --runtime .git/sts-source-rehearsal/candidate
+          go -C .git/sts-source-rehearsal/candidate test ${{ matrix.test_flags }} ./service/sts
       - name: Check formatting
         shell: bash
         run: |
@@ -67,3 +80,7 @@ jobs:
         run: go vet ./...
       - name: Test packages and runnable examples
         run: go test ${{ matrix.test_flags }} ./...
+      - name: Test isolated STS consumer and pinned official-v2 comparison
+        run: go -C examples/stsacceptance test ${{ matrix.test_flags }} ./...
+      - name: Run account-free STS consumer
+        run: go -C examples/stsacceptance run .

@@ -159,6 +159,8 @@ Keep parent/milestone open until required release/indexing evidence is delivered
 - Generator changes also run `go run ./internal/cmd/sdkgen check`. Edit pinned metadata,
   overlays, templates or handwritten validators under an issue; do not edit generated
   files directly. Review schema drift and rerun generation before public API checks.
+- Signed protocol lowering also reviews explicit product signature initialization;
+  unsupported/dynamic algorithms fail selected generation before writes, never silently become ACS3.
 - Production generation uses pinned official Darabonba sources/imports and the official
   semantic parser projection. Run the frontend check/tests with Node 22 before Go gates.
   Never silently resolve DSL/metadata conflicts; maintain the paired decision document
@@ -272,6 +274,8 @@ Project 3 和父 issue #57。限定实验版本优先于冲突旧 Beta 排期，
 - 每项能力包含实现、行为测试、可执行示例、双语文档与验证记录；生成器与基准分开跟踪。
 - 生成器变更还需运行 `go run ./internal/cmd/sdkgen check`。在 issue 下修改固定元数据、overlay、
   模板或手写 validator，不直接修改生成文件；评审 schema 漂移并重新生成后执行公共 API 检查。
+- 签名协议降低还需审核显式产品签名初始化；不支持或动态算法在选中生成时写前失败，
+  不静默转成 ACS3。
 - 生产生成使用固定官方 Darabonba 源码、导入模块及官方语义 parser 投影；Go 门禁前执行 Node 22
   前端检查/测试。不静默解决 DSL/元数据冲突，维护双语决策及机器可读审核记录；Explorer 浏览器
   与 CLI 证据分别记录。

@@ -19,3 +19,9 @@ Node frontend/test gates, both sdkgen checks, external module build/tests, docch
 ## 中文
 
 生成不等于好用或验收。归属 #57，依赖 #58/#59 和已完成 #51/#53/#55，不重建清理过的 IAM 或无理由重复续期。固定消费者/官方 v2/Go/环境，用独立用户按文档完成 STS/provider/cache/mocks/错误任务并记录时间障碍；四操作各类覆盖分开，授权 GetCallerIdentity 真实断言脱敏，#55 保留除非相关变更使证据失效。OIDC/SAML 必需离线完整契约，真实联邦预先范围外并 NOT RUN。隔离演练一次真实上游修订，审查清单/字段/认证/说明/许可及安全失败回滚，不静默改生产来源。配对报告关联上述 AC/UX；必需项未跑/失败不通过。本 issue 不授权新云/IdP 创建，验证遵循上述门禁及独立 browser/CLI 记录。
+
+## Source-drift finding and scoped guard / 来源漂移发现与限定门禁
+
+The real 2025-06-30 STS source assigns @signatureAlgorithm=v2 in its product initializer. Per-operation AK/callApi constants alone do not establish ACS3. This issue also adds a source-aware signed-auth initializer guard: unsupported/dynamic explicit algorithms must remain discoverable with a reason and selected operations must fail before writes. Accepted current sources and anonymous handoff behavior are preserved; fixtures compare actual initializer/endpoint/handoff changes separately from prose coordinates. Verify official-parser negative discovery and generation rejection.
+
+真实历史 STS 在产品 initializer 设置 v2，仅看逐操作 AK/callApi 不足以证明 ACS3。本 issue 增加来源感知的签名初始化门禁：不支持或动态显式算法保留可发现原因，选中操作写前失败。保留当前来源和匿名行为；区分真实 initializer/endpoint/handoff 与说明坐标变化，用官方 parser 负面发现和生成拒绝验证。

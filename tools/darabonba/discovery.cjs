@@ -348,6 +348,7 @@ const reasonPrefixes = {
   "protocol constants": "DSL_PROTOCOL_CONSTANTS",
   "RPC profile": "DSL_PROTOCOL_PROFILE",
   "runtime handoff and trailing statements": "DSL_RUNTIME_HANDOFF",
+  "signed product signature initializer": "DSL_PRODUCT_AUTH_INITIALIZER",
   "response model": "DSL_RESPONSE_MODEL",
   "response body": "DSL_RESPONSE_BODY",
   "recursive model": "DSL_RECURSIVE_MODEL",
