@@ -4,10 +4,10 @@
   "product": "sts",
   "license": "Apache-2.0",
   "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
-  "englishOperations": 2,
-  "totalOperations": 2,
-  "englishFields": 14,
-  "totalFields": 29,
+  "englishOperations": 4,
+  "totalOperations": 4,
+  "englishFields": 55,
+  "totalFields": 78,
   "chineseSemanticTranslation": "not-available-in-pinned-input",
   "pairedGuides": "usage-contracts-and-source-index",
   "examples": "offline-invocation-and-reviewed-capability-examples",
@@ -27,6 +27,44 @@
           "line": 129,
           "column": 1,
           "endLine": 146,
+          "endColumn": 4
+        }
+      ]
+    },
+    "AssumeRoleWithOIDC": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 282,
+          "column": 1,
+          "endLine": 293,
+          "endColumn": 4
+        },
+        {
+          "file": "products/sts/main.tea",
+          "line": 282,
+          "column": 1,
+          "endLine": 293,
+          "endColumn": 4
+        }
+      ]
+    },
+    "AssumeRoleWithSAML": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 414,
+          "column": 1,
+          "endLine": 425,
+          "endColumn": 4
+        },
+        {
+          "file": "products/sts/main.tea",
+          "line": 414,
+          "column": 1,
+          "endLine": 425,
           "endColumn": 4
         }
       ]
@@ -229,6 +267,530 @@
           "line": 115,
           "column": 63,
           "endLine": 117,
+          "endColumn": 151
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCRequest#OIDCProviderArn": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 213,
+          "column": 65,
+          "endLine": 218,
+          "endColumn": 226
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCRequest#OIDCToken": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 219,
+          "column": 53,
+          "endLine": 223,
+          "endColumn": 98
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCRequest#durationSeconds": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 208,
+          "column": 63,
+          "endLine": 212,
+          "endColumn": 202
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCRequest#policy": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 224,
+          "column": 47,
+          "endLine": 229,
+          "endColumn": 51
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCRequest#roleArn": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 230,
+          "column": 49,
+          "endLine": 235,
+          "endColumn": 208
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCRequest#roleSessionName": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 236,
+          "column": 65,
+          "endLine": 242,
+          "endColumn": 48
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCResponse#body": {
+      "status": "missing",
+      "sources": []
+    },
+    "AssumeRoleWithOIDCResponse#headers": {
+      "status": "missing",
+      "sources": []
+    },
+    "AssumeRoleWithOIDCResponse#statusCode": {
+      "status": "missing",
+      "sources": []
+    },
+    "AssumeRoleWithOIDCResponseBody#OIDCTokenInfo": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 271,
+          "column": 40,
+          "endLine": 271,
+          "endColumn": 77
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCResponseBody#assumedRoleUser": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 249,
+          "column": 42,
+          "endLine": 249,
+          "endColumn": 101
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCResponseBody#credentials": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 257,
+          "column": 38,
+          "endLine": 257,
+          "endColumn": 61
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCResponseBody#requestId": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 272,
+          "column": 53,
+          "endLine": 272,
+          "endColumn": 75
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCResponseBody#sourceIdentity": {
+      "status": "missing",
+      "sources": []
+    },
+    "AssumeRoleWithOIDCResponseBody.OIDCTokenInfo#clientIds": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 259,
+          "column": 55,
+          "endLine": 261,
+          "endColumn": 66
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCResponseBody.OIDCTokenInfo#expirationTime": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 262,
+          "column": 65,
+          "endLine": 262,
+          "endColumn": 102
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCResponseBody.OIDCTokenInfo#issuanceTime": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 263,
+          "column": 61,
+          "endLine": 263,
+          "endColumn": 101
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCResponseBody.OIDCTokenInfo#issuer": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 264,
+          "column": 49,
+          "endLine": 266,
+          "endColumn": 59
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCResponseBody.OIDCTokenInfo#subject": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 267,
+          "column": 51,
+          "endLine": 269,
+          "endColumn": 59
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCResponseBody.OIDCTokenInfo#verificationInfo": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 270,
+          "column": 69,
+          "endLine": 270,
+          "endColumn": 220
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCResponseBody.assumedRoleUser#arn": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 247,
+          "column": 43,
+          "endLine": 247,
+          "endColumn": 113
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCResponseBody.assumedRoleUser#assumedRoleId": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 248,
+          "column": 63,
+          "endLine": 248,
+          "endColumn": 132
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCResponseBody.credentials#accessKeyId": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 251,
+          "column": 59,
+          "endLine": 251,
+          "endColumn": 76
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCResponseBody.credentials#accessKeySecret": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 252,
+          "column": 67,
+          "endLine": 252,
+          "endColumn": 88
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCResponseBody.credentials#expiration": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 253,
+          "column": 57,
+          "endLine": 253,
+          "endColumn": 123
+        }
+      ]
+    },
+    "AssumeRoleWithOIDCResponseBody.credentials#securityToken": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 254,
+          "column": 63,
+          "endLine": 256,
+          "endColumn": 151
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLRequest#SAMLAssertion": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 370,
+          "column": 61,
+          "endLine": 374,
+          "endColumn": 109
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLRequest#SAMLProviderArn": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 375,
+          "column": 65,
+          "endLine": 382,
+          "endColumn": 226
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLRequest#durationSeconds": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 349,
+          "column": 63,
+          "endLine": 353,
+          "endColumn": 261
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLRequest#policy": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 354,
+          "column": 47,
+          "endLine": 359,
+          "endColumn": 51
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLRequest#roleArn": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 360,
+          "column": 49,
+          "endLine": 369,
+          "endColumn": 208
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLResponse#body": {
+      "status": "missing",
+      "sources": []
+    },
+    "AssumeRoleWithSAMLResponse#headers": {
+      "status": "missing",
+      "sources": []
+    },
+    "AssumeRoleWithSAMLResponse#statusCode": {
+      "status": "missing",
+      "sources": []
+    },
+    "AssumeRoleWithSAMLResponseBody#SAMLAssertionInfo": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 404,
+          "column": 44,
+          "endLine": 404,
+          "endColumn": 82
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLResponseBody#assumedRoleUser": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 389,
+          "column": 42,
+          "endLine": 389,
+          "endColumn": 101
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLResponseBody#credentials": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 397,
+          "column": 38,
+          "endLine": 397,
+          "endColumn": 58
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLResponseBody#requestId": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 398,
+          "column": 53,
+          "endLine": 398,
+          "endColumn": 75
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLResponseBody#sourceIdentity": {
+      "status": "missing",
+      "sources": []
+    },
+    "AssumeRoleWithSAMLResponseBody.SAMLAssertionInfo#issuer": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 400,
+          "column": 49,
+          "endLine": 400,
+          "endColumn": 105
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLResponseBody.SAMLAssertionInfo#recipient": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 401,
+          "column": 55,
+          "endLine": 401,
+          "endColumn": 213
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLResponseBody.SAMLAssertionInfo#subject": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 402,
+          "column": 51,
+          "endLine": 402,
+          "endColumn": 134
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLResponseBody.SAMLAssertionInfo#subjectType": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 403,
+          "column": 59,
+          "endLine": 403,
+          "endColumn": 444
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLResponseBody.assumedRoleUser#arn": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 387,
+          "column": 43,
+          "endLine": 387,
+          "endColumn": 113
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLResponseBody.assumedRoleUser#assumedRoleId": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 388,
+          "column": 63,
+          "endLine": 388,
+          "endColumn": 132
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLResponseBody.credentials#accessKeyId": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 391,
+          "column": 59,
+          "endLine": 391,
+          "endColumn": 76
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLResponseBody.credentials#accessKeySecret": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 392,
+          "column": 67,
+          "endLine": 392,
+          "endColumn": 88
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLResponseBody.credentials#expiration": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 393,
+          "column": 57,
+          "endLine": 393,
+          "endColumn": 123
+        }
+      ]
+    },
+    "AssumeRoleWithSAMLResponseBody.credentials#securityToken": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 394,
+          "column": 63,
+          "endLine": 396,
           "endColumn": 151
         }
       ]

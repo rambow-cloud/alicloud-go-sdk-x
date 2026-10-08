@@ -468,6 +468,7 @@ function buildProduct(ast, { pkg, identifier, info, file, provenance }) {
         else {
           record.status = "lowered";
           record.protocol = lowered.protocol;
+          if (lowered.handoff) record.handoff = lowered.handoff;
           // An explicit empty root preserves source absence without inventing a DSL model.
           if (!record.roots.request) record.roots.request = { kind: "empty" };
           const fields =

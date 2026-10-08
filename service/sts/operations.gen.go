@@ -50,6 +50,75 @@ func (c *Client) AssumeRole(ctx context.Context, input *AssumeRoleInput, optFns 
 	return out, nil
 }
 
+// AssumeRoleWithOIDCAPI is the minimal interface for AssumeRoleWithOIDC mocks and capability adapters.
+type AssumeRoleWithOIDCAPI interface {
+	// AssumeRoleWithOIDC invokes the native action with owned inputs and per-call options.
+	AssumeRoleWithOIDC(context.Context, *AssumeRoleWithOIDCInput, ...func(*Options)) (*AssumeRoleWithOIDCOutput, error)
+}
+
+// AssumeRoleWithOIDC calls the native AssumeRoleWithOIDC action (API version 2015-04-01).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+// This anonymous RPC action never retrieves source credentials or signs the request.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries a Security Token Service (STS) token to assume a Resource Access Management (RAM) role during role-based single sign-on (SSO) by using OpenID Connect (OIDC).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L282
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Prerequisites
+// *   An OIDC token is obtained from an external identity provider (IdP).
+// *   An OIDC IdP is created in the RAM console. For more information, see Create an OIDC IdP (https://help.aliyun.com/document_detail/327123.html) or CreateOIDCProvider (https://help.aliyun.com/document_detail/327135.html).
+// *   A RAM role whose trusted entity is an OIDC IdP is created in the RAM console. For more information, see Create a RAM role for a trusted IdP (https://help.aliyun.com/document_detail/116805.html) or CreateRole (https://help.aliyun.com/document_detail/28710.html).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L282
+func (c *Client) AssumeRoleWithOIDC(ctx context.Context, input *AssumeRoleWithOIDCInput, optFns ...func(*Options)) (*AssumeRoleWithOIDCOutput, error) {
+	out, meta, err := invoke[AssumeRoleWithOIDCInput, AssumeRoleWithOIDCOutput](ctx, c, input, alicloud.Operation{Service: "sts", Name: "AssumeRoleWithOIDC", Version: "2015-04-01", Idempotent: false, Authentication: alicloud.AuthenticationAnonymousRPC}, false, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// AssumeRoleWithSAMLAPI is the minimal interface for AssumeRoleWithSAML mocks and capability adapters.
+type AssumeRoleWithSAMLAPI interface {
+	// AssumeRoleWithSAML invokes the native action with owned inputs and per-call options.
+	AssumeRoleWithSAML(context.Context, *AssumeRoleWithSAMLInput, ...func(*Options)) (*AssumeRoleWithSAMLOutput, error)
+}
+
+// AssumeRoleWithSAML calls the native AssumeRoleWithSAML action (API version 2015-04-01).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+// This anonymous RPC action never retrieves source credentials or signs the request.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Obtains a Security Token Service (STS) token to assume a Resource Access Management (RAM) role during role-based single sign-on (SSO) by using Security Assertion Markup Language (SAML).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L414
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// *   A SAML response is obtained from an external identity provider (IdP).
+// *   A SAML IdP is created in the RAM console. For more information, see Create a SAML IdP (https://help.aliyun.com/document_detail/116083.html) or CreateSAMLProvider (https://help.aliyun.com/document_detail/186846.html).
+// *   A RAM role whose trusted entity is a SAML IdP is created in the RAM console. For more information, see Create a RAM role for a trusted IdP (https://help.aliyun.com/document_detail/116805.html) or CreateRole (https://help.aliyun.com/document_detail/28710.html).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L414
+func (c *Client) AssumeRoleWithSAML(ctx context.Context, input *AssumeRoleWithSAMLInput, optFns ...func(*Options)) (*AssumeRoleWithSAMLOutput, error) {
+	out, meta, err := invoke[AssumeRoleWithSAMLInput, AssumeRoleWithSAMLOutput](ctx, c, input, alicloud.Operation{Service: "sts", Name: "AssumeRoleWithSAML", Version: "2015-04-01", Idempotent: false, Authentication: alicloud.AuthenticationAnonymousRPC}, false, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // GetCallerIdentityAPI is the minimal interface for GetCallerIdentity mocks and capability adapters.
 type GetCallerIdentityAPI interface {
 	// GetCallerIdentity invokes the native action with owned inputs and per-call options.

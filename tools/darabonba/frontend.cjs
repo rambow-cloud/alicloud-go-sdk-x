@@ -375,22 +375,66 @@ function lowerOperation(ast, operation) {
       facts.protocol === "HTTPS" &&
       facts.pathname === "/" &&
       facts.method === "POST" &&
-      facts.authType === "AK" &&
+      ["AK", "Anonymous"].includes(facts.authType) &&
       facts.style === "RPC" &&
       facts.reqBodyType === "formData" &&
       facts.bodyType === "json",
     "RPC profile",
   );
   const result = statements[index++];
+  if (facts.authType === "Anonymous") {
+    const reserved = new Set([
+      "action",
+      "version",
+      "format",
+      "timestamp",
+      "signaturenonce",
+      "accesskeyid",
+      "accesskeysecret",
+      "securitytoken",
+      "signature",
+      "signaturemethod",
+      "signatureversion",
+      "signaturetype",
+      "bearertoken",
+    ]);
+    requireProfile(
+      bindings.every((b) => !reserved.has(b.wire.toLowerCase())),
+      "anonymous reserved query member",
+    );
+  }
+  const call = result?.expr;
+  const namedCall = (name) =>
+    call?.type === "call" &&
+    call.left.type === "method_call" &&
+    lex(call.left.id) === name;
+  const callApi =
+    namedCall("callApi") &&
+    call.args.length === 3 &&
+    call.args.every((e, i) => variable(e, ["params", "req", "runtime"][i]));
+  const rpcFields = [
+    "action",
+    "version",
+    "protocol",
+    "method",
+    "authType",
+    "bodyType",
+  ];
+  const doRPC =
+    namedCall("doRPCRequest") &&
+    call.args.length === 8 &&
+    call.args.every((e, i) =>
+      i < 6
+        ? e.type === "property_access" &&
+          lex(e.id) === "params" &&
+          e.propertyPath.length === 1 &&
+          lex(e.propertyPath[0]) === rpcFields[i]
+        : variable(e, ["req", "runtime"][i - 6]),
+    );
   requireProfile(
     result?.type === "return" &&
-      result.expr.type === "call" &&
-      result.expr.left.type === "method_call" &&
-      lex(result.expr.left.id) === "callApi" &&
-      result.expr.args.length === 3 &&
-      result.expr.args.every((e, i) =>
-        variable(e, ["params", "req", "runtime"][i]),
-      ) &&
+      ((facts.authType === "AK" && callApi) ||
+        (facts.authType === "Anonymous" && doRPC)) &&
       index === statements.length,
     "runtime handoff and trailing statements",
   );
@@ -401,6 +445,7 @@ function lowerOperation(ast, operation) {
   return {
     name: operation,
     protocol: facts,
+    ...(facts.authType === "Anonymous" ? { handoff: "doRPCRequest" } : {}),
     inputs: bindings.sort((a, b) => a.wire.localeCompare(b.wire)),
     response: shape(body.fieldValue, models),
   };

@@ -55,6 +55,8 @@ Keep parent/milestone open until required release/indexing evidence is delivered
   never invent NextToken for a page-only API. Document intentional defaults and v0
   migration differences rather than claiming upstream source compatibility.
 
+- Reviewed anonymous STS RPC uses explicit AnonymousProvider; it never retrieves source
+  credentials. Signed operations still require credentials and nil/typed-nil remain invalid.
 - Every blocking operation accepts `context.Context` as its first argument and
   preserves cancellation/deadline errors for `errors.Is`.
 - Use standard `net/http`, injectable HTTP clients, and `time.Duration` for timeouts.
@@ -202,6 +204,8 @@ Project 3 和父 issue #57。限定实验版本优先于冲突旧 Beta 排期，
   采用 AWS Go SDK v2 调用范式；操作名、准确线字段和原生分页语义保留阿里云 OpenAPI 规则，
   不为纯页码 API 造 NextToken。明确默认策略与 v0 迁移差异，不宣称上游源码兼容。
 
+- 已审核匿名 STS RPC 使用显式 AnonymousProvider，不读取来源凭据；签名操作仍需要凭据，
+  nil/typed-nil 仍无效。
 - 阻塞操作第一参数为 context.Context，errors.Is 能识别取消和超时。
 - 使用标准 net/http、可注入 HTTP 客户端与 time.Duration；最低 Go 1.27，JSON 直接使用 encoding/json/v2，
   不引入旧版 JSON、第三方替代或实验开关。

@@ -29,6 +29,36 @@ func ExampleClient_AssumeRole() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_AssumeRoleWithOIDC() {
+	provider := credentials.AnonymousProvider{}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := sts.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api sts.AssumeRoleWithOIDCAPI = client
+	out, err := api.AssumeRoleWithOIDC(context.Background(), &sts.AssumeRoleWithOIDCInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_AssumeRoleWithSAML() {
+	provider := credentials.AnonymousProvider{}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := sts.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api sts.AssumeRoleWithSAMLAPI = client
+	out, err := api.AssumeRoleWithSAML(context.Background(), &sts.AssumeRoleWithSAMLInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_GetCallerIdentity() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {

@@ -5,13 +5,13 @@
   "version": "2015-04-01",
   "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
   "discovered": 4,
-  "lowered": 2,
-  "emitted": 2,
-  "models": 7,
+  "lowered": 4,
+  "emitted": 4,
+  "models": 19,
   "compilation": "not-assessed",
   "live": "not-assessed",
   "capabilityPolicy": "sparse-reviewed",
-  "policySHA256": "4f8bc9825382d62b9a14542f4194063d32dc4d33e529f98ed626f07cad8567e3",
+  "policySHA256": "0738861136f8d17fc87c4d77480092bac24c970a22ed31f8d83cd073c29231fd",
   "operations": [
     {
       "name": "AssumeRole",
@@ -34,7 +34,7 @@
     },
     {
       "name": "AssumeRoleWithOIDC",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/sts/main.tea",
         "line": 294,
@@ -42,23 +42,18 @@
         "endLine": 294,
         "endColumn": 45
       },
-      "reasons": [
-        {
-          "code": "DSL_PROTOCOL_PROFILE",
-          "message": "RPC profile",
-          "source": {
-            "file": "products/sts/main.tea",
-            "line": 294,
-            "column": 16,
-            "endLine": 294,
-            "endColumn": 45
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": true,
+        "namingException": false
+      }
     },
     {
       "name": "AssumeRoleWithSAML",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/sts/main.tea",
         "line": 426,
@@ -66,19 +61,14 @@
         "endLine": 426,
         "endColumn": 45
       },
-      "reasons": [
-        {
-          "code": "DSL_PROTOCOL_PROFILE",
-          "message": "RPC profile",
-          "source": {
-            "file": "products/sts/main.tea",
-            "line": 426,
-            "column": 16,
-            "endLine": 426,
-            "endColumn": 45
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": true,
+        "namingException": false
+      }
     },
     {
       "name": "GetCallerIdentity",

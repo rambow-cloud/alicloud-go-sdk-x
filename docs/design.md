@@ -76,3 +76,13 @@ provider；静态/环境来源需显式注册，保留自定义 provider，不�
 请求前拒绝 nil/typed-nil provider，构造期间不读取凭据，见[凭据契约](credentials.md)。
 每个公共包有 doc.go 和外部可执行 Example；内部包不伪装用户 API。生成前固定 schema 来源、版本与许可证。
 发布和浏览器索引步骤见 releasing.md。
+
+## Reviewed authentication / 已审核认证
+
+### English
+
+The default operation authentication is ACS3. Explicit AnonymousRPC mode is limited to the pinned empty-body HTTPS POST RPC contract: native common query framing, no signature/source credentials, provider retrieval skipped. Generated OIDC/SAML select this mode from reviewed official handoff evidence; nil providers remain invalid and explicit AnonymousProvider configures anonymous-only use. Signing internals stay private. See [evidence](sts-anonymous-rpc.md).
+
+### 中文
+
+操作默认 ACS3，显式 AnonymousRPC 仅支持固定来源的空 body HTTPS POST RPC：原生公共 query、不签名或携带来源凭据、跳过 provider 读取。生成的 OIDC/SAML 根据已审核官方 handoff 选择此模式；nil provider 仍无效，显式 AnonymousProvider 配置仅匿名用途。签名内部保持私有，见[证据](sts-anonymous-rpc.md)。

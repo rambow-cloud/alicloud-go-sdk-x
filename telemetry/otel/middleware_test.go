@@ -8,6 +8,7 @@ import (
 	"github.com/rambow-cloud/alicloud-go-sdk-x/credentials"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/retry"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/sdktest"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/service/sts"
 	sdkotel "github.com/rambow-cloud/alicloud-go-sdk-x/telemetry/otel"
 	"go.opentelemetry.io/otel/codes"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
@@ -18,6 +19,41 @@ import (
 	"testing"
 	"time"
 )
+
+func TestGeneratedAnonymousFederationTraceOmitsTokensAndResponseSecrets(t *testing.T) {
+	exporter := tracetest.NewInMemoryExporter()
+	provider := sdktrace.NewTracerProvider(sdktrace.WithSyncer(exporter))
+	defer provider.Shutdown(context.Background())
+	tr := sdktest.NewTransport(sdktest.Step{StatusCode: 403, Body: `{"Code":"Forbidden","Message":"sensitive-token","RequestId":"trace-fixture"}`, Check: func(r *http.Request) error {
+		if r.Header.Get("Traceparent") == "" {
+			return errors.New("trace propagation missing")
+		}
+		return nil
+	}})
+	c, err := sts.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: credentials.AnonymousProvider{}, HTTPClient: &http.Client{Transport: tr}, Middleware: sdkotel.NewMiddleware(sdkotel.Options{TracerProvider: provider})})
+	if err != nil {
+		t.Fatal(err)
+	}
+	token := "sensitive-token"
+	_, err = c.AssumeRoleWithOIDC(context.Background(), &sts.AssumeRoleWithOIDCInput{OIDCToken: &token})
+	if err == nil {
+		t.Fatal("missing service error")
+	}
+	spans := exporter.GetSpans()
+	if len(spans) != 2 {
+		t.Fatal("missing spans")
+	}
+	for _, span := range spans {
+		if len(span.Events) != 0 || strings.Contains(span.Status.Description, "sensitive") {
+			t.Fatal("trace error leak")
+		}
+		for _, attr := range span.Attributes {
+			if strings.Contains(attr.Value.Emit(), "sensitive") || strings.Contains(attr.Value.Emit(), "OIDCToken") {
+				t.Fatal("trace field leak")
+			}
+		}
+	}
+}
 
 func TestOperationAttemptHierarchyPropagationAndRedaction(t *testing.T) {
 	exporter := tracetest.NewInMemoryExporter()

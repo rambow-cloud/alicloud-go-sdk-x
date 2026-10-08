@@ -36,3 +36,147 @@ func (AssumeRoleOutputCredentials) String() string {
 func (AssumeRoleOutputCredentials) GoString() string {
 	return "AssumeRoleOutputCredentials (sensitive fields redacted)"
 }
+
+// String hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithOIDCInput) String() string {
+	return "AssumeRoleWithOIDCInput (sensitive fields redacted)"
+}
+
+// GoString hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithOIDCInput) GoString() string {
+	return "AssumeRoleWithOIDCInput (sensitive fields redacted)"
+}
+
+// String hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithOIDCResponse) String() string {
+	return "AssumeRoleWithOIDCResponse (sensitive fields redacted)"
+}
+
+// GoString hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithOIDCResponse) GoString() string {
+	return "AssumeRoleWithOIDCResponse (sensitive fields redacted)"
+}
+
+// String hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithOIDCOutput) String() string {
+	return "AssumeRoleWithOIDCOutput (sensitive fields redacted)"
+}
+
+// GoString hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithOIDCOutput) GoString() string {
+	return "AssumeRoleWithOIDCOutput (sensitive fields redacted)"
+}
+
+// String hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithOIDCOutputOIDCTokenInfo) String() string {
+	return "AssumeRoleWithOIDCOutputOIDCTokenInfo (sensitive fields redacted)"
+}
+
+// GoString hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithOIDCOutputOIDCTokenInfo) GoString() string {
+	return "AssumeRoleWithOIDCOutputOIDCTokenInfo (sensitive fields redacted)"
+}
+
+// String hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithOIDCOutputAssumedRoleUser) String() string {
+	return "AssumeRoleWithOIDCOutputAssumedRoleUser (sensitive fields redacted)"
+}
+
+// GoString hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithOIDCOutputAssumedRoleUser) GoString() string {
+	return "AssumeRoleWithOIDCOutputAssumedRoleUser (sensitive fields redacted)"
+}
+
+// String hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithOIDCOutputCredentials) String() string {
+	return "AssumeRoleWithOIDCOutputCredentials (sensitive fields redacted)"
+}
+
+// GoString hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithOIDCOutputCredentials) GoString() string {
+	return "AssumeRoleWithOIDCOutputCredentials (sensitive fields redacted)"
+}
+
+// String hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithSAMLInput) String() string {
+	return "AssumeRoleWithSAMLInput (sensitive fields redacted)"
+}
+
+// GoString hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithSAMLInput) GoString() string {
+	return "AssumeRoleWithSAMLInput (sensitive fields redacted)"
+}
+
+// String hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithSAMLResponse) String() string {
+	return "AssumeRoleWithSAMLResponse (sensitive fields redacted)"
+}
+
+// GoString hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithSAMLResponse) GoString() string {
+	return "AssumeRoleWithSAMLResponse (sensitive fields redacted)"
+}
+
+// String hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithSAMLOutput) String() string {
+	return "AssumeRoleWithSAMLOutput (sensitive fields redacted)"
+}
+
+// GoString hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithSAMLOutput) GoString() string {
+	return "AssumeRoleWithSAMLOutput (sensitive fields redacted)"
+}
+
+// String hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithSAMLOutputSAMLAssertionInfo) String() string {
+	return "AssumeRoleWithSAMLOutputSAMLAssertionInfo (sensitive fields redacted)"
+}
+
+// GoString hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithSAMLOutputSAMLAssertionInfo) GoString() string {
+	return "AssumeRoleWithSAMLOutputSAMLAssertionInfo (sensitive fields redacted)"
+}
+
+// String hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithSAMLOutputAssumedRoleUser) String() string {
+	return "AssumeRoleWithSAMLOutputAssumedRoleUser (sensitive fields redacted)"
+}
+
+// GoString hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithSAMLOutputAssumedRoleUser) GoString() string {
+	return "AssumeRoleWithSAMLOutputAssumedRoleUser (sensitive fields redacted)"
+}
+
+// String hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithSAMLOutputCredentials) String() string {
+	return "AssumeRoleWithSAMLOutputCredentials (sensitive fields redacted)"
+}
+
+// GoString hides the complete sensitive model during fmt formatting.
+// JSON serialization and direct field access still expose the original data.
+func (AssumeRoleWithSAMLOutputCredentials) GoString() string {
+	return "AssumeRoleWithSAMLOutputCredentials (sensitive fields redacted)"
+}

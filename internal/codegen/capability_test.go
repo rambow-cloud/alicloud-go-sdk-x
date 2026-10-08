@@ -28,7 +28,7 @@ func readPolicyProduct(t *testing.T, pkg string) productIR {
 }
 
 func TestPolicyRenderingCoverageAndExactWireNaming(t *testing.T) {
-	for pkg, want := range map[string]int{"ecs": 5, "vpc": 1, "sts": 1} {
+	for pkg, want := range map[string]int{"ecs": 5, "vpc": 1, "sts": 3} {
 		p := readPolicyProduct(t, pkg)
 		r, err := newProductRenderer(p)
 		if err != nil {

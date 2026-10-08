@@ -37,6 +37,8 @@ type Config struct {
 	// Prefer a cached STS role provider. Long-lived keys and environment sources
 	// require explicit providers; nil and typed-nil providers are rejected.
 	// Construction never retrieves credentials or discovers a fallback source.
+	// AnonymousProvider is an explicit marker for reviewed anonymous operations;
+	// it cannot supply credentials for signed operations.
 	CredentialsProvider credentials.Provider
 	// HTTPClient is optional; nil uses a private http.Client with redirects disabled.
 	HTTPClient HTTPClient
@@ -73,6 +75,18 @@ type CallOptions struct {
 	Middleware []middleware.Registration
 }
 
+// AuthenticationMode identifies the reviewed request authentication protocol.
+// The zero value uses ACS3 signing; unsupported values fail before transport.
+type AuthenticationMode uint8
+
+const (
+	// AuthenticationACS3 signs each request with explicit source credentials.
+	AuthenticationACS3 AuthenticationMode = iota
+	// AuthenticationAnonymousRPC uses unsigned legacy RPC query framing over HTTPS.
+	// It never retrieves a provider or adds source authentication fields.
+	AuthenticationAnonymousRPC
+)
+
 // Operation describes a reviewed API operation; clients provide concrete models.
 type Operation struct {
 	// Service identifies the product, such as ecs or sts.
@@ -83,6 +97,9 @@ type Operation struct {
 	Version string
 	// Idempotent explicitly permits retry when the policy also permits it.
 	Idempotent bool
+	// Authentication selects the reviewed protocol; zero means signed ACS3.
+	// Generated clients set anonymous RPC only from approved official DSL evidence.
+	Authentication AuthenticationMode
 }
 
 // Request supplies pre-encoded RPC/ROA wire data. Invoke copies maps and bytes.
@@ -221,6 +238,10 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 	}
 	if op.Service == "" || op.Name == "" || op.Version == "" {
 		err = errors.New("alicloud: incomplete operation")
+		return
+	}
+	if op.Authentication != AuthenticationACS3 && op.Authentication != AuthenticationAnonymousRPC {
+		err = errors.New("alicloud: unsupported authentication protocol")
 		return
 	}
 	target := reflect.ValueOf(output)
@@ -414,21 +435,34 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 						return readErr
 					}
 					setBody(e.Request, actual)
-					value, credErr := config.CredentialsProvider.Retrieve(ctx)
-					if credErr != nil {
-						return credErr
-					}
-					if strings.TrimSpace(value.AccessKeyID) == "" || strings.TrimSpace(value.AccessKeySecret) == "" {
-						return credentials.ErrMissingCredentials
-					}
-					if !value.ExpiresAt.IsZero() && !time.Now().Before(value.ExpiresAt) {
-						return credentials.ErrExpired
+					var value credentials.Credentials
+					if op.Authentication == AuthenticationACS3 {
+						var credErr error
+						value, credErr = config.CredentialsProvider.Retrieve(ctx)
+						if credErr != nil {
+							return credErr
+						}
+						if strings.TrimSpace(value.AccessKeyID) == "" || strings.TrimSpace(value.AccessKeySecret) == "" {
+							return credentials.ErrMissingCredentials
+						}
+						if !value.ExpiresAt.IsZero() && !time.Now().Before(value.ExpiresAt) {
+							return credentials.ErrExpired
+						}
 					}
 					var nonce [16]byte
 					if _, randErr := rand.Read(nonce[:]); randErr != nil {
 						return errors.New("alicloud: nonce generation failed")
 					}
-					if signErr := signing.Sign(e.Request, actual, value, op.Name, op.Version, time.Now(), hex.EncodeToString(nonce[:])); signErr != nil {
+					var signErr error
+					if op.Authentication == AuthenticationAnonymousRPC {
+						if len(actual) != 0 {
+							return errors.New("alicloud: anonymous RPC body unsupported")
+						}
+						signErr = signing.PrepareAnonymousRPC(e.Request, op.Name, op.Version, time.Now(), hex.EncodeToString(nonce[:]))
+					} else {
+						signErr = signing.Sign(e.Request, actual, value, op.Name, op.Version, time.Now(), hex.EncodeToString(nonce[:]))
+					}
+					if signErr != nil {
 						return signErr
 					}
 					response, sendErr := config.HTTPClient.Do(e.Request)
