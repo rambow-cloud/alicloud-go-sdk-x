@@ -4,6 +4,16 @@
 
 ## English
 
+### Default configuration and local sign-in
+
+Use config.LoadDefaultConfig(ctx, config.WithSharedConfigProfile("oss-sftp")) to
+discover native CLI OAuth/temporary credentials and region, then pass the returned
+Config to a generated NewFromConfig. Native OAuth refresh/exchange uses cached,
+bounded providers; interactive login stays with the CLI. See the authoritative
+[default configuration contract](default-configuration.md) for precedence, supported
+modes, session ownership and explicit long-lived opt-in. This user-approved #68 scope
+supersedes the previous blanket no-default-chain/no-native-Profile/OAuth limitation.
+
 ### STS-first application configuration
 
 Prefer a renewable `stscreds.AssumeRoleProvider` wrapped in `credentials.Cache` for
@@ -14,7 +24,7 @@ StaticProvider never renews itself.
 
 `alicloud.Config` and service Options expose only `CredentialsProvider`, never bare
 AccessKey/KeySecret/SecurityToken fields. Explicit provider injection is required even
-when environment credentials are populated. Nil/typed-nil providers, including a nil
+when environment credentials are populated and Config is constructed directly. Nil/typed-nil providers, including a nil
 ProviderFunc, fail during runtime/chain/cache construction before HTTP; construction
 does not retrieve credentials. Per-operation configuration replacement applies the
 same validation without changing the client.
@@ -31,8 +41,9 @@ All deliberate custom providers remain supported, including ones returning long-
 keys. STS-first is guidance and a provider-only configuration rule, not an STS-only
 runtime. AWS Go SDK v2 likewise accepts providers and documents an explicit
 [StaticCredentialsProvider](https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/configure-gosdk.html).
-Unlike AWS LoadDefaultConfig, this SDK has no implicit default source discovery. Do not
-claim a default credential chain or native Profile/OAuth support.
+Our LoadDefaultConfig provides documented Alibaba-native discovery, including CLI
+Profile/OAuth, while retaining deliberate long-lived opt-in. Its bounded supported
+chain is not a claim of source compatibility with AWS or every Alibaba CLI mode.
 
 ### Provider contracts
 
@@ -45,7 +56,9 @@ EnvProvider reads ALIBABA_CLOUD_ACCESS_KEY_ID, ALIBABA_CLOUD_ACCESS_KEY_SECRET a
 ALIBABA_CLOUD_SECURITY_TOKEN each time. All three absent returns ErrNotFound; any
 incomplete configuration returns ErrMissingCredentials. NewChain copies an explicit
 ordered provider list, skips only ErrNotFound and stops on other failures or invalid
-snapshots. There is no implicit file, process, metadata or role discovery. Use
+snapshots. Chain itself discovers no sources; config.LoadDefaultConfig registers its
+documented temporary/profile providers. Automatic process/metadata discovery is outside
+this scope. Use
 ProviderFunc for a custom source and preserve cancellation errors. See [cache contracts](credential-cache.md).
 
 Issue [#53](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/53) verifies the
@@ -57,6 +70,14 @@ with a dedicated minimal-permission role; it does not add native Profile/OAuth s
 
 ## 中文
 
+### 默认配置与本地登录
+
+使用 config.LoadDefaultConfig(ctx, config.WithSharedConfigProfile("oss-sftp"))
+加载原生 CLI OAuth/临时凭据与地域，返回 Config 直接传给生成 NewFromConfig。原生 OAuth
+刷新/交换使用有界缓存 provider，初次交互登录由 CLI 完成。优先级、模式范围、会话所有权
+和长期密钥显式启用见[默认配置契约](default-configuration.md)。用户确认的 #68 优先于旧
+“无默认链/无原生 Profile/OAuth”限制。
+
 ### 优先采用 STS 的应用配置
 
 应用客户端优先采用可刷新的 stscreds.AssumeRoleProvider，并包装 credentials.Cache。
@@ -64,7 +85,7 @@ with a dedicated minimal-permission role; it does not add native Profile/OAuth s
 STS 配置独立来源以避免递归；Cache 合并刷新，复制到 StaticProvider 的 STS token 不会自动续期。
 
 alicloud.Config 和服务 Options 只提供 CredentialsProvider，不提供裸 AccessKey/KeySecret/
-SecurityToken 字段。即便环境凭据已经存在，也必须显式注入 provider。Nil/typed-nil provider
+SecurityToken 字段。直接构造 Config 时即便环境凭据已经存在，也必须注入 provider。Nil/typed-nil provider
 （含 nil ProviderFunc）在运行时/chain/cache 构造期间失败，不访问 HTTP、不读取凭据。
 操作级配置替换执行同样校验，且不修改客户端。
 
@@ -79,7 +100,8 @@ SecurityToken 字段。即便环境凭据已经存在，也必须显式注入 pr
 所有有意注入的自定义 provider 均可用，也可返回长期密钥。STS 优先是使用指南和 provider-only
 配置规则，不是运行时强制仅接受 STS。AWS Go SDK v2 同样接受 provider，并记录显式
 [StaticCredentialsProvider](https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/configure-gosdk.html)。
-本 SDK 不采用 AWS LoadDefaultConfig 的隐式默认来源发现，不宣称默认凭据链或原生 Profile/OAuth 支持。
+本 SDK 的 LoadDefaultConfig 提供阿里云原生默认发现及 CLI Profile/OAuth，保留长期密钥显式启用。
+支持范围有界，不宣称与 AWS 来源兼容或覆盖全部阿里云 CLI 模式。
 
 ### Provider 契约
 
@@ -89,8 +111,9 @@ Provider 使用 context 返回复制的凭据快照，必须并发安全；NewSt
 
 EnvProvider 每次读取 ALIBABA_CLOUD_ACCESS_KEY_ID、ALIBABA_CLOUD_ACCESS_KEY_SECRET 和可选
 ALIBABA_CLOUD_SECURITY_TOKEN。三项都不存在返回 ErrNotFound，不完整配置返回 ErrMissingCredentials。
-NewChain 复制显式有序列表，只跳过 ErrNotFound，其他失败/无效快照立即终止。不会隐式发现
-文件、进程、metadata 或角色；ProviderFunc 自定义来源需保留取消错误。见[缓存契约](credential-cache.md)。
+NewChain 复制显式有序列表，只跳过 ErrNotFound，其他失败/无效快照立即终止；Chain 自身不
+发现来源，config.LoadDefaultConfig 注册所述临时/Profile provider。自动进程/metadata
+发现在本范围外；ProviderFunc 自定义来源需保留取消错误。见[缓存契约](credential-cache.md)。
 
 [#53](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/53) 验证 provider-only 配置、无环境回退、
 构造/操作覆盖拒绝，以及离线角色签名/缓存复用。合成 Example 和 CI 不证明真实角色续期或整体 Beta 验收。

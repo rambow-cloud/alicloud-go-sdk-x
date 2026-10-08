@@ -28,32 +28,37 @@ Successful OIDC/SAML live federation is declared outside that required live scop
 before execution, never promoted from NOT RUN to PASS. This explicit route revision
 supersedes the broader Beta release prerequisite for v0.1.0 only; the candidate
 boundary/AC/UX definitions below remain the broader goal. Neither release claims
-broader Beta, native Profile/OAuth renewal or unverified ECS/VPC coverage.
+broader Beta or unverified ECS/VPC coverage. The later user-approved #68 correction
+adds required native default configuration/Profile/OAuth behavior before publication;
+the earlier exclusion is superseded by [the new route](default-configuration.md).
 
 The candidate scope below is the starting acceptance workload, not a release claim.
 Adding/removing required cases needs an issue, evidence and paired updates. Passing
 shared contracts does not extend product coverage automatically.
 
-| Boundary          | Candidate requirement                                                                                                                |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| Products/packages | ECS 2014-05-26, VPC 2016-04-28, STS 2015-04-01 under `service/`                                                                      |
-| Actions           | ECS DescribeRegions/DescribeImages/DescribeInstances/DescribeInstanceStatus; VPC DescribeVpcs; STS AssumeRole                        |
-| Protocol/region   | Reviewed RPC/ACS3 over HTTPS; cn-hangzhou; other modeled regions retain separate evidence                                            |
-| Capabilities      | Four native paginators; ECS InstanceRunningWaiter; reviewed opt-in read retry; STS provider/cache composition; optional OTel         |
-| Identity          | Explicit static/env providers, explicit chain/cache and AssumeRole using separate source credentials                                 |
-| Exclusions        | Native CLI Profile/OAuth refresh, automatic process/metadata discovery, arbitrary write retry, ROA/OSS/streaming, whole-cloud parity |
+| Boundary          | Candidate requirement                                                                                                                                  |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Products/packages | ECS 2014-05-26, VPC 2016-04-28, STS 2015-04-01 under `service/`                                                                                        |
+| Actions           | ECS DescribeRegions/DescribeImages/DescribeInstances/DescribeInstanceStatus; VPC DescribeVpcs; STS AssumeRole                                          |
+| Protocol/region   | Reviewed RPC/ACS3 over HTTPS; cn-hangzhou; other modeled regions retain separate evidence                                                              |
+| Capabilities      | Four native paginators; ECS InstanceRunningWaiter; reviewed opt-in read retry; STS provider/cache composition; optional OTel                           |
+| Identity          | Explicit static/env providers, explicit chain/cache and AssumeRole using separate source credentials                                                   |
+| Exclusions        | Automatic process/metadata discovery, arbitrary write retry, ROA/OSS/streaming, whole-cloud parity; native CLI Profile/OAuth is now required under #68 |
 
-Existing local-profile validation injects a checked credential snapshot after CLI
-authentication. It does not establish native SDK Profile loading or renewal. If added,
-that capability needs its own issue/contract/live cases. No cloud resource creation,
+Historical local-profile validation injected a checked snapshot after CLI
+authentication; it does not establish native loading or renewal. #68 adds native
+loading and scoped live exchange/persistence evidence under
+[the new contract](default-configuration.md). No cloud resource creation,
 write operation or target-role use is authorized by this document.
 
 Application guidance prioritizes renewable STS role providers/cache. Long-lived keys
-and environment sources require explicit StaticProvider/EnvProvider registration;
-custom providers remain supported. Config/Options have no bare credential fields,
-construction never retrieves credentials, and nil/typed-nil sources fail before
-requests. No implicit fallback or STS-only runtime is introduced; [#53](credentials.md)
-adds offline rejection/signing/cache evidence under AC-01/05/11 and UX-01/04.
+require explicit StaticProvider/EnvProvider/profile-provider registration; complete
+temporary environment credentials and native profiles are discoverable through
+LoadDefaultConfig. Custom providers remain supported. Config/Options have no bare
+credential fields, construction never makes credential HTTP calls, and nil/typed-nil
+sources fail before requests. Present invalid sources stop resolution. Historical
+[#53](credentials.md) rejection/signing/cache evidence remains under AC-01/05/11
+and UX-01/04; #68 supersedes its blanket discovery exclusion.
 
 ### Required criteria
 
@@ -165,30 +170,35 @@ Smithy 仍是独立本地实验，改变路线需单独 issue/决策。要求 Go
 跟踪。限定实验发布必需四个固定 STS 操作生成/编译/离线测试、凭据组合、限定真实证据、
 消费者/维护/文档及发布/索引。OIDC/SAML 真实联邦在执行前声明不属于必需真实范围，
 不把 NOT RUN 写成 PASS。此明确路线调整仅替代 v0.1.0 的旧整体 Beta 发布前提，下文
-候选边界/AC/UX 保留为更广目标，不宣称整体 Beta、原生 Profile/OAuth 或未经验证的
+候选边界/AC/UX 保留为更广目标，不宣称整体 Beta 或未经验证的
 ECS/VPC 覆盖。
+
+用户后续 #68 要求发布前补默认配置/原生 Profile/OAuth，旧排除范围以
+[更新路线](default-configuration.md)为准，不用历史 #55 角色续期冒充原生 OAuth 证据。
 
 以下是首批验收业务，不是发布声明。增减必需项需 issue、证据和双语更新，共享契约通过不自动
 扩大产品覆盖。
 
-| 边界      | 候选要求                                                                                                      |
-| --------- | ------------------------------------------------------------------------------------------------------------- |
-| 产品/包   | ECS 2014-05-26、VPC 2016-04-28、STS 2015-04-01，使用 service/                                                 |
-| 操作      | ECS DescribeRegions/DescribeImages/DescribeInstances/DescribeInstanceStatus；VPC DescribeVpcs；STS AssumeRole |
-| 协议/地域 | 已审核 RPC/ACS3、HTTPS、cn-hangzhou；其他已建模地域证据独立                                                   |
-| 能力      | 四个原生分页器、ECS InstanceRunningWaiter、审核读取的显式重试、STS provider/cache、可选 OTel                  |
-| 身份      | 显式 static/env、有序 chain/cache、来源凭据独立的 AssumeRole                                                  |
-| 范围外    | 原生 CLI Profile/OAuth 刷新、自动进程/metadata 发现、任意写重试、ROA/OSS/streaming、全云等价                  |
+| 边界      | 候选要求                                                                                                                             |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| 产品/包   | ECS 2014-05-26、VPC 2016-04-28、STS 2015-04-01，使用 service/                                                                        |
+| 操作      | ECS DescribeRegions/DescribeImages/DescribeInstances/DescribeInstanceStatus；VPC DescribeVpcs；STS AssumeRole                        |
+| 协议/地域 | 已审核 RPC/ACS3、HTTPS、cn-hangzhou；其他已建模地域证据独立                                                                          |
+| 能力      | 四个原生分页器、ECS InstanceRunningWaiter、审核读取的显式重试、STS provider/cache、可选 OTel                                         |
+| 身份      | 显式 static/env、有序 chain/cache、来源凭据独立的 AssumeRole                                                                         |
+| 范围外    | 自动进程/metadata 发现、任意写重试、ROA/OSS/streaming、全云等价；用户后续 #68 修正要求原生 CLI Profile/OAuth，旧排除范围以新路线为准 |
 
-已有 Profile 验证在 CLI 登录后注入检查过期的凭据快照，不代表 SDK 原生加载/刷新 Profile。
-新增该能力需独立 issue、契约和真实验收。本文件不授权云资源创建、写操作或目标角色调用。
+历史 Profile 验证在 CLI 登录后注入检查过期的凭据快照，不证明原生加载/续期。
+#68 按[新契约](default-configuration.md)新增原生加载及真实交换/持久化证据。
+本文件不授权云资源创建、写操作或目标角色调用。
 
 ### 必需标准
 
-应用指南优先采用可刷新的 STS role provider/cache；长期密钥及环境来源必须显式注册
-StaticProvider/EnvProvider，仍支持自定义 provider。Config/Options 没有裸凭据字段，构造期间
-不读取凭据，请求前拒绝 nil/typed-nil 来源，不引入隐式回退或 STS-only 运行时。
-[#53](credentials.md) 在 AC-01/05/11、UX-01/04 下增加离线拒绝/签名/缓存证据。
+应用指南优先采用可刷新的 STS role provider/cache；长期密钥必须显式注册
+StaticProvider/EnvProvider/profile provider，LoadDefaultConfig 可发现完整临时环境凭据及
+原生 Profile，仍支持自定义来源。Config/Options 无裸凭据字段，构造期间不进行凭据 HTTP，
+请求前拒绝 nil/typed-nil；已配置无效来源停止解析。#53 离线拒绝/签名/缓存证据仍关联
+AC-01/05/11、UX-01/04，#68 优先于其全面禁止发现范围。
 
 | ID    | 契约                                                                                             | 必需证据                                                                                      |
 | ----- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |

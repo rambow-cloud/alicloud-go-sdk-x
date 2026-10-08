@@ -97,6 +97,17 @@ function check(repository = root) {
     "docs/acceptance/sts-source-rehearsal.json",
     "Source rehearsal",
   );
+  const profile = readEvidence(
+    "docs/acceptance/profile-oauth-live.json",
+    "Native Profile/OAuth",
+  );
+  if (
+    profile.Status !== "PASS" ||
+    profile.NativeCLIConfig !== true ||
+    profile.CLISubprocess !== false ||
+    profile.SuccessfulNativeOAuthExchange !== "PASS"
+  )
+    throw Error("required native Profile/OAuth acceptance is incomplete");
   if (
     live.Status !== "PASS" ||
     live.IdentityFieldsCompared !== 6 ||
@@ -142,6 +153,7 @@ function requireUnchangedBehavior(repository, revision) {
         "examples/stsacceptance",
         "docs/products",
         "docs/credentials.md",
+        "docs/default-configuration.md",
         "docs/sts-credentials.md",
         "docs/sts-anonymous-rpc.md",
         "docs/sts-consumer-acceptance.md",

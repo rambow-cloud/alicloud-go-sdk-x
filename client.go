@@ -34,8 +34,9 @@ type Config struct {
 	// Region is the default operation region; individual operations may override it.
 	Region string
 	// CredentialsProvider is required and must honor the Provider contract.
-	// Prefer a cached STS role provider. Long-lived keys and environment sources
-	// require explicit providers; nil and typed-nil providers are rejected.
+	// Prefer config.LoadDefaultConfig with native temporary/Profile/OAuth sources
+	// or a cached STS role provider. Long-lived sources require explicit opt-in;
+	// nil and typed-nil providers are rejected.
 	// Construction never retrieves credentials or discovers a fallback source.
 	// AnonymousProvider is an explicit marker for reviewed anonymous operations;
 	// it cannot supply credentials for signed operations.

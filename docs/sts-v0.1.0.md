@@ -67,8 +67,9 @@ OIDC/SAML successful live federation requires separately authorized IdP/provider
 assertion fixtures. Those live cases are **outside this first release's required
 live scope**, declared before execution; mark them NOT RUN and disclose the limit
 in the release notes. All four actions' offline correctness remains mandatory.
-Native Profile/OAuth refresh and federation credential-provider helpers are separate
-future scope. STS has no pagination/waiter workload here; preserve shared engines
+The user's subsequent #68 correction makes native default configuration/Profile/OAuth
+renewal required before publication; follow [the updated route](default-configuration.md).
+Federation credential-provider helpers remain separate future scope. STS has no pagination/waiter workload here; preserve shared engines
 without inventing STS pagination. ECS is only the existing role-credential consumer;
 ECS/VPC product-wide acceptance and benchmark #20 remain independent.
 
@@ -155,7 +156,8 @@ Anonymous RPC/doRPCRequest，GetCallerIdentity 的 DSL_OPERATION_SIGNATURE 对�
 
 OIDC/SAML 真实成功联邦调用需要另行授权的 IdP/provider/assertion 环境，**预先明确不属于
 首版必需真实范围**；记录 NOT RUN，并在版本说明披露，不替代四操作必需离线正确性。
-原生 Profile/OAuth 刷新及联邦 credential-provider helper 后续单独建设。本例 STS 没有
+用户后续 #68 修正使默认配置/原生 Profile/OAuth 续期成为发布前必需，遵循
+[更新路线](default-configuration.md)；联邦 credential-provider helper 仍为后续范围。本例 STS 没有
 分页/waiter 任务，不编造分页，保留共享引擎。ECS 仅作为已有角色凭据消费者；ECS/VPC
 全产品验收和基准 #20 独立。
 

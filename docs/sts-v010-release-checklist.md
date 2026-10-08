@@ -7,6 +7,10 @@ same-version browser indexing are NOT RUN. Notes/commands are prepared; no tag i
 created by this preparation. User authorization to complete the release already
 exists; the pending item is actual acceptance evidence, not another permission request.
 
+The user's later #68 correction also requires default configuration/native CLI
+Profile/OAuth and its scoped evidence before the new #60 human handoff. Track
+docs/acceptance/profile-oauth-live.json separately from historical manual snapshots.
+
 1. Receive the user-arranged independent Go developer's completed
    [task report](sts-independent-result-template.md). Transcribe only actual results
    into `docs/acceptance/sts-independent-result.json`, retaining sanitized source/
@@ -31,11 +35,13 @@ and finish the release for that same tag; do not recreate or move it.
 
 4. Record tag target/release URL and open these exact same-version pages in a browser:
 
-| Package     | Exact URL                                                                            | Inspect                                                                                     |
-| ----------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
-| STS         | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/service/sts      | Version v0.1.0; Apache license; four client actions, model/field docs and runnable Examples |
-| Credentials | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/credentials      | Version; MIT; explicit providers including AnonymousProvider, Cache and Examples            |
-| STS helper  | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/feature/stscreds | Version; MIT; full-DSL constructor/ownership/renewal docs and Examples                      |
+| Package        | Exact URL                                                                                | Inspect                                                                                     |
+| -------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| STS            | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/service/sts          | Version v0.1.0; Apache license; four client actions, model/field docs and runnable Examples |
+| Credentials    | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/credentials          | Version; MIT; explicit providers including AnonymousProvider, Cache and Examples            |
+| STS helper     | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/feature/stscreds     | Version; MIT; full-DSL constructor/ownership/renewal docs and Examples                      |
+| Config         | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/config               | Version; MIT; default loader/options/precedence and offline Example                         |
+| Native Profile | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/feature/profilecreds | Version; MIT; native modes/OAuth persistence/ownership/errors and offline Example           |
 
 If absent, use the browser Request action, then record the actual result/time;
 do not claim indexing from local tests, curl or DNS. In particular check that the
@@ -48,6 +54,9 @@ until resolved. Preserve our chosen Go baseline rather than quietly downgrading 
    publication/indexing or close either issue.
 
 ## 中文
+
+用户后续 #68 修正还要求在新的 #60 人员交接前完成默认配置/原生 CLI Profile/OAuth 及
+限定证据；docs/acceptance/profile-oauth-live.json 与历史手动快照分别记录，发布前必需。
 
 #61 保持开放：#60 必需独立验收 NOT RUN，发布/同版本浏览器索引也 NOT RUN。说明/命令
 已准备，此变更不创建标签。用户已授权完成发布，等待的是实际验收证据，不再次请求许可。
@@ -62,7 +71,7 @@ until resolved. Preserve our chosen Go baseline rather than quietly downgrading 
    命令创建/推送不可变注释标签并发布。禁止覆盖；标签创建后发布失败须检查远端状态，
    完成同标签发布，不重建或移动。
 4. 记录 tag 目标/release URL，在浏览器打开英文表内准确同版本 STS/credentials/stscreds
-   页面，核 v0.1.0、对应 Apache/MIT、导出 API/字段说明及 Example。缺失则使用 Request
+   及 config/profilecreds 页面，核 v0.1.0、对应 Apache/MIT、导出 API/字段说明及 Example。缺失则使用 Request
    并记录真实时间/结果；不从本地检查/curl/DNS 宣称索引。尤其确认索引器支持 Go 1.27/
    直接 JSON v2，不支持时保持未跑/失败并解决，不静默降低版本。
 5. 将实际发布/浏览器证据写入本清单或明确链接的双语报告；全部必需通过后关闭 #61/#57/

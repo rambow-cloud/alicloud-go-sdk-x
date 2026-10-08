@@ -24,8 +24,12 @@ may download on the first build; operation execution has no account/network acce
 
 In a separate scratch Go module, without implementation-author assistance:
 
-1. Call GetCallerIdentity with an injected scripted transport, context and operation
-   options; inspect the concrete output and Metadata.
+1. Create a fictional native StsToken/OAuth CLI JSON profile in a scratch temporary
+   file. Use config.LoadDefaultConfig with explicit profile/file selection and an
+   injected scripted transport; call GetCallerIdentity with context/operation options
+   and inspect output/Metadata. Read [default configuration](default-configuration.md)
+   and demonstrate explicit long-lived opt-in and supported-mode limits; no real login
+   is needed for this offline task.
 2. Call native AssumeRole, then compose the generated client with
    AssumeRoleProvider and Cache to consume temporary credentials, with no response
    translator or application refresh loop. Use fixtures, not a cloud role.
@@ -60,7 +64,10 @@ HTTP fixture 无需账号，第一次构建可能下载依赖，操作运行不�
 
 在独立临时 Go 模块内、不接受实现者协助，完成：
 
-1. 使用脚本 transport、context、操作 options 调用 GetCallerIdentity，检查具体输出与 Metadata。
+1. 临时文件写入虚构原生 StsToken/OAuth CLI JSON Profile，通过 config.LoadDefaultConfig
+   显式选取文件/Profile 并注入脚本 transport，以 context/options 调用 GetCallerIdentity，
+   检查输出/Metadata；阅读[默认配置](default-configuration.md)，展示长期密钥显式启用
+   与模式范围。离线任务无需真实登录。
 2. 调用原生 AssumeRole，再用生成 client、AssumeRoleProvider 与 Cache 消费临时凭据，不写
    response translator 或应用刷新循环；使用 fixture，不使用云角色。
 3. 替换小 AssumeRoleAPI mock，用 errors.As 识别 APIError、errors.Is 识别取消。

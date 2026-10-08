@@ -25,6 +25,11 @@ issuance, narrow mocks, anonymous provider/token isolation and non-retrying erro
 See [the supplemental report](../../docs/sts-consumer-review.md). This agent-authored
 review is separate from the independent developer task result.
 
+`TestExternalDefaultProfileWorkload` exercises the new LoadDefaultConfig -> native
+temporary CLI Profile -> generated STS consumer path. The independent identity task
+now includes [default configuration](../../docs/default-configuration.md) and uses
+a temporary fictional profile; no interactive login is required for this kit.
+
 ## 中文
 
 Go 1.27+ 下从此目录执行 `go test -v ./...` 和 `go run .`。独立模块固定官方 STS
@@ -42,3 +47,7 @@ role provider/刷新能力、性能或独立 UX，不能从 fixture 成功推断
 检查 options/输入隔离、调用中取消、24 个角色签名并发读取复用一次共享签发、小 mock、
 匿名 provider/token 隔离与签发错误不重试。见[补充报告](../../docs/sts-consumer-review.md)；
 这是代理编写的补充评审，与独立开发者任务结果分开记录。
+
+新增 TestExternalDefaultProfileWorkload 覆盖 LoadDefaultConfig→原生临时 CLI Profile→
+生成 STS 消费者。独立身份任务现包含[默认配置](../../docs/default-configuration.md)与临时
+虚构 Profile，本离线验收包不要求交互登录。
