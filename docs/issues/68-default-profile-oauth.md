@@ -63,3 +63,9 @@ vet/tests/格式及准确提交 Linux race/Windows，授权本地原生 Profile 
 验证用临时虚构配置和注入 HTTP，无真实账号/网络单测；沿用现有 CI。已有授权覆盖本地
 Profile 只读身份/OAuth 交换，但不输出或提交真实凭据；独立人员及发布/索引未满足前
 #60/#61 保持开放。
+
+### Live protocol decision / 真实协议决策
+
+CN live exchange returns PascalCase fields while the pinned official CLI uses camelCase tags and legacy case-folding JSON. JSON v2 decoding now accepts only the two explicit wire variants and rejects ambiguous, mixed, duplicate or unreviewed casing. The authorized native run passed generated identity reads, forced exchange, persistence/reconstruction and unrelated-config preservation at 656ce39dda0b89ae743645ba1328974a937dc780. Actual live refresh-token rotation remains NOT RUN because the new login access token was valid. See docs/acceptance/profile-oauth-live.json.
+
+中文：真实 CN exchange 为 PascalCase，固定 CLI 标签为 camelCase，旧 JSON 自动忽略大小写；JSON v2 仅兼容两个明确结构，拒绝歧义/混用/重复/未审核大小写。上述实现提交真实原生身份读取、主动交换、持久化/重建及无关配置保留通过；刚登录 token 有效，真实 refresh-token 轮换仍未跑，见脱敏记录。

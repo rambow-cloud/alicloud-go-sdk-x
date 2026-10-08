@@ -117,10 +117,14 @@ never claim it passed without actual execution. No IAM/IdP resources are needed.
 Revisit #60's human handoff against this new behavior before #61 publication; retain
 historical accepted evidence and keep release/indexing gates open until satisfied.
 
-Current native live run is blocked on requested `oss-sftp` OAuth reauthentication:
-the refresh endpoint returned HTTP 400 / invalid_grant. See
-[the sanitized status](acceptance/profile-oauth-live.json). Offline protocol and
-consumer fixtures do not turn that live status into PASS.
+Native live verification passed on 2026-10-08 against implementation
+`656ce39dda0b89ae743645ba1328974a937dc780`: three generated identity reads, one
+forced OAuth exchange, cache reuse, persisted-session reconstruction, authentication-
+fields-only updates and released file lock. See [the sanitized report](acceptance/profile-oauth-live.json).
+No CLI subprocess or cloud resource creation was involved. The fresh login access
+token was still valid, so actual live refresh-token rotation and natural OAuth expiry
+waiting remain NOT RUN; offline rotation fixtures and prior #55 role expiry are
+separate evidence.
 
 ## 中文
 
@@ -188,6 +192,7 @@ SecurityToken、Expiration，而固定 CLI 源码使用 camelCase 标签。其�
 创建 IAM/IdP。#61 发布前让 #60 独立人员基于新增行为验收，保留历史证据，门禁满足前
 发布/索引仍保持开放。
 
-当前原生真实验证因 oss-sftp OAuth 刷新接口 HTTP 400 / invalid_grant，等待用户重新
-登录，见[脱敏状态](acceptance/profile-oauth-live.json)；离线协议/消费者通过不将真实状态
-升级为 PASS。
+2026-10-08 原生真实验收已通过，实现提交为上述 SHA：3 次生成身份读取、1 次主动 OAuth
+交换、缓存复用、持久会话重建、仅更新认证字段及锁释放，见[脱敏报告](acceptance/profile-oauth-live.json)。
+未启动 CLI、未创建云资源。新登录 access token 尚未过期，因此真实 refresh-token 轮换
+和等待自然 OAuth 到期仍记 NOT RUN；离线轮换 fixture 和 #55 角色到期为独立证据。

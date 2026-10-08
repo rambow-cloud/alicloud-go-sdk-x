@@ -71,7 +71,7 @@ until resolved. Preserve our chosen Go baseline rather than quietly downgrading 
    命令创建/推送不可变注释标签并发布。禁止覆盖；标签创建后发布失败须检查远端状态，
    完成同标签发布，不重建或移动。
 4. 记录 tag 目标/release URL，在浏览器打开英文表内准确同版本 STS/credentials/stscreds
-   页面，核 v0.1.0、对应 Apache/MIT、导出 API/字段说明及 Example。缺失则使用 Request
+   及 config/profilecreds 页面，核 v0.1.0、对应 Apache/MIT、导出 API/字段说明及 Example。缺失则使用 Request
    并记录真实时间/结果；不从本地检查/curl/DNS 宣称索引。尤其确认索引器支持 Go 1.27/
    直接 JSON v2，不支持时保持未跑/失败并解决，不静默降低版本。
 5. 将实际发布/浏览器证据写入本清单或明确链接的双语报告；全部必需通过后关闭 #61/#57/
