@@ -1,0 +1,17 @@
+{
+  "IdentityFieldsCompared": 6,
+  "SDKImplementationCommit": "38cf05ac458d2e6ed3af165350fb77a10e7e8817",
+  "Status": "PASS",
+  "NewCloudResources": 0,
+  "Source": "explicit in-memory OAuth/STS snapshot",
+  "CredentialsPersisted": false,
+  "HTTPStatus": 200,
+  "IdentityPublished": false,
+  "AtUTC": "2026-10-08T11:33:27.7309119+00:00",
+  "Profile": "oss-sftp",
+  "Attempts": 1,
+  "GoVersion": "go1.27.1",
+  "OS": "windows/amd64",
+  "CLIVersion": "3.4.11",
+  "ExplorerBrowser": "NOT RUN"
+}

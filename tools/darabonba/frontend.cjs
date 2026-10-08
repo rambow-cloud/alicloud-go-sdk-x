@@ -382,6 +382,27 @@ function lowerOperation(ast, operation) {
     "RPC profile",
   );
   const result = statements[index++];
+  if (facts.authType === "AK") {
+    function checkSignature(node) {
+      if (!node || typeof node !== "object") return;
+      if (
+        node.type === "assign" &&
+        node.left?.type === "virtualVariable" &&
+        lex(node.left.vid) === "@signatureAlgorithm"
+      ) {
+        requireProfile(
+          node.expr?.type === "string" &&
+            node.expr.value.string === "ACS3-HMAC-SHA256",
+          "signed product signature initializer",
+        );
+      }
+      for (const value of Object.values(node)) {
+        if (Array.isArray(value)) value.forEach(checkSignature);
+        else if (value && typeof value === "object") checkSignature(value);
+      }
+    }
+    nodes.filter((n) => n.type === "init").forEach(checkSignature);
+  }
   if (facts.authType === "Anonymous") {
     const reserved = new Set([
       "action",

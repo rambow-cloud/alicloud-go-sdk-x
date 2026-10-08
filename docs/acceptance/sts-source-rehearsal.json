@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "baseline": "c321394a58d9b6e513fabb898ee9857a2c6df852",
+  "candidate": "d2c0338636a58a6cafc5316d2ed5d158f1f5b162",
+  "productionRevision": "ec489e5c3deae95496daae2b41503ac58b221adb",
+  "productionSTSSourceUnchanged": true,
+  "parserVersion": "2.2.1",
+  "counts": {
+    "baseline": {
+      "discovered": 4,
+      "lowered": 0,
+      "unsupported": 4,
+      "dslOperations": 4,
+      "catalogOnlyOperations": 0,
+      "dslOnlyOperations": 0,
+      "declaredModels": 11,
+      "reachableNamedModels": 11,
+      "reachableAnonymousModels": 8,
+      "unusedNamedModels": 0
+    },
+    "candidate": {
+      "discovered": 4,
+      "lowered": 4,
+      "unsupported": 0,
+      "dslOperations": 4,
+      "catalogOnlyOperations": 0,
+      "dslOnlyOperations": 0,
+      "declaredModels": 11,
+      "reachableNamedModels": 11,
+      "reachableAnonymousModels": 8,
+      "unusedNamedModels": 0
+    }
+  },
+  "drift": {
+    "addedFields": [],
+    "removedFields": [],
+    "changedFields": [],
+    "operationLoweringChanged": true,
+    "handoffs": {
+      "baseline": [
+        {
+          "name": "assumeRoleWithOIDCWithOptions",
+          "authType": "Anonymous",
+          "handoff": "callApi"
+        },
+        {
+          "name": "assumeRoleWithOptions",
+          "authType": "AK",
+          "handoff": "callApi"
+        },
+        {
+          "name": "assumeRoleWithSAMLWithOptions",
+          "authType": "Anonymous",
+          "handoff": "callApi"
+        },
+        {
+          "name": "getCallerIdentityWithOptions",
+          "authType": "AK",
+          "handoff": "callApi"
+        }
+      ],
+      "candidate": [
+        {
+          "name": "assumeRoleWithOIDCWithOptions",
+          "authType": "Anonymous",
+          "handoff": "doRPCRequest"
+        },
+        {
+          "name": "assumeRoleWithOptions",
+          "authType": "AK",
+          "handoff": "callApi"
+        },
+        {
+          "name": "assumeRoleWithSAMLWithOptions",
+          "authType": "Anonymous",
+          "handoff": "doRPCRequest"
+        },
+        {
+          "name": "getCallerIdentityWithOptions",
+          "authType": "AK",
+          "handoff": "callApi"
+        }
+      ]
+    },
+    "signatureAlgorithm": {
+      "baseline": "v2",
+      "candidate": "inherited-default"
+    },
+    "endpointInitializationChanged": true,
+    "documentationTextChanged": false,
+    "documentationCoordinatesChanged": true,
+    "licenseChanged": false,
+    "importsRepinned": false
+  },
+  "compilation": "not-assessed",
+  "live": "not-assessed",
+  "verification": {
+    "candidateEmission": "PASS",
+    "emittedActions": 4,
+    "emittedModels": 19,
+    "candidateCompilationAndIndependentContracts": "PASS",
+    "stalePolicyRejectionBeforeWrites": "PASS",
+    "historicalSignedInitializerRejectionBeforeWrites": "PASS",
+    "productionSourcesIRPoliciesGeneratedUnchanged": "PASS",
+    "sourceImportsRepinned": false
+  }
+}

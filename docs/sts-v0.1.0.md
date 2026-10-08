@@ -23,7 +23,7 @@ providers, source ownership, safe errors and licensed bilingual documentation.
 
 ### Baseline and remaining work
 
-The current source discovers four actions and emits only AssumeRole. OIDC/SAML
+The planning-time baseline discovered four actions and emitted only AssumeRole. OIDC/SAML
 report DSL_PROTOCOL_PROFILE (Anonymous RPC and doRPCRequest); GetCallerIdentity
 reports DSL_OPERATION_SIGNATURE (no request-model argument). Fix the underlying
 frontend/IR/backend/runtime contracts under separate issues. Do not handwrite those
@@ -121,7 +121,7 @@ GetCallerIdentity、AssumeRoleWithOIDC、AssumeRoleWithSAML；升级来源时重
 
 ### 基线及缺口
 
-当前发现四操作，只输出 AssumeRole；OIDC/SAML 的 DSL_PROTOCOL_PROFILE 对应
+规划时基线发现四操作，只输出 AssumeRole；OIDC/SAML 的 DSL_PROTOCOL_PROFILE 对应
 Anonymous RPC/doRPCRequest，GetCallerIdentity 的 DSL_OPERATION_SIGNATURE 对应
 没有请求模型参数。分 issue 修复前端/IR/后端/runtime 契约，不手写操作、不静默签名
 匿名请求、不隐式发现密钥、不直接改生成文件。匿名认证是显式逐操作协议契约，
@@ -183,3 +183,13 @@ done/Done。随 issue 状态变化维护 Project，不宣称已自动同步；�
 | #61   | 限定发布及对应版本 pkg.go.dev 证据   | #60                          |
 
 下一实现先 #58，再 #59，不手写 API 绕过门槛。父项汇总交付，不阻塞子项。
+
+## STS delivery status / STS 交付状态
+
+### English
+
+#58/PR #63 and #59/PR #64 are merged: all four pinned STS actions emit with native signed/anonymous separation. #60 delivers consumer/real-source/live-identity evidence and the independent developer handoff; keep its UX gate open until the user-arranged Go developer records actual results. #61 publication/indexing follows that required acceptance. Historical planning counts below describe the earlier baseline, not current coverage. See [acceptance evidence](sts-v010-acceptance-report.md).
+
+### 中文
+
+#58/PR #63 与 #59/PR #64 已合并，四个固定 STS 操作输出并保留原生签名/匿名分离。#60 交付消费者/真实来源/真实 identity 证据及独立开发者验收包，用户安排的 Go 开发者提交实际结果前 UX 门槛保持开放。#61 发布/索引以此必需验收为前提，下文规划数量是旧基线不是当前覆盖。见[验收证据](sts-v010-acceptance-report.md)。

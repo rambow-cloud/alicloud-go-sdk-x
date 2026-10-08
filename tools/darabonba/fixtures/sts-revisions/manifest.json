@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/aliyun/alibabacloud-sdk",
+  "license": "Apache-2.0",
+  "baselineRevision": "c321394a58d9b6e513fabb898ee9857a2c6df852",
+  "candidateRevision": "d2c0338636a58a6cafc5316d2ed5d158f1f5b162",
+  "files": [
+    {
+      "revision": "c321394a58d9b6e513fabb898ee9857a2c6df852",
+      "file": "c321394a58d9b6e513fabb898ee9857a2c6df852/api-info.json",
+      "sha256": "6d1abf4c778d60d6bc1bb42dcb49d22379f1d2ff039d40ff11fd30b4fde142bf",
+      "gitBlobSHA": "beb21a40e604d7e80d57927ca53117cce82089bb",
+      "url": "https://github.com/aliyun/alibabacloud-sdk/blob/c321394a58d9b6e513fabb898ee9857a2c6df852/sts-20150401/api-info.json"
+    },
+    {
+      "revision": "c321394a58d9b6e513fabb898ee9857a2c6df852",
+      "file": "c321394a58d9b6e513fabb898ee9857a2c6df852/LICENSE",
+      "sha256": "feabec55b48586911d33f66053e9619fe33de486d2e91929547cea1f79d7568e",
+      "gitBlobSHA": "ec13fccd342924f860e7966ff7935207282d2584",
+      "url": "https://github.com/aliyun/alibabacloud-sdk/blob/c321394a58d9b6e513fabb898ee9857a2c6df852/LICENSE"
+    },
+    {
+      "revision": "c321394a58d9b6e513fabb898ee9857a2c6df852",
+      "file": "c321394a58d9b6e513fabb898ee9857a2c6df852/main.tea",
+      "sha256": "f82d5d849af9d75d329fd3ed75b4f2ba89b7b2683f7c6d2be1c170507e6a5e5e",
+      "gitBlobSHA": "09ca6ec66c78a23da6475896f8aa5b4f49d3d989",
+      "url": "https://github.com/aliyun/alibabacloud-sdk/blob/c321394a58d9b6e513fabb898ee9857a2c6df852/sts-20150401/main.tea"
+    },
+    {
+      "revision": "c321394a58d9b6e513fabb898ee9857a2c6df852",
+      "file": "c321394a58d9b6e513fabb898ee9857a2c6df852/Teafile",
+      "sha256": "aec1ef1462cdf51586cc1b8bea12765ca0889e03abf94fb9275576dbdc06375c",
+      "gitBlobSHA": "db87ab9c040aed3cf5c3ebd0308deb4dd0553639",
+      "url": "https://github.com/aliyun/alibabacloud-sdk/blob/c321394a58d9b6e513fabb898ee9857a2c6df852/sts-20150401/Teafile"
+    },
+    {
+      "revision": "d2c0338636a58a6cafc5316d2ed5d158f1f5b162",
+      "file": "d2c0338636a58a6cafc5316d2ed5d158f1f5b162/api-info.json",
+      "sha256": "9fe5ac3ce2f5fb81f033ef33a2e8205fbe7895907b8ea8d521414fb281f9a2f3",
+      "gitBlobSHA": "9241e1f4e17f79a1db8af1fd4ba37ae9db8ba1a9",
+      "url": "https://github.com/aliyun/alibabacloud-sdk/blob/d2c0338636a58a6cafc5316d2ed5d158f1f5b162/sts-20150401/api-info.json"
+    },
+    {
+      "revision": "d2c0338636a58a6cafc5316d2ed5d158f1f5b162",
+      "file": "d2c0338636a58a6cafc5316d2ed5d158f1f5b162/LICENSE",
+      "sha256": "feabec55b48586911d33f66053e9619fe33de486d2e91929547cea1f79d7568e",
+      "gitBlobSHA": "ec13fccd342924f860e7966ff7935207282d2584",
+      "url": "https://github.com/aliyun/alibabacloud-sdk/blob/d2c0338636a58a6cafc5316d2ed5d158f1f5b162/LICENSE"
+    },
+    {
+      "revision": "d2c0338636a58a6cafc5316d2ed5d158f1f5b162",
+      "file": "d2c0338636a58a6cafc5316d2ed5d158f1f5b162/main.tea",
+      "sha256": "99e3d971f8c80993650253b123c5851ffc757c7a2b729ba290eb823f37d654a4",
+      "gitBlobSHA": "5a799410a3b8e4dc5e9cedb179f6bc002c547591",
+      "url": "https://github.com/aliyun/alibabacloud-sdk/blob/d2c0338636a58a6cafc5316d2ed5d158f1f5b162/sts-20150401/main.tea"
+    },
+    {
+      "revision": "d2c0338636a58a6cafc5316d2ed5d158f1f5b162",
+      "file": "d2c0338636a58a6cafc5316d2ed5d158f1f5b162/Teafile",
+      "sha256": "a7f374f972cf9d03dae8f3727fac59a7a4c248925dc3098690c0b834bbd20cd4",
+      "gitBlobSHA": "7013626501e4a781855763f68ecce8cdb5fe3c55",
+      "url": "https://github.com/aliyun/alibabacloud-sdk/blob/d2c0338636a58a6cafc5316d2ed5d158f1f5b162/sts-20150401/Teafile"
+    }
+  ]
+}

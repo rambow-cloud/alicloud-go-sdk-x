@@ -220,3 +220,13 @@ Waiter 总期限与单次重试分开；凭据刷新有界并合并并发，一�
 [AWS 风格修复路径](aws-style-remediation.md)。
 后续前端重构使用官方产品 DSL 与官方 parser，交付顺序及偏差验证见
 [Darabonba 迁移路径](darabonba-migration.md)。
+
+## STS delivery status / STS 交付状态
+
+### English
+
+#58/PR #63 and #59/PR #64 are merged: all four pinned STS actions emit with native signed/anonymous separation. #60 delivers consumer/real-source/live-identity evidence and the independent developer handoff; keep its UX gate open until the user-arranged Go developer records actual results. #61 publication/indexing follows that required acceptance. Historical planning counts below describe the earlier baseline, not current coverage. See [acceptance evidence](sts-v010-acceptance-report.md).
+
+### 中文
+
+#58/PR #63 与 #59/PR #64 已合并，四个固定 STS 操作输出并保留原生签名/匿名分离。#60 交付消费者/真实来源/真实 identity 证据及独立开发者验收包，用户安排的 Go 开发者提交实际结果前 UX 门槛保持开放。#61 发布/索引以此必需验收为前提，下文规划数量是旧基线不是当前覆盖。见[验收证据](sts-v010-acceptance-report.md)。
