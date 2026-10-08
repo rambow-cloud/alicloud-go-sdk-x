@@ -3,7 +3,27 @@ const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
-const { validateHuman } = require("./sts-release-check.cjs");
+const os = require("node:os");
+const { validateHuman, check } = require("./sts-release-check.cjs");
+
+test("malformed acceptance reports never expose raw evidence in diagnostics", (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "release-evidence-"));
+  t.after(() => {
+    assert.equal(path.dirname(path.resolve(dir)), path.resolve(os.tmpdir()));
+    fs.rmSync(dir, { recursive: true, force: true });
+  });
+  const target = path.join(dir, "docs/acceptance");
+  fs.mkdirSync(target, { recursive: true });
+  fs.writeFileSync(
+    path.join(target, "sts-independent-result.json"),
+    "{secret-unit-fixture",
+  );
+  assert.throws(
+    () => check(dir),
+    (e) =>
+      e.message === "Independent developer evidence cannot be read or decoded",
+  );
+});
 
 // Synthetic unit fixture only; never written to project acceptance evidence.
 function passed() {

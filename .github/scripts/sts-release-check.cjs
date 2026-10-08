@@ -52,15 +52,22 @@ function validateHuman(human) {
 }
 
 function check(repository = root) {
-  const human = JSON.parse(
-    fs.readFileSync(
-      path.join(repository, "docs/acceptance/sts-independent-result.json"),
-    ),
+  function readEvidence(relative, label) {
+    try {
+      return JSON.parse(fs.readFileSync(path.join(repository, relative)));
+    } catch {
+      throw Error(label + " evidence cannot be read or decoded");
+    }
+  }
+  const human = readEvidence(
+    "docs/acceptance/sts-independent-result.json",
+    "Independent developer",
   );
   const problem = validateHuman(human);
   if (problem) throw Error(problem);
-  const coverage = JSON.parse(
-    fs.readFileSync(path.join(repository, "docs/products/sts.coverage.json")),
+  const coverage = readEvidence(
+    "docs/products/sts.coverage.json",
+    "STS coverage",
   );
   const actions = [
     "AssumeRole",
@@ -82,15 +89,13 @@ function check(repository = root) {
     )
   )
     throw Error("pinned STS emission scope does not match release notes");
-  const live = JSON.parse(
-    fs.readFileSync(
-      path.join(repository, "docs/acceptance/sts-identity-live.json"),
-    ),
+  const live = readEvidence(
+    "docs/acceptance/sts-identity-live.json",
+    "Live identity",
   );
-  const source = JSON.parse(
-    fs.readFileSync(
-      path.join(repository, "docs/acceptance/sts-source-rehearsal.json"),
-    ),
+  const source = readEvidence(
+    "docs/acceptance/sts-source-rehearsal.json",
+    "Source rehearsal",
   );
   if (
     live.Status !== "PASS" ||
