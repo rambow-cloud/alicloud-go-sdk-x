@@ -118,3 +118,48 @@ test("working acceptance template remains a truthful pending independent gate", 
   if (h.status !== "PASS") assert.match(validateHuman(h), /not PASS/);
   else assert.equal(validateHuman(h), null);
 });
+
+test("native Profile/OAuth evidence cannot be bypassed by completed synthetic human evidence", (t) => {
+  const dir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "release-profile-evidence-"),
+  );
+  t.after(() => {
+    assert.equal(path.dirname(path.resolve(dir)), path.resolve(os.tmpdir()));
+    fs.rmSync(dir, { recursive: true, force: true });
+  });
+  const target = path.join(dir, "docs/acceptance"),
+    products = path.join(dir, "docs/products");
+  fs.mkdirSync(target, { recursive: true });
+  fs.mkdirSync(products, { recursive: true });
+  fs.writeFileSync(
+    path.join(target, "sts-independent-result.json"),
+    JSON.stringify(passed()),
+  );
+  fs.copyFileSync(
+    path.join(__dirname, "../../docs/products/sts.coverage.json"),
+    path.join(products, "sts.coverage.json"),
+  );
+  fs.writeFileSync(
+    path.join(target, "sts-identity-live.json"),
+    JSON.stringify({ Status: "PASS", IdentityFieldsCompared: 6 }),
+  );
+  fs.writeFileSync(
+    path.join(target, "sts-source-rehearsal.json"),
+    JSON.stringify({
+      verification: { candidateCompilationAndIndependentContracts: "PASS" },
+    }),
+  );
+  fs.writeFileSync(
+    path.join(target, "profile-oauth-live.json"),
+    JSON.stringify({
+      Status: "BLOCKED",
+      NativeCLIConfig: true,
+      CLISubprocess: false,
+      SuccessfulNativeOAuthExchange: "NOT RUN",
+    }),
+  );
+  assert.throws(
+    () => check(dir),
+    /required native Profile\/OAuth acceptance is incomplete/,
+  );
+});

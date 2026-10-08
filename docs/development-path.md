@@ -4,6 +4,14 @@
 
 ## English
 
+The user's latest 2026-10-08 correction requires [default configuration and native
+CLI Profile/OAuth #68](default-configuration.md) before v0.1.0 publication. Implement
+the documented loader/profile/cache/refresh contract and evidence, then update #60's
+consumer handoff before #61. This supersedes older blanket no-discovery and deferred
+native Profile/OAuth scope below. Explicit long-lived key opt-in remains required;
+direct service constructors keep provider-only validation. Historical #53/#55 evidence
+does not prove native OAuth renewal.
+
 The user-approved first release is now [v0.1.0 STS](sts-v0.1.0.md): milestone
 v0.1.0, Project 3 and parent #57. Next implement #58 requestless GetCallerIdentity,
 then #59 Anonymous OIDC/SAML RPC; both unblock #60 four-action acceptance/consumer/
@@ -128,6 +136,12 @@ Sources: [ACS3](https://help.aliyun.com/zh/sdk/product-overview/v3-request-struc
 [AWS testing](https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/unit-testing.html).
 
 ## 中文
+
+用户于 2026-10-08 最新修正要求发布 v0.1.0 前完成[默认配置与原生 CLI Profile/OAuth
+#68](default-configuration.md)，先实现 loader/Profile/cache/刷新契约与证据，再更新
+#60 消费者交接，之后 #61。该路线优先于下文旧全面禁止发现及推迟原生 Profile/OAuth
+范围；长期密钥仍需显式启用，直接服务构造保持 provider-only 校验，#53/#55 历史证据
+不证明原生 OAuth 续期。
 
 用户指定首版现为 [v0.1.0 STS](sts-v0.1.0.md)：同名 milestone、Project 3、父项 #57。
 下一步 #58 无请求 GetCallerIdentity，再 #59 匿名 OIDC/SAML RPC；两项共同解锁 #60

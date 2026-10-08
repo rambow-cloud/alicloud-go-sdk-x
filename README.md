@@ -56,9 +56,12 @@ and eight-MiB response limit. Core imports use only the standard library; teleme
 optional. Default ECS/STS/VPC endpoint rules cover five reviewed public regions. APIs are early v0.
 
 Prefer renewable STS role credentials with credentials.Cache for application clients.
-Long-lived AK/SK and environment credentials require explicit StaticProvider/EnvProvider
-registration; Config/Options never accept bare keys or discover a fallback. Custom
-providers remain supported. See [credential contracts](docs/credentials.md).
+Use `config.LoadDefaultConfig(ctx, config.WithSharedConfigProfile("oss-sftp"))`
+for native CLI Profile/OAuth configuration, cached refresh and STS exchange. Pass the
+result to a generated NewFromConfig. Initial login uses `aliyun configure --mode OAuth`.
+See [default configuration](docs/default-configuration.md) for precedence and supported
+modes. Long-lived AK/SK require explicit provider opt-in; direct Config/Options never
+accept bare keys or discover a fallback. Custom providers remain supported.
 
 This complete STS-to-ECS example runs offline. Its explicitly constructed long-lived
 source is used only by STS; ECS uses cached role credentials:
@@ -155,6 +158,11 @@ Read AGENTS.md and CONTRIBUTING.md before contributing. MIT: see LICENSE.
 
 ## 中文
 
+本地使用 `config.LoadDefaultConfig(ctx, config.WithSharedConfigProfile("oss-sftp"))`
+加载原生 CLI Profile/OAuth、缓存刷新与 STS 交换，返回值直接传给生成 NewFromConfig。
+初次登录执行 `aliyun configure --mode OAuth`；优先级与模式见[默认配置](docs/default-configuration.md)。
+长期 AK/SK 仍需显式启用 provider，直接 Config/Options 不接受裸密钥、不自行回退发现。
+
 初始生成路线和评审修复已集成 `main`；双语[评审与集成记录](docs/generator-integration.md)
 提供合并提交、CI 证据及已验收范围。
 
@@ -192,7 +200,7 @@ STS helper、统一分页/waiter、mock 接口、测试辅助和可选 OpenTelem
 默认 HTTPS、禁用重定向、不重试、操作总期限 30 秒、每响应八 MiB。核心导入仅标准库，
 telemetry 可选。默认 ECS/STS/VPC 端点覆盖五个核实的公网地域。API 属于早期 v0。
 
-应用客户端优先采用可刷新的 STS role provider 与 credentials.Cache。长期 AK/SK 及环境凭据
+应用客户端优先采用可刷新的 STS role provider 与 credentials.Cache。长期 AK/SK
 必须显式注册 StaticProvider/EnvProvider；Config/Options 不接受裸密钥、不发现回退来源，仍支持
 自定义 provider，见[凭据契约](docs/credentials.md)。
 

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "Status": "BLOCKED",
+  "Profile": "oss-sftp",
+  "NativeCLIConfig": true,
+  "CLISubprocess": false,
+  "Stage": "refresh",
+  "HTTPStatus": 400,
+  "Reason": "OAuth invalid_grant; awaiting requested CLI reauthentication before the final native identity check",
+  "SuccessfulNativeOAuthExchange": "NOT RUN",
+  "SuccessfulLiveOAuthRefresh": "NOT RUN",
+  "NaturalOAuthSessionExpiryWait": "NOT RUN",
+  "CredentialsOrIdentityPublished": false,
+  "NewCloudResources": 0,
+  "HistoricalRoleRenewalEvidence": "docs/live-sts-renewal.md"
+}

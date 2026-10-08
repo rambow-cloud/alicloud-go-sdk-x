@@ -37,10 +37,12 @@ skips only absent providers. Cache expiry/early refresh and concurrent refresh o
 are documented. STS helpers live outside credentials to avoid import cycles.
 
 Application guidance is STS-first: generated STS -> renewable role provider/cache ->
-service client. Config/service Options accept providers only. Static/env sources
-require explicit registration; custom providers remain supported. No implicit source
-fallback or STS-only enforcement is introduced. Reject nil/typed-nil providers before
-requests without credential retrieval during construction; see [credential contracts](credentials.md).
+service client. The user-corrected [default configuration #68](default-configuration.md)
+adds an explicit LoadDefaultConfig bootstrap that discovers temporary environment and
+native CLI Profile/OAuth sources with bounded refresh. Config/service Options still
+accept providers only; long-lived sources require deliberate provider registration.
+Custom providers remain supported. Direct constructors reject nil/typed-nil before
+requests and do not discover sources or perform credential HTTP calls during construction.
 
 Human-facing Markdown is paired English/Chinese; Go comments and GitHub issues are English-primary.
 Every public package has doc.go and a runnable external Example. Internal-only packages
@@ -72,8 +74,9 @@ errors.Is 检查取消。禁止凭据日志，不配置全局 OTel provider/expo
 STS helper 位于 credentials 外避免 import cycle。所有 Markdown 中英文对应，注释与 issues 英文为主。
 
 应用指南优先采用生成 STS→可刷新 role provider/cache→服务客户端。Config/服务 Options 只接受
-provider；静态/环境来源需显式注册，保留自定义 provider，不引入隐式来源回退或 STS-only 限制。
-请求前拒绝 nil/typed-nil provider，构造期间不读取凭据，见[凭据契约](credentials.md)。
+provider；用户修正的[默认配置 #68](default-configuration.md) 通过 LoadDefaultConfig 发现
+临时环境/原生 CLI Profile/OAuth 并有界刷新，长期来源仍需有意注册，保留自定义 provider。
+直接服务构造拒绝 nil/typed-nil、不发现来源、不在构造期间执行凭据 HTTP 调用。
 每个公共包有 doc.go 和外部可执行 Example；内部包不伪装用户 API。生成前固定 schema 来源、版本与许可证。
 发布和浏览器索引步骤见 releasing.md。
 
