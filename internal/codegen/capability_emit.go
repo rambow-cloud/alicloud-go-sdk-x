@@ -27,9 +27,14 @@ func (r *productRenderer) opPolicy(name string) operationPolicy {
 func hasValidator(p operationPolicy) bool {
 	return len(p.Constraints) > 0 || (p.Paginator != nil && p.Paginator.Mode == "dual")
 }
-func (r *productRenderer) appendCapabilityGuide(b *bytes.Buffer) {
-	b.WriteString("## Capability policy / 能力策略\n\n### English\n\nSparse policies are optional, source-bound and reviewed independently. Unlisted actions\nremain unreviewed and non-idempotent for Standard retry. Retry stays opt-in. Constructor\nerrors, native cursors, copied per-page options and reusable waiters follow the shared\nengines. See [behavior specification](../capability-policy.md). Invalid explicit positive-\nbound zero pointers fail; nil fields remain optional. Status paginator defaults to 50\nby SDK policy (service default 10); other initial defaults are 10. Token writes remain\nnon-retrying even with generated tokens; absent tokens are filled once on owned input.\nSensitive String/GoString hide whole models; JSON/direct fields remain raw.\n\n")
-	b.WriteString("| Action | Paginator | Waiter | Retry-safe read | Token | Validator | Sensitive formatting |\n| --- | --- | --- | --- | --- | --- | --- |\n")
+func (r *productRenderer) appendCapabilityGuide(b *bytes.Buffer, chinese bool) {
+	if chinese {
+		b.WriteString("## 能力策略\n\n- 策略是可选配置，绑定固定来源并单独审核。未列出的操作不视为已审核，也不允许 Standard 重试；重试必须显式启用。\n- 分页器和 waiter 复用公共实现，构造时校验参数，每页复制调用选项，保留 API 原生游标。见 [行为规则](../capability-policy.zh-CN.md)。\n- 要求正数的字段拒绝显式的 0；可选字段仍可设为 nil。状态分页器默认每页 50 条（服务默认 10），其他首批分页器默认 10 条。\n- 写操作即使带有生成的 token，也不自动重试。缺失 token 只在 SDK 的输入副本中生成一次。\n- 敏感模型的 String/GoString 隐藏整个模型；直接字段和 JSON 仍含原始值，不要记录到日志。\n\n")
+		b.WriteString("| 操作 | 分页方式 | Waiter | 可安全重试的读取 | Token 字段 | 参数校验 | 敏感格式化 |\n| --- | --- | --- | --- | --- | --- | --- |\n")
+	} else {
+		b.WriteString("## Capability policy\n\n- Policies are optional, pinned to sources and reviewed separately. Unlisted actions are unreviewed and cannot use Standard retry. Retry requires opt-in.\n- Paginators/waiters share constructor checks, native cursors and copied per-page options. See [behavior rules](../capability-policy.md).\n- Positive-only fields reject explicit 0; optional nil fields remain valid. Status pagination defaults to 50 (service default 10); other initial pagers default to 10.\n- Writes do not retry just because a token exists. Missing tokens are generated once on owned input.\n- Sensitive String/GoString hide whole models. Direct fields and JSON remain raw; do not log them.\n\n")
+		b.WriteString("| Action | Pagination | Waiter | Retry-safe read | Token field | Validation | Sensitive formatting |\n| --- | --- | --- | --- | --- | --- | --- |\n")
+	}
 	if r.p.Policy != nil {
 		for _, name := range sortedKeys(r.p.Policy.Operations) {
 			cfg := r.opPolicy(name)
@@ -43,7 +48,7 @@ func (r *productRenderer) appendCapabilityGuide(b *bytes.Buffer) {
 			fmt.Fprintf(b, "| %s | %s | %s | %t | %s | %t | %t |\n", name, mode, waiterName, *cfg.Idempotent, cfg.ClientToken, hasValidator(cfg), len(cfg.SensitiveModels) > 0)
 		}
 	}
-	b.WriteString("\n### 中文\n\n稀疏策略可选，绑定来源且独立审核；未列操作保持未审核，不被 Standard 重试，重试仍\n需显式启用。构造错误、原生游标、单页选项复制及可复用 waiter 复用公共引擎，详见\n[行为规格](../capability-policy.md)。正数约束拒绝显式零指针，nil 字段仍可选。状态\n分页刻意默认 50（服务默认 10），其余首批默认 10。写操作有生成 token 也不被自动\n重试；缺 token 在独占输入上生成一次。敏感 String/GoString 隐藏整个模型，JSON/\n直接字段仍为原始数据。能力表逐操作对应英文章节各列：操作、分页、waiter、可安全\n读重试、token、validator、敏感格式化；其余操作不宣称已审核。\n\n")
+	b.WriteString("\n")
 }
 func (r *productRenderer) path(root, wire, variable string) capabilityPath {
 	p, err := r.resolve(root, wire, variable)

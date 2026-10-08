@@ -9,7 +9,66 @@ import (
 	"path/filepath"
 	"strings"
 	"testing"
+	"unicode"
 )
+
+func TestGuidesUseSeparateLanguagesWithSharedEvidence(t *testing.T) {
+	p := readPolicyProduct(t, "sts")
+	product, err := renderProduct(p)
+	if err != nil {
+		t.Fatal(err)
+	}
+	bridge, err := Load(filepath.Join("..", "..", "metadata", "ecs"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, guides := range []struct {
+		name string
+		en   []byte
+		zh   []byte
+	}{
+		{"sts", product["docs/products/sts.md"], product["docs/products/sts.zh-CN.md"]},
+		{"ecs", emitGuide(bridge, false), emitGuide(bridge, true)},
+	} {
+		en, zh := string(guides.en), string(guides.zh)
+		englishLink := "[中文](" + guides.name + ".zh-CN.md)"
+		if !strings.Contains(en, englishLink) || !strings.Contains(zh, "[English]("+guides.name+".md)") {
+			t.Fatal("missing language navigation", guides.name)
+		}
+		if strings.Contains(en, "## English") || strings.Contains(zh, "## 中文") {
+			t.Fatal("mixed guide format", guides.name)
+		}
+		if strings.ContainsFunc(strings.ReplaceAll(en, englishLink, ""), func(r rune) bool { return unicode.Is(unicode.Han, r) }) {
+			t.Fatal("Chinese prose in English guide", guides.name)
+		}
+		if !strings.ContainsFunc(zh, func(r rune) bool { return unicode.Is(unicode.Han, r) }) {
+			t.Fatal("missing Chinese guidance", guides.name)
+		}
+		if guides.name == "sts" {
+			inTable := false
+			rows := 0
+			for _, line := range strings.Split(en, "\n") {
+				if !strings.HasPrefix(line, "| ") {
+					inTable = false
+					continue
+				}
+				if strings.HasPrefix(line, "| ---") {
+					inTable = true
+					continue
+				}
+				if inTable {
+					rows++
+					if !strings.Contains(zh, line) {
+						t.Fatal("Chinese guide lost source or policy evidence", guides.name, line)
+					}
+				}
+			}
+			if rows != len(p.Operations)+len(p.Policy.Operations) {
+				t.Fatal("source/policy rows not checked", rows)
+			}
+		}
+	}
+}
 
 func TestDocumentationProseSafetyAndReadableFormatting(t *testing.T) {
 	text := normalizeProse("### Title\n**Strong** `Value` [safe](https://help.aliyun.com/page) [unsafe](javascript:alert) <script>discard()</script> <b>word</b>\x00\u202e\n\ngo:linkname hijack runtime.fatal\nDeprecated: source-only\ndata:text/plain,hidden")

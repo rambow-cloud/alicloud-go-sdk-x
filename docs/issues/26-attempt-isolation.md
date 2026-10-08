@@ -1,16 +1,20 @@
-GitHub issue: #26.
+# [Bug]: Isolate attempt outputs and retry interrupted idempotent response reads
 
-## English
+- GitHub issue: #26.
 
 ### Problem and evidence
 
-Review of abcf961 found behavior defects and incomplete AWS Go SDK v2 design alignment. Design and acceptance were written before code in docs/aws-style-remediation.md.
+- Review of abcf961 found behavior defects and incomplete AWS Go SDK v2 design alignment.
+- Design and acceptance were written before code in docs/aws-style-remediation.md.
 
 ### Scope and dependencies
 
-Clear and commit decoded state per successful attempt. Reject successful short circuits without an output. Retry EOF/unexpected EOF and explicitly transient body reads only under the bounded idempotency policy. Preserve cancellation, JSON failures, atomic output and safe diagnostics.
+- Clear and commit decoded state per successful attempt.
+- Reject successful short circuits without an output.
+- Retry EOF/unexpected EOF and explicitly transient body reads only under the bounded idempotency policy.
+- Preserve cancellation, JSON failures, atomic output and safe diagnostics.
 
-Dependency: #25 (completed).
+- Dependency: #25 (completed).
 
 ### Acceptance criteria
 
@@ -20,12 +24,4 @@ Dependency: #25 (completed).
 
 ### Affected areas
 
-core, transport
-
-## 中文
-
-依据 abcf961 review，设计先写在 docs/aws-style-remediation.md，再实现；依赖 #25 (completed)。
-
-修复每尝试输出隔离，拒绝缺少输出的成功短路；EOF/明确瞬态响应读取仅在有界幂等策略下重试。回归覆盖旧输出、短路、中断成功/默认不重试/非幂等/取消/JSON、body 关闭及元数据。
-
-英文注释、离线 Example、中英文对应文档与迁移说明、再生成/文档/双语/vet/测试/Linux race/Windows CI 通过后记录提交证据再关闭。默认策略、ROA/body 和基准保持独立。
+- core, transport

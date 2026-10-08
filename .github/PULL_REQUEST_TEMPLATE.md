@@ -1,21 +1,20 @@
-# Pull request / 合并请求
+# Pull request
 
-[English](#english) | [中文](#中文)
+<!-- Use Closes #N for complete work or Refs #N for partial work. -->
 
-## English
+## Change
 
-<!-- Outside this comment, write Closes #N for complete work or Refs #N for partial work. -->
-### Problem and result
-Describe the trigger, resulting behavior, scope and remaining limitations.
-### Verification
-Record checks actually run and results; explain omitted checks.
-### Documentation and compatibility
-- [ ] English-primary API comments and runnable external Examples are current.
-- [ ] English/Chinese Markdown sections are equivalent.
-- [ ] Issue acceptance, dependency status and supported coverage are current.
+- What problem does this fix?
+- What behavior changes?
+- What limits remain?
 
-## 中文
+## Checks
 
-在上方注释外填写完整交付 Closes #N 或部分交付 Refs #N。
-描述触发条件、结果行为、范围及剩余限制；记录实际运行检查与结果，并解释未运行项。
-确认英文 API 注释与可执行示例已同步，中英文 Markdown 语义对应，issue 验收、依赖状态和支持范围准确。
+- List checks actually run and their results.
+- Explain any required check that is pending.
+
+## Documentation
+
+- [ ] English Go docs and offline Examples are current.
+- [ ] Separate English/Chinese guides and links are updated together.
+- [ ] Issue acceptance, dependencies and coverage are accurate.

@@ -125,7 +125,7 @@ func loadCapabilityPolicies(root string, products []productIR) error {
 		if err := safeOutputPath(root, file); err != nil {
 			return err
 		}
-		if entry.Name() == "README.md" {
+		if entry.Name() == "README.md" || entry.Name() == "README.zh-CN.md" {
 			continue
 		}
 		index, ok := indexes[strings.TrimSuffix(entry.Name(), ".json")]

@@ -1,5 +1,5 @@
 name: Maintenance
-description: Improve repository or CI tooling / 改进仓库与 CI
+description: Improve repository or CI tooling
 title: "[Maintenance]: "
 labels: [maintenance, "status:triage"]
 body:
@@ -7,7 +7,7 @@ body:
     id: areas
     attributes:
       label: Affected areas
-      description: Select all responsibilities / 选择相关职责
+      description: Select all responsibilities
       multiple: true
       options:
         - core
@@ -29,27 +29,27 @@ body:
     id: problem
     attributes:
       label: Problem and evidence
-      description: Explain the user impact and cite sources / 说明影响并提供证据
+      description: Explain the user impact and cite sources
     validations:
       required: true
   - type: textarea
     id: scope
     attributes:
       label: Scope and dependencies
-      description: State behavior, prerequisites and exclusions / 说明行为、前置与排除项
+      description: State behavior, prerequisites and exclusions
     validations:
       required: true
   - type: textarea
     id: acceptance
     attributes:
       label: Acceptance criteria
-      description: List observable outcomes / 列出可观察结果
+      description: List observable outcomes
     validations:
       required: true
   - type: textarea
     id: docs
     attributes:
       label: Documentation requirements
-      description: English Go comments and equivalent bilingual guides / 英文注释与对应双语指南
+      description: English Go comments and equivalent bilingual guides
     validations:
       required: true
