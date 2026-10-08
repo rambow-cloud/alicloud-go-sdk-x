@@ -6,3 +6,5 @@ sources/darabonba/modules/** -whitespace
 sources/darabonba/licenses/** -whitespace
 sources/openapi-meta/canonical/** -text -whitespace
 sources/openapi-meta/LICENSE -text -whitespace
+
+tools/darabonba/fixtures/sts-revisions/*/** -text -whitespace

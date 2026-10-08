@@ -43,3 +43,13 @@ CI 和基础验收通过后，只发布明确记载的操作范围，并同步�
 在浏览器打开上述 pkg.go.dev 地址，缺失时点击 Request，检查版本、许可证、概述、导出字段文档及 Examples，
 再检查 credentials 和其他公共包。badge 是索引入口，不是已索引证据；不用本地 curl/DNS 验证页面。
 索引失败先诊断公开访问、module 路径、Go 支持与许可证，再重试；参考来源与英文章节相同。
+
+## v0.1.0 execution / v0.1.0 执行
+
+### English
+
+Use the prepared [paired release notes](releases/v0.1.0.md) and [exact release/indexing checklist](sts-v010-release-checklist.md). Required independent acceptance remains NOT RUN; no tag or indexing is claimed. The read-only release guard and same-version browser URLs are recorded there. Existing authorization covers completion after gates pass; missing human evidence is not an invitation to reconfirm publication permission.
+
+### 中文
+
+使用已准备的[双语版本说明](releases/v0.1.0.md)及[准确发布/索引清单](sts-v010-release-checklist.md)。必需独立验收仍 NOT RUN，不宣称 tag/索引；清单附只读发布门禁及准确同版本浏览器地址。已有授权覆盖门槛通过后的发布；缺人验收不是再次请求发布许可。
