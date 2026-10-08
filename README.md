@@ -55,43 +55,91 @@ Defaults: HTTPS, disabled redirects, no retries, a 30-second total operation dea
 and eight-MiB response limit. Core imports use only the standard library; telemetry is
 optional. Default ECS/STS/VPC endpoint rules cover five reviewed public regions. APIs are early v0.
 
-This complete example runs offline:
+Prefer renewable STS role credentials with credentials.Cache for application clients.
+Long-lived AK/SK and environment credentials require explicit StaticProvider/EnvProvider
+registration; Config/Options never accept bare keys or discover a fallback. Custom
+providers remain supported. See [credential contracts](docs/credentials.md).
+
+This complete STS-to-ECS example runs offline. Its explicitly constructed long-lived
+source is used only by STS; ECS uses cached role credentials:
 
 ```go
 package main
 
 import (
-    "context"
-    "fmt"
-    "net/http"
+	"context"
+	"errors"
+	"fmt"
+	"net/http"
+	"strings"
 
-    alicloud "github.com/rambow-cloud/alicloud-go-sdk-x"
-    "github.com/rambow-cloud/alicloud-go-sdk-x/credentials"
-    "github.com/rambow-cloud/alicloud-go-sdk-x/sdktest"
-    "github.com/rambow-cloud/alicloud-go-sdk-x/services/ecs"
+	alicloud "github.com/rambow-cloud/alicloud-go-sdk-x"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/credentials"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/feature/stscreds"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/sdktest"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/service/ecs"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/service/sts"
 )
 
 func main() {
-    provider, err := credentials.NewStaticProvider(credentials.Credentials{
-        AccessKeyID: "placeholder", AccessKeySecret: "placeholder",
-    })
-    if err != nil { panic(err) }
-    transport := sdktest.NewTransport(sdktest.Step{
-        Body: `{"Regions":{"Region":[{"RegionId":"cn-hangzhou"}]}}`,
-    })
-    client, err := ecs.New(alicloud.Config{
-        Region: "cn-hangzhou", CredentialsProvider: provider,
-        HTTPClient: &http.Client{Transport: transport},
-    })
-    if err != nil { panic(err) }
-    output, err := client.DescribeRegions(context.Background(), nil)
-    if err != nil { panic(err) }
-    fmt.Println(output.Regions[0].RegionID)
+	ctx := context.Background()
+	// Long-lived keys are an explicit bootstrap choice, used only by STS here.
+	source, err := credentials.NewStaticProvider(credentials.Credentials{
+		AccessKeyID: "synthetic-source", AccessKeySecret: "synthetic-secret",
+	})
+	if err != nil {
+		panic(err)
+	}
+	checkRole := func(r *http.Request) error {
+		if !strings.Contains(r.Header.Get("Authorization"), "Credential=synthetic-role,") || r.Header.Get("X-Acs-Security-Token") != "synthetic-token" {
+			return errors.New("expected role credentials")
+		}
+		return nil
+	}
+	transport := sdktest.NewTransport(
+		sdktest.Step{Body: `{"Credentials":{"AccessKeyId":"synthetic-role","AccessKeySecret":"synthetic-secret","SecurityToken":"synthetic-token","Expiration":"2099-01-01T00:00:00Z"}}`},
+		sdktest.Step{Body: `{"Regions":{"Region":[{"RegionId":"cn-hangzhou"}]}}`, Check: checkRole},
+		sdktest.Step{Body: `{"Regions":{"Region":[{"RegionId":"cn-hangzhou"}]}}`, Check: checkRole},
+	)
+	httpClient := &http.Client{Transport: transport}
+	api, err := sts.NewFromConfig(alicloud.Config{
+		Region: "cn-hangzhou", CredentialsProvider: source, HTTPClient: httpClient,
+	})
+	if err != nil {
+		panic(err)
+	}
+	roleARN, session := "acs:ram::123456789012:role/example", "application"
+	provider, err := stscreds.NewAssumeRoleProviderFromClient(api, sts.AssumeRoleInput{
+		RoleARN: &roleARN, RoleSessionName: &session,
+	})
+	if err != nil {
+		panic(err)
+	}
+	cache, err := credentials.NewCache(provider, credentials.CacheOptions{})
+	if err != nil {
+		panic(err)
+	}
+	client, err := ecs.NewFromConfig(alicloud.Config{
+		Region: "cn-hangzhou", CredentialsProvider: cache, HTTPClient: httpClient,
+	})
+	if err != nil {
+		panic(err)
+	}
+	for range 2 {
+		output, err := client.DescribeRegions(ctx, nil)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println(*output.Regions.Region[0].RegionID)
+	}
+	fmt.Println("requests:", transport.Calls())
 }
 ```
 
-Output: `cn-hangzhou`. Real calls require authorized credentials and a reviewed endpoint;
-remove the scripted HTTP client. Guides: [runtime](docs/runtime.md),
+Output: two `cn-hangzhou` lines and `requests: 3` (one AssumeRole plus two ECS
+requests sharing cached role credentials). All values and the 2099 expiry are synthetic.
+Real calls require an explicitly configured authorized source and role, and a reviewed
+endpoint; remove the scripted HTTP client. StaticProvider does not renew a copied token. Guides: [runtime](docs/runtime.md),
 [credentials](docs/credentials.md), [cache](docs/credential-cache.md), [STS](docs/sts.md),
 [VPC](docs/vpc.md), [retry](docs/retry.md), [pagination](docs/pagination.md), [waiters](docs/waiters.md),
 [middleware](docs/middleware.md), [endpoints](docs/endpoints.md), [errors](docs/errors.md),
@@ -144,42 +192,88 @@ STS helper、统一分页/waiter、mock 接口、测试辅助和可选 OpenTelem
 默认 HTTPS、禁用重定向、不重试、操作总期限 30 秒、每响应八 MiB。核心导入仅标准库，
 telemetry 可选。默认 ECS/STS/VPC 端点覆盖五个核实的公网地域。API 属于早期 v0。
 
-以下完整示例无需网络：
+应用客户端优先采用可刷新的 STS role provider 与 credentials.Cache。长期 AK/SK 及环境凭据
+必须显式注册 StaticProvider/EnvProvider；Config/Options 不接受裸密钥、不发现回退来源，仍支持
+自定义 provider，见[凭据契约](docs/credentials.md)。
+
+以下完整 STS→ECS 示例无需网络；显式构造的长期来源仅用于 STS，ECS 使用缓存的角色凭据：
 
 ```go
 package main
 
 import (
-    "context"
-    "fmt"
-    "net/http"
+	"context"
+	"errors"
+	"fmt"
+	"net/http"
+	"strings"
 
-    alicloud "github.com/rambow-cloud/alicloud-go-sdk-x"
-    "github.com/rambow-cloud/alicloud-go-sdk-x/credentials"
-    "github.com/rambow-cloud/alicloud-go-sdk-x/sdktest"
-    "github.com/rambow-cloud/alicloud-go-sdk-x/services/ecs"
+	alicloud "github.com/rambow-cloud/alicloud-go-sdk-x"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/credentials"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/feature/stscreds"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/sdktest"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/service/ecs"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/service/sts"
 )
 
 func main() {
-    provider, err := credentials.NewStaticProvider(credentials.Credentials{
-        AccessKeyID: "placeholder", AccessKeySecret: "placeholder",
-    })
-    if err != nil { panic(err) }
-    transport := sdktest.NewTransport(sdktest.Step{
-        Body: `{"Regions":{"Region":[{"RegionId":"cn-hangzhou"}]}}`,
-    })
-    client, err := ecs.New(alicloud.Config{
-        Region: "cn-hangzhou", CredentialsProvider: provider,
-        HTTPClient: &http.Client{Transport: transport},
-    })
-    if err != nil { panic(err) }
-    output, err := client.DescribeRegions(context.Background(), nil)
-    if err != nil { panic(err) }
-    fmt.Println(output.Regions[0].RegionID)
+	ctx := context.Background()
+	// Long-lived keys are an explicit bootstrap choice, used only by STS here.
+	source, err := credentials.NewStaticProvider(credentials.Credentials{
+		AccessKeyID: "synthetic-source", AccessKeySecret: "synthetic-secret",
+	})
+	if err != nil {
+		panic(err)
+	}
+	checkRole := func(r *http.Request) error {
+		if !strings.Contains(r.Header.Get("Authorization"), "Credential=synthetic-role,") || r.Header.Get("X-Acs-Security-Token") != "synthetic-token" {
+			return errors.New("expected role credentials")
+		}
+		return nil
+	}
+	transport := sdktest.NewTransport(
+		sdktest.Step{Body: `{"Credentials":{"AccessKeyId":"synthetic-role","AccessKeySecret":"synthetic-secret","SecurityToken":"synthetic-token","Expiration":"2099-01-01T00:00:00Z"}}`},
+		sdktest.Step{Body: `{"Regions":{"Region":[{"RegionId":"cn-hangzhou"}]}}`, Check: checkRole},
+		sdktest.Step{Body: `{"Regions":{"Region":[{"RegionId":"cn-hangzhou"}]}}`, Check: checkRole},
+	)
+	httpClient := &http.Client{Transport: transport}
+	api, err := sts.NewFromConfig(alicloud.Config{
+		Region: "cn-hangzhou", CredentialsProvider: source, HTTPClient: httpClient,
+	})
+	if err != nil {
+		panic(err)
+	}
+	roleARN, session := "acs:ram::123456789012:role/example", "application"
+	provider, err := stscreds.NewAssumeRoleProviderFromClient(api, sts.AssumeRoleInput{
+		RoleARN: &roleARN, RoleSessionName: &session,
+	})
+	if err != nil {
+		panic(err)
+	}
+	cache, err := credentials.NewCache(provider, credentials.CacheOptions{})
+	if err != nil {
+		panic(err)
+	}
+	client, err := ecs.NewFromConfig(alicloud.Config{
+		Region: "cn-hangzhou", CredentialsProvider: cache, HTTPClient: httpClient,
+	})
+	if err != nil {
+		panic(err)
+	}
+	for range 2 {
+		output, err := client.DescribeRegions(ctx, nil)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println(*output.Regions.Region[0].RegionID)
+	}
+	fmt.Println("requests:", transport.Calls())
 }
 ```
 
-输出 `cn-hangzhou`。真实调用需要有权限的凭据和核实端点，并移除脚本 HTTP 客户端。
+输出两行 `cn-hangzhou` 和 `requests: 3`（一次 AssumeRole 与两次复用角色缓存的 ECS 请求）。
+所有值及 2099 过期时间均为合成数据；真实调用需要显式配置授权来源、角色与核实端点，并移除
+脚本 HTTP 客户端。StaticProvider 不会刷新复制的 token。
 使用指南：[运行时](docs/runtime.md)、[凭据](docs/credentials.md)、[缓存](docs/credential-cache.md)、
 [STS](docs/sts.md)、[VPC](docs/vpc.md)、[重试](docs/retry.md)、[分页](docs/pagination.md)、[waiter](docs/waiters.md)、
 [middleware](docs/middleware.md)、[端点](docs/endpoints.md)、[错误](docs/errors.md)、

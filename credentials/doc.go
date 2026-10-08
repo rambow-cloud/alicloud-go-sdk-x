@@ -3,6 +3,13 @@
 //
 // # Providers
 //
+// Prefer renewable STS providers from feature/stscreds, wrapped in Cache, for
+// application clients. StaticProvider and EnvProvider are explicit secondary
+// choices; no client or chain registers them automatically. Config/Options accept
+// only Provider, never bare keys. Custom providers remain supported; no token-only
+// restriction is imposed. NewChain/NewCache reject nil and typed-nil sources
+// without retrieval.
+//
 // Provider.Retrieve accepts a context and returns a credential snapshot. StaticProvider
 // copies credentials at construction. EnvProvider reads ALIBABA_CLOUD_ACCESS_KEY_ID,
 // ALIBABA_CLOUD_ACCESS_KEY_SECRET, and optional ALIBABA_CLOUD_SECURITY_TOKEN on each

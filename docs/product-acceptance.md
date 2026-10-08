@@ -38,6 +38,13 @@ authentication. It does not establish native SDK Profile loading or renewal. If 
 that capability needs its own issue/contract/live cases. No cloud resource creation,
 write operation or target-role use is authorized by this document.
 
+Application guidance prioritizes renewable STS role providers/cache. Long-lived keys
+and environment sources require explicit StaticProvider/EnvProvider registration;
+custom providers remain supported. Config/Options have no bare credential fields,
+construction never retrieves credentials, and nil/typed-nil sources fail before
+requests. No implicit fallback or STS-only runtime is introduced; [#53](credentials.md)
+adds offline rejection/signing/cache evidence under AC-01/05/11 and UX-01/04.
+
 ### Required criteria
 
 | ID    | Contract                                                                                                                                                              | Required proof                                                                                                                                                        |
@@ -111,7 +118,7 @@ for those capabilities. These are recorded snapshots, not a Beta completion coun
 two image pages; instance token/page/status and VPC traversals end on an empty first
 page, waiter/AssumeRole are skipped and Explorer browser verification is not run.
 
-Current work queue, in priority order: [full-DSL STS provider composition #51](sts-credentials.md); reproducible
+Current work queue, in priority order: [STS-first explicit providers #53](credentials.md); reproducible
 consumer workloads and independent UX/official-v2 comparison; authorized token/waiter/
 role live gaps; real upstream-update rehearsal; release/indexing. Benchmark #20 stays
 independent. The older STS helper only accepts `services/sts`; its foundation acceptance
@@ -153,6 +160,11 @@ Smithy 仍是独立本地实验，改变路线需单独 issue/决策。要求 Go
 新增该能力需独立 issue、契约和真实验收。本文件不授权云资源创建、写操作或目标角色调用。
 
 ### 必需标准
+
+应用指南优先采用可刷新的 STS role provider/cache；长期密钥及环境来源必须显式注册
+StaticProvider/EnvProvider，仍支持自定义 provider。Config/Options 没有裸凭据字段，构造期间
+不读取凭据，请求前拒绝 nil/typed-nil 来源，不引入隐式回退或 STS-only 运行时。
+[#53](credentials.md) 在 AC-01/05/11、UX-01/04 下增加离线拒绝/签名/缓存证据。
 
 | ID    | 契约                                                                                             | 必需证据                                                                                      |
 | ----- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
@@ -215,7 +227,7 @@ fixture 来源、结果、脱敏证据链接、限制和负责 issue。发现、
 记录镜像两页，实例 token/页码/状态及 VPC 均空结果第一页结束，waiter/AssumeRole 跳过，Explorer
 浏览器未执行。
 
-按优先级继续：[完整 DSL STS provider 接入 #51](sts-credentials.md)；可复现消费者业务与独立用户/官方 v2 对比；授权
+按优先级继续：[STS 优先显式 provider #53](credentials.md)；可复现消费者业务与独立用户/官方 v2 对比；授权
 token/waiter/role 真实缺口；真实上游升级；发布/索引。基准 #20 独立。旧 STS helper 只接受
 services/sts，基础通过不代表与新 service/sts 可组合。#51 增加该组合，本地 doccheck、
 product-check、vet、全 Go 测试/Example、50 项前端测试通过；这仅是离线证据，真实角色/
