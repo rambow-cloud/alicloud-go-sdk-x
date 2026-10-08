@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "status": "NOT RUN",
+  "developer": { "alias": "", "independent": false },
+  "sdkCommit": "",
+  "goVersion": "",
+  "os": "",
+  "officialSTSVersion": "v2.1.0",
+  "evidence": "",
+  "tasks": [
+    { "id": "identity", "status": "NOT RUN", "elapsedMinutes": null },
+    { "id": "provider-cache", "status": "NOT RUN", "elapsedMinutes": null },
+    { "id": "mock-errors", "status": "NOT RUN", "elapsedMinutes": null },
+    { "id": "anonymous", "status": "NOT RUN", "elapsedMinutes": null },
+    { "id": "comparison", "status": "NOT RUN", "elapsedMinutes": null }
+  ]
+}

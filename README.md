@@ -20,11 +20,11 @@ An independent Alibaba Cloud SDK for Go. Requires Go 1.27 and encoding/json/v2.
 Development is issue-driven, runtime-first, with English-primary Go docs and paired
 English/Chinese guides. It is not an official SDK. APIs may change before v1.
 
-The full-DSL [batch backend](docs/batch-go-emission.md) now emits 579 supported
+The full-DSL [batch backend](docs/batch-go-emission.md) now emits 583 supported
 operations in `service/ecs`, `service/vpc` and `service/sts`, with complete native
 models, operation interfaces and offline Examples. Existing `services/` imports
 remain the five-operation reference bridge described below. The [sparse policy backend](docs/capability-policy.md)
-adds four native paginators, an ECS waiter and seven reviewed operation policies (#37).
+adds four native paginators, an ECS waiter and now nine reviewed operation policies (#37/#59).
 Unsupported actions and separate acceptance
 levels are recorded in [product guides](docs/products/ecs.md).
 
@@ -159,9 +159,9 @@ Read AGENTS.md and CONTRIBUTING.md before contributing. MIT: see LICENSE.
 提供合并提交、CI 证据及已验收范围。
 
 完整 DSL [批量后端](docs/batch-go-emission.md) 已在 `service/ecs`、`service/vpc`、
-`service/sts` 输出 579 个支持操作、完整原生模型、操作小接口和离线 Example。
+`service/sts` 输出 583 个支持操作、完整原生模型、操作小接口和离线 Example。
 原 `services/` 导入仍为下文五操作参考桥；[稀疏策略后端](docs/capability-policy.md)
-在 #37 新增四个原生分页器、ECS waiter 和七项已审核操作策略，
+提供四个原生分页器、ECS waiter，现有九项已审核操作策略（#37/#59），
 不支持操作与不同验收层次见[产品指南](docs/products/ecs.md)。
 
 [文档自动化](docs/product-documentation.md) 将授权官方说明转换为英文 Go 注释，
@@ -282,3 +282,13 @@ func main() {
 运行英文章节的文档、双语、vet、Go 与自动化测试命令；Linux CI 使用 race，Windows 验证可移植性。
 公共包提供离线外部 Examples；检查工具验证结构，评审检查语义。贡献前阅读约束与贡献指南，MIT 许可证见 LICENSE。
 检查器也约束 JSON v2 和核心标准库依赖。本地文档检查不代表 pkg.go.dev 已索引。
+
+## First-release status / 首版状态
+
+### English
+
+All four pinned STS actions now generate. [v0.1.0 notes](docs/releases/v0.1.0.md) and the [release checklist](docs/sts-v010-release-checklist.md) are prepared; independent docs-only acceptance and publication/indexing remain pending. The [account-free kit](examples/stsacceptance/README.md) supplies the pinned official-v2 comparison. Do not interpret the documentation link as a published tag or broader Beta.
+
+### 中文
+
+四个固定 STS 操作均已生成，[v0.1.0 说明](docs/releases/v0.1.0.md)及[发布清单](docs/sts-v010-release-checklist.md)已准备；独立文档验收及发布/索引仍待完成。[无账号验收包](examples/stsacceptance/README.md)提供固定官方 v2 对比，文档链接不表示标签已发布或更广 Beta。
