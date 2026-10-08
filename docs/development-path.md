@@ -10,6 +10,10 @@ and required-case status govern completion. Next: full-DSL STS provider composit
 consumer/official-v2 comparison, authorized live gaps, source-update rehearsal and
 release. Benchmark #20 remains separate; Smithy is an isolated experiment.
 
+The first follow-up is [full-DSL STS provider composition #51](sts-credentials.md)
+for AC-05/UX-04; it preserves the reference helper and establishes offline integration,
+while real role/refresh and independent developer-task evidence remain separate.
+
 Authoritative route revised at the user's direction on 2026-10-07: complete official
 product DSL -> official Darabonba semantic parser -> normalized operation/model/binding
 IR -> our Go backend -> existing runtime. [product-generator-roadmap.md](product-generator-roadmap.md)
@@ -102,6 +106,9 @@ Sources: [ACS3](https://help.aliyun.com/zh/sdk/product-overview/v3-request-struc
 离线/真实/用户体验/发布证据及必需项状态共同决定完成。下一步为完整 DSL STS provider
 组合、消费者/官方 v2 对比、授权真实缺口、来源升级演练及发布。基准 #20 独立，Smithy
 仍为隔离实验。
+
+首项后续为[完整 DSL STS provider 组合 #51](sts-credentials.md)，对应 AC-05/UX-04，保留
+旧 helper 并建立离线集成；真实角色/刷新及独立开发者任务证据仍分开验收。
 
 五阶段实现和评审修复 [#44](capability-role-review.md) 已于 2026-10-08 集成 main，
 [评审证据](generator-integration.md) 记录验收范围与合并提交；同模型游标/waiter

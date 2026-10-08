@@ -55,6 +55,9 @@ write operation or target-role use is authorized by this document.
 | AC-11 | English Go docs and runnable offline Examples, equivalent Chinese guidance, defaults/limits/migration/license notices                                                 | doccheck/Examples; source-prose gaps recorded; tagged release and user browser inspection of the same version on pkg.go.dev                                           |
 | AC-12 | Complete discovery, deterministic regeneration, explicit unsupported reasons, reviewed sparse policy and safe source updates                                          | Frontend/check/product-check, invalid selected cases leave outputs untouched, compatible/incompatible drift report and one real upstream revision rehearsal           |
 
+For AC-11, local docs/Examples/licenses are Beta requirements; tagging and same-version
+pkg.go.dev inspection belong to the release gate. They are not prerequisites for Beta.
+
 AC-03/04/05 use product-specific reviewed rules, not field-name inference. The basic
 Smithy allStringEquals waiter and stock paginator ownership observed in the PoC do
 not satisfy these contracts automatically. Our policy semantics remain authoritative.
@@ -108,11 +111,13 @@ for those capabilities. These are recorded snapshots, not a Beta completion coun
 two image pages; instance token/page/status and VPC traversals end on an empty first
 page, waiter/AssumeRole are skipped and Explorer browser verification is not run.
 
-Current work queue, in priority order: full-DSL STS provider composition; reproducible
+Current work queue, in priority order: [full-DSL STS provider composition #51](sts-credentials.md); reproducible
 consumer workloads and independent UX/official-v2 comparison; authorized token/waiter/
 role live gaps; real upstream-update rehearsal; release/indexing. Benchmark #20 stays
 independent. The older STS helper only accepts `services/sts`; its foundation acceptance
-does not establish composition with the new `service/sts` API.
+does not establish composition with the new `service/sts` API. #51 adds that composition
+with local doccheck, product-check, vet, all Go tests/Examples and 50 frontend tests
+passing. This is offline evidence; live role/refresh and independent UX remain open.
 
 Closing an implementation or this definition issue does not close these overall gates.
 Review all tracked cases at the target release commit. This change creates no version
@@ -164,6 +169,9 @@ Smithy 仍是独立本地实验，改变路线需单独 issue/决策。要求 Go
 | AC-11 | 英文 Go docs/离线可运行 Example、对应中文、默认/限制/迁移/许可                                   | doccheck/Examples，报告上游缺说明；带 tag 发布及用户浏览器检查同版本 pkg.go.dev               |
 | AC-12 | 完整发现、确定性生成、明确未支持、审核稀疏策略、安全来源更新                                     | frontend/check/product-check，无效选中项写前失败，兼容/破坏漂移报告，一次真实上游版本升级演练 |
 
+AC-11 的本地文档/Example/许可证属于 Beta 要求；tag 及同版本 pkg.go.dev 检查属于发布门槛，
+不作为 Beta 的前置条件。
+
 AC-03/04/05 使用审核产品规则，不猜字段。PoC 中基础 allStringEquals waiter 和官方分页器输入
 所有权不自动满足这些契约，现有能力策略仍是行为依据。
 
@@ -207,9 +215,11 @@ fixture 来源、结果、脱敏证据链接、限制和负责 issue。发现、
 记录镜像两页，实例 token/页码/状态及 VPC 均空结果第一页结束，waiter/AssumeRole 跳过，Explorer
 浏览器未执行。
 
-按优先级继续：完整 DSL STS provider 接入；可复现消费者业务与独立用户/官方 v2 对比；授权
+按优先级继续：[完整 DSL STS provider 接入 #51](sts-credentials.md)；可复现消费者业务与独立用户/官方 v2 对比；授权
 token/waiter/role 真实缺口；真实上游升级；发布/索引。基准 #20 独立。旧 STS helper 只接受
-services/sts，基础通过不代表与新 service/sts 可组合。
+services/sts，基础通过不代表与新 service/sts 可组合。#51 增加该组合，本地 doccheck、
+product-check、vet、全 Go 测试/Example、50 项前端测试通过；这仅是离线证据，真实角色/
+刷新、独立体验仍待验证。
 
 关闭实现或本定义 issue 不代表这些总门槛通过；在目标发布提交复核所有用例。本次不打 tag、
 不新增真实调用、不切换生产生成器。

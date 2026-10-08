@@ -39,6 +39,7 @@ foundation/generator issues are history, not new per-operation prerequisites.
 | #38   | Licensed bilingual/pkg.go.dev documentation automation                                       | #37                                                                 |
 | #44   | Reject aliased pagination and waiter policy roles                                            | #38                                                                 |
 | #49   | Scoped product Beta/release criteria and developer experience definition                     | #33, #44; #47 evidence tracked separately                           |
+| #51   | Full-DSL STS client -> provider/cache -> generated consumer composition                      | #49; accepted foundation and generator                              |
 
 ## 中文
 
@@ -81,3 +82,4 @@ Review 修复按 #26 → #27 → #28 → #29 执行，详见 [修复路径](../a
 | #38   | 授权双语/pkg.go.dev 文档自动化。                                                                  | #37                                                                 |
 | #44   | 拒绝分页与 waiter 策略的同模型角色重叠。                                                          | #38                                                                 |
 | #49   | 限定产品 Beta/发布标准及开发者体验定义。                                                          | #33、#44；#47 证据独立跟踪                                          |
+| #51   | 完整 DSL STS client→provider/cache→生成消费者组合。                                               | #49；已接受基础和生成器                                             |
