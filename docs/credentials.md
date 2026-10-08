@@ -51,7 +51,9 @@ ProviderFunc for a custom source and preserve cancellation errors. See [cache co
 Issue [#53](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/53) verifies the
 provider-only rule, no environment fallback, constructor/per-call rejection and
 offline role signing/cache reuse. Synthetic Examples and CI do not establish live
-role renewal or overall Beta acceptance.
+role renewal or overall Beta acceptance. Separate [live STS evidence #55](live-sts-renewal.md)
+now records real issuance/reuse, forced refresh, natural expiry renewal and cleanup
+with a dedicated minimal-permission role; it does not add native Profile/OAuth support.
 
 ## 中文
 
@@ -92,3 +94,5 @@ NewChain 复制显式有序列表，只跳过 ErrNotFound，其他失败/无效�
 
 [#53](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/53) 验证 provider-only 配置、无环境回退、
 构造/操作覆盖拒绝，以及离线角色签名/缓存复用。合成 Example 和 CI 不证明真实角色续期或整体 Beta 验收。
+独立的[真实 STS 证据 #55](live-sts-renewal.md)现记录最小权限专用角色的真实签发/复用、强制刷新、
+自然到期续期和清理，不新增原生 Profile/OAuth 支持。

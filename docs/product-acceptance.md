@@ -118,17 +118,24 @@ for those capabilities. These are recorded snapshots, not a Beta completion coun
 two image pages; instance token/page/status and VPC traversals end on an empty first
 page, waiter/AssumeRole are skipped and Explorer browser verification is not run.
 
-Current work queue, in priority order: [STS-first explicit providers #53](credentials.md); reproducible
+STS composition #51 and explicit-provider guidance #53 are merged.
+[Live STS #55](live-sts-renewal.md) passes scoped issuance/reuse, forced refresh and
+automatic real-time expiry renewal with generated ECS reads and temporary-IAM cleanup.
+Background/concurrent live refresh, other roles/conditions and native Profile/OAuth
+renewal are not established by this run.
+
+Current work queue, in priority order: reproducible
 consumer workloads and independent UX/official-v2 comparison; authorized token/waiter/
-role live gaps; real upstream-update rehearsal; release/indexing. Benchmark #20 stays
+remaining scoped role live gaps; real upstream-update rehearsal; release/indexing. Benchmark #20 stays
 independent. The older STS helper only accepts `services/sts`; its foundation acceptance
 does not establish composition with the new `service/sts` API. #51 adds that composition
 with local doccheck, product-check, vet, all Go tests/Examples and 50 frontend tests
-passing. This is offline evidence; live role/refresh and independent UX remain open.
+passing. #51 is offline evidence; #55 adds scoped live renewal. Independent UX remains open.
 
 Closing an implementation or this definition issue does not close these overall gates.
 Review all tracked cases at the target release commit. This change creates no version
-tag, makes no new live calls and does not switch the production generator.
+tag or switch the production generator; this acceptance definition itself authorizes
+no live calls. The separately user-authorized #55 scope is recorded above.
 
 ## 中文
 
@@ -227,11 +234,15 @@ fixture 来源、结果、脱敏证据链接、限制和负责 issue。发现、
 记录镜像两页，实例 token/页码/状态及 VPC 均空结果第一页结束，waiter/AssumeRole 跳过，Explorer
 浏览器未执行。
 
-按优先级继续：[STS 优先显式 provider #53](credentials.md)；可复现消费者业务与独立用户/官方 v2 对比；授权
-token/waiter/role 真实缺口；真实上游升级；发布/索引。基准 #20 独立。旧 STS helper 只接受
+STS 组合 #51 和显式 provider 指南 #53 已合并。[真实 STS #55](live-sts-renewal.md)通过限定
+签发/复用、强制刷新、真实时间到期后自动续期、生成 ECS 读取和临时 IAM 清理；不证明真实
+后台/并发刷新、其他角色/条件或原生 Profile/OAuth 续期。
+
+按优先级继续：可复现消费者业务与独立用户/官方 v2 对比；授权 token/waiter 和剩余限定 role
+真实缺口；真实上游升级；发布/索引。基准 #20 独立。旧 STS helper 只接受
 services/sts，基础通过不代表与新 service/sts 可组合。#51 增加该组合，本地 doccheck、
-product-check、vet、全 Go 测试/Example、50 项前端测试通过；这仅是离线证据，真实角色/
-刷新、独立体验仍待验证。
+product-check、vet、全 Go 测试/Example、50 项前端测试通过；#51 为离线证据，#55 增加限定真实
+续期，独立体验仍待验证。
 
 关闭实现或本定义 issue 不代表这些总门槛通过；在目标发布提交复核所有用例。本次不打 tag、
-不新增真实调用、不切换生产生成器。
+不切换生产生成器；本验收定义本身不授权真实调用，用户独立授权的 #55 范围已在上文记录。

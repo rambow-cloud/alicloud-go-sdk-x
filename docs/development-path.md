@@ -6,8 +6,9 @@
 
 Future scoped issues follow [product acceptance](product-acceptance.md) (#49):
 candidate Beta boundaries, AC/UX IDs, distinct offline/live/UX/publication evidence
-and required-case status govern completion. Next: full-DSL STS provider composition,
-consumer/official-v2 comparison, authorized live gaps, source-update rehearsal and
+and required-case status govern completion. #51/#53 STS composition/provider guidance
+are merged; [#55](live-sts-renewal.md) records scoped real-time renewal. Next:
+consumer/official-v2 comparison, remaining authorized live gaps, source-update rehearsal and
 release. Benchmark #20 remains separate; Smithy is an isolated experiment.
 
 The first follow-up is [full-DSL STS provider composition #51](sts-credentials.md)
@@ -21,6 +22,16 @@ gain bare key fields or implicit environment fallback. Preserve custom providers
 the existing StaticProvider API. Reject nil and typed-nil sources before requests,
 prove the rule through runtime/generated-client and per-call tests, and ship a complete
 offline STS-to-ECS Example with paired guidance before resuming UX comparisons.
+
+The user now authorizes local unsandboxed [live STS renewal](live-sts-renewal.md).
+Establish its issue, provision only the user-authorized dedicated role/source with
+least-privilege policies and cleanup, then validate forced refresh
+separately from real-time natural expiry renewal before marking AC-05 live evidence.
+
+#55 completed three live issuances and four generated ECS reads, including cache reuse,
+forced refresh and automatic renewal after genuine 900-second expiration. All newly
+created temporary IAM objects were cleaned up. This is scoped AC-05 evidence;
+independent UX and other product/live requirements remain separate.
 
 Authoritative route revised at the user's direction on 2026-10-07: complete official
 product DSL -> official Darabonba semantic parser -> normalized operation/model/binding
@@ -116,9 +127,18 @@ Sources: [ACS3](https://help.aliyun.com/zh/sdk/product-overview/v3-request-struc
 通过运行时/生成客户端及操作覆盖测试证明，并提供完整离线 STS→ECS Example 和配对指南，
 然后继续体验对照。
 
+用户现授权本地沙箱外[真实 STS 续期](live-sts-renewal.md)，并创建专用角色。先建独立 issue，
+只创建授权的专用角色/来源，使用最小权限并清理；区分强制刷新与真实时间的自然到期续期，
+再记录 AC-05 的真实证据。
+
+#55 已完成三次真实签发和四次生成 ECS 读取，包含缓存复用、强制刷新及真正 900 秒到期后的
+自动续期，全部新建临时 IAM 对象已清理。这是限定 AC-05 证据；独立体验及其他产品/真实
+要求继续分别验收。
+
 后续 issue 依照[产品验收](product-acceptance.md)（#49），候选 Beta 范围、AC/UX 编号、
-离线/真实/用户体验/发布证据及必需项状态共同决定完成。下一步为完整 DSL STS provider
-组合、消费者/官方 v2 对比、授权真实缺口、来源升级演练及发布。基准 #20 独立，Smithy
+离线/真实/用户体验/发布证据及必需项状态共同决定完成。完整 DSL STS provider
+组合与主要凭据指南 #51/#53 已合并，[#55](live-sts-renewal.md)记录限定真实时间续期；下一步为
+消费者/官方 v2 对比、剩余授权真实缺口、来源升级演练及发布。基准 #20 独立，Smithy
 仍为隔离实验。
 
 首项后续为[完整 DSL STS provider 组合 #51](sts-credentials.md)，对应 AC-05/UX-04，保留
