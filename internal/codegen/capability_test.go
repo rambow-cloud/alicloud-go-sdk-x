@@ -143,6 +143,19 @@ func copyPolicyFixture(t *testing.T, root string) {
 	}
 }
 
+func TestPolicyGuidePairsDoNotPermitUnknownArtifacts(t *testing.T) {
+	root := t.TempDir()
+	writeTestFile(t, root, "policies/README.md", []byte("English guide"))
+	writeTestFile(t, root, "policies/README.zh-CN.md", []byte("Chinese guide"))
+	if err := loadCapabilityPolicies(root, nil); err != nil {
+		t.Fatal("paired guides rejected", err)
+	}
+	writeTestFile(t, root, "policies/unreviewed.md", []byte("unexpected artifact"))
+	if err := loadCapabilityPolicies(root, nil); err == nil {
+		t.Fatal("unknown artifact accepted")
+	}
+}
+
 func TestPolicyLoaderStrictSourceBindingAndAtomicWrites(t *testing.T) {
 	root := fullProductFixture(t)
 	copyPolicyFixture(t, root)

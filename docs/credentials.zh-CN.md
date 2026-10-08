@@ -1,0 +1,57 @@
+# 凭据
+
+[English](credentials.md)
+
+### 默认配置与本地登录
+
+- 使用 config.LoadDefaultConfig(ctx, config.WithSharedConfigProfile("oss-sftp")) 加载原生 CLI OAuth/临时凭据与地域，返回 Config 直接传给生成 NewFromConfig。
+- 原生 OAuth 刷新/交换使用带刷新超时的缓存凭据提供者，首次交互登录由 CLI 完成。
+- 优先级、模式范围、会话所有权和长期密钥显式启用见[默认配置契约](default-configuration.zh-CN.md)。
+- 用户确认的 #68 优先于旧 “不支持默认凭据链和原生 Profile/OAuth”限制。
+
+### 优先采用 STS 的应用配置
+
+- 应用客户端优先采用可刷新的 stscreds.AssumeRoleProvider，并包装 credentials.Cache。
+- 完整生成客户端组合见[STS 指南](sts-credentials.zh-CN.md)及可执行 README/ExampleAssumeRoleProvider。
+- STS 配置独立来源以避免递归；Cache 合并刷新，复制到 StaticProvider 的 STS token 不会自动续期。
+
+- alicloud.Config 和服务 Options 只提供 CredentialsProvider，不提供裸 AccessKey/KeySecret/ SecurityToken 字段。
+- 直接构造 Config 时即便环境凭据已经存在，也必须注入凭据提供者。
+- Nil/带类型的 nil 凭据提供者 （含 nil ProviderFunc）在运行时/chain/cache 构造期间失败，不访问 HTTP、不读取凭据。
+- 操作级配置替换执行同样校验，且不修改客户端。
+
+| 来源             | 显式声明                                                                                         | 使用定位                                         |
+| ---------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------ |
+| 可刷新角色       | stscreds.NewAssumeRoleProviderFromClient(...)，随后 credentials.NewCache(...)                    | 应用主要路径：生成 STS→角色凭据提供者→生成消费者 |
+| 长期 AK/SK       | credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: id, AccessKeySecret: secret}) | 次要、明确选择；例如 STS 的授权来源              |
+| 静态临时快照     | NewStaticProvider 加 SecurityToken 和 ExpiresAt                                                  | 已签发临时凭据，检查过期但不刷新                 |
+| 环境             | credentials.EnvProvider{}                                                                        | 显式读取环境，不自动注册                         |
+| 自定义凭据提供者 | credentials.Provider 实现或 ProviderFunc                                                         | 应用管理来源，遵守 context/并发/错误契约         |
+
+- 所有有意注入的自定义凭据提供者均可用，也可返回长期密钥。
+- STS 优先是使用指南和只接受凭据提供者配置规则，不是运行时强制仅接受 STS。
+- AWS Go SDK v2 同样接受凭据提供者，并记录显式 [StaticCredentialsProvider](https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/configure-gosdk.html)。
+- 本 SDK 的 LoadDefaultConfig 提供阿里云原生默认发现及 CLI Profile/OAuth，保留长期密钥显式启用。
+- 支持范围有限，不表示与 AWS 来源兼容或覆盖全部阿里云 CLI 模式。
+
+### Provider 契约
+
+- Provider 使用 context 返回复制的凭据快照，必须并发安全；NewStaticProvider 复制显式密钥。
+- 零值/nil StaticProvider 返回 ErrMissingCredentials，已取消的 context 优先。
+- 格式化隐藏值， 但导出字段仍敏感，不得直接记录。
+
+- EnvProvider 每次读取 ALIBABA_CLOUD_ACCESS_KEY_ID、ALIBABA_CLOUD_ACCESS_KEY_SECRET 和可选 ALIBABA_CLOUD_SECURITY_TOKEN。
+- 三项都不存在返回 ErrNotFound，不完整配置返回 ErrMissingCredentials。
+- NewChain 复制显式有序列表，只跳过 ErrNotFound，其他失败/无效快照立即终止；Chain 自身不发现来源，config.LoadDefaultConfig 注册所述临时/Profile 凭据提供者。
+- 自动进程/metadata 发现在本范围外；ProviderFunc 自定义来源需保留取消错误。
+- 见[缓存契约](credential-cache.zh-CN.md)。
+
+- [#53](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/53) 验证只接受凭据提供者配置、无环境回退、 构造/操作覆盖拒绝，以及离线角色签名/缓存复用。
+- 合成 Example 和 CI 不证明真实角色续期或整体 Beta 验收。
+- 独立的[真实 STS 证据 #55](live-sts-renewal.zh-CN.md)现记录最小权限专用角色的真实签发/复用、强制刷新、 自然到期续期和清理，不新增原生 Profile/OAuth 支持。
+
+## 匿名 RPC
+
+- 显式 `credentials.AnonymousProvider{}` 是已审核 STS OIDC/SAML 匿名操作的标记，这些操作不读取任何已配置来源凭据提供者。
+- 签名操作拒绝该标记；所有位置的 nil/带类型的 nil 仍无效，不引入隐式密钥发现。
+- 见[协议契约](sts-anonymous-rpc.zh-CN.md)。
