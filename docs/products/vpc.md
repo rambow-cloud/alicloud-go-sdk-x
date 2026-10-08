@@ -5,7 +5,7 @@
 
 Import `github.com/rambow-cloud/alicloud-go-sdk-x/service/vpc`. Generated from pinned Apache-2.0 official DSL at
 `ec489e5c3deae95496daae2b41503ac58b221adb`; upstream licenses and source bytes remain in `sources/darabonba`.
-403 discovered actions, 295 lowered/emitted, 108 unsupported; 1240 complete reachable models.
+403 discovered actions, 296 lowered/emitted, 107 unsupported; 1242 complete reachable models.
 Emission is not compilation or live acceptance; see `vpc.coverage.json` and PR validation.
 
 Use `NewFromConfig(config)` and `client.Operation(ctx, &OperationInput{}, optFns...)`.
@@ -29,8 +29,8 @@ illustrate invocation only, not valid cloud parameter sets or complete server ex
 ## 中文
 
 导入 `github.com/rambow-cloud/alicloud-go-sdk-x/service/vpc`，由 Apache-2.0 官方 DSL 的固定版本 `ec489e5c3deae95496daae2b41503ac58b221adb` 生成；上游许可及
-源码原始字节保留在 `sources/darabonba`。发现 403 操作，降低/输出 295，不支持 108，
-完整可达模型 1240；输出不等于编译或真实验收，详见 `vpc.coverage.json` 和 PR 检查。
+源码原始字节保留在 `sources/darabonba`。发现 403 操作，降低/输出 296，不支持 107，
+完整可达模型 1242；输出不等于编译或真实验收，详见 `vpc.coverage.json` 和 PR 检查。
 
 通过 `NewFromConfig(config)` 和 `client.Operation(ctx, &OperationInput{}, optFns...)`
 调用。nil 输入表示空请求；可选标量/模型指针表达缺失，非 nil 标量保留零/false/空串，
@@ -76,8 +76,8 @@ Sensitive String/GoString hide whole models; JSON/direct fields remain raw.
 
 ### English
 
-English Go comments reuse licensed parser descriptions and summaries: 295/295 operations
-and 3482/6489 fields have emitted prose. Missing/empty/non-English descriptions are retained
+English Go comments reuse licensed parser descriptions and summaries: 296/296 operations
+and 3485/6495 fields have emitted prose. Missing/empty/non-English descriptions are retained
 in `vpc.documentation.json`; comments do not create validators or requiredness. This
 paired guide covers usage/contracts and the same source index in both languages.
 Chinese semantic translations are not available in the pinned input; none are invented.
@@ -86,7 +86,7 @@ See [documentation rules](../product-documentation.md), package LICENSE and NOTI
 
 ### 中文
 
-英文 Go 注释复用授权 parser 说明/摘要：295/295 操作、3482/6489 字段有已输出说明。
+英文 Go 注释复用授权 parser 说明/摘要：296/296 操作、3485/6495 字段有已输出说明。
 缺失/空/纯非英文说明保留在 `vpc.documentation.json`，说明不自动变为校验或必填。
 本指南中英文同步使用/契约及相同来源索引；固定输入没有中文语义翻译，不编造。
 所有可执行 Example 使用离线脚本响应，不使用上游 example 值。规则见
@@ -290,6 +290,7 @@ See [documentation rules](../product-documentation.md), package LICENSE and NOTI
 | ListBusinessRegions | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36093) |
 | ListDhcpOptionsSets | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36222) |
 | ListFullNatEntries | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36491) |
+| ListGeographicSubRegions | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36730) |
 | ListIpsecServerLogs | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36803) |
 | ListIpsecServers | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36952) |
 | ListPhysicalConnectionFeatures | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L37524) |
@@ -389,3 +390,17 @@ See [documentation rules](../product-documentation.md), package LICENSE and NOTI
 | UpdateVirtualPhysicalConnection | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L53971) |
 | UpdateVpcGatewayEndpointAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L54076) |
 | VpcDescribeVpcNatGatewayNetworkInterfaceQuota | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L54182) |
+
+
+## Requestless operations / 无请求模型操作
+
+### English
+
+ListGeographicSubRegions uses an empty ListGeographicSubRegionsInput for consistent Go calling conventions.
+Nil and its zero value send no query members. IR uses an explicit empty request root;
+this Go type is not counted as an official DSL model.
+
+### 中文
+
+ListGeographicSubRegions 使用空 ListGeographicSubRegionsInput 保持统一 Go 调用范式，nil 和零值不发送线路 query 成员。
+IR 显式保留空请求根，此 Go 类型不计为官方 DSL 模型。

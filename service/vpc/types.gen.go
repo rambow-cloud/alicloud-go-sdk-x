@@ -7,6 +7,11 @@ package vpc
 
 import alicloud "github.com/rambow-cloud/alicloud-go-sdk-x"
 
+// ListGeographicSubRegionsInput is the empty input for the requestless native action.
+// Its zero value and nil operation input send no query fields.
+// This Go calling-convention type is not an upstream DSL model.
+type ListGeographicSubRegionsInput struct{}
+
 // ActivateRouterInterfaceInput represents the complete DSL model ActivateRouterInterfaceRequest.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ActivateRouterInterfaceInput struct {
@@ -36290,6 +36295,52 @@ type ListFullNATEntriesOutputFullNATEntries struct {
 	//
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36464
 	NetworkInterfaceType *string `json:"NetworkInterfaceType,omitzero"`
+}
+
+// ListGeographicSubRegionsResponse represents the complete DSL model ListGeographicSubRegionsResponse.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ListGeographicSubRegionsResponse struct {
+	// Headers maps to the exact wire member headers.
+	Headers map[string]string `json:"headers,omitzero"`
+	// StatusCode maps to the exact wire member statusCode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	StatusCode *int32 `json:"statusCode,omitzero"`
+	// Body maps to the exact wire member body.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	Body *ListGeographicSubRegionsOutput `json:"body,omitzero"`
+}
+
+// ListGeographicSubRegionsOutput represents the complete DSL model ListGeographicSubRegionsResponseBody.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ListGeographicSubRegionsOutput struct {
+	// Count maps to the exact wire member Count.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The number of entries in the list.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36713
+	Count *int64 `json:"Count,omitzero"`
+	// GeographicSubRegions maps to the exact wire member GeographicSubRegions.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The list of regions to query.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36714
+	GeographicSubRegions []string `json:"GeographicSubRegions,omitzero"`
+	// RequestID maps to the exact wire member RequestId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The request ID.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36715
+	RequestID *string `json:"RequestId,omitzero"`
+	// Metadata contains request identity, HTTP status and attempt count.
+	Metadata alicloud.Metadata `json:"-"`
 }
 
 // ListIpsecServerLogsInput represents the complete DSL model ListIpsecServerLogsRequest.

@@ -220,28 +220,38 @@ function lowerOperation(ast, operation) {
     "operation function " + operation,
   );
   const params = fn.params.params;
+  const requestless =
+    params.length === 1 && lex(params[0].paramName) === "runtime";
   requireProfile(
-    params.length === 2 &&
-      lex(params[0].paramName) === "request" &&
-      lex(params[1].paramName) === "runtime",
+    requestless ||
+      (params.length === 2 &&
+        lex(params[0].paramName) === "request" &&
+        lex(params[1].paramName) === "runtime"),
     "operation signature",
   );
+  const runtime = params.at(-1);
   requireProfile(
-    params[1].paramType.type === "moduleModel" &&
-      lex(params[1].paramType.path[0]) === "Util" &&
-      lex(params[1].paramType.path[1]) === "RuntimeOptions",
+    runtime.paramType.type === "moduleModel" &&
+      runtime.paramType.path.length === 2 &&
+      lex(runtime.paramType.path[0]) === "Util" &&
+      lex(runtime.paramType.path[1]) === "RuntimeOptions",
     "runtime signature",
   );
   const models = new Map(
     nodes.filter((n) => n.type === "model").map((n) => [lex(n.modelName), n]),
   );
-  const requestModel = models.get(lex(params[0].paramType));
-  requireProfile(requestModel && !requestModel.extendOn, "request model");
+  const requestModel = requestless
+    ? null
+    : models.get(lex(params[0].paramType));
+  requireProfile(
+    requestless || (requestModel && !requestModel.extendOn),
+    "request model",
+  );
   const inputFields = new Map(
-    requestModel.modelBody.nodes.map((f) => [lex(f.fieldName), f]),
+    (requestModel?.modelBody.nodes || []).map((f) => [lex(f.fieldName), f]),
   );
   requireProfile(
-    requestModel.modelBody.nodes.every((f) =>
+    (requestModel?.modelBody.nodes || []).every((f) =>
       f.attrs.every((a) =>
         ["name", "description", "example", "nullable"].includes(
           lex(a.attrName),
@@ -252,22 +262,24 @@ function lowerOperation(ast, operation) {
   );
   const statements = fn.functionBody.stmts.stmts;
   let index = 0;
-  requireProfile(
-    staticCall(statements[index++], "Util", "validateModel", (e) =>
-      variable(e, "request"),
-    ),
-    "model validation",
-  );
-  const query = statements[index++];
-  requireProfile(
-    query?.type === "declare" &&
-      lex(query.id) === "query" &&
-      query.expr.type === "object" &&
-      query.expr.fields.length === 0,
-    "query initialization",
-  );
+  if (!requestless) {
+    requireProfile(
+      staticCall(statements[index++], "Util", "validateModel", (e) =>
+        variable(e, "request"),
+      ),
+      "model validation",
+    );
+    const query = statements[index++];
+    requireProfile(
+      query?.type === "declare" &&
+        lex(query.id) === "query" &&
+        query.expr.type === "object" &&
+        query.expr.fields.length === 0,
+      "query initialization",
+    );
+  }
   const bindings = [];
-  while (statements[index]?.type === "if") {
+  while (!requestless && statements[index]?.type === "if") {
     const guard = statements[index++];
     requireProfile(
       guard.condition.type === "not" &&
@@ -318,11 +330,13 @@ function lowerOperation(ast, operation) {
   );
   const requestFields = request.expr.object.fields;
   requireProfile(
-    requestFields.length === 1 &&
-      lex(requestFields[0].fieldName) === "query" &&
-      staticCall(requestFields[0].expr, "OpenApiUtil", "query", (e) =>
-        variable(e, "query"),
-      ),
+    requestless
+      ? requestFields.length === 0
+      : requestFields.length === 1 &&
+          lex(requestFields[0].fieldName) === "query" &&
+          staticCall(requestFields[0].expr, "OpenApiUtil", "query", (e) =>
+            variable(e, "query"),
+          ),
     "query encoding helper",
   );
   const protocol = statements[index++];

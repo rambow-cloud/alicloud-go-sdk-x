@@ -29,7 +29,7 @@ func readProductIR(t *testing.T, pkg string) productIR {
 }
 
 func TestCompleteProductsDeterministicModelsMethodsAndExamples(t *testing.T) {
-	for pkg, want := range map[string]int{"ecs": 283, "sts": 1, "vpc": 295} {
+	for pkg, want := range map[string]int{"ecs": 283, "sts": 2, "vpc": 296} {
 		t.Run(pkg, func(t *testing.T) {
 			p := readProductIR(t, pkg)
 			r, err := newProductRenderer(p)
@@ -58,7 +58,13 @@ func TestCompleteProductsDeterministicModelsMethodsAndExamples(t *testing.T) {
 			examples := string(files["service/"+pkg+"/examples.gen_test.go"])
 			types := string(files["service/"+pkg+"/types.gen.go"])
 			// Count declaration lines rather than words inside licensed prose.
-			if strings.Count(methods, "\nfunc (c *Client)") != want || strings.Count(examples, "\nfunc ExampleClient_") != want || strings.Count(types, "\ntype ") != len(r.models) {
+			emptyInputs := 0
+			for _, op := range r.operations {
+				if op.Roots.Request.Kind == "empty" {
+					emptyInputs++
+				}
+			}
+			if strings.Count(methods, "\nfunc (c *Client)") != want || strings.Count(examples, "\nfunc ExampleClient_") != want || strings.Count(types, "\ntype ") != len(r.models)+emptyInputs {
 				t.Fatal("model/method/example omissions")
 			}
 			var report struct {
@@ -130,7 +136,7 @@ func fullProductFixture(t *testing.T) string {
 
 func TestProductSupportAndCorruptionFailBeforeWrites(t *testing.T) {
 	root := fullProductFixture(t)
-	for _, selected := range [][]string{{"ecs/Unknown"}, {"ecs/RunInstances"}, {"sts/GetCallerIdentity"}, {"DescribeImages"}, {"ecs/DescribeImages", "sts/AssumeRoleWithSAML"}} {
+	for _, selected := range [][]string{{"ecs/Unknown"}, {"ecs/RunInstances"}, {"sts/AssumeRoleWithOIDC"}, {"DescribeImages"}, {"ecs/DescribeImages", "sts/AssumeRoleWithSAML"}} {
 		if err := GenerateProducts(context.Background(), root, false, selected); err == nil {
 			t.Fatal("invalid selection accepted", selected)
 		}

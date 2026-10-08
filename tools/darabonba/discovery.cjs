@@ -468,6 +468,8 @@ function buildProduct(ast, { pkg, identifier, info, file, provenance }) {
         else {
           record.status = "lowered";
           record.protocol = lowered.protocol;
+          // An explicit empty root preserves source absence without inventing a DSL model.
+          if (!record.roots.request) record.roots.request = { kind: "empty" };
           const fields =
             graph.models.get(record.roots.request?.ref)?.fields || [];
           record.bindings = lowered.inputs.map((input) => ({

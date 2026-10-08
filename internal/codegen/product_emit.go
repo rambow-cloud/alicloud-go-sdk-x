@@ -65,12 +65,25 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 		if pr.Action != op.Name || pr.Version != p.Version || pr.Protocol != "HTTPS" || pr.Path != "/" || pr.Method != "POST" || pr.AuthType != "AK" || pr.Style != "RPC" || pr.RequestBodyType != "formData" || pr.BodyType != "json" {
 			return nil, fmt.Errorf("%s: unsupported protocol", op.Name)
 		}
-		for _, t := range []productType{op.Roots.Request, op.Roots.Response, op.Roots.Body} {
+		roots := []productType{op.Roots.Response, op.Roots.Body}
+		emptyInput := op.Roots.Request.Kind == "empty"
+		if emptyInput {
+			if op.Roots.Request.Ref != "" || op.Roots.Request.DSLType != "" || op.Roots.Request.WireType != "" || op.Roots.Request.Items != nil || op.Roots.Request.Keys != nil || op.Roots.Request.Values != nil || len(op.Bindings) != 0 {
+				return nil, errors.New("invalid empty request root")
+			}
+		} else {
+			roots = append(roots, op.Roots.Request)
+		}
+		for _, t := range roots {
 			if t.Kind != "model" || t.Ref == "" {
 				return nil, errors.New("invalid operation root")
 			}
 		}
-		for id, name := range map[string]string{op.Roots.Request.Ref: op.Name + "Input", op.Roots.Body.Ref: op.Name + "Output", op.Roots.Response.Ref: op.Name + "Response"} {
+		rootNames := map[string]string{op.Roots.Body.Ref: op.Name + "Output", op.Roots.Response.Ref: op.Name + "Response"}
+		if !emptyInput {
+			rootNames[op.Roots.Request.Ref] = op.Name + "Input"
+		}
+		for id, name := range rootNames {
 			if previous, ok := r.names[id]; ok && previous != name {
 				return nil, errors.New("shared root requires naming exception")
 			}
@@ -84,13 +97,13 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 			}
 			r.models[id] = m
 		}
-		for _, root := range []productType{op.Roots.Request, op.Roots.Response, op.Roots.Body} {
+		for _, root := range roots {
 			if _, ok := r.models[root.Ref]; !ok {
 				return nil, errors.New("operation root not reachable")
 			}
 		}
 		request, ok := r.models[op.Roots.Request.Ref]
-		if !ok {
+		if !ok && !emptyInput {
 			return nil, errors.New("request not reachable")
 		}
 		bound := map[string]bool{}
@@ -120,7 +133,11 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 	slices.SortFunc(r.operations, func(a, b productOperation) int { return strings.Compare(a.Name, b.Name) })
 	used := map[string]bool{"Client": true, "Options": true, "New": true, "NewFromConfig": true}
 	for _, op := range r.operations {
-		for _, name := range []string{op.Name, op.Name + "API"} {
+		names := []string{op.Name, op.Name + "API"}
+		if op.Roots.Request.Kind == "empty" {
+			names = append(names, op.Name+"Input")
+		}
+		for _, name := range names {
 			if used[name] {
 				return nil, fmt.Errorf("operation naming collision %s", name)
 			}
@@ -243,6 +260,11 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 	files := map[string][]byte{}
 	var types bytes.Buffer
 	fmt.Fprintf(&types, "%s// SPDX-License-Identifier: Apache-2.0\n// Copyright (c) 2009-present, Alibaba Cloud All rights reserved.\n// Modified: models and descriptions converted to native Go by alicloud-go-sdk-x.\n// See package LICENSE and NOTICE for source attribution.\npackage %s\nimport alicloud %q\n", productGenerated, p.Product, module)
+	for _, op := range r.operations {
+		if op.Roots.Request.Kind == "empty" {
+			fmt.Fprintf(&types, "// %sInput is the empty input for the requestless native action.\n// Its zero value and nil operation input send no query fields.\n// This Go calling-convention type is not an upstream DSL model.\ntype %sInput struct{}\n", op.Name, op.Name)
+		}
+	}
 	for _, id := range sortedKeys(r.models) {
 		m := r.models[id]
 		name := r.names[id]
@@ -411,6 +433,11 @@ func (r *productRenderer) guide() []byte {
 	fmt.Fprintf(&b, "%s# %s complete models / %s 完整模型\n\n## English\n\nImport `%s/service/%s`. Generated from pinned Apache-2.0 official DSL at\n`%s`; upstream licenses and source bytes remain in `sources/darabonba`.\n%d discovered actions, %d lowered/emitted, %d unsupported; %d complete reachable models.\nEmission is not compilation or live acceptance; see `%s.coverage.json` and PR validation.\n\nUse `NewFromConfig(config)` and `client.Operation(ctx, &OperationInput{}, optFns...)`.\nNil input is empty; optional scalar/model pointers preserve absence, non-nil scalars\npreserve zero/false/empty, and input graphs are copied before middleware. Arrays use\none-based query indexes and exact member case; DSL string fields stay strings.\nRegionId defaults to configured region and follows operation region options.\nOutputs preserve full native response body containers and add Metadata. DSL response\nenvelope types are retained separately. Small OperationAPI interfaces support mocks.\nErrors retain cancellation and APIError/OperationError. Clients are concurrency safe;\ndo not mutate caller inputs during calls or retain hook models/options. Standard retry\nis available only for explicitly reviewed idempotent operations with a configured Retryer.\n\nThe older `services/%s` is the bounded reference bridge, including its existing\npaginator/waiter adapters; changing imports also requires adapting scalar pointers\nand complete native response shapes. Reviewed native adapters are listed below; token fields alone do not grant support. Licensed semantic prose and source indexes are automated under #38; Go comments\nretain exact bindings and ownership. Each operation has an offline\nexternal Example using a scripted HTTP transport; empty mock requests/responses\nillustrate invocation only, not valid cloud parameter sets or complete server examples.\n\n## 中文\n\n导入 `%s/service/%s`，由 Apache-2.0 官方 DSL 的固定版本 `%s` 生成；上游许可及\n源码原始字节保留在 `sources/darabonba`。发现 %d 操作，降低/输出 %d，不支持 %d，\n完整可达模型 %d；输出不等于编译或真实验收，详见 `%s.coverage.json` 和 PR 检查。\n\n通过 `NewFromConfig(config)` 和 `client.Operation(ctx, &OperationInput{}, optFns...)`\n调用。nil 输入表示空请求；可选标量/模型指针表达缺失，非 nil 标量保留零/false/空串，\n在 middleware 前深复制输入。数组使用从 1 起的 query 索引与准确大小写，DSL 字符串\n保持字符串。RegionId 使用配置默认地区及操作地区选项。Output 保留完整原生响应体\n容器并增加 Metadata；DSL response envelope 类型单独保留。小 OperationAPI 接口\n支持 mock；错误保留取消及 APIError/OperationError。Client 可并发，调用中不要修改\n输入或保留 hooks 模型/选项。Standard 仅对明确审核幂等的操作、配置 Retryer 后允许重试。\n\n原 `services/%s` 为有界参考桥，含已有分页/waiter；迁移导入时同步适配标量指针及\n完整原生响应结构。已审核原生适配器见下表，不凭 token 字段猜能力。授权语义说明及来源索引\n由 #38 自动化，Go 注释保留准确绑定/所有权。每操作有脚本 HTTP transport\n的离线外部 Example；空 mock 请求/响应仅演示调用，不表示有效云参数或完整服务示例。\n\n", productMarkdown, r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product)
 	r.appendCapabilityGuide(&b)
 	r.appendDocumentationGuide(&b)
+	for _, op := range r.operations {
+		if op.Roots.Request.Kind == "empty" {
+			fmt.Fprintf(&b, "\n## Requestless operations / 无请求模型操作\n\n### English\n\n%s uses an empty %sInput for consistent Go calling conventions.\nNil and its zero value send no query members. IR uses an explicit empty request root;\nthis Go type is not counted as an official DSL model.\n\n### 中文\n\n%s 使用空 %sInput 保持统一 Go 调用范式，nil 和零值不发送线路 query 成员。\nIR 显式保留空请求根，此 Go 类型不计为官方 DSL 模型。\n", op.Name, op.Name, op.Name, op.Name)
+		}
+	}
 	return append(bytes.TrimRight(b.Bytes(), "\n"), '\n')
 }
 

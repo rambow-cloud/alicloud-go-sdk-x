@@ -13,19 +13,19 @@
     },
     {
       "file": "models/sts/ir.json",
-      "sha256": "258702656bc815a967f08a53856d3f5e9553235de8a34a55821a08d7c08cf424"
+      "sha256": "8734325f4eb2825341a16fb9a340d23e6e016ba2c6da191a313e4c382ef4f755"
     },
     {
       "file": "models/sts/coverage.json",
-      "sha256": "2198f5fbd454bf7a1eeea95ab75232fe6a0d2ac4b29d80f56517656ac9a51668"
+      "sha256": "e1f9a27e3ee3e9d3217ba853c4d618450c2c9bcb454fe54abde075a41b6a661a"
     },
     {
       "file": "models/vpc/ir.json",
-      "sha256": "07f46fec5319b4414a832b9044483b4c0216ee608cd952d172887b6e26d71aa6"
+      "sha256": "8a86405c441a25a2e732603727db5c806d9bff309bd38ec2c070f1b3e141e562"
     },
     {
       "file": "models/vpc/coverage.json",
-      "sha256": "510bd4d7202215083dc923ea71c0dbb5624a9b23ed710c0c516eeae5e1294e32"
+      "sha256": "f3347e46d85fb15b2908beabfe821312e49b3194358251712ceec30c11ca34a8"
     }
   ]
 }

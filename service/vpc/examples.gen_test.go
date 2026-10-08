@@ -3539,6 +3539,24 @@ func ExampleClient_ListFullNatEntries() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_ListGeographicSubRegions() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ListGeographicSubRegionsAPI = client
+	out, err := api.ListGeographicSubRegions(context.Background(), &vpc.ListGeographicSubRegionsInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_ListIpsecServerLogs() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {

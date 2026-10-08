@@ -381,7 +381,7 @@ test("strict unknown/unsupported selections fail before creating outputs", (t) =
   const temporary = sourceFixture(t);
   for (const target of [
     "ecs/DoesNotExist",
-    "sts/GetCallerIdentity",
+    "sts/AssumeRoleWithOIDC",
     "../AssumeRole",
   ]) {
     assert.throws(
@@ -428,10 +428,24 @@ test("output directory symlinks fail during path preflight without writing targe
 });
 test("report distinguishes lowering from Go/live acceptance and prints reason locations", () => {
   const text = run("report", { product: "sts" });
-  assert.match(text, /^sts: 4 discovered, 1 lowered, 3 unsupported/);
+  assert.match(text, /^sts: 4 discovered, 2 lowered, 2 unsupported/);
   assert.match(text, /Go emission\/compilation\/live: not assessed/);
   assert.match(
     text,
-    /GetCallerIdentity: DSL_OPERATION_SIGNATURE:.*products\/sts\/main.tea:\d+/,
+    /AssumeRoleWithOIDC: DSL_PROTOCOL_PROFILE:.*products\/sts\/main.tea:\d+/,
   );
+});
+
+test("requestless discovery retains absent source model without a synthetic DSL declaration", () => {
+  const { ir } = buildProduct(ast, context);
+  const identity = ir.operations.find((o) => o.name === "GetCallerIdentity");
+  assert.equal(identity.status, "lowered");
+  assert.deepEqual(identity.roots.request, { kind: "empty" });
+  assert.deepEqual(identity.bindings, []);
+  assert.deepEqual(
+    identity.parameters.map((p) => p.name),
+    ["runtime"],
+  );
+  assert.ok(identity.reachableModels.includes("GetCallerIdentityResponseBody"));
+  assert.ok(!ir.models.some((m) => m.id === "GetCallerIdentityRequest"));
 });

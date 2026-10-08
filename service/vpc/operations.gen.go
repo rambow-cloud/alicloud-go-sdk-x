@@ -5960,6 +5960,31 @@ func (c *Client) ListFullNatEntries(ctx context.Context, input *ListFullNatEntri
 	return out, nil
 }
 
+// ListGeographicSubRegionsAPI is the minimal interface for ListGeographicSubRegions mocks and capability adapters.
+type ListGeographicSubRegionsAPI interface {
+	// ListGeographicSubRegions invokes the native action with owned inputs and per-call options.
+	ListGeographicSubRegions(context.Context, *ListGeographicSubRegionsInput, ...func(*Options)) (*ListGeographicSubRegionsOutput, error)
+}
+
+// ListGeographicSubRegions calls the native ListGeographicSubRegions action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries region information by calling the ListGeographicSubRegions operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36724
+func (c *Client) ListGeographicSubRegions(ctx context.Context, input *ListGeographicSubRegionsInput, optFns ...func(*Options)) (*ListGeographicSubRegionsOutput, error) {
+	out, meta, err := invoke[ListGeographicSubRegionsInput, ListGeographicSubRegionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListGeographicSubRegions", Version: "2016-04-28", Idempotent: false}, false, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // ListIpsecServerLogsAPI is the minimal interface for ListIpsecServerLogs mocks and capability adapters.
 type ListIpsecServerLogsAPI interface {
 	// ListIpsecServerLogs invokes the native action with owned inputs and per-call options.

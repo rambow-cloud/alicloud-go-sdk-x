@@ -7,6 +7,11 @@ package sts
 
 import alicloud "github.com/rambow-cloud/alicloud-go-sdk-x"
 
+// GetCallerIdentityInput is the empty input for the requestless native action.
+// Its zero value and nil operation input send no query fields.
+// This Go calling-convention type is not an upstream DSL model.
+type GetCallerIdentityInput struct{}
+
 // AssumeRoleInput represents the complete DSL model AssumeRoleRequest.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type AssumeRoleInput struct {
@@ -206,4 +211,45 @@ type AssumeRoleOutputCredentials struct {
 	//
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L115
 	SecurityToken *string `json:"SecurityToken,omitzero"`
+}
+
+// GetCallerIdentityResponse represents the complete DSL model GetCallerIdentityResponse.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type GetCallerIdentityResponse struct {
+	// Headers maps to the exact wire member headers.
+	Headers map[string]string `json:"headers,omitzero"`
+	// StatusCode maps to the exact wire member statusCode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	StatusCode *int32 `json:"statusCode,omitzero"`
+	// Body maps to the exact wire member body.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	Body *GetCallerIdentityOutput `json:"body,omitzero"`
+}
+
+// GetCallerIdentityOutput represents the complete DSL model GetCallerIdentityResponseBody.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type GetCallerIdentityOutput struct {
+	// AccountID maps to the exact wire member AccountId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	AccountID *string `json:"AccountId,omitzero"`
+	// ARN maps to the exact wire member Arn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	ARN *string `json:"Arn,omitzero"`
+	// IdentityType maps to the exact wire member IdentityType.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	IdentityType *string `json:"IdentityType,omitzero"`
+	// PrincipalID maps to the exact wire member PrincipalId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	PrincipalID *string `json:"PrincipalId,omitzero"`
+	// RequestID maps to the exact wire member RequestId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	RequestID *string `json:"RequestId,omitzero"`
+	// RoleID maps to the exact wire member RoleId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	RoleID *string `json:"RoleId,omitzero"`
+	// UserID maps to the exact wire member UserId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	UserID *string `json:"UserId,omitzero"`
+	// Metadata contains request identity, HTTP status and attempt count.
+	Metadata alicloud.Metadata `json:"-"`
 }

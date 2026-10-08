@@ -4,10 +4,10 @@
   "product": "vpc",
   "license": "Apache-2.0",
   "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
-  "englishOperations": 295,
-  "totalOperations": 295,
-  "englishFields": 3482,
-  "totalFields": 6489,
+  "englishOperations": 296,
+  "totalOperations": 296,
+  "englishFields": 3485,
+  "totalFields": 6495,
   "chineseSemanticTranslation": "not-available-in-pinned-input",
   "pairedGuides": "usage-contracts-and-source-index",
   "examples": "offline-invocation-and-reviewed-capability-examples",
@@ -3109,6 +3109,18 @@
           "line": 36484,
           "column": 1,
           "endLine": 36490,
+          "endColumn": 4
+        }
+      ]
+    },
+    "ListGeographicSubRegions": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/vpc/main.tea",
+          "line": 36724,
+          "column": 1,
+          "endLine": 36729,
           "endColumn": 4
         }
       ]
@@ -41608,6 +41620,54 @@
           "column": 79,
           "endLine": 36464,
           "endColumn": 173
+        }
+      ]
+    },
+    "ListGeographicSubRegionsResponse#body": {
+      "status": "missing",
+      "sources": []
+    },
+    "ListGeographicSubRegionsResponse#headers": {
+      "status": "missing",
+      "sources": []
+    },
+    "ListGeographicSubRegionsResponse#statusCode": {
+      "status": "missing",
+      "sources": []
+    },
+    "ListGeographicSubRegionsResponseBody#count": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/vpc/main.tea",
+          "line": 36713,
+          "column": 43,
+          "endLine": 36713,
+          "endColumn": 77
+        }
+      ]
+    },
+    "ListGeographicSubRegionsResponseBody#geographicSubRegions": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/vpc/main.tea",
+          "line": 36714,
+          "column": 79,
+          "endLine": 36714,
+          "endColumn": 108
+        }
+      ]
+    },
+    "ListGeographicSubRegionsResponseBody#requestId": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/vpc/main.tea",
+          "line": 36715,
+          "column": 53,
+          "endLine": 36715,
+          "endColumn": 68
         }
       ]
     },
