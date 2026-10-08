@@ -2,6 +2,12 @@
 
 ## English
 
+First release scheduling follows [v0.1.0 STS](sts-v0.1.0.md), parent #57 and
+milestone v0.1.0 / Project 3. Extend the accepted pipeline with #58 requestless
+GetCallerIdentity and #59 Anonymous OIDC/SAML RPC, then #60 acceptance/source-update
+rehearsal and #61 release. Preserve the architecture/stage history below; this is
+a scoped STS release, not wider product/protocol acceptance.
+
 Accepted direction, 2026-10-07. This roadmap, development-path.md and AGENTS.md supersede
 conflicting older generation plans. Current #31 is a bounded compatibility bridge;
 product discovery/emission must not require per-operation handcrafted field/model/doc
@@ -63,6 +69,10 @@ its own branch; stacked PRs name dependencies and do not imply main contains unm
 Do not close the parent while batch emission, capability policies or docs remain unfinished.
 
 ## 中文
+
+首版排期遵循 [v0.1.0 STS](sts-v0.1.0.md)、父项 #57、同名 milestone/Project 3。
+在已接受链路上补 #58 无请求 GetCallerIdentity、#59 匿名 OIDC/SAML RPC，再 #60 验收/
+来源升级、#61 发布。保留下文架构/阶段历史，这是限定 STS 版本，不代表更多产品/协议验收。
 
 2026-10-07 确认的新方向。本路线、development-path.md、AGENTS.md 优先于冲突旧计划。
 #31 是有界兼容桥；产品发现/输出不能要求每操作手写字段、模型、说明选择。历史

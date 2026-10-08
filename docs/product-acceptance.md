@@ -20,6 +20,16 @@ English-primary; authored Markdown stays English/Chinese equivalent.
 
 ### Candidate Beta boundary
 
+The first version is now the user-selected [v0.1.0 STS](sts-v0.1.0.md), tracked
+by #57-#61, milestone v0.1.0 and Project 3. Its scoped experimental release gate
+requires all four pinned STS actions generated/compiled/offline-tested, credential
+composition, scoped live evidence, consumer/maintenance/docs and publication/indexing.
+Successful OIDC/SAML live federation is declared outside that required live scope
+before execution, never promoted from NOT RUN to PASS. This explicit route revision
+supersedes the broader Beta release prerequisite for v0.1.0 only; the candidate
+boundary/AC/UX definitions below remain the broader goal. Neither release claims
+broader Beta, native Profile/OAuth renewal or unverified ECS/VPC coverage.
+
 The candidate scope below is the starting acceptance workload, not a release claim.
 Adding/removing required cases needs an issue, evidence and paired updates. Passing
 shared contracts does not extend product coverage automatically.
@@ -150,6 +160,13 @@ Smithy 仍是独立本地实验，改变路线需单独 issue/决策。要求 Go
 导入、OTel 可选。Issue/PR 和 Go 注释英文为主，项目 Markdown 中英对应。
 
 ### 候选 Beta 边界
+
+用户指定首版现为 [v0.1.0 STS](sts-v0.1.0.md)，由 #57-#61、同名 milestone、Project 3
+跟踪。限定实验发布必需四个固定 STS 操作生成/编译/离线测试、凭据组合、限定真实证据、
+消费者/维护/文档及发布/索引。OIDC/SAML 真实联邦在执行前声明不属于必需真实范围，
+不把 NOT RUN 写成 PASS。此明确路线调整仅替代 v0.1.0 的旧整体 Beta 发布前提，下文
+候选边界/AC/UX 保留为更广目标，不宣称整体 Beta、原生 Profile/OAuth 或未经验证的
+ECS/VPC 覆盖。
 
 以下是首批验收业务，不是发布声明。增减必需项需 issue、证据和双语更新，共享契约通过不自动
 扩大产品覆盖。

@@ -20,6 +20,19 @@ issues do not establish Beta/release acceptance. Keep Smithy isolated until a se
 approved route decision; follow the full-DSL STS composition -> consumer/official-v2
 comparison -> authorized live gaps -> source-update rehearsal -> release sequence.
 
+The user-approved 2026-10-08 first release is v0.1.0 STS, governed by
+docs/sts-v0.1.0.md, milestone v0.1.0, Project 3 and parent #57. This scoped
+experimental release supersedes conflicting broader Beta scheduling; it does not
+claim ECS/VPC/STS Beta. Execute #58 requestless GetCallerIdentity -> #59 anonymous
+OIDC/SAML RPC -> #60 four-action acceptance/consumer/source-update rehearsal -> #61
+release/indexing. #58/#59 are independent prerequisites for #60. Keep full official
+Darabonba/parser -> IR -> our Go backend/runtime; signed credential rules remain
+strict, anonymous auth is explicit per operation. Preserve #51/#53/#55 evidence and
+disclose OIDC/SAML live federation as NOT RUN/outside this release's required live
+scope. Maintain milestone membership, native issue hierarchy/dependencies, one
+status label and matching Project Status; do not claim automatic synchronization.
+Keep parent/milestone open until required release/indexing evidence is delivered.
+
 ## Issue-driven development
 
 - Every code or behavior change starts with an issue containing the problem, evidence,
@@ -164,6 +177,15 @@ comparison -> authorized live gaps -> source-update rehearsal -> release sequenc
 PASS/FAIL/SKIP/NOT RUN，必需项跳过则门槛未通过。生成/编译数量、本地 PoC 或实现 issue
 关闭不代表 Beta/发布验收。Smithy 保持隔离，改变路线需独立批准的决策；继续按完整 DSL STS
 组合→消费者/官方 v2 对比→授权真实缺口→来源升级演练→发布执行。
+
+用户于 2026-10-08 指定首版为 v0.1.0 STS，遵循 docs/sts-v0.1.0.md、同名 milestone、
+Project 3 和父 issue #57。限定实验版本优先于冲突旧 Beta 排期，不宣称 ECS/VPC/STS
+整体 Beta。先 #58 无请求 GetCallerIdentity→#59 匿名 OIDC/SAML RPC→#60 四操作验收/
+消费者/来源升级→#61 发布/索引；#58/#59 独立且均为 #60 前提。保留官方 Darabonba/parser
+→IR→本项目 Go 后端/runtime；签名凭据规则严格，匿名认证逐操作显式。保留 #51/#53/#55
+证据，OIDC/SAML 真实联邦预先列为首版必需真实范围外并记 NOT RUN。维护 milestone、
+原生子项/依赖、唯一状态 label 及对应 Project Status，不宣称自动同步；发布/索引证据
+齐全前父项/milestone 保持打开。
 
 ### Issue 驱动
 

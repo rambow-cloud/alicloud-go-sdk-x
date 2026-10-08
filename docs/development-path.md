@@ -4,6 +4,14 @@
 
 ## English
 
+The user-approved first release is now [v0.1.0 STS](sts-v0.1.0.md): milestone
+v0.1.0, Project 3 and parent #57. Next implement #58 requestless GetCallerIdentity,
+then #59 Anonymous OIDC/SAML RPC; both unblock #60 four-action acceptance/consumer/
+source-update rehearsal, followed by #61 release/indexing. This scoped experimental
+schedule supersedes the broader candidate Beta queue below, preserving its criteria
+and history without claiming that Beta. Existing #51/#53/#55 are accepted evidence;
+no new cloud objects or tag are created by this planning change.
+
 Future scoped issues follow [product acceptance](product-acceptance.md) (#49):
 candidate Beta boundaries, AC/UX IDs, distinct offline/live/UX/publication evidence
 and required-case status govern completion. #51/#53 STS composition/provider guidance
@@ -120,6 +128,12 @@ Sources: [ACS3](https://help.aliyun.com/zh/sdk/product-overview/v3-request-struc
 [AWS testing](https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/unit-testing.html).
 
 ## 中文
+
+用户指定首版现为 [v0.1.0 STS](sts-v0.1.0.md)：同名 milestone、Project 3、父项 #57。
+下一步 #58 无请求 GetCallerIdentity，再 #59 匿名 OIDC/SAML RPC；两项共同解锁 #60
+四操作验收/消费者/来源升级，之后 #61 发布/索引。限定实验排期优先于下文旧整体候选
+Beta 队列，保留其标准/历史，不宣称该 Beta。#51/#53/#55 为已接受证据；本规划不新建
+云对象或标签。
 
 用户指定的下一项凭据工作 [#53](credentials.md) 将 STS provider/cache 作为主要应用指南。长期 AK/SK 和环境来源必须
 显式注册 provider，遵循 AWS 的 provider 注入范式；Config/Options 不新增裸密钥字段或隐式
