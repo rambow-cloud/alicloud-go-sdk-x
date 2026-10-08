@@ -5,6 +5,15 @@
 - [#51](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/51) 实现 [AC-05 / UX-04](product-acceptance.zh-CN.md) 离线组合。
 - NewAssumeRoleProviderFromClient 接受 service/sts 窄接口和完整原生输入/options，直接组合 credentials.Cache 与生成客户端，无需响应转换。
 - 旧构造器继续保留 services/sts 参考桥调用方式。
+- [可复用性评审 #72](sts-reuse-review.zh-CN.md) 将共享校验规则与请求模型分离，两个构造器采用同一套返回凭据校验。
+
+### 生成与手写组件的边界
+
+- `service/sts` 的操作、模型和协议绑定来自官方 Darabonba DSL，经官方语义解析器和完整 IR 生成。
+- 这里的手写适配器把生成的响应转换为 `credentials.Credentials`，不另外实现签名或 HTTP 协议。
+- 共享内部角色校验不依赖旧版请求类型；原生输入直接传给生成的 API。
+- 缓存和原生 Profile 的角色配置复用同一适配器。来源发现使用 [LoadDefaultConfig](default-configuration.zh-CN.md)，适配器自身不执行发现。
+- 旧构造器的公开签名仍需导入 `services/sts`；移除签名需要单独安排迁移。
 
 ### 组合
 
@@ -20,6 +29,7 @@
 ### 契约
 
 - 构造/每次读取复制指针和 options 注册，调用方/API/切片修改不会延续。
+- 两个构造器都会复制每次调用的选项切片；自定义 API 修改切片，也不会影响后续调用。
 - API/callback 共享且需并发安全，构造期间不修改输入、callback 不保留对象。
 - Provider 支持并发，不自动缓存，格式化脱敏，nil/零值及非法构造参数（含带类型的 nil API/nil callback）返回错误。
 

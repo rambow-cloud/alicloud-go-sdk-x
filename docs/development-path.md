@@ -12,6 +12,7 @@
 - #61: release and pkg.go.dev indexing are still NOT RUN.
 - #70: split language files, improve Chinese, and use English-only issues.
 - This language policy changes documentation format, not SDK or release acceptance.
+- #72: [STS reuse review](sts-reuse-review.md). Share provider validation, isolate call options, and prove renamed DSL actions use the same parser/backend before release.
 
 ## Previous decisions and acceptance history
 

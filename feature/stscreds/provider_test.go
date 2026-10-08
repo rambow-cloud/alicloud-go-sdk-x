@@ -11,6 +11,7 @@ import (
 	"github.com/rambow-cloud/alicloud-go-sdk-x/services/sts"
 	"net/http"
 	"strings"
+	"sync"
 	"testing"
 	"time"
 )
@@ -19,6 +20,49 @@ type assumeFunc func(context.Context, *sts.AssumeRoleInput, ...func(*sts.Options
 
 func (f assumeFunc) AssumeRole(ctx context.Context, in *sts.AssumeRoleInput, opts ...func(*sts.Options)) (*sts.AssumeRoleOutput, error) {
 	return f(ctx, in, opts...)
+}
+
+func TestReferenceProviderOwnsEveryCall(t *testing.T) {
+	api := assumeFunc(func(_ context.Context, in *sts.AssumeRoleInput, opts ...func(*sts.Options)) (*sts.AssumeRoleOutput, error) {
+		if in.RoleSessionName != "original" || len(opts) != 1 || opts[0] == nil {
+			return nil, errors.New("input or option mutation persisted")
+		}
+		var options sts.Options
+		opts[0](&options)
+		if options.Region != "cn-hangzhou" {
+			return nil, errors.New("caller option mutation persisted")
+		}
+		in.RoleSessionName = "changed by API"
+		opts[0] = nil
+		return &sts.AssumeRoleOutput{Credentials: sts.RoleCredentials{
+			AccessKeyID: "synthetic", AccessKeySecret: "synthetic", SecurityToken: "synthetic",
+			ExpiresAt: time.Now().Add(time.Hour),
+		}}, nil
+	})
+	input := sts.AssumeRoleInput{RoleARN: "acs:ram::123:role/example", RoleSessionName: "original"}
+	options := []func(*sts.Options){func(o *sts.Options) { o.Region = "cn-hangzhou" }}
+	provider, err := stscreds.NewAssumeRoleProvider(api, input, options...)
+	if err != nil {
+		t.Fatal(err)
+	}
+	input.RoleSessionName = "changed by caller"
+	options[0] = nil
+	for i := 0; i < 2; i++ {
+		if _, err := provider.Retrieve(context.Background()); err != nil {
+			t.Fatal(err)
+		}
+	}
+	var calls sync.WaitGroup
+	for i := 0; i < 8; i++ {
+		calls.Add(1)
+		go func() {
+			defer calls.Done()
+			if _, err := provider.Retrieve(context.Background()); err != nil {
+				t.Error(err)
+			}
+		}()
+	}
+	calls.Wait()
 }
 func TestProviderCacheRotationAndSourceSeparation(t *testing.T) {
 	source, _ := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "source", AccessKeySecret: "placeholder"})

@@ -7,6 +7,7 @@ const path = require("node:path");
 const os = require("node:os");
 const crypto = require("node:crypto");
 const parser = require("@darabonba/parser");
+const { reuseFixture } = require("./reuse-fixture.cjs");
 const {
   buildProduct,
   project,
@@ -39,6 +40,36 @@ const roleRequest = (a) =>
 const params = (fn) =>
   fn.functionBody.stmts.stmts.find((n) => n.id?.lexeme === "params").expr.object
     .fields;
+
+test("renamed actions use the official parser and shared discovery without STS names", () => {
+  const { ir, coverage } = reuseFixture(root);
+  assert.equal(ir.product, "authfixture");
+  assert.equal(ir.models.length, 19);
+  assert.equal(coverage.counts.lowered, 4);
+  assert.deepEqual(ir.operations.map((op) => op.name).sort(), [
+    "ExchangeAssertion",
+    "ExchangeIdentity",
+    "InspectIdentity",
+    "ObtainRole",
+  ]);
+  for (const op of ir.operations) {
+    assert.equal(op.status, "lowered");
+    assert.equal(op.protocol.action, op.name);
+    assert.equal(op.origin, "dsl-only");
+    assert.equal(
+      op.protocol.authType,
+      op.name.startsWith("Exchange") ? "Anonymous" : "AK",
+    );
+  }
+  const identity = ir.operations.find((op) => op.name === "InspectIdentity");
+  assert.equal(identity.roots.request.kind, "empty");
+  assert.deepEqual(identity.bindings, []);
+  const role = ir.operations.find((op) => op.name === "ObtainRole");
+  assert.ok(role.bindings.some((binding) => binding.wire === "RoleArn"));
+  const anonymous = ir.operations.find((op) => op.name === "ExchangeIdentity");
+  assert.equal(anonymous.handoff, "doRPCRequest");
+  assert.ok(anonymous.bindings.some((binding) => binding.wire === "OIDCToken"));
+});
 
 test("complete real corpus is deterministic and accounts for every SDK operation and declared model", () => {
   const first = project(root),

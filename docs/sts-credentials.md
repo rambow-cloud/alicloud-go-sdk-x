@@ -5,6 +5,15 @@
 - Issue [#51](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/51) implements the offline composition part of [AC-05 / UX-04](product-acceptance.md). `stscreds.NewAssumeRoleProviderFromClient` accepts `service/sts.AssumeRoleAPI` and complete native input/options.
 - The returned provider composes with credentials.Cache and generated clients without a response translator.
 - The existing NewAssumeRoleProvider keeps its services/sts reference-bridge convention.
+- [Reuse review #72](sts-reuse-review.md) separates shared helper rules from wire models and applies the same credential checks to both constructors.
+
+### Generation boundary
+
+- `service/sts` operations, models and protocol bindings come from official Darabonba DSL, the official semantic parser and complete IR.
+- This handwritten adapter turns generated responses into `credentials.Credentials`. It implements no signing or HTTP protocol.
+- Shared internal role validation does not depend on the compatibility request type. Native inputs go directly to the generated API.
+- Cache and native Profile role composition reuse this adapter. Use [LoadDefaultConfig](default-configuration.md) for source discovery; the adapter itself performs none.
+- The old constructor's public signature still imports `services/sts`. Removing that signature requires a separate migration.
 
 ### Composition
 
@@ -43,6 +52,7 @@ return err
 
 - Construction and each retrieval copy input pointers and option registrations.
 - Caller/API changes and option-slice mutations do not persist.
+- Both constructors copy each call's option slice, including when custom APIs mutate it.
 - API/callback objects remain shared and must be concurrency safe; do not mutate during construction or retain callback objects.
 - The provider is concurrency safe, has no automatic cache, redacts formatting and returns errors for nil/zero provider or invalid constructor arguments (including typed-nil API and nil callbacks).
 
