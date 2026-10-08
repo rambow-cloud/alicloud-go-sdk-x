@@ -61,9 +61,14 @@ AssumeRole source behavior are preserved; anonymous additions do not alter that 
 
 AC-01/02: typed context/options, all modeled fields/presence, independent protocol
 and strict-JSON fixtures. AC-05: explicit provider/cache plus scoped #55 live renewal.
-AC-06/07/08: structured safe errors, ownership/middleware/provider isolation and OTel.
-AC-09/10/11/12: docs/Examples, pinned consumer/real-source rehearsal, dependency/credential
-constraints and licensed provenance. These are scoped STS mappings, not broader Beta.
+AC-06: reviewed opt-in retry and non-retrying issuance. AC-07: endpoint resolution
+and isolated explicit overrides. AC-08: middleware/OTel lifecycle and secret isolation.
+AC-09: structured safe errors, cancellation and metadata. AC-10: narrow mocks and
+offline test helpers. AC-11: paired guides/English Go docs/Examples and licensed
+provenance; actual publication/indexing remains pending. AC-12: deterministic
+generation, reviewed source policy and real-source rehearsal. These are scoped STS
+mappings, not broader Beta. The separate [supplemental consumer review](sts-consumer-review.md)
+records fresh external-package evidence without replacing independent human acceptance.
 
 Local verification is recorded in the linked PR: frontend/IR checks, 56 Node cases,
 both generators, doccheck, formatting/bilingual checks, vet, Go tests/Examples,
@@ -122,9 +127,12 @@ PASS，无应用 translator/刷新循环；未测性能或官方 credentials 库
 ### 门槛与交接
 
 限定映射：AC-01/02 强类型 context/options、完整建模字段/存在/协议/严格 JSON；AC-05
-显式 provider/cache 及 #55；AC-06/07/08 安全结构错误、所有权/middleware/provider 隔离/
-OTel；AC-09/10/11/12 文档/Examples、固定消费者/真实来源、依赖/凭据约束及许可来源，
-均不表示更广 Beta。PR 记录前端/56 Node 案例、两生成器、doccheck、格式/双语、vet、
+显式 provider/cache 及 #55；AC-06 审核显式重试与签发不重试；AC-07 endpoint 解析及
+独立覆盖；AC-08 middleware/OTel 生命周期与敏感隔离；AC-09 结构化安全错误/取消/
+metadata；AC-10 窄 mock/离线工具；AC-11 双语指南/英文 Go docs/Examples/许可来源，
+实际发布索引仍待完成；AC-12 确定生成/审核策略/真实来源演练，均不表示更广 Beta。
+另见[补充消费者评审](sts-consumer-review.md)，新外部包证据不替代独立人员验收。
+PR 记录前端/56 Node 案例、两生成器、doccheck、格式/双语、vet、
 Go 测试/Examples、隔离消费者及再生成 STS；技术合并前准确提交 Linux race/Windows CI
 必须通过。
 
