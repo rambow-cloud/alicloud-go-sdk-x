@@ -4,10 +4,10 @@
   "product": "sts",
   "license": "Apache-2.0",
   "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
-  "englishOperations": 1,
-  "totalOperations": 1,
+  "englishOperations": 2,
+  "totalOperations": 2,
   "englishFields": 14,
-  "totalFields": 19,
+  "totalFields": 29,
   "chineseSemanticTranslation": "not-available-in-pinned-input",
   "pairedGuides": "usage-contracts-and-source-index",
   "examples": "offline-invocation-and-reviewed-capability-examples",
@@ -27,6 +27,18 @@
           "line": 129,
           "column": 1,
           "endLine": 146,
+          "endColumn": 4
+        }
+      ]
+    },
+    "GetCallerIdentity": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/sts/main.tea",
+          "line": 493,
+          "column": 1,
+          "endLine": 499,
           "endColumn": 4
         }
       ]
@@ -220,6 +232,46 @@
           "endColumn": 151
         }
       ]
+    },
+    "GetCallerIdentityResponse#body": {
+      "status": "missing",
+      "sources": []
+    },
+    "GetCallerIdentityResponse#headers": {
+      "status": "missing",
+      "sources": []
+    },
+    "GetCallerIdentityResponse#statusCode": {
+      "status": "missing",
+      "sources": []
+    },
+    "GetCallerIdentityResponseBody#accountId": {
+      "status": "missing",
+      "sources": []
+    },
+    "GetCallerIdentityResponseBody#arn": {
+      "status": "missing",
+      "sources": []
+    },
+    "GetCallerIdentityResponseBody#identityType": {
+      "status": "missing",
+      "sources": []
+    },
+    "GetCallerIdentityResponseBody#principalId": {
+      "status": "missing",
+      "sources": []
+    },
+    "GetCallerIdentityResponseBody#requestId": {
+      "status": "missing",
+      "sources": []
+    },
+    "GetCallerIdentityResponseBody#roleId": {
+      "status": "missing",
+      "sources": []
+    },
+    "GetCallerIdentityResponseBody#userId": {
+      "status": "missing",
+      "sources": []
     }
   }
 }

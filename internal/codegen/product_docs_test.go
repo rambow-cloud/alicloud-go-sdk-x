@@ -58,7 +58,7 @@ func TestRealDocumentationCoverageAttributionAndMissingFallbacks(t *testing.T) {
 		t.Fatal(err)
 	}
 	report := r.documentationCoverage()
-	if report.EnglishOperations != 1 || report.EnglishFields < 10 || report.TotalOperations != 1 || report.ChineseSemanticTranslation != "not-available-in-pinned-input" {
+	if report.EnglishOperations != len(r.operations) || report.EnglishFields < 10 || report.TotalOperations != len(r.operations) || report.ChineseSemanticTranslation != "not-available-in-pinned-input" {
 		t.Fatal("incorrect docs coverage", report)
 	}
 	files, err := renderProduct(p)

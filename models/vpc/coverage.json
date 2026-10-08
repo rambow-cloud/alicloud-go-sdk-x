@@ -13,8 +13,8 @@
   },
   "counts": {
     "discovered": 403,
-    "lowered": 295,
-    "unsupported": 108,
+    "lowered": 296,
+    "unsupported": 107,
     "dslOperations": 403,
     "catalogOnlyOperations": 0,
     "dslOnlyOperations": 0,
@@ -31,7 +31,7 @@
   },
   "reasonCounts": {
     "DSL_MODEL_ATTRIBUTE": 2,
-    "DSL_OPERATION_SIGNATURE": 5,
+    "DSL_OPERATION_SIGNATURE": 4,
     "DSL_QUERY_BINDING": 96,
     "DSL_QUERY_INITIALIZATION": 1,
     "DSL_UNBOUND_INPUT": 4
@@ -4387,7 +4387,7 @@
     },
     {
       "name": "ListGeographicSubRegions",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4396,19 +4396,7 @@
         "endLine": 36730,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 36730,
-            "column": 16,
-            "endLine": 36730,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ListIpsecServerLogs",

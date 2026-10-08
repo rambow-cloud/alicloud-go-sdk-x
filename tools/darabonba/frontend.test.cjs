@@ -22,6 +22,41 @@ const operation = (a) =>
     (n) => n.functionName?.lexeme === "assumeRoleWithOptions",
   );
 
+test("requestless RPC accepts only the exact runtime-only and empty request contract", () => {
+  const lowered = lowerOperation(ast, "GetCallerIdentity");
+  assert.deepEqual(lowered.inputs, []);
+  assert.equal(lowered.protocol.authType, "AK");
+  assert.equal(lowered.response.properties.IdentityType.type, "string");
+  for (const mutate of [
+    (fn) => {
+      fn.params.params[0].paramName.lexeme = "request";
+    },
+    (fn) => {
+      fn.params.params[0].paramType.path[1].lexeme = "OtherOptions";
+    },
+    (fn) => {
+      fn.functionBody.stmts.stmts[0].expr.object.fields.push({
+        type: "objectField",
+        fieldName: { lexeme: "query" },
+        expr: { type: "object", fields: [] },
+      });
+    },
+    (fn) => {
+      fn.functionBody.stmts.stmts.push({ type: "declare" });
+    },
+  ]) {
+    const changed = structuredClone(ast);
+    const fn = changed.moduleBody.nodes.find(
+      (n) => n.functionName?.lexeme === "getCallerIdentityWithOptions",
+    );
+    mutate(fn);
+    assert.throws(
+      () => lowerOperation(changed, "GetCallerIdentity"),
+      /unsupported SDK pattern/,
+    );
+  }
+});
+
 test("all real product projections are deterministic and match committed artifacts", () => {
   const first = project(root),
     second = project(root);

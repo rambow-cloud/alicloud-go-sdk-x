@@ -49,3 +49,28 @@ func (c *Client) AssumeRole(ctx context.Context, input *AssumeRoleInput, optFns 
 	out.Metadata = meta
 	return out, nil
 }
+
+// GetCallerIdentityAPI is the minimal interface for GetCallerIdentity mocks and capability adapters.
+type GetCallerIdentityAPI interface {
+	// GetCallerIdentity invokes the native action with owned inputs and per-call options.
+	GetCallerIdentity(context.Context, *GetCallerIdentityInput, ...func(*Options)) (*GetCallerIdentityOutput, error)
+}
+
+// GetCallerIdentity calls the native GetCallerIdentity action (API version 2015-04-01).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// The ID of the Alibaba Cloud account to which the current requester belongs.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L493
+func (c *Client) GetCallerIdentity(ctx context.Context, input *GetCallerIdentityInput, optFns ...func(*Options)) (*GetCallerIdentityOutput, error) {
+	out, meta, err := invoke[GetCallerIdentityInput, GetCallerIdentityOutput](ctx, c, input, alicloud.Operation{Service: "sts", Name: "GetCallerIdentity", Version: "2015-04-01", Idempotent: false}, false, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}

@@ -13,8 +13,8 @@
   },
   "counts": {
     "discovered": 4,
-    "lowered": 1,
-    "unsupported": 3,
+    "lowered": 2,
+    "unsupported": 2,
     "dslOperations": 4,
     "catalogOnlyOperations": 0,
     "dslOnlyOperations": 0,
@@ -30,7 +30,6 @@
     "live": "not-assessed"
   },
   "reasonCounts": {
-    "DSL_OPERATION_SIGNATURE": 1,
     "DSL_PROTOCOL_PROFILE": 2
   },
   "operations": [
@@ -99,7 +98,7 @@
     },
     {
       "name": "GetCallerIdentity",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/sts/main.tea",
@@ -108,19 +107,7 @@
         "endLine": 500,
         "endColumn": 44
       },
-      "reasons": [
-        {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
-          "source": {
-            "file": "products/sts/main.tea",
-            "line": 500,
-            "column": 16,
-            "endLine": 500,
-            "endColumn": 44
-          }
-        }
-      ]
+      "reasons": []
     }
   ]
 }

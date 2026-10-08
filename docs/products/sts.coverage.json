@@ -5,9 +5,9 @@
   "version": "2015-04-01",
   "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
   "discovered": 4,
-  "lowered": 1,
-  "emitted": 1,
-  "models": 5,
+  "lowered": 2,
+  "emitted": 2,
+  "models": 7,
   "compilation": "not-assessed",
   "live": "not-assessed",
   "capabilityPolicy": "sparse-reviewed",
@@ -82,7 +82,7 @@
     },
     {
       "name": "GetCallerIdentity",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/sts/main.tea",
         "line": 500,
@@ -90,19 +90,14 @@
         "endLine": 500,
         "endColumn": 44
       },
-      "reasons": [
-        {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
-          "source": {
-            "file": "products/sts/main.tea",
-            "line": 500,
-            "column": 16,
-            "endLine": 500,
-            "endColumn": 44
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     }
   ]
 }
