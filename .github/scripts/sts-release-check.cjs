@@ -117,22 +117,21 @@ function check(repository = root) {
     }).trim()
   )
     throw Error("release candidate working tree must be clean");
-  const files = execFileSync("git", ["ls-files", "-z", "--", "*.go"], {
-    cwd: repository,
-    encoding: "utf8",
-  })
-    .split("\0")
-    .filter(Boolean);
+  requireUnchangedBehavior(repository, human.sdkCommit);
+  return "PASS local acceptance guard; final-main CI, closed #60, remote-tag absence, publication and browser indexing must still be verified separately. No mutation performed.";
+}
+
+function requireUnchangedBehavior(repository, revision) {
   try {
     execFileSync(
       "git",
       [
         "diff",
         "--quiet",
-        human.sdkCommit,
+        revision,
         "HEAD",
         "--",
-        ...files,
+        ":(glob)**/*.go",
         "go.mod",
         "go.sum",
         "sources",
@@ -155,7 +154,6 @@ function check(repository = root) {
       "SDK or acceptance workload changed since independent tasks; review and rerun affected acceptance",
     );
   }
-  return "PASS local acceptance guard; final-main CI, closed #60, remote-tag absence, publication and browser indexing must still be verified separately. No mutation performed.";
 }
 
 if (require.main === module) {
@@ -166,4 +164,4 @@ if (require.main === module) {
     process.exitCode = 2;
   }
 }
-module.exports = { validateHuman, check };
+module.exports = { validateHuman, check, requireUnchangedBehavior };

@@ -4,7 +4,48 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const os = require("node:os");
-const { validateHuman, check } = require("./sts-release-check.cjs");
+const { execFileSync } = require("node:child_process");
+const {
+  validateHuman,
+  check,
+  requireUnchangedBehavior,
+} = require("./sts-release-check.cjs");
+
+test("behavior guard detects deleted root Go files after the independent revision", (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "release-tree-"));
+  t.after(() => {
+    assert.equal(path.dirname(path.resolve(dir)), path.resolve(os.tmpdir()));
+    fs.rmSync(dir, { recursive: true, force: true });
+  });
+  const git = (args) =>
+    execFileSync(
+      "git",
+      [
+        "-c",
+        "user.name=Release unit fixture",
+        "-c",
+        "user.email=fixture@example.invalid",
+        "-c",
+        "core.hooksPath=" + path.join(dir, "disabled-hooks"),
+        ...args,
+      ],
+      { cwd: dir, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] },
+    );
+  git(["init", "-q"]);
+  const file = path.join(dir, "runtime_fixture.go");
+  fs.writeFileSync(file, "package fixture\n");
+  git(["add", "runtime_fixture.go"]);
+  git(["commit", "--no-gpg-sign", "-qm", "synthetic baseline"]);
+  const revision = git(["rev-parse", "HEAD"]).trim();
+  requireUnchangedBehavior(dir, revision);
+  fs.unlinkSync(file);
+  git(["add", "-u"]);
+  git(["commit", "--no-gpg-sign", "-qm", "synthetic removal"]);
+  assert.throws(
+    () => requireUnchangedBehavior(dir, revision),
+    /SDK or acceptance workload changed/,
+  );
+});
 
 test("malformed acceptance reports never expose raw evidence in diagnostics", (t) => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "release-evidence-"));
