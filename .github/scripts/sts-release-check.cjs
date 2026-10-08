@@ -153,6 +153,7 @@ function requireUnchangedBehavior(repository, revision) {
         "examples/stsacceptance",
         "docs/products",
         "docs/credentials.md",
+        "docs/default-configuration.md",
         "docs/sts-credentials.md",
         "docs/sts-anonymous-rpc.md",
         "docs/sts-consumer-acceptance.md",

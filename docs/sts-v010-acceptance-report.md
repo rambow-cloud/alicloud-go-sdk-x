@@ -59,6 +59,19 @@ AssumeRole source behavior are preserved; anonymous additions do not alter that 
 
 ### Gate status and handoff
 
+The later #68 native configuration supplement adds config.LoadDefaultConfig and
+renewable CLI Profile/OAuth, with nine external consumer tests including the native
+loader. The authorized 2026-10-08 15:35:31 UTC native run at implementation
+`656ce39dda0b89ae743645ba1328974a937dc780` passed three generated identity reads,
+one forced OAuth exchange, cache reuse, authentication-only persistence, reconstructed
+session reuse and lock release. [Sanitized evidence](acceptance/profile-oauth-live.json)
+contains no identities or credentials. No CLI subprocess or new cloud resources were
+used. Actual live refresh-token rotation and natural OAuth expiry waiting remain NOT
+RUN because the new login access token was valid. The paired
+[configuration contract](default-configuration.md) records the reviewed PascalCase/
+camelCase protocol decision. Independent human tasks must use this new behavior;
+their NOT RUN status and the publication/indexing gate remain unchanged.
+
 AC-01/02: typed context/options, all modeled fields/presence, independent protocol
 and strict-JSON fixtures. AC-05: explicit provider/cache plus scoped #55 live renewal.
 AC-06: reviewed opt-in retry and non-retrying issuance. AC-07: endpoint resolution
@@ -125,6 +138,14 @@ PASS，无应用 translator/刷新循环；未测性能或官方 credentials 库
 路径，因此复用 #55 自然续期证据，不重复已完成云操作。
 
 ### 门槛与交接
+
+后续 #68 新增 config.LoadDefaultConfig、可续期原生 CLI Profile/OAuth，外部消费者共
+9 项测试，包含原生 loader。2026-10-08 15:35:31 UTC、上述实现 SHA 的真实原生验证
+通过 3 次生成身份读取、1 次主动 OAuth 交换、缓存复用、仅认证字段持久化、会话重建
+复用及锁释放。[脱敏证据](acceptance/profile-oauth-live.json)不含身份/凭据，未启动 CLI
+子进程或新增云资源。刚登录 access token 有效，真实 refresh-token 轮换及等待自然 OAuth
+到期仍 NOT RUN。[配置契约](default-configuration.md)记录 PascalCase/camelCase 协议决策。
+独立人员需使用新增行为，人员 NOT RUN 及发布/索引门槛保持不变。
 
 限定映射：AC-01/02 强类型 context/options、完整建模字段/存在/协议/严格 JSON；AC-05
 显式 provider/cache 及 #55；AC-06 审核显式重试与签发不重试；AC-07 endpoint 解析及

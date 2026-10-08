@@ -45,17 +45,20 @@ shared contracts does not extend product coverage automatically.
 | Identity          | Explicit static/env providers, explicit chain/cache and AssumeRole using separate source credentials                                                   |
 | Exclusions        | Automatic process/metadata discovery, arbitrary write retry, ROA/OSS/streaming, whole-cloud parity; native CLI Profile/OAuth is now required under #68 |
 
-Existing local-profile validation injects a checked credential snapshot after CLI
-authentication. It does not establish native SDK Profile loading or renewal. If added,
-that capability needs its own issue/contract/live cases. No cloud resource creation,
+Historical local-profile validation injected a checked snapshot after CLI
+authentication; it does not establish native loading or renewal. #68 adds native
+loading and scoped live exchange/persistence evidence under
+[the new contract](default-configuration.md). No cloud resource creation,
 write operation or target-role use is authorized by this document.
 
 Application guidance prioritizes renewable STS role providers/cache. Long-lived keys
-and environment sources require explicit StaticProvider/EnvProvider registration;
-custom providers remain supported. Config/Options have no bare credential fields,
-construction never retrieves credentials, and nil/typed-nil sources fail before
-requests. No implicit fallback or STS-only runtime is introduced; [#53](credentials.md)
-adds offline rejection/signing/cache evidence under AC-01/05/11 and UX-01/04.
+require explicit StaticProvider/EnvProvider/profile-provider registration; complete
+temporary environment credentials and native profiles are discoverable through
+LoadDefaultConfig. Custom providers remain supported. Config/Options have no bare
+credential fields, construction never makes credential HTTP calls, and nil/typed-nil
+sources fail before requests. Present invalid sources stop resolution. Historical
+[#53](credentials.md) rejection/signing/cache evidence remains under AC-01/05/11
+and UX-01/04; #68 supersedes its blanket discovery exclusion.
 
 ### Required criteria
 
@@ -185,15 +188,17 @@ ECS/VPC 覆盖。
 | 身份      | 显式 static/env、有序 chain/cache、来源凭据独立的 AssumeRole                                                                         |
 | 范围外    | 自动进程/metadata 发现、任意写重试、ROA/OSS/streaming、全云等价；用户后续 #68 修正要求原生 CLI Profile/OAuth，旧排除范围以新路线为准 |
 
-已有 Profile 验证在 CLI 登录后注入检查过期的凭据快照，不代表 SDK 原生加载/刷新 Profile。
-新增该能力需独立 issue、契约和真实验收。本文件不授权云资源创建、写操作或目标角色调用。
+历史 Profile 验证在 CLI 登录后注入检查过期的凭据快照，不证明原生加载/续期。
+#68 按[新契约](default-configuration.md)新增原生加载及真实交换/持久化证据。
+本文件不授权云资源创建、写操作或目标角色调用。
 
 ### 必需标准
 
-应用指南优先采用可刷新的 STS role provider/cache；长期密钥及环境来源必须显式注册
-StaticProvider/EnvProvider，仍支持自定义 provider。Config/Options 没有裸凭据字段，构造期间
-不读取凭据，请求前拒绝 nil/typed-nil 来源，不引入隐式回退或 STS-only 运行时。
-[#53](credentials.md) 在 AC-01/05/11、UX-01/04 下增加离线拒绝/签名/缓存证据。
+应用指南优先采用可刷新的 STS role provider/cache；长期密钥必须显式注册
+StaticProvider/EnvProvider/profile provider，LoadDefaultConfig 可发现完整临时环境凭据及
+原生 Profile，仍支持自定义来源。Config/Options 无裸凭据字段，构造期间不进行凭据 HTTP，
+请求前拒绝 nil/typed-nil；已配置无效来源停止解析。#53 离线拒绝/签名/缓存证据仍关联
+AC-01/05/11、UX-01/04，#68 优先于其全面禁止发现范围。
 
 | ID    | 契约                                                                                             | 必需证据                                                                                      |
 | ----- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
