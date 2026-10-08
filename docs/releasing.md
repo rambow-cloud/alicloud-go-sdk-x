@@ -4,6 +4,14 @@
 
 ## English
 
+The first release target is [v0.1.0 STS](sts-v0.1.0.md), parent #57 / release #61,
+milestone v0.1.0 / Project 3. Apply its explicitly scoped experimental gate before
+publication; the older multi-product candidate Beta schedule is not a prerequisite
+for this version. Its broader acceptance remains open. Include all four pinned
+STS actions' actual coverage and OIDC/SAML successful live federation NOT RUN in
+paired release notes. Other packages stay available with their separate acceptance
+limits. This planning update does not publish a tag, release or indexing claim.
+
 Canonical public module: github.com/rambow-cloud/alicloud-go-sdk-x, Go 1.27.
 Original runtime/tooling use MIT; generated product definitions/prose retain Apache-2.0,
 with package LICENSE/NOTICE and pinned-source references. Inspect both before release.
@@ -20,6 +28,11 @@ If indexing fails, diagnose public access, module path, Go support and license b
 Sources: https://pkg.go.dev/about#adding-a-package and https://pkg.go.dev/license-policy.
 
 ## 中文
+
+首版目标为 [v0.1.0 STS](sts-v0.1.0.md)，父项 #57/发布 #61、同名 milestone/Project 3。
+发布前遵循其明确限定实验门槛，旧多产品候选 Beta 排期不是此版本前提，更广验收仍开放。
+双语版本说明记录四个固定 STS 操作的实际覆盖及 OIDC/SAML 真实成功联邦 NOT RUN，
+其他包保留且披露独立验收限制。本规划不发布 tag/release，不宣称已索引。
 
 公开 module 为 github.com/rambow-cloud/alicloud-go-sdk-x，Go 1.27；原创 runtime/工具使用
 MIT，生成产品定义/说明保留 Apache-2.0、包内 LICENSE/NOTICE 和固定来源引用，发布前

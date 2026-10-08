@@ -2,6 +2,19 @@
 
 ## English
 
+The first release is [v0.1.0 STS](../sts-v0.1.0.md), tracked by
+[milestone v0.1.0](https://github.com/rambow-cloud/alicloud-go-sdk-x/milestone/4)
+and [Project 3](https://github.com/orgs/rambow-cloud/projects/3). Native child issues
+belong to #57; parent membership is not a blocking dependency.
+
+| Issue | v0.1.0 work                                                                 | Dependencies                                              |
+| ----- | --------------------------------------------------------------------------- | --------------------------------------------------------- |
+| #57   | [Scoped STS release parent](57-sts-v010-roadmap.md)                         | Aggregates #58-#61; remains open through release/indexing |
+| #58   | [Requestless GetCallerIdentity](58-requestless-sts-generation.md)           | Accepted generator baseline                               |
+| #59   | [Anonymous OIDC/SAML RPC](59-anonymous-sts-generation.md)                   | Accepted generator baseline; independent of #58           |
+| #60   | [Four-operation acceptance and source rehearsal](60-sts-v010-acceptance.md) | #58, #59, accepted #51/#53/#55                            |
+| #61   | [Release and pkg.go.dev](61-sts-v010-release.md)                            | #60                                                       |
+
 GitHub owns current state; this table records historical and current dependencies, not
 current blocking state. The authoritative full-DSL route is tracked by #33, with
 #34 -> #35 -> #36 -> #37 -> #38. #31 remains the compatibility bridge. Older accepted
@@ -44,6 +57,18 @@ foundation/generator issues are history, not new per-operation prerequisites.
 | #55   | Dedicated-role live STS issuance, cache reuse, forced refresh and real expiry renewal        | #49, #51, #53                                                       |
 
 ## 中文
+
+首版为 [v0.1.0 STS](../sts-v0.1.0.md)，由 [同名 milestone](https://github.com/rambow-cloud/alicloud-go-sdk-x/milestone/4)
+和 [Project 3](https://github.com/orgs/rambow-cloud/projects/3) 跟踪，原生子项归属 #57，
+父项归属不作为阻塞依赖。
+
+| Issue | v0.1.0 工作                                                  | 依赖                              |
+| ----- | ------------------------------------------------------------ | --------------------------------- |
+| #57   | [限定 STS 发布父项](57-sts-v010-roadmap.md)                  | 汇总 #58-#61，发布/索引前保持打开 |
+| #58   | [无请求 GetCallerIdentity](58-requestless-sts-generation.md) | 已接受生成器基线                  |
+| #59   | [匿名 OIDC/SAML RPC](59-anonymous-sts-generation.md)         | 已接受生成器基线，独立于 #58      |
+| #60   | [四操作验收与来源升级](60-sts-v010-acceptance.md)            | #58、#59、已完成 #51/#53/#55      |
+| #61   | [发布与 pkg.go.dev](61-sts-v010-release.md)                  | #60                               |
 
 Review 修复按 #26 → #27 → #28 → #29 执行，详见 [修复路径](../aws-style-remediation.md)。
 对应草稿记录每尝试隔离、类型化 pipeline、分页策略集合和可复用 waiter 验收。
