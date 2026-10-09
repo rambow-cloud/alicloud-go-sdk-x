@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "scope": "internal signer fixtures; no public OSS operations or live acceptance",
+  "gateway": {
+    "version": "0.0.42",
+    "archiveSHA256": "5bf16e8d5283b8174c34d17fd4cb085422c7ef64a8d129beb93dd404216b7cab",
+    "sourceSHA256": "71caf417a396688b8a4a38b0e0f431d5adfb7ae043d98fa504f07ac1b319f44c",
+    "importPlan": "metadata/module-imports/oss.json",
+    "authorizationLines": [336, 448],
+    "profile": "oss/aliyun_v4_request; UNSIGNED-PAYLOAD; encoded query names sorted; empty values bare; bucket path preserves slashes"
+  },
+  "nativeVectors": {
+    "repository": "https://github.com/aliyun/alibabacloud-oss-go-sdk-v2",
+    "revision": "2614e2cfdc3618f204cee8bb247f9359e8e509aa",
+    "file": "oss/signer/signer_test.go",
+    "sha256": "c62f671a5a932646c7accbf1a3b5d078a681ef297a881b8d33d04fbe4adc398e",
+    "cases": ["TestV4AuthHeader", "TestV4AuthHeaderToken", "TestV4AuthHeaderWithAdditionalHeaders"],
+    "reused": "synthetic parameters and expected signatures only; no native implementation copied"
+  },
+  "nativeImplementationReview": {
+    "file": "oss/signer/v4.go",
+    "sha256": "56ca63882fe3ed1b65bf67b0451c911db2c08c82e2c5aaf4ac106b02e451e97a"
+  },
+  "documentVector": {
+    "url": "https://www.alibabacloud.com/help/en/oss/developer-reference/recommend-to-use-signature-version-4",
+    "reviewDate": "2026-10-10",
+    "canonicalDigest": "c46d96390bdbc2d739ac9363293ae9d710b14e48081fcb22cd8ad54b63136eca",
+    "providedKeySignature": "053edbf550ebd239b32a9cdfd93b0b2b3f2d223083aa61f75e9ac16856d61f23",
+    "displayedSecretKey": "8a01ff4efcc65ca2cbc75375045c61ab5f3fa8b9a2d84f0add27ef16a25feb3c",
+    "displayedSecretMatchesProvidedKey": false,
+    "decision": "verify canonical digest/provided-key MAC separately; use complete-input native vectors for end-to-end key derivation"
+  }
+}

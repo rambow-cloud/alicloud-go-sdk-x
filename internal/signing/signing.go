@@ -1,5 +1,5 @@
-// Package signing implements Alibaba Cloud ACS3-HMAC-SHA256 for RPC and ROA
-// paths. Callers own the request and supply the exact bytes sent on the wire.
+// Package signing implements ACS3-HMAC-SHA256 and reviewed internal OSS V4
+// signing. Callers own requests; protocol selection remains source-reviewed.
 package signing
 
 import (
