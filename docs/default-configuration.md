@@ -51,7 +51,7 @@ func main() {
 - Explicit StaticProvider/EnvProvider and custom providers also work.
 
 - CloudSSO, process, URI and metadata modes return `ErrUnsupportedMode`.
-- OIDC/SAML operations are supported separately; this loader does not discover token files.
+- Complete OIDC environment configuration discovers a reloadable token file under #89. SAML assertion sources are registered explicitly. See [federation credentials](federation-credentials.md).
 
 - Service constructors still require a provider.
 - Loading reads local JSON and creates a cache; it makes no credential HTTP calls.
@@ -64,7 +64,9 @@ func main() {
 
 3. Complete temporary environment credentials: ALIBABA_CLOUD_ACCESS_KEY_ID, ALIBABA_CLOUD_ACCESS_KEY_SECRET and ALIBABA_CLOUD_SECURITY_TOKEN.
 
-4. Profile selected by ALIBABA_CLOUD_PROFILE, then CLI `current`, then `default`.
+4. Complete OIDC environment configuration: role ARN, OIDC provider ARN and token filename.
+
+5. Profile selected by ALIBABA_CLOUD_PROFILE, then CLI `current`, then `default`.
 
 - Present but incomplete environment credentials stop loading.
 - Long-lived environment keys require explicit opt-in.
