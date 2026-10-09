@@ -2,6 +2,8 @@
 
 [English](product-documentation.md)
 
+- #93 [可选 canonical 说明](canonical-prose-enrichment.zh-CN.md)在表示和类型规范化后补充缺失的英文字段说明。DSL 原文、元数据补充、Go 行为注释及剩余缺口分别统计，保留准确来源指针和 Apache 归属。
+
 - 阶段 #38 继 #37 / PR #42，在 `issue/38-licensed-product-docs` 叠加 `issue/37-capability-policies`；原依赖链现已[集成 main](generator-integration.zh-CN.md)。
 - 本规格先于实现。
 - 保持当前 RPC 支持范围及操作/模型数量，更多协议另行明确范围。

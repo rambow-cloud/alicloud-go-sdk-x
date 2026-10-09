@@ -1,0 +1,180 @@
+{
+  "generator": "darabonba prose",
+  "schemaVersion": 1,
+  "product": "sts",
+  "version": "2015-04-01",
+  "irSHA256": "9d29a84505b609ad792af85ca35a37715bedd7f38185591906612e6275f6dfae",
+  "corpusManifestSHA256": "8a53b4e6a0829555805dde8960e65b2a2dd9d4a78358569ef053edd29c0564da",
+  "repository": "https://github.com/aliyun/aliyun-openapi-meta",
+  "revision": "51286a65c79d008436eb314e636f9c9ad4b1ca08",
+  "license": "Apache-2.0",
+  "matchedOperations": 4,
+  "fields": {
+    "AssumeRoleRequest#sourceIdentity": {
+      "operation": "AssumeRole",
+      "file": "canonical/sts/2015-04-01/AssumeRole.json",
+      "sourceSHA256": "173e054337a8b15aec12fb4e7faaa290b19f4b0176342d5f8d011ba22b450105",
+      "fieldSource": {
+        "file": "products/sts/main.tea",
+        "line": 103,
+        "column": 3,
+        "endLine": 103,
+        "endColumn": 17
+      },
+      "pointer": "/parameters/5/help_en",
+      "english": "The source identity information.\n\nWhen a user assumes a role, the source identity of the user can be specified as the initial identity of a session. The specified source identity persists throughout the role session and cannot be changed. This ensures operation traceability and security.\n\nThe value must be 2 to 64 characters in length, and can contain letters, digits, and the following special characters: `=,.@-_`. The regular expression for this parameter is `[\\w+=,.@-]*`. The value cannot start with `acs:`, `aliyun:`, or `alibabacloud:`. These prefixes are internally used within Alibaba Cloud",
+      "textSHA256": "c74998a5f78527095c8fc2d494638b9d6c5ea268b59b29243aa65f08b132f251"
+    },
+    "AssumeRoleResponseBody#sourceIdentity": {
+      "operation": "AssumeRole",
+      "file": "canonical/sts/2015-04-01/AssumeRole.json",
+      "sourceSHA256": "173e054337a8b15aec12fb4e7faaa290b19f4b0176342d5f8d011ba22b450105",
+      "fieldSource": {
+        "file": "products/sts/main.tea",
+        "line": 120,
+        "column": 3,
+        "endLine": 120,
+        "endColumn": 17
+      },
+      "pointer": "/responses/200/schema/properties/SourceIdentity/description_en",
+      "english": "The source identity information.\n\nWhen a user assumes a role, the source identity of the user can be specified as the initial identity of a session. The specified source identity persists throughout the role session and cannot be changed. This ensures operation traceability and security.\n\nIf the SourceIdentity parameter was not specified in the request, this field is omitted from the response",
+      "textSHA256": "e63abf7a070ed86a183faf861ab0032d84b756da98b7b15e09834d463d67b46c"
+    },
+    "AssumeRoleWithOIDCResponseBody#sourceIdentity": {
+      "operation": "AssumeRoleWithOIDC",
+      "file": "canonical/sts/2015-04-01/AssumeRoleWithOIDC.json",
+      "sourceSHA256": "4e8c555b488a136eedd38aa2bbbd1d772fdaa97e0c9fa7b8e7ead03e3bed60f6",
+      "fieldSource": {
+        "file": "products/sts/main.tea",
+        "line": 273,
+        "column": 3,
+        "endLine": 273,
+        "endColumn": 17
+      },
+      "pointer": "/responses/200/schema/properties/SourceIdentity/description_en",
+      "english": "The source identity information.\n\nWhen assuming a role, you can specify a source identity (SourceIdentity) as the initial identity of the session. The source identity value persists throughout chained role assumption sessions and cannot be changed, ensuring traceability and security of operations.\n\nIf no source identity is specified, this field is not returned",
+      "textSHA256": "262cc0b4d49ccc5a5cd1a76e610057c42e76855b6ab62d652d681692e8893f20"
+    },
+    "AssumeRoleWithSAMLResponseBody#sourceIdentity": {
+      "operation": "AssumeRoleWithSAML",
+      "file": "canonical/sts/2015-04-01/AssumeRoleWithSAML.json",
+      "sourceSHA256": "677b7aebdefd4c4028647d964120239a3354199e615f02498a121783b6d57307",
+      "fieldSource": {
+        "file": "products/sts/main.tea",
+        "line": 405,
+        "column": 3,
+        "endLine": 405,
+        "endColumn": 17
+      },
+      "pointer": "/responses/200/schema/properties/SourceIdentity/description_en",
+      "english": "The source identity.\n\nWhen you assume a role, you can specify a source identity for the role user. The source identity is used as the initial identity of the session. The value of the source identity persists throughout chained role-assuming sessions and cannot be changed. This ensures the traceability and security of operations.\n\nThis parameter is not returned if you do not set a source identity",
+      "textSHA256": "d527a6e641fbc02fe7e6b307d1bbe1b5903fc95d462fa348e4865da5553f0b82"
+    },
+    "GetCallerIdentityResponseBody#accountId": {
+      "operation": "GetCallerIdentity",
+      "file": "canonical/sts/2015-04-01/GetCallerIdentity.json",
+      "sourceSHA256": "9cdcaf84a1f4c2de82c4ffe9bd76a178beed7838f2d51b2ab1131f6605bdd627",
+      "fieldSource": {
+        "file": "products/sts/main.tea",
+        "line": 478,
+        "column": 3,
+        "endLine": 478,
+        "endColumn": 12
+      },
+      "pointer": "/responses/200/schema/properties/AccountId/description_en",
+      "english": "The ID of the Alibaba Cloud account to which the current caller belongs",
+      "textSHA256": "4d1ee52a377c2e2c0d84fbd71f24671299a09efd958e6d93390d1445c91823cc"
+    },
+    "GetCallerIdentityResponseBody#arn": {
+      "operation": "GetCallerIdentity",
+      "file": "canonical/sts/2015-04-01/GetCallerIdentity.json",
+      "sourceSHA256": "9cdcaf84a1f4c2de82c4ffe9bd76a178beed7838f2d51b2ab1131f6605bdd627",
+      "fieldSource": {
+        "file": "products/sts/main.tea",
+        "line": 479,
+        "column": 3,
+        "endLine": 479,
+        "endColumn": 6
+      },
+      "pointer": "/responses/200/schema/properties/Arn/description_en",
+      "english": "The Alibaba Cloud Resource Name (ARN) of the current caller",
+      "textSHA256": "3f4e5ddef5660b80855447422ca0d86ff3c685c986a7292d2015803e65a84085"
+    },
+    "GetCallerIdentityResponseBody#identityType": {
+      "operation": "GetCallerIdentity",
+      "file": "canonical/sts/2015-04-01/GetCallerIdentity.json",
+      "sourceSHA256": "9cdcaf84a1f4c2de82c4ffe9bd76a178beed7838f2d51b2ab1131f6605bdd627",
+      "fieldSource": {
+        "file": "products/sts/main.tea",
+        "line": 480,
+        "column": 3,
+        "endLine": 480,
+        "endColumn": 15
+      },
+      "pointer": "/responses/200/schema/properties/IdentityType/description_en",
+      "english": "The type of the identity. Valid values:\n\nAccount: an Alibaba Cloud account.\nRAMUser: a RAM user.\nAssumedRoleUser: a RAM role",
+      "textSHA256": "227330e6c020fadb2a29033d177a0016c81ec4a1a9d1323198605611b4daacc2"
+    },
+    "GetCallerIdentityResponseBody#principalId": {
+      "operation": "GetCallerIdentity",
+      "file": "canonical/sts/2015-04-01/GetCallerIdentity.json",
+      "sourceSHA256": "9cdcaf84a1f4c2de82c4ffe9bd76a178beed7838f2d51b2ab1131f6605bdd627",
+      "fieldSource": {
+        "file": "products/sts/main.tea",
+        "line": 481,
+        "column": 3,
+        "endLine": 481,
+        "endColumn": 14
+      },
+      "pointer": "/responses/200/schema/properties/PrincipalId/description_en",
+      "english": "The ID of the principal",
+      "textSHA256": "f59fdbeebd4a438fc3058670880b0ec1a459a76e43a4a284b23991827aebbf9f"
+    },
+    "GetCallerIdentityResponseBody#requestId": {
+      "operation": "GetCallerIdentity",
+      "file": "canonical/sts/2015-04-01/GetCallerIdentity.json",
+      "sourceSHA256": "9cdcaf84a1f4c2de82c4ffe9bd76a178beed7838f2d51b2ab1131f6605bdd627",
+      "fieldSource": {
+        "file": "products/sts/main.tea",
+        "line": 482,
+        "column": 3,
+        "endLine": 482,
+        "endColumn": 12
+      },
+      "pointer": "/responses/200/schema/properties/RequestId/description_en",
+      "english": "The request ID",
+      "textSHA256": "ad582e6d6a05c3d9cc542c6377955cc5ba1d3285d515185f3874513b911b47fd"
+    },
+    "GetCallerIdentityResponseBody#roleId": {
+      "operation": "GetCallerIdentity",
+      "file": "canonical/sts/2015-04-01/GetCallerIdentity.json",
+      "sourceSHA256": "9cdcaf84a1f4c2de82c4ffe9bd76a178beed7838f2d51b2ab1131f6605bdd627",
+      "fieldSource": {
+        "file": "products/sts/main.tea",
+        "line": 483,
+        "column": 3,
+        "endLine": 483,
+        "endColumn": 9
+      },
+      "pointer": "/responses/200/schema/properties/RoleId/description_en",
+      "english": "The ID of the RAM role.\n\nThis parameter is returned only when the caller is a RAM role",
+      "textSHA256": "bf73b58d0a78f3674cc0d14e6e8d33fdd347ae60f02a87a464aa823c6e23dc59"
+    },
+    "GetCallerIdentityResponseBody#userId": {
+      "operation": "GetCallerIdentity",
+      "file": "canonical/sts/2015-04-01/GetCallerIdentity.json",
+      "sourceSHA256": "9cdcaf84a1f4c2de82c4ffe9bd76a178beed7838f2d51b2ab1131f6605bdd627",
+      "fieldSource": {
+        "file": "products/sts/main.tea",
+        "line": 484,
+        "column": 3,
+        "endLine": 484,
+        "endColumn": 9
+      },
+      "pointer": "/responses/200/schema/properties/UserId/description_en",
+      "english": "The user ID. Details are as follows:\n\nIf the caller is an Alibaba Cloud account, the ID of the Alibaba Cloud account is returned.\nIf the caller is a RAM user, the ID of the RAM user is returned.\n\nThis parameter is returned only when the caller is an Alibaba Cloud account or a RAM user",
+      "textSHA256": "5c584753cb329bcf6665715b04536becca36fb5e02991544678eae80af17af7b"
+    }
+  },
+  "reasons": []
+}

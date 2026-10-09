@@ -1,0 +1,4229 @@
+{
+  "generator": "darabonba prose",
+  "schemaVersion": 1,
+  "product": "ecs",
+  "version": "2014-05-26",
+  "irSHA256": "108612a0cc3669057cfea6e73b3072fde9ee81b535fa03dafc1607fb373101a3",
+  "corpusManifestSHA256": "8a53b4e6a0829555805dde8960e65b2a2dd9d4a78358569ef053edd29c0564da",
+  "repository": "https://github.com/aliyun/aliyun-openapi-meta",
+  "revision": "51286a65c79d008436eb314e636f9c9ad4b1ca08",
+  "license": "Apache-2.0",
+  "matchedOperations": 352,
+  "fields": {
+    "AddBandwidthPackageIpsRequest#clientToken": {
+      "operation": "AddBandwidthPackageIps",
+      "file": "canonical/ecs/2014-05-26/AddBandwidthPackageIps.json",
+      "sourceSHA256": "859f1d3bb132178c0797cb2ee96e6ee7f005eeab9ad13aae83fc591f343d49f8",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 233,
+        "column": 3,
+        "endLine": 233,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "AllocateEipAddressRequest#activityId": {
+      "operation": "AllocateEipAddress",
+      "file": "canonical/ecs/2014-05-26/AllocateEipAddress.json",
+      "sourceSHA256": "f1be9e33dd21b185f6d53166d741e1c398a20e5f54b6567642d1b3fa9ecb6ca5",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 713,
+        "column": 3,
+        "endLine": 713,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The ActivityId",
+      "textSHA256": "42bd24a116a7840c8e951ea02f91ab4bed1b356248e68f514276113b5ca3f04e"
+    },
+    "AllocateEipAddressRequest#bandwidth": {
+      "operation": "AllocateEipAddress",
+      "file": "canonical/ecs/2014-05-26/AllocateEipAddress.json",
+      "sourceSHA256": "f1be9e33dd21b185f6d53166d741e1c398a20e5f54b6567642d1b3fa9ecb6ca5",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 714,
+        "column": 3,
+        "endLine": 714,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The Bandwidth",
+      "textSHA256": "12bfaf8b9283ab0dcc1de2bc4f41571ae72ea4a711c24b9678665ad47c2229c1"
+    },
+    "AllocateEipAddressRequest#clientToken": {
+      "operation": "AllocateEipAddress",
+      "file": "canonical/ecs/2014-05-26/AllocateEipAddress.json",
+      "sourceSHA256": "f1be9e33dd21b185f6d53166d741e1c398a20e5f54b6567642d1b3fa9ecb6ca5",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 715,
+        "column": 3,
+        "endLine": 715,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/5/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "AllocateEipAddressRequest#internetChargeType": {
+      "operation": "AllocateEipAddress",
+      "file": "canonical/ecs/2014-05-26/AllocateEipAddress.json",
+      "sourceSHA256": "f1be9e33dd21b185f6d53166d741e1c398a20e5f54b6567642d1b3fa9ecb6ca5",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 717,
+        "column": 3,
+        "endLine": 717,
+        "endColumn": 21
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The InternetChargeType",
+      "textSHA256": "aefa1db2384c3415dcadfc0fd95ef5bb1c8ccd46ab26322e1a333d6d278320a1"
+    },
+    "AllocateEipAddressRequest#ISP": {
+      "operation": "AllocateEipAddress",
+      "file": "canonical/ecs/2014-05-26/AllocateEipAddress.json",
+      "sourceSHA256": "f1be9e33dd21b185f6d53166d741e1c398a20e5f54b6567642d1b3fa9ecb6ca5",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 716,
+        "column": 3,
+        "endLine": 716,
+        "endColumn": 6
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The ISP",
+      "textSHA256": "7bfbd8dd471754d536899d408650cbe0b520b28a30e7d1e1464602ed26af159a"
+    },
+    "AssociateEipAddressRequest#instanceType": {
+      "operation": "AssociateEipAddress",
+      "file": "canonical/ecs/2014-05-26/AssociateEipAddress.json",
+      "sourceSHA256": "80c52090eee4de7a9be79be1e6c84f4de3c4c1c7ab9b503ef7191fcb043c2879",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 1283,
+        "column": 3,
+        "endLine": 1283,
+        "endColumn": 15
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The InstanceType",
+      "textSHA256": "c1545f0a921696eff4d3066de9c217bc3050e099e700081f5e1695e496988a8a"
+    },
+    "AssociateEipAddressRequest#regionId": {
+      "operation": "AssociateEipAddress",
+      "file": "canonical/ecs/2014-05-26/AssociateEipAddress.json",
+      "sourceSHA256": "80c52090eee4de7a9be79be1e6c84f4de3c4c1c7ab9b503ef7191fcb043c2879",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 1286,
+        "column": 3,
+        "endLine": 1286,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The RegionId",
+      "textSHA256": "953bdbe698eb7370ead6ceb3ae9b1f6940ab1f2827f0c7bcc2a9dcbae21e8a47"
+    },
+    "AssociateHaVipRequest#clientToken": {
+      "operation": "AssociateHaVip",
+      "file": "canonical/ecs/2014-05-26/AssociateHaVip.json",
+      "sourceSHA256": "d71b3bbb5770ce61e4b01df2ccaee716236ab1554f4a214a0d0a108821fa3a4e",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 1370,
+        "column": 3,
+        "endLine": 1370,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "CancelPhysicalConnectionRequest#clientToken": {
+      "operation": "CancelPhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/CancelPhysicalConnection.json",
+      "sourceSHA256": "11c36fb10e9d7fc6150d83eb54e8608cac23b6bd06dec242a95c39ce0e249397",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 3036,
+        "column": 3,
+        "endLine": 3036,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "CancelPhysicalConnectionRequest#userCidr": {
+      "operation": "CancelPhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/CancelPhysicalConnection.json",
+      "sourceSHA256": "11c36fb10e9d7fc6150d83eb54e8608cac23b6bd06dec242a95c39ce0e249397",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 3043,
+        "column": 3,
+        "endLine": 3043,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The UserCidr",
+      "textSHA256": "33b79adfa168d6fecd0c4f61e02b38fb865fca0a2d549ab49ff682a2e3729bda"
+    },
+    "CreateCapacityReservationRequest#instanceChargeType": {
+      "operation": "CreateCapacityReservation",
+      "file": "canonical/ecs/2014-05-26/CreateCapacityReservation.json",
+      "sourceSHA256": "633c1a08fdf0d19e83f44e943aba0dd7b9380361c5ce61c9b45d84bd920bf5b8",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 5669,
+        "column": 3,
+        "endLine": 5669,
+        "endColumn": 21
+      },
+      "pointer": "/parameters/13/help_en",
+      "english": "The InstanceChargeType",
+      "textSHA256": "5d8724416e402600e987bb0991f5a2f66d64414e109adfa5dd8a312c5de31e85"
+    },
+    "CreateHaVipRequest#clientToken": {
+      "operation": "CreateHaVip",
+      "file": "canonical/ecs/2014-05-26/CreateHaVip.json",
+      "sourceSHA256": "a1d986a3d73fc6c0b5a44d4ba2fb334e6aeac6bb75fc8842f5a26351c0f3a940",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 7086,
+        "column": 3,
+        "endLine": 7086,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "CreateHaVipRequest#description": {
+      "operation": "CreateHaVip",
+      "file": "canonical/ecs/2014-05-26/CreateHaVip.json",
+      "sourceSHA256": "a1d986a3d73fc6c0b5a44d4ba2fb334e6aeac6bb75fc8842f5a26351c0f3a940",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 7087,
+        "column": 3,
+        "endLine": 7087,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The Description",
+      "textSHA256": "3512804440a731fe0278a60ce0e4303611316784621951ee95967e028dfef92e"
+    },
+    "CreateHaVipRequest#ipAddress": {
+      "operation": "CreateHaVip",
+      "file": "canonical/ecs/2014-05-26/CreateHaVip.json",
+      "sourceSHA256": "a1d986a3d73fc6c0b5a44d4ba2fb334e6aeac6bb75fc8842f5a26351c0f3a940",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 7088,
+        "column": 3,
+        "endLine": 7088,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The IpAddress",
+      "textSHA256": "e890800ba16853e3abbb0b11b5f88183d977670ced8ee4a80c1fb5ba58a717b4"
+    },
+    "CreateImageRequest#dryRun": {
+      "operation": "CreateImage",
+      "file": "canonical/ecs/2014-05-26/CreateImage.json",
+      "sourceSHA256": "57326e4e131dc23af3f2ca0e522a3d8ee429c159cf41df15ee0c022df5f8347a",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 7316,
+        "column": 3,
+        "endLine": 7316,
+        "endColumn": 9
+      },
+      "pointer": "/parameters/16/help_en",
+      "english": "The DryRun",
+      "textSHA256": "de194d566fb54775a8e4f6db03c01eaef3d37229e4ce92543cbd891b3fbbeff1"
+    },
+    "CreateNatGatewayRequest.bandwidthPackage[]#bandwidth": {
+      "operation": "CreateNatGateway",
+      "file": "canonical/ecs/2014-05-26/CreateNatGateway.json",
+      "sourceSHA256": "727c7109dc0c4848d661fcaa3253bb2d3e2aeda93353b07f686e394ab27882b7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10081,
+        "column": 7,
+        "endLine": 10081,
+        "endColumn": 16
+      },
+      "pointer": "/parameters/5/element/fields/0/help_en",
+      "english": "The Bandwidth",
+      "textSHA256": "12bfaf8b9283ab0dcc1de2bc4f41571ae72ea4a711c24b9678665ad47c2229c1"
+    },
+    "CreateNatGatewayRequest.bandwidthPackage[]#ipCount": {
+      "operation": "CreateNatGateway",
+      "file": "canonical/ecs/2014-05-26/CreateNatGateway.json",
+      "sourceSHA256": "727c7109dc0c4848d661fcaa3253bb2d3e2aeda93353b07f686e394ab27882b7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10082,
+        "column": 7,
+        "endLine": 10082,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/5/element/fields/1/help_en",
+      "english": "The IpCount",
+      "textSHA256": "0b7579031de76ea81894efab18a1f12f6e021186cfcc07c64135813ee3a27d5a"
+    },
+    "CreateNatGatewayRequest.bandwidthPackage[]#zone": {
+      "operation": "CreateNatGateway",
+      "file": "canonical/ecs/2014-05-26/CreateNatGateway.json",
+      "sourceSHA256": "727c7109dc0c4848d661fcaa3253bb2d3e2aeda93353b07f686e394ab27882b7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10083,
+        "column": 7,
+        "endLine": 10083,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/5/element/fields/2/help_en",
+      "english": "The Zone",
+      "textSHA256": "ed082dafb82ba65229a91a789c8a6777669b612f547ec383a25b822def18d231"
+    },
+    "CreateNatGatewayRequest#clientToken": {
+      "operation": "CreateNatGateway",
+      "file": "canonical/ecs/2014-05-26/CreateNatGateway.json",
+      "sourceSHA256": "727c7109dc0c4848d661fcaa3253bb2d3e2aeda93353b07f686e394ab27882b7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10086,
+        "column": 3,
+        "endLine": 10086,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "CreateNatGatewayRequest#description": {
+      "operation": "CreateNatGateway",
+      "file": "canonical/ecs/2014-05-26/CreateNatGateway.json",
+      "sourceSHA256": "727c7109dc0c4848d661fcaa3253bb2d3e2aeda93353b07f686e394ab27882b7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10087,
+        "column": 3,
+        "endLine": 10087,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The Description",
+      "textSHA256": "3512804440a731fe0278a60ce0e4303611316784621951ee95967e028dfef92e"
+    },
+    "CreateNatGatewayRequest#name": {
+      "operation": "CreateNatGateway",
+      "file": "canonical/ecs/2014-05-26/CreateNatGateway.json",
+      "sourceSHA256": "727c7109dc0c4848d661fcaa3253bb2d3e2aeda93353b07f686e394ab27882b7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10088,
+        "column": 3,
+        "endLine": 10088,
+        "endColumn": 7
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The Name",
+      "textSHA256": "b27a50c50e09ab62f51673c26aec5adfc56ea95844565522b31ba09001083e58"
+    },
+    "CreateNetworkInterfaceRequest.enhancedNetwork#enableExpress": {
+      "operation": "CreateNetworkInterface",
+      "file": "canonical/ecs/2014-05-26/CreateNetworkInterface.json",
+      "sourceSHA256": "1197d323bdfe8f2370325d5dde09aada4e4bcbd0994aae7c499e0edda55573eb",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10218,
+        "column": 5,
+        "endLine": 10218,
+        "endColumn": 18
+      },
+      "pointer": "/parameters/29/fields/0/help_en",
+      "english": "The EnableExpress",
+      "textSHA256": "51d73117700804f0ebc33a8b8a0e7ac57f9f89f54fb680f3b0d616e5f7d5f4bd"
+    },
+    "CreateNetworkInterfaceRequest.enhancedNetwork#virtualFunctionQuantity": {
+      "operation": "CreateNetworkInterface",
+      "file": "canonical/ecs/2014-05-26/CreateNetworkInterface.json",
+      "sourceSHA256": "1197d323bdfe8f2370325d5dde09aada4e4bcbd0994aae7c499e0edda55573eb",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10221,
+        "column": 5,
+        "endLine": 10221,
+        "endColumn": 28
+      },
+      "pointer": "/parameters/29/fields/3/help_en",
+      "english": "The VirtualFunctionQuantity",
+      "textSHA256": "7c81b362d1866ccdaeabd29eb74db204b152494bd844a7a2a88a87a0569bd9e8"
+    },
+    "CreateNetworkInterfaceRequest.enhancedNetwork#virtualFunctionTotalQueueNumber": {
+      "operation": "CreateNetworkInterface",
+      "file": "canonical/ecs/2014-05-26/CreateNetworkInterface.json",
+      "sourceSHA256": "1197d323bdfe8f2370325d5dde09aada4e4bcbd0994aae7c499e0edda55573eb",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10222,
+        "column": 5,
+        "endLine": 10222,
+        "endColumn": 36
+      },
+      "pointer": "/parameters/29/fields/4/help_en",
+      "english": "The VirtualFunctionTotalQueueNumber",
+      "textSHA256": "f563b25bc5ae5ed50517c31b5af09cb502de0ac2deade4a30e7330264cdfef95"
+    },
+    "CreateNetworkInterfaceRequest#enablePrimaryIPv6": {
+      "operation": "CreateNetworkInterface",
+      "file": "canonical/ecs/2014-05-26/CreateNetworkInterface.json",
+      "sourceSHA256": "1197d323bdfe8f2370325d5dde09aada4e4bcbd0994aae7c499e0edda55573eb",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10216,
+        "column": 3,
+        "endLine": 10216,
+        "endColumn": 20
+      },
+      "pointer": "/parameters/31/help_en",
+      "english": "The EnablePrimaryIPv6",
+      "textSHA256": "7ac1d577ec93c8cba8a9b94980c57ffa2b8acc17962a81b07dd0b6e3f8287c21"
+    },
+    "CreatePhysicalConnectionRequest#bandwidth": {
+      "operation": "CreatePhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/CreatePhysicalConnection.json",
+      "sourceSHA256": "ddefe79b5c82a921339b3e4bcdc941e8a469c2e4d98c3e3f01ecd727b8ebb3b3",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10779,
+        "column": 3,
+        "endLine": 10779,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The bandwidth",
+      "textSHA256": "b6fa040b9c5b5a74942aed991f9e1106010459f0e78db0b3c96341f96fb34c65"
+    },
+    "CreatePhysicalConnectionRequest#circuitCode": {
+      "operation": "CreatePhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/CreatePhysicalConnection.json",
+      "sourceSHA256": "ddefe79b5c82a921339b3e4bcdc941e8a469c2e4d98c3e3f01ecd727b8ebb3b3",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10764,
+        "column": 3,
+        "endLine": 10764,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/10/help_en",
+      "english": "The CircuitCode",
+      "textSHA256": "b4b95ef2ee5b8d04d253bdf53a82c82869d5a872d0f841b3d3d0149b4e3556f6"
+    },
+    "CreatePhysicalConnectionRequest#clientToken": {
+      "operation": "CreatePhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/CreatePhysicalConnection.json",
+      "sourceSHA256": "ddefe79b5c82a921339b3e4bcdc941e8a469c2e4d98c3e3f01ecd727b8ebb3b3",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10765,
+        "column": 3,
+        "endLine": 10765,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/11/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "CreatePhysicalConnectionRequest#description": {
+      "operation": "CreatePhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/CreatePhysicalConnection.json",
+      "sourceSHA256": "ddefe79b5c82a921339b3e4bcdc941e8a469c2e4d98c3e3f01ecd727b8ebb3b3",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10766,
+        "column": 3,
+        "endLine": 10766,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/8/help_en",
+      "english": "The Description",
+      "textSHA256": "3512804440a731fe0278a60ce0e4303611316784621951ee95967e028dfef92e"
+    },
+    "CreatePhysicalConnectionRequest#name": {
+      "operation": "CreatePhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/CreatePhysicalConnection.json",
+      "sourceSHA256": "ddefe79b5c82a921339b3e4bcdc941e8a469c2e4d98c3e3f01ecd727b8ebb3b3",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10768,
+        "column": 3,
+        "endLine": 10768,
+        "endColumn": 7
+      },
+      "pointer": "/parameters/9/help_en",
+      "english": "The Name",
+      "textSHA256": "b27a50c50e09ab62f51673c26aec5adfc56ea95844565522b31ba09001083e58"
+    },
+    "CreatePhysicalConnectionRequest#portType": {
+      "operation": "CreatePhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/CreatePhysicalConnection.json",
+      "sourceSHA256": "ddefe79b5c82a921339b3e4bcdc941e8a469c2e4d98c3e3f01ecd727b8ebb3b3",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10772,
+        "column": 3,
+        "endLine": 10772,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/6/help_en",
+      "english": "The PortType",
+      "textSHA256": "9d0c029dd98fce8893711f41c38b7a0addbfb159d66499334833cc3948a0d6ad"
+    },
+    "CreatePhysicalConnectionRequest#redundantPhysicalConnectionId": {
+      "operation": "CreatePhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/CreatePhysicalConnection.json",
+      "sourceSHA256": "ddefe79b5c82a921339b3e4bcdc941e8a469c2e4d98c3e3f01ecd727b8ebb3b3",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10773,
+        "column": 3,
+        "endLine": 10773,
+        "endColumn": 32
+      },
+      "pointer": "/parameters/7/help_en",
+      "english": "The RedundantPhysicalConnectionId",
+      "textSHA256": "9f9055a67ff66f33e49040089a37d4eadc472f91838d4d85aca5abc44b1dbd9f"
+    },
+    "CreatePhysicalConnectionRequest#type": {
+      "operation": "CreatePhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/CreatePhysicalConnection.json",
+      "sourceSHA256": "ddefe79b5c82a921339b3e4bcdc941e8a469c2e4d98c3e3f01ecd727b8ebb3b3",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10777,
+        "column": 3,
+        "endLine": 10777,
+        "endColumn": 7
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The Type",
+      "textSHA256": "6fa0b2aa48c859bfe3a1d7c4c8bee5216930ce99f2a1031c23651c81ca49fe23"
+    },
+    "CreatePhysicalConnectionRequest#userCidr": {
+      "operation": "CreatePhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/CreatePhysicalConnection.json",
+      "sourceSHA256": "ddefe79b5c82a921339b3e4bcdc941e8a469c2e4d98c3e3f01ecd727b8ebb3b3",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10778,
+        "column": 3,
+        "endLine": 10778,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/12/help_en",
+      "english": "The UserCidr",
+      "textSHA256": "33b79adfa168d6fecd0c4f61e02b38fb865fca0a2d549ab49ff682a2e3729bda"
+    },
+    "CreatePlanMaintenanceWindowRequest#minMaintenanceInterval": {
+      "operation": "CreatePlanMaintenanceWindow",
+      "file": "canonical/ecs/2014-05-26/CreatePlanMaintenanceWindow.json",
+      "sourceSHA256": "9ee5aa937cd68081832c555bfd1961295c0fbde4e7c8787e6854a6b6fa403d4a",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 10898,
+        "column": 3,
+        "endLine": 10898,
+        "endColumn": 25
+      },
+      "pointer": "/parameters/6/help_en",
+      "english": "The MinMaintenanceInterval",
+      "textSHA256": "d33c7f99b8c45f34620b336e0c4433971b2feee8b6546ee33fac223cefef82a9"
+    },
+    "CreateRouteEntryRequest.nextHopList[]#nextHopId": {
+      "operation": "CreateRouteEntry",
+      "file": "canonical/ecs/2014-05-26/CreateRouteEntry.json",
+      "sourceSHA256": "33ab186d8a9c93fedee8381ed3bb28770ecde84e8461771b50a0f981a29cc894",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11349,
+        "column": 7,
+        "endLine": 11349,
+        "endColumn": 16
+      },
+      "pointer": "/parameters/6/element/fields/0/help_en",
+      "english": "The NextHopId",
+      "textSHA256": "7ce26a273de788ad241baf342bf01bf5832b993163ca22f055508a0d3b5fea79"
+    },
+    "CreateRouteEntryRequest.nextHopList[]#nextHopType": {
+      "operation": "CreateRouteEntry",
+      "file": "canonical/ecs/2014-05-26/CreateRouteEntry.json",
+      "sourceSHA256": "33ab186d8a9c93fedee8381ed3bb28770ecde84e8461771b50a0f981a29cc894",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11350,
+        "column": 7,
+        "endLine": 11350,
+        "endColumn": 18
+      },
+      "pointer": "/parameters/6/element/fields/1/help_en",
+      "english": "The NextHopType",
+      "textSHA256": "e2442d8c5dfe3d71ccb890b745bc99f1cf843e1ea208710ae61e6acb2f541b69"
+    },
+    "CreateRouteEntryRequest#clientToken": {
+      "operation": "CreateRouteEntry",
+      "file": "canonical/ecs/2014-05-26/CreateRouteEntry.json",
+      "sourceSHA256": "33ab186d8a9c93fedee8381ed3bb28770ecde84e8461771b50a0f981a29cc894",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11344,
+        "column": 3,
+        "endLine": 11344,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "CreateRouteEntryRequest#nextHopId": {
+      "operation": "CreateRouteEntry",
+      "file": "canonical/ecs/2014-05-26/CreateRouteEntry.json",
+      "sourceSHA256": "33ab186d8a9c93fedee8381ed3bb28770ecde84e8461771b50a0f981a29cc894",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11346,
+        "column": 3,
+        "endLine": 11346,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The NextHopId",
+      "textSHA256": "7ce26a273de788ad241baf342bf01bf5832b993163ca22f055508a0d3b5fea79"
+    },
+    "CreateRouteEntryRequest#nextHopList": {
+      "operation": "CreateRouteEntry",
+      "file": "canonical/ecs/2014-05-26/CreateRouteEntry.json",
+      "sourceSHA256": "33ab186d8a9c93fedee8381ed3bb28770ecde84e8461771b50a0f981a29cc894",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11347,
+        "column": 3,
+        "endLine": 11347,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/6/help_en",
+      "english": "The NextHopList",
+      "textSHA256": "0fea308dfb497f608b4a2b69589b670a60526f0bc622d8b650e8b5cc72742b50"
+    },
+    "CreateRouteEntryRequest#nextHopType": {
+      "operation": "CreateRouteEntry",
+      "file": "canonical/ecs/2014-05-26/CreateRouteEntry.json",
+      "sourceSHA256": "33ab186d8a9c93fedee8381ed3bb28770ecde84e8461771b50a0f981a29cc894",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11353,
+        "column": 3,
+        "endLine": 11353,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/5/help_en",
+      "english": "The NextHopType",
+      "textSHA256": "e2442d8c5dfe3d71ccb890b745bc99f1cf843e1ea208710ae61e6acb2f541b69"
+    },
+    "CreateRouteEntryRequest#regionId": {
+      "operation": "CreateRouteEntry",
+      "file": "canonical/ecs/2014-05-26/CreateRouteEntry.json",
+      "sourceSHA256": "33ab186d8a9c93fedee8381ed3bb28770ecde84e8461771b50a0f981a29cc894",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11356,
+        "column": 3,
+        "endLine": 11356,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The RegionId",
+      "textSHA256": "953bdbe698eb7370ead6ceb3ae9b1f6940ab1f2827f0c7bcc2a9dcbae21e8a47"
+    },
+    "CreateRouterInterfaceRequest#accessPointId": {
+      "operation": "CreateRouterInterface",
+      "file": "canonical/ecs/2014-05-26/CreateRouterInterface.json",
+      "sourceSHA256": "a298ea13e55dc8e5d2e02c2a1d1da8ed58019cb36cc0825b514cea8c6aabf8a7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11450,
+        "column": 3,
+        "endLine": 11450,
+        "endColumn": 16
+      },
+      "pointer": "/parameters/12/help_en",
+      "english": "The AccessPointId",
+      "textSHA256": "57b874f2635f385cd248650e3c079d98f48b8ce030b6b808a04dfa5964a09b6d"
+    },
+    "CreateRouterInterfaceRequest#autoPay": {
+      "operation": "CreateRouterInterface",
+      "file": "canonical/ecs/2014-05-26/CreateRouterInterface.json",
+      "sourceSHA256": "a298ea13e55dc8e5d2e02c2a1d1da8ed58019cb36cc0825b514cea8c6aabf8a7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11451,
+        "column": 3,
+        "endLine": 11451,
+        "endColumn": 10
+      },
+      "pointer": "/parameters/18/help_en",
+      "english": "The AutoPay",
+      "textSHA256": "b12c4ac63783cdc11d9b0c937c7b3cd35664ed7f1af7f42518d244bc35126f88"
+    },
+    "CreateRouterInterfaceRequest#clientToken": {
+      "operation": "CreateRouterInterface",
+      "file": "canonical/ecs/2014-05-26/CreateRouterInterface.json",
+      "sourceSHA256": "a298ea13e55dc8e5d2e02c2a1d1da8ed58019cb36cc0825b514cea8c6aabf8a7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11452,
+        "column": 3,
+        "endLine": 11452,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/20/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "CreateRouterInterfaceRequest#description": {
+      "operation": "CreateRouterInterface",
+      "file": "canonical/ecs/2014-05-26/CreateRouterInterface.json",
+      "sourceSHA256": "a298ea13e55dc8e5d2e02c2a1d1da8ed58019cb36cc0825b514cea8c6aabf8a7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11453,
+        "column": 3,
+        "endLine": 11453,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/14/help_en",
+      "english": "The Description",
+      "textSHA256": "3512804440a731fe0278a60ce0e4303611316784621951ee95967e028dfef92e"
+    },
+    "CreateRouterInterfaceRequest#healthCheckSourceIp": {
+      "operation": "CreateRouterInterface",
+      "file": "canonical/ecs/2014-05-26/CreateRouterInterface.json",
+      "sourceSHA256": "a298ea13e55dc8e5d2e02c2a1d1da8ed58019cb36cc0825b514cea8c6aabf8a7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11454,
+        "column": 3,
+        "endLine": 11454,
+        "endColumn": 22
+      },
+      "pointer": "/parameters/10/help_en",
+      "english": "The HealthCheckSourceIp",
+      "textSHA256": "1a8054801393d197df74e031d7e542e7703312e6b13789b81ab1a1d7865e6141"
+    },
+    "CreateRouterInterfaceRequest#healthCheckTargetIp": {
+      "operation": "CreateRouterInterface",
+      "file": "canonical/ecs/2014-05-26/CreateRouterInterface.json",
+      "sourceSHA256": "a298ea13e55dc8e5d2e02c2a1d1da8ed58019cb36cc0825b514cea8c6aabf8a7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11455,
+        "column": 3,
+        "endLine": 11455,
+        "endColumn": 22
+      },
+      "pointer": "/parameters/11/help_en",
+      "english": "The HealthCheckTargetIp",
+      "textSHA256": "43d2538c9268342c855a301d759280499cde8e08a4594ff69a102e068957d258"
+    },
+    "CreateRouterInterfaceRequest#instanceChargeType": {
+      "operation": "CreateRouterInterface",
+      "file": "canonical/ecs/2014-05-26/CreateRouterInterface.json",
+      "sourceSHA256": "a298ea13e55dc8e5d2e02c2a1d1da8ed58019cb36cc0825b514cea8c6aabf8a7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11456,
+        "column": 3,
+        "endLine": 11456,
+        "endColumn": 21
+      },
+      "pointer": "/parameters/17/help_en",
+      "english": "The InstanceChargeType",
+      "textSHA256": "5d8724416e402600e987bb0991f5a2f66d64414e109adfa5dd8a312c5de31e85"
+    },
+    "CreateRouterInterfaceRequest#name": {
+      "operation": "CreateRouterInterface",
+      "file": "canonical/ecs/2014-05-26/CreateRouterInterface.json",
+      "sourceSHA256": "a298ea13e55dc8e5d2e02c2a1d1da8ed58019cb36cc0825b514cea8c6aabf8a7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11457,
+        "column": 3,
+        "endLine": 11457,
+        "endColumn": 7
+      },
+      "pointer": "/parameters/15/help_en",
+      "english": "The Name",
+      "textSHA256": "b27a50c50e09ab62f51673c26aec5adfc56ea95844565522b31ba09001083e58"
+    },
+    "CreateRouterInterfaceRequest#oppositeAccessPointId": {
+      "operation": "CreateRouterInterface",
+      "file": "canonical/ecs/2014-05-26/CreateRouterInterface.json",
+      "sourceSHA256": "a298ea13e55dc8e5d2e02c2a1d1da8ed58019cb36cc0825b514cea8c6aabf8a7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11458,
+        "column": 3,
+        "endLine": 11458,
+        "endColumn": 24
+      },
+      "pointer": "/parameters/13/help_en",
+      "english": "The OppositeAccessPointId",
+      "textSHA256": "9680ee50f0ae9b3a347281db6b0f52736afb07d2fbfd2fc84fa5be31d338a4e8"
+    },
+    "CreateRouterInterfaceRequest#oppositeInterfaceId": {
+      "operation": "CreateRouterInterface",
+      "file": "canonical/ecs/2014-05-26/CreateRouterInterface.json",
+      "sourceSHA256": "a298ea13e55dc8e5d2e02c2a1d1da8ed58019cb36cc0825b514cea8c6aabf8a7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11459,
+        "column": 3,
+        "endLine": 11459,
+        "endColumn": 22
+      },
+      "pointer": "/parameters/6/help_en",
+      "english": "The OppositeInterfaceId",
+      "textSHA256": "7944dbfe1b879ca9bc72f651799b64e2613e9b17e876859a9db6f1a69f18cb76"
+    },
+    "CreateRouterInterfaceRequest#oppositeInterfaceOwnerId": {
+      "operation": "CreateRouterInterface",
+      "file": "canonical/ecs/2014-05-26/CreateRouterInterface.json",
+      "sourceSHA256": "a298ea13e55dc8e5d2e02c2a1d1da8ed58019cb36cc0825b514cea8c6aabf8a7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11460,
+        "column": 3,
+        "endLine": 11460,
+        "endColumn": 27
+      },
+      "pointer": "/parameters/9/help_en",
+      "english": "The OppositeInterfaceOwnerId",
+      "textSHA256": "3aeafddec7c5717b67cadaf880f792ce3d4c78f6d10abbc4546158ff0e39521f"
+    },
+    "CreateRouterInterfaceRequest#oppositeRouterId": {
+      "operation": "CreateRouterInterface",
+      "file": "canonical/ecs/2014-05-26/CreateRouterInterface.json",
+      "sourceSHA256": "a298ea13e55dc8e5d2e02c2a1d1da8ed58019cb36cc0825b514cea8c6aabf8a7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11462,
+        "column": 3,
+        "endLine": 11462,
+        "endColumn": 19
+      },
+      "pointer": "/parameters/7/help_en",
+      "english": "The OppositeRouterId",
+      "textSHA256": "5c24268439d62de0d89f9f1114e88ea70a8c86a291a38681615830a659424cb9"
+    },
+    "CreateRouterInterfaceRequest#oppositeRouterType": {
+      "operation": "CreateRouterInterface",
+      "file": "canonical/ecs/2014-05-26/CreateRouterInterface.json",
+      "sourceSHA256": "a298ea13e55dc8e5d2e02c2a1d1da8ed58019cb36cc0825b514cea8c6aabf8a7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11463,
+        "column": 3,
+        "endLine": 11463,
+        "endColumn": 21
+      },
+      "pointer": "/parameters/8/help_en",
+      "english": "The OppositeRouterType",
+      "textSHA256": "4cf664dfe9c1ffd1fcea1c8362d4460834245a30081f880443feab14e124adba"
+    },
+    "CreateRouterInterfaceRequest#period": {
+      "operation": "CreateRouterInterface",
+      "file": "canonical/ecs/2014-05-26/CreateRouterInterface.json",
+      "sourceSHA256": "a298ea13e55dc8e5d2e02c2a1d1da8ed58019cb36cc0825b514cea8c6aabf8a7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11466,
+        "column": 3,
+        "endLine": 11466,
+        "endColumn": 9
+      },
+      "pointer": "/parameters/16/help_en",
+      "english": "The Period",
+      "textSHA256": "a2b681c82d58161dcf7811fc84dd9e7b3c6a8ff833a28496f5f5a85c00967ab8"
+    },
+    "CreateRouterInterfaceRequest#pricingCycle": {
+      "operation": "CreateRouterInterface",
+      "file": "canonical/ecs/2014-05-26/CreateRouterInterface.json",
+      "sourceSHA256": "a298ea13e55dc8e5d2e02c2a1d1da8ed58019cb36cc0825b514cea8c6aabf8a7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11467,
+        "column": 3,
+        "endLine": 11467,
+        "endColumn": 15
+      },
+      "pointer": "/parameters/19/help_en",
+      "english": "The PricingCycle",
+      "textSHA256": "10cd3ec99ff4ba03a346be7c3c7080b7d7a89e4f40d56fa1eb6d5d814590b35b"
+    },
+    "CreateRouterInterfaceRequest#userCidr": {
+      "operation": "CreateRouterInterface",
+      "file": "canonical/ecs/2014-05-26/CreateRouterInterface.json",
+      "sourceSHA256": "a298ea13e55dc8e5d2e02c2a1d1da8ed58019cb36cc0825b514cea8c6aabf8a7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 11475,
+        "column": 3,
+        "endLine": 11475,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/21/help_en",
+      "english": "The UserCidr",
+      "textSHA256": "33b79adfa168d6fecd0c4f61e02b38fb865fca0a2d549ab49ff682a2e3729bda"
+    },
+    "CreateVirtualBorderRouterRequest#circuitCode": {
+      "operation": "CreateVirtualBorderRouter",
+      "file": "canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json",
+      "sourceSHA256": "e0baf9d4151f714a0960a6e5a8a1b91afadaca7c3b333d9c67041b732577a4a2",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12537,
+        "column": 3,
+        "endLine": 12537,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The CircuitCode",
+      "textSHA256": "b4b95ef2ee5b8d04d253bdf53a82c82869d5a872d0f841b3d3d0149b4e3556f6"
+    },
+    "CreateVirtualBorderRouterRequest#clientToken": {
+      "operation": "CreateVirtualBorderRouter",
+      "file": "canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json",
+      "sourceSHA256": "e0baf9d4151f714a0960a6e5a8a1b91afadaca7c3b333d9c67041b732577a4a2",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12538,
+        "column": 3,
+        "endLine": 12538,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/10/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "CreateVirtualBorderRouterRequest#description": {
+      "operation": "CreateVirtualBorderRouter",
+      "file": "canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json",
+      "sourceSHA256": "e0baf9d4151f714a0960a6e5a8a1b91afadaca7c3b333d9c67041b732577a4a2",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12539,
+        "column": 3,
+        "endLine": 12539,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/8/help_en",
+      "english": "The Description",
+      "textSHA256": "3512804440a731fe0278a60ce0e4303611316784621951ee95967e028dfef92e"
+    },
+    "CreateVirtualBorderRouterRequest#localGatewayIp": {
+      "operation": "CreateVirtualBorderRouter",
+      "file": "canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json",
+      "sourceSHA256": "e0baf9d4151f714a0960a6e5a8a1b91afadaca7c3b333d9c67041b732577a4a2",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12540,
+        "column": 3,
+        "endLine": 12540,
+        "endColumn": 17
+      },
+      "pointer": "/parameters/5/help_en",
+      "english": "The LocalGatewayIp",
+      "textSHA256": "3b793ef12b9fbcb9861199f0828c9e07d3e6dbb161f89d1ebf384c6ea26a0427"
+    },
+    "CreateVirtualBorderRouterRequest#name": {
+      "operation": "CreateVirtualBorderRouter",
+      "file": "canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json",
+      "sourceSHA256": "e0baf9d4151f714a0960a6e5a8a1b91afadaca7c3b333d9c67041b732577a4a2",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12541,
+        "column": 3,
+        "endLine": 12541,
+        "endColumn": 7
+      },
+      "pointer": "/parameters/9/help_en",
+      "english": "The Name",
+      "textSHA256": "b27a50c50e09ab62f51673c26aec5adfc56ea95844565522b31ba09001083e58"
+    },
+    "CreateVirtualBorderRouterRequest#peerGatewayIp": {
+      "operation": "CreateVirtualBorderRouter",
+      "file": "canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json",
+      "sourceSHA256": "e0baf9d4151f714a0960a6e5a8a1b91afadaca7c3b333d9c67041b732577a4a2",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12544,
+        "column": 3,
+        "endLine": 12544,
+        "endColumn": 16
+      },
+      "pointer": "/parameters/6/help_en",
+      "english": "The PeerGatewayIp",
+      "textSHA256": "f2e3b9cefb5d4ffc523c9b42746befe7d3a8d4f7ac72b30198b4bf9d94ba70d3"
+    },
+    "CreateVirtualBorderRouterRequest#peeringSubnetMask": {
+      "operation": "CreateVirtualBorderRouter",
+      "file": "canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json",
+      "sourceSHA256": "e0baf9d4151f714a0960a6e5a8a1b91afadaca7c3b333d9c67041b732577a4a2",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12545,
+        "column": 3,
+        "endLine": 12545,
+        "endColumn": 20
+      },
+      "pointer": "/parameters/7/help_en",
+      "english": "The PeeringSubnetMask",
+      "textSHA256": "797d2fdab5c090f5f6094202e786faa9a178aa81ef1be4b71f6d8117635ddf43"
+    },
+    "CreateVirtualBorderRouterRequest#userCidr": {
+      "operation": "CreateVirtualBorderRouter",
+      "file": "canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json",
+      "sourceSHA256": "e0baf9d4151f714a0960a6e5a8a1b91afadaca7c3b333d9c67041b732577a4a2",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12550,
+        "column": 3,
+        "endLine": 12550,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/11/help_en",
+      "english": "The UserCidr",
+      "textSHA256": "33b79adfa168d6fecd0c4f61e02b38fb865fca0a2d549ab49ff682a2e3729bda"
+    },
+    "CreateVirtualBorderRouterRequest#vbrOwnerId": {
+      "operation": "CreateVirtualBorderRouter",
+      "file": "canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json",
+      "sourceSHA256": "e0baf9d4151f714a0960a6e5a8a1b91afadaca7c3b333d9c67041b732577a4a2",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12551,
+        "column": 3,
+        "endLine": 12551,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The VbrOwnerId",
+      "textSHA256": "8e4449da9c5cc50ab606924b2fe61ed422b3799c76380a85353158c5814bacbc"
+    },
+    "CreateVpcRequest#cidrBlock": {
+      "operation": "CreateVpc",
+      "file": "canonical/ecs/2014-05-26/CreateVpc.json",
+      "sourceSHA256": "f95cb667a6811b0efa65650198e4f858f76ba63956b9c3f9da4fc01a952ae215",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12662,
+        "column": 3,
+        "endLine": 12662,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The CidrBlock",
+      "textSHA256": "ba3d6f8e38f81c438ca622c43e6d93081c20433a9631106d74a0aee5f077b81c"
+    },
+    "CreateVpcRequest#clientToken": {
+      "operation": "CreateVpc",
+      "file": "canonical/ecs/2014-05-26/CreateVpc.json",
+      "sourceSHA256": "f95cb667a6811b0efa65650198e4f858f76ba63956b9c3f9da4fc01a952ae215",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12663,
+        "column": 3,
+        "endLine": 12663,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "CreateVpcRequest#description": {
+      "operation": "CreateVpc",
+      "file": "canonical/ecs/2014-05-26/CreateVpc.json",
+      "sourceSHA256": "f95cb667a6811b0efa65650198e4f858f76ba63956b9c3f9da4fc01a952ae215",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12664,
+        "column": 3,
+        "endLine": 12664,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The Description",
+      "textSHA256": "3512804440a731fe0278a60ce0e4303611316784621951ee95967e028dfef92e"
+    },
+    "CreateVpcRequest#userCidr": {
+      "operation": "CreateVpc",
+      "file": "canonical/ecs/2014-05-26/CreateVpc.json",
+      "sourceSHA256": "f95cb667a6811b0efa65650198e4f858f76ba63956b9c3f9da4fc01a952ae215",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12670,
+        "column": 3,
+        "endLine": 12670,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/5/help_en",
+      "english": "The UserCidr",
+      "textSHA256": "33b79adfa168d6fecd0c4f61e02b38fb865fca0a2d549ab49ff682a2e3729bda"
+    },
+    "CreateVpcRequest#vpcName": {
+      "operation": "CreateVpc",
+      "file": "canonical/ecs/2014-05-26/CreateVpc.json",
+      "sourceSHA256": "f95cb667a6811b0efa65650198e4f858f76ba63956b9c3f9da4fc01a952ae215",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12671,
+        "column": 3,
+        "endLine": 12671,
+        "endColumn": 10
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The VpcName",
+      "textSHA256": "abcb5fe50529e5614dfbd78ff69e5c7afabd8fd0f28d8a837c1529de1b68dad6"
+    },
+    "CreateVSwitchRequest#clientToken": {
+      "operation": "CreateVSwitch",
+      "file": "canonical/ecs/2014-05-26/CreateVSwitch.json",
+      "sourceSHA256": "d98c253b3d8516a1e11d8d4d15641bfb0193715f08c55c57a15b274b92e39664",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12436,
+        "column": 3,
+        "endLine": 12436,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/6/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "CreateVSwitchRequest#description": {
+      "operation": "CreateVSwitch",
+      "file": "canonical/ecs/2014-05-26/CreateVSwitch.json",
+      "sourceSHA256": "d98c253b3d8516a1e11d8d4d15641bfb0193715f08c55c57a15b274b92e39664",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12437,
+        "column": 3,
+        "endLine": 12437,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/5/help_en",
+      "english": "The Description",
+      "textSHA256": "3512804440a731fe0278a60ce0e4303611316784621951ee95967e028dfef92e"
+    },
+    "CreateVSwitchRequest#regionId": {
+      "operation": "CreateVSwitch",
+      "file": "canonical/ecs/2014-05-26/CreateVSwitch.json",
+      "sourceSHA256": "d98c253b3d8516a1e11d8d4d15641bfb0193715f08c55c57a15b274b92e39664",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12440,
+        "column": 3,
+        "endLine": 12440,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The RegionId",
+      "textSHA256": "953bdbe698eb7370ead6ceb3ae9b1f6940ab1f2827f0c7bcc2a9dcbae21e8a47"
+    },
+    "CreateVSwitchRequest#vSwitchName": {
+      "operation": "CreateVSwitch",
+      "file": "canonical/ecs/2014-05-26/CreateVSwitch.json",
+      "sourceSHA256": "d98c253b3d8516a1e11d8d4d15641bfb0193715f08c55c57a15b274b92e39664",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 12443,
+        "column": 3,
+        "endLine": 12443,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The VSwitchName",
+      "textSHA256": "9f65e3c0c497849e0bc333b222c2f10746a5958126bebb667a1e62ba70144aea"
+    },
+    "DeleteHaVipRequest#clientToken": {
+      "operation": "DeleteHaVip",
+      "file": "canonical/ecs/2014-05-26/DeleteHaVip.json",
+      "sourceSHA256": "c50e4429abdb01a562687e2c40e260f70aac9ce9bac6b4c6c21cae64478a5c4a",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 13843,
+        "column": 3,
+        "endLine": 13843,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "DeleteImageRequest#dryRun": {
+      "operation": "DeleteImage",
+      "file": "canonical/ecs/2014-05-26/DeleteImage.json",
+      "sourceSHA256": "0f32e301b0693e783eae8f0b79b53795f0f25501d256d92144103e1cb677b16a",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 14014,
+        "column": 3,
+        "endLine": 14014,
+        "endColumn": 9
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The DryRun",
+      "textSHA256": "de194d566fb54775a8e4f6db03c01eaef3d37229e4ce92543cbd891b3fbbeff1"
+    },
+    "DeleteNetworkInterfacePermissionRequest#force": {
+      "operation": "DeleteNetworkInterfacePermission",
+      "file": "canonical/ecs/2014-05-26/DeleteNetworkInterfacePermission.json",
+      "sourceSHA256": "6d8164308538696ed2ba5dce483b1944e90f41d34fec2703ce38e69333c558a1",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 15028,
+        "column": 3,
+        "endLine": 15028,
+        "endColumn": 8
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The Force",
+      "textSHA256": "67fe90e919b74d0f10e26c79a5561562ed818d9c4632ff364246487753bad907"
+    },
+    "DeletePhysicalConnectionRequest#clientToken": {
+      "operation": "DeletePhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/DeletePhysicalConnection.json",
+      "sourceSHA256": "fdd040c5eef1b96c4aeb04f02082cee9695ca37f2764d4f355138531df4d8ca6",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 15116,
+        "column": 3,
+        "endLine": 15116,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "DeleteRouteEntryRequest.nextHopList[]#nextHopId": {
+      "operation": "DeleteRouteEntry",
+      "file": "canonical/ecs/2014-05-26/DeleteRouteEntry.json",
+      "sourceSHA256": "047e79e26afe91eaece5b9ba66a90aa575cc3e4b066b4d1b99cd3608fd54fd3e",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 15438,
+        "column": 7,
+        "endLine": 15438,
+        "endColumn": 16
+      },
+      "pointer": "/parameters/4/element/fields/0/help_en",
+      "english": "The NextHopId",
+      "textSHA256": "7ce26a273de788ad241baf342bf01bf5832b993163ca22f055508a0d3b5fea79"
+    },
+    "DeleteRouteEntryRequest.nextHopList[]#nextHopType": {
+      "operation": "DeleteRouteEntry",
+      "file": "canonical/ecs/2014-05-26/DeleteRouteEntry.json",
+      "sourceSHA256": "047e79e26afe91eaece5b9ba66a90aa575cc3e4b066b4d1b99cd3608fd54fd3e",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 15439,
+        "column": 7,
+        "endLine": 15439,
+        "endColumn": 18
+      },
+      "pointer": "/parameters/4/element/fields/1/help_en",
+      "english": "The NextHopType",
+      "textSHA256": "e2442d8c5dfe3d71ccb890b745bc99f1cf843e1ea208710ae61e6acb2f541b69"
+    },
+    "DeleteRouteEntryRequest#nextHopId": {
+      "operation": "DeleteRouteEntry",
+      "file": "canonical/ecs/2014-05-26/DeleteRouteEntry.json",
+      "sourceSHA256": "047e79e26afe91eaece5b9ba66a90aa575cc3e4b066b4d1b99cd3608fd54fd3e",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 15435,
+        "column": 3,
+        "endLine": 15435,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The NextHopId",
+      "textSHA256": "7ce26a273de788ad241baf342bf01bf5832b993163ca22f055508a0d3b5fea79"
+    },
+    "DeleteRouteEntryRequest#nextHopList": {
+      "operation": "DeleteRouteEntry",
+      "file": "canonical/ecs/2014-05-26/DeleteRouteEntry.json",
+      "sourceSHA256": "047e79e26afe91eaece5b9ba66a90aa575cc3e4b066b4d1b99cd3608fd54fd3e",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 15436,
+        "column": 3,
+        "endLine": 15436,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The NextHopList",
+      "textSHA256": "0fea308dfb497f608b4a2b69589b670a60526f0bc622d8b650e8b5cc72742b50"
+    },
+    "DeleteRouteEntryRequest#regionId": {
+      "operation": "DeleteRouteEntry",
+      "file": "canonical/ecs/2014-05-26/DeleteRouteEntry.json",
+      "sourceSHA256": "047e79e26afe91eaece5b9ba66a90aa575cc3e4b066b4d1b99cd3608fd54fd3e",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 15444,
+        "column": 3,
+        "endLine": 15444,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The RegionId",
+      "textSHA256": "953bdbe698eb7370ead6ceb3ae9b1f6940ab1f2827f0c7bcc2a9dcbae21e8a47"
+    },
+    "DeleteRouterInterfaceRequest#clientToken": {
+      "operation": "DeleteRouterInterface",
+      "file": "canonical/ecs/2014-05-26/DeleteRouterInterface.json",
+      "sourceSHA256": "b61ab140d1b2eec8b08bfb8baf6e2e4bc234c4895110179d71d89650ff977d0c",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 15532,
+        "column": 3,
+        "endLine": 15532,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "DeleteRouterInterfaceRequest#userCidr": {
+      "operation": "DeleteRouterInterface",
+      "file": "canonical/ecs/2014-05-26/DeleteRouterInterface.json",
+      "sourceSHA256": "b61ab140d1b2eec8b08bfb8baf6e2e4bc234c4895110179d71d89650ff977d0c",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 15539,
+        "column": 3,
+        "endLine": 15539,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The UserCidr",
+      "textSHA256": "33b79adfa168d6fecd0c4f61e02b38fb865fca0a2d549ab49ff682a2e3729bda"
+    },
+    "DeleteVirtualBorderRouterRequest#clientToken": {
+      "operation": "DeleteVirtualBorderRouter",
+      "file": "canonical/ecs/2014-05-26/DeleteVirtualBorderRouter.json",
+      "sourceSHA256": "319e1cdffe1727a9f0f0c9b3d375485f85904c29caa2ee4910dd253a8ee8087d",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 16063,
+        "column": 3,
+        "endLine": 16063,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "DeleteVirtualBorderRouterRequest#userCidr": {
+      "operation": "DeleteVirtualBorderRouter",
+      "file": "canonical/ecs/2014-05-26/DeleteVirtualBorderRouter.json",
+      "sourceSHA256": "319e1cdffe1727a9f0f0c9b3d375485f85904c29caa2ee4910dd253a8ee8087d",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 16069,
+        "column": 3,
+        "endLine": 16069,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The UserCidr",
+      "textSHA256": "33b79adfa168d6fecd0c4f61e02b38fb865fca0a2d549ab49ff682a2e3729bda"
+    },
+    "DeleteVpcRequest#regionId": {
+      "operation": "DeleteVpc",
+      "file": "canonical/ecs/2014-05-26/DeleteVpc.json",
+      "sourceSHA256": "a6923c91d3e76c3b813a51843f4df4f2106da2e5f579f3ab34532d0e1e57c48b",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 16154,
+        "column": 3,
+        "endLine": 16154,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The RegionId",
+      "textSHA256": "953bdbe698eb7370ead6ceb3ae9b1f6940ab1f2827f0c7bcc2a9dcbae21e8a47"
+    },
+    "DeleteVSwitchRequest#regionId": {
+      "operation": "DeleteVSwitch",
+      "file": "canonical/ecs/2014-05-26/DeleteVSwitch.json",
+      "sourceSHA256": "ea86da062aa4544be5698dc3ce0e5bf7565f12b6e501820686ef8bf27a8a0a1e",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 15984,
+        "column": 3,
+        "endLine": 15984,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The RegionId",
+      "textSHA256": "953bdbe698eb7370ead6ceb3ae9b1f6940ab1f2827f0c7bcc2a9dcbae21e8a47"
+    },
+    "DescribeAccessPointsRequest.filter[]#key": {
+      "operation": "DescribeAccessPoints",
+      "file": "canonical/ecs/2014-05-26/DescribeAccessPoints.json",
+      "sourceSHA256": "0745d11d291f0718a86df4ceb59fb2f3507809846a982dcbf1f4a4e37dfe22c3",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 16436,
+        "column": 7,
+        "endLine": 16436,
+        "endColumn": 10
+      },
+      "pointer": "/parameters/4/element/fields/0/help_en",
+      "english": "The Key",
+      "textSHA256": "0acc83412ae9e296cf035fefdf9a03a09dede639b0119f923de76c32adfd7c65"
+    },
+    "DescribeAccessPointsRequest.filter[]#value": {
+      "operation": "DescribeAccessPoints",
+      "file": "canonical/ecs/2014-05-26/DescribeAccessPoints.json",
+      "sourceSHA256": "0745d11d291f0718a86df4ceb59fb2f3507809846a982dcbf1f4a4e37dfe22c3",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 16437,
+        "column": 7,
+        "endLine": 16437,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/4/element/fields/1/help_en",
+      "english": "The Value",
+      "textSHA256": "2220609247dc54d9f54d930b1daf0c679ce1eb4ca1219344a6e8d66ee705d499"
+    },
+    "DescribeAccessPointsRequest#filter": {
+      "operation": "DescribeAccessPoints",
+      "file": "canonical/ecs/2014-05-26/DescribeAccessPoints.json",
+      "sourceSHA256": "0745d11d291f0718a86df4ceb59fb2f3507809846a982dcbf1f4a4e37dfe22c3",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 16434,
+        "column": 3,
+        "endLine": 16434,
+        "endColumn": 9
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The Filter",
+      "textSHA256": "044506165115262c68ed68b570d66f76b5c0615774aac3ea2e725cea15cc0dd8"
+    },
+    "DescribeAccessPointsRequest#pageNumber": {
+      "operation": "DescribeAccessPoints",
+      "file": "canonical/ecs/2014-05-26/DescribeAccessPoints.json",
+      "sourceSHA256": "0745d11d291f0718a86df4ceb59fb2f3507809846a982dcbf1f4a4e37dfe22c3",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 16441,
+        "column": 3,
+        "endLine": 16441,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The PageNumber",
+      "textSHA256": "146ca48c95c292d350e4d1b6c331e57ae6842d3b41a9ed266397fbb50ae7f178"
+    },
+    "DescribeAccessPointsRequest#pageSize": {
+      "operation": "DescribeAccessPoints",
+      "file": "canonical/ecs/2014-05-26/DescribeAccessPoints.json",
+      "sourceSHA256": "0745d11d291f0718a86df4ceb59fb2f3507809846a982dcbf1f4a4e37dfe22c3",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 16442,
+        "column": 3,
+        "endLine": 16442,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The PageSize",
+      "textSHA256": "8479d436d2682b2d75cfafadcd839c3d936e13a1f21d8c92110955e8d052829d"
+    },
+    "DescribeAccessPointsRequest#type": {
+      "operation": "DescribeAccessPoints",
+      "file": "canonical/ecs/2014-05-26/DescribeAccessPoints.json",
+      "sourceSHA256": "0745d11d291f0718a86df4ceb59fb2f3507809846a982dcbf1f4a4e37dfe22c3",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 16446,
+        "column": 3,
+        "endLine": 16446,
+        "endColumn": 7
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The Type",
+      "textSHA256": "6fa0b2aa48c859bfe3a1d7c4c8bee5216930ce99f2a1031c23651c81ca49fe23"
+    },
+    "DescribeBandwidthPackagesRequest#bandwidthPackageId": {
+      "operation": "DescribeBandwidthPackages",
+      "file": "canonical/ecs/2014-05-26/DescribeBandwidthPackages.json",
+      "sourceSHA256": "68e3effb401b170f80838d3cf7f317f163978dd1181c63e58e89d44a3d868031",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 18009,
+        "column": 3,
+        "endLine": 18009,
+        "endColumn": 21
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The BandwidthPackageId",
+      "textSHA256": "0ca55ec3738af79478a8d1a35623b12889867ddac8a0600c56d48d29f3e80ab9"
+    },
+    "DescribeBandwidthPackagesRequest#natGatewayId": {
+      "operation": "DescribeBandwidthPackages",
+      "file": "canonical/ecs/2014-05-26/DescribeBandwidthPackages.json",
+      "sourceSHA256": "68e3effb401b170f80838d3cf7f317f163978dd1181c63e58e89d44a3d868031",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 18010,
+        "column": 3,
+        "endLine": 18010,
+        "endColumn": 15
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The NatGatewayId",
+      "textSHA256": "3f6056f51d19006867f2ce5e716a2683159fdd64498e28cb8b211f1bb4ea01ab"
+    },
+    "DescribeBandwidthPackagesRequest#pageNumber": {
+      "operation": "DescribeBandwidthPackages",
+      "file": "canonical/ecs/2014-05-26/DescribeBandwidthPackages.json",
+      "sourceSHA256": "68e3effb401b170f80838d3cf7f317f163978dd1181c63e58e89d44a3d868031",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 18013,
+        "column": 3,
+        "endLine": 18013,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The PageNumber",
+      "textSHA256": "146ca48c95c292d350e4d1b6c331e57ae6842d3b41a9ed266397fbb50ae7f178"
+    },
+    "DescribeBandwidthPackagesRequest#pageSize": {
+      "operation": "DescribeBandwidthPackages",
+      "file": "canonical/ecs/2014-05-26/DescribeBandwidthPackages.json",
+      "sourceSHA256": "68e3effb401b170f80838d3cf7f317f163978dd1181c63e58e89d44a3d868031",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 18014,
+        "column": 3,
+        "endLine": 18014,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The PageSize",
+      "textSHA256": "8479d436d2682b2d75cfafadcd839c3d936e13a1f21d8c92110955e8d052829d"
+    },
+    "DescribeClustersResponseBody#requestId": {
+      "operation": "DescribeClusters",
+      "file": "canonical/ecs/2014-05-26/DescribeClusters.json",
+      "sourceSHA256": "a3f3d64add6dbe5c9871df1d5524e697ec08b1ce4e23cfb91d48ab2c9b93e58d",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 18823,
+        "column": 3,
+        "endLine": 18823,
+        "endColumn": 12
+      },
+      "pointer": "/responses/200/schema/properties/RequestId/description_en",
+      "english": "The request ID",
+      "textSHA256": "ad582e6d6a05c3d9cc542c6377955cc5ba1d3285d515185f3874513b911b47fd"
+    },
+    "DescribeEipAddressesRequest#allocationId": {
+      "operation": "DescribeEipAddresses",
+      "file": "canonical/ecs/2014-05-26/DescribeEipAddresses.json",
+      "sourceSHA256": "63c6ab62dba1d74c77a5c3e656e27c5ec221b343307caff9031daed00115e956",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 21355,
+        "column": 3,
+        "endLine": 21355,
+        "endColumn": 15
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The AllocationId",
+      "textSHA256": "e26f417692809851c1391f6675641369fd4d90ebd1b3e488caa828b08df7d2a9"
+    },
+    "DescribeEipAddressesRequest#associatedInstanceId": {
+      "operation": "DescribeEipAddresses",
+      "file": "canonical/ecs/2014-05-26/DescribeEipAddresses.json",
+      "sourceSHA256": "63c6ab62dba1d74c77a5c3e656e27c5ec221b343307caff9031daed00115e956",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 21356,
+        "column": 3,
+        "endLine": 21356,
+        "endColumn": 23
+      },
+      "pointer": "/parameters/13/help_en",
+      "english": "The AssociatedInstanceId",
+      "textSHA256": "dcf1757523858b2edf0d026a89e9c84a51923620ec0b99a3f67f6d41d14d3aca"
+    },
+    "DescribeEipAddressesRequest#associatedInstanceType": {
+      "operation": "DescribeEipAddresses",
+      "file": "canonical/ecs/2014-05-26/DescribeEipAddresses.json",
+      "sourceSHA256": "63c6ab62dba1d74c77a5c3e656e27c5ec221b343307caff9031daed00115e956",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 21357,
+        "column": 3,
+        "endLine": 21357,
+        "endColumn": 25
+      },
+      "pointer": "/parameters/12/help_en",
+      "english": "The AssociatedInstanceType",
+      "textSHA256": "8025a90f41ce61c810e48e020ffaeef43505e3bbce28582e4ff26255c1c64e93"
+    },
+    "DescribeEipAddressesRequest#chargeType": {
+      "operation": "DescribeEipAddresses",
+      "file": "canonical/ecs/2014-05-26/DescribeEipAddresses.json",
+      "sourceSHA256": "63c6ab62dba1d74c77a5c3e656e27c5ec221b343307caff9031daed00115e956",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 21358,
+        "column": 3,
+        "endLine": 21358,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/14/help_en",
+      "english": "The ChargeType",
+      "textSHA256": "908a78d1c88c50b9fd179a8757b3ee90cd31e25a423c87ee58c3659e4eada604"
+    },
+    "DescribeEipAddressesRequest#eipAddress": {
+      "operation": "DescribeEipAddresses",
+      "file": "canonical/ecs/2014-05-26/DescribeEipAddresses.json",
+      "sourceSHA256": "63c6ab62dba1d74c77a5c3e656e27c5ec221b343307caff9031daed00115e956",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 21359,
+        "column": 3,
+        "endLine": 21359,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The EipAddress",
+      "textSHA256": "b26d2272511ceba2ed89d56464fa97eccf4324d35c79a963fc7a34b249e2642e"
+    },
+    "DescribeEipAddressesRequest#ISP": {
+      "operation": "DescribeEipAddresses",
+      "file": "canonical/ecs/2014-05-26/DescribeEipAddresses.json",
+      "sourceSHA256": "63c6ab62dba1d74c77a5c3e656e27c5ec221b343307caff9031daed00115e956",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 21360,
+        "column": 3,
+        "endLine": 21360,
+        "endColumn": 6
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The ISP",
+      "textSHA256": "7bfbd8dd471754d536899d408650cbe0b520b28a30e7d1e1464602ed26af159a"
+    },
+    "DescribeEipAddressesRequest#lockReason": {
+      "operation": "DescribeEipAddresses",
+      "file": "canonical/ecs/2014-05-26/DescribeEipAddresses.json",
+      "sourceSHA256": "63c6ab62dba1d74c77a5c3e656e27c5ec221b343307caff9031daed00115e956",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 21361,
+        "column": 3,
+        "endLine": 21361,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/11/help_en",
+      "english": "The LockReason",
+      "textSHA256": "2d1b36654b81c29d76af79bb6d49115f8249d51d9f181e9e4654d35173010c42"
+    },
+    "DescribeEipAddressesRequest#pageNumber": {
+      "operation": "DescribeEipAddresses",
+      "file": "canonical/ecs/2014-05-26/DescribeEipAddresses.json",
+      "sourceSHA256": "63c6ab62dba1d74c77a5c3e656e27c5ec221b343307caff9031daed00115e956",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 21364,
+        "column": 3,
+        "endLine": 21364,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/5/help_en",
+      "english": "The PageNumber",
+      "textSHA256": "146ca48c95c292d350e4d1b6c331e57ae6842d3b41a9ed266397fbb50ae7f178"
+    },
+    "DescribeEipAddressesRequest#pageSize": {
+      "operation": "DescribeEipAddresses",
+      "file": "canonical/ecs/2014-05-26/DescribeEipAddresses.json",
+      "sourceSHA256": "63c6ab62dba1d74c77a5c3e656e27c5ec221b343307caff9031daed00115e956",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 21365,
+        "column": 3,
+        "endLine": 21365,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/6/help_en",
+      "english": "The PageSize",
+      "textSHA256": "8479d436d2682b2d75cfafadcd839c3d936e13a1f21d8c92110955e8d052829d"
+    },
+    "DescribeEipAddressesRequest#status": {
+      "operation": "DescribeEipAddresses",
+      "file": "canonical/ecs/2014-05-26/DescribeEipAddresses.json",
+      "sourceSHA256": "63c6ab62dba1d74c77a5c3e656e27c5ec221b343307caff9031daed00115e956",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 21369,
+        "column": 3,
+        "endLine": 21369,
+        "endColumn": 9
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The Status",
+      "textSHA256": "75f9687baad60f7c29b68eca89e03c1991b0ae1840ee671b1214907cd60ffd96"
+    },
+    "DescribeEipMonitorDataRequest#period": {
+      "operation": "DescribeEipMonitorData",
+      "file": "canonical/ecs/2014-05-26/DescribeEipMonitorData.json",
+      "sourceSHA256": "716039ff546989dcad80166e436d745e2b35607c3413f13bd5705fabf0cd4106",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 21507,
+        "column": 3,
+        "endLine": 21507,
+        "endColumn": 9
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The Period",
+      "textSHA256": "a2b681c82d58161dcf7811fc84dd9e7b3c6a8ff833a28496f5f5a85c00967ab8"
+    },
+    "DescribeEipMonitorDataRequest#regionId": {
+      "operation": "DescribeEipMonitorData",
+      "file": "canonical/ecs/2014-05-26/DescribeEipMonitorData.json",
+      "sourceSHA256": "716039ff546989dcad80166e436d745e2b35607c3413f13bd5705fabf0cd4106",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 21508,
+        "column": 3,
+        "endLine": 21508,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The RegionId",
+      "textSHA256": "953bdbe698eb7370ead6ceb3ae9b1f6940ab1f2827f0c7bcc2a9dcbae21e8a47"
+    },
+    "DescribeForwardTableEntriesRequest#forwardEntryId": {
+      "operation": "DescribeForwardTableEntries",
+      "file": "canonical/ecs/2014-05-26/DescribeForwardTableEntries.json",
+      "sourceSHA256": "3b4439320d7fdf928ec15bd4df4de35dcc5f706a721ba133e711fdfb8a4d3a15",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 22148,
+        "column": 3,
+        "endLine": 22148,
+        "endColumn": 17
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The ForwardEntryId",
+      "textSHA256": "074ba7ae7415e1d54406125a3b5f8dff31c0a3b9e3cf433498cde0e6cee1c8d7"
+    },
+    "DescribeForwardTableEntriesRequest#pageNumber": {
+      "operation": "DescribeForwardTableEntries",
+      "file": "canonical/ecs/2014-05-26/DescribeForwardTableEntries.json",
+      "sourceSHA256": "3b4439320d7fdf928ec15bd4df4de35dcc5f706a721ba133e711fdfb8a4d3a15",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 22152,
+        "column": 3,
+        "endLine": 22152,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The PageNumber",
+      "textSHA256": "146ca48c95c292d350e4d1b6c331e57ae6842d3b41a9ed266397fbb50ae7f178"
+    },
+    "DescribeForwardTableEntriesRequest#pageSize": {
+      "operation": "DescribeForwardTableEntries",
+      "file": "canonical/ecs/2014-05-26/DescribeForwardTableEntries.json",
+      "sourceSHA256": "3b4439320d7fdf928ec15bd4df4de35dcc5f706a721ba133e711fdfb8a4d3a15",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 22153,
+        "column": 3,
+        "endLine": 22153,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The PageSize",
+      "textSHA256": "8479d436d2682b2d75cfafadcd839c3d936e13a1f21d8c92110955e8d052829d"
+    },
+    "DescribeHaVipsRequest.filter[]#key": {
+      "operation": "DescribeHaVips",
+      "file": "canonical/ecs/2014-05-26/DescribeHaVips.json",
+      "sourceSHA256": "8a97a97af383a315b101aae01b710da078e422425110bbf0432ae53dccc4fd4a",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 22260,
+        "column": 7,
+        "endLine": 22260,
+        "endColumn": 10
+      },
+      "pointer": "/parameters/3/element/fields/0/help_en",
+      "english": "The Key",
+      "textSHA256": "0acc83412ae9e296cf035fefdf9a03a09dede639b0119f923de76c32adfd7c65"
+    },
+    "DescribeHaVipsRequest.filter[]#value": {
+      "operation": "DescribeHaVips",
+      "file": "canonical/ecs/2014-05-26/DescribeHaVips.json",
+      "sourceSHA256": "8a97a97af383a315b101aae01b710da078e422425110bbf0432ae53dccc4fd4a",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 22261,
+        "column": 7,
+        "endLine": 22261,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/3/element/fields/1/help_en",
+      "english": "The Value",
+      "textSHA256": "2220609247dc54d9f54d930b1daf0c679ce1eb4ca1219344a6e8d66ee705d499"
+    },
+    "DescribeHaVipsRequest#pageNumber": {
+      "operation": "DescribeHaVips",
+      "file": "canonical/ecs/2014-05-26/DescribeHaVips.json",
+      "sourceSHA256": "8a97a97af383a315b101aae01b710da078e422425110bbf0432ae53dccc4fd4a",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 22266,
+        "column": 3,
+        "endLine": 22266,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The PageNumber",
+      "textSHA256": "146ca48c95c292d350e4d1b6c331e57ae6842d3b41a9ed266397fbb50ae7f178"
+    },
+    "DescribeHaVipsRequest#pageSize": {
+      "operation": "DescribeHaVips",
+      "file": "canonical/ecs/2014-05-26/DescribeHaVips.json",
+      "sourceSHA256": "8a97a97af383a315b101aae01b710da078e422425110bbf0432ae53dccc4fd4a",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 22267,
+        "column": 3,
+        "endLine": 22267,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The PageSize",
+      "textSHA256": "8479d436d2682b2d75cfafadcd839c3d936e13a1f21d8c92110955e8d052829d"
+    },
+    "DescribeInstanceModificationPriceRequest#systemDisk": {
+      "operation": "DescribeInstanceModificationPrice",
+      "file": "canonical/ecs/2014-05-26/DescribeInstanceModificationPrice.json",
+      "sourceSHA256": "8e88d6c7e56b6e4d67e2e32c501ca5ba08aa1f2959fcb6bf1a6e48418e5d5e4a",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 24619,
+        "column": 3,
+        "endLine": 24619,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The system disk modification settings",
+      "textSHA256": "1a301972ca984c34eef4c2901f5dcea0b9a93bd3b2cc752545b53097979d6240"
+    },
+    "DescribeLimitationResponseBody#limitation": {
+      "operation": "DescribeLimitation",
+      "file": "canonical/ecs/2014-05-26/DescribeLimitation.json",
+      "sourceSHA256": "304123f952d460eb1b60f39279cce3a5cc0aa06855fedba01c9db0444a6925be",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 27723,
+        "column": 3,
+        "endLine": 27723,
+        "endColumn": 13
+      },
+      "pointer": "/responses/200/schema/properties/Limitation/description_en",
+      "english": "The name of the quota limit item",
+      "textSHA256": "e46f67bba542db02487ca50f8ea978a51a1dd809835951ff04d9d070d667176f"
+    },
+    "DescribeLimitationResponseBody#requestId": {
+      "operation": "DescribeLimitation",
+      "file": "canonical/ecs/2014-05-26/DescribeLimitation.json",
+      "sourceSHA256": "304123f952d460eb1b60f39279cce3a5cc0aa06855fedba01c9db0444a6925be",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 27724,
+        "column": 3,
+        "endLine": 27724,
+        "endColumn": 12
+      },
+      "pointer": "/responses/200/schema/properties/RequestId/description_en",
+      "english": "The request ID",
+      "textSHA256": "ad582e6d6a05c3d9cc542c6377955cc5ba1d3285d515185f3874513b911b47fd"
+    },
+    "DescribeLimitationResponseBody#value": {
+      "operation": "DescribeLimitation",
+      "file": "canonical/ecs/2014-05-26/DescribeLimitation.json",
+      "sourceSHA256": "304123f952d460eb1b60f39279cce3a5cc0aa06855fedba01c9db0444a6925be",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 27725,
+        "column": 3,
+        "endLine": 27725,
+        "endColumn": 8
+      },
+      "pointer": "/responses/200/schema/properties/Value/description_en",
+      "english": "The value of the quota limit item",
+      "textSHA256": "8ac3be896ede31c28f3668a7df24106815628360c4fd3745ad0b32c5e9ba16c5"
+    },
+    "DescribeNatGatewaysRequest#natGatewayId": {
+      "operation": "DescribeNatGateways",
+      "file": "canonical/ecs/2014-05-26/DescribeNatGateways.json",
+      "sourceSHA256": "23f8d0a60a2e40c260e519ba8aa4fd28d0182b4b2f6898b9a3e2babf997e56e4",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 28123,
+        "column": 3,
+        "endLine": 28123,
+        "endColumn": 15
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The NatGatewayId",
+      "textSHA256": "3f6056f51d19006867f2ce5e716a2683159fdd64498e28cb8b211f1bb4ea01ab"
+    },
+    "DescribeNatGatewaysRequest#pageNumber": {
+      "operation": "DescribeNatGateways",
+      "file": "canonical/ecs/2014-05-26/DescribeNatGateways.json",
+      "sourceSHA256": "23f8d0a60a2e40c260e519ba8aa4fd28d0182b4b2f6898b9a3e2babf997e56e4",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 28126,
+        "column": 3,
+        "endLine": 28126,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The PageNumber",
+      "textSHA256": "146ca48c95c292d350e4d1b6c331e57ae6842d3b41a9ed266397fbb50ae7f178"
+    },
+    "DescribeNatGatewaysRequest#pageSize": {
+      "operation": "DescribeNatGateways",
+      "file": "canonical/ecs/2014-05-26/DescribeNatGateways.json",
+      "sourceSHA256": "23f8d0a60a2e40c260e519ba8aa4fd28d0182b4b2f6898b9a3e2babf997e56e4",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 28127,
+        "column": 3,
+        "endLine": 28127,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The PageSize",
+      "textSHA256": "8479d436d2682b2d75cfafadcd839c3d936e13a1f21d8c92110955e8d052829d"
+    },
+    "DescribeNatGatewaysRequest#vpcId": {
+      "operation": "DescribeNatGateways",
+      "file": "canonical/ecs/2014-05-26/DescribeNatGateways.json",
+      "sourceSHA256": "23f8d0a60a2e40c260e519ba8aa4fd28d0182b4b2f6898b9a3e2babf997e56e4",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 28131,
+        "column": 3,
+        "endLine": 28131,
+        "endColumn": 8
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The VpcId",
+      "textSHA256": "3b1f9a991c5defade7fef2d8a00efd579e133b0546b715d8e1df749ca5d74828"
+    },
+    "DescribeNewProjectEipMonitorDataRequest#period": {
+      "operation": "DescribeNewProjectEipMonitorData",
+      "file": "canonical/ecs/2014-05-26/DescribeNewProjectEipMonitorData.json",
+      "sourceSHA256": "8be36b57aea6f450704c46252447b3a627ef213bce2aac437d2be83a5b263f30",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 28913,
+        "column": 3,
+        "endLine": 28913,
+        "endColumn": 9
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The Period",
+      "textSHA256": "a2b681c82d58161dcf7811fc84dd9e7b3c6a8ff833a28496f5f5a85c00967ab8"
+    },
+    "DescribeNewProjectEipMonitorDataRequest#regionId": {
+      "operation": "DescribeNewProjectEipMonitorData",
+      "file": "canonical/ecs/2014-05-26/DescribeNewProjectEipMonitorData.json",
+      "sourceSHA256": "8be36b57aea6f450704c46252447b3a627ef213bce2aac437d2be83a5b263f30",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 28914,
+        "column": 3,
+        "endLine": 28914,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The RegionId",
+      "textSHA256": "953bdbe698eb7370ead6ceb3ae9b1f6940ab1f2827f0c7bcc2a9dcbae21e8a47"
+    },
+    "DescribePhysicalConnectionsRequest.filter[]#key": {
+      "operation": "DescribePhysicalConnections",
+      "file": "canonical/ecs/2014-05-26/DescribePhysicalConnections.json",
+      "sourceSHA256": "276043c15fa32ea012d721b1d360a28b00ede0ab0bacead66e8bc3b3a365e027",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 29017,
+        "column": 7,
+        "endLine": 29017,
+        "endColumn": 10
+      },
+      "pointer": "/parameters/5/element/fields/0/help_en",
+      "english": "The Key",
+      "textSHA256": "0acc83412ae9e296cf035fefdf9a03a09dede639b0119f923de76c32adfd7c65"
+    },
+    "DescribePhysicalConnectionsRequest.filter[]#value": {
+      "operation": "DescribePhysicalConnections",
+      "file": "canonical/ecs/2014-05-26/DescribePhysicalConnections.json",
+      "sourceSHA256": "276043c15fa32ea012d721b1d360a28b00ede0ab0bacead66e8bc3b3a365e027",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 29018,
+        "column": 7,
+        "endLine": 29018,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/5/element/fields/1/help_en",
+      "english": "The Value",
+      "textSHA256": "2220609247dc54d9f54d930b1daf0c679ce1eb4ca1219344a6e8d66ee705d499"
+    },
+    "DescribePhysicalConnectionsRequest#clientToken": {
+      "operation": "DescribePhysicalConnections",
+      "file": "canonical/ecs/2014-05-26/DescribePhysicalConnections.json",
+      "sourceSHA256": "276043c15fa32ea012d721b1d360a28b00ede0ab0bacead66e8bc3b3a365e027",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 29014,
+        "column": 3,
+        "endLine": 29014,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "DescribePhysicalConnectionsRequest#filter": {
+      "operation": "DescribePhysicalConnections",
+      "file": "canonical/ecs/2014-05-26/DescribePhysicalConnections.json",
+      "sourceSHA256": "276043c15fa32ea012d721b1d360a28b00ede0ab0bacead66e8bc3b3a365e027",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 29015,
+        "column": 3,
+        "endLine": 29015,
+        "endColumn": 9
+      },
+      "pointer": "/parameters/5/help_en",
+      "english": "The Filter",
+      "textSHA256": "044506165115262c68ed68b570d66f76b5c0615774aac3ea2e725cea15cc0dd8"
+    },
+    "DescribePhysicalConnectionsRequest#pageNumber": {
+      "operation": "DescribePhysicalConnections",
+      "file": "canonical/ecs/2014-05-26/DescribePhysicalConnections.json",
+      "sourceSHA256": "276043c15fa32ea012d721b1d360a28b00ede0ab0bacead66e8bc3b3a365e027",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 29023,
+        "column": 3,
+        "endLine": 29023,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The PageNumber",
+      "textSHA256": "146ca48c95c292d350e4d1b6c331e57ae6842d3b41a9ed266397fbb50ae7f178"
+    },
+    "DescribePhysicalConnectionsRequest#pageSize": {
+      "operation": "DescribePhysicalConnections",
+      "file": "canonical/ecs/2014-05-26/DescribePhysicalConnections.json",
+      "sourceSHA256": "276043c15fa32ea012d721b1d360a28b00ede0ab0bacead66e8bc3b3a365e027",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 29024,
+        "column": 3,
+        "endLine": 29024,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The PageSize",
+      "textSHA256": "8479d436d2682b2d75cfafadcd839c3d936e13a1f21d8c92110955e8d052829d"
+    },
+    "DescribePhysicalConnectionsRequest#userCidr": {
+      "operation": "DescribePhysicalConnections",
+      "file": "canonical/ecs/2014-05-26/DescribePhysicalConnections.json",
+      "sourceSHA256": "276043c15fa32ea012d721b1d360a28b00ede0ab0bacead66e8bc3b3a365e027",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 29028,
+        "column": 3,
+        "endLine": 29028,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The UserCidr",
+      "textSHA256": "33b79adfa168d6fecd0c4f61e02b38fb865fca0a2d549ab49ff682a2e3729bda"
+    },
+    "DescribePriceRequest#dataDisk": {
+      "operation": "DescribePrice",
+      "file": "canonical/ecs/2014-05-26/DescribePrice.json",
+      "sourceSHA256": "4daa17b682173e2a6f6c0f13a71f9a43f98844a13a95a2360474b127262a3a35",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 29965,
+        "column": 3,
+        "endLine": 29965,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/40/help_en",
+      "english": "The list of data disks",
+      "textSHA256": "ec280794059252c692d21b0db0b2cdaa6abb99c6042d2c9e510d2658c4d71a92"
+    },
+    "DescribeRouterInterfacesRequest.filter[]#key": {
+      "operation": "DescribeRouterInterfaces",
+      "file": "canonical/ecs/2014-05-26/DescribeRouterInterfaces.json",
+      "sourceSHA256": "cef872c6a0a96b8c6474de30c85fd3717169cb465d99f0bf2c91e24a65be02dc",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 31851,
+        "column": 7,
+        "endLine": 31851,
+        "endColumn": 10
+      },
+      "pointer": "/parameters/3/element/fields/0/help_en",
+      "english": "The Key",
+      "textSHA256": "0acc83412ae9e296cf035fefdf9a03a09dede639b0119f923de76c32adfd7c65"
+    },
+    "DescribeRouterInterfacesRequest.filter[]#value": {
+      "operation": "DescribeRouterInterfaces",
+      "file": "canonical/ecs/2014-05-26/DescribeRouterInterfaces.json",
+      "sourceSHA256": "cef872c6a0a96b8c6474de30c85fd3717169cb465d99f0bf2c91e24a65be02dc",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 31852,
+        "column": 7,
+        "endLine": 31852,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/3/element/fields/1/help_en",
+      "english": "The Value",
+      "textSHA256": "2220609247dc54d9f54d930b1daf0c679ce1eb4ca1219344a6e8d66ee705d499"
+    },
+    "DescribeRouterInterfacesRequest#filter": {
+      "operation": "DescribeRouterInterfaces",
+      "file": "canonical/ecs/2014-05-26/DescribeRouterInterfaces.json",
+      "sourceSHA256": "cef872c6a0a96b8c6474de30c85fd3717169cb465d99f0bf2c91e24a65be02dc",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 31849,
+        "column": 3,
+        "endLine": 31849,
+        "endColumn": 9
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The Filter",
+      "textSHA256": "044506165115262c68ed68b570d66f76b5c0615774aac3ea2e725cea15cc0dd8"
+    },
+    "DescribeRouterInterfacesRequest#pageNumber": {
+      "operation": "DescribeRouterInterfaces",
+      "file": "canonical/ecs/2014-05-26/DescribeRouterInterfaces.json",
+      "sourceSHA256": "cef872c6a0a96b8c6474de30c85fd3717169cb465d99f0bf2c91e24a65be02dc",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 31856,
+        "column": 3,
+        "endLine": 31856,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The PageNumber",
+      "textSHA256": "146ca48c95c292d350e4d1b6c331e57ae6842d3b41a9ed266397fbb50ae7f178"
+    },
+    "DescribeRouterInterfacesRequest#pageSize": {
+      "operation": "DescribeRouterInterfaces",
+      "file": "canonical/ecs/2014-05-26/DescribeRouterInterfaces.json",
+      "sourceSHA256": "cef872c6a0a96b8c6474de30c85fd3717169cb465d99f0bf2c91e24a65be02dc",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 31857,
+        "column": 3,
+        "endLine": 31857,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The PageSize",
+      "textSHA256": "8479d436d2682b2d75cfafadcd839c3d936e13a1f21d8c92110955e8d052829d"
+    },
+    "DescribeRouteTablesRequest#pageNumber": {
+      "operation": "DescribeRouteTables",
+      "file": "canonical/ecs/2014-05-26/DescribeRouteTables.json",
+      "sourceSHA256": "262df5f56bb89882dd76254716fc311972f9734d95d463ac9a6c750db6ed1b95",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 31710,
+        "column": 3,
+        "endLine": 31710,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/6/help_en",
+      "english": "The PageNumber",
+      "textSHA256": "146ca48c95c292d350e4d1b6c331e57ae6842d3b41a9ed266397fbb50ae7f178"
+    },
+    "DescribeRouteTablesRequest#pageSize": {
+      "operation": "DescribeRouteTables",
+      "file": "canonical/ecs/2014-05-26/DescribeRouteTables.json",
+      "sourceSHA256": "262df5f56bb89882dd76254716fc311972f9734d95d463ac9a6c750db6ed1b95",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 31711,
+        "column": 3,
+        "endLine": 31711,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/7/help_en",
+      "english": "The PageSize",
+      "textSHA256": "8479d436d2682b2d75cfafadcd839c3d936e13a1f21d8c92110955e8d052829d"
+    },
+    "DescribeRouteTablesRequest#regionId": {
+      "operation": "DescribeRouteTables",
+      "file": "canonical/ecs/2014-05-26/DescribeRouteTables.json",
+      "sourceSHA256": "262df5f56bb89882dd76254716fc311972f9734d95d463ac9a6c750db6ed1b95",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 31712,
+        "column": 3,
+        "endLine": 31712,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The RegionId",
+      "textSHA256": "953bdbe698eb7370ead6ceb3ae9b1f6940ab1f2827f0c7bcc2a9dcbae21e8a47"
+    },
+    "DescribeRouteTablesRequest#routerId": {
+      "operation": "DescribeRouteTables",
+      "file": "canonical/ecs/2014-05-26/DescribeRouteTables.json",
+      "sourceSHA256": "262df5f56bb89882dd76254716fc311972f9734d95d463ac9a6c750db6ed1b95",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 31717,
+        "column": 3,
+        "endLine": 31717,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The RouterId",
+      "textSHA256": "5061f61553c41298ec687a6e914b527144cf2ac082dbf670f97e81b1d17bacd7"
+    },
+    "DescribeRouteTablesRequest#routerType": {
+      "operation": "DescribeRouteTables",
+      "file": "canonical/ecs/2014-05-26/DescribeRouteTables.json",
+      "sourceSHA256": "262df5f56bb89882dd76254716fc311972f9734d95d463ac9a6c750db6ed1b95",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 31718,
+        "column": 3,
+        "endLine": 31718,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The RouterType",
+      "textSHA256": "e43b542263a882f2c2a642c343e12749cd5021f325b02f6526795dd6325c22b9"
+    },
+    "DescribeRouteTablesRequest#routeTableId": {
+      "operation": "DescribeRouteTables",
+      "file": "canonical/ecs/2014-05-26/DescribeRouteTables.json",
+      "sourceSHA256": "262df5f56bb89882dd76254716fc311972f9734d95d463ac9a6c750db6ed1b95",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 31715,
+        "column": 3,
+        "endLine": 31715,
+        "endColumn": 15
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The RouteTableId",
+      "textSHA256": "77604f7191771aa846dd895e64534d19ed6f1500289696f78726e76b79291093"
+    },
+    "DescribeRouteTablesRequest#routeTableName": {
+      "operation": "DescribeRouteTables",
+      "file": "canonical/ecs/2014-05-26/DescribeRouteTables.json",
+      "sourceSHA256": "262df5f56bb89882dd76254716fc311972f9734d95d463ac9a6c750db6ed1b95",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 31716,
+        "column": 3,
+        "endLine": 31716,
+        "endColumn": 17
+      },
+      "pointer": "/parameters/5/help_en",
+      "english": "The RouteTableName",
+      "textSHA256": "4427781a3560ea384361335a3919912337efbb8237c4b8b6245bf8e2d7711e15"
+    },
+    "DescribeRouteTablesRequest#VRouterId": {
+      "operation": "DescribeRouteTables",
+      "file": "canonical/ecs/2014-05-26/DescribeRouteTables.json",
+      "sourceSHA256": "262df5f56bb89882dd76254716fc311972f9734d95d463ac9a6c750db6ed1b95",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 31719,
+        "column": 3,
+        "endLine": 31719,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The VRouterId",
+      "textSHA256": "6bb195fb959575441994c8f18c550bf03ca18df30befc07d3bcc4adf97756694"
+    },
+    "DescribeUserBusinessBehaviorRequest#regionId": {
+      "operation": "DescribeUserBusinessBehavior",
+      "file": "canonical/ecs/2014-05-26/DescribeUserBusinessBehavior.json",
+      "sourceSHA256": "7f91bc0efd64d2ca20b21dfb9f553242b16fe244f861ea600a20c22ea496fb66",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35027,
+        "column": 3,
+        "endLine": 35027,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The RegionId",
+      "textSHA256": "953bdbe698eb7370ead6ceb3ae9b1f6940ab1f2827f0c7bcc2a9dcbae21e8a47"
+    },
+    "DescribeVirtualBorderRoutersForPhysicalConnectionRequest.filter[]#key": {
+      "operation": "DescribeVirtualBorderRoutersForPhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/DescribeVirtualBorderRoutersForPhysicalConnection.json",
+      "sourceSHA256": "cabc12690fa57257e8279bf59701ad91100b588c96194e450b6eea6db5a58dc2",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35536,
+        "column": 7,
+        "endLine": 35536,
+        "endColumn": 10
+      },
+      "pointer": "/parameters/4/element/fields/0/help_en",
+      "english": "The Key",
+      "textSHA256": "0acc83412ae9e296cf035fefdf9a03a09dede639b0119f923de76c32adfd7c65"
+    },
+    "DescribeVirtualBorderRoutersForPhysicalConnectionRequest.filter[]#value": {
+      "operation": "DescribeVirtualBorderRoutersForPhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/DescribeVirtualBorderRoutersForPhysicalConnection.json",
+      "sourceSHA256": "cabc12690fa57257e8279bf59701ad91100b588c96194e450b6eea6db5a58dc2",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35537,
+        "column": 7,
+        "endLine": 35537,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/4/element/fields/1/help_en",
+      "english": "The Value",
+      "textSHA256": "2220609247dc54d9f54d930b1daf0c679ce1eb4ca1219344a6e8d66ee705d499"
+    },
+    "DescribeVirtualBorderRoutersForPhysicalConnectionRequest#filter": {
+      "operation": "DescribeVirtualBorderRoutersForPhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/DescribeVirtualBorderRoutersForPhysicalConnection.json",
+      "sourceSHA256": "cabc12690fa57257e8279bf59701ad91100b588c96194e450b6eea6db5a58dc2",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35534,
+        "column": 3,
+        "endLine": 35534,
+        "endColumn": 9
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The Filter",
+      "textSHA256": "044506165115262c68ed68b570d66f76b5c0615774aac3ea2e725cea15cc0dd8"
+    },
+    "DescribeVirtualBorderRoutersForPhysicalConnectionRequest#pageNumber": {
+      "operation": "DescribeVirtualBorderRoutersForPhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/DescribeVirtualBorderRoutersForPhysicalConnection.json",
+      "sourceSHA256": "cabc12690fa57257e8279bf59701ad91100b588c96194e450b6eea6db5a58dc2",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35541,
+        "column": 3,
+        "endLine": 35541,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The PageNumber",
+      "textSHA256": "146ca48c95c292d350e4d1b6c331e57ae6842d3b41a9ed266397fbb50ae7f178"
+    },
+    "DescribeVirtualBorderRoutersForPhysicalConnectionRequest#pageSize": {
+      "operation": "DescribeVirtualBorderRoutersForPhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/DescribeVirtualBorderRoutersForPhysicalConnection.json",
+      "sourceSHA256": "cabc12690fa57257e8279bf59701ad91100b588c96194e450b6eea6db5a58dc2",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35542,
+        "column": 3,
+        "endLine": 35542,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The PageSize",
+      "textSHA256": "8479d436d2682b2d75cfafadcd839c3d936e13a1f21d8c92110955e8d052829d"
+    },
+    "DescribeVirtualBorderRoutersRequest.filter[]#key": {
+      "operation": "DescribeVirtualBorderRouters",
+      "file": "canonical/ecs/2014-05-26/DescribeVirtualBorderRouters.json",
+      "sourceSHA256": "9868e35574580bc02d2f5536786620cb3dc7a3528da1c1475c1758fe8baefa2f",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35417,
+        "column": 7,
+        "endLine": 35417,
+        "endColumn": 10
+      },
+      "pointer": "/parameters/3/element/fields/0/help_en",
+      "english": "The Key",
+      "textSHA256": "0acc83412ae9e296cf035fefdf9a03a09dede639b0119f923de76c32adfd7c65"
+    },
+    "DescribeVirtualBorderRoutersRequest.filter[]#value": {
+      "operation": "DescribeVirtualBorderRouters",
+      "file": "canonical/ecs/2014-05-26/DescribeVirtualBorderRouters.json",
+      "sourceSHA256": "9868e35574580bc02d2f5536786620cb3dc7a3528da1c1475c1758fe8baefa2f",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35418,
+        "column": 7,
+        "endLine": 35418,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/3/element/fields/1/help_en",
+      "english": "The Value",
+      "textSHA256": "2220609247dc54d9f54d930b1daf0c679ce1eb4ca1219344a6e8d66ee705d499"
+    },
+    "DescribeVirtualBorderRoutersRequest#filter": {
+      "operation": "DescribeVirtualBorderRouters",
+      "file": "canonical/ecs/2014-05-26/DescribeVirtualBorderRouters.json",
+      "sourceSHA256": "9868e35574580bc02d2f5536786620cb3dc7a3528da1c1475c1758fe8baefa2f",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35415,
+        "column": 3,
+        "endLine": 35415,
+        "endColumn": 9
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The Filter",
+      "textSHA256": "044506165115262c68ed68b570d66f76b5c0615774aac3ea2e725cea15cc0dd8"
+    },
+    "DescribeVirtualBorderRoutersRequest#pageNumber": {
+      "operation": "DescribeVirtualBorderRouters",
+      "file": "canonical/ecs/2014-05-26/DescribeVirtualBorderRouters.json",
+      "sourceSHA256": "9868e35574580bc02d2f5536786620cb3dc7a3528da1c1475c1758fe8baefa2f",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35422,
+        "column": 3,
+        "endLine": 35422,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The PageNumber",
+      "textSHA256": "146ca48c95c292d350e4d1b6c331e57ae6842d3b41a9ed266397fbb50ae7f178"
+    },
+    "DescribeVirtualBorderRoutersRequest#pageSize": {
+      "operation": "DescribeVirtualBorderRouters",
+      "file": "canonical/ecs/2014-05-26/DescribeVirtualBorderRouters.json",
+      "sourceSHA256": "9868e35574580bc02d2f5536786620cb3dc7a3528da1c1475c1758fe8baefa2f",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35423,
+        "column": 3,
+        "endLine": 35423,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The PageSize",
+      "textSHA256": "8479d436d2682b2d75cfafadcd839c3d936e13a1f21d8c92110955e8d052829d"
+    },
+    "DescribeVpcsRequest#isDefault": {
+      "operation": "DescribeVpcs",
+      "file": "canonical/ecs/2014-05-26/DescribeVpcs.json",
+      "sourceSHA256": "84ec4d2ddccf955d6eb7fd5d0abd9112d7ba9fb6132697c8e3dfb121262c61a5",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35645,
+        "column": 3,
+        "endLine": 35645,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The IsDefault",
+      "textSHA256": "ed30c236e45419ce72d7d31fad5dee06e56d9797c960177a7d23134aa81546a4"
+    },
+    "DescribeVpcsRequest#pageNumber": {
+      "operation": "DescribeVpcs",
+      "file": "canonical/ecs/2014-05-26/DescribeVpcs.json",
+      "sourceSHA256": "84ec4d2ddccf955d6eb7fd5d0abd9112d7ba9fb6132697c8e3dfb121262c61a5",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35648,
+        "column": 3,
+        "endLine": 35648,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The PageNumber",
+      "textSHA256": "146ca48c95c292d350e4d1b6c331e57ae6842d3b41a9ed266397fbb50ae7f178"
+    },
+    "DescribeVpcsRequest#pageSize": {
+      "operation": "DescribeVpcs",
+      "file": "canonical/ecs/2014-05-26/DescribeVpcs.json",
+      "sourceSHA256": "84ec4d2ddccf955d6eb7fd5d0abd9112d7ba9fb6132697c8e3dfb121262c61a5",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35649,
+        "column": 3,
+        "endLine": 35649,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The PageSize",
+      "textSHA256": "8479d436d2682b2d75cfafadcd839c3d936e13a1f21d8c92110955e8d052829d"
+    },
+    "DescribeVpcsRequest#vpcId": {
+      "operation": "DescribeVpcs",
+      "file": "canonical/ecs/2014-05-26/DescribeVpcs.json",
+      "sourceSHA256": "84ec4d2ddccf955d6eb7fd5d0abd9112d7ba9fb6132697c8e3dfb121262c61a5",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35653,
+        "column": 3,
+        "endLine": 35653,
+        "endColumn": 8
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The VpcId",
+      "textSHA256": "3b1f9a991c5defade7fef2d8a00efd579e133b0546b715d8e1df749ca5d74828"
+    },
+    "DescribeVRoutersRequest#pageNumber": {
+      "operation": "DescribeVRouters",
+      "file": "canonical/ecs/2014-05-26/DescribeVRouters.json",
+      "sourceSHA256": "f40dca3d40a1f327acbad12247a8056d08d2de0b3d8d0f20b63ec852bd7b35d5",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35189,
+        "column": 3,
+        "endLine": 35189,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The PageNumber",
+      "textSHA256": "146ca48c95c292d350e4d1b6c331e57ae6842d3b41a9ed266397fbb50ae7f178"
+    },
+    "DescribeVRoutersRequest#pageSize": {
+      "operation": "DescribeVRouters",
+      "file": "canonical/ecs/2014-05-26/DescribeVRouters.json",
+      "sourceSHA256": "f40dca3d40a1f327acbad12247a8056d08d2de0b3d8d0f20b63ec852bd7b35d5",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35190,
+        "column": 3,
+        "endLine": 35190,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The PageSize",
+      "textSHA256": "8479d436d2682b2d75cfafadcd839c3d936e13a1f21d8c92110955e8d052829d"
+    },
+    "DescribeVRoutersRequest#VRouterId": {
+      "operation": "DescribeVRouters",
+      "file": "canonical/ecs/2014-05-26/DescribeVRouters.json",
+      "sourceSHA256": "f40dca3d40a1f327acbad12247a8056d08d2de0b3d8d0f20b63ec852bd7b35d5",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35194,
+        "column": 3,
+        "endLine": 35194,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The VRouterId",
+      "textSHA256": "6bb195fb959575441994c8f18c550bf03ca18df30befc07d3bcc4adf97756694"
+    },
+    "DescribeVSwitchesRequest#isDefault": {
+      "operation": "DescribeVSwitches",
+      "file": "canonical/ecs/2014-05-26/DescribeVSwitches.json",
+      "sourceSHA256": "ef2eb3ca343bcf1d0b963ea9180d75bf29cb0b44d2f41de74f830c03bbca7f7b",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35294,
+        "column": 3,
+        "endLine": 35294,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The IsDefault",
+      "textSHA256": "ed30c236e45419ce72d7d31fad5dee06e56d9797c960177a7d23134aa81546a4"
+    },
+    "DescribeVSwitchesRequest#pageNumber": {
+      "operation": "DescribeVSwitches",
+      "file": "canonical/ecs/2014-05-26/DescribeVSwitches.json",
+      "sourceSHA256": "ef2eb3ca343bcf1d0b963ea9180d75bf29cb0b44d2f41de74f830c03bbca7f7b",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35297,
+        "column": 3,
+        "endLine": 35297,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/5/help_en",
+      "english": "The PageNumber",
+      "textSHA256": "146ca48c95c292d350e4d1b6c331e57ae6842d3b41a9ed266397fbb50ae7f178"
+    },
+    "DescribeVSwitchesRequest#pageSize": {
+      "operation": "DescribeVSwitches",
+      "file": "canonical/ecs/2014-05-26/DescribeVSwitches.json",
+      "sourceSHA256": "ef2eb3ca343bcf1d0b963ea9180d75bf29cb0b44d2f41de74f830c03bbca7f7b",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35298,
+        "column": 3,
+        "endLine": 35298,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/6/help_en",
+      "english": "The PageSize",
+      "textSHA256": "8479d436d2682b2d75cfafadcd839c3d936e13a1f21d8c92110955e8d052829d"
+    },
+    "DescribeVSwitchesRequest#regionId": {
+      "operation": "DescribeVSwitches",
+      "file": "canonical/ecs/2014-05-26/DescribeVSwitches.json",
+      "sourceSHA256": "ef2eb3ca343bcf1d0b963ea9180d75bf29cb0b44d2f41de74f830c03bbca7f7b",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35299,
+        "column": 3,
+        "endLine": 35299,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The RegionId",
+      "textSHA256": "953bdbe698eb7370ead6ceb3ae9b1f6940ab1f2827f0c7bcc2a9dcbae21e8a47"
+    },
+    "DescribeVSwitchesRequest#vpcId": {
+      "operation": "DescribeVSwitches",
+      "file": "canonical/ecs/2014-05-26/DescribeVSwitches.json",
+      "sourceSHA256": "ef2eb3ca343bcf1d0b963ea9180d75bf29cb0b44d2f41de74f830c03bbca7f7b",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35303,
+        "column": 3,
+        "endLine": 35303,
+        "endColumn": 8
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The VpcId",
+      "textSHA256": "3b1f9a991c5defade7fef2d8a00efd579e133b0546b715d8e1df749ca5d74828"
+    },
+    "DescribeVSwitchesRequest#vSwitchId": {
+      "operation": "DescribeVSwitches",
+      "file": "canonical/ecs/2014-05-26/DescribeVSwitches.json",
+      "sourceSHA256": "ef2eb3ca343bcf1d0b963ea9180d75bf29cb0b44d2f41de74f830c03bbca7f7b",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35302,
+        "column": 3,
+        "endLine": 35302,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The VSwitchId",
+      "textSHA256": "530a26f3d48715e851e5dafef9f2a12c1a3fa8dd8e989f8b36cb75caaff4a6f1"
+    },
+    "DescribeVSwitchesRequest#zoneId": {
+      "operation": "DescribeVSwitches",
+      "file": "canonical/ecs/2014-05-26/DescribeVSwitches.json",
+      "sourceSHA256": "ef2eb3ca343bcf1d0b963ea9180d75bf29cb0b44d2f41de74f830c03bbca7f7b",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 35304,
+        "column": 3,
+        "endLine": 35304,
+        "endColumn": 9
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The ZoneId",
+      "textSHA256": "1d3f90ba0955277052c948caf9462a5c81acef9d51434ac67cdd734700bab277"
+    },
+    "EnablePhysicalConnectionRequest#userCidr": {
+      "operation": "EnablePhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/EnablePhysicalConnection.json",
+      "sourceSHA256": "ea5149ca674188b0d9f641677e26ebab55eee73065dbaa480d245ba6a00d343d",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 37067,
+        "column": 3,
+        "endLine": 37067,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The UserCidr",
+      "textSHA256": "33b79adfa168d6fecd0c4f61e02b38fb865fca0a2d549ab49ff682a2e3729bda"
+    },
+    "ExportImageRequest#dryRun": {
+      "operation": "ExportImage",
+      "file": "canonical/ecs/2014-05-26/ExportImage.json",
+      "sourceSHA256": "4b9b25f36fa342d8f366787cafd2cee464273a37affb4846ccbcae35f33dd3b5",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 37234,
+        "column": 3,
+        "endLine": 37234,
+        "endColumn": 9
+      },
+      "pointer": "/parameters/6/help_en",
+      "english": "Specifies whether to perform only a dry run. A value of true indicates that the system checks the request without exporting the image. A value of false indicates that the image is exported",
+      "textSHA256": "cb5c10d0b9edb22b2b425d6d45e39f2728a488e977374bc0f513e94a37a2d5a6"
+    },
+    "ExportSnapshotRequest#roleName": {
+      "operation": "ExportSnapshot",
+      "file": "canonical/ecs/2014-05-26/ExportSnapshot.json",
+      "sourceSHA256": "19214b2a8e8b2febd2678316d7e60f3a34a3e4fd7b19aa4b3ffd9d21322606f8",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 37435,
+        "column": 3,
+        "endLine": 37435,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The name of the RAM role used to export the image",
+      "textSHA256": "0e8abf5c208ee751e7e14030b31223d8bf3548b763ec3948fc0eb88a446f7701"
+    },
+    "ExportSnapshotResponseBody#requestId": {
+      "operation": "ExportSnapshot",
+      "file": "canonical/ecs/2014-05-26/ExportSnapshot.json",
+      "sourceSHA256": "19214b2a8e8b2febd2678316d7e60f3a34a3e4fd7b19aa4b3ffd9d21322606f8",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 37440,
+        "column": 3,
+        "endLine": 37440,
+        "endColumn": 12
+      },
+      "pointer": "/responses/200/schema/properties/RequestId/description_en",
+      "english": "The request ID",
+      "textSHA256": "ad582e6d6a05c3d9cc542c6377955cc5ba1d3285d515185f3874513b911b47fd"
+    },
+    "ExportSnapshotResponseBody#taskId": {
+      "operation": "ExportSnapshot",
+      "file": "canonical/ecs/2014-05-26/ExportSnapshot.json",
+      "sourceSHA256": "19214b2a8e8b2febd2678316d7e60f3a34a3e4fd7b19aa4b3ffd9d21322606f8",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 37441,
+        "column": 3,
+        "endLine": 37441,
+        "endColumn": 9
+      },
+      "pointer": "/responses/200/schema/properties/TaskId/description_en",
+      "english": "The ID of the image export task",
+      "textSHA256": "83aa974e78ea07f5d7159ce8a032ecf2fe0d9d97611c597ab81f088420e9d2ce"
+    },
+    "ModifyEipAddressAttributeRequest#regionId": {
+      "operation": "ModifyEipAddressAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyEipAddressAttribute.json",
+      "sourceSHA256": "720a80590427f122ddbf48af74116bff20faf52647dd4ffe64d607437eb146f0",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 41977,
+        "column": 3,
+        "endLine": 41977,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The RegionId",
+      "textSHA256": "953bdbe698eb7370ead6ceb3ae9b1f6940ab1f2827f0c7bcc2a9dcbae21e8a47"
+    },
+    "ModifyForwardEntryRequest#externalIp": {
+      "operation": "ModifyForwardEntry",
+      "file": "canonical/ecs/2014-05-26/ModifyForwardEntry.json",
+      "sourceSHA256": "73148a734e4d24e04107a948614579557e145534e710e8206e83159f1e3cda06",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 42292,
+        "column": 3,
+        "endLine": 42292,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The ExternalIp",
+      "textSHA256": "eba0d2e6786bb29c1ede8bd42b92b10f232dd4718758b74aa9e594aaac103842"
+    },
+    "ModifyForwardEntryRequest#externalPort": {
+      "operation": "ModifyForwardEntry",
+      "file": "canonical/ecs/2014-05-26/ModifyForwardEntry.json",
+      "sourceSHA256": "73148a734e4d24e04107a948614579557e145534e710e8206e83159f1e3cda06",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 42293,
+        "column": 3,
+        "endLine": 42293,
+        "endColumn": 15
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The ExternalPort",
+      "textSHA256": "1472b59dcf2509f4b9b99178a3bb44257994f718e189ba4307868e890a163dc3"
+    },
+    "ModifyForwardEntryRequest#internalIp": {
+      "operation": "ModifyForwardEntry",
+      "file": "canonical/ecs/2014-05-26/ModifyForwardEntry.json",
+      "sourceSHA256": "73148a734e4d24e04107a948614579557e145534e710e8206e83159f1e3cda06",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 42296,
+        "column": 3,
+        "endLine": 42296,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The InternalIp",
+      "textSHA256": "51b5482a046e12a5390fff7720f714f67a2cdd2f41a7cb411064ab04131ac2fa"
+    },
+    "ModifyForwardEntryRequest#internalPort": {
+      "operation": "ModifyForwardEntry",
+      "file": "canonical/ecs/2014-05-26/ModifyForwardEntry.json",
+      "sourceSHA256": "73148a734e4d24e04107a948614579557e145534e710e8206e83159f1e3cda06",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 42297,
+        "column": 3,
+        "endLine": 42297,
+        "endColumn": 15
+      },
+      "pointer": "/parameters/5/help_en",
+      "english": "The InternalPort",
+      "textSHA256": "409eeba0fb0eb9ef0412e374fa9533e4d36c92c547133ecf43e08858de7b6c8f"
+    },
+    "ModifyForwardEntryRequest#ipProtocol": {
+      "operation": "ModifyForwardEntry",
+      "file": "canonical/ecs/2014-05-26/ModifyForwardEntry.json",
+      "sourceSHA256": "73148a734e4d24e04107a948614579557e145534e710e8206e83159f1e3cda06",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 42298,
+        "column": 3,
+        "endLine": 42298,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/6/help_en",
+      "english": "The IpProtocol",
+      "textSHA256": "1100d993b2b601dc65b031128067fec93e32e9a2d7f93d44026af39fd931ce41"
+    },
+    "ModifyHaVipAttributeRequest#clientToken": {
+      "operation": "ModifyHaVipAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyHaVipAttribute.json",
+      "sourceSHA256": "f16375e408c972e8ab1458a0d1c1ae5e06723abf8e88b755ff70ee832b827b57",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 42397,
+        "column": 3,
+        "endLine": 42397,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "ModifyHaVipAttributeRequest#description": {
+      "operation": "ModifyHaVipAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyHaVipAttribute.json",
+      "sourceSHA256": "f16375e408c972e8ab1458a0d1c1ae5e06723abf8e88b755ff70ee832b827b57",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 42398,
+        "column": 3,
+        "endLine": 42398,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The Description",
+      "textSHA256": "3512804440a731fe0278a60ce0e4303611316784621951ee95967e028dfef92e"
+    },
+    "ModifyImageAttributeRequest#dryRun": {
+      "operation": "ModifyImageAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyImageAttribute.json",
+      "sourceSHA256": "e174aceff8c4f8cdc76e9acf1410015bc24f197290d4c116fb562509d93e168a",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 42598,
+        "column": 3,
+        "endLine": 42598,
+        "endColumn": 9
+      },
+      "pointer": "/parameters/9/help_en",
+      "english": "The DryRun",
+      "textSHA256": "de194d566fb54775a8e4f6db03c01eaef3d37229e4ce92543cbd891b3fbbeff1"
+    },
+    "ModifyImageShareGroupPermissionResponseBody#requestId": {
+      "operation": "ModifyImageShareGroupPermission",
+      "file": "canonical/ecs/2014-05-26/ModifyImageShareGroupPermission.json",
+      "sourceSHA256": "e660a17b41456f76b6b0793eee5e308682b23828c77c66e1a0c0495bc8dbddda",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 42740,
+        "column": 3,
+        "endLine": 42740,
+        "endColumn": 12
+      },
+      "pointer": "/responses/200/schema/properties/RequestId/description_en",
+      "english": "The request ID",
+      "textSHA256": "ad582e6d6a05c3d9cc542c6377955cc5ba1d3285d515185f3874513b911b47fd"
+    },
+    "ModifyImageSharePermissionRequest#dryRun": {
+      "operation": "ModifyImageSharePermission",
+      "file": "canonical/ecs/2014-05-26/ModifyImageSharePermission.json",
+      "sourceSHA256": "98651f0890ff39f60d0d8b4757899510f1464859c1bcdfd86e5ec49e2029f37a",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 42819,
+        "column": 3,
+        "endLine": 42819,
+        "endColumn": 9
+      },
+      "pointer": "/parameters/6/help_en",
+      "english": "The DryRun",
+      "textSHA256": "de194d566fb54775a8e4f6db03c01eaef3d37229e4ce92543cbd891b3fbbeff1"
+    },
+    "ModifyInstanceAttributeRequest#cpuOptions": {
+      "operation": "ModifyInstanceAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyInstanceAttribute.json",
+      "sourceSHA256": "8998db9143fc4c47ec74840296ad2658f6804743085864b3ffd685d478d97046",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 43061,
+        "column": 3,
+        "endLine": 43061,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/17/help_en",
+      "english": "The CPU options",
+      "textSHA256": "0422f9d8887d695cd5be57bf6386742c92745133ebd24492f078a964ef4355a8"
+    },
+    "ModifyNetworkInterfaceAttributeRequest.enhancedNetwork#enableExpress": {
+      "operation": "ModifyNetworkInterfaceAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyNetworkInterfaceAttribute.json",
+      "sourceSHA256": "e0a60a7a4bc6a5c562dc4e02a59bef941d473d3881b30e1454d4c532fba2867e",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 45554,
+        "column": 5,
+        "endLine": 45554,
+        "endColumn": 18
+      },
+      "pointer": "/parameters/11/fields/0/help_en",
+      "english": "The EnableExpress",
+      "textSHA256": "51d73117700804f0ebc33a8b8a0e7ac57f9f89f54fb680f3b0d616e5f7d5f4bd"
+    },
+    "ModifyNetworkInterfaceAttributeRequest.enhancedNetwork#virtualFunctionQuantity": {
+      "operation": "ModifyNetworkInterfaceAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyNetworkInterfaceAttribute.json",
+      "sourceSHA256": "e0a60a7a4bc6a5c562dc4e02a59bef941d473d3881b30e1454d4c532fba2867e",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 45557,
+        "column": 5,
+        "endLine": 45557,
+        "endColumn": 28
+      },
+      "pointer": "/parameters/11/fields/3/help_en",
+      "english": "The VirtualFunctionQuantity",
+      "textSHA256": "7c81b362d1866ccdaeabd29eb74db204b152494bd844a7a2a88a87a0569bd9e8"
+    },
+    "ModifyNetworkInterfaceAttributeRequest.enhancedNetwork#virtualFunctionTotalQueueNumber": {
+      "operation": "ModifyNetworkInterfaceAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyNetworkInterfaceAttribute.json",
+      "sourceSHA256": "e0a60a7a4bc6a5c562dc4e02a59bef941d473d3881b30e1454d4c532fba2867e",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 45558,
+        "column": 5,
+        "endLine": 45558,
+        "endColumn": 36
+      },
+      "pointer": "/parameters/11/fields/4/help_en",
+      "english": "The VirtualFunctionTotalQueueNumber",
+      "textSHA256": "f563b25bc5ae5ed50517c31b5af09cb502de0ac2deade4a30e7330264cdfef95"
+    },
+    "ModifyNetworkInterfaceAttributeRequest#enablePrimaryIPv6": {
+      "operation": "ModifyNetworkInterfaceAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyNetworkInterfaceAttribute.json",
+      "sourceSHA256": "e0a60a7a4bc6a5c562dc4e02a59bef941d473d3881b30e1454d4c532fba2867e",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 45552,
+        "column": 3,
+        "endLine": 45552,
+        "endColumn": 20
+      },
+      "pointer": "/parameters/13/help_en",
+      "english": "The EnablePrimaryIPv6",
+      "textSHA256": "7ac1d577ec93c8cba8a9b94980c57ffa2b8acc17962a81b07dd0b6e3f8287c21"
+    },
+    "ModifyPhysicalConnectionAttributeRequest#bandwidth": {
+      "operation": "ModifyPhysicalConnectionAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json",
+      "sourceSHA256": "0d43f1fb06c93eb64d000557895992d5b518665baec20e77a93d2859e997f5fc",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 45773,
+        "column": 3,
+        "endLine": 45773,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The bandwidth",
+      "textSHA256": "b6fa040b9c5b5a74942aed991f9e1106010459f0e78db0b3c96341f96fb34c65"
+    },
+    "ModifyPhysicalConnectionAttributeRequest#circuitCode": {
+      "operation": "ModifyPhysicalConnectionAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json",
+      "sourceSHA256": "0d43f1fb06c93eb64d000557895992d5b518665baec20e77a93d2859e997f5fc",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 45758,
+        "column": 3,
+        "endLine": 45758,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/11/help_en",
+      "english": "The CircuitCode",
+      "textSHA256": "b4b95ef2ee5b8d04d253bdf53a82c82869d5a872d0f841b3d3d0149b4e3556f6"
+    },
+    "ModifyPhysicalConnectionAttributeRequest#clientToken": {
+      "operation": "ModifyPhysicalConnectionAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json",
+      "sourceSHA256": "0d43f1fb06c93eb64d000557895992d5b518665baec20e77a93d2859e997f5fc",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 45759,
+        "column": 3,
+        "endLine": 45759,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/9/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "ModifyPhysicalConnectionAttributeRequest#description": {
+      "operation": "ModifyPhysicalConnectionAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json",
+      "sourceSHA256": "0d43f1fb06c93eb64d000557895992d5b518665baec20e77a93d2859e997f5fc",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 45760,
+        "column": 3,
+        "endLine": 45760,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/7/help_en",
+      "english": "The Description",
+      "textSHA256": "3512804440a731fe0278a60ce0e4303611316784621951ee95967e028dfef92e"
+    },
+    "ModifyPhysicalConnectionAttributeRequest#lineOperator": {
+      "operation": "ModifyPhysicalConnectionAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json",
+      "sourceSHA256": "0d43f1fb06c93eb64d000557895992d5b518665baec20e77a93d2859e997f5fc",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 45761,
+        "column": 3,
+        "endLine": 45761,
+        "endColumn": 15
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The LineOperator",
+      "textSHA256": "f8b48ee45906ff6dca6f27f952d2cd41a2ef5710bb828b02500eff99790cd9e3"
+    },
+    "ModifyPhysicalConnectionAttributeRequest#name": {
+      "operation": "ModifyPhysicalConnectionAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json",
+      "sourceSHA256": "0d43f1fb06c93eb64d000557895992d5b518665baec20e77a93d2859e997f5fc",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 45762,
+        "column": 3,
+        "endLine": 45762,
+        "endColumn": 7
+      },
+      "pointer": "/parameters/8/help_en",
+      "english": "The Name",
+      "textSHA256": "b27a50c50e09ab62f51673c26aec5adfc56ea95844565522b31ba09001083e58"
+    },
+    "ModifyPhysicalConnectionAttributeRequest#peerLocation": {
+      "operation": "ModifyPhysicalConnectionAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json",
+      "sourceSHA256": "0d43f1fb06c93eb64d000557895992d5b518665baec20e77a93d2859e997f5fc",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 45765,
+        "column": 3,
+        "endLine": 45765,
+        "endColumn": 15
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The PeerLocation",
+      "textSHA256": "4e460871b773c60e65edce6912ad4b35a1f15a7678fb86952ab08a60cbe8a336"
+    },
+    "ModifyPhysicalConnectionAttributeRequest#portType": {
+      "operation": "ModifyPhysicalConnectionAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json",
+      "sourceSHA256": "0d43f1fb06c93eb64d000557895992d5b518665baec20e77a93d2859e997f5fc",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 45767,
+        "column": 3,
+        "endLine": 45767,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/5/help_en",
+      "english": "The PortType",
+      "textSHA256": "9d0c029dd98fce8893711f41c38b7a0addbfb159d66499334833cc3948a0d6ad"
+    },
+    "ModifyPhysicalConnectionAttributeRequest#redundantPhysicalConnectionId": {
+      "operation": "ModifyPhysicalConnectionAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json",
+      "sourceSHA256": "0d43f1fb06c93eb64d000557895992d5b518665baec20e77a93d2859e997f5fc",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 45768,
+        "column": 3,
+        "endLine": 45768,
+        "endColumn": 32
+      },
+      "pointer": "/parameters/6/help_en",
+      "english": "The RedundantPhysicalConnectionId",
+      "textSHA256": "9f9055a67ff66f33e49040089a37d4eadc472f91838d4d85aca5abc44b1dbd9f"
+    },
+    "ModifyPhysicalConnectionAttributeRequest#userCidr": {
+      "operation": "ModifyPhysicalConnectionAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json",
+      "sourceSHA256": "0d43f1fb06c93eb64d000557895992d5b518665baec20e77a93d2859e997f5fc",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 45772,
+        "column": 3,
+        "endLine": 45772,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/10/help_en",
+      "english": "The UserCidr",
+      "textSHA256": "33b79adfa168d6fecd0c4f61e02b38fb865fca0a2d549ab49ff682a2e3729bda"
+    },
+    "ModifyRouterInterfaceAttributeRequest#description": {
+      "operation": "ModifyRouterInterfaceAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyRouterInterfaceAttribute.json",
+      "sourceSHA256": "2f5b5be48b5d0decc1bfdc8de8deb3fb20ab3063f3d7b38db794d9bf8ec9ba72",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 46891,
+        "column": 3,
+        "endLine": 46891,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The Description",
+      "textSHA256": "3512804440a731fe0278a60ce0e4303611316784621951ee95967e028dfef92e"
+    },
+    "ModifyRouterInterfaceAttributeRequest#healthCheckSourceIp": {
+      "operation": "ModifyRouterInterfaceAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyRouterInterfaceAttribute.json",
+      "sourceSHA256": "2f5b5be48b5d0decc1bfdc8de8deb3fb20ab3063f3d7b38db794d9bf8ec9ba72",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 46892,
+        "column": 3,
+        "endLine": 46892,
+        "endColumn": 22
+      },
+      "pointer": "/parameters/8/help_en",
+      "english": "The HealthCheckSourceIp",
+      "textSHA256": "1a8054801393d197df74e031d7e542e7703312e6b13789b81ab1a1d7865e6141"
+    },
+    "ModifyRouterInterfaceAttributeRequest#healthCheckTargetIp": {
+      "operation": "ModifyRouterInterfaceAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyRouterInterfaceAttribute.json",
+      "sourceSHA256": "2f5b5be48b5d0decc1bfdc8de8deb3fb20ab3063f3d7b38db794d9bf8ec9ba72",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 46893,
+        "column": 3,
+        "endLine": 46893,
+        "endColumn": 22
+      },
+      "pointer": "/parameters/9/help_en",
+      "english": "The HealthCheckTargetIp",
+      "textSHA256": "43d2538c9268342c855a301d759280499cde8e08a4594ff69a102e068957d258"
+    },
+    "ModifyRouterInterfaceAttributeRequest#name": {
+      "operation": "ModifyRouterInterfaceAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyRouterInterfaceAttribute.json",
+      "sourceSHA256": "2f5b5be48b5d0decc1bfdc8de8deb3fb20ab3063f3d7b38db794d9bf8ec9ba72",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 46894,
+        "column": 3,
+        "endLine": 46894,
+        "endColumn": 7
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The Name",
+      "textSHA256": "b27a50c50e09ab62f51673c26aec5adfc56ea95844565522b31ba09001083e58"
+    },
+    "ModifyRouterInterfaceAttributeRequest#oppositeInterfaceId": {
+      "operation": "ModifyRouterInterfaceAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyRouterInterfaceAttribute.json",
+      "sourceSHA256": "2f5b5be48b5d0decc1bfdc8de8deb3fb20ab3063f3d7b38db794d9bf8ec9ba72",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 46895,
+        "column": 3,
+        "endLine": 46895,
+        "endColumn": 22
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The OppositeInterfaceId",
+      "textSHA256": "7944dbfe1b879ca9bc72f651799b64e2613e9b17e876859a9db6f1a69f18cb76"
+    },
+    "ModifyRouterInterfaceAttributeRequest#oppositeInterfaceOwnerId": {
+      "operation": "ModifyRouterInterfaceAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyRouterInterfaceAttribute.json",
+      "sourceSHA256": "2f5b5be48b5d0decc1bfdc8de8deb3fb20ab3063f3d7b38db794d9bf8ec9ba72",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 46896,
+        "column": 3,
+        "endLine": 46896,
+        "endColumn": 27
+      },
+      "pointer": "/parameters/7/help_en",
+      "english": "The OppositeInterfaceOwnerId",
+      "textSHA256": "3aeafddec7c5717b67cadaf880f792ce3d4c78f6d10abbc4546158ff0e39521f"
+    },
+    "ModifyRouterInterfaceAttributeRequest#oppositeRouterId": {
+      "operation": "ModifyRouterInterfaceAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyRouterInterfaceAttribute.json",
+      "sourceSHA256": "2f5b5be48b5d0decc1bfdc8de8deb3fb20ab3063f3d7b38db794d9bf8ec9ba72",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 46897,
+        "column": 3,
+        "endLine": 46897,
+        "endColumn": 19
+      },
+      "pointer": "/parameters/5/help_en",
+      "english": "The OppositeRouterId",
+      "textSHA256": "5c24268439d62de0d89f9f1114e88ea70a8c86a291a38681615830a659424cb9"
+    },
+    "ModifyRouterInterfaceAttributeRequest#oppositeRouterType": {
+      "operation": "ModifyRouterInterfaceAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyRouterInterfaceAttribute.json",
+      "sourceSHA256": "2f5b5be48b5d0decc1bfdc8de8deb3fb20ab3063f3d7b38db794d9bf8ec9ba72",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 46898,
+        "column": 3,
+        "endLine": 46898,
+        "endColumn": 21
+      },
+      "pointer": "/parameters/6/help_en",
+      "english": "The OppositeRouterType",
+      "textSHA256": "4cf664dfe9c1ffd1fcea1c8362d4460834245a30081f880443feab14e124adba"
+    },
+    "ModifyRouterInterfaceSpecRequest#clientToken": {
+      "operation": "ModifyRouterInterfaceSpec",
+      "file": "canonical/ecs/2014-05-26/ModifyRouterInterfaceSpec.json",
+      "sourceSHA256": "78859faadba6637bb56436f1e295c3cdbe5a354554260654c260dafee65f4163",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 47000,
+        "column": 3,
+        "endLine": 47000,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "ModifyRouterInterfaceSpecRequest#userCidr": {
+      "operation": "ModifyRouterInterfaceSpec",
+      "file": "canonical/ecs/2014-05-26/ModifyRouterInterfaceSpec.json",
+      "sourceSHA256": "78859faadba6637bb56436f1e295c3cdbe5a354554260654c260dafee65f4163",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 47008,
+        "column": 3,
+        "endLine": 47008,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The UserCidr",
+      "textSHA256": "33b79adfa168d6fecd0c4f61e02b38fb865fca0a2d549ab49ff682a2e3729bda"
+    },
+    "ModifyUserBusinessBehaviorRequest#regionId": {
+      "operation": "ModifyUserBusinessBehavior",
+      "file": "canonical/ecs/2014-05-26/ModifyUserBusinessBehavior.json",
+      "sourceSHA256": "516ac1819fed03fdf56c5d024c68a03e7ce8895c0f05f3271691315bf2d6cb3e",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48281,
+        "column": 3,
+        "endLine": 48281,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The region ID. You can call https://help.aliyun.com/document_detail/25609.html to query available regions",
+      "textSHA256": "71e414946a7068f39b6f9744ee591f300acec3b40ff4b6b7377bfcfc382b0dcd"
+    },
+    "ModifyUserBusinessBehaviorResponseBody#requestId": {
+      "operation": "ModifyUserBusinessBehavior",
+      "file": "canonical/ecs/2014-05-26/ModifyUserBusinessBehavior.json",
+      "sourceSHA256": "516ac1819fed03fdf56c5d024c68a03e7ce8895c0f05f3271691315bf2d6cb3e",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48289,
+        "column": 3,
+        "endLine": 48289,
+        "endColumn": 12
+      },
+      "pointer": "/responses/200/schema/properties/RequestId/description_en",
+      "english": "The request ID",
+      "textSHA256": "ad582e6d6a05c3d9cc542c6377955cc5ba1d3285d515185f3874513b911b47fd"
+    },
+    "ModifyVirtualBorderRouterAttributeRequest#circuitCode": {
+      "operation": "ModifyVirtualBorderRouterAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json",
+      "sourceSHA256": "c0858e9852edb16f8330b14cef0fc38165d75a5c847f6a4ee74f6f531832b940",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48542,
+        "column": 3,
+        "endLine": 48542,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The CircuitCode",
+      "textSHA256": "b4b95ef2ee5b8d04d253bdf53a82c82869d5a872d0f841b3d3d0149b4e3556f6"
+    },
+    "ModifyVirtualBorderRouterAttributeRequest#clientToken": {
+      "operation": "ModifyVirtualBorderRouterAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json",
+      "sourceSHA256": "c0858e9852edb16f8330b14cef0fc38165d75a5c847f6a4ee74f6f531832b940",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48543,
+        "column": 3,
+        "endLine": 48543,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/9/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "ModifyVirtualBorderRouterAttributeRequest#description": {
+      "operation": "ModifyVirtualBorderRouterAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json",
+      "sourceSHA256": "c0858e9852edb16f8330b14cef0fc38165d75a5c847f6a4ee74f6f531832b940",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48544,
+        "column": 3,
+        "endLine": 48544,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/7/help_en",
+      "english": "The Description",
+      "textSHA256": "3512804440a731fe0278a60ce0e4303611316784621951ee95967e028dfef92e"
+    },
+    "ModifyVirtualBorderRouterAttributeRequest#localGatewayIp": {
+      "operation": "ModifyVirtualBorderRouterAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json",
+      "sourceSHA256": "c0858e9852edb16f8330b14cef0fc38165d75a5c847f6a4ee74f6f531832b940",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48545,
+        "column": 3,
+        "endLine": 48545,
+        "endColumn": 17
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The LocalGatewayIp",
+      "textSHA256": "3b793ef12b9fbcb9861199f0828c9e07d3e6dbb161f89d1ebf384c6ea26a0427"
+    },
+    "ModifyVirtualBorderRouterAttributeRequest#name": {
+      "operation": "ModifyVirtualBorderRouterAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json",
+      "sourceSHA256": "c0858e9852edb16f8330b14cef0fc38165d75a5c847f6a4ee74f6f531832b940",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48546,
+        "column": 3,
+        "endLine": 48546,
+        "endColumn": 7
+      },
+      "pointer": "/parameters/8/help_en",
+      "english": "The Name",
+      "textSHA256": "b27a50c50e09ab62f51673c26aec5adfc56ea95844565522b31ba09001083e58"
+    },
+    "ModifyVirtualBorderRouterAttributeRequest#peerGatewayIp": {
+      "operation": "ModifyVirtualBorderRouterAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json",
+      "sourceSHA256": "c0858e9852edb16f8330b14cef0fc38165d75a5c847f6a4ee74f6f531832b940",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48549,
+        "column": 3,
+        "endLine": 48549,
+        "endColumn": 16
+      },
+      "pointer": "/parameters/5/help_en",
+      "english": "The PeerGatewayIp",
+      "textSHA256": "f2e3b9cefb5d4ffc523c9b42746befe7d3a8d4f7ac72b30198b4bf9d94ba70d3"
+    },
+    "ModifyVirtualBorderRouterAttributeRequest#peeringSubnetMask": {
+      "operation": "ModifyVirtualBorderRouterAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json",
+      "sourceSHA256": "c0858e9852edb16f8330b14cef0fc38165d75a5c847f6a4ee74f6f531832b940",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48550,
+        "column": 3,
+        "endLine": 48550,
+        "endColumn": 20
+      },
+      "pointer": "/parameters/6/help_en",
+      "english": "The PeeringSubnetMask",
+      "textSHA256": "797d2fdab5c090f5f6094202e786faa9a178aa81ef1be4b71f6d8117635ddf43"
+    },
+    "ModifyVirtualBorderRouterAttributeRequest#userCidr": {
+      "operation": "ModifyVirtualBorderRouterAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json",
+      "sourceSHA256": "c0858e9852edb16f8330b14cef0fc38165d75a5c847f6a4ee74f6f531832b940",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48554,
+        "column": 3,
+        "endLine": 48554,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/10/help_en",
+      "english": "The UserCidr",
+      "textSHA256": "33b79adfa168d6fecd0c4f61e02b38fb865fca0a2d549ab49ff682a2e3729bda"
+    },
+    "ModifyVirtualBorderRouterAttributeRequest#vlanId": {
+      "operation": "ModifyVirtualBorderRouterAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json",
+      "sourceSHA256": "c0858e9852edb16f8330b14cef0fc38165d75a5c847f6a4ee74f6f531832b940",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48556,
+        "column": 3,
+        "endLine": 48556,
+        "endColumn": 9
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The VlanId",
+      "textSHA256": "420d2c5bc93b5c5c147a127af46d8edeab8b1522dc10e365e1a03cfcd08f90e4"
+    },
+    "ModifyVpcAttributeRequest#cidrBlock": {
+      "operation": "ModifyVpcAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVpcAttribute.json",
+      "sourceSHA256": "5fa4de8795118b9afc77fafc04b7e5ec5a660949b4b950e46ef10b4e8017a7f7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48659,
+        "column": 3,
+        "endLine": 48659,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The CidrBlock",
+      "textSHA256": "ba3d6f8e38f81c438ca622c43e6d93081c20433a9631106d74a0aee5f077b81c"
+    },
+    "ModifyVpcAttributeRequest#description": {
+      "operation": "ModifyVpcAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVpcAttribute.json",
+      "sourceSHA256": "5fa4de8795118b9afc77fafc04b7e5ec5a660949b4b950e46ef10b4e8017a7f7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48660,
+        "column": 3,
+        "endLine": 48660,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The Description",
+      "textSHA256": "3512804440a731fe0278a60ce0e4303611316784621951ee95967e028dfef92e"
+    },
+    "ModifyVpcAttributeRequest#regionId": {
+      "operation": "ModifyVpcAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVpcAttribute.json",
+      "sourceSHA256": "5fa4de8795118b9afc77fafc04b7e5ec5a660949b4b950e46ef10b4e8017a7f7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48663,
+        "column": 3,
+        "endLine": 48663,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The RegionId",
+      "textSHA256": "953bdbe698eb7370ead6ceb3ae9b1f6940ab1f2827f0c7bcc2a9dcbae21e8a47"
+    },
+    "ModifyVpcAttributeRequest#userCidr": {
+      "operation": "ModifyVpcAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVpcAttribute.json",
+      "sourceSHA256": "5fa4de8795118b9afc77fafc04b7e5ec5a660949b4b950e46ef10b4e8017a7f7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48666,
+        "column": 3,
+        "endLine": 48666,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/5/help_en",
+      "english": "The UserCidr",
+      "textSHA256": "33b79adfa168d6fecd0c4f61e02b38fb865fca0a2d549ab49ff682a2e3729bda"
+    },
+    "ModifyVpcAttributeRequest#vpcName": {
+      "operation": "ModifyVpcAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVpcAttribute.json",
+      "sourceSHA256": "5fa4de8795118b9afc77fafc04b7e5ec5a660949b4b950e46ef10b4e8017a7f7",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48668,
+        "column": 3,
+        "endLine": 48668,
+        "endColumn": 10
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The VpcName",
+      "textSHA256": "abcb5fe50529e5614dfbd78ff69e5c7afabd8fd0f28d8a837c1529de1b68dad6"
+    },
+    "ModifyVRouterAttributeRequest#description": {
+      "operation": "ModifyVRouterAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVRouterAttribute.json",
+      "sourceSHA256": "108cb347824a1d691c9c8b168b6ba7738e3ae51babdf6ae55dff801b9e0a30e5",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48364,
+        "column": 3,
+        "endLine": 48364,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The Description",
+      "textSHA256": "3512804440a731fe0278a60ce0e4303611316784621951ee95967e028dfef92e"
+    },
+    "ModifyVRouterAttributeRequest#regionId": {
+      "operation": "ModifyVRouterAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVRouterAttribute.json",
+      "sourceSHA256": "108cb347824a1d691c9c8b168b6ba7738e3ae51babdf6ae55dff801b9e0a30e5",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48367,
+        "column": 3,
+        "endLine": 48367,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The RegionId",
+      "textSHA256": "953bdbe698eb7370ead6ceb3ae9b1f6940ab1f2827f0c7bcc2a9dcbae21e8a47"
+    },
+    "ModifyVRouterAttributeRequest#VRouterName": {
+      "operation": "ModifyVRouterAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVRouterAttribute.json",
+      "sourceSHA256": "108cb347824a1d691c9c8b168b6ba7738e3ae51babdf6ae55dff801b9e0a30e5",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48371,
+        "column": 3,
+        "endLine": 48371,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The VRouterName",
+      "textSHA256": "ea9be5393ba4272f6bf680e222756e08c68ba6906f4a0e333a3b51e05ba4e140"
+    },
+    "ModifyVSwitchAttributeRequest#description": {
+      "operation": "ModifyVSwitchAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVSwitchAttribute.json",
+      "sourceSHA256": "de259de7477c220e4d0225d298161202ff0d5078fa2890258593512b37ec5563",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48453,
+        "column": 3,
+        "endLine": 48453,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The Description",
+      "textSHA256": "3512804440a731fe0278a60ce0e4303611316784621951ee95967e028dfef92e"
+    },
+    "ModifyVSwitchAttributeRequest#regionId": {
+      "operation": "ModifyVSwitchAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVSwitchAttribute.json",
+      "sourceSHA256": "de259de7477c220e4d0225d298161202ff0d5078fa2890258593512b37ec5563",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48456,
+        "column": 3,
+        "endLine": 48456,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The RegionId",
+      "textSHA256": "953bdbe698eb7370ead6ceb3ae9b1f6940ab1f2827f0c7bcc2a9dcbae21e8a47"
+    },
+    "ModifyVSwitchAttributeRequest#vSwitchName": {
+      "operation": "ModifyVSwitchAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyVSwitchAttribute.json",
+      "sourceSHA256": "de259de7477c220e4d0225d298161202ff0d5078fa2890258593512b37ec5563",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 48460,
+        "column": 3,
+        "endLine": 48460,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The VSwitchName",
+      "textSHA256": "9f65e3c0c497849e0bc333b222c2f10746a5958126bebb667a1e62ba70144aea"
+    },
+    "RecoverVirtualBorderRouterRequest#clientToken": {
+      "operation": "RecoverVirtualBorderRouter",
+      "file": "canonical/ecs/2014-05-26/RecoverVirtualBorderRouter.json",
+      "sourceSHA256": "ca462760dc26665e4b43e7c98d9319865b8daeda2f772bd41eaf2559a24c6601",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 49694,
+        "column": 3,
+        "endLine": 49694,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "RecoverVirtualBorderRouterRequest#userCidr": {
+      "operation": "RecoverVirtualBorderRouter",
+      "file": "canonical/ecs/2014-05-26/RecoverVirtualBorderRouter.json",
+      "sourceSHA256": "ca462760dc26665e4b43e7c98d9319865b8daeda2f772bd41eaf2559a24c6601",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 49700,
+        "column": 3,
+        "endLine": 49700,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The UserCidr",
+      "textSHA256": "33b79adfa168d6fecd0c4f61e02b38fb865fca0a2d549ab49ff682a2e3729bda"
+    },
+    "ReleaseEipAddressRequest#regionId": {
+      "operation": "ReleaseEipAddress",
+      "file": "canonical/ecs/2014-05-26/ReleaseEipAddress.json",
+      "sourceSHA256": "bfcd805141304ebd51a0a6bced117024c2dfe20d643e08e7b01ab8c69270f732",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 50190,
+        "column": 3,
+        "endLine": 50190,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The RegionId",
+      "textSHA256": "953bdbe698eb7370ead6ceb3ae9b1f6940ab1f2827f0c7bcc2a9dcbae21e8a47"
+    },
+    "RemoveBandwidthPackageIpsRequest#clientToken": {
+      "operation": "RemoveBandwidthPackageIps",
+      "file": "canonical/ecs/2014-05-26/RemoveBandwidthPackageIps.json",
+      "sourceSHA256": "b259f1851334fd358e9f6878178d76eca37c49a538f6daff93a6fb1619b9946f",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 50345,
+        "column": 3,
+        "endLine": 50345,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "TerminatePhysicalConnectionRequest#clientToken": {
+      "operation": "TerminatePhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/TerminatePhysicalConnection.json",
+      "sourceSHA256": "6f434132480996a4c0a5fe28a0c02ef1c3ceb630536b2a0832cc1fe2d6d88625",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 55808,
+        "column": 3,
+        "endLine": 55808,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "TerminatePhysicalConnectionRequest#userCidr": {
+      "operation": "TerminatePhysicalConnection",
+      "file": "canonical/ecs/2014-05-26/TerminatePhysicalConnection.json",
+      "sourceSHA256": "6f434132480996a4c0a5fe28a0c02ef1c3ceb630536b2a0832cc1fe2d6d88625",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 55815,
+        "column": 3,
+        "endLine": 55815,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The UserCidr",
+      "textSHA256": "33b79adfa168d6fecd0c4f61e02b38fb865fca0a2d549ab49ff682a2e3729bda"
+    },
+    "TerminateVirtualBorderRouterRequest#clientToken": {
+      "operation": "TerminateVirtualBorderRouter",
+      "file": "canonical/ecs/2014-05-26/TerminateVirtualBorderRouter.json",
+      "sourceSHA256": "4dd5e64da69a76cae3fa215180236b45827db88a66607b67e7f0c0e0a8f91f19",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 55897,
+        "column": 3,
+        "endLine": 55897,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/2/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "TerminateVirtualBorderRouterRequest#userCidr": {
+      "operation": "TerminateVirtualBorderRouter",
+      "file": "canonical/ecs/2014-05-26/TerminateVirtualBorderRouter.json",
+      "sourceSHA256": "4dd5e64da69a76cae3fa215180236b45827db88a66607b67e7f0c0e0a8f91f19",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 55903,
+        "column": 3,
+        "endLine": 55903,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The UserCidr",
+      "textSHA256": "33b79adfa168d6fecd0c4f61e02b38fb865fca0a2d549ab49ff682a2e3729bda"
+    },
+    "UnassociateEipAddressRequest#instanceType": {
+      "operation": "UnassociateEipAddress",
+      "file": "canonical/ecs/2014-05-26/UnassociateEipAddress.json",
+      "sourceSHA256": "8637f9a14795965f0a31d39a9451b85852b11bd490977fd10c515046410ef86f",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 56186,
+        "column": 3,
+        "endLine": 56186,
+        "endColumn": 15
+      },
+      "pointer": "/parameters/3/help_en",
+      "english": "The InstanceType",
+      "textSHA256": "c1545f0a921696eff4d3066de9c217bc3050e099e700081f5e1695e496988a8a"
+    },
+    "UnassociateEipAddressRequest#regionId": {
+      "operation": "UnassociateEipAddress",
+      "file": "canonical/ecs/2014-05-26/UnassociateEipAddress.json",
+      "sourceSHA256": "8637f9a14795965f0a31d39a9451b85852b11bd490977fd10c515046410ef86f",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 56189,
+        "column": 3,
+        "endLine": 56189,
+        "endColumn": 11
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The RegionId",
+      "textSHA256": "953bdbe698eb7370ead6ceb3ae9b1f6940ab1f2827f0c7bcc2a9dcbae21e8a47"
+    },
+    "UnassociateHaVipRequest#clientToken": {
+      "operation": "UnassociateHaVip",
+      "file": "canonical/ecs/2014-05-26/UnassociateHaVip.json",
+      "sourceSHA256": "699bafac71d6aac2c3558bd39b4e1c6621b7698bc57bc9db7c7d8382a5a259cd",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 56273,
+        "column": 3,
+        "endLine": 56273,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/0/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "UnassociateHaVipRequest#force": {
+      "operation": "UnassociateHaVip",
+      "file": "canonical/ecs/2014-05-26/UnassociateHaVip.json",
+      "sourceSHA256": "699bafac71d6aac2c3558bd39b4e1c6621b7698bc57bc9db7c7d8382a5a259cd",
+      "fieldSource": {
+        "file": "products/ecs/main.tea",
+        "line": 56274,
+        "column": 3,
+        "endLine": 56274,
+        "endColumn": 8
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The Force",
+      "textSHA256": "67fe90e919b74d0f10e26c79a5561562ed818d9c4632ff364246487753bad907"
+    }
+  },
+  "reasons": [
+    {
+      "operation": "AddTags",
+      "file": "canonical/ecs/2014-05-26/AddTags.json",
+      "sourceSHA256": "1047dd4fb24f77d2eec52e90911d8db0c2241b32367a5d6c03251bf26d9b841d",
+      "path": "Tag[].key",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "AddTags",
+      "file": "canonical/ecs/2014-05-26/AddTags.json",
+      "sourceSHA256": "1047dd4fb24f77d2eec52e90911d8db0c2241b32367a5d6c03251bf26d9b841d",
+      "path": "Tag[].value",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "AllocateDedicatedHosts",
+      "file": "canonical/ecs/2014-05-26/AllocateDedicatedHosts.json",
+      "sourceSHA256": "b8ac554ebcde10b50c9ec6997994a9d37461b769e081cebd020eaa1b0d6c5bce",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "CreateAutoProvisioningGroup",
+      "file": "canonical/ecs/2014-05-26/CreateAutoProvisioningGroup.json",
+      "sourceSHA256": "94457aaafd01d117b96b3ac855ed9a0fa0300c349d1ae09b1c0081262a438a57",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "CreateDiagnosticReport",
+      "file": "canonical/ecs/2014-05-26/CreateDiagnosticReport.json",
+      "sourceSHA256": "bd9e91594f6f3886175dc56058999e2a7e2eb982fde2de4750175dce2e9d3e52",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "CreateDisk",
+      "file": "canonical/ecs/2014-05-26/CreateDisk.json",
+      "sourceSHA256": "f08fa8097fa96227f53b2bf684c7f97cf229897faca9cddfeb5370f40f5d6cb1",
+      "path": "Tag[].key",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "CreateDisk",
+      "file": "canonical/ecs/2014-05-26/CreateDisk.json",
+      "sourceSHA256": "f08fa8097fa96227f53b2bf684c7f97cf229897faca9cddfeb5370f40f5d6cb1",
+      "path": "Tag[].value",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "CreateImage",
+      "file": "canonical/ecs/2014-05-26/CreateImage.json",
+      "sourceSHA256": "57326e4e131dc23af3f2ca0e522a3d8ee429c159cf41df15ee0c022df5f8347a",
+      "path": "Tag[].key",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "CreateImage",
+      "file": "canonical/ecs/2014-05-26/CreateImage.json",
+      "sourceSHA256": "57326e4e131dc23af3f2ca0e522a3d8ee429c159cf41df15ee0c022df5f8347a",
+      "path": "Tag[].value",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "CreateInstance",
+      "file": "canonical/ecs/2014-05-26/CreateInstance.json",
+      "sourceSHA256": "0bec898772d4b42e586fc24dac738ca69ab458174ee2f73c49b6aa4e881c6480",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "CreateLaunchTemplate",
+      "file": "canonical/ecs/2014-05-26/CreateLaunchTemplate.json",
+      "sourceSHA256": "f1499182344012541fc9d5034bb7a954bf80e7e82e181175e301cabe5d02f8d1",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "CreateLaunchTemplateVersion",
+      "file": "canonical/ecs/2014-05-26/CreateLaunchTemplateVersion.json",
+      "sourceSHA256": "05476c26ebbe374eb762f8e68a8e91aa6d119af24849cfbb7d87cd85a9020118",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "CreateSavingsPlan",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "CreateSecurityGroup",
+      "file": "canonical/ecs/2014-05-26/CreateSecurityGroup.json",
+      "sourceSHA256": "72832df5ab1342ec0991349a816bda2e3e679b38b6247e325754f8b5bd6af734",
+      "path": "Tag[].key",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "CreateSecurityGroup",
+      "file": "canonical/ecs/2014-05-26/CreateSecurityGroup.json",
+      "sourceSHA256": "72832df5ab1342ec0991349a816bda2e3e679b38b6247e325754f8b5bd6af734",
+      "path": "Tag[].value",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "CreateSnapshot",
+      "file": "canonical/ecs/2014-05-26/CreateSnapshot.json",
+      "sourceSHA256": "5bcaafce7cc4651772c2dfdfd8f5c37d59e0227305151b9a918bf499eb012269",
+      "path": "Tag[].key",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "CreateSnapshot",
+      "file": "canonical/ecs/2014-05-26/CreateSnapshot.json",
+      "sourceSHA256": "5bcaafce7cc4651772c2dfdfd8f5c37d59e0227305151b9a918bf499eb012269",
+      "path": "Tag[].value",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "CreateStorageSet",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DeleteStorageSet",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DescribeActivations",
+      "file": "canonical/ecs/2014-05-26/DescribeActivations.json",
+      "sourceSHA256": "6fd93954d114de9916c06d2bd539411acbf0ae9ece74917310aa909e5d3e509b",
+      "path": "ActivationList",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeAvailableResource",
+      "file": "canonical/ecs/2014-05-26/DescribeAvailableResource.json",
+      "sourceSHA256": "6b2a8c6ad47714d88c0b8cd456b994805eb0a3a0fd1b7f409f67d231cfd60bd6",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "DescribeDedicatedHosts",
+      "file": "canonical/ecs/2014-05-26/DescribeDedicatedHosts.json",
+      "sourceSHA256": "cf190ca3ce45d2e6b3f323efbe42758c54f5f00257d40fc275c247dd719ece13",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "DescribeDiagnosticMetricSets",
+      "file": "canonical/ecs/2014-05-26/DescribeDiagnosticMetricSets.json",
+      "sourceSHA256": "2276b1105eefe6a943eac0de4452f5d70c7121c9ea02545492a351023ce9ec3f",
+      "path": "MetricSets",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeDiagnosticMetrics",
+      "file": "canonical/ecs/2014-05-26/DescribeDiagnosticMetrics.json",
+      "sourceSHA256": "8910ebb0d883ebaab7eff6e853c2e7cc6bbc5e8f88cc17e74b8fde6b976c2183",
+      "path": "Metrics",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeDisks",
+      "file": "canonical/ecs/2014-05-26/DescribeDisks.json",
+      "sourceSHA256": "314b3aec7962c7707e9a03edce532f21ed043f70f3cf00055e370f9fccbb0076",
+      "path": "Tag[].key",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeDisks",
+      "file": "canonical/ecs/2014-05-26/DescribeDisks.json",
+      "sourceSHA256": "314b3aec7962c7707e9a03edce532f21ed043f70f3cf00055e370f9fccbb0076",
+      "path": "Tag[].value",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeEipAddresses",
+      "file": "canonical/ecs/2014-05-26/DescribeEipAddresses.json",
+      "sourceSHA256": "63c6ab62dba1d74c77a5c3e656e27c5ec221b343307caff9031daed00115e956",
+      "path": "Filter.2.Key",
+      "reason": "conflicting-field-prose",
+      "field": "DescribeEipAddressesRequest.filter[]#key"
+    },
+    {
+      "operation": "DescribeEipAddresses",
+      "file": "canonical/ecs/2014-05-26/DescribeEipAddresses.json",
+      "sourceSHA256": "63c6ab62dba1d74c77a5c3e656e27c5ec221b343307caff9031daed00115e956",
+      "path": "Filter.2.Value",
+      "reason": "conflicting-field-prose",
+      "field": "DescribeEipAddressesRequest.filter[]#value"
+    },
+    {
+      "operation": "DescribeImages",
+      "file": "canonical/ecs/2014-05-26/DescribeImages.json",
+      "sourceSHA256": "269634a9c9e8f8c7883d2e307b012aeb14dac9a6936c09d9dd07134dbdf6f4c9",
+      "path": "Tag[].key",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeImages",
+      "file": "canonical/ecs/2014-05-26/DescribeImages.json",
+      "sourceSHA256": "269634a9c9e8f8c7883d2e307b012aeb14dac9a6936c09d9dd07134dbdf6f4c9",
+      "path": "Tag[].value",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeInstanceTopology",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DescribeInstanceTypes",
+      "file": "canonical/ecs/2014-05-26/DescribeInstanceTypes.json",
+      "sourceSHA256": "07b53e701b092032f23e461ba91109c5a100a6d72c1a498ac25fac19dbf68df6",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "DescribeInstances",
+      "file": "canonical/ecs/2014-05-26/DescribeInstances.json",
+      "sourceSHA256": "77d27774422621da35feedd352181f19b74d5efd33708b36432ad03105cbe8e3",
+      "path": "Tag[].key",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeInstances",
+      "file": "canonical/ecs/2014-05-26/DescribeInstances.json",
+      "sourceSHA256": "77d27774422621da35feedd352181f19b74d5efd33708b36432ad03105cbe8e3",
+      "path": "Tag[].value",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeLaunchTemplateVersions",
+      "file": "canonical/ecs/2014-05-26/DescribeLaunchTemplateVersions.json",
+      "sourceSHA256": "ede7515feb961fbf434d3e052153a4a2370d0ddbd4da5af2ca53a1355ca735b5",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "DescribeLockedSnapshots",
+      "file": "canonical/ecs/2014-05-26/DescribeLockedSnapshots.json",
+      "sourceSHA256": "99b313b1a3f669f70f9f56647d52b59e78dd3022a220040405b71d9b35d58771",
+      "path": "LockedSnapshotsInfo",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeManagedInstances",
+      "file": "canonical/ecs/2014-05-26/DescribeManagedInstances.json",
+      "sourceSHA256": "e24050f0ba843e1f4759807f919f10489fc0e3707dc355da7426c98e360aa4a6",
+      "path": "Instances",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribePlanMaintenanceWindows",
+      "file": "canonical/ecs/2014-05-26/DescribePlanMaintenanceWindows.json",
+      "sourceSHA256": "e2748866e6781bab3a6122b6cfa911e4b11175b88a6467d2f74c12edb4125373",
+      "path": "PlanMaintenanceWindowList",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribePortRangeListAssociations",
+      "file": "canonical/ecs/2014-05-26/DescribePortRangeListAssociations.json",
+      "sourceSHA256": "3bfb042b575681119fa39c5b88aa5c169153c948d666e00149be81a38b7f6b52",
+      "path": "PortRangeListAssociations",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribePortRangeListEntries",
+      "file": "canonical/ecs/2014-05-26/DescribePortRangeListEntries.json",
+      "sourceSHA256": "b61b5698eaf0a88ef303d1d0aa509a2be9b26b8c258b6ea0ca189b8419362bb0",
+      "path": "Entries",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribePortRangeLists",
+      "file": "canonical/ecs/2014-05-26/DescribePortRangeLists.json",
+      "sourceSHA256": "741166354c2c36043fdcc68738cb5b798f4c2fa5da5c07880eca424e8f8eaccc",
+      "path": "PortRangeLists",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeRecommendInstanceType",
+      "file": "canonical/ecs/2014-05-26/DescribeRecommendInstanceType.json",
+      "sourceSHA256": "24217907bd7e29dcf504f2e72a7187bd433d38913637e6ddf9fd6b215df621f4",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "DescribeResourceByTags",
+      "file": "canonical/ecs/2014-05-26/DescribeResourceByTags.json",
+      "sourceSHA256": "7c3500f1d2277fb4f33c2ca4181b77044e048b09e2705dd44e011ac0492470dc",
+      "path": "Tag[].key",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeResourceByTags",
+      "file": "canonical/ecs/2014-05-26/DescribeResourceByTags.json",
+      "sourceSHA256": "7c3500f1d2277fb4f33c2ca4181b77044e048b09e2705dd44e011ac0492470dc",
+      "path": "Tag[].value",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeResourcesModification",
+      "file": "canonical/ecs/2014-05-26/DescribeResourcesModification.json",
+      "sourceSHA256": "533b84ec91d6a71c8cd8199d215af4a54493a4a1946ae6be24cef7f8ff8dab03",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "DescribeSavingsPlanEstimation",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DescribeSavingsPlanPrice",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DescribeSecurityGroups",
+      "file": "canonical/ecs/2014-05-26/DescribeSecurityGroups.json",
+      "sourceSHA256": "14d5d8defc36c39082feb58964c1f8e503f36b0c53c8475eb8670fdf2f5ece1c",
+      "path": "Tag[].key",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeSecurityGroups",
+      "file": "canonical/ecs/2014-05-26/DescribeSecurityGroups.json",
+      "sourceSHA256": "14d5d8defc36c39082feb58964c1f8e503f36b0c53c8475eb8670fdf2f5ece1c",
+      "path": "Tag[].value",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeSnapshots",
+      "file": "canonical/ecs/2014-05-26/DescribeSnapshots.json",
+      "sourceSHA256": "073ed0677442da74c17f4a302716a84de4989a6090a2e05d8641971c54c3c17b",
+      "path": "Tag[].key",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeSnapshots",
+      "file": "canonical/ecs/2014-05-26/DescribeSnapshots.json",
+      "sourceSHA256": "073ed0677442da74c17f4a302716a84de4989a6090a2e05d8641971c54c3c17b",
+      "path": "Tag[].value",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeSpotAdvice",
+      "file": "canonical/ecs/2014-05-26/DescribeSpotAdvice.json",
+      "sourceSHA256": "e2c684a1bccff5395c7f4141cfcbeb6be865894c7c087277740796d5415c3cfd",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "DescribeStorageSetDetails",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DescribeStorageSets",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DescribeTags",
+      "file": "canonical/ecs/2014-05-26/DescribeTags.json",
+      "sourceSHA256": "4a09ca093e1646ba5ca1107741bece6db40c380d227f22df6af944c21193f017",
+      "path": "Tag[].key",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeTags",
+      "file": "canonical/ecs/2014-05-26/DescribeTags.json",
+      "sourceSHA256": "4a09ca093e1646ba5ca1107741bece6db40c380d227f22df6af944c21193f017",
+      "path": "Tag[].value",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeVscs",
+      "file": "canonical/ecs/2014-05-26/DescribeVscs.json",
+      "sourceSHA256": "76d2edcd27b6698c5c89e62d26f778646ff3e100f079a1b38e8416b4789da266",
+      "path": "Vscs",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "InvokeCommand",
+      "file": "canonical/ecs/2014-05-26/InvokeCommand.json",
+      "sourceSHA256": "537c173cd55fd64721a9901620400d773cb29e50828b7dfcb62bd20a7027f513",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "ModifyAutoProvisioningGroup",
+      "file": "canonical/ecs/2014-05-26/ModifyAutoProvisioningGroup.json",
+      "sourceSHA256": "be6a090976bb6afaa730cc762f8456c203053fb61d5f9517b5eef528bdc8fced",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "ModifyDedicatedHostAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyDedicatedHostAttribute.json",
+      "sourceSHA256": "fc207d8f7b4b1e85868ef0cf40bf7ec9490335c2c898e3bd89bcca99e7c9e966",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "ModifyInvocationAttribute",
+      "file": "canonical/ecs/2014-05-26/ModifyInvocationAttribute.json",
+      "sourceSHA256": "6ae61293009f6485a3c67d69d089ddb661bcdc9fdb3625cb4d14a31a371892c3",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "ModifyStorageSetAttribute",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "RemoveTags",
+      "file": "canonical/ecs/2014-05-26/RemoveTags.json",
+      "sourceSHA256": "b0e2c2ff3ff6d8ca0a05422a7fa8888c69c12d2e066aaa0a66f40e5d82a0a46b",
+      "path": "Tag[].key",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "RemoveTags",
+      "file": "canonical/ecs/2014-05-26/RemoveTags.json",
+      "sourceSHA256": "b0e2c2ff3ff6d8ca0a05422a7fa8888c69c12d2e066aaa0a66f40e5d82a0a46b",
+      "path": "Tag[].value",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "RunCommand",
+      "file": "canonical/ecs/2014-05-26/RunCommand.json",
+      "sourceSHA256": "4fda6230cdd01785112ac8b7077296f3cd5b2e72fc4a671cd2ec903fcea61e98",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "RunInstances",
+      "file": "canonical/ecs/2014-05-26/RunInstances.json",
+      "sourceSHA256": "efb1395fd685beb4b11334840932efb5bf6471201538ffdac49ad8aa003e0050",
+      "reason": "unsupported-metadata-representation"
+    }
+  ]
+}

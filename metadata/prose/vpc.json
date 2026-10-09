@@ -1,0 +1,625 @@
+{
+  "generator": "darabonba prose",
+  "schemaVersion": 1,
+  "product": "vpc",
+  "version": "2016-04-28",
+  "irSHA256": "e9b6597fc3001d31cfce916b3d5034cf025b360d0316e6f4ba96e7320a44f858",
+  "corpusManifestSHA256": "8a53b4e6a0829555805dde8960e65b2a2dd9d4a78358569ef053edd29c0564da",
+  "repository": "https://github.com/aliyun/aliyun-openapi-meta",
+  "revision": "51286a65c79d008436eb314e636f9c9ad4b1ca08",
+  "license": "Apache-2.0",
+  "matchedOperations": 399,
+  "fields": {
+    "AllocateEipAddressProRequest.tag[]#key": {
+      "operation": "AllocateEipAddressPro",
+      "file": "canonical/vpc/2016-04-28/AllocateEipAddressPro.json",
+      "sourceSHA256": "0264e517e470f9a810a607b9789e48e54825c17110de894e5ac26349fa800497",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 1365,
+        "column": 7,
+        "endLine": 1365,
+        "endColumn": 10
+      },
+      "pointer": "/parameters/12/element/fields/0/help_en",
+      "english": "The Key",
+      "textSHA256": "0acc83412ae9e296cf035fefdf9a03a09dede639b0119f923de76c32adfd7c65"
+    },
+    "AllocateEipAddressProRequest.tag[]#value": {
+      "operation": "AllocateEipAddressPro",
+      "file": "canonical/vpc/2016-04-28/AllocateEipAddressPro.json",
+      "sourceSHA256": "0264e517e470f9a810a607b9789e48e54825c17110de894e5ac26349fa800497",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 1366,
+        "column": 7,
+        "endLine": 1366,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/12/element/fields/1/help_en",
+      "english": "The Value",
+      "textSHA256": "2220609247dc54d9f54d930b1daf0c679ce1eb4ca1219344a6e8d66ee705d499"
+    },
+    "AllocateEipAddressProRequest#tag": {
+      "operation": "AllocateEipAddressPro",
+      "file": "canonical/vpc/2016-04-28/AllocateEipAddressPro.json",
+      "sourceSHA256": "0264e517e470f9a810a607b9789e48e54825c17110de894e5ac26349fa800497",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 1363,
+        "column": 3,
+        "endLine": 1363,
+        "endColumn": 6
+      },
+      "pointer": "/parameters/12/help_en",
+      "english": "The Tag",
+      "textSHA256": "226a4a7a71195d13f374d20bf122a72794ace8e05ca7b3f41435c23ea099fe1b"
+    },
+    "CreateFlowLogRequest#logFormat": {
+      "operation": "CreateFlowLog",
+      "file": "canonical/vpc/2016-04-28/CreateFlowLog.json",
+      "sourceSHA256": "5b6081bc3e03ad28d316fdfca1dd4e213ced1580866a61a4cbf596e9d2456f65",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 6683,
+        "column": 3,
+        "endLine": 6683,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/13/help_en",
+      "english": "The LogFormat",
+      "textSHA256": "e1b3b957c466f8f96d203ba39a3431aa13772d4acf3b26d869819d96c878def2"
+    },
+    "CreateIPv6TranslatorAclListRequest#clientToken": {
+      "operation": "CreateIPv6TranslatorAclList",
+      "file": "canonical/vpc/2016-04-28/CreateIPv6TranslatorAclList.json",
+      "sourceSHA256": "0778525f33fa775a2bb03fa455e61a377e1124e824234f5380f741d03d5df19e",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 7847,
+        "column": 3,
+        "endLine": 7847,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "CreateNatGatewayRequest#availabilityMode": {
+      "operation": "CreateNatGateway",
+      "file": "canonical/vpc/2016-04-28/CreateNatGateway.json",
+      "sourceSHA256": "db242e2c99016b611081eade070854c5bdb7a83536313e2f39844ad9800ebf7d",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 8688,
+        "column": 3,
+        "endLine": 8688,
+        "endColumn": 19
+      },
+      "pointer": "/parameters/22/help_en",
+      "english": "The AvailabilityMode",
+      "textSHA256": "c713774d54b7b157f6a7cb5e59b36d76b9d41822c08538fa8a2ac30cae95c310"
+    },
+    "CreateSslVpnServerRequest#dnsServers": {
+      "operation": "CreateSslVpnServer",
+      "file": "canonical/vpc/2016-04-28/CreateSslVpnServer.json",
+      "sourceSHA256": "7f27bcaccc7ff98db640db0837e638d1e880dce3eaa7182dda73dabf717e68e7",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 11484,
+        "column": 3,
+        "endLine": 11484,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/15/help_en",
+      "english": "The DnsServers",
+      "textSHA256": "7131557484e19a2cf47349bdfe2774129b53f5ddd4a3325d768f1e5ff10fc6f1"
+    },
+    "DeleteRouteTargetGroupRequest#forceDelete": {
+      "operation": "DeleteRouteTargetGroup",
+      "file": "canonical/vpc/2016-04-28/DeleteRouteTargetGroup.json",
+      "sourceSHA256": "3eaf7ba145044cac651ce183db68a4ccae09674cf725e82bf12346b81cd53598",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 18904,
+        "column": 3,
+        "endLine": 18904,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The ForceDelete",
+      "textSHA256": "fb1308cb3be4fe10b401c2067282e1e5cc21d6396e0b245c2aeeb3fde9731526"
+    },
+    "DescribeNatGatewaysRequest#availabilityMode": {
+      "operation": "DescribeNatGateways",
+      "file": "canonical/vpc/2016-04-28/DescribeNatGateways.json",
+      "sourceSHA256": "0aa524a84ee620b87b386af76f0e5bb9a688a3e68a9512ecd1ff140b059ee0b2",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 26133,
+        "column": 3,
+        "endLine": 26133,
+        "endColumn": 19
+      },
+      "pointer": "/parameters/15/help_en",
+      "english": "The AvailabilityMode",
+      "textSHA256": "c713774d54b7b157f6a7cb5e59b36d76b9d41822c08538fa8a2ac30cae95c310"
+    },
+    "ModifyFlowLogAttributeRequest#logFormat": {
+      "operation": "ModifyFlowLogAttribute",
+      "file": "canonical/vpc/2016-04-28/ModifyFlowLogAttribute.json",
+      "sourceSHA256": "4c6cd28f7bc904897bfc5f82c0efe38aced6f59142e29eb13e96eb3b8aecefcf",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 41368,
+        "column": 3,
+        "endLine": 41368,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/6/help_en",
+      "english": "The LogFormat",
+      "textSHA256": "e1b3b957c466f8f96d203ba39a3431aa13772d4acf3b26d869819d96c878def2"
+    },
+    "ModifySslVpnServerRequest#dnsServers": {
+      "operation": "ModifySslVpnServer",
+      "file": "canonical/vpc/2016-04-28/ModifySslVpnServer.json",
+      "sourceSHA256": "3e23b4296251b31c991d2dafd973b9d171bea913015bb7d94ecf01cc31e014d1",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 44610,
+        "column": 3,
+        "endLine": 44610,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/15/help_en",
+      "english": "The DnsServers",
+      "textSHA256": "7131557484e19a2cf47349bdfe2774129b53f5ddd4a3325d768f1e5ff10fc6f1"
+    }
+  },
+  "reasons": [
+    {
+      "operation": "CreateNatIp",
+      "file": "canonical/vpc/2016-04-28/CreateNatIp.json",
+      "sourceSHA256": "98f32059e3c298ab24c4ffd6439821c46349f099b51b87fa0abd2e5f0b8d8e57",
+      "path": "NatIps",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "CreateRouteEntries",
+      "file": "canonical/vpc/2016-04-28/CreateRouteEntries.json",
+      "sourceSHA256": "39e470aea835f58209e8422dbe0fad45fef1d5d655a86154292e4189186073eb",
+      "path": "FailedRouteEntries",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "CreateRouteEntries",
+      "file": "canonical/vpc/2016-04-28/CreateRouteEntries.json",
+      "sourceSHA256": "39e470aea835f58209e8422dbe0fad45fef1d5d655a86154292e4189186073eb",
+      "path": "RouteEntryIds",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "CreateTrafficMirrorFilterRules",
+      "file": "canonical/vpc/2016-04-28/CreateTrafficMirrorFilterRules.json",
+      "sourceSHA256": "4ebd3a1ff5724ed19e7de2e158945105936c4d1936772b1648345e181e7e5bd0",
+      "path": "EgressRules",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "CreateTrafficMirrorFilterRules",
+      "file": "canonical/vpc/2016-04-28/CreateTrafficMirrorFilterRules.json",
+      "sourceSHA256": "4ebd3a1ff5724ed19e7de2e158945105936c4d1936772b1648345e181e7e5bd0",
+      "path": "IngressRules",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "CreateVpnAttachment",
+      "file": "canonical/vpc/2016-04-28/CreateVpnAttachment.json",
+      "sourceSHA256": "6c67aa88d2a14b5c29802b2a73646e84c6fd98903553eeddda439ba6846bb276",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "CreateVpnConnection",
+      "file": "canonical/vpc/2016-04-28/CreateVpnConnection.json",
+      "sourceSHA256": "7a2d86e49b5aa5bee61a127143f3319a602bcecf626b9cc047b6251e8ce98dcd",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "DeleteRouteEntries",
+      "file": "canonical/vpc/2016-04-28/DeleteRouteEntries.json",
+      "sourceSHA256": "5028ee549ca31cc3411c9683d80adaadbffa9bad4d61cecdbe7aa68fb21d14b0",
+      "path": "FailedRouteEntries",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeEcGrantRelation",
+      "file": "canonical/vpc/2016-04-28/DescribeEcGrantRelation.json",
+      "sourceSHA256": "8852a5a42a595e05aadf3d83590706d975c50326295406786bf665844174c7da",
+      "path": "EcGrantRelations",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeExpressConnectTrafficQos",
+      "file": "canonical/vpc/2016-04-28/DescribeExpressConnectTrafficQos.json",
+      "sourceSHA256": "ecd261dfd7552a425529ac9801894d96ab74e3fc5c6726649bacb50a85017416",
+      "path": "QosList",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeExpressConnectTrafficQosQueue",
+      "file": "canonical/vpc/2016-04-28/DescribeExpressConnectTrafficQosQueue.json",
+      "sourceSHA256": "605589345a9e5a872fdeb9b11791761c9709f6cc18195b43932b08c2a8909890",
+      "path": "QueueList",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeExpressConnectTrafficQosRule",
+      "file": "canonical/vpc/2016-04-28/DescribeExpressConnectTrafficQosRule.json",
+      "sourceSHA256": "73e00c20fea745a898190a4b613225fd8d8e2e9473418cbcb5030140afc23ad9",
+      "path": "RuleList",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeFailoverTestJob",
+      "file": "canonical/vpc/2016-04-28/DescribeFailoverTestJob.json",
+      "sourceSHA256": "b2c5e55c86d56e5a59fc2b6eb86795636f64e6fd498c6dd2003c027dd904db39",
+      "path": "FailoverTestJobModel.ResourceId",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeFailoverTestJobs",
+      "file": "canonical/vpc/2016-04-28/DescribeFailoverTestJobs.json",
+      "sourceSHA256": "f47158b222aa1826f757448c6ee162d34a08baa7b6373b4b068d76fecb47f39b",
+      "path": "FailoverTestJobList",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeGrantRulesToEcr",
+      "file": "canonical/vpc/2016-04-28/DescribeGrantRulesToEcr.json",
+      "sourceSHA256": "ce5519a223de67c1b17d1308c4f07f46e67f62e15d46bcd032026b7040ed9d2d",
+      "path": "EcrGrantRules",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribePublicIpAddress",
+      "file": "canonical/vpc/2016-04-28/DescribePublicIpAddress.json",
+      "sourceSHA256": "67975a52908a65580ed02ef6715b14f1644b5b16b26445e94fff54599702bd95",
+      "path": "PublicIpAddress",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeSslVpnClients",
+      "file": "canonical/vpc/2016-04-28/DescribeSslVpnClients.json",
+      "sourceSHA256": "979a9761ead894f7c4250357682433caec836c9a164cbfaa78a7a3d80e2403ad",
+      "path": "ClientInfoList",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeVcoRouteEntries",
+      "file": "canonical/vpc/2016-04-28/DescribeVcoRouteEntries.json",
+      "sourceSHA256": "f8ac810dfa8dff661f4bc3ad5b7af92834962909807381c7d1a34cc7076105eb",
+      "path": "VcoRouteEntries",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeVcoRouteEntries",
+      "file": "canonical/vpc/2016-04-28/DescribeVcoRouteEntries.json",
+      "sourceSHA256": "f8ac810dfa8dff661f4bc3ad5b7af92834962909807381c7d1a34cc7076105eb",
+      "path": "VpnRouteCounts",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeVpcGrantRulesToEcr",
+      "file": "canonical/vpc/2016-04-28/DescribeVpcGrantRulesToEcr.json",
+      "sourceSHA256": "dc766894c47f2c7f88dbbb3d60bb27a5e7f34da21988cc16d0053f86d1924a83",
+      "path": "GrantRuleModels",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeVpnAttachments",
+      "file": "canonical/vpc/2016-04-28/DescribeVpnAttachments.json",
+      "sourceSHA256": "492df3768f6077c559e9de7038c7a0d2085ccc37d563ee01a0436ce0f12266f0",
+      "path": "VpnAttachments",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeVpnCrossAccountAuthorizations",
+      "file": "canonical/vpc/2016-04-28/DescribeVpnCrossAccountAuthorizations.json",
+      "sourceSHA256": "2f522a12508973b288b80671157a8f1c3df8c4b35dc8d80c87ac0d0673c03d64",
+      "path": "CrossAccountAuthorizations",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DescribeVpnGatewayAvailableZones",
+      "file": "canonical/vpc/2016-04-28/DescribeVpnGatewayAvailableZones.json",
+      "sourceSHA256": "457c65373dd9875e4b0991d84ae8ce7dd4a6e83263e4ee5872116d447dfb57ec",
+      "path": "AvailableZoneIdList",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "DiagnoseVpnConnections",
+      "file": "canonical/vpc/2016-04-28/DiagnoseVpnConnections.json",
+      "sourceSHA256": "883be7ac33788619a7a9b3e186690b8e15fffc08dbda0792fde4abdeae006a5f",
+      "path": "VpnConnections",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "GetDhcpOptionsSet",
+      "file": "canonical/vpc/2016-04-28/GetDhcpOptionsSet.json",
+      "sourceSHA256": "134b363a5c947cef5beb5bb47889027a6b3e10e58db36da11b60d97677f6c5c4",
+      "path": "AssociateVpcs",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "GetDhcpOptionsSet",
+      "file": "canonical/vpc/2016-04-28/GetDhcpOptionsSet.json",
+      "sourceSHA256": "134b363a5c947cef5beb5bb47889027a6b3e10e58db36da11b60d97677f6c5c4",
+      "path": "Tags",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "GetIpv4GatewayAttribute",
+      "file": "canonical/vpc/2016-04-28/GetIpv4GatewayAttribute.json",
+      "sourceSHA256": "41a0029c44070b46861aa9df09da81969fee1f392c3d51fc1a6c8eab40b7ca39",
+      "path": "Tags",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "GetNatGatewayAttribute",
+      "file": "canonical/vpc/2016-04-28/GetNatGatewayAttribute.json",
+      "sourceSHA256": "9d452a6e73f0c9e25ab843fec077aab807a1cf99007f0f51e42243e9f50fadd0",
+      "path": "IpList",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "GetRouteTargetGroup",
+      "file": "canonical/vpc/2016-04-28/GetRouteTargetGroup.json",
+      "sourceSHA256": "60d59543ba08bc06baf137f62e2e015d36500edb26d80d692f964156f925de1c",
+      "path": "RouteTargetMemberList",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "GetRouteTargetGroup",
+      "file": "canonical/vpc/2016-04-28/GetRouteTargetGroup.json",
+      "sourceSHA256": "60d59543ba08bc06baf137f62e2e015d36500edb26d80d692f964156f925de1c",
+      "path": "Tags",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "GetVSwitchCidrReservationUsage",
+      "file": "canonical/vpc/2016-04-28/GetVSwitchCidrReservationUsage.json",
+      "sourceSHA256": "cd5af8316fb2598876ef44e687e225ff732575855560994b3c112ca4d446caff",
+      "path": "CidrReservationUsages",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "GetVpcGatewayEndpointAttribute",
+      "file": "canonical/vpc/2016-04-28/GetVpcGatewayEndpointAttribute.json",
+      "sourceSHA256": "b5fc6bd36376221e62834756b2e64753d0d22c120ffd14edee549b8e81364d20",
+      "path": "RouteTables",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "GetVpcGatewayEndpointAttribute",
+      "file": "canonical/vpc/2016-04-28/GetVpcGatewayEndpointAttribute.json",
+      "sourceSHA256": "b5fc6bd36376221e62834756b2e64753d0d22c120ffd14edee549b8e81364d20",
+      "path": "Tags",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "GetVpcPrefixListAssociations",
+      "file": "canonical/vpc/2016-04-28/GetVpcPrefixListAssociations.json",
+      "sourceSHA256": "d24e88405b30eab001486442b82bf2a4e8e15fb74fcc5dec72e4aa03adec5950",
+      "path": "PrefixListAssociation",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "GetVpcPrefixListEntries",
+      "file": "canonical/vpc/2016-04-28/GetVpcPrefixListEntries.json",
+      "sourceSHA256": "a09917935a8438bc0e348a4d622d53e5b4413f8192da712dfd75a557f46648df",
+      "path": "PrefixListEntry",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "GetVpcRouteEntrySummary",
+      "file": "canonical/vpc/2016-04-28/GetVpcRouteEntrySummary.json",
+      "sourceSHA256": "7acf1a0b9b93f2a51988ac88c936e9fd23ab2950dbbe2d6567a2215309c332a1",
+      "path": "RouteEntrySummarys",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "GetVpnGatewayDiagnoseResult",
+      "file": "canonical/vpc/2016-04-28/GetVpnGatewayDiagnoseResult.json",
+      "sourceSHA256": "5274a07020c5aa93eb47cfb9a460405ce995d0194464231b6109e5254118ea12",
+      "path": "DiagnoseResult",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListBusinessAccessPoints",
+      "file": "canonical/vpc/2016-04-28/ListBusinessAccessPoints.json",
+      "sourceSHA256": "a0869ff5df154ff0bb140b49738e463661f101f84aeda3b5198857f0fde0b86d",
+      "path": "BusinessAccessPoints",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListBusinessRegions",
+      "file": "canonical/vpc/2016-04-28/ListBusinessRegions.json",
+      "sourceSHA256": "baebaf6aaabe057f091a844d9379f995a91cf79c919f78cc0bc1080c0a82b8f9",
+      "path": "GeographicSubRegions",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListDhcpOptionsSets",
+      "file": "canonical/vpc/2016-04-28/ListDhcpOptionsSets.json",
+      "sourceSHA256": "ccaecfee74b4e3cb7373eb7810900a49e1fcb4ed00797687cb739d4cad2cedc0",
+      "path": "DhcpOptionsSets",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListEnhanhcedNatGatewayAvailableZones",
+      "file": "canonical/vpc/2016-04-28/ListEnhanhcedNatGatewayAvailableZones.json",
+      "sourceSHA256": "7f62b5a25746e3b1f9fcf5b356285c2546f76b3643cd63c21544f8ebc329018b",
+      "path": "Zones",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListFullNatEntries",
+      "file": "canonical/vpc/2016-04-28/ListFullNatEntries.json",
+      "sourceSHA256": "3e156ba022ac0617853bbc7f0ca9548f45b36f3aa747b451074fb512df07c651",
+      "path": "FullNatEntries",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListGatewayRouteTableEntries",
+      "file": "canonical/vpc/2016-04-28/ListGatewayRouteTableEntries.json",
+      "sourceSHA256": "3f99fd4ef2b7ffdb1b688266f817d20c7595970f8d3550456b0b63585a5aa712",
+      "path": "GatewayRouteEntryModels",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListGeographicSubRegions",
+      "file": "canonical/vpc/2016-04-28/ListGeographicSubRegions.json",
+      "sourceSHA256": "3f9dbb1cf3e0a826c0fe92d2b8ed482f6f6e247a8a69efbe2f801f3cc929c626",
+      "path": "GeographicSubRegions",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListIpsecServerLogs",
+      "file": "canonical/vpc/2016-04-28/ListIpsecServerLogs.json",
+      "sourceSHA256": "bfa90e57a4bfd7367adda8d92ac89ad5b3ec658f12ba2ee039252f12e1ee7118",
+      "path": "Data",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListIpsecServers",
+      "file": "canonical/vpc/2016-04-28/ListIpsecServers.json",
+      "sourceSHA256": "d3943b879dec809ad9c84c05b46127aee31087d3d585247acee5d747de72cd04",
+      "path": "IpsecServers",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListIpv4Gateways",
+      "file": "canonical/vpc/2016-04-28/ListIpv4Gateways.json",
+      "sourceSHA256": "ec60d654eaa8f1b7e69e68c7ce93a7690b2539a0ab5ce3a0d168b6d630743b2c",
+      "path": "Ipv4GatewayModels",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListNatIpCidrs",
+      "file": "canonical/vpc/2016-04-28/ListNatIpCidrs.json",
+      "sourceSHA256": "7dc269e5ee8674e2363e853ed651937dff15433fef35d632ba9394e5b5d43d22",
+      "path": "NatIpCidrs",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListNatIps",
+      "file": "canonical/vpc/2016-04-28/ListNatIps.json",
+      "sourceSHA256": "1d74ea954bf30c4265c8df070118200fdea99c808f99aa6da74bf767667910cb",
+      "path": "NatIps",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListPhysicalConnectionFeatures",
+      "file": "canonical/vpc/2016-04-28/ListPhysicalConnectionFeatures.json",
+      "sourceSHA256": "c8ef3f86835018a0925f8985a0a0dab2a5327ea29b37a42448ae9d65b3af5ffd",
+      "path": "PhysicalConnectionFeatures",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListPrefixLists",
+      "file": "canonical/vpc/2016-04-28/ListPrefixLists.json",
+      "sourceSHA256": "ab2c8a3cb1428339388b8144ed1d0e9bbd987c8eb11c1555af4ca88dbaadf773",
+      "path": "PrefixLists",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListPublicIpAddressPoolCidrBlocks",
+      "file": "canonical/vpc/2016-04-28/ListPublicIpAddressPoolCidrBlocks.json",
+      "sourceSHA256": "722d3e0525ae8ada1930001c61fe679e16c4cef0c9fc7564e80c4d8515d7c0b8",
+      "path": "PublicIpPoolCidrBlockList",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListPublicIpAddressPools",
+      "file": "canonical/vpc/2016-04-28/ListPublicIpAddressPools.json",
+      "sourceSHA256": "e926699cd333888ea9137f9c1f808e47815f9e9e6ae33c713b01339c49aaefa6",
+      "path": "PublicIpAddressPoolList",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListRouteTargetGroups",
+      "file": "canonical/vpc/2016-04-28/ListRouteTargetGroups.json",
+      "sourceSHA256": "085fa713f8d2ffc34c18d644b5b95244da29752f1a2c1b3aef75e68ba2d2b192",
+      "path": "RouteTargetGroups",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListTrafficMirrorFilters",
+      "file": "canonical/vpc/2016-04-28/ListTrafficMirrorFilters.json",
+      "sourceSHA256": "7470ed6c35c495ab74766ba21cccdf1fdda394bed075217617f412a831202625",
+      "path": "TrafficMirrorFilters",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListTrafficMirrorSessions",
+      "file": "canonical/vpc/2016-04-28/ListTrafficMirrorSessions.json",
+      "sourceSHA256": "419bbbbd64825ff005300184373b5567608942a029d4e420b88336d1c2974b8a",
+      "path": "TrafficMirrorSessions",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListVSwitchCidrReservations",
+      "file": "canonical/vpc/2016-04-28/ListVSwitchCidrReservations.json",
+      "sourceSHA256": "10b86229aa0132c828a85a54da8b967a97b3f5131bb0df0053f8f87ae8dc3f4f",
+      "path": "VSwitchCidrReservations",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListVirtualPhysicalConnections",
+      "file": "canonical/vpc/2016-04-28/ListVirtualPhysicalConnections.json",
+      "sourceSHA256": "8492ca5368f08713a77fd675dc1ebafefc4c6696a00e7aad7a7a28eb28c8156e",
+      "path": "VirtualPhysicalConnections",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListVpcEndpointServicesByEndUser",
+      "file": "canonical/vpc/2016-04-28/ListVpcEndpointServicesByEndUser.json",
+      "sourceSHA256": "fa5adee9ed53b5e140f09798ec5a4b95075b92d0ca9c5ab5416d62b1e0f95a77",
+      "path": "Services",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListVpcGatewayEndpoints",
+      "file": "canonical/vpc/2016-04-28/ListVpcGatewayEndpoints.json",
+      "sourceSHA256": "4eeb700f56ee74c77514643b05c624ea753f090c43d37afe7da80349a4072bac",
+      "path": "Endpoints",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListVpcPublishedRouteEntries",
+      "file": "canonical/vpc/2016-04-28/ListVpcPublishedRouteEntries.json",
+      "sourceSHA256": "f232c4a6e7b67683b484b5aef8fc2187d2d1ede19d026f027333791ac1d27559",
+      "path": "RouteEntries",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ListVpnCertificateAssociations",
+      "file": "canonical/vpc/2016-04-28/ListVpnCertificateAssociations.json",
+      "sourceSHA256": "dd27dad8d90e9ce805177ba7fb4ddd3b40be7aadc4c4120fad64accebd920570",
+      "path": "VpnCertificateRelations",
+      "reason": "wire-type-or-path-differs"
+    },
+    {
+      "operation": "ModifyVpnAttachmentAttribute",
+      "file": "canonical/vpc/2016-04-28/ModifyVpnAttachmentAttribute.json",
+      "sourceSHA256": "d98d4834e39faef9be278ef99387198525fc4d582b40fa31237cb765cf61b7a9",
+      "reason": "unsupported-metadata-representation"
+    },
+    {
+      "operation": "ModifyVpnConnectionAttribute",
+      "file": "canonical/vpc/2016-04-28/ModifyVpnConnectionAttribute.json",
+      "sourceSHA256": "7c856008fa1135eb7e5ae296a376890198496c058c7f6511935120a02f4f7f03",
+      "reason": "unsupported-metadata-representation"
+    }
+  ]
+}

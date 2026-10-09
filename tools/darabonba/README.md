@@ -2,6 +2,8 @@
 
 [中文](README.zh-CN.md)
 
+- #93 [optional canonical prose](../../docs/canonical-prose-enrichment.md) enriches missing field descriptions after exact representation/type normalization. `npm run discover` regenerates these projections; `npm run check` verifies them. Source corpus absence does not require per-operation metadata. Runtime models and policy remain DSL-driven.
+
 - Follow the [product roadmap](../../docs/product-generator-roadmap.md) and [service consolidation #81](../../docs/service-consolidation.md). #31 is historical five-operation evidence; #34 adds [source normalization](../../docs/source-normalization.md), and #35 discovers complete products without per-operation snapshots/overlays.
 - Its offline command and coverage/IR contract are in [product discovery](../../docs/product-discovery.md).
 - The #36 [batch Go backend](../../docs/batch-go-emission.md) consumes this complete IR without legacy overlays.

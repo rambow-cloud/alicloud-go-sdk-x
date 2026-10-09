@@ -165,6 +165,9 @@ type productDocCoverage struct {
 	EnglishTranslations        int                            `json:"reviewedEnglishTranslations"`
 	GoOperationComments        int                            `json:"goOperationContractComments"`
 	GoFieldComments            int                            `json:"goFieldContractComments"`
+	MetadataEnglishFields      int                            `json:"metadataEnglishFields"`
+	MetadataRevision           string                         `json:"metadataRevision,omitempty"`
+	MetadataSources            map[string]metadataProse       `json:"metadataSources,omitempty"`
 	SchemaVersion              int                            `json:"schemaVersion"`
 	Product                    string                         `json:"product"`
 	License                    string                         `json:"license"`
@@ -207,10 +210,27 @@ func (r *productRenderer) documentationCoverage() productDocCoverage {
 			}
 		}
 	}
+	report.MetadataRevision = r.p.MetadataProseRevision
+	report.MetadataSources = r.p.MetadataProse
+	for key := range report.Fields {
+		if _, ok := r.p.MetadataProse[key]; ok {
+			report.MetadataEnglishFields++
+			coverage := report.Fields[key]
+			coverage.Status = "metadata-enrichment"
+			report.Fields[key] = coverage
+		}
+	}
 	return report
 }
 func (r *productRenderer) appendDocumentationGuide(b *bytes.Buffer, chinese bool) {
 	report := r.documentationCoverage()
+	if report.MetadataEnglishFields > 0 {
+		if chinese {
+			fmt.Fprintf(b, "- 可选官方 CLI 元数据补充了 %d 个字段的英文说明，不覆盖 DSL 原文，不改变模型或运行时。准确来源、JSON 指针及未映射原因见 [补充流程](../canonical-prose-enrichment.zh-CN.md)和文档覆盖 JSON；与下方原始 DSL 说明数量分开统计。\n\n", report.MetadataEnglishFields)
+		} else {
+			fmt.Fprintf(b, "- Optional official CLI metadata adds English prose for %d fields, without replacing DSL text or changing models/runtime. Source pins, JSON pointers and excluded mappings are recorded in [the enrichment route](../canonical-prose-enrichment.md) and documentation JSON; counted separately from original DSL prose below.\n\n", report.MetadataEnglishFields)
+		}
+	}
 	if chinese {
 		fmt.Fprintf(b, "- 已审核英文译文：%d 个操作；Go 行为注释覆盖 %d 个操作和 %d 个来源字段，单独统计，不冒充上游业务说明。缺少英文说明的字段保留准确 DSL 来源链接。\n\n", report.EnglishTranslations, report.GoOperationComments, report.GoFieldComments)
 		fmt.Fprintf(b, "## 文档来源\n\n- 英文 Go 注释复用已授权的官方说明和摘要：%d/%d 个操作、%d/%d 个字段有说明。\n- 缺失、空白或没有英文内容的说明记录在 \x60%s.documentation.json\x60 中。说明不会自动变成校验规则或必填要求。\n- 两份指南分别提供相同的用法、行为约定和来源索引。固定的上游输入不含中文语义翻译，因此不伪造官方译文。\n- 可执行 Example 使用离线模拟响应，不使用上游示例中的账号或资源值。\n- 详见 [文档规则](../product-documentation.zh-CN.md)，许可证和来源通知见包内 LICENSE、NOTICE。\n\n", report.EnglishOperations, report.TotalOperations, report.EnglishFields, report.TotalFields, r.p.Product)
