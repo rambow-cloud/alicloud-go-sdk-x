@@ -5419,7 +5419,7 @@ type DescribeEcGrantRelationAPI interface {
 // DescribeEcGrantRelation calls the native DescribeEcGrantRelation action (API version 2016-04-28).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Standard never retries this operation under the current conservative policy.
+// Reviewed idempotency permits replay only when a configured retry policy allows it.
 //
 // Upstream service documentation (Apache-2.0; informational, not SDK validation):
 //
@@ -5427,7 +5427,7 @@ type DescribeEcGrantRelationAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22277
 func (c *Client) DescribeEcGrantRelation(ctx context.Context, input *DescribeEcGrantRelationInput, optFns ...func(*Options)) (*DescribeEcGrantRelationOutput, error) {
-	out, meta, err := invoke[DescribeEcGrantRelationInput, DescribeEcGrantRelationOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeEcGrantRelation", Version: "2016-04-28", Idempotent: false}, "POST", false, nil, nil, optFns)
+	out, meta, err := invoke[DescribeEcGrantRelationInput, DescribeEcGrantRelationOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeEcGrantRelation", Version: "2016-04-28", Idempotent: true}, "POST", false, nil, ValidateDescribeEcGrantRelationInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5793,7 +5793,7 @@ type DescribeGrantRulesToEcrAPI interface {
 // DescribeGrantRulesToEcr calls the native DescribeGrantRulesToEcr action (API version 2016-04-28).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Standard never retries this operation under the current conservative policy.
+// Reviewed idempotency permits replay only when a configured retry policy allows it.
 //
 // Upstream service documentation (Apache-2.0; informational, not SDK validation):
 //
@@ -5801,7 +5801,7 @@ type DescribeGrantRulesToEcrAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L24512
 func (c *Client) DescribeGrantRulesToEcr(ctx context.Context, input *DescribeGrantRulesToEcrInput, optFns ...func(*Options)) (*DescribeGrantRulesToEcrOutput, error) {
-	out, meta, err := invoke[DescribeGrantRulesToEcrInput, DescribeGrantRulesToEcrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeGrantRulesToEcr", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeGrantRulesToEcrInput, DescribeGrantRulesToEcrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeGrantRulesToEcr", Version: "2016-04-28", Idempotent: true}, "POST", true, nil, ValidateDescribeGrantRulesToEcrInput, optFns)
 	if err != nil {
 		return nil, err
 	}

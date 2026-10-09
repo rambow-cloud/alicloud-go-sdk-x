@@ -48,11 +48,20 @@ type nativePaginator struct {
 	OutputToken    string   `json:"outputToken,omitempty"`
 	Limit          string   `json:"limit,omitempty"`
 	Page           string   `json:"page,omitempty"`
+	OutputPage     string   `json:"outputPage,omitempty"`
 	Size           string   `json:"size,omitempty"`
 	Total          string   `json:"total,omitempty"`
 	DefaultSize    int      `json:"defaultSize"`
 	MaximumSize    int      `json:"maximumSize"`
 }
+
+func (p nativePaginator) outputPage() string {
+	if p.OutputPage != "" {
+		return p.OutputPage
+	}
+	return p.Page
+}
+
 type nativeWaiter struct {
 	Name    string   `json:"name"`
 	IDs     string   `json:"ids"`
@@ -376,25 +385,28 @@ func (r *productRenderer) validateCapabilityPolicy() error {
 				return errors.New("policy: page mode cannot declare token fields")
 			}
 			if p.Mode != "tokens" {
-				for _, s := range []struct{ root, path string }{{request, p.Page}, {request, p.Size}, {body, p.Page}, {body, p.Size}, {body, p.Total}} {
+				for _, s := range []struct{ root, path string }{{request, p.Page}, {request, p.Size}, {body, p.outputPage()}, {body, p.Size}, {body, p.Total}} {
 					if strings.Contains(s.path, ".") {
 						return errors.New("policy: cursor must be a root field")
 					}
-					field, err := r.scalarPath(s.root, s.path, "in", "int32")
+					field, err := r.resolve(s.root, s.path, "in")
 					if err != nil {
 						return err
+					}
+					if !paginationIntegerField(field) {
+						return errors.New("policy: page cursor must be an integer or decimal-string root field")
 					}
 					if p.Mode == "dual" && s.root == request && !field.Optional {
 						return errors.New("policy: dual-mode cursors require optional fields")
 					}
 				}
-			} else if p.Page != "" || p.Size != "" || p.Total != "" {
+			} else if p.Page != "" || p.OutputPage != "" || p.Size != "" || p.Total != "" {
 				return errors.New("policy: token mode cannot declare page fields")
 			}
 			if err := distinctCapabilityRoles("paginator request", p.Page, p.Size, p.Limit); err != nil {
 				return err
 			}
-			if err := distinctCapabilityRoles("paginator response", p.Page, p.Size, p.Total); err != nil {
+			if err := distinctCapabilityRoles("paginator response", p.outputPage(), p.Size, p.Total); err != nil {
 				return err
 			}
 			for _, symbol := range []string{name + "Paginator", name + "PaginatorOptions", "New" + name + "Paginator"} {
@@ -583,4 +595,8 @@ func (r *productRenderer) validateCapabilityPolicy() error {
 		}
 	}
 	return nil
+}
+
+func paginationIntegerField(field capabilityPath) bool {
+	return field.Type.Kind == "scalar" && (field.Type.DSLType == "int32" || field.Type.DSLType == "int64" || field.Type.DSLType == "long" || field.Type.DSLType == "string")
 }

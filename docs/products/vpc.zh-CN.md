@@ -78,7 +78,9 @@
 | 操作 | 分页方式 | Waiter | 可安全重试的读取 | Token 字段 | 参数校验 | 敏感格式化 |
 | --- | --- | --- | --- | --- | --- | --- |
 | DescribeCustomerGateways | pages | — | true |  | true | false |
+| DescribeEcGrantRelation | pages | — | true |  | true | false |
 | DescribeEipAddresses | pages | — | true |  | true | false |
+| DescribeGrantRulesToEcr | pages | — | true |  | true | false |
 | DescribeNatGateways | pages | NatGatewayAvailableWaiter | true |  | true | false |
 | DescribeRouteEntryList | tokens | — | true |  | true | false |
 | DescribeRouteTables | pages | — | true |  | true | false |

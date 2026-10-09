@@ -31,7 +31,7 @@ func readPolicyProduct(t *testing.T, pkg string) productIR {
 }
 
 func TestPolicyRenderingCoverageAndExactWireNaming(t *testing.T) {
-	for pkg, want := range map[string]int{"ecs": 14, "vpc": 13, "sts": 3} {
+	for pkg, want := range map[string]int{"ecs": 16, "vpc": 15, "sts": 3} {
 		p := readPolicyProduct(t, pkg)
 		r, err := newProductRenderer(p)
 		if err != nil {
@@ -92,7 +92,7 @@ func TestInvalidSparsePoliciesFailBeforeRendering(t *testing.T) {
 		"unknown operation": func(p *capabilityPolicy) { p.Operations["RunInstances"] = p.Operations["DescribeImages"] },
 		"unknown field":     func(p *capabilityPolicy) { p.FieldNames["DescribeImagesRequest#unknown"] = "Unknown" },
 		"wrong wire case":   func(p *capabilityPolicy) { p.Operations["DescribeImages"].Paginator.Items = "images.Image" },
-		"wrong field type":  func(p *capabilityPolicy) { p.Operations["DescribeImages"].Paginator.Total = "RequestId" },
+		"wrong field type":  func(p *capabilityPolicy) { p.Operations["DescribeImages"].Paginator.Total = "Images" },
 		"invalid mode":      func(p *capabilityPolicy) { p.Operations["DescribeImages"].Paginator.Mode = "automatic" },
 		"symbol collision":  func(p *capabilityPolicy) { p.Operations["DescribeInstanceStatus"].Waiter.Name = "Client" },
 		"missing review": func(p *capabilityPolicy) {

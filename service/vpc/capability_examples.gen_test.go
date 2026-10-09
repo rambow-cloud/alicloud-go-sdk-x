@@ -64,6 +64,50 @@ func ExampleClient_DescribeCustomerGateways_retry() {
 	fmt.Println(out.Metadata.Attempts)
 	// Output: 2
 }
+func ExampleDescribeEcGrantRelationPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"EcGrantRelations\":[{}],\"Page\":1,\"PageSize\":1,\"TotalCount\":2}"}, sdktest.Step{Body: "{\"EcGrantRelations\":[{}],\"Page\":2,\"PageSize\":1,\"TotalCount\":2}"})
+	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := vpc.NewDescribeEcGrantRelationPaginator(client, nil, func(o *vpc.DescribeEcGrantRelationPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeEcGrantRelationInput() {
+	fmt.Println(vpc.ValidateDescribeEcGrantRelationInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeEcGrantRelation_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := vpc.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeEcGrantRelation(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
 func ExampleDescribeEipAddressesPaginator() {
 	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"EipAddresses\":{\"EipAddress\":[{}]},\"PageNumber\":1,\"PageSize\":1,\"TotalCount\":2}"}, sdktest.Step{Body: "{\"EipAddresses\":{\"EipAddress\":[{}]},\"PageNumber\":2,\"PageSize\":1,\"TotalCount\":2}"})
 	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
@@ -102,6 +146,50 @@ func ExampleClient_DescribeEipAddresses_retry() {
 		panic(err)
 	}
 	out, err := client.DescribeEipAddresses(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleDescribeGrantRulesToEcrPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"EcrGrantRules\":[{}],\"PageNumber\":1,\"PageSize\":1,\"TotalCount\":2}"}, sdktest.Step{Body: "{\"EcrGrantRules\":[{}],\"PageNumber\":2,\"PageSize\":1,\"TotalCount\":2}"})
+	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := vpc.NewDescribeGrantRulesToEcrPaginator(client, nil, func(o *vpc.DescribeGrantRulesToEcrPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeGrantRulesToEcrInput() {
+	fmt.Println(vpc.ValidateDescribeGrantRulesToEcrInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeGrantRulesToEcr_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := vpc.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeGrantRulesToEcr(context.Background(), nil)
 	if err != nil {
 		panic(err)
 	}

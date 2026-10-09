@@ -27,6 +27,28 @@ func ValidateDescribeCustomerGatewaysInput(in *DescribeCustomerGatewaysInput) er
 	return nil
 }
 
+// ValidateDescribeEcGrantRelationInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeEcGrantRelationInput(in *DescribeEcGrantRelationInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.PageNumber != nil {
+		if *in.PageNumber < 1 {
+			return errors.New("invalid PageNumber: below minimum")
+		}
+	}
+	if in.PageSize != nil {
+		if *in.PageSize < 1 {
+			return errors.New("invalid PageSize: below minimum")
+		}
+		if *in.PageSize > 50 {
+			return errors.New("invalid PageSize: above maximum")
+		}
+	}
+	return nil
+}
+
 // ValidateDescribeEipAddressesInput checks only the reviewed sparse constraints without changing input.
 // Nil is an empty request; diagnostics identify rules without including values.
 func ValidateDescribeEipAddressesInput(in *DescribeEipAddressesInput) error {
@@ -43,6 +65,28 @@ func ValidateDescribeEipAddressesInput(in *DescribeEipAddressesInput) error {
 			return errors.New("invalid PageSize: below minimum")
 		}
 		if *in.PageSize > 100 {
+			return errors.New("invalid PageSize: above maximum")
+		}
+	}
+	return nil
+}
+
+// ValidateDescribeGrantRulesToEcrInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeGrantRulesToEcrInput(in *DescribeGrantRulesToEcrInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.PageNumber != nil {
+		if *in.PageNumber < 1 {
+			return errors.New("invalid PageNumber: below minimum")
+		}
+	}
+	if in.PageSize != nil {
+		if *in.PageSize < 1 {
+			return errors.New("invalid PageSize: below minimum")
+		}
+		if *in.PageSize > 50 {
 			return errors.New("invalid PageSize: above maximum")
 		}
 	}

@@ -154,6 +154,7 @@ type nativeAdapterData struct {
 	Mode        string
 	DefaultSize int
 	MaximumSize int
+	MaximumPage string
 	MaxIDs      int
 	Success     string
 	Retry       []string
@@ -203,8 +204,15 @@ func (r *productRenderer) emitNativeAdapters(waiters bool) ([]byte, error) {
 				d.Page = r.path(request, p.Page, "in")
 				d.Size = r.path(request, p.Size, "in")
 				d.Total = r.path(body, p.Total, "out")
-				d.OutputPage = r.path(body, p.Page, "out")
+				d.OutputPage = r.path(body, p.outputPage(), "out")
 				d.OutputSize = r.path(body, p.Size, "out")
+				d.MaximumPage = "int64(^uint(0)>>1)"
+				if d.Page.Type.DSLType == "int32" {
+					d.MaximumPage = "int64(2147483647)"
+				}
+				if d.Page.Type.DSLType == "string" || d.Size.Type.DSLType == "string" {
+					imports["strconv"] = ""
+				}
 			}
 			entries = append(entries, d)
 		}
@@ -288,11 +296,14 @@ func New{{.Operation}}Paginator(api {{.Operation}}API,input *{{.Operation}}Input
  {{if eq .Mode "pages"}}pageMode:=true{{else if eq .Mode "tokens"}}pageMode:=false{{else}}pageMode:=({{present .Page}})||({{present .Size}}){{end}}
  initial:=pagination.Cursor{}
  {{if ne .Mode "tokens"}}if pageMode {
-  if !({{present .Page}}){ {{set .Page "int32(1)"}} }
-  if !({{present .Size}}){ {{set .Size (printf "int32(%d)" .DefaultSize)}} }
-  if options.Limit>0{ {{set .Size "int32(options.Limit)"}} }
-  if {{value .Page}}<1||{{value .Size}}<1||{{value .Size}}>{{.MaximumSize}}{return nil,errors.New("invalid native page fields")}
-  initial.PageNumber=int({{value .Page}})
+  if !({{present .Page}}){ {{set .Page (cast .Page "1")}} }
+  if !({{present .Size}}){ {{set .Size (cast .Size (printf "%d" .DefaultSize))}} }
+  if options.Limit>0{ {{set .Size (cast .Size "options.Limit")}} }
+  nativePage,cause:=rpcmodel.PaginationInteger({{value .Page}})
+  if cause!=nil||nativePage<1||nativePage>{{.MaximumPage}}{return nil,errors.New("invalid native page number")}
+  nativeSize,cause:=rpcmodel.PaginationInteger({{value .Size}})
+  if cause!=nil||nativeSize<1||nativeSize>{{.MaximumSize}}{return nil,errors.New("invalid native page size")}
+  initial.PageNumber=int(nativePage)
  }{{end}}
  {{if ne .Mode "pages"}}if !pageMode {
   if !({{present .Limit}}){ {{set .Limit (cast .Limit (printf "%d" .DefaultSize))}} }
@@ -304,19 +315,22 @@ func New{{.Operation}}Paginator(api {{.Operation}}API,input *{{.Operation}}Input
  p:=&{{.Operation}}Paginator{clientOptions:append([]func(*Options){},options.ClientOptions...)}
  engine,err:=pagination.New(initial,func(ctx context.Context,cursor pagination.Cursor)(pagination.Page[*{{.Operation}}Output],error){
   request,err:=rpcmodel.Snapshot(ctx,in);if err!=nil{return pagination.Page[*{{.Operation}}Output]{},err}
-  {{if ne .Mode "tokens"}}if pageMode{ {{set (on .Page "request") "int32(cursor.PageNumber)"}} }{{end}}
+  {{if ne .Mode "tokens"}}if pageMode{ {{set (on .Page "request") (cast .Page "cursor.PageNumber")}} }{{end}}
   {{if ne .Mode "pages"}}if !pageMode{ {{set (on .TokenIn "request") "cursor.Token"}} }{{end}}
   out,err:=api.{{.Operation}}(ctx,request,append([]func(*Options){},p.pendingOptions...)...)
   if err!=nil{return pagination.Page[*{{.Operation}}Output]{},err};if out==nil{return pagination.Page[*{{.Operation}}Output]{},errors.New("nil paginator response")}
   page:=pagination.Page[*{{.Operation}}Output]{Value:out}
   {{if ne .Mode "pages"}}if !pageMode{if {{present .TokenOut}}{page.Next.Token={{value .TokenOut}}};page.HasMore=page.Next.Token!=""}{{end}}
   {{if ne .Mode "tokens"}}if pageMode {
-   if !({{present .Total}})||{{value .Total}}<0{return pagination.Page[*{{.Operation}}Output]{},errors.New("missing or negative page total")}
-   if {{present .OutputPage}}&&int({{value .OutputPage}})!=cursor.PageNumber{return pagination.Page[*{{.Operation}}Output]{},errors.New("inconsistent page number")}
-   size:=int({{value .Size}});if {{present .OutputSize}}{size=int({{value .OutputSize}})}
-   if size<1||size>{{.MaximumSize}}{return pagination.Page[*{{.Operation}}Output]{},errors.New("invalid response page size")}
+   if !({{present .Total}}){return pagination.Page[*{{.Operation}}Output]{},errors.New("missing page total")}
+   total,cause:=rpcmodel.PaginationInteger({{value .Total}})
+   if cause!=nil||total<0{return pagination.Page[*{{.Operation}}Output]{},errors.New("invalid page total")}
+   {{if .OutputPage.Access}}if {{present .OutputPage}}{number,cause:=rpcmodel.PaginationInteger({{value .OutputPage}});if cause!=nil||number!=int64(cursor.PageNumber){return pagination.Page[*{{.Operation}}Output]{},errors.New("inconsistent page number")}};{{end}}
+   size,cause:=rpcmodel.PaginationInteger({{value .Size}});if cause!=nil{return pagination.Page[*{{.Operation}}Output]{},errors.New("invalid request page size")}
+   if {{present .OutputSize}}{size,cause=rpcmodel.PaginationInteger({{value .OutputSize}})}
+   if cause!=nil||size<1||size>{{.MaximumSize}}{return pagination.Page[*{{.Operation}}Output]{},errors.New("invalid response page size")}
    count:=0;if {{present .Items}}{count=len({{.Items.Access}})}
-   page.HasMore=count>0&&{{value .Total}}>0&&cursor.PageNumber<2147483647&&cursor.PageNumber<=int(({{value .Total}}-1)/int32(size))
+   page.HasMore=count>0&&total>0&&int64(cursor.PageNumber)<{{.MaximumPage}}&&int64(cursor.PageNumber)<=(total-1)/size
    if page.HasMore{page.Next.PageNumber=cursor.PageNumber+1}
   }{{end}}
   return page,nil

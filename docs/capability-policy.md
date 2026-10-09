@@ -4,6 +4,8 @@
 
 - Current expansion #88 adds native int64/string token limits, explicit deprecated-input exclusions, multiple lifecycle waiters per action and native scalar-ID waiters. See [reviewed scope](product-capability-expansion.md). Unlisted behavior remains unreviewed.
 
+- [Native page widths](native-page-widths.md) adds int64/string page inputs. Optional `outputPage` identifies a differently named response page field; omitted means the input page name. All paths/types and response role separation are checked before writes. Numeric parsing and platform/native cursor bounds prevent truncation and overflow.
+
 - Stage #37 follows #36 / PR #41 on `issue/37-capability-policies`, stacked on `issue/36-batch-go-emission`.
 - This original dependency stack and follow-up #44 are now [integrated into main](generator-integration.md).
 - This specification preceded code.

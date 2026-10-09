@@ -5024,7 +5024,7 @@ type DescribeInstanceAutoRenewAttributeAPI interface {
 // DescribeInstanceAutoRenewAttribute calls the native DescribeInstanceAutoRenewAttribute action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Standard never retries this operation under the current conservative policy.
+// Reviewed idempotency permits replay only when a configured retry policy allows it.
 //
 // Upstream service documentation (Apache-2.0; informational, not SDK validation):
 //
@@ -5039,7 +5039,7 @@ type DescribeInstanceAutoRenewAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24131
 func (c *Client) DescribeInstanceAutoRenewAttribute(ctx context.Context, input *DescribeInstanceAutoRenewAttributeInput, optFns ...func(*Options)) (*DescribeInstanceAutoRenewAttributeOutput, error) {
-	out, meta, err := invoke[DescribeInstanceAutoRenewAttributeInput, DescribeInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInstanceAutoRenewAttributeInput, DescribeInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceAutoRenewAttribute", Version: "2014-05-26", Idempotent: true}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5089,7 +5089,7 @@ type DescribeInstanceMaintenanceAttributesAPI interface {
 // DescribeInstanceMaintenanceAttributes calls the native DescribeInstanceMaintenanceAttributes action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Standard never retries this operation under the current conservative policy.
+// Reviewed idempotency permits replay only when a configured retry policy allows it.
 //
 // Upstream service documentation (Apache-2.0; informational, not SDK validation):
 //
@@ -5105,7 +5105,7 @@ type DescribeInstanceMaintenanceAttributesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24548
 func (c *Client) DescribeInstanceMaintenanceAttributes(ctx context.Context, input *DescribeInstanceMaintenanceAttributesInput, optFns ...func(*Options)) (*DescribeInstanceMaintenanceAttributesOutput, error) {
-	out, meta, err := invoke[DescribeInstanceMaintenanceAttributesInput, DescribeInstanceMaintenanceAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceMaintenanceAttributes", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInstanceMaintenanceAttributesInput, DescribeInstanceMaintenanceAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceMaintenanceAttributes", Version: "2014-05-26", Idempotent: true}, "POST", true, nil, ValidateDescribeInstanceMaintenanceAttributesInput, optFns)
 	if err != nil {
 		return nil, err
 	}
