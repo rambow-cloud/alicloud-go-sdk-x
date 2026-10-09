@@ -28,7 +28,18 @@ go -C examples/productacceptance run .
 ## Scope and evidence
 
 - [ECS acceptance plan](../../docs/ecs-product-acceptance.md) declares required cases before execution.
+- [VPC acceptance plan](../../docs/vpc-product-acceptance.md) records its independent scope and live limits.
 - Go test durations describe automation, not independent human UX or performance.
 - Full generated inventory, selected offline contracts and historical selected-field live reads remain separate evidence.
 - The local replace is an acceptance mechanism. A published consumer selects an immutable SDK version after #61.
 - Runtime/test code uses the project's MIT license. Generated product packages retain Apache-2.0 provenance and their LICENSE/NOTICE.
+
+## VPC use
+
+- Construct vpc.NewFromConfig with the same native temporary Profile or cached STS configuration used for ECS.
+- Use vpc.NewDescribeVpcsPaginator and HasMorePages/NextPage. Native PageNumber/PageSize and Vpcs.Vpc are preserved; no NextToken/MaxResults or waiter is added.
+- The `vpcIDs` consumer requires only vpc.DescribeVpcsAPI. It contains no manual page advancement or termination rules.
+- Missing/negative totals and invalid returned page metadata fail without consuming the page. Empty collections end traversal even if a stale total is nonzero; a nonempty short page follows the declared total.
+- Limit is at most 50. Explicit zero/false and absent fields remain distinct; nested response wrappers remain native.
+- Paginators are single-consumer; client/providers are shared under their concurrency contracts. Use per-page operation options without mutating client configuration.
+- The offline requestless ListGeographicSubRegions smoke test is separate from historical DescribeVpcs live evidence.

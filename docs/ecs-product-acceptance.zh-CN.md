@@ -34,7 +34,7 @@
 - 对本次变更，各运行一次两个 sdkgen 检查、文档检查、vet、根模块测试与 Example、独立消费者测试及格式检查。
 - CI 在最终 PR 提交执行 Linux race、Windows 和自动化检查。
 - 在 acceptance/ecs-product-result.json 记录实际提交、版本、测试名与结果；后续仅补充证据的提交不改变受测任务。
-- PASS：提交 ac2d9b6521af81a0fc628b7e3a0d209270420b3a 上的 10 项外部消费者测试、14 个子用例全部通过；实际耗时、Go 和系统版本见[机器记录](acceptance/ecs-product-result.json)。
+- #74 初次结果为 PASS：提交 ac2d9b6521af81a0fc628b7e3a0d209270420b3a 上的 10 项外部消费者测试、14 个子用例全部通过；实际耗时、Go 和系统版本见[机器记录](acceptance/ecs-product-result.json)。
 - PASS：Node 22 前端检查及 57 项测试、25 项自动化测试、两个生成器检查、18 个公共包的文档检查、vet、根模块测试与 Example、消费者 vet/运行、格式及中英文和本地链接检查。
 - #47 证据已通过 PR #48 合入；受测 ECS 实现、运行时和策略与真实调用基线一致。真实调用结果仍按上文规定的范围记录。
 - 收尾 PR 合并前，最终提交必须通过 Linux race、Windows、自动化和 issue 关联检查；CI 链接与合并版本记录在 #74 及 PR。
@@ -47,3 +47,5 @@
 - AC-05/06/09：原生临时凭据 Profile、生成 STS provider 与缓存、已审核重试及注入式 OTel 的敏感信息保护。
 - AC-11/12：生成包文档、Example、许可证、配对消费者指南、完整清单及确定性和安全生成检查。
 - UX-01/02/03/04/05：仅记录代理执行的消费者任务，不代表独立人工体验或性能结果。
+
+- #75 更新共用任务后，相同十项测试、14 个子用例在 85795cf3cf1604afe59b0e8af03d5df0c9d3ba38 上重新通过。机器记录现固定到这一版本；上文 #74 初次证据作为历史记录保留。真实调用缺口继续由 [#79](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/79) 跟踪。

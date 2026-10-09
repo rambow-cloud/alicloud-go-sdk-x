@@ -6,6 +6,7 @@ import (
 	"fmt"
 
 	"github.com/rambow-cloud/alicloud-go-sdk-x/service/ecs"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/service/vpc"
 )
 
 func imageIDs(ctx context.Context, api ecs.DescribeImagesAPI, input *ecs.DescribeImagesInput) ([]string, error) {
@@ -69,4 +70,12 @@ func main() {
 		panic(err)
 	}
 	fmt.Printf("ECS image traversal: %v\n", ids)
+	vc := vpcsFunc(func(_ context.Context, in *vpc.DescribeVpcsInput, _ ...func(*vpc.Options)) (*vpc.DescribeVpcsOutput, error) {
+		return &vpc.DescribeVpcsOutput{TotalCount: ptr(int32(2)), PageSize: ptr(int32(1)), Vpcs: &vpc.DescribeVpcsOutputVpcs{VPC: []vpc.DescribeVpcsOutputVpcsVPC{{VPCID: ptr(fmt.Sprintf("fixture-vpc-%d", *in.PageNumber))}}}}, nil
+	})
+	ids, err = vpcIDs(context.Background(), vc, &vpc.DescribeVpcsInput{PageSize: ptr(int32(1))})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("VPC traversal: %v\n", ids)
 }

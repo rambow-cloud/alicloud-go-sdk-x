@@ -28,7 +28,18 @@ go -C examples/productacceptance run .
 ## 范围与证据
 
 - [ECS 验收计划](../../docs/ecs-product-acceptance.zh-CN.md)在执行前确定必需项。
+- [VPC 验收计划](../../docs/vpc-product-acceptance.zh-CN.md)单独说明范围和真实调用限制。
 - Go 测试耗时只表示自动化执行，不代表独立人工体验或性能。
 - 完整生成清单、选定离线契约、历史真实调用的选定字段证据分别记录。
 - local replace 用于验收；发布后的消费者应在 #61 完成后选择不可变 SDK 版本。
 - 运行时和测试代码使用本项目 MIT 许可证；生成的产品包保留 Apache-2.0 来源及 LICENSE/NOTICE。
+
+## VPC 使用方式
+
+- 通过 vpc.NewFromConfig 使用与 ECS 相同的原生临时凭据 Profile 或带缓存的 STS 配置。
+- 使用 vpc.NewDescribeVpcsPaginator 和 HasMorePages/NextPage，保留原生 PageNumber/PageSize 及 Vpcs.Vpc 容器，不添加 NextToken/MaxResults 或 waiter。
+- `vpcIDs` 消费者只依赖 vpc.DescribeVpcsAPI，不包含手动页码推进或终止规则。
+- 缺失/负数总数及错误的响应页码元数据会失败，且不消耗当前页。空集合会结束遍历，即使过时总数仍非零；非空短页按声明总数继续判断。
+- Limit 最大为 50；显式零值、false 和缺失继续区分，嵌套响应容器保留原生结构。
+- 分页器只能由一个消费者使用；客户端和 provider 按各自并发契约共用。通过每页操作选项覆盖，不修改客户端配置。
+- 无请求模型操作 ListGeographicSubRegions 的离线用例与历史 DescribeVpcs 真实证据分别记录。

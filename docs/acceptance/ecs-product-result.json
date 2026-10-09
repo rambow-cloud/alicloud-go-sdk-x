@@ -5,11 +5,11 @@
   "issue": 74,
   "reviewKind": "implementation-agent",
   "independentHuman": false,
-  "sdkCommit": "ac2d9b6521af81a0fc628b7e3a0d209270420b3a",
+  "sdkCommit": "85795cf3cf1604afe59b0e8af03d5df0c9d3ba38",
   "goVersion": "go1.27.1",
   "os": "windows/amd64",
-  "startedAt": "2026-10-09T00:44:43.280Z",
-  "endedAt": "2026-10-09T00:44:45.234Z",
+  "startedAt": "2026-10-09T00:55:03.583Z",
+  "endedAt": "2026-10-09T00:55:08.786Z",
   "command": "go -C examples/productacceptance test -json -count=1 -run ^TestECS ./...",
   "timingKind": "automated-test-execution",
   "evidence": "docs/ecs-product-acceptance.md",
@@ -105,7 +105,7 @@
     {
       "name": "TestECSNativeProfileAndCachedGeneratedRole",
       "status": "PASS",
-      "elapsedSeconds": 0.01
+      "elapsedSeconds": 0.02
     }
   ],
   "subtests": 14,
