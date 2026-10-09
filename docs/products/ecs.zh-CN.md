@@ -75,10 +75,19 @@
 | 操作 | 分页方式 | Waiter | 可安全重试的读取 | Token 字段 | 参数校验 | 敏感格式化 |
 | --- | --- | --- | --- | --- | --- | --- |
 | AllocateDedicatedHosts | — | — | false | ClientToken | true | false |
+| DescribeAutoSnapshotPolicyEx | pages | — | true |  | true | false |
+| DescribeCommands | tokens | — | true |  | true | false |
+| DescribeDeploymentSets | pages | — | true |  | true | false |
+| DescribeDisks | tokens | — | true |  | true | false |
 | DescribeImages | pages | — | true |  | true | false |
-| DescribeInstanceStatus | pages | InstanceRunningWaiter | true |  | true | false |
+| DescribeInstanceStatus | pages | InstanceRunningWaiter, InstanceStoppedWaiter | true |  | true | false |
 | DescribeInstances | dual | — | true |  | true | false |
+| DescribeInvocations | tokens | — | true |  | true | false |
+| DescribeKeyPairs | pages | — | true |  | true | false |
+| DescribeNetworkInterfaces | tokens | — | true |  | true | false |
 | DescribeRegions | — | — | true |  | false | false |
+| DescribeSecurityGroups | tokens | — | true |  | true | false |
+| DescribeSnapshots | tokens | — | true |  | true | false |
 
 ## 文档来源
 

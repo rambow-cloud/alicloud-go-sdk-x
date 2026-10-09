@@ -75,10 +75,19 @@
 | Action | Pagination | Waiter | Retry-safe read | Token field | Validation | Sensitive formatting |
 | --- | --- | --- | --- | --- | --- | --- |
 | AllocateDedicatedHosts | — | — | false | ClientToken | true | false |
+| DescribeAutoSnapshotPolicyEx | pages | — | true |  | true | false |
+| DescribeCommands | tokens | — | true |  | true | false |
+| DescribeDeploymentSets | pages | — | true |  | true | false |
+| DescribeDisks | tokens | — | true |  | true | false |
 | DescribeImages | pages | — | true |  | true | false |
-| DescribeInstanceStatus | pages | InstanceRunningWaiter | true |  | true | false |
+| DescribeInstanceStatus | pages | InstanceRunningWaiter, InstanceStoppedWaiter | true |  | true | false |
 | DescribeInstances | dual | — | true |  | true | false |
+| DescribeInvocations | tokens | — | true |  | true | false |
+| DescribeKeyPairs | pages | — | true |  | true | false |
+| DescribeNetworkInterfaces | tokens | — | true |  | true | false |
 | DescribeRegions | — | — | true |  | false | false |
+| DescribeSecurityGroups | tokens | — | true |  | true | false |
+| DescribeSnapshots | tokens | — | true |  | true | false |
 
 ## Documentation sources
 

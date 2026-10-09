@@ -26,21 +26,32 @@ type operationPolicy struct {
 	Evidence        []string          `json:"evidence"`
 	Paginator       *nativePaginator  `json:"paginator,omitempty"`
 	Waiter          *nativeWaiter     `json:"waiter,omitempty"`
+	Waiters         []nativeWaiter    `json:"waiters,omitempty"`
 	ClientToken     string            `json:"clientToken,omitempty"`
 	Constraints     []inputConstraint `json:"constraints,omitempty"`
 	SensitiveModels []string          `json:"sensitiveModels,omitempty"`
 }
+
+func (p operationPolicy) waiters() []nativeWaiter {
+	result := append([]nativeWaiter{}, p.Waiters...)
+	if p.Waiter != nil {
+		result = append([]nativeWaiter{*p.Waiter}, result...)
+	}
+	return result
+}
+
 type nativePaginator struct {
-	Mode        string `json:"mode"`
-	Items       string `json:"items"`
-	InputToken  string `json:"inputToken,omitempty"`
-	OutputToken string `json:"outputToken,omitempty"`
-	Limit       string `json:"limit,omitempty"`
-	Page        string `json:"page,omitempty"`
-	Size        string `json:"size,omitempty"`
-	Total       string `json:"total,omitempty"`
-	DefaultSize int    `json:"defaultSize"`
-	MaximumSize int    `json:"maximumSize"`
+	ExcludedInputs []string `json:"excludedInputs,omitempty"`
+	Mode           string   `json:"mode"`
+	Items          string   `json:"items"`
+	InputToken     string   `json:"inputToken,omitempty"`
+	OutputToken    string   `json:"outputToken,omitempty"`
+	Limit          string   `json:"limit,omitempty"`
+	Page           string   `json:"page,omitempty"`
+	Size           string   `json:"size,omitempty"`
+	Total          string   `json:"total,omitempty"`
+	DefaultSize    int      `json:"defaultSize"`
+	MaximumSize    int      `json:"maximumSize"`
 }
 type nativeWaiter struct {
 	Name    string   `json:"name"`
@@ -65,14 +76,15 @@ type inputConstraint struct {
 	NonemptyItems bool   `json:"nonemptyItems,omitempty"`
 }
 type capabilityCoverage struct {
-	Status              string `json:"status"`
-	Idempotent          bool   `json:"idempotent"`
-	Paginator           string `json:"paginator,omitempty"`
-	Waiter              string `json:"waiter,omitempty"`
-	ClientToken         string `json:"clientToken,omitempty"`
-	Validator           bool   `json:"validator"`
-	SensitiveFormatting bool   `json:"sensitiveFormatting"`
-	NamingException     bool   `json:"namingException"`
+	Status              string   `json:"status"`
+	Idempotent          bool     `json:"idempotent"`
+	Paginator           string   `json:"paginator,omitempty"`
+	Waiter              string   `json:"waiter,omitempty"`
+	Waiters             []string `json:"waiters,omitempty"`
+	ClientToken         string   `json:"clientToken,omitempty"`
+	Validator           bool     `json:"validator"`
+	SensitiveFormatting bool     `json:"sensitiveFormatting"`
+	NamingException     bool     `json:"namingException"`
 }
 
 func (r *productRenderer) capabilityCoverage(op productOperation) *capabilityCoverage {
@@ -87,6 +99,9 @@ func (r *productRenderer) capabilityCoverage(op productOperation) *capabilityCov
 	}
 	if cfg.Waiter != nil {
 		result.Waiter = cfg.Waiter.Name
+	}
+	for _, w := range cfg.Waiters {
+		result.Waiters = append(result.Waiters, w.Name)
 	}
 	result.ClientToken = cfg.ClientToken
 	result.Validator = hasValidator(cfg)
@@ -310,6 +325,17 @@ func (r *productRenderer) validateCapabilityPolicy() error {
 		request, body := op.Roots.Request.Ref, op.Roots.Body.Ref
 		if cfg.Paginator != nil {
 			p := cfg.Paginator
+			seenExcluded := map[string]bool{}
+			for _, wire := range p.ExcludedInputs {
+				field, err := r.resolve(request, wire, "in")
+				if err != nil {
+					return err
+				}
+				if p.Mode != "tokens" || strings.Contains(wire, ".") || !field.Optional || seenExcluded[wire] || wire == p.InputToken || wire == p.Limit {
+					return errors.New("policy: invalid excluded paginator input")
+				}
+				seenExcluded[wire] = true
+			}
 			if p.Mode != "tokens" && p.Mode != "pages" && p.Mode != "dual" {
 				return errors.New("policy: invalid paginator mode")
 			}
@@ -327,7 +353,7 @@ func (r *productRenderer) validateCapabilityPolicy() error {
 				if strings.Contains(p.InputToken, ".") || strings.Contains(p.Limit, ".") || strings.Contains(p.OutputToken, ".") {
 					return errors.New("policy: token cursors must be root fields")
 				}
-				for _, s := range []struct{ root, path, typ string }{{request, p.InputToken, "string"}, {body, p.OutputToken, "string"}, {request, p.Limit, "int32"}} {
+				for _, s := range []struct{ root, path, typ string }{{request, p.InputToken, "string"}, {body, p.OutputToken, "string"}} {
 					field, err := r.scalarPath(s.root, s.path, "in", s.typ)
 					if err != nil {
 						return err
@@ -335,6 +361,16 @@ func (r *productRenderer) validateCapabilityPolicy() error {
 					if p.Mode == "dual" && s.root == request && !field.Optional {
 						return errors.New("policy: dual-mode cursors require optional fields")
 					}
+				}
+				limit, err := r.resolve(request, p.Limit, "in")
+				if err != nil {
+					return err
+				}
+				if strings.Contains(p.Limit, ".") || limit.Type.Kind != "scalar" || (limit.Type.DSLType != "int32" && limit.Type.DSLType != "long" && limit.Type.DSLType != "int64" && limit.Type.DSLType != "string") {
+					return errors.New("policy: token limit must be an integer or decimal-string root field")
+				}
+				if p.Mode == "dual" && !limit.Optional {
+					return errors.New("policy: dual-mode limits require optional fields")
 				}
 			} else if p.InputToken != "" || p.OutputToken != "" || p.Limit != "" {
 				return errors.New("policy: page mode cannot declare token fields")
@@ -367,8 +403,7 @@ func (r *productRenderer) validateCapabilityPolicy() error {
 				}
 			}
 		}
-		if cfg.Waiter != nil {
-			w := cfg.Waiter
+		for _, w := range cfg.waiters() {
 			if w.MaxIDs < 1 || w.MaxIDs > 2147483647 || w.Success == "" || len(w.Retry) == 0 {
 				return errors.New("policy: invalid waiter bounds/states")
 			}
@@ -376,8 +411,10 @@ func (r *productRenderer) validateCapabilityPolicy() error {
 			if err != nil {
 				return err
 			}
-			if strings.Contains(w.IDs, ".") || ids.Type.Kind != "array" || ids.Type.Items == nil || ids.Type.Items.Kind != "scalar" || ids.Type.Items.DSLType != "string" {
-				return errors.New("policy: waiter IDs must be a root string array")
+			arrayIDs := ids.Type.Kind == "array" && ids.Type.Items != nil && ids.Type.Items.Kind == "scalar" && ids.Type.Items.DSLType == "string"
+			singleID := ids.Type.Kind == "scalar" && ids.Type.DSLType == "string" && w.MaxIDs == 1
+			if strings.Contains(w.IDs, ".") || (!arrayIDs && !singleID) {
+				return errors.New("policy: waiter IDs must be a root string array or one scalar ID")
 			}
 			items, err := r.resolve(body, w.Items, "out")
 			if err != nil {
@@ -435,7 +472,7 @@ func (r *productRenderer) validateCapabilityPolicy() error {
 		}
 		seen := map[string]bool{}
 		for _, c := range cfg.Constraints {
-			if w := cfg.Waiter; w != nil {
+			for _, w := range cfg.waiters() {
 				fixed := int64(0)
 				if c.Path == w.Page {
 					fixed = 1

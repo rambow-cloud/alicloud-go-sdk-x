@@ -45,13 +45,13 @@ func main() {
 
 - Default file: `~/.aliyun/config.json`, resolved with `os.UserHomeDir`.
 
-- Supported modes: OAuth, StsToken, AK, RamRoleArn, ChainableRamRoleArn.
+- Supported modes: OAuth, StsToken, AK, RamRoleArn, ChainableRamRoleArn, OIDC, EcsRamRole, CredentialsURI, External and CloudSSO.
 
 - AK and AK-based role profiles require an explicit `profilecreds.NewProvider` with `AllowLongLived: true`.
 - Explicit StaticProvider/EnvProvider and custom providers also work.
 
-- CloudSSO, process, URI and metadata modes return `ErrUnsupportedMode`.
-- OIDC/SAML operations are supported separately; this loader does not discover token files.
+- External source bounds and native CloudSSO session rules are described in [external credentials](external-credentials.md).
+- Complete OIDC environment configuration discovers a reloadable token file under #89. SAML assertion sources are registered explicitly. See [federation credentials](federation-credentials.md).
 
 - Service constructors still require a provider.
 - Loading reads local JSON and creates a cache; it makes no credential HTTP calls.
@@ -64,7 +64,11 @@ func main() {
 
 3. Complete temporary environment credentials: ALIBABA_CLOUD_ACCESS_KEY_ID, ALIBABA_CLOUD_ACCESS_KEY_SECRET and ALIBABA_CLOUD_SECURITY_TOKEN.
 
-4. Profile selected by ALIBABA_CLOUD_PROFILE, then CLI `current`, then `default`.
+4. Complete OIDC environment configuration: role ARN, OIDC provider ARN and token filename.
+
+5. URI environment: ALIBABA_CLOUD_CREDENTIALS_URI.
+
+6. Profile selected by ALIBABA_CLOUD_PROFILE, then CLI `current`, then `default`.
 
 - Present but incomplete environment credentials stop loading.
 - Long-lived environment keys require explicit opt-in.
@@ -73,7 +77,9 @@ func main() {
 - Region order: WithRegion → ALIBABA_CLOUD_REGION_ID → ALIBABA_CLOUD_REGION → selected profile.
 - The SDK does not invent a region.
 
-- Missing files/profiles return `credentials.ErrNotFound`.
+- When the default file is absent, lazy ECS IMDSv2 discovery is last; discovery flags and explicit-source behavior are documented in [external credentials](external-credentials.md).
+
+- Missing explicit files/profiles return `credentials.ErrNotFound`.
 - Invalid JSON, duplicate profiles and role-source cycles return safe errors.
 - File and OAuth response reads are limited to 1 MiB.
 
@@ -101,7 +107,7 @@ func main() {
 - Initial login is interactive.
 - Revoked, expired or invalid_grant sessions return `ErrLoginRequired`; inspect it with errors.Is.
 - Default errors omit tokens, bodies and URLs.
-- No browser or process is launched.
+- No browser is launched; an External profile starts its configured process only during retrieval.
 
 - Role profiles use the generated STS helper/cache with separate source credentials.
 - Inputs are copied.
@@ -125,5 +131,5 @@ func main() {
 - Offline tests cover source order, nil/typed-nil, explicit AK, cycles, ownership, role composition, concurrency, cancellation, token rotation, persistence and invalid HTTP/JSON/expiry responses.
 - Doccheck, vet, tests and Linux race/Windows CI cover both packages.
 
-- #68 replaced the old no-discovery rule in #53. #60 independent developer acceptance and #61 publication/indexing remain required.
+- #68 replaced the old no-discovery rule in #53. #60 agent consumer acceptance is complete; independent human UX remains optional #76. #61 publication/indexing remains open.
 - See [consumer tasks](sts-consumer-acceptance.md).

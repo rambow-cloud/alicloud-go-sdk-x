@@ -8,9 +8,12 @@ import (
 
 	alicloud "github.com/rambow-cloud/alicloud-go-sdk-x"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/credentials"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/feature/externalcreds"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/feature/profilecreds"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/feature/stscreds"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/internal/rpcmodel"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/internal/sharedconfig"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/service/sts"
 )
 
 // LoadOptions configures default loading; scalar values are copied during loading.
@@ -36,12 +39,14 @@ type LoadOptions struct {
 
 // LoadDefaultConfig discovers native Alibaba configuration and returns an alicloud.Config.
 // Credential precedence is explicit provider, explicit profile, complete temporary
-// environment credentials, then ALIBABA_CLOUD_PROFILE/CLI current/default profile.
+// environment credentials, complete OIDC environment configuration, credential URI,
+// ALIBABA_CLOUD_PROFILE/CLI current/default profile, then lazy ECS IMDSv2 discovery
+// when the default config file is absent. Explicit missing files/profiles do not fall back.
 // Region precedence is options, ALIBABA_CLOUD_REGION_ID, ALIBABA_CLOUD_REGION, profile.
 // Long-lived default sources are rejected; use explicit provider opt-in instead.
 //
 // It reads bounded local JSON but never makes credential HTTP calls during loading.
-// Missing sources return credentials.ErrNotFound; malformed/partial sources stop
+// Explicit missing sources return credentials.ErrNotFound; malformed/partial sources stop
 // resolution. Cancellation remains errors.Is-compatible. Returned configuration is
 // owned by the caller; extension objects remain shared. No process/browser is started.
 func LoadDefaultConfig(ctx context.Context, optFns ...func(*LoadOptions) error) (alicloud.Config, error) {
@@ -88,7 +93,41 @@ func LoadDefaultConfig(ctx context.Context, optFns ...func(*LoadOptions) error) 
 		}
 	}
 	if source == nil {
+		if options.SharedConfigProfile == "" {
+			var err error
+			source, err = environmentOIDC(options.HTTPClient)
+			if err != nil {
+				return alicloud.Config{}, err
+			}
+		}
+	}
+	if source == nil {
+		if options.SharedConfigProfile == "" {
+			uri := os.Getenv("ALIBABA_CLOUD_CREDENTIALS_URI")
+			if uri != "" {
+				if externalSourcesDisabled() {
+					return alicloud.Config{}, profilecreds.ErrInvalidConfiguration
+				}
+				var err error
+				source, err = externalcreds.NewURIProvider(uri, externalcreds.Options{HTTPClient: options.HTTPClient})
+				if err != nil {
+					return alicloud.Config{}, err
+				}
+			}
+		}
+	}
+	if source == nil {
 		p, err := profilecreds.NewProvider(ctx, profilecreds.Options{Filename: options.SharedConfigFile, Profile: options.SharedConfigProfile, Region: region, HTTPClient: options.HTTPClient, CacheOptions: options.CredentialsCacheOptions})
+		if errors.Is(err, sharedconfig.ErrFileMissing) && options.SharedConfigProfile == "" && os.Getenv("ALIBABA_CLOUD_PROFILE") == "" && options.SharedConfigFile == "" && !metadataSourcesDisabled() {
+			source, err = externalcreds.NewECSMetadataProvider(os.Getenv("ALIBABA_CLOUD_ECS_METADATA"), externalcreds.Options{HTTPClient: options.HTTPClient})
+			if err == nil {
+				source, err = credentials.NewCache(source, options.CredentialsCacheOptions)
+			}
+			if err != nil {
+				return alicloud.Config{}, err
+			}
+			return alicloud.Config{Region: region, CredentialsProvider: source, HTTPClient: options.HTTPClient}, nil
+		}
 		if err != nil {
 			return alicloud.Config{}, err
 		}
@@ -129,6 +168,44 @@ func LoadDefaultConfig(ctx context.Context, optFns ...func(*LoadOptions) error) 
 		return alicloud.Config{}, ctx.Err()
 	}
 	return alicloud.Config{Region: region, CredentialsProvider: source, HTTPClient: options.HTTPClient}, nil
+}
+
+func externalSourcesDisabled() bool {
+	v := os.Getenv("ALIBABA_CLOUD_DISABLE_EXTERNAL_PROCESS")
+	return v == "1" || strings.EqualFold(v, "true")
+}
+func metadataSourcesDisabled() bool {
+	v := os.Getenv("ALIBABA_CLOUD_ECS_METADATA_DISABLED")
+	return v == "1" || strings.EqualFold(v, "true")
+}
+
+func environmentOIDC(httpClient alicloud.HTTPClient) (credentials.Provider, error) {
+	role := os.Getenv("ALIBABA_CLOUD_ROLE_ARN")
+	provider := os.Getenv("ALIBABA_CLOUD_OIDC_PROVIDER_ARN")
+	filename := os.Getenv("ALIBABA_CLOUD_OIDC_TOKEN_FILE")
+	// Role ARN alone is also used by other credential modes; OIDC markers select
+	// this source. A partial selected source must never fall back to a profile.
+	if provider == "" && filename == "" {
+		return nil, nil
+	}
+	if strings.TrimSpace(role) == "" || strings.TrimSpace(provider) == "" || strings.TrimSpace(filename) == "" {
+		return nil, profilecreds.ErrInvalidConfiguration
+	}
+	token, err := stscreds.NewFileTokenProvider(filename)
+	if err != nil {
+		return nil, profilecreds.ErrInvalidConfiguration
+	}
+	session := os.Getenv("ALIBABA_CLOUD_ROLE_SESSION_NAME")
+	if session == "" {
+		session = "alicloud-go-sdk-x"
+	}
+	// The credential exchange uses the public STS origin, independent of the
+	// eventual service region. No network call occurs during construction.
+	api, err := sts.NewFromConfig(alicloud.Config{BaseEndpoint: "https://sts.aliyuncs.com", CredentialsProvider: credentials.AnonymousProvider{}, HTTPClient: httpClient})
+	if err != nil {
+		return nil, err
+	}
+	return stscreds.NewAssumeRoleWithOIDCProvider(api, sts.AssumeRoleWithOIDCInput{RoleARN: &role, OIDCProviderARN: &provider, RoleSessionName: &session}, token)
 }
 
 // WithRegion sets the explicit region. Empty permits environment/profile resolution.

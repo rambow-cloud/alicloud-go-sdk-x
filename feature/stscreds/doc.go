@@ -14,4 +14,8 @@
 // Darabonba DSL. This package supplies reusable credential adaptation and reviewed
 // helper validation; credentials.Cache owns refresh scheduling. Native Profile
 // composition in feature/profilecreds uses the same generated-client adapter.
+// NewAssumeRoleWithOIDCProvider and NewAssumeRoleWithSAMLProvider exchange
+// replaceable TokenProvider material through anonymous generated STS clients.
+// FileTokenProvider reloads atomically replaced files for each renewal. Wrap
+// federation providers in credentials.Cache; no interactive login is performed.
 package stscreds
