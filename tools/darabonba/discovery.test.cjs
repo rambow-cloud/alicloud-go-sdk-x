@@ -412,7 +412,7 @@ test("strict unknown/unsupported selections fail before creating outputs", (t) =
   const temporary = sourceFixture(t);
   for (const target of [
     "ecs/DoesNotExist",
-    "ecs/RunInstances",
+    "vpc/GrantInstanceToVbr",
     "../AssumeRole",
   ]) {
     assert.throws(
@@ -461,7 +461,14 @@ test("report distinguishes lowering from Go/live acceptance and prints reason lo
   const text = run("report", { product: "sts" });
   assert.match(text, /^sts: 4 discovered, 4 lowered, 0 unsupported/);
   assert.match(text, /Go emission\/compilation\/live: not assessed/);
-  assert.match(run("report", { product: "ecs" }), /RunInstances: DSL_/);
+  assert.match(
+    run("report", { product: "ecs" }),
+    /^ecs: 380 discovered, 380 lowered, 0 unsupported/,
+  );
+  assert.match(
+    run("report", { product: "vpc" }),
+    /GrantInstanceToVbr: DSL_SHRINK_TRANSFORM/,
+  );
 });
 
 test("requestless discovery retains absent source model without a synthetic DSL declaration", () => {

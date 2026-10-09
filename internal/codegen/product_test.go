@@ -75,7 +75,7 @@ func TestRenamedProductUsesSharedEmitterAndGuide(t *testing.T) {
 }
 
 func TestCompleteProductsDeterministicModelsMethodsAndExamples(t *testing.T) {
-	for pkg, want := range map[string]int{"ecs": 283, "sts": 4, "vpc": 296} {
+	for pkg, want := range map[string]int{"ecs": 380, "sts": 4, "vpc": 396} {
 		t.Run(pkg, func(t *testing.T) {
 			p := readProductIR(t, pkg)
 			r, err := newProductRenderer(p)
@@ -151,6 +151,36 @@ func TestCompleteProductsDeterministicModelsMethodsAndExamples(t *testing.T) {
 	}
 }
 
+func TestShrinkBindingsRejectUnknownEncodingAndDynamicQueryValues(t *testing.T) {
+	for _, encoding := range []string{"base64", ""} {
+		t.Run(encoding, func(t *testing.T) {
+			p := readProductIR(t, "ecs")
+			for i := range p.Operations {
+				if p.Operations[i].Name != "InvokeCommand" {
+					continue
+				}
+				for j := range p.Operations[i].Bindings {
+					if p.Operations[i].Bindings[j].Wire == "Parameters" {
+						p.Operations[i].Bindings[j].Encoding = encoding
+					}
+				}
+			}
+			if _, err := renderProduct(p); err == nil {
+				t.Fatal("unsafe encoding reached emission")
+			}
+		})
+	}
+	p := readProductIR(t, "ecs")
+	files, err := renderProduct(p)
+	if err != nil {
+		t.Fatal(err)
+	}
+	types := string(files["service/ecs/types.gen.go"])
+	if !strings.Contains(types, "rpc:\"json\"") || !strings.Contains(types, "// Deprecated: The upstream DSL") {
+		t.Fatal("encoding or deprecation contract missing")
+	}
+}
+
 func fullProductFixture(t *testing.T) string {
 	t.Helper()
 	root := t.TempDir()
@@ -182,7 +212,7 @@ func fullProductFixture(t *testing.T) string {
 
 func TestProductSupportAndCorruptionFailBeforeWrites(t *testing.T) {
 	root := fullProductFixture(t)
-	for _, selected := range [][]string{{"ecs/Unknown"}, {"ecs/RunInstances"}, {"DescribeImages"}, {"ecs/DescribeImages", "ecs/RunInstances"}} {
+	for _, selected := range [][]string{{"ecs/Unknown"}, {"vpc/GrantInstanceToVbr"}, {"DescribeImages"}, {"ecs/DescribeImages", "vpc/GrantInstanceToVbr"}} {
 		if err := GenerateProducts(context.Background(), root, false, selected); err == nil {
 			t.Fatal("invalid selection accepted", selected)
 		}

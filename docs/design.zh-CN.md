@@ -2,6 +2,8 @@
 
 [English](design.md)
 
+- [RPC 扩展 #83](dsl-rpc-expansion.zh-CN.md)允许具体操作输入保留 DSL 原生 map 字段。动态 JSON 字段必须有明确的 IR 编码依据，请求及响应根类型仍使用具体结构体。
+
 - 基础优先顺序见 development-path.md；v1 前 API 可能变化。
 - module 为 github.com/rambow-cloud/alicloud-go-sdk-x，最低 Go 1.27。
 

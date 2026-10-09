@@ -7,7 +7,7 @@
 
 - Import `github.com/rambow-cloud/alicloud-go-sdk-x/service/ecs`.
 - Official DSL commit: `ec489e5c3deae95496daae2b41503ac58b221adb`. License: Apache-2.0. Source files and licenses are in `sources/darabonba`.
-- 380 actions found; 283 generated; 97 unsupported; 1453 complete models.
+- 380 actions found; 380 generated; 0 unsupported; 2053 complete models.
 - Generation does not prove compilation or live behavior. See `ecs.coverage.json` and the PR checks.
 
 ## Calls and data
@@ -17,6 +17,8 @@
 - Nil optional pointers omit fields. Non-nil pointers preserve 0, false and empty strings.
 - Inputs are copied before middleware. Do not change inputs during calls or retain hook models/options.
 - Array query indexes start at 1. API field case and DSL string types stay unchanged.
+- Official JSON shrink fields keep structured inputs and encode one JSON string query value. Nil omits the field; explicit empty containers remain. No Shrink fields or nested query indexes are emitted. Dynamic JSON values use scalars, string-keyed maps and slices; cycles and unsupported values fail.
+- Deprecated fields retain their wire behavior and have Deprecated Go comments.
 - RegionId defaults to the configured region. Operation options can override it.
 - Outputs keep the full response body and add Metadata. DSL envelope types remain separate.
 - Clients support concurrent calls. Small OperationAPI interfaces support mocks.
@@ -30,6 +32,31 @@
 - The tables below list reviewed adapters. Token-shaped fields do not imply support.
 - The generator extracts licensed descriptions and source indexes. Go comments keep source and ownership details.
 - Each action has an offline Example with scripted HTTP. Empty sample requests show calling syntax; they are not valid cloud requests.
+
+## JSON string parameters
+
+- These fields keep structured Go inputs. The official DSL selects one JSON query value; no manual serialization is needed.
+- Nil omits the field. Non-nil empty maps, slices and models remain empty objects, arrays or model objects.
+- Ordinary arrays retain native indexed parameters. This table does not establish retry safety or live acceptance.
+
+| Action | Go input field | Query key |
+| --- | --- | --- |
+| CreateAutoProvisioningGroup | `CreateAutoProvisioningGroupInput.ResourcePoolOptions` | `ResourcePoolOptions` |
+| CreateDiagnosticReport | `CreateDiagnosticReportInput.AdditionalOptions` | `AdditionalOptions` |
+| CreatePlanMaintenanceWindow | `CreatePlanMaintenanceWindowInput.TargetResource` | `TargetResource` |
+| CreatePlanMaintenanceWindow | `CreatePlanMaintenanceWindowInput.TimePeriod` | `TimePeriod` |
+| DescribePlanMaintenanceWindows | `DescribePlanMaintenanceWindowsInput.TargetResourceTags` | `TargetResourceTags` |
+| InvokeCommand | `InvokeCommandInput.Parameters` | `Parameters` |
+| ModifyCloudAssistantSettings | `ModifyCloudAssistantSettingsInput.AgentUpgradeConfig` | `AgentUpgradeConfig` |
+| ModifyCloudAssistantSettings | `ModifyCloudAssistantSettingsInput.OssDeliveryConfig` | `OssDeliveryConfig` |
+| ModifyCloudAssistantSettings | `ModifyCloudAssistantSettingsInput.ResourceUsageConfig` | `ResourceUsageConfig` |
+| ModifyCloudAssistantSettings | `ModifyCloudAssistantSettingsInput.SessionManagerConfig` | `SessionManagerConfig` |
+| ModifyCloudAssistantSettings | `ModifyCloudAssistantSettingsInput.SlsDeliveryConfig` | `SlsDeliveryConfig` |
+| ModifyInvocationAttribute | `ModifyInvocationAttributeInput.Parameters` | `Parameters` |
+| ModifyPlanMaintenanceWindow | `ModifyPlanMaintenanceWindowInput.TargetResource` | `TargetResource` |
+| ModifyPlanMaintenanceWindow | `ModifyPlanMaintenanceWindowInput.TimePeriod` | `TimePeriod` |
+| RunCommand | `RunCommandInput.Parameters` | `Parameters` |
+| StartTerminalSession | `StartTerminalSessionInput.EncryptionOptions` | `EncryptionOptions` |
 
 ## Capability policy
 
@@ -49,7 +76,7 @@
 
 ## Documentation sources
 
-- English Go comments reuse licensed descriptions: 274/283 actions and 2401/6476 fields have prose.
+- English Go comments reuse licensed descriptions: 371/380 actions and 4234/9626 fields have prose.
 - Missing, empty or non-English descriptions are recorded in `ecs.documentation.json`. Prose does not add validation or required fields.
 - Both guides include the same usage, contracts and source index. Pinned inputs have no Chinese semantic translations; none are invented.
 - Runnable Examples use offline responses, not upstream account/resource values.
@@ -57,6 +84,7 @@
 
 | Action | English prose status | Pinned source |
 | --- | --- | --- |
+| AcceptInquiredSystemEvent | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L99) |
 | ActivateRouterInterface | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L182) |
 | AddBandwidthPackageIps | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L262) |
 | AddTags | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L383) |
@@ -64,47 +92,74 @@
 | AllocateEipAddress | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L749) |
 | AllocatePublicIpAddress | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L860) |
 | ApplyAutoSnapshotPolicy | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L958) |
+| AssignIpv6Addresses | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1071) |
+| AssignPrivateIpAddresses | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1207) |
 | AssociateEipAddress | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1311) |
 | AssociateHaVip | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1400) |
 | AttachClassicLinkVpc | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1495) |
 | AttachDisk | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1648) |
 | AttachInstanceRamRole | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1783) |
 | AttachKeyPair | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1894) |
+| AttachNetworkInterface | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L2007) |
+| AuthorizeSecurityGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L2274) |
+| AuthorizeSecurityGroupEgress | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L2613) |
 | CancelAutoSnapshotPolicy | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L2804) |
 | CancelCopyImage | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L2887) |
+| CancelImagePipelineExecution | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L2978) |
 | CancelPhysicalConnection | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3066) |
+| CancelSimulatedSystemEvents | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3154) |
 | CancelTask | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3235) |
 | CloneDisks | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3409) |
 | ConnectRouterInterface | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3543) |
 | ConvertNatPublicIpToEip | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3631) |
 | CopyImage | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3755) |
 | CopySnapshot | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3916) |
+| CreateActivation | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L4071) |
+| CreateAutoProvisioningGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L5287) |
 | CreateAutoSnapshotPolicy | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L5558) |
 | CreateCapacityReservation | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L5729) |
+| CreateCommand | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L5941) |
 | CreateDedicatedHostCluster | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L6091) |
 | CreateDeploymentSet | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L6214) |
 | CreateDiagnosticMetricSet | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L6324) |
+| CreateDiagnosticReport | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L6414) |
 | CreateDisk | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L6641) |
 | CreateElasticityAssurance | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L6884) |
 | CreateForwardEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7018) |
 | CreateHaVip | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7118) |
+| CreateHpcCluster | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7214) |
 | CreateImage | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7422) |
+| CreateImageComponent | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7606) |
+| CreateImagePipeline | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L8006) |
 | CreateInstance | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L8518) |
 | CreateKeyPair | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L8802) |
+| CreateLaunchTemplate | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L9289) |
+| CreateLaunchTemplateVersion | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L9879) |
 | CreateNatGateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10124) |
+| CreateNetworkInterface | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10484) |
+| CreateNetworkInterfacePermission | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10704) |
+| CreatePhysicalConnection | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10803) |
+| CreatePlanMaintenanceWindow | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10989) |
+| CreatePortRangeList | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11108) |
+| CreatePrefixList | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11261) |
 | CreateRouteEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11382) |
+| CreateRouterInterface | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11500) |
 | CreateSavingsPlan | no-english-prose | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11647) |
 | CreateSecurityGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11765) |
+| CreateSimulatedSystemEvents | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11903) |
 | CreateSnapshot | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12062) |
 | CreateSnapshotGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12238) |
 | CreateStorageSet | no-english-prose | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12367) |
 | CreateVSwitch | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12469) |
+| CreateVirtualBorderRouter | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12576) |
 | CreateVpc | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12697) |
 | CreateVsc | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12809) |
 | DeactivateRouterInterface | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12910) |
+| DeleteActivation | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13005) |
 | DeleteAutoProvisioningGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13096) |
 | DeleteAutoSnapshotPolicy | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13177) |
 | DeleteBandwidthPackage | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13249) |
+| DeleteCommand | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13328) |
 | DeleteDedicatedHostCluster | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13410) |
 | DeleteDeploymentSet | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13491) |
 | DeleteDiagnosticMetricSets | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13568) |
@@ -112,15 +167,22 @@
 | DeleteDisk | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13705) |
 | DeleteForwardEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13787) |
 | DeleteHaVip | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13872) |
+| DeleteHpcCluster | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13958) |
 | DeleteImage | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14052) |
+| DeleteImageComponent | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14142) |
+| DeleteImagePipeline | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14229) |
 | DeleteInstance | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14343) |
 | DeleteInstances | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14476) |
 | DeleteKeyPairs | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14584) |
 | DeleteLaunchTemplate | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14677) |
 | DeleteLaunchTemplateVersion | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14778) |
 | DeleteNatGateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14867) |
+| DeleteNetworkInterface | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14962) |
+| DeleteNetworkInterfacePermission | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15057) |
 | DeletePhysicalConnection | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15145) |
 | DeletePlanMaintenanceWindow | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15226) |
+| DeletePortRangeList | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15295) |
+| DeletePrefixList | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15379) |
 | DeleteRouteEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15470) |
 | DeleteRouterInterface | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15562) |
 | DeleteSecurityGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15655) |
@@ -131,8 +193,10 @@
 | DeleteVirtualBorderRouter | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16093) |
 | DeleteVpc | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16180) |
 | DeleteVsc | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16269) |
+| DeregisterManagedInstance | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16378) |
 | DescribeAccessPoints | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16486) |
 | DescribeAccountAttributes | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16616) |
+| DescribeActivations | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16759) |
 | DescribeAutoProvisioningGroupHistory | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16913) |
 | DescribeAutoProvisioningGroupInstances | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L17035) |
 | DescribeAutoProvisioningGroups | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L17212) |
@@ -145,7 +209,9 @@
 | DescribeCapacityReservations | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18359) |
 | DescribeClassicLinkInstances | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18485) |
 | DescribeCloudAssistantSettings | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18623) |
+| DescribeCloudAssistantStatus | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18736) |
 | DescribeClusters | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18842) |
+| DescribeCommands | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L19029) |
 | DescribeDedicatedHostAutoRenew | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L19163) |
 | DescribeDedicatedHostClusters | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L19317) |
 | DescribeDedicatedHostTypes | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L19447) |
@@ -160,6 +226,7 @@
 | DescribeDiskEncryptionByDefaultStatus | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L20567) |
 | DescribeDiskMonitorData | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L20683) |
 | DescribeDisks | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21017) |
+| DescribeDisksFullStatus | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21266) |
 | DescribeEipAddresses | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21420) |
 | DescribeEipMonitorData | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21546) |
 | DescribeElasticityAssuranceAutoRenewAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21650) |
@@ -168,13 +235,18 @@
 | DescribeEniMonitorData | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22081) |
 | DescribeForwardTableEntries | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22196) |
 | DescribeHaVips | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22317) |
+| DescribeHpcClusters | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22426) |
+| DescribeImageComponents | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22583) |
 | DescribeImageFromFamily | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22760) |
+| DescribeImagePipelineExecutions | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22899) |
+| DescribeImagePipelines | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L23113) |
 | DescribeImageSharePermission | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L23245) |
 | DescribeImageSupportInstanceTypes | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L23354) |
 | DescribeImages | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L23642) |
 | DescribeInstanceAttachmentAttributes | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L23818) |
 | DescribeInstanceAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24030) |
 | DescribeInstanceAutoRenewAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24141) |
+| DescribeInstanceHistoryEvents | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24389) |
 | DescribeInstanceMaintenanceAttributes | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24559) |
 | DescribeInstanceModificationPrice | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24743) |
 | DescribeInstanceMonitorData | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24893) |
@@ -185,19 +257,34 @@
 | DescribeInstanceTypes | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L25655) |
 | DescribeInstanceVncUrl | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L25886) |
 | DescribeInstances | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L26283) |
+| DescribeInstancesFullStatus | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L26569) |
+| DescribeInvocationResults | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L26791) |
+| DescribeInvocations | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27070) |
 | DescribeKeyPairs | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27254) |
 | DescribeLaunchTemplateVersions | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27497) |
 | DescribeLaunchTemplates | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27650) |
 | DescribeLimitation | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27744) |
 | DescribeLockedSnapshots | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27852) |
+| DescribeManagedInstances | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28032) |
 | DescribeNatGateways | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28179) |
+| DescribeNetworkInterfaceAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28450) |
+| DescribeNetworkInterfacePermissions | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28562) |
+| DescribeNetworkInterfaces | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28797) |
 | DescribeNewProjectEipMonitorData | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28952) |
 | DescribePhysicalConnections | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29078) |
+| DescribePlanMaintenanceWindows | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29231) |
+| DescribePortRangeListAssociations | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29338) |
+| DescribePortRangeListEntries | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29432) |
+| DescribePortRangeLists | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29548) |
+| DescribePrefixListAssociations | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29660) |
+| DescribePrefixListAttributes | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29765) |
+| DescribePrefixLists | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29892) |
 | DescribePrice | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L30302) |
 | DescribeRecommendInstanceType | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L30584) |
 | DescribeRegions | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L30736) |
 | DescribeRenewalPrice | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L30895) |
 | DescribeReservedInstanceAutoRenewAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31001) |
+| DescribeReservedInstances | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31195) |
 | DescribeResourceByTags | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31385) |
 | DescribeResourcesModification | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31599) |
 | DescribeRouteTables | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31778) |
@@ -207,6 +294,7 @@
 | DescribeSecurityGroupAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32268) |
 | DescribeSecurityGroupReferences | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32379) |
 | DescribeSecurityGroups | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32545) |
+| DescribeSendFileResults | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32754) |
 | DescribeSnapshotGroups | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32937) |
 | DescribeSnapshotLinks | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L33081) |
 | DescribeSnapshotMonitorData | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L33213) |
@@ -214,6 +302,7 @@
 | DescribeSnapshots | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L33550) |
 | DescribeSnapshotsUsage | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L33721) |
 | DescribeSpotAdvice | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L33847) |
+| DescribeSpotPriceHistory | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34018) |
 | DescribeStorageCapacityUnits | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34177) |
 | DescribeStorageSetDetails | no-english-prose | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34295) |
 | DescribeStorageSets | no-english-prose | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34421) |
@@ -234,22 +323,34 @@
 | DetachDisk | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36217) |
 | DetachInstanceRamRole | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36325) |
 | DetachKeyPair | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36423) |
+| DetachNetworkInterface | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36522) |
+| DisableActivation | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36638) |
 | DisableDiskEncryptionByDefault | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36724) |
+| DisableNetworkInterfaceQoS | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36800) |
 | EnableDiskEncryptionByDefault | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36895) |
+| EnableNetworkInterfaceQoS | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37004) |
 | EnablePhysicalConnection | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37090) |
 | EndTerminalSession | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37181) |
 | ExportImage | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37323) |
 | ExportSnapshot | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37460) |
+| GetInstanceConsoleOutput | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37558) |
+| GetInstanceScreenshot | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37657) |
 | ImportImage | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37974) |
 | ImportKeyPair | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L38209) |
+| InstallCloudAssistant | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L38307) |
+| InvokeCommand | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L38724) |
 | JoinResourceGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L38914) |
 | JoinSecurityGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39016) |
 | LeaveSecurityGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39122) |
+| ListPluginStatus | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39254) |
+| ListTagResources | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39443) |
 | LockSnapshot | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39596) |
 | ModifyAutoProvisioningGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39732) |
 | ModifyAutoSnapshotPolicyEx | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39908) |
 | ModifyBandwidthPackageSpec | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40016) |
 | ModifyCapacityReservation | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40122) |
+| ModifyCloudAssistantSettings | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40344) |
+| ModifyCommand | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40461) |
 | ModifyDedicatedHostAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40591) |
 | ModifyDedicatedHostAutoReleaseTime | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40704) |
 | ModifyDedicatedHostAutoRenewAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40851) |
@@ -267,6 +368,7 @@
 | ModifyElasticityAssuranceAutoRenewAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42233) |
 | ModifyForwardEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42326) |
 | ModifyHaVipAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42427) |
+| ModifyHpcClusterAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42522) |
 | ModifyImageAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42655) |
 | ModifyImageShareGroupPermission | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42759) |
 | ModifyImageSharePermission | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42871) |
@@ -285,7 +387,14 @@
 | ModifyInstanceSpec | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L44708) |
 | ModifyInstanceVncPasswd | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L44837) |
 | ModifyInstanceVpcAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L44966) |
+| ModifyInvocationAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45244) |
 | ModifyLaunchTemplateDefaultVersion | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45371) |
+| ModifyManagedInstance | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45468) |
+| ModifyNetworkInterfaceAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45669) |
+| ModifyPhysicalConnectionAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45796) |
+| ModifyPlanMaintenanceWindow | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45955) |
+| ModifyPortRangeList | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46074) |
+| ModifyPrefixList | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46205) |
 | ModifyPrepayInstanceSpec | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46379) |
 | ModifyReservedInstanceAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46514) |
 | ModifyReservedInstanceAutoRenewAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46617) |
@@ -293,7 +402,9 @@
 | ModifyRouterInterfaceAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46926) |
 | ModifyRouterInterfaceSpec | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47032) |
 | ModifySecurityGroupAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47129) |
+| ModifySecurityGroupEgressRule | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47292) |
 | ModifySecurityGroupPolicy | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47446) |
+| ModifySecurityGroupRule | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47620) |
 | ModifySnapshotAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47772) |
 | ModifySnapshotCategory | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47874) |
 | ModifySnapshotGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47964) |
@@ -326,17 +437,30 @@
 | RenewInstance | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L50873) |
 | RenewReservedInstances | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51016) |
 | ReplaceSystemDisk | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51198) |
+| ReportInstancesStatus | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51362) |
 | ResetDisk | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51478) |
 | ResetDiskDefaultKMSKeyId | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51565) |
 | ResetDisks | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51668) |
 | ResizeDisk | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51800) |
+| RevokeSecurityGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L52057) |
+| RevokeSecurityGroupEgress | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L52411) |
+| RunCommand | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L53002) |
+| RunInstances | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L54122) |
 | SendDiagnosticInterrupt | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L54527) |
+| SendFile | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L54668) |
+| StartImagePipelineExecution | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L54816) |
 | StartInstance | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L54928) |
 | StartInstances | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55048) |
+| StartTerminalSession | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55216) |
 | StopInstance | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55373) |
 | StopInstances | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55522) |
+| StopInvocation | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55623) |
+| TagResources | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55749) |
 | TerminatePhysicalConnection | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55838) |
 | TerminateVirtualBorderRouter | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55927) |
+| UnassignIpv6Addresses | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56022) |
+| UnassignPrivateIpAddresses | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56121) |
 | UnassociateEipAddress | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56214) |
 | UnassociateHaVip | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56304) |
 | UnlockSnapshot | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56399) |
+| UntagResources | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56511) |

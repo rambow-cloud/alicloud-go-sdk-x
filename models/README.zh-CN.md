@@ -2,6 +2,9 @@
 
 [English](README.md)
 
+- 当前降低及生成范围为 ECS 380/380、VPC 396/403、STS 4/4，见 [RPC 扩展 #83](../docs/dsl-rpc-expansion.zh-CN.md)。下表保留历史数量。
+- v1 schema 增加可选绑定 `encoding: "json"`、布尔字段属性 `attributes.deprecated`，以及仅用于已审核 JSON 转换内动态值的 `kind: "json", dslType: "any"`。未知转换仍拒绝。
+
 - 本目录为 [#35](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/35) 生成的构建产物，消费前阅读[产品发现](../docs/product-discovery.zh-CN.md)。
 - Schema 版本 1、profile rpc-query-json-v1 记录固定官方 DSL、语义解析器版本、完整来源锁哈希、源码/API catalog 哈希和 Apache-2.0 来源。
 - 原始许可见 [LICENSE.upstream](../sources/darabonba/LICENSE.upstream)，不把来源派生定义重新标为项目 MIT。

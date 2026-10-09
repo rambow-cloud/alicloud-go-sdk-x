@@ -2,6 +2,8 @@
 
 [中文](product-discovery.zh-CN.md)
 
+- Current generation follows [RPC expansion #83](dsl-rpc-expansion.md): ECS 380/380; VPC 396/403. Earlier counts and consumer records below describe their accepted revisions.
+
 - Stage [#35](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/35) follows the [authoritative roadmap](product-generator-roadmap.md) and #34 normalization.
 - Branch issue/35-product-discovery is stacked on issue/34-source-normalization / PR #39, which originally depended on #32.
 - This specification was committed before implementation; the complete dependency stack is now [integrated into main](generator-integration.md).

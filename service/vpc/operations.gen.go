@@ -389,6 +389,137 @@ func (c *Client) AllocateEipSegmentAddress(ctx context.Context, input *AllocateE
 	return out, nil
 }
 
+// AllocateIpv6AddressAPI is the minimal interface for AllocateIpv6Address mocks and capability adapters.
+type AllocateIpv6AddressAPI interface {
+	// AllocateIpv6Address invokes the native action with owned inputs and per-call options.
+	AllocateIpv6Address(context.Context, *AllocateIpv6AddressInput, ...func(*Options)) (*AllocateIpv6AddressOutput, error)
+}
+
+// AllocateIpv6Address calls the native AllocateIpv6Address action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Invokes the AllocateIpv6Address operation to allocate a free IPv6 address or IPv6 prefix CIDR block. The address is not associated with any resource instance (such as a network interface controller (NIC) or Network Load Balancer (NLB)) and exists as an independent IPv6 address in the virtual private cloud (VPC).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1706
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Scenarios: After you enable Internet bandwidth for a free IPv6 address, configure an inbound routing rule in the IPv6 gateway route table to direct public IPv6 traffic to the data center through an Express Connect circuit. This way, data center resources can provide services over the Internet by using an Alibaba Cloud IPv6 address.
+// > To allocate an IPv6 address to a network interface controller (NIC) of an ECS instance, invoke the AssignIpv6Addresses (https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-assignipv6addresses) operation of ECS.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1706
+func (c *Client) AllocateIpv6Address(ctx context.Context, input *AllocateIpv6AddressInput, optFns ...func(*Options)) (*AllocateIpv6AddressOutput, error) {
+	out, meta, err := invoke[AllocateIpv6AddressInput, AllocateIpv6AddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AllocateIpv6Address", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// AllocateIpv6InternetBandwidthAPI is the minimal interface for AllocateIpv6InternetBandwidth mocks and capability adapters.
+type AllocateIpv6InternetBandwidthAPI interface {
+	// AllocateIpv6InternetBandwidth invokes the native action with owned inputs and per-call options.
+	AllocateIpv6InternetBandwidth(context.Context, *AllocateIpv6InternetBandwidthInput, ...func(*Options)) (*AllocateIpv6InternetBandwidthOutput, error)
+}
+
+// AllocateIpv6InternetBandwidth calls the native AllocateIpv6InternetBandwidth action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Enables Internet bandwidth for an IPv6 address in a VPC so that the IPv6 address can communicate over the Internet. After Internet bandwidth is enabled, the IPv6 address can both initiate outbound connections to the Internet and be accessed from the Internet.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1859
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - You can enable Internet bandwidth for the following types of IPv6 addresses:
+// - IPv6 addresses assigned to elastic network interfaces (ENIs) of ECS instances.
+// - Unassociated IPv6 addresses that are not attached to any resource instance.
+// - Before you call this operation, make sure that the target IPv6 address already exists. This means that an ECS instance in the VPC has been assigned an IPv6 address, or an unassociated IPv6 address has been created by calling AllocateIpv6Address (https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-allocateipv6address).
+// - After Internet bandwidth is enabled, the IPv6 address can both initiate outbound connections to the Internet and be accessed from the Internet. To allow public network access to the Internet, call CreateIpv6EgressOnlyRule (https://www.alibabacloud.com/help/en/ipv6-gateway/developer-reference/api-vpc-2016-04-28-createipv6egressonlyrule-ipv6s)
+// to configure an IPv6 egress-only rule.
+// - The AllocateIpv6InternetBandwidth operation does not support concurrent purchases of Internet bandwidth for the same IPv6 address.
+// - Scenarios:
+// - ECS instance IPv6 Internet access: Allows an ECS instance to access the Internet or provide services over IPv6.
+// - Unassociated IPv6 Internet access: Works with IPv6 gateway route tables to route Internet traffic to on-premises IDCs.
+// - Outbound-only communication: Works with CreateIpv6EgressOnlyRule to allow public network access and reject inbound connections from the Internet.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1859
+func (c *Client) AllocateIpv6InternetBandwidth(ctx context.Context, input *AllocateIpv6InternetBandwidthInput, optFns ...func(*Options)) (*AllocateIpv6InternetBandwidthOutput, error) {
+	out, meta, err := invoke[AllocateIpv6InternetBandwidthInput, AllocateIpv6InternetBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AllocateIpv6InternetBandwidth", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// AllocateVpcIpv6CidrAPI is the minimal interface for AllocateVpcIpv6Cidr mocks and capability adapters.
+type AllocateVpcIpv6CidrAPI interface {
+	// AllocateVpcIpv6Cidr invokes the native action with owned inputs and per-call options.
+	AllocateVpcIpv6Cidr(context.Context, *AllocateVpcIpv6CidrInput, ...func(*Options)) (*AllocateVpcIpv6CidrOutput, error)
+}
+
+// AllocateVpcIpv6Cidr calls the native AllocateVpcIpv6Cidr action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Reserves a specified IPv6 CIDR block.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2003
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// To assign a specified IPv6 CIDR block to a VPC, perform the following steps:
+// 1. Call this operation to reserve the specified IPv6 CIDR block.
+// 2. To assign the specified IPv6 CIDR block to an existing VPC, call the AssociateVpcCidrBlock (https://help.aliyun.com/document_detail/146745.html) operation and set RegionId, VpcId, and IPv6CidrBlock to the specified IPv6 CIDR block, and set IpVersion to ipv6. To assign the specified IPv6 CIDR block to a new VPC, call the CreateVpc (https://help.aliyun.com/document_detail/35737.html) operation and set RegionId and Ipv6CidrBlock to the specified IPv6 CIDR block, and set EnableIpv6 to true.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2003
+func (c *Client) AllocateVpcIpv6Cidr(ctx context.Context, input *AllocateVpcIpv6CidrInput, optFns ...func(*Options)) (*AllocateVpcIpv6CidrOutput, error) {
+	out, meta, err := invoke[AllocateVpcIpv6CidrInput, AllocateVpcIpv6CidrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AllocateVpcIpv6Cidr", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ApplyPhysicalConnectionLOAAPI is the minimal interface for ApplyPhysicalConnectionLOA mocks and capability adapters.
+type ApplyPhysicalConnectionLOAAPI interface {
+	// ApplyPhysicalConnectionLOA invokes the native action with owned inputs and per-call options.
+	ApplyPhysicalConnectionLOA(context.Context, *ApplyPhysicalConnectionLOAInput, ...func(*Options)) (*ApplyPhysicalConnectionLOAOutput, error)
+}
+
+// ApplyPhysicalConnectionLOA calls the native ApplyPhysicalConnectionLOA action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Applies for a Letter of Authorization (LOA) for an Express Connect circuit.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2146
+func (c *Client) ApplyPhysicalConnectionLOA(ctx context.Context, input *ApplyPhysicalConnectionLOAInput, optFns ...func(*Options)) (*ApplyPhysicalConnectionLOAOutput, error) {
+	out, meta, err := invoke[ApplyPhysicalConnectionLOAInput, ApplyPhysicalConnectionLOAOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ApplyPhysicalConnectionLOA", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // AssociateEipAddressAPI is the minimal interface for AssociateEipAddress mocks and capability adapters.
 type AssociateEipAddressAPI interface {
 	// AssociateEipAddress invokes the native action with owned inputs and per-call options.
@@ -417,6 +548,41 @@ type AssociateEipAddressAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2299
 func (c *Client) AssociateEipAddress(ctx context.Context, input *AssociateEipAddressInput, optFns ...func(*Options)) (*AssociateEipAddressOutput, error) {
 	out, meta, err := invoke[AssociateEipAddressInput, AssociateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateEipAddress", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// AssociateEipAddressBatchAPI is the minimal interface for AssociateEipAddressBatch mocks and capability adapters.
+type AssociateEipAddressBatchAPI interface {
+	// AssociateEipAddressBatch invokes the native action with owned inputs and per-call options.
+	AssociateEipAddressBatch(context.Context, *AssociateEipAddressBatchInput, ...func(*Options)) (*AssociateEipAddressBatchOutput, error)
+}
+
+// AssociateEipAddressBatch calls the native AssociateEipAddressBatch action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Associates multiple Elastic IP Addresses (EIPs) with a cloud service instance in the same region in a batch.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2431
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - AssociateEipAddressBatch associates multiple EIPs with a cloud service instance in a batch. This operation supports only associating EIPs with an Internet NAT gateway instance or a secondary elastic network interface (ENI) in the same region. To associate an EIP with other cloud service instances, call AssociateEipAddress (https://help.aliyun.com/document_detail/120195.html).
+// - AssociateEipAddressBatch is an asynchronous operation. After you send a request, the system returns a request ID. However, the association is not complete. The association task runs in the background. You can invoke DescribeEipAddresses (https://help.aliyun.com/document_detail/120193.html) to query the status of an EIP:
+// - If the EIP is in the Associating state, the EIP is being attached. In this state, you can only execute query operations.
+// - If the EIP is in the InUse state, the association is complete.
+// - AssociateEipAddressBatch does not support concurrent attachment of the same EIP with cloud service instances.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2431
+func (c *Client) AssociateEipAddressBatch(ctx context.Context, input *AssociateEipAddressBatchInput, optFns ...func(*Options)) (*AssociateEipAddressBatchOutput, error) {
+	out, meta, err := invoke[AssociateEipAddressBatchInput, AssociateEipAddressBatchOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateEipAddressBatch", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -502,6 +668,40 @@ func (c *Client) AssociateMacSecKey(ctx context.Context, input *AssociateMacSecK
 	return out, nil
 }
 
+// AssociateNetworkAclAPI is the minimal interface for AssociateNetworkAcl mocks and capability adapters.
+type AssociateNetworkAclAPI interface {
+	// AssociateNetworkAcl invokes the native action with owned inputs and per-call options.
+	AssociateNetworkAcl(context.Context, *AssociateNetworkAclInput, ...func(*Options)) (*AssociateNetworkAclOutput, error)
+}
+
+// AssociateNetworkAcl calls the native AssociateNetworkAcl action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Attaches a network ACL to a vSwitch.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2784
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - AssociateNetworkAcl is an asynchronous operation. After you send a request, the system returns a request ID, but the network ACL is not yet associated. The association task continues to run in the background. You can call DescribeNetworkAclAttributes (https://help.aliyun.com/document_detail/116542.html) to query the association status of the network ACL:
+// - If the network ACL is in the BINDING state, the network ACL is being associated.
+// - If the network ACL is in the BINDED state, the network ACL is associated.
+// - AssociateNetworkAcl does not support concurrent association of the same network ACL.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2784
+func (c *Client) AssociateNetworkAcl(ctx context.Context, input *AssociateNetworkAclInput, optFns ...func(*Options)) (*AssociateNetworkAclOutput, error) {
+	out, meta, err := invoke[AssociateNetworkAclInput, AssociateNetworkAclOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateNetworkAcl", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // AssociatePhysicalConnectionToVirtualBorderRouterAPI is the minimal interface for AssociatePhysicalConnectionToVirtualBorderRouter mocks and capability adapters.
 type AssociatePhysicalConnectionToVirtualBorderRouterAPI interface {
 	// AssociatePhysicalConnectionToVirtualBorderRouter invokes the native action with owned inputs and per-call options.
@@ -520,6 +720,64 @@ type AssociatePhysicalConnectionToVirtualBorderRouterAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2924
 func (c *Client) AssociatePhysicalConnectionToVirtualBorderRouter(ctx context.Context, input *AssociatePhysicalConnectionToVirtualBorderRouterInput, optFns ...func(*Options)) (*AssociatePhysicalConnectionToVirtualBorderRouterOutput, error) {
 	out, meta, err := invoke[AssociatePhysicalConnectionToVirtualBorderRouterInput, AssociatePhysicalConnectionToVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociatePhysicalConnectionToVirtualBorderRouter", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// AssociateRouteTableAPI is the minimal interface for AssociateRouteTable mocks and capability adapters.
+type AssociateRouteTableAPI interface {
+	// AssociateRouteTable invokes the native action with owned inputs and per-call options.
+	AssociateRouteTable(context.Context, *AssociateRouteTableInput, ...func(*Options)) (*AssociateRouteTableOutput, error)
+}
+
+// AssociateRouteTable calls the native AssociateRouteTable action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Associates a custom route table with a vSwitch in the same VPC.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3046
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// AssociateRouteTable is an asynchronous operation. After you call this operation, the system returns a request ID, but the association is not yet complete. The association task continues to run in the background. You can call DescribeVSwitchAttributes (https://help.aliyun.com/document_detail/94567.html) to query the association status of the route table:
+// - If the vSwitch is in the Pending state, the route table is being associated.
+// - If the vSwitch is in the Available state, the route table is associated.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3046
+func (c *Client) AssociateRouteTable(ctx context.Context, input *AssociateRouteTableInput, optFns ...func(*Options)) (*AssociateRouteTableOutput, error) {
+	out, meta, err := invoke[AssociateRouteTableInput, AssociateRouteTableOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateRouteTable", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// AssociateRouteTableWithGatewayAPI is the minimal interface for AssociateRouteTableWithGateway mocks and capability adapters.
+type AssociateRouteTableWithGatewayAPI interface {
+	// AssociateRouteTableWithGateway invokes the native action with owned inputs and per-call options.
+	AssociateRouteTableWithGateway(context.Context, *AssociateRouteTableWithGatewayInput, ...func(*Options)) (*AssociateRouteTableWithGatewayOutput, error)
+}
+
+// AssociateRouteTableWithGateway calls the native AssociateRouteTableWithGateway action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Associates a gateway route table with an IPv4 gateway or IPv6 gateway instance in the same VPC by calling the AssociateRouteTableWithGateway operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3158
+func (c *Client) AssociateRouteTableWithGateway(ctx context.Context, input *AssociateRouteTableWithGatewayInput, optFns ...func(*Options)) (*AssociateRouteTableWithGatewayOutput, error) {
+	out, meta, err := invoke[AssociateRouteTableWithGatewayInput, AssociateRouteTableWithGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateRouteTableWithGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -561,6 +819,40 @@ type AssociateRouteTablesWithVpcGatewayEndpointAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3265
 func (c *Client) AssociateRouteTablesWithVpcGatewayEndpoint(ctx context.Context, input *AssociateRouteTablesWithVpcGatewayEndpointInput, optFns ...func(*Options)) (*AssociateRouteTablesWithVpcGatewayEndpointOutput, error) {
 	out, meta, err := invoke[AssociateRouteTablesWithVpcGatewayEndpointInput, AssociateRouteTablesWithVpcGatewayEndpointOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateRouteTablesWithVpcGatewayEndpoint", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// AssociateVpcCidrBlockAPI is the minimal interface for AssociateVpcCidrBlock mocks and capability adapters.
+type AssociateVpcCidrBlockAPI interface {
+	// AssociateVpcCidrBlock invokes the native action with owned inputs and per-call options.
+	AssociateVpcCidrBlock(context.Context, *AssociateVpcCidrBlockInput, ...func(*Options)) (*AssociateVpcCidrBlockOutput, error)
+}
+
+// AssociateVpcCidrBlock calls the native AssociateVpcCidrBlock action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Adds a secondary CIDR block to a VPC.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3412
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - The maximum number of secondary CIDR blocks that can be added to a VPC is as follows:
+// - A maximum of 5 secondary IPv4 CIDR blocks can be added to a VPC.
+// - A maximum of 5 secondary IPv6 CIDR blocks can be added to a VPC.
+// - The AssociateVpcCidrBlock operation does not support concurrently adding secondary CIDR blocks to the same VPC.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3412
+func (c *Client) AssociateVpcCidrBlock(ctx context.Context, input *AssociateVpcCidrBlockInput, optFns ...func(*Options)) (*AssociateVpcCidrBlockOutput, error) {
+	out, meta, err := invoke[AssociateVpcCidrBlockInput, AssociateVpcCidrBlockOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateVpcCidrBlock", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -820,6 +1112,39 @@ func (c *Client) CheckVpnBgpEnabled(ctx context.Context, input *CheckVpnBgpEnabl
 	return out, nil
 }
 
+// CompletePhysicalConnectionLOAAPI is the minimal interface for CompletePhysicalConnectionLOA mocks and capability adapters.
+type CompletePhysicalConnectionLOAAPI interface {
+	// CompletePhysicalConnectionLOA invokes the native action with owned inputs and per-call options.
+	CompletePhysicalConnectionLOA(context.Context, *CompletePhysicalConnectionLOAInput, ...func(*Options)) (*CompletePhysicalConnectionLOAOutput, error)
+}
+
+// CompletePhysicalConnectionLOA calls the native CompletePhysicalConnectionLOA action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Calls CompletePhysicalConnectionLOA to complete the construction and backfill the completion information after the LOA is approved and the line construction is finished.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4321
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Calls the CompletePhysicalConnectionLOA operation to complete the construction. Before calling this operation, call DescribePhysicalConnectionLOA to query the LOA status. You can call this operation only when the status is Available or Complete. After an LOA application is submitted, the status changes to Applying. After the application is approved, the status changes to Available. If the application is rejected, the status changes to Rejected. For a rejected application, call SecondApplyPhysicalConnectionLOA to reapply. After the construction is completed, the LOA status changes to Complete.
+// Complete call chain:
+// CreatePhysicalConnection → ApplyPhysicalConnectionLOA (LOA enters the Applying state) → Wait for approval (Available after approval; Rejected if denied, in which case call SecondApplyPhysicalConnectionLOA or ApplyPhysicalConnectionLOA again to reapply) → CompletePhysicalConnectionLOA (backfill completion information, LOA enters the Completing state) → ConfirmPhysicalConnection (confirm the Express Connect circuit, LOA enters the Complete state).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4321
+func (c *Client) CompletePhysicalConnectionLOA(ctx context.Context, input *CompletePhysicalConnectionLOAInput, optFns ...func(*Options)) (*CompletePhysicalConnectionLOAOutput, error) {
+	out, meta, err := invoke[CompletePhysicalConnectionLOAInput, CompletePhysicalConnectionLOAOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CompletePhysicalConnectionLOA", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // ConfirmPhysicalConnectionAPI is the minimal interface for ConfirmPhysicalConnection mocks and capability adapters.
 type ConfirmPhysicalConnectionAPI interface {
 	// ConfirmPhysicalConnection invokes the native action with owned inputs and per-call options.
@@ -873,6 +1198,40 @@ type ConnectRouterInterfaceAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4519
 func (c *Client) ConnectRouterInterface(ctx context.Context, input *ConnectRouterInterfaceInput, optFns ...func(*Options)) (*ConnectRouterInterfaceOutput, error) {
 	out, meta, err := invoke[ConnectRouterInterfaceInput, ConnectRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ConnectRouterInterface", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CopyNetworkAclEntriesAPI is the minimal interface for CopyNetworkAclEntries mocks and capability adapters.
+type CopyNetworkAclEntriesAPI interface {
+	// CopyNetworkAclEntries invokes the native action with owned inputs and per-call options.
+	CopyNetworkAclEntries(context.Context, *CopyNetworkAclEntriesInput, ...func(*Options)) (*CopyNetworkAclEntriesOutput, error)
+}
+
+// CopyNetworkAclEntries calls the native CopyNetworkAclEntries action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Calls the CopyNetworkAclEntries operation to copy network ACL rules.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4618
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - CopyNetworkAclEntries is an asynchronous operation. After you send a request, the system returns a request ID, but the network ACL rules have not been replicated yet. The replication node is still running in the background. You can invoke DescribeNetworkAclAttributes (https://help.aliyun.com/document_detail/116542.html) to query the replication status of the network ACL rules:
+// - If the network ACL rules are in the Modifying state, the network ACL rules are being replicated.
+// - If the network ACL rules are in the Available state, the network ACL rules are replicated. Copy succeeded.
+// - CopyNetworkAclEntries does not support concurrent replication of the same network ACL rules.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4618
+func (c *Client) CopyNetworkAclEntries(ctx context.Context, input *CopyNetworkAclEntriesInput, optFns ...func(*Options)) (*CopyNetworkAclEntriesOutput, error) {
+	out, meta, err := invoke[CopyNetworkAclEntriesInput, CopyNetworkAclEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CopyNetworkAclEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1174,6 +1533,153 @@ func (c *Client) CreateExpressCloudConnection(ctx context.Context, input *Create
 	return out, nil
 }
 
+// CreateExpressConnectTrafficQosAPI is the minimal interface for CreateExpressConnectTrafficQos mocks and capability adapters.
+type CreateExpressConnectTrafficQosAPI interface {
+	// CreateExpressConnectTrafficQos invokes the native action with owned inputs and per-call options.
+	CreateExpressConnectTrafficQos(context.Context, *CreateExpressConnectTrafficQosInput, ...func(*Options)) (*CreateExpressConnectTrafficQosOutput, error)
+}
+
+// CreateExpressConnectTrafficQos calls the native CreateExpressConnectTrafficQos action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates a Quality of Service (QoS) policy for Express Connect.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6068
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - The Express Connect QoS feature is currently in invitational preview. To call this operation, contact your account manager to be added to the whitelist.
+// - The number of QoS policies that each user can create is subject to a quota limit. To increase the quota, contact your account manager.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6068
+func (c *Client) CreateExpressConnectTrafficQos(ctx context.Context, input *CreateExpressConnectTrafficQosInput, optFns ...func(*Options)) (*CreateExpressConnectTrafficQosOutput, error) {
+	out, meta, err := invoke[CreateExpressConnectTrafficQosInput, CreateExpressConnectTrafficQosOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateExpressConnectTrafficQos", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateExpressConnectTrafficQosQueueAPI is the minimal interface for CreateExpressConnectTrafficQosQueue mocks and capability adapters.
+type CreateExpressConnectTrafficQosQueueAPI interface {
+	// CreateExpressConnectTrafficQosQueue invokes the native action with owned inputs and per-call options.
+	CreateExpressConnectTrafficQosQueue(context.Context, *CreateExpressConnectTrafficQosQueueInput, ...func(*Options)) (*CreateExpressConnectTrafficQosQueueOutput, error)
+}
+
+// CreateExpressConnectTrafficQosQueue calls the native CreateExpressConnectTrafficQosQueue action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates a QoS queue for Express Connect.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6194
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - The default queue cannot be created.
+// - The number of high-priority queues has an upper limit. To increase the quota, contact your account manager.
+// - The number of lower-priority queues has an upper limit. To increase the quota, contact your account manager.
+// - The total bandwidth percentage of all lower-priority queues has an upper limit.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6194
+func (c *Client) CreateExpressConnectTrafficQosQueue(ctx context.Context, input *CreateExpressConnectTrafficQosQueueInput, optFns ...func(*Options)) (*CreateExpressConnectTrafficQosQueueOutput, error) {
+	out, meta, err := invoke[CreateExpressConnectTrafficQosQueueInput, CreateExpressConnectTrafficQosQueueOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateExpressConnectTrafficQosQueue", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateExpressConnectTrafficQosRuleAPI is the minimal interface for CreateExpressConnectTrafficQosRule mocks and capability adapters.
+type CreateExpressConnectTrafficQosRuleAPI interface {
+	// CreateExpressConnectTrafficQosRule invokes the native action with owned inputs and per-call options.
+	CreateExpressConnectTrafficQosRule(context.Context, *CreateExpressConnectTrafficQosRuleInput, ...func(*Options)) (*CreateExpressConnectTrafficQosRuleOutput, error)
+}
+
+// CreateExpressConnectTrafficQosRule calls the native CreateExpressConnectTrafficQosRule action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates a QoS rule for Express Connect.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6402
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - The priority of a QoS rule must be unique within a QoS policy.
+// - The number of QoS rules in a single QoS queue is limited. To increase the quota, contact your account manager.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6402
+func (c *Client) CreateExpressConnectTrafficQosRule(ctx context.Context, input *CreateExpressConnectTrafficQosRuleInput, optFns ...func(*Options)) (*CreateExpressConnectTrafficQosRuleOutput, error) {
+	out, meta, err := invoke[CreateExpressConnectTrafficQosRuleInput, CreateExpressConnectTrafficQosRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateExpressConnectTrafficQosRule", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateFailoverTestJobAPI is the minimal interface for CreateFailoverTestJob mocks and capability adapters.
+type CreateFailoverTestJobAPI interface {
+	// CreateFailoverTestJob invokes the native action with owned inputs and per-call options.
+	CreateFailoverTestJob(context.Context, *CreateFailoverTestJobInput, ...func(*Options)) (*CreateFailoverTestJobOutput, error)
+}
+
+// CreateFailoverTestJob calls the native CreateFailoverTestJob action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Calls the CreateFailoverTestJob operation to create a failover test job for Express Connect.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6557
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Resource status requirements (prerequisites)
+// - Before creating a failover test job, ensure that the test resources and their associated resources are in the following states. Otherwise, the creation fails:
+// - ResourceType set to PHYSICALCONNECTION: The Express Connect circuit (including shared Express Connect circuits) must be in the Enabled state with normal billing status (no overdue payment). Otherwise, IncorrectStatus.ResourceId or IncorrectBusinessStatus.ResourceId is returned.
+// - ResourceType set to VIRTUALBORDERROUTER: The VBR must be in the active state with no overdue payment, and the Express Connect circuit to which the VBR belongs must also be in the Enabled state with no overdue payment.
+// - ResourceType set to BGPPEER: The BGP peer must be in the Available state, the VBR to which it belongs must be in the active state, and the Express Connect circuit to which the VBR belongs must be in the Enabled state, all with no overdue payment.
+// How to check and advance the Express Connect circuit status
+// - Call DescribePhysicalConnections to query the Status field of the Express Connect circuit. If the circuit is not in the Enabled state (for example, it is in the Allocated or Confirmed state), advance it along the following state transition path:
+// - Allocated (port reserved, pending confirmation) → Call ConfirmPhysicalConnection to confirm → Confirmed → Call EnablePhysicalConnection to activate (asynchronous; poll DescribePhysicalConnections after activation to confirm) → Enabled.
+// - Note: EnablePhysicalConnection only supports activating Express Connect circuits in the Confirmed state. If the circuit is in the Allocated state, call ConfirmPhysicalConnection first.
+// - When JobType is set to StartLater, the status check described above is performed during the job creation phase. When you subsequently call StartFailoverTestJob to start the job, the resource status is checked again. If the resource status does not meet the requirements at that time (for example, the circuit is no longer in the Enabled state), the start operation fails.
+// The following scenarios do not support creating failover test jobs:
+// - A failover test job is already running in the current region, and the job type of the new failover test job is set to start immediately.
+// - The Express Connect circuit instance or shared Express Connect circuit instance has not been paid for or has an overdue payment.
+// - The Express Connect circuit instance or shared Express Connect circuit instance is already in another running failover test job.
+//
+// - The Express Connect circuit instance has more than one shared Express Connect circuit.
+// - The Express Connect circuit instance has more than one cross-account VBR.
+// - The shared Express Connect circuit instance is not associated with a VBR.
+// - The VLAN configuration of the shared Express Connect circuit instance is 0.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6557
+func (c *Client) CreateFailoverTestJob(ctx context.Context, input *CreateFailoverTestJobInput, optFns ...func(*Options)) (*CreateFailoverTestJobOutput, error) {
+	out, meta, err := invoke[CreateFailoverTestJobInput, CreateFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateFailoverTestJob", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // CreateFlowLogAPI is the minimal interface for CreateFlowLog mocks and capability adapters.
 type CreateFlowLogAPI interface {
 	// CreateFlowLog invokes the native action with owned inputs and per-call options.
@@ -1347,6 +1853,40 @@ func (c *Client) CreateHaVip(ctx context.Context, input *CreateHaVipInput, optFn
 	return out, nil
 }
 
+// CreateHighReliablePhysicalConnectionAPI is the minimal interface for CreateHighReliablePhysicalConnection mocks and capability adapters.
+type CreateHighReliablePhysicalConnectionAPI interface {
+	// CreateHighReliablePhysicalConnection invokes the native action with owned inputs and per-call options.
+	CreateHighReliablePhysicalConnection(context.Context, *CreateHighReliablePhysicalConnectionInput, ...func(*Options)) (*CreateHighReliablePhysicalConnectionOutput, error)
+}
+
+// CreateHighReliablePhysicalConnection calls the native CreateHighReliablePhysicalConnection action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates Express Connect circuits in zone redundancy mode to ensure service stability through multi-line access to Alibaba Cloud and to prevent service disruptions caused by single-line failures through multi-line disaster recovery.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L7622
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// When you purchase ports, you can select one of the following three combination types to provide disaster recovery capabilities for your business or workloads.
+// - Maximum disaster recovery: You apply for resources in two access points and establish four independent Express Connect circuit connections. The SLA availability for maximum disaster recovery is no less than 99.99%.
+// - Enhanced disaster recovery: You apply for resources in two access points and establish two independent Express Connect circuit connections. The SLA availability for enhanced disaster recovery is no less than 99.95%.
+// - Development and testing: You apply for resources in one access point and establish two independent Express Connect circuit connections.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L7622
+func (c *Client) CreateHighReliablePhysicalConnection(ctx context.Context, input *CreateHighReliablePhysicalConnectionInput, optFns ...func(*Options)) (*CreateHighReliablePhysicalConnectionOutput, error) {
+	out, meta, err := invoke[CreateHighReliablePhysicalConnectionInput, CreateHighReliablePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateHighReliablePhysicalConnection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // CreateIPv6TranslatorAPI is the minimal interface for CreateIPv6Translator mocks and capability adapters.
 type CreateIPv6TranslatorAPI interface {
 	// CreateIPv6Translator invokes the native action with owned inputs and per-call options.
@@ -1458,6 +1998,213 @@ func (c *Client) CreateIpsecServer(ctx context.Context, input *CreateIpsecServer
 	return out, nil
 }
 
+// CreateIpv4GatewayAPI is the minimal interface for CreateIpv4Gateway mocks and capability adapters.
+type CreateIpv4GatewayAPI interface {
+	// CreateIpv4Gateway invokes the native action with owned inputs and per-call options.
+	CreateIpv4Gateway(context.Context, *CreateIpv4GatewayInput, ...func(*Options)) (*CreateIpv4GatewayOutput, error)
+}
+
+// CreateIpv4Gateway calls the native CreateIpv4Gateway action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates an IPv4 gateway.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8313
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - CreateIpv4Gateway is an asynchronous operation. After you call this operation, the system returns an instance ID, but the IPv4 gateway is not yet created. The creation task is still running in the background. You can call GetIpv4GatewayAttribute (https://help.aliyun.com/document_detail/407670.html) to query the creation status of the IPv4 gateway:
+// - If the IPv4 gateway is in the Creating state, the IPv4 gateway is being created.
+// - If the IPv4 gateway is in the Created state, the IPv4 gateway is created.
+// - You cannot call CreateIpv4Gateway to concurrently create IPv4 gateways in the same VPC.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8313
+func (c *Client) CreateIpv4Gateway(ctx context.Context, input *CreateIpv4GatewayInput, optFns ...func(*Options)) (*CreateIpv4GatewayOutput, error) {
+	out, meta, err := invoke[CreateIpv4GatewayInput, CreateIpv4GatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateIpv4Gateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateIpv6EgressOnlyRuleAPI is the minimal interface for CreateIpv6EgressOnlyRule mocks and capability adapters.
+type CreateIpv6EgressOnlyRuleAPI interface {
+	// CreateIpv6EgressOnlyRule invokes the native action with owned inputs and per-call options.
+	CreateIpv6EgressOnlyRule(context.Context, *CreateIpv6EgressOnlyRuleInput, ...func(*Options)) (*CreateIpv6EgressOnlyRuleOutput, error)
+}
+
+// CreateIpv6EgressOnlyRule calls the native CreateIpv6EgressOnlyRule action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates an IPv6 egress-only rule for an IPv6 address by calling CreateIpv6EgressOnlyRule. You can create an egress-only rule to allow ECS instances in a VPC with an IPv6 CIDR block to proactively access IPv6 endpoints on the client side, while preventing IPv6 endpoints on the client side from accessing ECS instances in the VPC over the Internet.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8444
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - CreateIpv6EgressOnlyRule is an asynchronous operation. After you send a request, the system returns an instance ID but the IPv6 egress-only rule is not yet created. The creation task is still running in the background. You can call DescribeIpv6EgressOnlyRules (https://help.aliyun.com/document_detail/102208.html) to query the creation status of the IPv6 egress-only rule:
+// - When the IPv6 egress-only rule is in the Creating state, the rule is being created.
+// - When the IPv6 egress-only rule is in the Created state, the rule is created.
+// - CreateIpv6EgressOnlyRule does not support concurrent creation of egress-only rules for the same IPv6 address.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8444
+func (c *Client) CreateIpv6EgressOnlyRule(ctx context.Context, input *CreateIpv6EgressOnlyRuleInput, optFns ...func(*Options)) (*CreateIpv6EgressOnlyRuleOutput, error) {
+	out, meta, err := invoke[CreateIpv6EgressOnlyRuleInput, CreateIpv6EgressOnlyRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateIpv6EgressOnlyRule", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateIpv6GatewayAPI is the minimal interface for CreateIpv6Gateway mocks and capability adapters.
+type CreateIpv6GatewayAPI interface {
+	// CreateIpv6Gateway invokes the native action with owned inputs and per-call options.
+	CreateIpv6Gateway(context.Context, *CreateIpv6GatewayInput, ...func(*Options)) (*CreateIpv6GatewayOutput, error)
+}
+
+// CreateIpv6Gateway calls the native CreateIpv6Gateway action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates an IPv6 gateway. An IPv6 gateway is used to control IPv6 network traffic for a virtual private cloud (VPC).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8581
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - Before you create an IPv6 gateway, make sure that the target VPC and vSwitch have IPv6 CIDR blocks enabled. You can call DescribeVpcAttribute (https://help.aliyun.com/document_detail/448582.html) to query the VPC configurations.
+// - You can create only one IPv6 gateway for each VPC.
+// - CreateIpv6Gateway is an asynchronous operation. After you send a request, the system returns an instance ID but enable IPv6 gateway is not yet created. The creation task is still running in the background. You can call DescribeIpv6GatewayAttribute (https://help.aliyun.com/document_detail/102226.html) to query the creation status of enable IPv6 gateway:
+// - If enable IPv6 gateway is in the Creating state, enable IPv6 gateway is being created.
+// - If enable IPv6 gateway is in the Created state, enable IPv6 gateway is created.
+// - CreateIpv6Gateway does not support concurrent creation of IPv6 gateways in the same VPC.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8581
+func (c *Client) CreateIpv6Gateway(ctx context.Context, input *CreateIpv6GatewayInput, optFns ...func(*Options)) (*CreateIpv6GatewayOutput, error) {
+	out, meta, err := invoke[CreateIpv6GatewayInput, CreateIpv6GatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateIpv6Gateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateNatGatewayAPI is the minimal interface for CreateNatGateway mocks and capability adapters.
+type CreateNatGatewayAPI interface {
+	// CreateNatGateway invokes the native action with owned inputs and per-call options.
+	CreateNatGateway(context.Context, *CreateNatGatewayInput, ...func(*Options)) (*CreateNatGatewayOutput, error)
+}
+
+// CreateNatGateway calls the native CreateNatGateway action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates an enhanced Internet NAT gateway or a VPC NAT gateway by calling the CreateNatGateway operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8865
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Before you call this operation, take note of the following information:
+// - When you create a NAT gateway for the first time, the system performs automatic creation of a service-linked role named AliyunServiceRoleForNatgw and associates the access policy named AliyunServiceRolePolicyForNatgw with the role. This grants the NAT gateway permissions to access other cloud resources. For more information, see Service-linked role (https://help.aliyun.com/document_detail/174251.html).
+// - After an enhanced Internet NAT gateway is created, the system automatically adds a route to the VPC route table with the destination CIDR block 0.0.0.0/0 and the next hop set to the NAT gateway. This route directs traffic to the NAT gateway.
+// - The CreateNatGateway operation is asynchronous. After you call this operation, the system returns the instance ID of a NAT gateway (Internet NAT gateway or VPC NAT gateway), but the NAT gateway instance is not yet created. The creation task is still running in the background. You can call DescribeNatGateways (https://help.aliyun.com/document_detail/36054.html) to query the status of the NAT gateway.
+// - If the NAT gateway is in the Creating state, the NAT gateway is being created. In this state, you can only perform query operations.
+// - If the NAT gateway is in the Available state, the NAT gateway is created.
+//
+// It takes 1 to 3 minutes to create a NAT gateway.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8865
+func (c *Client) CreateNatGateway(ctx context.Context, input *CreateNatGatewayInput, optFns ...func(*Options)) (*CreateNatGatewayOutput, error) {
+	out, meta, err := invoke[CreateNatGatewayInput, CreateNatGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateNatGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateNatIpAPI is the minimal interface for CreateNatIp mocks and capability adapters.
+type CreateNatIpAPI interface {
+	// CreateNatIp invokes the native action with owned inputs and per-call options.
+	CreateNatIp(context.Context, *CreateNatIpInput, ...func(*Options)) (*CreateNatIpOutput, error)
+}
+
+// CreateNatIp calls the native CreateNatIp action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates a NAT IP address for a VPC NAT gateway instance.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9070
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// CreateNatIp is an asynchronous operation. After you call this operation, the system returns a NAT IP address, but the NAT IP address is not yet created. The creation task is still running in the background. You can call ListNatIps (https://help.aliyun.com/document_detail/287000.html) to query the status of the NAT IP address:
+// - If the NAT IP address is in the Creating state, the NAT IP address is being created. In this state, you can only perform query operations.
+// - If the NAT IP address is in the Available state, the NAT IP address is created.
+// The CreateNatIp operation does not support concurrent creation of NAT IP addresses within the same NAT gateway.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9070
+func (c *Client) CreateNatIp(ctx context.Context, input *CreateNatIpInput, optFns ...func(*Options)) (*CreateNatIpOutput, error) {
+	out, meta, err := invoke[CreateNatIpInput, CreateNatIpOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateNatIp", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateNatIpCidrAPI is the minimal interface for CreateNatIpCidr mocks and capability adapters.
+type CreateNatIpCidrAPI interface {
+	// CreateNatIpCidr invokes the native action with owned inputs and per-call options.
+	CreateNatIpCidr(context.Context, *CreateNatIpCidrInput, ...func(*Options)) (*CreateNatIpCidrOutput, error)
+}
+
+// CreateNatIpCidr calls the native CreateNatIpCidr action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates a NAT CIDR block for a VPC NAT gateway instance.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9213
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// The CreateNatIpCidr operation does not support concurrent creation of NAT IP CIDR blocks within the same NAT gateway.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9213
+func (c *Client) CreateNatIpCidr(ctx context.Context, input *CreateNatIpCidrInput, optFns ...func(*Options)) (*CreateNatIpCidrOutput, error) {
+	out, meta, err := invoke[CreateNatIpCidrInput, CreateNatIpCidrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateNatIpCidr", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // CreateNetworkAclAPI is the minimal interface for CreateNetworkAcl mocks and capability adapters.
 type CreateNetworkAclAPI interface {
 	// CreateNetworkAcl invokes the native action with owned inputs and per-call options.
@@ -1476,6 +2223,42 @@ type CreateNetworkAclAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9389
 func (c *Client) CreateNetworkAcl(ctx context.Context, input *CreateNetworkAclInput, optFns ...func(*Options)) (*CreateNetworkAclOutput, error) {
 	out, meta, err := invoke[CreateNetworkAclInput, CreateNetworkAclOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateNetworkAcl", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreatePhysicalConnectionAPI is the minimal interface for CreatePhysicalConnection mocks and capability adapters.
+type CreatePhysicalConnectionAPI interface {
+	// CreatePhysicalConnection invokes the native action with owned inputs and per-call options.
+	CreatePhysicalConnection(context.Context, *CreatePhysicalConnectionInput, ...func(*Options)) (*CreatePhysicalConnectionOutput, error)
+}
+
+// CreatePhysicalConnection calls the native CreatePhysicalConnection action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Calls the CreatePhysicalConnection operation to apply for an Express Connect circuit.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9567
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// You can apply for a dedicated Express Connect circuit or apply for a shared Express Connect circuit for a tenant. After the application is complete, the Express Connect circuit enters the Initial state. Contact the carrier to start construction.
+//
+// When you call this operation, note the following items:
+//
+// - When you apply for an Express Connect circuit, the number of Express Connect circuits that are not in the Enabled state cannot exceed 5.
+// - If your account has an Express Connect circuit with an overdue payment, you cannot apply for a new Express Connect circuit.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9567
+func (c *Client) CreatePhysicalConnection(ctx context.Context, input *CreatePhysicalConnectionInput, optFns ...func(*Options)) (*CreatePhysicalConnectionOutput, error) {
+	out, meta, err := invoke[CreatePhysicalConnectionInput, CreatePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreatePhysicalConnection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1507,6 +2290,104 @@ type CreatePhysicalConnectionOccupancyOrderAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9733
 func (c *Client) CreatePhysicalConnectionOccupancyOrder(ctx context.Context, input *CreatePhysicalConnectionOccupancyOrderInput, optFns ...func(*Options)) (*CreatePhysicalConnectionOccupancyOrderOutput, error) {
 	out, meta, err := invoke[CreatePhysicalConnectionOccupancyOrderInput, CreatePhysicalConnectionOccupancyOrderOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreatePhysicalConnectionOccupancyOrder", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreatePhysicalConnectionSetupOrderAPI is the minimal interface for CreatePhysicalConnectionSetupOrder mocks and capability adapters.
+type CreatePhysicalConnectionSetupOrderAPI interface {
+	// CreatePhysicalConnectionSetupOrder invokes the native action with owned inputs and per-call options.
+	CreatePhysicalConnectionSetupOrder(context.Context, *CreatePhysicalConnectionSetupOrderInput, ...func(*Options)) (*CreatePhysicalConnectionSetupOrderOutput, error)
+}
+
+// CreatePhysicalConnectionSetupOrder calls the native CreatePhysicalConnectionSetupOrder action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates an order for the initial installation fee of an Express Connect circuit port by calling CreatePhysicalConnectionSetupOrder.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9885
+func (c *Client) CreatePhysicalConnectionSetupOrder(ctx context.Context, input *CreatePhysicalConnectionSetupOrderInput, optFns ...func(*Options)) (*CreatePhysicalConnectionSetupOrderOutput, error) {
+	out, meta, err := invoke[CreatePhysicalConnectionSetupOrderInput, CreatePhysicalConnectionSetupOrderOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreatePhysicalConnectionSetupOrder", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreatePublicIpAddressPoolAPI is the minimal interface for CreatePublicIpAddressPool mocks and capability adapters.
+type CreatePublicIpAddressPoolAPI interface {
+	// CreatePublicIpAddressPool invokes the native action with owned inputs and per-call options.
+	CreatePublicIpAddressPool(context.Context, *CreatePublicIpAddressPoolInput, ...func(*Options)) (*CreatePublicIpAddressPoolOutput, error)
+}
+
+// CreatePublicIpAddressPool calls the native CreatePublicIpAddressPool action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates an IP address pool.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10033
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// The IP address pool feature is not available by default. To use this feature, apply for the IP address pool feature privilege quota in Quota Center. For more information, see Increase a quota in Quota Center (https://help.aliyun.com/document_detail/108213.html).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10033
+func (c *Client) CreatePublicIpAddressPool(ctx context.Context, input *CreatePublicIpAddressPoolInput, optFns ...func(*Options)) (*CreatePublicIpAddressPoolOutput, error) {
+	out, meta, err := invoke[CreatePublicIpAddressPoolInput, CreatePublicIpAddressPoolOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreatePublicIpAddressPool", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateRouteEntriesAPI is the minimal interface for CreateRouteEntries mocks and capability adapters.
+type CreateRouteEntriesAPI interface {
+	// CreateRouteEntries invokes the native action with owned inputs and per-call options.
+	CreateRouteEntries(context.Context, *CreateRouteEntriesInput, ...func(*Options)) (*CreateRouteEntriesOutput, error)
+}
+
+// CreateRouteEntries calls the native CreateRouteEntries action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates custom route entries in a route table of a vRouter in bulk.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10215
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - CreateRouteEntries is an asynchronous operation. After you invoke this operation, the system returns an instance ID, but the custom route entry has not been created yet. The system is still running the task in the background. You can invoke DescribeRouteEntryList (https://help.aliyun.com/document_detail/138148.html) to query the creation status of the custom route entry:
+// - If the custom route entry is in the Creating state, the custom route entry is being created.
+// - If the custom route entry is in the Created state, the custom route entry has been created.
+// - CreateRouteEntries does not support concurrent bulk creation of custom route entries in the same VPC.
+// When you use this operation to add custom route entries to a route table of a vRouter, take note of the following items:
+// - A route table can contain a maximum of 200 custom route entries.
+// - The destination CIDR block (DstCidrBlock) of a custom route entry cannot be the same as, contain, or be contained by the CIDR block of a vSwitch in the VPC.
+// - The destination CIDR block (DstCidrBlock) of a custom route entry cannot point to 100.64.0.0/10 or be contained by 100.64.0.0/10.
+// - The destination CIDR blocks (DstCidrBlock) of route entries in the same route table must be unique.
+// - If the specified destination CIDR block (DstCidrBlock) is an IP address, the system processes it with a 32-bit mask.
+// - Multiple custom route entries can point to the same next hop (NextHop).
+// - The next hop (NextHop) of a custom route entry must be in the same VPC as the route table.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10215
+func (c *Client) CreateRouteEntries(ctx context.Context, input *CreateRouteEntriesInput, optFns ...func(*Options)) (*CreateRouteEntriesOutput, error) {
+	out, meta, err := invoke[CreateRouteEntriesInput, CreateRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateRouteEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1582,6 +2463,40 @@ func (c *Client) CreateRouteEntry(ctx context.Context, input *CreateRouteEntryIn
 	return out, nil
 }
 
+// CreateRouteTableAPI is the minimal interface for CreateRouteTable mocks and capability adapters.
+type CreateRouteTableAPI interface {
+	// CreateRouteTable invokes the native action with owned inputs and per-call options.
+	CreateRouteTable(context.Context, *CreateRouteTableInput, ...func(*Options)) (*CreateRouteTableOutput, error)
+}
+
+// CreateRouteTable calls the native CreateRouteTable action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates a custom route table.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10591
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - CreateRouteTable is an asynchronous operation. After you call this operation, the system returns an instance ID, but the custom route table has not been created yet. The creation task is still running in the background. You can call DescribeRouteTableList (https://help.aliyun.com/document_detail/87602.html) to query the creation status of the custom route table:
+// - If the custom route table is in the Creating state, the custom route table is being created.
+// - If the custom route table is in the Available state, the custom route table is created.
+// - CreateRouteTable does not support concurrent creation of custom route tables in the same VPC.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10591
+func (c *Client) CreateRouteTable(ctx context.Context, input *CreateRouteTableInput, optFns ...func(*Options)) (*CreateRouteTableOutput, error) {
+	out, meta, err := invoke[CreateRouteTableInput, CreateRouteTableOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateRouteTable", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // CreateRouteTargetGroupAPI is the minimal interface for CreateRouteTargetGroup mocks and capability adapters.
 type CreateRouteTargetGroupAPI interface {
 	// CreateRouteTargetGroup invokes the native action with owned inputs and per-call options.
@@ -1611,6 +2526,44 @@ type CreateRouteTargetGroupAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10749
 func (c *Client) CreateRouteTargetGroup(ctx context.Context, input *CreateRouteTargetGroupInput, optFns ...func(*Options)) (*CreateRouteTargetGroupOutput, error) {
 	out, meta, err := invoke[CreateRouteTargetGroupInput, CreateRouteTargetGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateRouteTargetGroup", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateRouterInterfaceAPI is the minimal interface for CreateRouterInterface mocks and capability adapters.
+type CreateRouterInterfaceAPI interface {
+	// CreateRouterInterface invokes the native action with owned inputs and per-call options.
+	CreateRouterInterface(context.Context, *CreateRouterInterfaceInput, ...func(*Options)) (*CreateRouterInterfaceOutput, error)
+}
+
+// CreateRouterInterface calls the native CreateRouterInterface action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates a router interface.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10984
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// When you call this operation to create a router interface, take note of the following items:
+// - A maximum of one pair of interconnected router interfaces can exist between any two routers.
+// - A maximum of five router interfaces can be created on a router.
+// - If your account has router interfaces with overdue payments, you cannot create router interfaces.
+// - Route entries in the same route table cannot have the same destination CIDR block (DestinationCidrBlock).
+// - A Virtual Border Router (VBR) can only be the requester and must be in the activated state.
+//
+// - You can use this operation to create subscription and pay-as-you-go router interfaces.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10984
+func (c *Client) CreateRouterInterface(ctx context.Context, input *CreateRouterInterfaceInput, optFns ...func(*Options)) (*CreateRouterInterfaceOutput, error) {
+	out, meta, err := invoke[CreateRouterInterfaceInput, CreateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateRouterInterface", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2592,6 +3545,118 @@ func (c *Client) DeleteExpressConnect(ctx context.Context, input *DeleteExpressC
 	return out, nil
 }
 
+// DeleteExpressConnectTrafficQosAPI is the minimal interface for DeleteExpressConnectTrafficQos mocks and capability adapters.
+type DeleteExpressConnectTrafficQosAPI interface {
+	// DeleteExpressConnectTrafficQos invokes the native action with owned inputs and per-call options.
+	DeleteExpressConnectTrafficQos(context.Context, *DeleteExpressConnectTrafficQosInput, ...func(*Options)) (*DeleteExpressConnectTrafficQosOutput, error)
+}
+
+// DeleteExpressConnectTrafficQos calls the native DeleteExpressConnectTrafficQos action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Calls the DeleteExpressConnectTrafficQos operation to delete an Express Connect Quality of Service (QoS) policy.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16141
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// A QoS policy that is associated with an Express Connect circuit cannot be directly deleted. You must dissociate the QoS policy from the Express Connect circuit first.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16141
+func (c *Client) DeleteExpressConnectTrafficQos(ctx context.Context, input *DeleteExpressConnectTrafficQosInput, optFns ...func(*Options)) (*DeleteExpressConnectTrafficQosOutput, error) {
+	out, meta, err := invoke[DeleteExpressConnectTrafficQosInput, DeleteExpressConnectTrafficQosOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteExpressConnectTrafficQos", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DeleteExpressConnectTrafficQosQueueAPI is the minimal interface for DeleteExpressConnectTrafficQosQueue mocks and capability adapters.
+type DeleteExpressConnectTrafficQosQueueAPI interface {
+	// DeleteExpressConnectTrafficQosQueue invokes the native action with owned inputs and per-call options.
+	DeleteExpressConnectTrafficQosQueue(context.Context, *DeleteExpressConnectTrafficQosQueueInput, ...func(*Options)) (*DeleteExpressConnectTrafficQosQueueOutput, error)
+}
+
+// DeleteExpressConnectTrafficQosQueue calls the native DeleteExpressConnectTrafficQosQueue action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Calls the DeleteExpressConnectTrafficQosQueue operation to delete an Express Connect QoS queue.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16236
+func (c *Client) DeleteExpressConnectTrafficQosQueue(ctx context.Context, input *DeleteExpressConnectTrafficQosQueueInput, optFns ...func(*Options)) (*DeleteExpressConnectTrafficQosQueueOutput, error) {
+	out, meta, err := invoke[DeleteExpressConnectTrafficQosQueueInput, DeleteExpressConnectTrafficQosQueueOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteExpressConnectTrafficQosQueue", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DeleteExpressConnectTrafficQosRuleAPI is the minimal interface for DeleteExpressConnectTrafficQosRule mocks and capability adapters.
+type DeleteExpressConnectTrafficQosRuleAPI interface {
+	// DeleteExpressConnectTrafficQosRule invokes the native action with owned inputs and per-call options.
+	DeleteExpressConnectTrafficQosRule(context.Context, *DeleteExpressConnectTrafficQosRuleInput, ...func(*Options)) (*DeleteExpressConnectTrafficQosRuleOutput, error)
+}
+
+// DeleteExpressConnectTrafficQosRule calls the native DeleteExpressConnectTrafficQosRule action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes a QoS rule for Express Connect.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16333
+func (c *Client) DeleteExpressConnectTrafficQosRule(ctx context.Context, input *DeleteExpressConnectTrafficQosRuleInput, optFns ...func(*Options)) (*DeleteExpressConnectTrafficQosRuleOutput, error) {
+	out, meta, err := invoke[DeleteExpressConnectTrafficQosRuleInput, DeleteExpressConnectTrafficQosRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteExpressConnectTrafficQosRule", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DeleteFailoverTestJobAPI is the minimal interface for DeleteFailoverTestJob mocks and capability adapters.
+type DeleteFailoverTestJobAPI interface {
+	// DeleteFailoverTestJob invokes the native action with owned inputs and per-call options.
+	DeleteFailoverTestJob(context.Context, *DeleteFailoverTestJobInput, ...func(*Options)) (*DeleteFailoverTestJobOutput, error)
+}
+
+// DeleteFailoverTestJob calls the native DeleteFailoverTestJob action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes an Express Connect failover test job by calling the DeleteFailoverTestJob operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16425
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Only failover test jobs in the Pending or Completed state can be deleted. Before calling this operation, create a failover test job by calling CreateFailoverTestJob and obtain the JobId. If the test resource is an Express Connect circuit, the circuit must be in the Enabled state and its business status must be Normal.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16425
+func (c *Client) DeleteFailoverTestJob(ctx context.Context, input *DeleteFailoverTestJobInput, optFns ...func(*Options)) (*DeleteFailoverTestJobOutput, error) {
+	out, meta, err := invoke[DeleteFailoverTestJobInput, DeleteFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteFailoverTestJob", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DeleteFlowLogAPI is the minimal interface for DeleteFlowLog mocks and capability adapters.
 type DeleteFlowLogAPI interface {
 	// DeleteFlowLog invokes the native action with owned inputs and per-call options.
@@ -2874,6 +3939,141 @@ func (c *Client) DeleteIpsecServer(ctx context.Context, input *DeleteIpsecServer
 	return out, nil
 }
 
+// DeleteIpv4GatewayAPI is the minimal interface for DeleteIpv4Gateway mocks and capability adapters.
+type DeleteIpv4GatewayAPI interface {
+	// DeleteIpv4Gateway invokes the native action with owned inputs and per-call options.
+	DeleteIpv4Gateway(context.Context, *DeleteIpv4GatewayInput, ...func(*Options)) (*DeleteIpv4GatewayOutput, error)
+}
+
+// DeleteIpv4Gateway calls the native DeleteIpv4Gateway action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes an IPv4 gateway.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17391
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - Before you delete an IPv4 gateway, make sure that the route table associated with the IPv4 gateway is disassociated.
+// - The DeleteIpv4Gateway operation is asynchronous. After you send a request, the system returns a RequestId, but the IPv4 gateway is not yet deleted. The deletion task continues to run in the background. You can call GetIpv4GatewayAttribute (https://help.aliyun.com/document_detail/407670.html) to query the status of the IPv4 gateway.
+// - If the IPv4 gateway is in the Deleting state, the IPv4 gateway is being deleted.
+// - If the IPv4 gateway cannot be found, the IPv4 gateway is deleted.
+// - The DeleteIpv4Gateway operation does not support concurrent deletion of the same IPv4 gateway.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17391
+func (c *Client) DeleteIpv4Gateway(ctx context.Context, input *DeleteIpv4GatewayInput, optFns ...func(*Options)) (*DeleteIpv4GatewayOutput, error) {
+	out, meta, err := invoke[DeleteIpv4GatewayInput, DeleteIpv4GatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIpv4Gateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DeleteIpv6EgressOnlyRuleAPI is the minimal interface for DeleteIpv6EgressOnlyRule mocks and capability adapters.
+type DeleteIpv6EgressOnlyRuleAPI interface {
+	// DeleteIpv6EgressOnlyRule invokes the native action with owned inputs and per-call options.
+	DeleteIpv6EgressOnlyRule(context.Context, *DeleteIpv6EgressOnlyRuleInput, ...func(*Options)) (*DeleteIpv6EgressOnlyRuleOutput, error)
+}
+
+// DeleteIpv6EgressOnlyRule calls the native DeleteIpv6EgressOnlyRule action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes an IPv6 egress-only rule.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17500
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - DeleteIpv6EgressOnlyRule is an asynchronous operation. After a request is sent, the system returns a request ID. However, the IPv6 egress-only rule is not immediately deleted. The deletion task runs in the background. You can call DescribeIpv6EgressOnlyRules (https://help.aliyun.com/document_detail/102208.html) to query the deletion status of the IPv6 egress-only rule:
+// - If the IPv6 egress-only rule is in the Deleting state, the rule is being deleted.
+// - If the specified IPv6 egress-only rule cannot be found, the rule is deleted.
+// - DeleteIpv6EgressOnlyRule does not support concurrent deletion of the same IPv6 egress-only rule.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17500
+func (c *Client) DeleteIpv6EgressOnlyRule(ctx context.Context, input *DeleteIpv6EgressOnlyRuleInput, optFns ...func(*Options)) (*DeleteIpv6EgressOnlyRuleOutput, error) {
+	out, meta, err := invoke[DeleteIpv6EgressOnlyRuleInput, DeleteIpv6EgressOnlyRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIpv6EgressOnlyRule", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DeleteIpv6GatewayAPI is the minimal interface for DeleteIpv6Gateway mocks and capability adapters.
+type DeleteIpv6GatewayAPI interface {
+	// DeleteIpv6Gateway invokes the native action with owned inputs and per-call options.
+	DeleteIpv6Gateway(context.Context, *DeleteIpv6GatewayInput, ...func(*Options)) (*DeleteIpv6GatewayOutput, error)
+}
+
+// DeleteIpv6Gateway calls the native DeleteIpv6Gateway action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes an IPv6 gateway.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17608
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Before you delete an IPv6 gateway, delete the IPv6 egress-only rules first. For more information, see DeleteIpv6EgressOnlyRule (https://help.aliyun.com/document_detail/102201.html).
+// - The DeleteIpv6Gateway operation is asynchronous. After a request is sent, the system returns a request ID. However, the IPv6 gateway is not yet deleted. The deletion task is still running in the background. You can call DescribeIpv6GatewayAttribute (https://help.aliyun.com/document_detail/102226.html) to query the deletion status of the IPv6 gateway:
+// - If the IPv6 gateway is in the Deleting state, the IPv6 gateway is being deleted.
+// - If the specified IPv6 gateway cannot be found, the IPv6 gateway is deleted.
+// - The DeleteIpv6Gateway operation does not support concurrent deletion of the same IPv6 gateway.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17608
+func (c *Client) DeleteIpv6Gateway(ctx context.Context, input *DeleteIpv6GatewayInput, optFns ...func(*Options)) (*DeleteIpv6GatewayOutput, error) {
+	out, meta, err := invoke[DeleteIpv6GatewayInput, DeleteIpv6GatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIpv6Gateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DeleteIpv6InternetBandwidthAPI is the minimal interface for DeleteIpv6InternetBandwidth mocks and capability adapters.
+type DeleteIpv6InternetBandwidthAPI interface {
+	// DeleteIpv6InternetBandwidth invokes the native action with owned inputs and per-call options.
+	DeleteIpv6InternetBandwidth(context.Context, *DeleteIpv6InternetBandwidthInput, ...func(*Options)) (*DeleteIpv6InternetBandwidthOutput, error)
+}
+
+// DeleteIpv6InternetBandwidth calls the native DeleteIpv6InternetBandwidth action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes the Internet bandwidth of an IPv6 address by calling the DeleteIpv6InternetBandwidth operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17719
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// The DeleteIpv6InternetBandwidth operation does not support concurrent deletion of the same Internet bandwidth.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17719
+func (c *Client) DeleteIpv6InternetBandwidth(ctx context.Context, input *DeleteIpv6InternetBandwidthInput, optFns ...func(*Options)) (*DeleteIpv6InternetBandwidthOutput, error) {
+	out, meta, err := invoke[DeleteIpv6InternetBandwidthInput, DeleteIpv6InternetBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIpv6InternetBandwidth", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DeleteNatGatewayAPI is the minimal interface for DeleteNatGateway mocks and capability adapters.
 type DeleteNatGatewayAPI interface {
 	// DeleteNatGateway invokes the native action with owned inputs and per-call options.
@@ -2903,6 +4103,95 @@ type DeleteNatGatewayAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17837
 func (c *Client) DeleteNatGateway(ctx context.Context, input *DeleteNatGatewayInput, optFns ...func(*Options)) (*DeleteNatGatewayOutput, error) {
 	out, meta, err := invoke[DeleteNatGatewayInput, DeleteNatGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteNatGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DeleteNatIpAPI is the minimal interface for DeleteNatIp mocks and capability adapters.
+type DeleteNatIpAPI interface {
+	// DeleteNatIp invokes the native action with owned inputs and per-call options.
+	DeleteNatIp(context.Context, *DeleteNatIpInput, ...func(*Options)) (*DeleteNatIpOutput, error)
+}
+
+// DeleteNatIp calls the native DeleteNatIp action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes a NAT IP address.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17945
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// DeleteNatIp is an asynchronous operation. After you send a request, the system returns a request ID, but the NAT IP address is not yet deleted. The deletion task continues to run in the background. You can call ListNatIps (https://help.aliyun.com/document_detail/2522486.html) to query the deletion status of the NAT IP address:
+// - If the NAT IP address is in the Deleting state, the NAT IP address is being deleted. In this state, you can only perform query operations.
+// - If the NAT IP address cannot be found, the NAT IP address is deleted.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17945
+func (c *Client) DeleteNatIp(ctx context.Context, input *DeleteNatIpInput, optFns ...func(*Options)) (*DeleteNatIpOutput, error) {
+	out, meta, err := invoke[DeleteNatIpInput, DeleteNatIpOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteNatIp", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DeleteNatIpCidrAPI is the minimal interface for DeleteNatIpCidr mocks and capability adapters.
+type DeleteNatIpCidrAPI interface {
+	// DeleteNatIpCidr invokes the native action with owned inputs and per-call options.
+	DeleteNatIpCidr(context.Context, *DeleteNatIpCidrInput, ...func(*Options)) (*DeleteNatIpCidrOutput, error)
+}
+
+// DeleteNatIpCidr calls the native DeleteNatIpCidr action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes a NAT CIDR block by calling the DeleteNatIpCidr operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18065
+func (c *Client) DeleteNatIpCidr(ctx context.Context, input *DeleteNatIpCidrInput, optFns ...func(*Options)) (*DeleteNatIpCidrOutput, error) {
+	out, meta, err := invoke[DeleteNatIpCidrInput, DeleteNatIpCidrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteNatIpCidr", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DeleteNetworkAclAPI is the minimal interface for DeleteNetworkAcl mocks and capability adapters.
+type DeleteNetworkAclAPI interface {
+	// DeleteNetworkAcl invokes the native action with owned inputs and per-call options.
+	DeleteNetworkAcl(context.Context, *DeleteNetworkAclInput, ...func(*Options)) (*DeleteNetworkAclOutput, error)
+}
+
+// DeleteNetworkAcl calls the native DeleteNetworkAcl action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes a network ACL.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18166
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// The DeleteNetworkAcl operation does not support concurrent deletion of the same network ACL.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18166
+func (c *Client) DeleteNetworkAcl(ctx context.Context, input *DeleteNetworkAclInput, optFns ...func(*Options)) (*DeleteNetworkAclOutput, error) {
+	out, meta, err := invoke[DeleteNetworkAclInput, DeleteNetworkAclOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteNetworkAcl", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3013,6 +4302,43 @@ func (c *Client) DeletePublicIpAddressPoolCidrBlock(ctx context.Context, input *
 	return out, nil
 }
 
+// DeleteRouteEntriesAPI is the minimal interface for DeleteRouteEntries mocks and capability adapters.
+type DeleteRouteEntriesAPI interface {
+	// DeleteRouteEntries invokes the native action with owned inputs and per-call options.
+	DeleteRouteEntries(context.Context, *DeleteRouteEntriesInput, ...func(*Options)) (*DeleteRouteEntriesOutput, error)
+}
+
+// DeleteRouteEntries calls the native DeleteRouteEntries action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes custom route entries in a batch.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18596
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// When you call this operation to delete route entries, take note of the following items:
+// - Only route entries in the Available state can be deleted.
+// - Route entries cannot be deleted if the VPC to which the route table belongs has a vSwitch or route entry being created or deleted.
+// - The DeleteRouteEntries operation is asynchronous. After you send a request, the system returns a request ID. However, the route entry is not yet deleted. The deletion task runs in the background. You can call DescribeRouteEntryList (https://help.aliyun.com/document_detail/138148.html) to query the deletion status of the route entry:
+// - If the route entry is in the Deleting state, the route entry is being deleted.
+// - If the specified route entry cannot be found, the route entry is deleted.
+// - The DeleteRouteEntries operation does not support concurrent batch deletion of route entries from route tables in the same VPC.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18596
+func (c *Client) DeleteRouteEntries(ctx context.Context, input *DeleteRouteEntriesInput, optFns ...func(*Options)) (*DeleteRouteEntriesOutput, error) {
+	out, meta, err := invoke[DeleteRouteEntriesInput, DeleteRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteRouteEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DeleteRouteEntryAPI is the minimal interface for DeleteRouteEntry mocks and capability adapters.
 type DeleteRouteEntryAPI interface {
 	// DeleteRouteEntry invokes the native action with owned inputs and per-call options.
@@ -3044,6 +4370,40 @@ type DeleteRouteEntryAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18715
 func (c *Client) DeleteRouteEntry(ctx context.Context, input *DeleteRouteEntryInput, optFns ...func(*Options)) (*DeleteRouteEntryOutput, error) {
 	out, meta, err := invoke[DeleteRouteEntryInput, DeleteRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteRouteEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DeleteRouteTableAPI is the minimal interface for DeleteRouteTable mocks and capability adapters.
+type DeleteRouteTableAPI interface {
+	// DeleteRouteTable invokes the native action with owned inputs and per-call options.
+	DeleteRouteTable(context.Context, *DeleteRouteTableInput, ...func(*Options)) (*DeleteRouteTableOutput, error)
+}
+
+// DeleteRouteTable calls the native DeleteRouteTable action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes a custom route table.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18829
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - DeleteRouteTable is an asynchronous operation. After you call this operation, the system returns a request ID, but the custom route table is not yet deleted. The deletion task is still running in the background. You can call DescribeRouteTableList (https://help.aliyun.com/document_detail/87602.html) to query the deletion status of the custom route table:
+// - If the custom route table is in the Deleting state, the custom route table is being deleted.
+// - If the specified custom route table cannot be found, the custom route table is deleted.
+// - DeleteRouteTable does not support concurrent deletion of custom route tables in the same VPC.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18829
+func (c *Client) DeleteRouteTable(ctx context.Context, input *DeleteRouteTableInput, optFns ...func(*Options)) (*DeleteRouteTableOutput, error) {
+	out, meta, err := invoke[DeleteRouteTableInput, DeleteRouteTableOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteRouteTable", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3750,6 +5110,38 @@ func (c *Client) DeleteVpnRouteEntry(ctx context.Context, input *DeleteVpnRouteE
 	return out, nil
 }
 
+// DeletionProtectionAPI is the minimal interface for DeletionProtection mocks and capability adapters.
+type DeletionProtectionAPI interface {
+	// DeletionProtection invokes the native action with owned inputs and per-call options.
+	DeletionProtection(context.Context, *DeletionProtectionInput, ...func(*Options)) (*DeletionProtectionOutput, error)
+}
+
+// DeletionProtection calls the native DeletionProtection action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Sets the deletion protection feature for an instance.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L21143
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// API description
+// After you enable deletion protection for an instance, you cannot delete the instance. To delete the instance, disable deletion protection first.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L21143
+func (c *Client) DeletionProtection(ctx context.Context, input *DeletionProtectionInput, optFns ...func(*Options)) (*DeletionProtectionOutput, error) {
+	out, meta, err := invoke[DeletionProtectionInput, DeletionProtectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeletionProtection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // Describe95TrafficAPI is the minimal interface for Describe95Traffic mocks and capability adapters.
 type Describe95TrafficAPI interface {
 	// Describe95Traffic invokes the native action with owned inputs and per-call options.
@@ -4006,6 +5398,37 @@ func (c *Client) DescribeEipAddresses(ctx context.Context, input *DescribeEipAdd
 	return out, nil
 }
 
+// DescribeEipGatewayInfoAPI is the minimal interface for DescribeEipGatewayInfo mocks and capability adapters.
+type DescribeEipGatewayInfoAPI interface {
+	// DescribeEipGatewayInfo invokes the native action with owned inputs and per-call options.
+	DescribeEipGatewayInfo(context.Context, *DescribeEipGatewayInfoInput, ...func(*Options)) (*DescribeEipGatewayInfoOutput, error)
+}
+
+// DescribeEipGatewayInfo calls the native DescribeEipGatewayInfo action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the gateway and subnet mask information of an elastic IP address (EIP) by calling the DescribeEipGatewayInfo operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22597
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Only EIPs that are associated with secondary elastic network interfaces (ENIs) in multi-EIP-to-ENI mode are supported.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22597
+func (c *Client) DescribeEipGatewayInfo(ctx context.Context, input *DescribeEipGatewayInfoInput, optFns ...func(*Options)) (*DescribeEipGatewayInfoOutput, error) {
+	out, meta, err := invoke[DescribeEipGatewayInfoInput, DescribeEipGatewayInfoOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeEipGatewayInfo", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DescribeEipMonitorDataAPI is the minimal interface for DescribeEipMonitorData mocks and capability adapters.
 type DescribeEipMonitorDataAPI interface {
 	// DescribeEipMonitorData invokes the native action with owned inputs and per-call options.
@@ -4055,6 +5478,137 @@ type DescribeEipSegmentAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22824
 func (c *Client) DescribeEipSegment(ctx context.Context, input *DescribeEipSegmentInput, optFns ...func(*Options)) (*DescribeEipSegmentOutput, error) {
 	out, meta, err := invoke[DescribeEipSegmentInput, DescribeEipSegmentOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeEipSegment", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeExpressConnectTrafficQosAPI is the minimal interface for DescribeExpressConnectTrafficQos mocks and capability adapters.
+type DescribeExpressConnectTrafficQosAPI interface {
+	// DescribeExpressConnectTrafficQos invokes the native action with owned inputs and per-call options.
+	DescribeExpressConnectTrafficQos(context.Context, *DescribeExpressConnectTrafficQosInput, ...func(*Options)) (*DescribeExpressConnectTrafficQosOutput, error)
+}
+
+// DescribeExpressConnectTrafficQos calls the native DescribeExpressConnectTrafficQos action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries Express Connect Quality of Service (QoS) policies. This operation supports pagination parameters.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23015
+func (c *Client) DescribeExpressConnectTrafficQos(ctx context.Context, input *DescribeExpressConnectTrafficQosInput, optFns ...func(*Options)) (*DescribeExpressConnectTrafficQosOutput, error) {
+	out, meta, err := invoke[DescribeExpressConnectTrafficQosInput, DescribeExpressConnectTrafficQosOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeExpressConnectTrafficQos", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeExpressConnectTrafficQosQueueAPI is the minimal interface for DescribeExpressConnectTrafficQosQueue mocks and capability adapters.
+type DescribeExpressConnectTrafficQosQueueAPI interface {
+	// DescribeExpressConnectTrafficQosQueue invokes the native action with owned inputs and per-call options.
+	DescribeExpressConnectTrafficQosQueue(context.Context, *DescribeExpressConnectTrafficQosQueueInput, ...func(*Options)) (*DescribeExpressConnectTrafficQosQueueOutput, error)
+}
+
+// DescribeExpressConnectTrafficQosQueue calls the native DescribeExpressConnectTrafficQosQueue action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries Express Connect QoS queues.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23255
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Before you call this operation, call CreateExpressConnectTrafficQos to create a QoS policy and obtain the QosId.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23255
+func (c *Client) DescribeExpressConnectTrafficQosQueue(ctx context.Context, input *DescribeExpressConnectTrafficQosQueueInput, optFns ...func(*Options)) (*DescribeExpressConnectTrafficQosQueueOutput, error) {
+	out, meta, err := invoke[DescribeExpressConnectTrafficQosQueueInput, DescribeExpressConnectTrafficQosQueueOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeExpressConnectTrafficQosQueue", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeExpressConnectTrafficQosRuleAPI is the minimal interface for DescribeExpressConnectTrafficQosRule mocks and capability adapters.
+type DescribeExpressConnectTrafficQosRuleAPI interface {
+	// DescribeExpressConnectTrafficQosRule invokes the native action with owned inputs and per-call options.
+	DescribeExpressConnectTrafficQosRule(context.Context, *DescribeExpressConnectTrafficQosRuleInput, ...func(*Options)) (*DescribeExpressConnectTrafficQosRuleOutput, error)
+}
+
+// DescribeExpressConnectTrafficQosRule calls the native DescribeExpressConnectTrafficQosRule action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries Express Connect traffic QoS rules. This operation does not support pagination parameters.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23460
+func (c *Client) DescribeExpressConnectTrafficQosRule(ctx context.Context, input *DescribeExpressConnectTrafficQosRuleInput, optFns ...func(*Options)) (*DescribeExpressConnectTrafficQosRuleOutput, error) {
+	out, meta, err := invoke[DescribeExpressConnectTrafficQosRuleInput, DescribeExpressConnectTrafficQosRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeExpressConnectTrafficQosRule", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeFailoverTestJobAPI is the minimal interface for DescribeFailoverTestJob mocks and capability adapters.
+type DescribeFailoverTestJobAPI interface {
+	// DescribeFailoverTestJob invokes the native action with owned inputs and per-call options.
+	DescribeFailoverTestJob(context.Context, *DescribeFailoverTestJobInput, ...func(*Options)) (*DescribeFailoverTestJobOutput, error)
+}
+
+// DescribeFailoverTestJob calls the native DescribeFailoverTestJob action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the details of an Express Connect failover test job.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23585
+func (c *Client) DescribeFailoverTestJob(ctx context.Context, input *DescribeFailoverTestJobInput, optFns ...func(*Options)) (*DescribeFailoverTestJobOutput, error) {
+	out, meta, err := invoke[DescribeFailoverTestJobInput, DescribeFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeFailoverTestJob", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeFailoverTestJobsAPI is the minimal interface for DescribeFailoverTestJobs mocks and capability adapters.
+type DescribeFailoverTestJobsAPI interface {
+	// DescribeFailoverTestJobs invokes the native action with owned inputs and per-call options.
+	DescribeFailoverTestJobs(context.Context, *DescribeFailoverTestJobsInput, ...func(*Options)) (*DescribeFailoverTestJobsOutput, error)
+}
+
+// DescribeFailoverTestJobs calls the native DescribeFailoverTestJobs action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries Express Connect failover test jobs in batches.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23736
+func (c *Client) DescribeFailoverTestJobs(ctx context.Context, input *DescribeFailoverTestJobsInput, optFns ...func(*Options)) (*DescribeFailoverTestJobsOutput, error) {
+	out, meta, err := invoke[DescribeFailoverTestJobsInput, DescribeFailoverTestJobsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeFailoverTestJobs", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4337,6 +5891,131 @@ func (c *Client) DescribeIPv6Translators(ctx context.Context, input *DescribeIPv
 	return out, nil
 }
 
+// DescribeIpv6AddressesAPI is the minimal interface for DescribeIpv6Addresses mocks and capability adapters.
+type DescribeIpv6AddressesAPI interface {
+	// DescribeIpv6Addresses invokes the native action with owned inputs and per-call options.
+	DescribeIpv6Addresses(context.Context, *DescribeIpv6AddressesInput, ...func(*Options)) (*DescribeIpv6AddressesOutput, error)
+}
+
+// DescribeIpv6Addresses calls the native DescribeIpv6Addresses action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries a list of IPv6 addresses.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L25476
+func (c *Client) DescribeIpv6Addresses(ctx context.Context, input *DescribeIpv6AddressesInput, optFns ...func(*Options)) (*DescribeIpv6AddressesOutput, error) {
+	out, meta, err := invoke[DescribeIpv6AddressesInput, DescribeIpv6AddressesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIpv6Addresses", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeIpv6EgressOnlyRulesAPI is the minimal interface for DescribeIpv6EgressOnlyRules mocks and capability adapters.
+type DescribeIpv6EgressOnlyRulesAPI interface {
+	// DescribeIpv6EgressOnlyRules invokes the native action with owned inputs and per-call options.
+	DescribeIpv6EgressOnlyRules(context.Context, *DescribeIpv6EgressOnlyRulesInput, ...func(*Options)) (*DescribeIpv6EgressOnlyRulesOutput, error)
+}
+
+// DescribeIpv6EgressOnlyRules calls the native DescribeIpv6EgressOnlyRules action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries IPv6 egress-only rules that you created.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L25627
+func (c *Client) DescribeIpv6EgressOnlyRules(ctx context.Context, input *DescribeIpv6EgressOnlyRulesInput, optFns ...func(*Options)) (*DescribeIpv6EgressOnlyRulesOutput, error) {
+	out, meta, err := invoke[DescribeIpv6EgressOnlyRulesInput, DescribeIpv6EgressOnlyRulesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIpv6EgressOnlyRules", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeIpv6GatewayAttributeAPI is the minimal interface for DescribeIpv6GatewayAttribute mocks and capability adapters.
+type DescribeIpv6GatewayAttributeAPI interface {
+	// DescribeIpv6GatewayAttribute invokes the native action with owned inputs and per-call options.
+	DescribeIpv6GatewayAttribute(context.Context, *DescribeIpv6GatewayAttributeInput, ...func(*Options)) (*DescribeIpv6GatewayAttributeOutput, error)
+}
+
+// DescribeIpv6GatewayAttribute calls the native DescribeIpv6GatewayAttribute action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the details of a specified IPv6 gateway, such as the region, VPC, running status, and billing method.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L25763
+func (c *Client) DescribeIpv6GatewayAttribute(ctx context.Context, input *DescribeIpv6GatewayAttributeInput, optFns ...func(*Options)) (*DescribeIpv6GatewayAttributeOutput, error) {
+	out, meta, err := invoke[DescribeIpv6GatewayAttributeInput, DescribeIpv6GatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIpv6GatewayAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeIpv6GatewaysAPI is the minimal interface for DescribeIpv6Gateways mocks and capability adapters.
+type DescribeIpv6GatewaysAPI interface {
+	// DescribeIpv6Gateways invokes the native action with owned inputs and per-call options.
+	DescribeIpv6Gateways(context.Context, *DescribeIpv6GatewaysInput, ...func(*Options)) (*DescribeIpv6GatewaysOutput, error)
+}
+
+// DescribeIpv6Gateways calls the native DescribeIpv6Gateways action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries IPv6 gateways created in a specified region.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L25889
+func (c *Client) DescribeIpv6Gateways(ctx context.Context, input *DescribeIpv6GatewaysInput, optFns ...func(*Options)) (*DescribeIpv6GatewaysOutput, error) {
+	out, meta, err := invoke[DescribeIpv6GatewaysInput, DescribeIpv6GatewaysOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIpv6Gateways", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeNatGatewayAssociateNetworkInterfacesAPI is the minimal interface for DescribeNatGatewayAssociateNetworkInterfaces mocks and capability adapters.
+type DescribeNatGatewayAssociateNetworkInterfacesAPI interface {
+	// DescribeNatGatewayAssociateNetworkInterfaces invokes the native action with owned inputs and per-call options.
+	DescribeNatGatewayAssociateNetworkInterfaces(context.Context, *DescribeNatGatewayAssociateNetworkInterfacesInput, ...func(*Options)) (*DescribeNatGatewayAssociateNetworkInterfacesOutput, error)
+}
+
+// DescribeNatGatewayAssociateNetworkInterfaces calls the native DescribeNatGatewayAssociateNetworkInterfaces action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the list of elastic network interfaces (ENIs) associated with a VPC NAT gateway when the VPC NAT gateway is referenced as an EPS resource by PrivateLink. This feature is currently not available.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L26055
+func (c *Client) DescribeNatGatewayAssociateNetworkInterfaces(ctx context.Context, input *DescribeNatGatewayAssociateNetworkInterfacesInput, optFns ...func(*Options)) (*DescribeNatGatewayAssociateNetworkInterfacesOutput, error) {
+	out, meta, err := invoke[DescribeNatGatewayAssociateNetworkInterfacesInput, DescribeNatGatewayAssociateNetworkInterfacesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeNatGatewayAssociateNetworkInterfaces", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DescribeNatGatewaysAPI is the minimal interface for DescribeNatGateways mocks and capability adapters.
 type DescribeNatGatewaysAPI interface {
 	// DescribeNatGateways invokes the native action with owned inputs and per-call options.
@@ -4361,6 +6040,56 @@ type DescribeNatGatewaysAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L26295
 func (c *Client) DescribeNatGateways(ctx context.Context, input *DescribeNatGatewaysInput, optFns ...func(*Options)) (*DescribeNatGatewaysOutput, error) {
 	out, meta, err := invoke[DescribeNatGatewaysInput, DescribeNatGatewaysOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeNatGateways", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeNetworkAclAttributesAPI is the minimal interface for DescribeNetworkAclAttributes mocks and capability adapters.
+type DescribeNetworkAclAttributesAPI interface {
+	// DescribeNetworkAclAttributes invokes the native action with owned inputs and per-call options.
+	DescribeNetworkAclAttributes(context.Context, *DescribeNetworkAclAttributesInput, ...func(*Options)) (*DescribeNetworkAclAttributesOutput, error)
+}
+
+// DescribeNetworkAclAttributes calls the native DescribeNetworkAclAttributes action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the details of a network ACL.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L26490
+func (c *Client) DescribeNetworkAclAttributes(ctx context.Context, input *DescribeNetworkAclAttributesInput, optFns ...func(*Options)) (*DescribeNetworkAclAttributesOutput, error) {
+	out, meta, err := invoke[DescribeNetworkAclAttributesInput, DescribeNetworkAclAttributesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeNetworkAclAttributes", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeNetworkAclsAPI is the minimal interface for DescribeNetworkAcls mocks and capability adapters.
+type DescribeNetworkAclsAPI interface {
+	// DescribeNetworkAcls invokes the native action with owned inputs and per-call options.
+	DescribeNetworkAcls(context.Context, *DescribeNetworkAclsInput, ...func(*Options)) (*DescribeNetworkAclsOutput, error)
+}
+
+// DescribeNetworkAcls calls the native DescribeNetworkAcls action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries a list of network ACLs by calling the DescribeNetworkAcls operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L26664
+func (c *Client) DescribeNetworkAcls(ctx context.Context, input *DescribeNetworkAclsInput, optFns ...func(*Options)) (*DescribeNetworkAclsOutput, error) {
+	out, meta, err := invoke[DescribeNetworkAclsInput, DescribeNetworkAclsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeNetworkAcls", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4424,6 +6153,37 @@ func (c *Client) DescribePhysicalConnections(ctx context.Context, input *Describ
 	return out, nil
 }
 
+// DescribePublicIpAddressAPI is the minimal interface for DescribePublicIpAddress mocks and capability adapters.
+type DescribePublicIpAddressAPI interface {
+	// DescribePublicIpAddress invokes the native action with owned inputs and per-call options.
+	DescribePublicIpAddress(context.Context, *DescribePublicIpAddressInput, ...func(*Options)) (*DescribePublicIpAddressOutput, error)
+}
+
+// DescribePublicIpAddress calls the native DescribePublicIpAddress action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the range of public IP addresses in a virtual private cloud (VPC) in a specified region.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L27160
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// You cannot call the DescribePublicIpAddress operation to query the range of public IP addresses in the classic network.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L27160
+func (c *Client) DescribePublicIpAddress(ctx context.Context, input *DescribePublicIpAddressInput, optFns ...func(*Options)) (*DescribePublicIpAddressOutput, error) {
+	out, meta, err := invoke[DescribePublicIpAddressInput, DescribePublicIpAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribePublicIpAddress", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DescribeRegionsAPI is the minimal interface for DescribeRegions mocks and capability adapters.
 type DescribeRegionsAPI interface {
 	// DescribeRegions invokes the native action with owned inputs and per-call options.
@@ -4442,6 +6202,37 @@ type DescribeRegionsAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L27261
 func (c *Client) DescribeRegions(ctx context.Context, input *DescribeRegionsInput, optFns ...func(*Options)) (*DescribeRegionsOutput, error) {
 	out, meta, err := invoke[DescribeRegionsInput, DescribeRegionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeRegions", Version: "2016-04-28", Idempotent: false}, false, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeRouteEntryListAPI is the minimal interface for DescribeRouteEntryList mocks and capability adapters.
+type DescribeRouteEntryListAPI interface {
+	// DescribeRouteEntryList invokes the native action with owned inputs and per-call options.
+	DescribeRouteEntryList(context.Context, *DescribeRouteEntryListInput, ...func(*Options)) (*DescribeRouteEntryListOutput, error)
+}
+
+// DescribeRouteEntryList calls the native DescribeRouteEntryList action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries a list of routes.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L27425
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Before you call DeleteRouteEntry (https://help.aliyun.com/document_detail/36013.html) to delete a route, you can call this operation to query the next hop information of the route that you want to delete.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L27425
+func (c *Client) DescribeRouteEntryList(ctx context.Context, input *DescribeRouteEntryListInput, optFns ...func(*Options)) (*DescribeRouteEntryListOutput, error) {
+	out, meta, err := invoke[DescribeRouteEntryListInput, DescribeRouteEntryListOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeRouteEntryList", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4977,6 +6768,31 @@ func (c *Client) DescribeVirtualBorderRoutersForPhysicalConnection(ctx context.C
 	return out, nil
 }
 
+// DescribeVpcAttributeAPI is the minimal interface for DescribeVpcAttribute mocks and capability adapters.
+type DescribeVpcAttributeAPI interface {
+	// DescribeVpcAttribute invokes the native action with owned inputs and per-call options.
+	DescribeVpcAttribute(context.Context, *DescribeVpcAttributeInput, ...func(*Options)) (*DescribeVpcAttributeOutput, error)
+}
+
+// DescribeVpcAttribute calls the native DescribeVpcAttribute action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the configuration of a specified VPC.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L30550
+func (c *Client) DescribeVpcAttribute(ctx context.Context, input *DescribeVpcAttributeInput, optFns ...func(*Options)) (*DescribeVpcAttributeOutput, error) {
+	out, meta, err := invoke[DescribeVpcAttributeInput, DescribeVpcAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpcAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DescribeVpcGrantRulesToEcrAPI is the minimal interface for DescribeVpcGrantRulesToEcr mocks and capability adapters.
 type DescribeVpcGrantRulesToEcrAPI interface {
 	// DescribeVpcGrantRulesToEcr invokes the native action with owned inputs and per-call options.
@@ -5463,6 +7279,31 @@ func (c *Client) DisassociateMacSecKey(ctx context.Context, input *DisassociateM
 	return out, nil
 }
 
+// DissociateRouteTableFromGatewayAPI is the minimal interface for DissociateRouteTableFromGateway mocks and capability adapters.
+type DissociateRouteTableFromGatewayAPI interface {
+	// DissociateRouteTableFromGateway invokes the native action with owned inputs and per-call options.
+	DissociateRouteTableFromGateway(context.Context, *DissociateRouteTableFromGatewayInput, ...func(*Options)) (*DissociateRouteTableFromGatewayOutput, error)
+}
+
+// DissociateRouteTableFromGateway calls the native DissociateRouteTableFromGateway action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Disassociates a gateway route table from an IPv4 gateway or IPv6 gateway instance.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33288
+func (c *Client) DissociateRouteTableFromGateway(ctx context.Context, input *DissociateRouteTableFromGatewayInput, optFns ...func(*Options)) (*DissociateRouteTableFromGatewayOutput, error) {
+	out, meta, err := invoke[DissociateRouteTableFromGatewayInput, DissociateRouteTableFromGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DissociateRouteTableFromGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DissociateRouteTablesFromVpcGatewayEndpointAPI is the minimal interface for DissociateRouteTablesFromVpcGatewayEndpoint mocks and capability adapters.
 type DissociateRouteTablesFromVpcGatewayEndpointAPI interface {
 	// DissociateRouteTablesFromVpcGatewayEndpoint invokes the native action with owned inputs and per-call options.
@@ -5608,6 +7449,40 @@ func (c *Client) EnableVpcClassicLink(ctx context.Context, input *EnableVpcClass
 	return out, nil
 }
 
+// EnableVpcIpv4GatewayAPI is the minimal interface for EnableVpcIpv4Gateway mocks and capability adapters.
+type EnableVpcIpv4GatewayAPI interface {
+	// EnableVpcIpv4Gateway invokes the native action with owned inputs and per-call options.
+	EnableVpcIpv4Gateway(context.Context, *EnableVpcIpv4GatewayInput, ...func(*Options)) (*EnableVpcIpv4GatewayOutput, error)
+}
+
+// EnableVpcIpv4Gateway calls the native EnableVpcIpv4Gateway action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Invokes the EnableVpcIpv4Gateway operation to activate IPv4 gateway.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33950
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - The EnableVpcIpv4Gateway operation is asynchronous. After you send a request, the system returns a RequestId, but the IPv4 gateway is not yet activated. The activation task continues to run in the background. You can call GetIpv4GatewayAttribute (https://help.aliyun.com/document_detail/407670.html) to query the status of the IPv4 gateway.
+// - If the IPv4 gateway is in the Activating state, the gateway is being activated.
+// - If the IPv4 gateway is in the Created state, the gateway is activated.
+// - The EnableVpcIpv4Gateway operation does not support concurrent activation of the same IPv4 gateway.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33950
+func (c *Client) EnableVpcIpv4Gateway(ctx context.Context, input *EnableVpcIpv4GatewayInput, optFns ...func(*Options)) (*EnableVpcIpv4GatewayOutput, error) {
+	out, meta, err := invoke[EnableVpcIpv4GatewayInput, EnableVpcIpv4GatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "EnableVpcIpv4Gateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // GetDhcpOptionsSetAPI is the minimal interface for GetDhcpOptionsSet mocks and capability adapters.
 type GetDhcpOptionsSetAPI interface {
 	// GetDhcpOptionsSet invokes the native action with owned inputs and per-call options.
@@ -5626,6 +7501,87 @@ type GetDhcpOptionsSetAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34098
 func (c *Client) GetDhcpOptionsSet(ctx context.Context, input *GetDhcpOptionsSetInput, optFns ...func(*Options)) (*GetDhcpOptionsSetOutput, error) {
 	out, meta, err := invoke[GetDhcpOptionsSetInput, GetDhcpOptionsSetOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetDhcpOptionsSet", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// GetFlowLogServiceStatusAPI is the minimal interface for GetFlowLogServiceStatus mocks and capability adapters.
+type GetFlowLogServiceStatusAPI interface {
+	// GetFlowLogServiceStatus invokes the native action with owned inputs and per-call options.
+	GetFlowLogServiceStatus(context.Context, *GetFlowLogServiceStatusInput, ...func(*Options)) (*GetFlowLogServiceStatusOutput, error)
+}
+
+// GetFlowLogServiceStatus calls the native GetFlowLogServiceStatus action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the activation status of the flow log service by calling the GetFlowLogServiceStatus operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34186
+func (c *Client) GetFlowLogServiceStatus(ctx context.Context, input *GetFlowLogServiceStatusInput, optFns ...func(*Options)) (*GetFlowLogServiceStatusOutput, error) {
+	out, meta, err := invoke[GetFlowLogServiceStatusInput, GetFlowLogServiceStatusOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetFlowLogServiceStatus", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// GetIpv4GatewayAttributeAPI is the minimal interface for GetIpv4GatewayAttribute mocks and capability adapters.
+type GetIpv4GatewayAttributeAPI interface {
+	// GetIpv4GatewayAttribute invokes the native action with owned inputs and per-call options.
+	GetIpv4GatewayAttribute(context.Context, *GetIpv4GatewayAttributeInput, ...func(*Options)) (*GetIpv4GatewayAttributeOutput, error)
+}
+
+// GetIpv4GatewayAttribute calls the native GetIpv4GatewayAttribute action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Calls the GetIpv4GatewayAttribute operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34301
+func (c *Client) GetIpv4GatewayAttribute(ctx context.Context, input *GetIpv4GatewayAttributeInput, optFns ...func(*Options)) (*GetIpv4GatewayAttributeOutput, error) {
+	out, meta, err := invoke[GetIpv4GatewayAttributeInput, GetIpv4GatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetIpv4GatewayAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// GetNatGatewayAttributeAPI is the minimal interface for GetNatGatewayAttribute mocks and capability adapters.
+type GetNatGatewayAttributeAPI interface {
+	// GetNatGatewayAttribute invokes the native action with owned inputs and per-call options.
+	GetNatGatewayAttribute(context.Context, *GetNatGatewayAttributeInput, ...func(*Options)) (*GetNatGatewayAttributeOutput, error)
+}
+
+// GetNatGatewayAttribute calls the native GetNatGatewayAttribute action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the information about a single NAT gateway instance.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34506
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// This operation queries the information about a single Internet NAT gateway or VPC NAT gateway. The term "NAT gateway" in this topic does not distinguish between the two types.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34506
+func (c *Client) GetNatGatewayAttribute(ctx context.Context, input *GetNatGatewayAttributeInput, optFns ...func(*Options)) (*GetNatGatewayAttributeOutput, error) {
+	out, meta, err := invoke[GetNatGatewayAttributeInput, GetNatGatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetNatGatewayAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5665,6 +7621,31 @@ func (c *Client) GetPhysicalConnectionServiceStatus(ctx context.Context, input *
 	return out, nil
 }
 
+// GetPublicIpAddressPoolServiceStatusAPI is the minimal interface for GetPublicIpAddressPoolServiceStatus mocks and capability adapters.
+type GetPublicIpAddressPoolServiceStatusAPI interface {
+	// GetPublicIpAddressPoolServiceStatus invokes the native action with owned inputs and per-call options.
+	GetPublicIpAddressPoolServiceStatus(context.Context, *GetPublicIpAddressPoolServiceStatusInput, ...func(*Options)) (*GetPublicIpAddressPoolServiceStatusOutput, error)
+}
+
+// GetPublicIpAddressPoolServiceStatus calls the native GetPublicIpAddressPoolServiceStatus action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the activation status of the IP address pool feature by calling the GetPublicIpAddressPoolServiceStatus operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34686
+func (c *Client) GetPublicIpAddressPoolServiceStatus(ctx context.Context, input *GetPublicIpAddressPoolServiceStatusInput, optFns ...func(*Options)) (*GetPublicIpAddressPoolServiceStatusOutput, error) {
+	out, meta, err := invoke[GetPublicIpAddressPoolServiceStatusInput, GetPublicIpAddressPoolServiceStatusOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetPublicIpAddressPoolServiceStatus", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // GetRouteTargetGroupAPI is the minimal interface for GetRouteTargetGroup mocks and capability adapters.
 type GetRouteTargetGroupAPI interface {
 	// GetRouteTargetGroup invokes the native action with owned inputs and per-call options.
@@ -5689,6 +7670,31 @@ type GetRouteTargetGroupAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34831
 func (c *Client) GetRouteTargetGroup(ctx context.Context, input *GetRouteTargetGroupInput, optFns ...func(*Options)) (*GetRouteTargetGroupOutput, error) {
 	out, meta, err := invoke[GetRouteTargetGroupInput, GetRouteTargetGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetRouteTargetGroup", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// GetTrafficMirrorServiceStatusAPI is the minimal interface for GetTrafficMirrorServiceStatus mocks and capability adapters.
+type GetTrafficMirrorServiceStatusAPI interface {
+	// GetTrafficMirrorServiceStatus invokes the native action with owned inputs and per-call options.
+	GetTrafficMirrorServiceStatus(context.Context, *GetTrafficMirrorServiceStatusInput, ...func(*Options)) (*GetTrafficMirrorServiceStatusOutput, error)
+}
+
+// GetTrafficMirrorServiceStatus calls the native GetTrafficMirrorServiceStatus action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the status of the traffic mirroring feature by calling the GetTrafficMirrorServiceStatus operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34915
+func (c *Client) GetTrafficMirrorServiceStatus(ctx context.Context, input *GetTrafficMirrorServiceStatusInput, optFns ...func(*Options)) (*GetTrafficMirrorServiceStatusOutput, error) {
+	out, meta, err := invoke[GetTrafficMirrorServiceStatusInput, GetTrafficMirrorServiceStatusOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetTrafficMirrorServiceStatus", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5885,6 +7891,31 @@ func (c *Client) GrantInstanceToCen(ctx context.Context, input *GrantInstanceToC
 	return out, nil
 }
 
+// ListBusinessAccessPointsAPI is the minimal interface for ListBusinessAccessPoints mocks and capability adapters.
+type ListBusinessAccessPointsAPI interface {
+	// ListBusinessAccessPoints invokes the native action with owned inputs and per-call options.
+	ListBusinessAccessPoints(context.Context, *ListBusinessAccessPointsInput, ...func(*Options)) (*ListBusinessAccessPointsOutput, error)
+}
+
+// ListBusinessAccessPoints calls the native ListBusinessAccessPoints action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the access point information of Express Connect circuits by calling the ListBusinessAccessPoints operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36017
+func (c *Client) ListBusinessAccessPoints(ctx context.Context, input *ListBusinessAccessPointsInput, optFns ...func(*Options)) (*ListBusinessAccessPointsOutput, error) {
+	out, meta, err := invoke[ListBusinessAccessPointsInput, ListBusinessAccessPointsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListBusinessAccessPoints", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // ListBusinessRegionsAPI is the minimal interface for ListBusinessRegions mocks and capability adapters.
 type ListBusinessRegionsAPI interface {
 	// ListBusinessRegions invokes the native action with owned inputs and per-call options.
@@ -5935,6 +7966,37 @@ func (c *Client) ListDhcpOptionsSets(ctx context.Context, input *ListDhcpOptions
 	return out, nil
 }
 
+// ListEnhanhcedNatGatewayAvailableZonesAPI is the minimal interface for ListEnhanhcedNatGatewayAvailableZones mocks and capability adapters.
+type ListEnhanhcedNatGatewayAvailableZonesAPI interface {
+	// ListEnhanhcedNatGatewayAvailableZones invokes the native action with owned inputs and per-call options.
+	ListEnhanhcedNatGatewayAvailableZones(context.Context, *ListEnhanhcedNatGatewayAvailableZonesInput, ...func(*Options)) (*ListEnhanhcedNatGatewayAvailableZonesOutput, error)
+}
+
+// ListEnhanhcedNatGatewayAvailableZones calls the native ListEnhanhcedNatGatewayAvailableZones action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the zones where NAT gateway resources are available by calling the ListEnhanhcedNatGatewayAvailableZones operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36330
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// This operation queries the zones available for Internet NAT gateway or VPC NAT gateway resources. In this topic, "NAT gateway" refers to both types without distinction.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36330
+func (c *Client) ListEnhanhcedNatGatewayAvailableZones(ctx context.Context, input *ListEnhanhcedNatGatewayAvailableZonesInput, optFns ...func(*Options)) (*ListEnhanhcedNatGatewayAvailableZonesOutput, error) {
+	out, meta, err := invoke[ListEnhanhcedNatGatewayAvailableZonesInput, ListEnhanhcedNatGatewayAvailableZonesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListEnhanhcedNatGatewayAvailableZones", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // ListFullNatEntriesAPI is the minimal interface for ListFullNatEntries mocks and capability adapters.
 type ListFullNatEntriesAPI interface {
 	// ListFullNatEntries invokes the native action with owned inputs and per-call options.
@@ -5953,6 +8015,31 @@ type ListFullNatEntriesAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36484
 func (c *Client) ListFullNatEntries(ctx context.Context, input *ListFullNatEntriesInput, optFns ...func(*Options)) (*ListFullNatEntriesOutput, error) {
 	out, meta, err := invoke[ListFullNatEntriesInput, ListFullNatEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListFullNatEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ListGatewayRouteTableEntriesAPI is the minimal interface for ListGatewayRouteTableEntries mocks and capability adapters.
+type ListGatewayRouteTableEntriesAPI interface {
+	// ListGatewayRouteTableEntries invokes the native action with owned inputs and per-call options.
+	ListGatewayRouteTableEntries(context.Context, *ListGatewayRouteTableEntriesInput, ...func(*Options)) (*ListGatewayRouteTableEntriesOutput, error)
+}
+
+// ListGatewayRouteTableEntries calls the native ListGatewayRouteTableEntries action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the route entries in a gateway route table.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36644
+func (c *Client) ListGatewayRouteTableEntries(ctx context.Context, input *ListGatewayRouteTableEntriesInput, optFns ...func(*Options)) (*ListGatewayRouteTableEntriesOutput, error) {
+	out, meta, err := invoke[ListGatewayRouteTableEntriesInput, ListGatewayRouteTableEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListGatewayRouteTableEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6028,6 +8115,81 @@ type ListIpsecServersAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36945
 func (c *Client) ListIpsecServers(ctx context.Context, input *ListIpsecServersInput, optFns ...func(*Options)) (*ListIpsecServersOutput, error) {
 	out, meta, err := invoke[ListIpsecServersInput, ListIpsecServersOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListIpsecServers", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ListIpv4GatewaysAPI is the minimal interface for ListIpv4Gateways mocks and capability adapters.
+type ListIpv4GatewaysAPI interface {
+	// ListIpv4Gateways invokes the native action with owned inputs and per-call options.
+	ListIpv4Gateways(context.Context, *ListIpv4GatewaysInput, ...func(*Options)) (*ListIpv4GatewaysOutput, error)
+}
+
+// ListIpv4Gateways calls the native ListIpv4Gateways action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries a list of IPv4 gateway instances.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L37078
+func (c *Client) ListIpv4Gateways(ctx context.Context, input *ListIpv4GatewaysInput, optFns ...func(*Options)) (*ListIpv4GatewaysOutput, error) {
+	out, meta, err := invoke[ListIpv4GatewaysInput, ListIpv4GatewaysOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListIpv4Gateways", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ListNatIpCidrsAPI is the minimal interface for ListNatIpCidrs mocks and capability adapters.
+type ListNatIpCidrsAPI interface {
+	// ListNatIpCidrs invokes the native action with owned inputs and per-call options.
+	ListNatIpCidrs(context.Context, *ListNatIpCidrsInput, ...func(*Options)) (*ListNatIpCidrsOutput, error)
+}
+
+// ListNatIpCidrs calls the native ListNatIpCidrs action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries a list of NAT CIDR blocks.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L37217
+func (c *Client) ListNatIpCidrs(ctx context.Context, input *ListNatIpCidrsInput, optFns ...func(*Options)) (*ListNatIpCidrsOutput, error) {
+	out, meta, err := invoke[ListNatIpCidrsInput, ListNatIpCidrsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListNatIpCidrs", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ListNatIpsAPI is the minimal interface for ListNatIps mocks and capability adapters.
+type ListNatIpsAPI interface {
+	// ListNatIps invokes the native action with owned inputs and per-call options.
+	ListNatIps(context.Context, *ListNatIpsInput, ...func(*Options)) (*ListNatIpsOutput, error)
+}
+
+// ListNatIps calls the native ListNatIps action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries a list of NAT IP addresses.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L37380
+func (c *Client) ListNatIps(ctx context.Context, input *ListNatIpsInput, optFns ...func(*Options)) (*ListNatIpsOutput, error) {
+	out, meta, err := invoke[ListNatIpsInput, ListNatIpsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListNatIps", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6384,6 +8546,31 @@ func (c *Client) ListVpcGatewayEndpoints(ctx context.Context, input *ListVpcGate
 	return out, nil
 }
 
+// ListVpcPublishedRouteEntriesAPI is the minimal interface for ListVpcPublishedRouteEntries mocks and capability adapters.
+type ListVpcPublishedRouteEntriesAPI interface {
+	// ListVpcPublishedRouteEntries invokes the native action with owned inputs and per-call options.
+	ListVpcPublishedRouteEntries(context.Context, *ListVpcPublishedRouteEntriesInput, ...func(*Options)) (*ListVpcPublishedRouteEntriesOutput, error)
+}
+
+// ListVpcPublishedRouteEntries calls the native ListVpcPublishedRouteEntries action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the route publish status.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L39627
+func (c *Client) ListVpcPublishedRouteEntries(ctx context.Context, input *ListVpcPublishedRouteEntriesInput, optFns ...func(*Options)) (*ListVpcPublishedRouteEntriesOutput, error) {
+	out, meta, err := invoke[ListVpcPublishedRouteEntriesInput, ListVpcPublishedRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListVpcPublishedRouteEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // ListVpnCertificateAssociationsAPI is the minimal interface for ListVpnCertificateAssociations mocks and capability adapters.
 type ListVpnCertificateAssociationsAPI interface {
 	// ListVpnCertificateAssociations invokes the native action with owned inputs and per-call options.
@@ -6625,6 +8812,31 @@ func (c *Client) ModifyEipAddressAttribute(ctx context.Context, input *ModifyEip
 	return out, nil
 }
 
+// ModifyEipForwardModeAPI is the minimal interface for ModifyEipForwardMode mocks and capability adapters.
+type ModifyEipForwardModeAPI interface {
+	// ModifyEipForwardMode invokes the native action with owned inputs and per-call options.
+	ModifyEipForwardMode(context.Context, *ModifyEipForwardModeInput, ...func(*Options)) (*ModifyEipForwardModeOutput, error)
+}
+
+// ModifyEipForwardMode calls the native ModifyEipForwardMode action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the forwarding mode of an Elastic IP Address (EIP).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40646
+func (c *Client) ModifyEipForwardMode(ctx context.Context, input *ModifyEipForwardModeInput, optFns ...func(*Options)) (*ModifyEipForwardModeOutput, error) {
+	out, meta, err := invoke[ModifyEipForwardModeInput, ModifyEipForwardModeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyEipForwardMode", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // ModifyExpressCloudConnectionAttributeAPI is the minimal interface for ModifyExpressCloudConnectionAttribute mocks and capability adapters.
 type ModifyExpressCloudConnectionAttributeAPI interface {
 	// ModifyExpressCloudConnectionAttribute invokes the native action with owned inputs and per-call options.
@@ -6668,6 +8880,91 @@ type ModifyExpressCloudConnectionBandwidthAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40831
 func (c *Client) ModifyExpressCloudConnectionBandwidth(ctx context.Context, input *ModifyExpressCloudConnectionBandwidthInput, optFns ...func(*Options)) (*ModifyExpressCloudConnectionBandwidthOutput, error) {
 	out, meta, err := invoke[ModifyExpressCloudConnectionBandwidthInput, ModifyExpressCloudConnectionBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyExpressCloudConnectionBandwidth", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyExpressConnectTrafficQosAPI is the minimal interface for ModifyExpressConnectTrafficQos mocks and capability adapters.
+type ModifyExpressConnectTrafficQosAPI interface {
+	// ModifyExpressConnectTrafficQos invokes the native action with owned inputs and per-call options.
+	ModifyExpressConnectTrafficQos(context.Context, *ModifyExpressConnectTrafficQosInput, ...func(*Options)) (*ModifyExpressConnectTrafficQosOutput, error)
+}
+
+// ModifyExpressConnectTrafficQos calls the native ModifyExpressConnectTrafficQos action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies an Express Connect Quality of Service (QoS) policy. You can also use this operation to associate dedicated Express Connect circuits with the policy.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40937
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - Only dedicated Express Connect circuits that are in the Normal state and do not have overdue payments can be associated. Shared Express Connect circuit ports and Virtual Border Router (VBR) instances are not supported.
+// - When associating dedicated Express Connect circuits, only full replacement is supported. To disassociate all circuits, pass an empty string.
+// - If a dedicated Express Connect circuit has shared Express Connect circuits or cross-account VBRs, you must be added to the whitelist before you can associate it.
+// - The device on which the dedicated Express Connect circuit resides must support the QoS feature before association.
+// - If a single VBR is associated with multiple Express Connect circuits, you must associate all Express Connect circuits of the VBR at the same time.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40937
+func (c *Client) ModifyExpressConnectTrafficQos(ctx context.Context, input *ModifyExpressConnectTrafficQosInput, optFns ...func(*Options)) (*ModifyExpressConnectTrafficQosOutput, error) {
+	out, meta, err := invoke[ModifyExpressConnectTrafficQosInput, ModifyExpressConnectTrafficQosOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyExpressConnectTrafficQos", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyExpressConnectTrafficQosQueueAPI is the minimal interface for ModifyExpressConnectTrafficQosQueue mocks and capability adapters.
+type ModifyExpressConnectTrafficQosQueueAPI interface {
+	// ModifyExpressConnectTrafficQosQueue invokes the native action with owned inputs and per-call options.
+	ModifyExpressConnectTrafficQosQueue(context.Context, *ModifyExpressConnectTrafficQosQueueInput, ...func(*Options)) (*ModifyExpressConnectTrafficQosQueueOutput, error)
+}
+
+// ModifyExpressConnectTrafficQosQueue calls the native ModifyExpressConnectTrafficQosQueue action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Invokes the ModifyExpressConnectTrafficQosQueue operation to modify an Express Connect QoS queue.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L41061
+func (c *Client) ModifyExpressConnectTrafficQosQueue(ctx context.Context, input *ModifyExpressConnectTrafficQosQueueInput, optFns ...func(*Options)) (*ModifyExpressConnectTrafficQosQueueOutput, error) {
+	out, meta, err := invoke[ModifyExpressConnectTrafficQosQueueInput, ModifyExpressConnectTrafficQosQueueOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyExpressConnectTrafficQosQueue", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyExpressConnectTrafficQosRuleAPI is the minimal interface for ModifyExpressConnectTrafficQosRule mocks and capability adapters.
+type ModifyExpressConnectTrafficQosRuleAPI interface {
+	// ModifyExpressConnectTrafficQosRule invokes the native action with owned inputs and per-call options.
+	ModifyExpressConnectTrafficQosRule(context.Context, *ModifyExpressConnectTrafficQosRuleInput, ...func(*Options)) (*ModifyExpressConnectTrafficQosRuleOutput, error)
+}
+
+// ModifyExpressConnectTrafficQosRule calls the native ModifyExpressConnectTrafficQosRule action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies a QoS rule for Express Connect.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L41255
+func (c *Client) ModifyExpressConnectTrafficQosRule(ctx context.Context, input *ModifyExpressConnectTrafficQosRuleInput, optFns ...func(*Options)) (*ModifyExpressConnectTrafficQosRuleOutput, error) {
+	out, meta, err := invoke[ModifyExpressConnectTrafficQosRuleInput, ModifyExpressConnectTrafficQosRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyExpressConnectTrafficQosRule", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6990,6 +9287,118 @@ func (c *Client) ModifyIPv6TranslatorEntry(ctx context.Context, input *ModifyIPv
 	return out, nil
 }
 
+// ModifyIpv6AddressAttributeAPI is the minimal interface for ModifyIpv6AddressAttribute mocks and capability adapters.
+type ModifyIpv6AddressAttributeAPI interface {
+	// ModifyIpv6AddressAttribute invokes the native action with owned inputs and per-call options.
+	ModifyIpv6AddressAttribute(context.Context, *ModifyIpv6AddressAttributeInput, ...func(*Options)) (*ModifyIpv6AddressAttributeOutput, error)
+}
+
+// ModifyIpv6AddressAttribute calls the native ModifyIpv6AddressAttribute action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the name and description of an IPv6 address.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42643
+func (c *Client) ModifyIpv6AddressAttribute(ctx context.Context, input *ModifyIpv6AddressAttributeInput, optFns ...func(*Options)) (*ModifyIpv6AddressAttributeOutput, error) {
+	out, meta, err := invoke[ModifyIpv6AddressAttributeInput, ModifyIpv6AddressAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIpv6AddressAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyIpv6GatewayAttributeAPI is the minimal interface for ModifyIpv6GatewayAttribute mocks and capability adapters.
+type ModifyIpv6GatewayAttributeAPI interface {
+	// ModifyIpv6GatewayAttribute invokes the native action with owned inputs and per-call options.
+	ModifyIpv6GatewayAttribute(context.Context, *ModifyIpv6GatewayAttributeInput, ...func(*Options)) (*ModifyIpv6GatewayAttributeOutput, error)
+}
+
+// ModifyIpv6GatewayAttribute calls the native ModifyIpv6GatewayAttribute action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the information of an IPv6 gateway.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42753
+func (c *Client) ModifyIpv6GatewayAttribute(ctx context.Context, input *ModifyIpv6GatewayAttributeInput, optFns ...func(*Options)) (*ModifyIpv6GatewayAttributeOutput, error) {
+	out, meta, err := invoke[ModifyIpv6GatewayAttributeInput, ModifyIpv6GatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIpv6GatewayAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyIpv6InternetBandwidthAPI is the minimal interface for ModifyIpv6InternetBandwidth mocks and capability adapters.
+type ModifyIpv6InternetBandwidthAPI interface {
+	// ModifyIpv6InternetBandwidth invokes the native action with owned inputs and per-call options.
+	ModifyIpv6InternetBandwidth(context.Context, *ModifyIpv6InternetBandwidthInput, ...func(*Options)) (*ModifyIpv6InternetBandwidthOutput, error)
+}
+
+// ModifyIpv6InternetBandwidth calls the native ModifyIpv6InternetBandwidth action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the Internet bandwidth of an IPv6 address.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42872
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// The ModifyIpv6InternetBandwidth operation does not support concurrent modifications to the same IPv6 Internet bandwidth.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42872
+func (c *Client) ModifyIpv6InternetBandwidth(ctx context.Context, input *ModifyIpv6InternetBandwidthInput, optFns ...func(*Options)) (*ModifyIpv6InternetBandwidthOutput, error) {
+	out, meta, err := invoke[ModifyIpv6InternetBandwidthInput, ModifyIpv6InternetBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIpv6InternetBandwidth", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyNatGatewayAttributeAPI is the minimal interface for ModifyNatGatewayAttribute mocks and capability adapters.
+type ModifyNatGatewayAttributeAPI interface {
+	// ModifyNatGatewayAttribute invokes the native action with owned inputs and per-call options.
+	ModifyNatGatewayAttribute(context.Context, *ModifyNatGatewayAttributeInput, ...func(*Options)) (*ModifyNatGatewayAttributeOutput, error)
+}
+
+// ModifyNatGatewayAttribute calls the native ModifyNatGatewayAttribute action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the attributes of a NAT gateway.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43037
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// The NAT gateways queried by this operation include Internet NAT gateways and VPC NAT gateways. The term "NAT gateway" in this topic is not specific to either type.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43037
+func (c *Client) ModifyNatGatewayAttribute(ctx context.Context, input *ModifyNatGatewayAttributeInput, optFns ...func(*Options)) (*ModifyNatGatewayAttributeOutput, error) {
+	out, meta, err := invoke[ModifyNatGatewayAttributeInput, ModifyNatGatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyNatGatewayAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // ModifyNatGatewaySpecAPI is the minimal interface for ModifyNatGatewaySpec mocks and capability adapters.
 type ModifyNatGatewaySpecAPI interface {
 	// ModifyNatGatewaySpec invokes the native action with owned inputs and per-call options.
@@ -7025,6 +9434,121 @@ type ModifyNatGatewaySpecAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43162
 func (c *Client) ModifyNatGatewaySpec(ctx context.Context, input *ModifyNatGatewaySpecInput, optFns ...func(*Options)) (*ModifyNatGatewaySpecOutput, error) {
 	out, meta, err := invoke[ModifyNatGatewaySpecInput, ModifyNatGatewaySpecOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyNatGatewaySpec", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyNatIpAttributeAPI is the minimal interface for ModifyNatIpAttribute mocks and capability adapters.
+type ModifyNatIpAttributeAPI interface {
+	// ModifyNatIpAttribute invokes the native action with owned inputs and per-call options.
+	ModifyNatIpAttribute(context.Context, *ModifyNatIpAttributeInput, ...func(*Options)) (*ModifyNatIpAttributeOutput, error)
+}
+
+// ModifyNatIpAttribute calls the native ModifyNatIpAttribute action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the name and description of a NAT IP address.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43294
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// The ModifyNatIpAttribute operation does not support concurrent modifications to the name and description of the same NAT IP address.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43294
+func (c *Client) ModifyNatIpAttribute(ctx context.Context, input *ModifyNatIpAttributeInput, optFns ...func(*Options)) (*ModifyNatIpAttributeOutput, error) {
+	out, meta, err := invoke[ModifyNatIpAttributeInput, ModifyNatIpAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyNatIpAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyNatIpCidrAttributeAPI is the minimal interface for ModifyNatIpCidrAttribute mocks and capability adapters.
+type ModifyNatIpCidrAttributeAPI interface {
+	// ModifyNatIpCidrAttribute invokes the native action with owned inputs and per-call options.
+	ModifyNatIpCidrAttribute(context.Context, *ModifyNatIpCidrAttributeInput, ...func(*Options)) (*ModifyNatIpCidrAttributeOutput, error)
+}
+
+// ModifyNatIpCidrAttribute calls the native ModifyNatIpCidrAttribute action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the name and description of a NAT CIDR block.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43413
+func (c *Client) ModifyNatIpCidrAttribute(ctx context.Context, input *ModifyNatIpCidrAttributeInput, optFns ...func(*Options)) (*ModifyNatIpCidrAttributeOutput, error) {
+	out, meta, err := invoke[ModifyNatIpCidrAttributeInput, ModifyNatIpCidrAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyNatIpCidrAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyNetworkAclAttributesAPI is the minimal interface for ModifyNetworkAclAttributes mocks and capability adapters.
+type ModifyNetworkAclAttributesAPI interface {
+	// ModifyNetworkAclAttributes invokes the native action with owned inputs and per-call options.
+	ModifyNetworkAclAttributes(context.Context, *ModifyNetworkAclAttributesInput, ...func(*Options)) (*ModifyNetworkAclAttributesOutput, error)
+}
+
+// ModifyNetworkAclAttributes calls the native ModifyNetworkAclAttributes action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the attributes of a network ACL.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43526
+func (c *Client) ModifyNetworkAclAttributes(ctx context.Context, input *ModifyNetworkAclAttributesInput, optFns ...func(*Options)) (*ModifyNetworkAclAttributesOutput, error) {
+	out, meta, err := invoke[ModifyNetworkAclAttributesInput, ModifyNetworkAclAttributesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyNetworkAclAttributes", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyPhysicalConnectionAttributeAPI is the minimal interface for ModifyPhysicalConnectionAttribute mocks and capability adapters.
+type ModifyPhysicalConnectionAttributeAPI interface {
+	// ModifyPhysicalConnectionAttribute invokes the native action with owned inputs and per-call options.
+	ModifyPhysicalConnectionAttribute(context.Context, *ModifyPhysicalConnectionAttributeInput, ...func(*Options)) (*ModifyPhysicalConnectionAttributeOutput, error)
+}
+
+// ModifyPhysicalConnectionAttribute calls the native ModifyPhysicalConnectionAttribute action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the configurations of an Express Connect circuit.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43657
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// When you call this operation, note the following items:
+// - You can modify the specifications and redundant circuit ID only for Express Connect circuits in the Initial, Enabled, or Rejected state.
+// - You cannot modify Express Connect circuits in the Canceled, Allocating, AllocationFailed, or Terminated state.
+// - After an Express Connect circuit in the Rejected state is modified, it enters the Initial state.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43657
+func (c *Client) ModifyPhysicalConnectionAttribute(ctx context.Context, input *ModifyPhysicalConnectionAttributeInput, optFns ...func(*Options)) (*ModifyPhysicalConnectionAttributeOutput, error) {
+	out, meta, err := invoke[ModifyPhysicalConnectionAttributeInput, ModifyPhysicalConnectionAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyPhysicalConnectionAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7770,6 +10294,38 @@ func (c *Client) MoveVpnResourceGroup(ctx context.Context, input *MoveVpnResourc
 	return out, nil
 }
 
+// OpenFlowLogServiceAPI is the minimal interface for OpenFlowLogService mocks and capability adapters.
+type OpenFlowLogServiceAPI interface {
+	// OpenFlowLogService invokes the native action with owned inputs and per-call options.
+	OpenFlowLogService(context.Context, *OpenFlowLogServiceInput, ...func(*Options)) (*OpenFlowLogServiceOutput, error)
+}
+
+// OpenFlowLogService calls the native OpenFlowLogService action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Activates the flow log service.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48005
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - The OpenFlowLogService operation does not support concurrent activation of the flow log service within the same Alibaba Cloud account.
+// - You can call the GetFlowLogServiceStatus (https://help.aliyun.com/document_detail/449624.html) operation to query the activation status of the flow log service.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48005
+func (c *Client) OpenFlowLogService(ctx context.Context, input *OpenFlowLogServiceInput, optFns ...func(*Options)) (*OpenFlowLogServiceOutput, error) {
+	out, meta, err := invoke[OpenFlowLogServiceInput, OpenFlowLogServiceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "OpenFlowLogService", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // OpenPhysicalConnectionServiceAPI is the minimal interface for OpenPhysicalConnectionService mocks and capability adapters.
 type OpenPhysicalConnectionServiceAPI interface {
 	// OpenPhysicalConnectionService invokes the native action with owned inputs and per-call options.
@@ -7788,6 +10344,94 @@ type OpenPhysicalConnectionServiceAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48092
 func (c *Client) OpenPhysicalConnectionService(ctx context.Context, input *OpenPhysicalConnectionServiceInput, optFns ...func(*Options)) (*OpenPhysicalConnectionServiceOutput, error) {
 	out, meta, err := invoke[OpenPhysicalConnectionServiceInput, OpenPhysicalConnectionServiceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "OpenPhysicalConnectionService", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// OpenPublicIpAddressPoolServiceAPI is the minimal interface for OpenPublicIpAddressPoolService mocks and capability adapters.
+type OpenPublicIpAddressPoolServiceAPI interface {
+	// OpenPublicIpAddressPoolService invokes the native action with owned inputs and per-call options.
+	OpenPublicIpAddressPoolService(context.Context, *OpenPublicIpAddressPoolServiceInput, ...func(*Options)) (*OpenPublicIpAddressPoolServiceOutput, error)
+}
+
+// OpenPublicIpAddressPoolService calls the native OpenPublicIpAddressPoolService action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Activates the IP address pool feature by calling the OpenPublicIpAddressPoolService operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48174
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - The OpenPublicIpAddressPoolService operation does not support concurrent activation of the IP address pool feature within the same Alibaba Cloud account.
+// - You can call the GetPublicIpAddressPoolServiceStatu operation to query the activation status of the IP address pool feature.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48174
+func (c *Client) OpenPublicIpAddressPoolService(ctx context.Context, input *OpenPublicIpAddressPoolServiceInput, optFns ...func(*Options)) (*OpenPublicIpAddressPoolServiceOutput, error) {
+	out, meta, err := invoke[OpenPublicIpAddressPoolServiceInput, OpenPublicIpAddressPoolServiceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "OpenPublicIpAddressPoolService", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// OpenTrafficMirrorServiceAPI is the minimal interface for OpenTrafficMirrorService mocks and capability adapters.
+type OpenTrafficMirrorServiceAPI interface {
+	// OpenTrafficMirrorService invokes the native action with owned inputs and per-call options.
+	OpenTrafficMirrorService(context.Context, *OpenTrafficMirrorServiceInput, ...func(*Options)) (*OpenTrafficMirrorServiceOutput, error)
+}
+
+// OpenTrafficMirrorService calls the native OpenTrafficMirrorService action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Activates the traffic mirroring feature.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48266
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// The traffic mirroring feature is activated on a per-region basis. The OpenTrafficMirrorService operation does not support concurrent activation of the traffic mirroring feature within the same region.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48266
+func (c *Client) OpenTrafficMirrorService(ctx context.Context, input *OpenTrafficMirrorServiceInput, optFns ...func(*Options)) (*OpenTrafficMirrorServiceOutput, error) {
+	out, meta, err := invoke[OpenTrafficMirrorServiceInput, OpenTrafficMirrorServiceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "OpenTrafficMirrorService", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// PublishVpcRouteEntriesAPI is the minimal interface for PublishVpcRouteEntries mocks and capability adapters.
+type PublishVpcRouteEntriesAPI interface {
+	// PublishVpcRouteEntries invokes the native action with owned inputs and per-call options.
+	PublishVpcRouteEntries(context.Context, *PublishVpcRouteEntriesInput, ...func(*Options)) (*PublishVpcRouteEntriesOutput, error)
+}
+
+// PublishVpcRouteEntries calls the native PublishVpcRouteEntries action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Publishes VPC routes to external components.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48368
+func (c *Client) PublishVpcRouteEntries(ctx context.Context, input *PublishVpcRouteEntriesInput, optFns ...func(*Options)) (*PublishVpcRouteEntriesOutput, error) {
+	out, meta, err := invoke[PublishVpcRouteEntriesInput, PublishVpcRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "PublishVpcRouteEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7956,6 +10600,31 @@ type ReleaseEipSegmentAddressAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48870
 func (c *Client) ReleaseEipSegmentAddress(ctx context.Context, input *ReleaseEipSegmentAddressInput, optFns ...func(*Options)) (*ReleaseEipSegmentAddressOutput, error) {
 	out, meta, err := invoke[ReleaseEipSegmentAddressInput, ReleaseEipSegmentAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ReleaseEipSegmentAddress", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ReleaseIpv6AddressAPI is the minimal interface for ReleaseIpv6Address mocks and capability adapters.
+type ReleaseIpv6AddressAPI interface {
+	// ReleaseIpv6Address invokes the native action with owned inputs and per-call options.
+	ReleaseIpv6Address(context.Context, *ReleaseIpv6AddressInput, ...func(*Options)) (*ReleaseIpv6AddressOutput, error)
+}
+
+// ReleaseIpv6Address calls the native ReleaseIpv6Address action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Releases an IPv6 address that is not associated with an instance.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48978
+func (c *Client) ReleaseIpv6Address(ctx context.Context, input *ReleaseIpv6AddressInput, optFns ...func(*Options)) (*ReleaseIpv6AddressOutput, error) {
+	out, meta, err := invoke[ReleaseIpv6AddressInput, ReleaseIpv6AddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ReleaseIpv6Address", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8225,6 +10894,68 @@ type SetHighDefinitionMonitorLogStatusAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50096
 func (c *Client) SetHighDefinitionMonitorLogStatus(ctx context.Context, input *SetHighDefinitionMonitorLogStatusInput, optFns ...func(*Options)) (*SetHighDefinitionMonitorLogStatusOutput, error) {
 	out, meta, err := invoke[SetHighDefinitionMonitorLogStatusInput, SetHighDefinitionMonitorLogStatusOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "SetHighDefinitionMonitorLogStatus", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// StartFailoverTestJobAPI is the minimal interface for StartFailoverTestJob mocks and capability adapters.
+type StartFailoverTestJobAPI interface {
+	// StartFailoverTestJob invokes the native action with owned inputs and per-call options.
+	StartFailoverTestJob(context.Context, *StartFailoverTestJobInput, ...func(*Options)) (*StartFailoverTestJobOutput, error)
+}
+
+// StartFailoverTestJob calls the native StartFailoverTestJob action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Calls the StartFailoverTestJob operation to start an Express Connect disaster recovery drill task.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50195
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Only disaster recovery drill tasks in the Pending state can be started.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50195
+func (c *Client) StartFailoverTestJob(ctx context.Context, input *StartFailoverTestJobInput, optFns ...func(*Options)) (*StartFailoverTestJobOutput, error) {
+	out, meta, err := invoke[StartFailoverTestJobInput, StartFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "StartFailoverTestJob", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// StopFailoverTestJobAPI is the minimal interface for StopFailoverTestJob mocks and capability adapters.
+type StopFailoverTestJobAPI interface {
+	// StopFailoverTestJob invokes the native action with owned inputs and per-call options.
+	StopFailoverTestJob(context.Context, *StopFailoverTestJobInput, ...func(*Options)) (*StopFailoverTestJobOutput, error)
+}
+
+// StopFailoverTestJob calls the native StopFailoverTestJob action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Calls the StopFailoverTestJob operation to stop an Express Connect failover test job.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50285
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Only failover test jobs in the Testing state can be stopped.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50285
+func (c *Client) StopFailoverTestJob(ctx context.Context, input *StopFailoverTestJobInput, optFns ...func(*Options)) (*StopFailoverTestJobOutput, error) {
+	out, meta, err := invoke[StopFailoverTestJobInput, StopFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "StopFailoverTestJob", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8549,6 +11280,40 @@ func (c *Client) UnassociateHaVip(ctx context.Context, input *UnassociateHaVipIn
 	return out, nil
 }
 
+// UnassociateNetworkAclAPI is the minimal interface for UnassociateNetworkAcl mocks and capability adapters.
+type UnassociateNetworkAclAPI interface {
+	// UnassociateNetworkAcl invokes the native action with owned inputs and per-call options.
+	UnassociateNetworkAcl(context.Context, *UnassociateNetworkAclInput, ...func(*Options)) (*UnassociateNetworkAclOutput, error)
+}
+
+// UnassociateNetworkAcl calls the native UnassociateNetworkAcl action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Disassociates a network ACL from a vSwitch by calling the UnassociateNetworkAcl operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51490
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - UnassociateNetworkAcl is an asynchronous operation. After you send a request, the system returns a request ID, but the network ACL is not yet disassociated from the vSwitch. The disassociation task is still running in the background. You can call DescribeNetworkAclAttributes (https://help.aliyun.com/document_detail/116542.html) to query the disassociation status of the network ACL and the vSwitch:
+// - If the network ACL and the vSwitch are in the UNBINDING state, the disassociation is in progress.
+// - If no binding record is found, the network ACL is disassociated from the vSwitch.
+// - UnassociateNetworkAcl does not support concurrent disassociation of vSwitches from the same network ACL.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51490
+func (c *Client) UnassociateNetworkAcl(ctx context.Context, input *UnassociateNetworkAclInput, optFns ...func(*Options)) (*UnassociateNetworkAclOutput, error) {
+	out, meta, err := invoke[UnassociateNetworkAclInput, UnassociateNetworkAclOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociateNetworkAcl", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // UnassociatePhysicalConnectionFromVirtualBorderRouterAPI is the minimal interface for UnassociatePhysicalConnectionFromVirtualBorderRouter mocks and capability adapters.
 type UnassociatePhysicalConnectionFromVirtualBorderRouterAPI interface {
 	// UnassociatePhysicalConnectionFromVirtualBorderRouter invokes the native action with owned inputs and per-call options.
@@ -8567,6 +11332,72 @@ type UnassociatePhysicalConnectionFromVirtualBorderRouterAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51601
 func (c *Client) UnassociatePhysicalConnectionFromVirtualBorderRouter(ctx context.Context, input *UnassociatePhysicalConnectionFromVirtualBorderRouterInput, optFns ...func(*Options)) (*UnassociatePhysicalConnectionFromVirtualBorderRouterOutput, error) {
 	out, meta, err := invoke[UnassociatePhysicalConnectionFromVirtualBorderRouterInput, UnassociatePhysicalConnectionFromVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociatePhysicalConnectionFromVirtualBorderRouter", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// UnassociateRouteTableAPI is the minimal interface for UnassociateRouteTable mocks and capability adapters.
+type UnassociateRouteTableAPI interface {
+	// UnassociateRouteTable invokes the native action with owned inputs and per-call options.
+	UnassociateRouteTable(context.Context, *UnassociateRouteTableInput, ...func(*Options)) (*UnassociateRouteTableOutput, error)
+}
+
+// UnassociateRouteTable calls the native UnassociateRouteTable action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Disassociates a route table from a vSwitch by calling the UnassociateRouteTable operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51696
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - UnassociateRouteTable is an asynchronous operation. After you call this operation, the system returns a request ID, but the route table has not been disassociated yet. The disassociation task is still running in the background. You can call DescribeVSwitchAttributes (https://help.aliyun.com/document_detail/94567.html) to query the disassociation status of the route table:
+// - If the vSwitch is in the Pending state, the route table is being disassociated.
+// - If the vSwitch is in the Available state, the route table is disassociated.
+// - UnassociateRouteTable does not support concurrent disassociation of the same route table from the same vSwitch.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51696
+func (c *Client) UnassociateRouteTable(ctx context.Context, input *UnassociateRouteTableInput, optFns ...func(*Options)) (*UnassociateRouteTableOutput, error) {
+	out, meta, err := invoke[UnassociateRouteTableInput, UnassociateRouteTableOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociateRouteTable", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// UnassociateVpcCidrBlockAPI is the minimal interface for UnassociateVpcCidrBlock mocks and capability adapters.
+type UnassociateVpcCidrBlockAPI interface {
+	// UnassociateVpcCidrBlock invokes the native action with owned inputs and per-call options.
+	UnassociateVpcCidrBlock(context.Context, *UnassociateVpcCidrBlockInput, ...func(*Options)) (*UnassociateVpcCidrBlockOutput, error)
+}
+
+// UnassociateVpcCidrBlock calls the native UnassociateVpcCidrBlock action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Invokes UnassociateVpcCidrBlock to delete a secondary CIDR block from a VPC.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51802
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - Before deleting a secondary CIDR block from a VPC, delete the vSwitches that are created with the secondary CIDR block. For more information, see DeleteVSwitch (https://help.aliyun.com/document_detail/35746.html).
+// - The UnassociateVpcCidrBlock operation does not support concurrently deleting secondary CIDR blocks from the same VPC.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51802
+func (c *Client) UnassociateVpcCidrBlock(ctx context.Context, input *UnassociateVpcCidrBlockInput, optFns ...func(*Options)) (*UnassociateVpcCidrBlockOutput, error) {
+	out, meta, err := invoke[UnassociateVpcCidrBlockInput, UnassociateVpcCidrBlockOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociateVpcCidrBlock", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8658,6 +11489,62 @@ func (c *Client) UpdateEnhancedVpnGateway(ctx context.Context, input *UpdateEnha
 	return out, nil
 }
 
+// UpdateFailoverTestJobAPI is the minimal interface for UpdateFailoverTestJob mocks and capability adapters.
+type UpdateFailoverTestJobAPI interface {
+	// UpdateFailoverTestJob invokes the native action with owned inputs and per-call options.
+	UpdateFailoverTestJob(context.Context, *UpdateFailoverTestJobInput, ...func(*Options)) (*UpdateFailoverTestJobOutput, error)
+}
+
+// UpdateFailoverTestJob calls the native UpdateFailoverTestJob action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Updates a failover test job for Express Connect by calling the UpdateFailoverTestJob operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52316
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Only failover test jobs in the Pending state can be updated.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52316
+func (c *Client) UpdateFailoverTestJob(ctx context.Context, input *UpdateFailoverTestJobInput, optFns ...func(*Options)) (*UpdateFailoverTestJobOutput, error) {
+	out, meta, err := invoke[UpdateFailoverTestJobInput, UpdateFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateFailoverTestJob", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// UpdateGatewayRouteTableEntryAttributeAPI is the minimal interface for UpdateGatewayRouteTableEntryAttribute mocks and capability adapters.
+type UpdateGatewayRouteTableEntryAttributeAPI interface {
+	// UpdateGatewayRouteTableEntryAttribute invokes the native action with owned inputs and per-call options.
+	UpdateGatewayRouteTableEntryAttribute(context.Context, *UpdateGatewayRouteTableEntryAttributeInput, ...func(*Options)) (*UpdateGatewayRouteTableEntryAttributeOutput, error)
+}
+
+// UpdateGatewayRouteTableEntryAttribute calls the native UpdateGatewayRouteTableEntryAttribute action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the next hop type and next hop of a gateway route table.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52450
+func (c *Client) UpdateGatewayRouteTableEntryAttribute(ctx context.Context, input *UpdateGatewayRouteTableEntryAttributeInput, optFns ...func(*Options)) (*UpdateGatewayRouteTableEntryAttributeOutput, error) {
+	out, meta, err := invoke[UpdateGatewayRouteTableEntryAttributeInput, UpdateGatewayRouteTableEntryAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateGatewayRouteTableEntryAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // UpdateIpsecServerAPI is the minimal interface for UpdateIpsecServer mocks and capability adapters.
 type UpdateIpsecServerAPI interface {
 	// UpdateIpsecServer invokes the native action with owned inputs and per-call options.
@@ -8686,6 +11573,111 @@ type UpdateIpsecServerAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52612
 func (c *Client) UpdateIpsecServer(ctx context.Context, input *UpdateIpsecServerInput, optFns ...func(*Options)) (*UpdateIpsecServerOutput, error) {
 	out, meta, err := invoke[UpdateIpsecServerInput, UpdateIpsecServerOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateIpsecServer", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// UpdateIpv4GatewayAttributeAPI is the minimal interface for UpdateIpv4GatewayAttribute mocks and capability adapters.
+type UpdateIpv4GatewayAttributeAPI interface {
+	// UpdateIpv4GatewayAttribute invokes the native action with owned inputs and per-call options.
+	UpdateIpv4GatewayAttribute(context.Context, *UpdateIpv4GatewayAttributeInput, ...func(*Options)) (*UpdateIpv4GatewayAttributeOutput, error)
+}
+
+// UpdateIpv4GatewayAttribute calls the native UpdateIpv4GatewayAttribute action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the name or description of an IPv4 gateway.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52733
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// The UpdateIpv4GatewayAttribute operation does not support concurrent modifications to the name or description of the same IPv4 gateway.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52733
+func (c *Client) UpdateIpv4GatewayAttribute(ctx context.Context, input *UpdateIpv4GatewayAttributeInput, optFns ...func(*Options)) (*UpdateIpv4GatewayAttributeOutput, error) {
+	out, meta, err := invoke[UpdateIpv4GatewayAttributeInput, UpdateIpv4GatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateIpv4GatewayAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// UpdateNatGatewayNatTypeAPI is the minimal interface for UpdateNatGatewayNatType mocks and capability adapters.
+type UpdateNatGatewayNatTypeAPI interface {
+	// UpdateNatGatewayNatType invokes the native action with owned inputs and per-call options.
+	UpdateNatGatewayNatType(context.Context, *UpdateNatGatewayNatTypeInput, ...func(*Options)) (*UpdateNatGatewayNatTypeOutput, error)
+}
+
+// UpdateNatGatewayNatType calls the native UpdateNatGatewayNatType action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Switches a standard NAT gateway to an enhanced NAT gateway.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52851
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// Before you invoke the UpdateNatGatewayNatType operation, take note of the following information:
+// - UpdateNatGatewayNatType is an asynchronous operation. After you send a request, the system returns a request ID, but the NAT gateway type has not been upgraded yet. The upgrade node is still running in the background. You can invoke GetNatGatewayConvertStatus to query the upgrade status of the NAT gateway. For more information, see GetNatGatewayConvertStatus (https://help.aliyun.com/document_detail/184744.html).
+// - If the upgrade status is processing, the NAT gateway is being upgraded. In this state, you can only execute query operations and cannot execute other operations.
+// - If the upgrade status is successful, the NAT gateway type has been upgraded.
+// - If the upgrade status is failed, the NAT gateway type failed to be upgraded.
+// - The UpdateNatGatewayNatType operation does not support concurrent upgrades of the NAT gateway type for the same NAT gateway.
+// - Enhanced NAT gateways and standard NAT gateways have the same billing. The billable methods do not change during or after the upgrade procedure.
+// - Each resource upgrade procedure may take up to 5 minutes. During the upgrade, 1 to 2 transient connections that last a few seconds may occur. Use the reconnection mechanism to recover the service. Whether the reconnection mechanism is automatic or manual depends on the service itself.
+// - You can only upgrade a standard NAT gateway to an enhanced NAT gateway. You cannot downgrade an enhanced NAT gateway to a standard NAT gateway.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52851
+func (c *Client) UpdateNatGatewayNatType(ctx context.Context, input *UpdateNatGatewayNatTypeInput, optFns ...func(*Options)) (*UpdateNatGatewayNatTypeOutput, error) {
+	out, meta, err := invoke[UpdateNatGatewayNatTypeInput, UpdateNatGatewayNatTypeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateNatGatewayNatType", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// UpdateNetworkAclEntriesAPI is the minimal interface for UpdateNetworkAclEntries mocks and capability adapters.
+type UpdateNetworkAclEntriesAPI interface {
+	// UpdateNetworkAclEntries invokes the native action with owned inputs and per-call options.
+	UpdateNetworkAclEntries(context.Context, *UpdateNetworkAclEntriesInput, ...func(*Options)) (*UpdateNetworkAclEntriesOutput, error)
+}
+
+// UpdateNetworkAclEntries calls the native UpdateNetworkAclEntries action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Invokes the UpdateNetworkAclEntries operation to update network ACL rules.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L53081
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - UpdateNetworkAclEntries is an asynchronous operation. After you send a request, the system returns a request ID. However, the network ACL rules are not yet updated. The update task is still running in the background. You can call DescribeNetworkAclAttributes (https://help.aliyun.com/document_detail/116542.html) to query the update status of the network ACL rules:
+// - If the network ACL rules are in the Modifying state, the rules are being updated.
+// - If the network ACL rules are in the Available state, the rules are updated.
+// - UpdateNetworkAclEntries does not support concurrent updates to the same network ACL rules.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L53081
+func (c *Client) UpdateNetworkAclEntries(ctx context.Context, input *UpdateNetworkAclEntriesInput, optFns ...func(*Options)) (*UpdateNetworkAclEntriesOutput, error) {
+	out, meta, err := invoke[UpdateNetworkAclEntriesInput, UpdateNetworkAclEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateNetworkAclEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8964,6 +11956,31 @@ type VpcDescribeVpcNatGatewayNetworkInterfaceQuotaAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L54173
 func (c *Client) VpcDescribeVpcNatGatewayNetworkInterfaceQuota(ctx context.Context, input *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaInput, optFns ...func(*Options)) (*VpcDescribeVpcNatGatewayNetworkInterfaceQuotaOutput, error) {
 	out, meta, err := invoke[VpcDescribeVpcNatGatewayNetworkInterfaceQuotaInput, VpcDescribeVpcNatGatewayNetworkInterfaceQuotaOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "VpcDescribeVpcNatGatewayNetworkInterfaceQuota", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// WithdrawVpcPublishedRouteEntriesAPI is the minimal interface for WithdrawVpcPublishedRouteEntries mocks and capability adapters.
+type WithdrawVpcPublishedRouteEntriesAPI interface {
+	// WithdrawVpcPublishedRouteEntries invokes the native action with owned inputs and per-call options.
+	WithdrawVpcPublishedRouteEntries(context.Context, *WithdrawVpcPublishedRouteEntriesInput, ...func(*Options)) (*WithdrawVpcPublishedRouteEntriesOutput, error)
+}
+
+// WithdrawVpcPublishedRouteEntries calls the native WithdrawVpcPublishedRouteEntries action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Withdraws a VPC published routing entry.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L54277
+func (c *Client) WithdrawVpcPublishedRouteEntries(ctx context.Context, input *WithdrawVpcPublishedRouteEntriesInput, optFns ...func(*Options)) (*WithdrawVpcPublishedRouteEntriesOutput, error) {
+	out, meta, err := invoke[WithdrawVpcPublishedRouteEntriesInput, WithdrawVpcPublishedRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "WithdrawVpcPublishedRouteEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}

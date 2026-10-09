@@ -2,6 +2,8 @@
 
 [中文](design.zh-CN.md)
 
+- [RPC expansion #83](dsl-rpc-expansion.md) permits native DSL map fields inside concrete operation inputs. Dynamic JSON fields use explicit IR encoding; request/response roots remain typed structs.
+
 - Runtime-first sequence is defined in development-path.md.
 - Before v1, APIs may change.
 - The module is github.com/rambow-cloud/alicloud-go-sdk-x and requires Go 1.27.

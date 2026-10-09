@@ -212,7 +212,9 @@ function modelGraph(ast, file) {
         } else {
           const literal = attr.attrValue;
           attributes[name] =
-            literal.string ?? literal.value ?? lex(literal) ?? null;
+            name === "deprecated" && ["true", "false"].includes(lex(literal))
+              ? lex(literal) === "true"
+              : (literal.string ?? literal.value ?? lex(literal) ?? null);
         }
       }
       const dslName = lex(field.fieldName),
@@ -284,6 +286,7 @@ function modelGraph(ast, file) {
       "uint32",
       "uint64",
     ];
+    if (kind === "any") return { kind: "json", dslType: "any" };
     const wireType = integer.includes(kind)
       ? "integer"
       : ["float", "double"].includes(kind)
@@ -319,13 +322,17 @@ function modelGraph(ast, file) {
   return { declared, models, type, reachable };
 }
 
-function shapeIssue(shape, location) {
+function shapeIssue(shape, location, allowJSON = false) {
   if (!shape || shape.type === "unsupported") return location;
-  if (shape.type === "array") return shapeIssue(shape.items, location + "[]");
+  if (shape.type === "json") return allowJSON ? null : location;
+  if (shape.type === "map")
+    return shapeIssue(shape.values, location + ".*", allowJSON);
+  if (shape.type === "array")
+    return shapeIssue(shape.items, location + "[]", allowJSON);
   for (const [name, field] of Object.entries(shape.properties || {}).sort(
     ([a], [b]) => order(a, b),
   )) {
-    const issue = shapeIssue(field, location + "." + name);
+    const issue = shapeIssue(field, location + "." + name, allowJSON);
     if (issue) return issue;
   }
   return null;
@@ -341,6 +348,8 @@ const reasonPrefixes = {
   "query guard": "DSL_QUERY_GUARD",
   "direct query assignment": "DSL_QUERY_TRANSFORM",
   "query alias/duplicate": "DSL_QUERY_BINDING",
+  shrink: "DSL_SHRINK_TRANSFORM",
+  "map key type": "DSL_WIRE_TYPE",
   "unbound model input": "DSL_UNBOUND_INPUT",
   "request construction": "DSL_REQUEST_CONSTRUCTION",
   "query encoding helper": "DSL_REQUEST_ENCODING",
@@ -422,7 +431,9 @@ function buildProduct(ast, { pkg, identifier, info, file, provenance }) {
         candidate.name + ".$response",
         d.node.functionName || d.node.apiName,
       );
-      const request = record.parameters.find((p) => p.name === "request")?.type;
+      const request = record.parameters.find((p) =>
+        ["request", "tmpReq"].includes(p.name),
+      )?.type;
       record.roots = {
         request: request || null,
         response,
@@ -458,7 +469,13 @@ function buildProduct(ast, { pkg, identifier, info, file, provenance }) {
         const lowered = lowerOperation(ast, candidate.name);
         const invalid =
           lowered.inputs
-            .map((input) => shapeIssue(input.schema, "request." + input.wire))
+            .map((input) =>
+              shapeIssue(
+                input.schema,
+                "request." + input.wire,
+                input.encoding === "json",
+              ),
+            )
             .find(Boolean) || shapeIssue(lowered.response, "response.body");
         if (invalid)
           record.reasons.push({
@@ -478,7 +495,10 @@ function buildProduct(ast, { pkg, identifier, info, file, provenance }) {
             wire: input.wire,
             location: input.location,
             guard: input.guard,
-            field: fields.find((f) => f.wireName === input.wire)?.dslName,
+            field:
+              input.field ||
+              fields.find((f) => f.wireName === input.wire)?.dslName,
+            ...(input.encoding ? { encoding: input.encoding } : {}),
             source:
               fields.find((f) => f.wireName === input.wire)?.source || location,
           }));

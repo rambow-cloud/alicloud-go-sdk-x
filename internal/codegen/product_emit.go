@@ -107,6 +107,7 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 			return nil, errors.New("request not reachable")
 		}
 		bound := map[string]bool{}
+		wires := map[string]bool{}
 		for _, binding := range op.Bindings {
 			if pr.AuthType == "Anonymous" {
 				switch strings.ToLower(binding.Wire) {
@@ -114,22 +115,29 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 					return nil, errors.New("anonymous reserved query member")
 				}
 			}
-			if binding.Location != "query" || binding.Guard != "isUnset" || bound[binding.Field] {
+			if binding.Location != "query" || binding.Guard != "isUnset" || bound[binding.Field] || wires[binding.Wire] || (binding.Encoding != "" && binding.Encoding != "json") {
 				return nil, errors.New("unsupported query binding")
 			}
 			found := false
 			for _, f := range request.Fields {
 				if f.DSLName == binding.Field && f.WireName == binding.Wire {
 					found = true
+					if err := r.validateWireType(f.Type, binding.Encoding == "json", map[string]bool{}); err != nil {
+						return nil, fmt.Errorf("%s.%s: %w", op.Name, f.DSLName, err)
+					}
 				}
 			}
 			if !found {
 				return nil, errors.New("binding/model mismatch")
 			}
 			bound[binding.Field] = true
+			wires[binding.Wire] = true
 		}
 		if len(bound) != len(request.Fields) {
 			return nil, errors.New("unbound request field")
+		}
+		if err := r.validateWireType(op.Roots.Body, false, map[string]bool{}); err != nil {
+			return nil, err
 		}
 		r.operations = append(r.operations, op)
 	}
@@ -215,9 +223,46 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 	return r, nil
 }
 
+func (r *productRenderer) validateWireType(t productType, allowJSON bool, active map[string]bool) error {
+	switch t.Kind {
+	case "json":
+		if !allowJSON || t.DSLType != "any" {
+			return errors.New("dynamic values require a reviewed JSON query transform")
+		}
+	case "array":
+		if t.Items == nil {
+			return errors.New("missing array items")
+		}
+		return r.validateWireType(*t.Items, allowJSON, active)
+	case "map":
+		if t.Keys == nil || t.Keys.Kind != "scalar" || t.Keys.DSLType != "string" || t.Values == nil {
+			return errors.New("unsupported map")
+		}
+		return r.validateWireType(*t.Values, allowJSON, active)
+	case "model":
+		m, ok := r.models[t.Ref]
+		if !ok || active[t.Ref] || len(active) >= 32 {
+			return errors.New("missing or recursive wire model")
+		}
+		active[t.Ref] = true
+		defer delete(active, t.Ref)
+		for _, f := range m.Fields {
+			if err := r.validateWireType(f.Type, allowJSON, active); err != nil {
+				return err
+			}
+		}
+	}
+	return nil
+}
+
 func (r *productRenderer) goType(t productType, optional bool) (string, error) {
 	var name string
 	switch t.Kind {
+	case "json":
+		if t.DSLType != "any" {
+			return "", errors.New("unsupported JSON type")
+		}
+		return "any", nil
 	case "scalar":
 		name = map[string]string{"string": "string", "boolean": "bool", "integer": "int32", "number": "int32", "long": "int64", "int8": "int8", "int16": "int16", "int32": "int32", "int64": "int64", "uint8": "uint8", "uint16": "uint16", "uint32": "uint32", "uint64": "uint64", "float": "float32", "double": "float64"}[t.DSLType]
 		if name == "" {
@@ -286,7 +331,24 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 				types.WriteString("// Nil omits this member; non-nil scalar pointers preserve explicit zero values.\n")
 			}
 			r.appendProse(&types, f.Documentation)
-			fmt.Fprintf(&types, "%s %s `json:%s`\n", field, typ, quote(f.WireName+",omitzero"))
+			if f.Attributes.Deprecated {
+				types.WriteString("//\n// Deprecated: The upstream DSL marks this field as deprecated. It remains available for compatibility.\n")
+			}
+			encoding := ""
+			for _, op := range r.operations {
+				if op.Roots.Request.Ref != id {
+					continue
+				}
+				for _, binding := range op.Bindings {
+					if binding.Field == f.DSLName && binding.Encoding == "json" {
+						encoding = " rpc:\"json\""
+					}
+				}
+			}
+			if encoding != "" {
+				types.WriteString("// Encoded as one JSON query value; nil is omitted and explicit empty containers are preserved.\n")
+			}
+			fmt.Fprintf(&types, "%s %s `json:%s%s`\n", field, typ, quote(f.WireName+",omitzero"), encoding)
 		}
 		if r.output[id] {
 			types.WriteString("// Metadata contains request identity, HTTP status and attempt count.\nMetadata alicloud.Metadata `json:\"-\"`\n")
@@ -449,9 +511,9 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 func (r *productRenderer) guide(chinese bool) []byte {
 	var b bytes.Buffer
 	if chinese {
-		fmt.Fprintf(&b, "%s# %s SDK 使用指南\n\n[English](%s.md)\n\n## 来源与覆盖范围\n\n- 导入 \x60%s/service/%s\x60。\n- 官方 DSL 固定在提交 \x60%s\x60，采用 Apache-2.0 许可。原始源码和许可证保存在 \x60sources/darabonba\x60。\n- 发现 %d 个操作，生成 %d 个，暂不支持 %d 个；生成 %d 个完整模型。\n- 生成数量不代表编译或真实调用已经验收。详见 \x60%s.coverage.json\x60 和对应 PR。\n\n## 调用与数据处理\n\n- 使用 \x60NewFromConfig(config)\x60 构造客户端，再调用 \x60client.Operation(ctx, &OperationInput{}, optFns...)\x60。\n- nil 输入表示空请求；是否允许空请求由操作的参数要求决定。\n- 可选指针为 nil 时省略字段；非 nil 时保留显式的 0、false 和空字符串。\n- 中间件运行前复制输入。调用期间不要修改输入，也不要保留扩展函数收到的模型或配置。\n- 数组的请求参数索引从 1 开始，字段大小写保持与 API 一致。DSL 中的字符串字段仍使用 string。\n- RegionId 默认使用配置地域，可通过操作选项覆盖。\n- 输出保留完整的响应体结构，并增加 Metadata；DSL 的响应封装类型另外保留。\n- 客户端支持并发调用。小型 OperationAPI 接口用于替换真实客户端，方便测试。\n- 使用 errors.Is 检查取消，使用 errors.As 提取 APIError 或 OperationError。\n- 重试必须显式配置 Retryer，且仅允许已审核的幂等操作。\n\n## 迁移与示例\n\n- 旧路径 \x60services/%s\x60 已移除；客户端统一使用单数 service/ 路径。\n- 切换导入路径时，也要适配指针字段和完整的响应结构。\n- 支持哪些分页器、waiter 和策略，以后面的表格为准，不根据 token 字段猜测。\n- 官方说明和来源索引由生成器提取；Go 注释保留来源和数据归属说明。\n- 每个操作都有离线 Example，使用模拟 HTTP 响应。示例中的空请求只展示调用方式，不代表可用于真实云请求。\n\n", productMarkdown, r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product)
+		fmt.Fprintf(&b, "%s# %s SDK 使用指南\n\n[English](%s.md)\n\n## 来源与覆盖范围\n\n- 导入 \x60%s/service/%s\x60。\n- 官方 DSL 固定在提交 \x60%s\x60，采用 Apache-2.0 许可。原始源码和许可证保存在 \x60sources/darabonba\x60。\n- 发现 %d 个操作，生成 %d 个，暂不支持 %d 个；生成 %d 个完整模型。\n- 生成数量不代表编译或真实调用已经验收。详见 \x60%s.coverage.json\x60 和对应 PR。\n\n## 调用与数据处理\n\n- 使用 \x60NewFromConfig(config)\x60 构造客户端，再调用 \x60client.Operation(ctx, &OperationInput{}, optFns...)\x60。\n- nil 输入表示空请求；是否允许空请求由操作的参数要求决定。\n- 可选指针为 nil 时省略字段；非 nil 时保留显式的 0、false 和空字符串。\n- 中间件运行前复制输入。调用期间不要修改输入，也不要保留扩展函数收到的模型或配置。\n- 数组的请求参数索引从 1 开始，字段大小写保持与 API 一致。DSL 中的字符串字段仍使用 string。\n- 官方 JSON shrink 字段保留结构化输入，自动编码为一个 JSON 字符串参数。nil 省略，显式空容器保留；不输出 Shrink 字段或嵌套 query 索引。动态 JSON 值使用标量、字符串键 map 和 slice，拒绝循环或不支持的值。\n- 弃用字段保留编码行为，并在 Go 文档中标记 Deprecated。\n- RegionId 默认使用配置地域，可通过操作选项覆盖。\n- 输出保留完整的响应体结构，并增加 Metadata；DSL 的响应封装类型另外保留。\n- 客户端支持并发调用。小型 OperationAPI 接口用于替换真实客户端，方便测试。\n- 使用 errors.Is 检查取消，使用 errors.As 提取 APIError 或 OperationError。\n- 重试必须显式配置 Retryer，且仅允许已审核的幂等操作。\n\n## 迁移与示例\n\n- 旧路径 \x60services/%s\x60 已移除；客户端统一使用单数 service/ 路径。\n- 切换导入路径时，也要适配指针字段和完整的响应结构。\n- 支持哪些分页器、waiter 和策略，以后面的表格为准，不根据 token 字段猜测。\n- 官方说明和来源索引由生成器提取；Go 注释保留来源和数据归属说明。\n- 每个操作都有离线 Example，使用模拟 HTTP 响应。示例中的空请求只展示调用方式，不代表可用于真实云请求。\n\n", productMarkdown, r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product)
 	} else {
-		fmt.Fprintf(&b, "%s# %s SDK guide\n\n[中文](%s.zh-CN.md)\n\n## Source and coverage\n\n- Import \x60%s/service/%s\x60.\n- Official DSL commit: \x60%s\x60. License: Apache-2.0. Source files and licenses are in \x60sources/darabonba\x60.\n- %d actions found; %d generated; %d unsupported; %d complete models.\n- Generation does not prove compilation or live behavior. See \x60%s.coverage.json\x60 and the PR checks.\n\n## Calls and data\n\n- Construct with \x60NewFromConfig(config)\x60. Call \x60client.Operation(ctx, &OperationInput{}, optFns...)\x60.\n- Nil input means an empty request. Required parameters still apply.\n- Nil optional pointers omit fields. Non-nil pointers preserve 0, false and empty strings.\n- Inputs are copied before middleware. Do not change inputs during calls or retain hook models/options.\n- Array query indexes start at 1. API field case and DSL string types stay unchanged.\n- RegionId defaults to the configured region. Operation options can override it.\n- Outputs keep the full response body and add Metadata. DSL envelope types remain separate.\n- Clients support concurrent calls. Small OperationAPI interfaces support mocks.\n- Use errors.Is for cancellation and errors.As for APIError/OperationError.\n- Set Retryer to enable retry. Only reviewed idempotent actions allow it.\n\n## Migration and examples\n\n- \x60services/%s\x60 has been removed; clients use the singular service/ path.\n- Changing imports also requires pointer-field and response-shape changes.\n- The tables below list reviewed adapters. Token-shaped fields do not imply support.\n- The generator extracts licensed descriptions and source indexes. Go comments keep source and ownership details.\n- Each action has an offline Example with scripted HTTP. Empty sample requests show calling syntax; they are not valid cloud requests.\n\n", productMarkdown, r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product)
+		fmt.Fprintf(&b, "%s# %s SDK guide\n\n[中文](%s.zh-CN.md)\n\n## Source and coverage\n\n- Import \x60%s/service/%s\x60.\n- Official DSL commit: \x60%s\x60. License: Apache-2.0. Source files and licenses are in \x60sources/darabonba\x60.\n- %d actions found; %d generated; %d unsupported; %d complete models.\n- Generation does not prove compilation or live behavior. See \x60%s.coverage.json\x60 and the PR checks.\n\n## Calls and data\n\n- Construct with \x60NewFromConfig(config)\x60. Call \x60client.Operation(ctx, &OperationInput{}, optFns...)\x60.\n- Nil input means an empty request. Required parameters still apply.\n- Nil optional pointers omit fields. Non-nil pointers preserve 0, false and empty strings.\n- Inputs are copied before middleware. Do not change inputs during calls or retain hook models/options.\n- Array query indexes start at 1. API field case and DSL string types stay unchanged.\n- Official JSON shrink fields keep structured inputs and encode one JSON string query value. Nil omits the field; explicit empty containers remain. No Shrink fields or nested query indexes are emitted. Dynamic JSON values use scalars, string-keyed maps and slices; cycles and unsupported values fail.\n- Deprecated fields retain their wire behavior and have Deprecated Go comments.\n- RegionId defaults to the configured region. Operation options can override it.\n- Outputs keep the full response body and add Metadata. DSL envelope types remain separate.\n- Clients support concurrent calls. Small OperationAPI interfaces support mocks.\n- Use errors.Is for cancellation and errors.As for APIError/OperationError.\n- Set Retryer to enable retry. Only reviewed idempotent actions allow it.\n\n## Migration and examples\n\n- \x60services/%s\x60 has been removed; clients use the singular service/ path.\n- Changing imports also requires pointer-field and response-shape changes.\n- The tables below list reviewed adapters. Token-shaped fields do not imply support.\n- The generator extracts licensed descriptions and source indexes. Go comments keep source and ownership details.\n- Each action has an offline Example with scripted HTTP. Empty sample requests show calling syntax; they are not valid cloud requests.\n\n", productMarkdown, r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product)
 	}
 	var anonymous []string
 	for _, op := range r.operations {
@@ -473,6 +535,7 @@ func (r *productRenderer) guide(chinese bool) []byte {
 			}
 		}
 	}
+	r.appendQueryEncodingGuide(&b, chinese)
 	r.appendCapabilityGuide(&b, chinese)
 	r.appendDocumentationGuide(&b, chinese)
 	for _, op := range r.operations {
@@ -485,6 +548,34 @@ func (r *productRenderer) guide(chinese bool) []byte {
 		}
 	}
 	return append(bytes.TrimRight(b.Bytes(), "\n"), '\n')
+}
+
+func (r *productRenderer) appendQueryEncodingGuide(b *bytes.Buffer, chinese bool) {
+	rows := []string{}
+	for _, op := range r.operations {
+		for _, binding := range op.Bindings {
+			if binding.Encoding != "json" {
+				continue
+			}
+			for _, f := range r.models[op.Roots.Request.Ref].Fields {
+				if f.DSLName == binding.Field {
+					rows = append(rows, fmt.Sprintf("| %s | `%sInput.%s` | `%s` |\n", op.Name, op.Name, r.fieldName(op.Roots.Request.Ref, f), binding.Wire))
+				}
+			}
+		}
+	}
+	if len(rows) == 0 {
+		return
+	}
+	if chinese {
+		b.WriteString("## JSON 字符串参数\n\n- 以下字段保留结构化 Go 输入，依据官方 DSL 自动编码为单个 JSON query 值。无需手动序列化。\n- nil 省略字段，非 nil 的空 map、slice 或模型分别保留为空对象、数组或模型对象。\n- 普通数组仍使用原生索引参数；本表不表示操作允许重试或已有真实调用验收。\n\n| 操作 | Go 输入字段 | Query 键 |\n| --- | --- | --- |\n")
+	} else {
+		b.WriteString("## JSON string parameters\n\n- These fields keep structured Go inputs. The official DSL selects one JSON query value; no manual serialization is needed.\n- Nil omits the field. Non-nil empty maps, slices and models remain empty objects, arrays or model objects.\n- Ordinary arrays retain native indexed parameters. This table does not establish retry safety or live acceptance.\n\n| Action | Go input field | Query key |\n| --- | --- | --- |\n")
+	}
+	for _, row := range rows {
+		b.WriteString(row)
+	}
+	b.WriteString("\n")
 }
 
 const productClientTemplate = `

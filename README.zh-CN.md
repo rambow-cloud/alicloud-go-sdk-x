@@ -2,6 +2,8 @@
 
 [English](README.md)
 
+- [RPC DSL 扩展](docs/dsl-rpc-expansion.zh-CN.md)：固定来源下生成 ECS 380/380、VPC 396/403、STS 4/4。生成及离线检查通过不表示所有操作均经过真实调用验收。
+
 - [完整 DSL 真实调用证据](docs/product-live-validation.zh-CN.md): 完整 DSL ECS/VPC 的历史只读证据（#47）：镜像读取两页，实例和 VPC 返回空页，真实 waiter 检查跳过；#74/#75 产品验收仍单独进行。
 
 - 首版路线：#60 代理 STS 验收 → ECS #74 → VPC #75 → #61 发布。独立人工体验另由可选 #76 跟踪，详见[开发路线](docs/sts-ecs-vpc-path.zh-CN.md)。

@@ -17,6 +17,8 @@
 - Nil optional pointers omit fields. Non-nil pointers preserve 0, false and empty strings.
 - Inputs are copied before middleware. Do not change inputs during calls or retain hook models/options.
 - Array query indexes start at 1. API field case and DSL string types stay unchanged.
+- Official JSON shrink fields keep structured inputs and encode one JSON string query value. Nil omits the field; explicit empty containers remain. No Shrink fields or nested query indexes are emitted. Dynamic JSON values use scalars, string-keyed maps and slices; cycles and unsupported values fail.
+- Deprecated fields retain their wire behavior and have Deprecated Go comments.
 - RegionId defaults to the configured region. Operation options can override it.
 - Outputs keep the full response body and add Metadata. DSL envelope types remain separate.
 - Clients support concurrent calls. Small OperationAPI interfaces support mocks.

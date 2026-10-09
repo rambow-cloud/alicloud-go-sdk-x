@@ -2,6 +2,8 @@
 
 [中文](vpc-product-acceptance.zh-CN.md)
 
+- Current generation follows [RPC expansion #83](dsl-rpc-expansion.md): ECS 380/380; VPC 396/403. Earlier counts and consumer records below describe their accepted revisions.
+
 ## Scope established before execution
 
 - Issue #75; #60 and historical live-evidence integration #47 are complete. ECS #74 is reviewed separately.

@@ -7,7 +7,7 @@
 
 - Import `github.com/rambow-cloud/alicloud-go-sdk-x/service/vpc`.
 - Official DSL commit: `ec489e5c3deae95496daae2b41503ac58b221adb`. License: Apache-2.0. Source files and licenses are in `sources/darabonba`.
-- 403 actions found; 296 generated; 107 unsupported; 1242 complete models.
+- 403 actions found; 396 generated; 7 unsupported; 1671 complete models.
 - Generation does not prove compilation or live behavior. See `vpc.coverage.json` and the PR checks.
 
 ## Calls and data
@@ -17,6 +17,8 @@
 - Nil optional pointers omit fields. Non-nil pointers preserve 0, false and empty strings.
 - Inputs are copied before middleware. Do not change inputs during calls or retain hook models/options.
 - Array query indexes start at 1. API field case and DSL string types stay unchanged.
+- Official JSON shrink fields keep structured inputs and encode one JSON string query value. Nil omits the field; explicit empty containers remain. No Shrink fields or nested query indexes are emitted. Dynamic JSON values use scalars, string-keyed maps and slices; cycles and unsupported values fail.
+- Deprecated fields retain their wire behavior and have Deprecated Go comments.
 - RegionId defaults to the configured region. Operation options can override it.
 - Outputs keep the full response body and add Metadata. DSL envelope types remain separate.
 - Clients support concurrent calls. Small OperationAPI interfaces support mocks.
@@ -30,6 +32,17 @@
 - The tables below list reviewed adapters. Token-shaped fields do not imply support.
 - The generator extracts licensed descriptions and source indexes. Go comments keep source and ownership details.
 - Each action has an offline Example with scripted HTTP. Empty sample requests show calling syntax; they are not valid cloud requests.
+
+## JSON string parameters
+
+- These fields keep structured Go inputs. The official DSL selects one JSON query value; no manual serialization is needed.
+- Nil omits the field. Non-nil empty maps, slices and models remain empty objects, arrays or model objects.
+- Ordinary arrays retain native indexed parameters. This table does not establish retry safety or live acceptance.
+
+| Action | Go input field | Query key |
+| --- | --- | --- |
+| CreateNatGateway | `CreateNatGatewayInput.AccessMode` | `AccessMode` |
+| ModifyNatGatewayAttribute | `ModifyNatGatewayAttributeInput.LogDelivery` | `LogDelivery` |
 
 ## Capability policy
 
@@ -45,7 +58,7 @@
 
 ## Documentation sources
 
-- English Go comments reuse licensed descriptions: 296/296 actions and 3485/6495 fields have prose.
+- English Go comments reuse licensed descriptions: 396/396 actions and 4702/8612 fields have prose.
 - Missing, empty or non-English descriptions are recorded in `vpc.documentation.json`. Prose does not add validation or required fields.
 - Both guides include the same usage, contracts and source index. Pinned inputs have no Chinese semantic translations; none are invented.
 - Runnable Examples use offline responses, not upstream account/resource values.
@@ -65,11 +78,20 @@
 | AllocateEipAddress | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1158) |
 | AllocateEipAddressPro | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1394) |
 | AllocateEipSegmentAddress | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1573) |
+| AllocateIpv6Address | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1716) |
+| AllocateIpv6InternetBandwidth | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1878) |
+| AllocateVpcIpv6Cidr | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2014) |
+| ApplyPhysicalConnectionLOA | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2153) |
 | AssociateEipAddress | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2312) |
+| AssociateEipAddressBatch | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2444) |
 | AssociateHaVip | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2567) |
 | AssociateMacSecKey | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2690) |
+| AssociateNetworkAcl | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2796) |
 | AssociatePhysicalConnectionToVirtualBorderRouter | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2931) |
+| AssociateRouteTable | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3057) |
+| AssociateRouteTableWithGateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3165) |
 | AssociateRouteTablesWithVpcGatewayEndpoint | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3284) |
+| AssociateVpcCidrBlock | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3424) |
 | AssociateVpnGatewayWithCertificate | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3564) |
 | AttachDhcpOptionsSetToVpc | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3674) |
 | AttachVbrToVpconn | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3778) |
@@ -78,8 +100,10 @@
 | ChangeResourceGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4050) |
 | CheckCanAllocateVpcPrivateIpAddress | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4140) |
 | CheckVpnBgpEnabled | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4234) |
+| CompletePhysicalConnectionLOA | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4332) |
 | ConfirmPhysicalConnection | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4443) |
 | ConnectRouterInterface | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4532) |
+| CopyNetworkAclEntries | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4630) |
 | CreateBgpGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4771) |
 | CreateBgpPeer | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4910) |
 | CreateCommonBandwidthPackage | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L5080) |
@@ -89,19 +113,36 @@
 | CreateDhcpOptionsSet | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L5653) |
 | CreateEnhancedVpnGateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L5803) |
 | CreateExpressCloudConnection | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L5945) |
+| CreateExpressConnectTrafficQos | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6078) |
+| CreateExpressConnectTrafficQosQueue | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6206) |
+| CreateExpressConnectTrafficQosRule | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6412) |
+| CreateFailoverTestJob | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6584) |
 | CreateFlowLog | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6772) |
 | CreateForwardEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6963) |
 | CreateFullNatEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L7122) |
 | CreateGlobalAccelerationInstance | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L7275) |
 | CreateHaVip | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L7406) |
+| CreateHighReliablePhysicalConnection | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L7634) |
 | CreateIPv6Translator | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L7770) |
 | CreateIPv6TranslatorAclList | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L7878) |
 | CreateIPv6TranslatorEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L7999) |
 | CreateIpsecServer | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8185) |
+| CreateIpv4Gateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8325) |
+| CreateIpv6EgressOnlyRule | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8456) |
+| CreateIpv6Gateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8595) |
+| CreateNatGateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8881) |
+| CreateNatIp | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9082) |
+| CreateNatIpCidr | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9222) |
 | CreateNetworkAcl | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9396) |
+| CreatePhysicalConnection | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9581) |
 | CreatePhysicalConnectionOccupancyOrder | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9742) |
+| CreatePhysicalConnectionSetupOrder | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9892) |
+| CreatePublicIpAddressPool | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10042) |
+| CreateRouteEntries | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10235) |
 | CreateRouteEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10428) |
+| CreateRouteTable | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10603) |
 | CreateRouteTargetGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10763) |
+| CreateRouterInterface | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L11000) |
 | CreateSnatEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L11232) |
 | CreateSslVpnClientCert | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L11359) |
 | CreateSslVpnServer | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L11570) |
@@ -131,6 +172,10 @@
 | DeleteDhcpOptionsSet | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L15868) |
 | DeleteEnhancedVpnGateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L15965) |
 | DeleteExpressConnect | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16057) |
+| DeleteExpressConnectTrafficQos | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16150) |
+| DeleteExpressConnectTrafficQosQueue | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16243) |
+| DeleteExpressConnectTrafficQosRule | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16340) |
+| DeleteFailoverTestJob | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16434) |
 | DeleteFlowLog | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16529) |
 | DeleteForwardEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16628) |
 | DeleteFullNatEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16736) |
@@ -140,11 +185,20 @@
 | DeleteIPv6TranslatorAclList | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17115) |
 | DeleteIPv6TranslatorEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17207) |
 | DeleteIpsecServer | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17306) |
+| DeleteIpv4Gateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17404) |
+| DeleteIpv6EgressOnlyRule | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17512) |
+| DeleteIpv6Gateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17621) |
+| DeleteIpv6InternetBandwidth | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17728) |
 | DeleteNatGateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17851) |
+| DeleteNatIp | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17956) |
+| DeleteNatIpCidr | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18072) |
+| DeleteNetworkAcl | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18175) |
 | DeletePhysicalConnection | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18272) |
 | DeletePublicIpAddressPool | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18369) |
 | DeletePublicIpAddressPoolCidrBlock | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18477) |
+| DeleteRouteEntries | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18611) |
 | DeleteRouteEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18731) |
+| DeleteRouteTable | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18841) |
 | DeleteRouteTargetGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18946) |
 | DeleteRouterInterface | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L19037) |
 | DeleteSnatEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L19138) |
@@ -166,6 +220,7 @@
 | DeleteVpnGateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L20787) |
 | DeleteVpnPbrRouteEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L20902) |
 | DeleteVpnRouteEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L21031) |
+| DeletionProtection | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L21153) |
 | Describe95Traffic | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L21276) |
 | DescribeAccessPoints | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L21390) |
 | DescribeBgpGroups | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L21502) |
@@ -176,8 +231,14 @@
 | DescribeCustomerGateways | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22158) |
 | DescribeEcGrantRelation | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22284) |
 | DescribeEipAddresses | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22455) |
+| DescribeEipGatewayInfo | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22606) |
 | DescribeEipMonitorData | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22716) |
 | DescribeEipSegment | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22831) |
+| DescribeExpressConnectTrafficQos | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23022) |
+| DescribeExpressConnectTrafficQosQueue | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23264) |
+| DescribeExpressConnectTrafficQosRule | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23467) |
+| DescribeFailoverTestJob | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23592) |
+| DescribeFailoverTestJobs | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23743) |
 | DescribeFlowLogs | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23917) |
 | DescribeForwardTableEntries | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L24089) |
 | DescribeGlobalAccelerationInstances | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L24270) |
@@ -189,10 +250,19 @@
 | DescribeIPv6TranslatorAclLists | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L24968) |
 | DescribeIPv6TranslatorEntries | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L25107) |
 | DescribeIPv6Translators | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L25286) |
+| DescribeIpv6Addresses | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L25483) |
+| DescribeIpv6EgressOnlyRules | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L25634) |
+| DescribeIpv6GatewayAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L25770) |
+| DescribeIpv6Gateways | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L25896) |
+| DescribeNatGatewayAssociateNetworkInterfaces | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L26062) |
 | DescribeNatGateways | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L26304) |
+| DescribeNetworkAclAttributes | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L26497) |
+| DescribeNetworkAcls | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L26671) |
 | DescribePhysicalConnectionLOA | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L26828) |
 | DescribePhysicalConnections | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L27049) |
+| DescribePublicIpAddress | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L27169) |
 | DescribeRegions | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L27268) |
+| DescribeRouteEntryList | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L27434) |
 | DescribeRouteTableList | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L27615) |
 | DescribeRouteTables | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L27792) |
 | DescribeRouterInterfaceAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L28040) |
@@ -213,6 +283,7 @@
 | DescribeVcoRouteEntries | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L30029) |
 | DescribeVirtualBorderRouters | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L30219) |
 | DescribeVirtualBorderRoutersForPhysicalConnection | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L30364) |
+| DescribeVpcAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L30557) |
 | DescribeVpcGrantRulesToEcr | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L30683) |
 | DescribeVpcs | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L30874) |
 | DescribeVpnAttachments | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L31025) |
@@ -231,14 +302,21 @@
 | DiagnoseVpnGateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33028) |
 | DisableVpcClassicLink | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33119) |
 | DisassociateMacSecKey | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33208) |
+| DissociateRouteTableFromGateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33295) |
 | DissociateRouteTablesFromVpcGatewayEndpoint | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33401) |
 | DissociateVpnGatewayWithCertificate | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33515) |
 | DownloadVpnConnectionConfig | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33665) |
 | EnablePhysicalConnection | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33759) |
 | EnableVpcClassicLink | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33861) |
+| EnableVpcIpv4Gateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33962) |
 | GetDhcpOptionsSet | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34105) |
+| GetFlowLogServiceStatus | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34193) |
+| GetIpv4GatewayAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34308) |
+| GetNatGatewayAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34515) |
 | GetPhysicalConnectionServiceStatus | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34605) |
+| GetPublicIpAddressPoolServiceStatus | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34693) |
 | GetRouteTargetGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34840) |
+| GetTrafficMirrorServiceStatus | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34922) |
 | GetVSwitchCidrReservationUsage | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35025) |
 | GetVpcGatewayEndpointAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35140) |
 | GetVpcPrefixListAssociations | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35254) |
@@ -246,12 +324,18 @@
 | GetVpcRouteEntrySummary | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35478) |
 | GetVpnGatewayDiagnoseResult | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35636) |
 | GrantInstanceToCen | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35735) |
+| ListBusinessAccessPoints | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36024) |
 | ListBusinessRegions | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36093) |
 | ListDhcpOptionsSets | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36222) |
+| ListEnhanhcedNatGatewayAvailableZones | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36339) |
 | ListFullNatEntries | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36491) |
+| ListGatewayRouteTableEntries | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36651) |
 | ListGeographicSubRegions | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36730) |
 | ListIpsecServerLogs | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36803) |
 | ListIpsecServers | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36952) |
+| ListIpv4Gateways | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L37085) |
+| ListNatIpCidrs | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L37224) |
+| ListNatIps | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L37387) |
 | ListPhysicalConnectionFeatures | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L37524) |
 | ListPrefixLists | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L37669) |
 | ListPublicIpAddressPoolCidrBlocks | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L37788) |
@@ -265,6 +349,7 @@
 | ListVirtualPhysicalConnections | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L39252) |
 | ListVpcEndpointServicesByEndUser | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L39370) |
 | ListVpcGatewayEndpoints | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L39509) |
+| ListVpcPublishedRouteEntries | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L39634) |
 | ListVpnCertificateAssociations | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L39771) |
 | ModifyBgpGroupAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L39889) |
 | ModifyBgpPeerAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40015) |
@@ -273,8 +358,12 @@
 | ModifyCommonBandwidthPackageSpec | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40323) |
 | ModifyCustomerGatewayAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40441) |
 | ModifyEipAddressAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40549) |
+| ModifyEipForwardMode | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40653) |
 | ModifyExpressCloudConnectionAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40743) |
 | ModifyExpressCloudConnectionBandwidth | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40838) |
+| ModifyExpressConnectTrafficQos | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40950) |
+| ModifyExpressConnectTrafficQosQueue | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L41068) |
+| ModifyExpressConnectTrafficQosRule | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L41262) |
 | ModifyFlowLogAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L41407) |
 | ModifyForwardEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L41553) |
 | ModifyFullNatEntryAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L41702) |
@@ -286,7 +375,15 @@
 | ModifyIPv6TranslatorAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42308) |
 | ModifyIPv6TranslatorBandwidth | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42408) |
 | ModifyIPv6TranslatorEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42524) |
+| ModifyIpv6AddressAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42650) |
+| ModifyIpv6GatewayAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42760) |
+| ModifyIpv6InternetBandwidth | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42881) |
+| ModifyNatGatewayAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43046) |
 | ModifyNatGatewaySpec | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43182) |
+| ModifyNatIpAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43303) |
+| ModifyNatIpCidrAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43420) |
+| ModifyNetworkAclAttributes | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43533) |
+| ModifyPhysicalConnectionAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43669) |
 | ModifyRouteEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43829) |
 | ModifyRouteTableAttributes | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43949) |
 | ModifyRouterInterfaceAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L44072) |
@@ -310,12 +407,17 @@
 | ModifyVpnRouteEntryWeight | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L47687) |
 | MoveResourceGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L47818) |
 | MoveVpnResourceGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L47921) |
+| OpenFlowLogService | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48015) |
 | OpenPhysicalConnectionService | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48099) |
+| OpenPublicIpAddressPoolService | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48184) |
+| OpenTrafficMirrorService | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48275) |
+| PublishVpcRouteEntries | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48375) |
 | PublishVpnRouteEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48496) |
 | RecoverPhysicalConnection | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48600) |
 | RecoverVirtualBorderRouter | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48687) |
 | ReleaseEipAddress | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48782) |
 | ReleaseEipSegmentAddress | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48886) |
+| ReleaseIpv6Address | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48985) |
 | RemoveCommonBandwidthPackageIp | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49086) |
 | RemoveGlobalAccelerationInstanceIp | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49179) |
 | RemoveIPv6TranslatorAclListEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49267) |
@@ -325,6 +427,8 @@
 | RevokeInstanceFromCen | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49727) |
 | SecondApplyPhysicalConnectionLOA | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49982) |
 | SetHighDefinitionMonitorLogStatus | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50105) |
+| StartFailoverTestJob | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50204) |
+| StopFailoverTestJob | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50294) |
 | SwitchActiveRouteTarget | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50389) |
 | TagResources | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50516) |
 | TagResourcesForExpressConnect | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50638) |
@@ -335,11 +439,19 @@
 | UnassociateEipAddress | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51162) |
 | UnassociateGlobalAccelerationInstance | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51270) |
 | UnassociateHaVip | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51380) |
+| UnassociateNetworkAcl | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51502) |
 | UnassociatePhysicalConnectionFromVirtualBorderRouter | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51608) |
+| UnassociateRouteTable | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51708) |
+| UnassociateVpcCidrBlock | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51812) |
 | UntagResourcesForExpressConnect | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51917) |
 | UpdateDhcpOptionsSetAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52041) |
 | UpdateEnhancedVpnGateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52211) |
+| UpdateFailoverTestJob | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52325) |
+| UpdateGatewayRouteTableEntryAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52457) |
 | UpdateIpsecServer | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52625) |
+| UpdateIpv4GatewayAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52742) |
+| UpdateNatGatewayNatType | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52872) |
+| UpdateNetworkAclEntries | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L53093) |
 | UpdatePublicIpAddressPoolAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L53214) |
 | UpdateRouteTargetGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L53337) |
 | UpdateTrafficMirrorFilterAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L53439) |
@@ -349,6 +461,7 @@
 | UpdateVirtualPhysicalConnection | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L53971) |
 | UpdateVpcGatewayEndpointAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L54076) |
 | VpcDescribeVpcNatGatewayNetworkInterfaceQuota | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L54182) |
+| WithdrawVpcPublishedRouteEntries | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L54284) |
 
 ## Requestless actions
 

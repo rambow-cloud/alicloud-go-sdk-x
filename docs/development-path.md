@@ -2,6 +2,8 @@
 
 [中文](development-path.zh-CN.md)
 
+- Next: [RPC DSL expansion](dsl-rpc-expansion.md) closes duplicate bindings, deprecated attributes and JSON shrink transforms before publication.
+
 ## One service path
 
 - Follow [service consolidation #81](service-consolidation.md) before #61: remove the bridge, migrate foundation/provider contracts to full-DSL clients and refresh consumer evidence. This overrides earlier bridge preservation requirements.
@@ -9,7 +11,7 @@
 ## Scoped ECS and VPC acceptance
 
 - #74/#75 use the pre-execution matrices in [ECS acceptance](ecs-product-acceptance.md) and [VPC acceptance](vpc-product-acceptance.md).
-- Supported RPC inventory is 283 ECS and 296 VPC actions. Offline consumer contracts and selected-field live reads are separate; unsupported DSL actions retain reasons.
+- Generated RPC inventory after #83 is 380 ECS and 396 VPC actions. #74/#75 consumer acceptance remains pinned historical evidence; expanded generation does not imply all-action live acceptance. Offline consumer contracts and selected-field live reads are separate; unsupported DSL actions retain reasons.
 - Instance token/waiter live transitions and nonempty VPC live continuation remain excluded/NOT RUN or SKIP under follow-up #79. No broader Beta or full-cloud acceptance is claimed.
 - Consumer acceptance is implementation-agent execution. Independent human UX and automated test timings remain distinct.
 - Preserve STS/ECS/VPC evidence pins against the shared consumer/CI revision. Publication and same-version pkg.go.dev indexing remain #61. No tag is created during product closeout.

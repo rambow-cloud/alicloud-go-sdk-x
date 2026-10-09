@@ -32,6 +32,9 @@ type productField struct {
 	Type          productType       `json:"type"`
 	Source        productSource     `json:"source"`
 	Documentation []productDocument `json:"documentation"`
+	Attributes    struct {
+		Deprecated bool `json:"deprecated"`
+	} `json:"attributes"`
 }
 type productDocument struct {
 	Attribute string        `json:"attribute"`
@@ -83,6 +86,7 @@ type productOperation struct {
 		Location string `json:"location"`
 		Guard    string `json:"guard"`
 		Field    string `json:"field"`
+		Encoding string `json:"encoding,omitempty"`
 	} `json:"bindings"`
 }
 type productIR struct {

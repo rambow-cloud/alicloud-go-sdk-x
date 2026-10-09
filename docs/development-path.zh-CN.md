@@ -2,6 +2,8 @@
 
 [English](development-path.md)
 
+- 下一步：[RPC DSL 支持扩展](dsl-rpc-expansion.zh-CN.md)，在发布前补齐重复绑定、弃用属性及 JSON shrink 转换。
+
 ## 统一服务路径
 
 - 在 #61 前完成[服务整合 #81](service-consolidation.zh-CN.md)：移除兼容桥，将基础层及 provider 契约迁移到完整 DSL 客户端，并刷新消费者证据。本路线替代此前保留兼容桥的要求。
@@ -9,7 +11,7 @@
 ## ECS、VPC 的明确范围验收
 
 - #74/#75 按执行前确定的 [ECS 验收](ecs-product-acceptance.zh-CN.md)和 [VPC 验收](vpc-product-acceptance.zh-CN.md)矩阵完成。
-- 支持的 RPC 清单为 ECS 283 个、VPC 296 个操作。离线消费者契约与真实调用的选定字段证据分别记录，不支持的 DSL 操作继续说明原因。
+- #83 扩展后的 RPC 生成清单为 ECS 380 个、VPC 396 个操作。#74/#75 消费者验收仍是固定提交的历史证据，扩展生成数量不表示所有操作均经过真实调用验收。离线消费者契约与真实调用的选定字段证据分别记录，不支持的 DSL 操作继续说明原因。
 - 真实实例 token、waiter 状态迁移及非空 VPC 续页仍为排除项，保留 NOT RUN 或 SKIP，由后续项 #79 跟踪；不宣称整体 Beta 或全云验收。
 - 消费者验收由实现代理执行，独立人工体验和自动化测试耗时继续区分。
 - STS、ECS、VPC 证据固定到共用消费者和 CI 的受测版本；发布及同版本 pkg.go.dev 索引仍由 #61 完成。产品收尾不创建版本标签。

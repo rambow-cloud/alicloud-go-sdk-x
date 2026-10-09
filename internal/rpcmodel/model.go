@@ -5,6 +5,7 @@ import (
 	"context"
 	"crypto/rand"
 	"encoding/hex"
+	"encoding/json/v2"
 	"errors"
 	"fmt"
 	"math"
@@ -73,10 +74,13 @@ func clone(ctx context.Context, v reflect.Value, active map[visit]bool) (reflect
 		return reflect.Value{}, err
 	}
 	result := reflect.New(v.Type()).Elem()
-	if (v.Kind() == reflect.Pointer || v.Kind() == reflect.Slice || v.Kind() == reflect.Map) && v.IsNil() {
+	if (v.Kind() == reflect.Interface || v.Kind() == reflect.Pointer || v.Kind() == reflect.Slice || v.Kind() == reflect.Map) && v.IsNil() {
 		return result, nil
 	}
 	if v.Kind() == reflect.Pointer || v.Kind() == reflect.Slice || v.Kind() == reflect.Map {
+		if len(active) >= 128 {
+			return reflect.Value{}, errors.New("rpcmodel: input nesting exceeds limit")
+		}
 		pointer := v.Pointer
 		if v.Kind() == reflect.Map {
 			pointer = func() uintptr { return uintptr(v.UnsafePointer()) }
@@ -89,6 +93,12 @@ func clone(ctx context.Context, v reflect.Value, active map[visit]bool) (reflect
 		defer delete(active, key)
 	}
 	switch v.Kind() {
+	case reflect.Interface:
+		child, err := clone(ctx, v.Elem(), active)
+		if err != nil {
+			return reflect.Value{}, err
+		}
+		result.Set(child)
 	case reflect.Pointer:
 		child, err := clone(ctx, v.Elem(), active)
 		if err != nil {
@@ -117,6 +127,9 @@ func clone(ctx context.Context, v reflect.Value, active map[visit]bool) (reflect
 			result.Index(i).Set(child)
 		}
 	case reflect.Map:
+		if v.Type().Key().Kind() != reflect.String {
+			return reflect.Value{}, errors.New("rpcmodel: non-string input map key")
+		}
 		result.Set(reflect.MakeMapWithSize(v.Type(), v.Len()))
 		iter := v.MapRange()
 		for iter.Next() {
@@ -135,7 +148,8 @@ func clone(ctx context.Context, v reflect.Value, active map[visit]bool) (reflect
 }
 
 // Query flattens exact JSON member names and one-based repeated indexes.
-// It omits nil pointers, never rewrites string payloads, and rejects collisions.
+// Reviewed rpc:"json" fields become one JSON query value; nil fields are omitted.
+// Ordinary string payloads remain unchanged. Collisions and unknown encodings fail.
 func Query(ctx context.Context, model any) (url.Values, error) {
 	result := url.Values{}
 	if err := flatten(ctx, reflect.ValueOf(model), "", result, 0); err != nil {
@@ -175,6 +189,28 @@ func flatten(ctx context.Context, v reflect.Value, prefix string, result url.Val
 			}
 			if name == "" {
 				return errors.New("rpcmodel: missing wire name")
+			}
+			if encoding := v.Type().Field(i).Tag.Get("rpc"); encoding != "" {
+				if encoding != "json" {
+					return errors.New("rpcmodel: unsupported field encoding")
+				}
+				field := v.Field(i)
+				if (field.Kind() == reflect.Pointer || field.Kind() == reflect.Map || field.Kind() == reflect.Slice || field.Kind() == reflect.Interface) && field.IsNil() {
+					continue
+				}
+				data, err := json.Marshal(field.Interface(), json.Deterministic(true))
+				if err != nil {
+					return err
+				}
+				if err := ctx.Err(); err != nil {
+					return err
+				}
+				key := join(name)
+				if _, exists := result[key]; exists {
+					return errors.New("rpcmodel: duplicate query key")
+				}
+				result.Set(key, string(data))
+				continue
 			}
 			if err := flatten(ctx, v.Field(i), join(name), result, depth+1); err != nil {
 				return err

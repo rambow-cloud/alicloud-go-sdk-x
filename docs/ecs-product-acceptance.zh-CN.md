@@ -2,6 +2,8 @@
 
 [English](ecs-product-acceptance.md)
 
+- 当前生成范围见 [RPC 扩展 #83](dsl-rpc-expansion.zh-CN.md)：ECS 380/380、VPC 396/403。下方原有数量及消费者记录对应当时验收的提交。
+
 ## 执行前确定的范围
 
 - 对应 #74；STS 前置项 #60 已完成，历史真实调用证据 #47 单独评审合入。

@@ -13,8 +13,8 @@
   },
   "counts": {
     "discovered": 403,
-    "lowered": 296,
-    "unsupported": 107,
+    "lowered": 396,
+    "unsupported": 7,
     "dslOperations": 403,
     "catalogOnlyOperations": 0,
     "dslOnlyOperations": 0,
@@ -30,10 +30,8 @@
     "live": "not-assessed"
   },
   "reasonCounts": {
-    "DSL_MODEL_ATTRIBUTE": 2,
-    "DSL_OPERATION_SIGNATURE": 4,
-    "DSL_QUERY_BINDING": 96,
     "DSL_QUERY_INITIALIZATION": 1,
+    "DSL_SHRINK_TRANSFORM": 2,
     "DSL_UNBOUND_INPUT": 4
   },
   "operations": [
@@ -195,7 +193,7 @@
     },
     {
       "name": "AllocateIpv6Address",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -204,23 +202,11 @@
         "endLine": 1716,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 1716,
-            "column": 16,
-            "endLine": 1716,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "AllocateIpv6InternetBandwidth",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -229,23 +215,11 @@
         "endLine": 1878,
         "endColumn": 56
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 1878,
-            "column": 16,
-            "endLine": 1878,
-            "endColumn": 56
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "AllocateVpcIpv6Cidr",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -254,23 +228,11 @@
         "endLine": 2014,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 2014,
-            "column": 16,
-            "endLine": 2014,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ApplyPhysicalConnectionLOA",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -279,19 +241,7 @@
         "endLine": 2153,
         "endColumn": 53
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 2153,
-            "column": 16,
-            "endLine": 2153,
-            "endColumn": 53
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "AssociateEipAddress",
@@ -308,7 +258,7 @@
     },
     {
       "name": "AssociateEipAddressBatch",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -317,19 +267,7 @@
         "endLine": 2444,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 2444,
-            "column": 16,
-            "endLine": 2444,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "AssociateHaVip",
@@ -359,7 +297,7 @@
     },
     {
       "name": "AssociateNetworkAcl",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -368,19 +306,7 @@
         "endLine": 2796,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 2796,
-            "column": 16,
-            "endLine": 2796,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "AssociatePhysicalConnectionToVirtualBorderRouter",
@@ -397,7 +323,7 @@
     },
     {
       "name": "AssociateRouteTable",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -406,23 +332,11 @@
         "endLine": 3057,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 3057,
-            "column": 16,
-            "endLine": 3057,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "AssociateRouteTableWithGateway",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -431,19 +345,7 @@
         "endLine": 3165,
         "endColumn": 57
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 3165,
-            "column": 16,
-            "endLine": 3165,
-            "endColumn": 57
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "AssociateRouteTablesWithVpcGatewayEndpoint",
@@ -460,7 +362,7 @@
     },
     {
       "name": "AssociateVpcCidrBlock",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -469,19 +371,7 @@
         "endLine": 3424,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 3424,
-            "column": 16,
-            "endLine": 3424,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "AssociateVpnGatewayWithCertificate",
@@ -589,7 +479,7 @@
     },
     {
       "name": "CompletePhysicalConnectionLOA",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -598,19 +488,7 @@
         "endLine": 4332,
         "endColumn": 56
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 4332,
-            "column": 16,
-            "endLine": 4332,
-            "endColumn": 56
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ConfirmPhysicalConnection",
@@ -640,7 +518,7 @@
     },
     {
       "name": "CopyNetworkAclEntries",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -649,19 +527,7 @@
         "endLine": 4630,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 4630,
-            "column": 16,
-            "endLine": 4630,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateBgpGroup",
@@ -782,7 +648,7 @@
     },
     {
       "name": "CreateExpressConnectTrafficQos",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -791,23 +657,11 @@
         "endLine": 6078,
         "endColumn": 57
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 6078,
-            "column": 16,
-            "endLine": 6078,
-            "endColumn": 57
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateExpressConnectTrafficQosQueue",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -816,23 +670,11 @@
         "endLine": 6206,
         "endColumn": 62
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 6206,
-            "column": 16,
-            "endLine": 6206,
-            "endColumn": 62
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateExpressConnectTrafficQosRule",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -841,23 +683,11 @@
         "endLine": 6412,
         "endColumn": 61
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 6412,
-            "column": 16,
-            "endLine": 6412,
-            "endColumn": 61
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateFailoverTestJob",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -866,19 +696,7 @@
         "endLine": 6584,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 6584,
-            "column": 16,
-            "endLine": 6584,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateFlowLog",
@@ -947,7 +765,7 @@
     },
     {
       "name": "CreateHighReliablePhysicalConnection",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -956,19 +774,7 @@
         "endLine": 7634,
         "endColumn": 63
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 7634,
-            "column": 16,
-            "endLine": 7634,
-            "endColumn": 63
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateIPv6Translator",
@@ -1024,7 +830,7 @@
     },
     {
       "name": "CreateIpv4Gateway",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1033,23 +839,11 @@
         "endLine": 8325,
         "endColumn": 44
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 8325,
-            "column": 16,
-            "endLine": 8325,
-            "endColumn": 44
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateIpv6EgressOnlyRule",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1058,23 +852,11 @@
         "endLine": 8456,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 8456,
-            "column": 16,
-            "endLine": 8456,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateIpv6Gateway",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1083,23 +865,11 @@
         "endLine": 8595,
         "endColumn": 44
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 8595,
-            "column": 16,
-            "endLine": 8595,
-            "endColumn": 44
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateNatGateway",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1108,23 +878,11 @@
         "endLine": 8881,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 8881,
-            "column": 16,
-            "endLine": 8881,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateNatIp",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1133,23 +891,11 @@
         "endLine": 9082,
         "endColumn": 38
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 9082,
-            "column": 16,
-            "endLine": 9082,
-            "endColumn": 38
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateNatIpCidr",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1158,19 +904,7 @@
         "endLine": 9222,
         "endColumn": 42
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 9222,
-            "column": 16,
-            "endLine": 9222,
-            "endColumn": 42
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateNetworkAcl",
@@ -1187,7 +921,7 @@
     },
     {
       "name": "CreatePhysicalConnection",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1196,19 +930,7 @@
         "endLine": 9581,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 9581,
-            "column": 16,
-            "endLine": 9581,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreatePhysicalConnectionOccupancyOrder",
@@ -1225,7 +947,7 @@
     },
     {
       "name": "CreatePhysicalConnectionSetupOrder",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1234,23 +956,11 @@
         "endLine": 9892,
         "endColumn": 61
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 9892,
-            "column": 16,
-            "endLine": 9892,
-            "endColumn": 61
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreatePublicIpAddressPool",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1259,23 +969,11 @@
         "endLine": 10042,
         "endColumn": 52
       },
-      "reasons": [
-        {
-          "code": "DSL_MODEL_ATTRIBUTE",
-          "message": "unreviewed model attribute",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 10042,
-            "column": 16,
-            "endLine": 10042,
-            "endColumn": 52
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateRouteEntries",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1284,19 +982,7 @@
         "endLine": 10235,
         "endColumn": 45
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 10235,
-            "column": 16,
-            "endLine": 10235,
-            "endColumn": 45
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateRouteEntry",
@@ -1313,7 +999,7 @@
     },
     {
       "name": "CreateRouteTable",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1322,19 +1008,7 @@
         "endLine": 10603,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 10603,
-            "column": 16,
-            "endLine": 10603,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateRouteTargetGroup",
@@ -1351,7 +1025,7 @@
     },
     {
       "name": "CreateRouterInterface",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1360,19 +1034,7 @@
         "endLine": 11000,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 11000,
-            "column": 16,
-            "endLine": 11000,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateSnatEntry",
@@ -1803,7 +1465,7 @@
     },
     {
       "name": "DeleteExpressConnectTrafficQos",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1812,23 +1474,11 @@
         "endLine": 16150,
         "endColumn": 57
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 16150,
-            "column": 16,
-            "endLine": 16150,
-            "endColumn": 57
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteExpressConnectTrafficQosQueue",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1837,23 +1487,11 @@
         "endLine": 16243,
         "endColumn": 62
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 16243,
-            "column": 16,
-            "endLine": 16243,
-            "endColumn": 62
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteExpressConnectTrafficQosRule",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1862,23 +1500,11 @@
         "endLine": 16340,
         "endColumn": 61
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 16340,
-            "column": 16,
-            "endLine": 16340,
-            "endColumn": 61
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteFailoverTestJob",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1887,19 +1513,7 @@
         "endLine": 16434,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 16434,
-            "column": 16,
-            "endLine": 16434,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteFlowLog",
@@ -2020,7 +1634,7 @@
     },
     {
       "name": "DeleteIpv4Gateway",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -2029,23 +1643,11 @@
         "endLine": 17404,
         "endColumn": 44
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 17404,
-            "column": 16,
-            "endLine": 17404,
-            "endColumn": 44
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteIpv6EgressOnlyRule",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -2054,23 +1656,11 @@
         "endLine": 17512,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 17512,
-            "column": 16,
-            "endLine": 17512,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteIpv6Gateway",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -2079,23 +1669,11 @@
         "endLine": 17621,
         "endColumn": 44
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 17621,
-            "column": 16,
-            "endLine": 17621,
-            "endColumn": 44
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteIpv6InternetBandwidth",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -2104,19 +1682,7 @@
         "endLine": 17728,
         "endColumn": 54
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 17728,
-            "column": 16,
-            "endLine": 17728,
-            "endColumn": 54
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteNatGateway",
@@ -2133,7 +1699,7 @@
     },
     {
       "name": "DeleteNatIp",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -2142,23 +1708,11 @@
         "endLine": 17956,
         "endColumn": 38
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 17956,
-            "column": 16,
-            "endLine": 17956,
-            "endColumn": 38
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteNatIpCidr",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -2167,23 +1721,11 @@
         "endLine": 18072,
         "endColumn": 42
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 18072,
-            "column": 16,
-            "endLine": 18072,
-            "endColumn": 42
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteNetworkAcl",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -2192,19 +1734,7 @@
         "endLine": 18175,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 18175,
-            "column": 16,
-            "endLine": 18175,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeletePhysicalConnection",
@@ -2247,7 +1777,7 @@
     },
     {
       "name": "DeleteRouteEntries",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -2256,19 +1786,7 @@
         "endLine": 18611,
         "endColumn": 45
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 18611,
-            "column": 16,
-            "endLine": 18611,
-            "endColumn": 45
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteRouteEntry",
@@ -2285,7 +1803,7 @@
     },
     {
       "name": "DeleteRouteTable",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -2294,19 +1812,7 @@
         "endLine": 18841,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 18841,
-            "column": 16,
-            "endLine": 18841,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteRouteTargetGroup",
@@ -2583,7 +2089,7 @@
     },
     {
       "name": "DeletionProtection",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -2592,19 +2098,7 @@
         "endLine": 21153,
         "endColumn": 45
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 21153,
-            "column": 16,
-            "endLine": 21153,
-            "endColumn": 45
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "Describe95Traffic",
@@ -2738,7 +2232,7 @@
     },
     {
       "name": "DescribeEipGatewayInfo",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -2747,19 +2241,7 @@
         "endLine": 22606,
         "endColumn": 49
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 22606,
-            "column": 16,
-            "endLine": 22606,
-            "endColumn": 49
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeEipMonitorData",
@@ -2789,7 +2271,7 @@
     },
     {
       "name": "DescribeExpressConnectTrafficQos",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -2798,23 +2280,11 @@
         "endLine": 23022,
         "endColumn": 59
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 23022,
-            "column": 16,
-            "endLine": 23022,
-            "endColumn": 59
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeExpressConnectTrafficQosQueue",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -2823,23 +2293,11 @@
         "endLine": 23264,
         "endColumn": 64
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 23264,
-            "column": 16,
-            "endLine": 23264,
-            "endColumn": 64
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeExpressConnectTrafficQosRule",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -2848,23 +2306,11 @@
         "endLine": 23467,
         "endColumn": 63
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 23467,
-            "column": 16,
-            "endLine": 23467,
-            "endColumn": 63
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeFailoverTestJob",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -2873,23 +2319,11 @@
         "endLine": 23592,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 23592,
-            "column": 16,
-            "endLine": 23592,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeFailoverTestJobs",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -2898,19 +2332,7 @@
         "endLine": 23743,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 23743,
-            "column": 16,
-            "endLine": 23743,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeFlowLogs",
@@ -3057,7 +2479,7 @@
     },
     {
       "name": "DescribeIpv6Addresses",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -3066,23 +2488,11 @@
         "endLine": 25483,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 25483,
-            "column": 16,
-            "endLine": 25483,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeIpv6EgressOnlyRules",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -3091,23 +2501,11 @@
         "endLine": 25634,
         "endColumn": 54
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 25634,
-            "column": 16,
-            "endLine": 25634,
-            "endColumn": 54
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeIpv6GatewayAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -3116,23 +2514,11 @@
         "endLine": 25770,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 25770,
-            "column": 16,
-            "endLine": 25770,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeIpv6Gateways",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -3141,23 +2527,11 @@
         "endLine": 25896,
         "endColumn": 47
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 25896,
-            "column": 16,
-            "endLine": 25896,
-            "endColumn": 47
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeNatGatewayAssociateNetworkInterfaces",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -3166,19 +2540,7 @@
         "endLine": 26062,
         "endColumn": 71
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 26062,
-            "column": 16,
-            "endLine": 26062,
-            "endColumn": 71
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeNatGateways",
@@ -3195,7 +2557,7 @@
     },
     {
       "name": "DescribeNetworkAclAttributes",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -3204,23 +2566,11 @@
         "endLine": 26497,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 26497,
-            "column": 16,
-            "endLine": 26497,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeNetworkAcls",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -3229,19 +2579,7 @@
         "endLine": 26671,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 26671,
-            "column": 16,
-            "endLine": 26671,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribePhysicalConnectionLOA",
@@ -3271,7 +2609,7 @@
     },
     {
       "name": "DescribePublicIpAddress",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -3280,19 +2618,7 @@
         "endLine": 27169,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 27169,
-            "column": 16,
-            "endLine": 27169,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeRegions",
@@ -3309,7 +2635,7 @@
     },
     {
       "name": "DescribeRouteEntryList",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -3318,19 +2644,7 @@
         "endLine": 27434,
         "endColumn": 49
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 27434,
-            "column": 16,
-            "endLine": 27434,
-            "endColumn": 49
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeRouteTableList",
@@ -3594,7 +2908,7 @@
     },
     {
       "name": "DescribeVpcAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -3603,19 +2917,7 @@
         "endLine": 30557,
         "endColumn": 47
       },
-      "reasons": [
-        {
-          "code": "DSL_MODEL_ATTRIBUTE",
-          "message": "unreviewed model attribute",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 30557,
-            "column": 16,
-            "endLine": 30557,
-            "endColumn": 47
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeVpcGrantRulesToEcr",
@@ -3878,7 +3180,7 @@
     },
     {
       "name": "DissociateRouteTableFromGateway",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -3887,19 +3189,7 @@
         "endLine": 33295,
         "endColumn": 58
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 33295,
-            "column": 16,
-            "endLine": 33295,
-            "endColumn": 58
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DissociateRouteTablesFromVpcGatewayEndpoint",
@@ -3968,7 +3258,7 @@
     },
     {
       "name": "EnableVpcIpv4Gateway",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -3977,19 +3267,7 @@
         "endLine": 33962,
         "endColumn": 47
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 33962,
-            "column": 16,
-            "endLine": 33962,
-            "endColumn": 47
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "GetDhcpOptionsSet",
@@ -4006,7 +3284,7 @@
     },
     {
       "name": "GetFlowLogServiceStatus",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4015,23 +3293,11 @@
         "endLine": 34193,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 34193,
-            "column": 16,
-            "endLine": 34193,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "GetIpv4GatewayAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4040,23 +3306,11 @@
         "endLine": 34308,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 34308,
-            "column": 16,
-            "endLine": 34308,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "GetNatGatewayAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4065,19 +3319,7 @@
         "endLine": 34515,
         "endColumn": 49
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 34515,
-            "column": 16,
-            "endLine": 34515,
-            "endColumn": 49
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "GetPhysicalConnectionServiceStatus",
@@ -4094,7 +3336,7 @@
     },
     {
       "name": "GetPublicIpAddressPoolServiceStatus",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4103,19 +3345,7 @@
         "endLine": 34693,
         "endColumn": 62
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 34693,
-            "column": 16,
-            "endLine": 34693,
-            "endColumn": 62
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "GetRouteTargetGroup",
@@ -4132,7 +3362,7 @@
     },
     {
       "name": "GetTrafficMirrorServiceStatus",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4141,19 +3371,7 @@
         "endLine": 34922,
         "endColumn": 56
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 34922,
-            "column": 16,
-            "endLine": 34922,
-            "endColumn": 56
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "GetVSwitchCidrReservationUsage",
@@ -4259,8 +3477,8 @@
       },
       "reasons": [
         {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
+          "code": "DSL_SHRINK_TRANSFORM",
+          "message": "shrink JSON transform",
           "source": {
             "file": "products/vpc/main.tea",
             "line": 35878,
@@ -4273,7 +3491,7 @@
     },
     {
       "name": "ListBusinessAccessPoints",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4282,19 +3500,7 @@
         "endLine": 36024,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 36024,
-            "column": 16,
-            "endLine": 36024,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ListBusinessRegions",
@@ -4324,7 +3530,7 @@
     },
     {
       "name": "ListEnhanhcedNatGatewayAvailableZones",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4333,19 +3539,7 @@
         "endLine": 36339,
         "endColumn": 64
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 36339,
-            "column": 16,
-            "endLine": 36339,
-            "endColumn": 64
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ListFullNatEntries",
@@ -4362,7 +3556,7 @@
     },
     {
       "name": "ListGatewayRouteTableEntries",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4371,19 +3565,7 @@
         "endLine": 36651,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 36651,
-            "column": 16,
-            "endLine": 36651,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ListGeographicSubRegions",
@@ -4426,7 +3608,7 @@
     },
     {
       "name": "ListIpv4Gateways",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4435,23 +3617,11 @@
         "endLine": 37085,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 37085,
-            "column": 16,
-            "endLine": 37085,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ListNatIpCidrs",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4460,23 +3630,11 @@
         "endLine": 37224,
         "endColumn": 41
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 37224,
-            "column": 16,
-            "endLine": 37224,
-            "endColumn": 41
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ListNatIps",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4485,19 +3643,7 @@
         "endLine": 37387,
         "endColumn": 37
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 37387,
-            "column": 16,
-            "endLine": 37387,
-            "endColumn": 37
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ListPhysicalConnectionFeatures",
@@ -4670,7 +3816,7 @@
     },
     {
       "name": "ListVpcPublishedRouteEntries",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4679,19 +3825,7 @@
         "endLine": 39634,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 39634,
-            "column": 16,
-            "endLine": 39634,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ListVpnCertificateAssociations",
@@ -4799,7 +3933,7 @@
     },
     {
       "name": "ModifyEipForwardMode",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4808,19 +3942,7 @@
         "endLine": 40653,
         "endColumn": 47
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 40653,
-            "column": 16,
-            "endLine": 40653,
-            "endColumn": 47
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyExpressCloudConnectionAttribute",
@@ -4850,7 +3972,7 @@
     },
     {
       "name": "ModifyExpressConnectTrafficQos",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4859,23 +3981,11 @@
         "endLine": 40950,
         "endColumn": 57
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 40950,
-            "column": 16,
-            "endLine": 40950,
-            "endColumn": 57
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyExpressConnectTrafficQosQueue",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4884,23 +3994,11 @@
         "endLine": 41068,
         "endColumn": 62
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 41068,
-            "column": 16,
-            "endLine": 41068,
-            "endColumn": 62
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyExpressConnectTrafficQosRule",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4909,19 +4007,7 @@
         "endLine": 41262,
         "endColumn": 61
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 41262,
-            "column": 16,
-            "endLine": 41262,
-            "endColumn": 61
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyFlowLogAttribute",
@@ -5068,7 +4154,7 @@
     },
     {
       "name": "ModifyIpv6AddressAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -5077,23 +4163,11 @@
         "endLine": 42650,
         "endColumn": 53
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 42650,
-            "column": 16,
-            "endLine": 42650,
-            "endColumn": 53
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyIpv6GatewayAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -5102,23 +4176,11 @@
         "endLine": 42760,
         "endColumn": 53
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 42760,
-            "column": 16,
-            "endLine": 42760,
-            "endColumn": 53
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyIpv6InternetBandwidth",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -5127,23 +4189,11 @@
         "endLine": 42881,
         "endColumn": 54
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 42881,
-            "column": 16,
-            "endLine": 42881,
-            "endColumn": 54
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyNatGatewayAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -5152,19 +4202,7 @@
         "endLine": 43046,
         "endColumn": 52
       },
-      "reasons": [
-        {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 43046,
-            "column": 16,
-            "endLine": 43046,
-            "endColumn": 52
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyNatGatewaySpec",
@@ -5181,7 +4219,7 @@
     },
     {
       "name": "ModifyNatIpAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -5190,23 +4228,11 @@
         "endLine": 43303,
         "endColumn": 47
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 43303,
-            "column": 16,
-            "endLine": 43303,
-            "endColumn": 47
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyNatIpCidrAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -5215,23 +4241,11 @@
         "endLine": 43420,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 43420,
-            "column": 16,
-            "endLine": 43420,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyNetworkAclAttributes",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -5240,23 +4254,11 @@
         "endLine": 43533,
         "endColumn": 53
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 43533,
-            "column": 16,
-            "endLine": 43533,
-            "endColumn": 53
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyPhysicalConnectionAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -5265,19 +4267,7 @@
         "endLine": 43669,
         "endColumn": 60
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 43669,
-            "column": 16,
-            "endLine": 43669,
-            "endColumn": 60
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyRouteEntry",
@@ -5630,7 +4620,7 @@
     },
     {
       "name": "OpenFlowLogService",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -5639,19 +4629,7 @@
         "endLine": 48015,
         "endColumn": 45
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 48015,
-            "column": 16,
-            "endLine": 48015,
-            "endColumn": 45
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "OpenPhysicalConnectionService",
@@ -5668,7 +4646,7 @@
     },
     {
       "name": "OpenPublicIpAddressPoolService",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -5677,23 +4655,11 @@
         "endLine": 48184,
         "endColumn": 57
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 48184,
-            "column": 16,
-            "endLine": 48184,
-            "endColumn": 57
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "OpenTrafficMirrorService",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -5702,23 +4668,11 @@
         "endLine": 48275,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 48275,
-            "column": 16,
-            "endLine": 48275,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "PublishVpcRouteEntries",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -5727,19 +4681,7 @@
         "endLine": 48375,
         "endColumn": 49
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 48375,
-            "column": 16,
-            "endLine": 48375,
-            "endColumn": 49
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "PublishVpnRouteEntry",
@@ -5808,7 +4750,7 @@
     },
     {
       "name": "ReleaseIpv6Address",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -5817,19 +4759,7 @@
         "endLine": 48985,
         "endColumn": 45
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 48985,
-            "column": 16,
-            "endLine": 48985,
-            "endColumn": 45
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "RemoveCommonBandwidthPackageIp",
@@ -5935,8 +4865,8 @@
       },
       "reasons": [
         {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
+          "code": "DSL_SHRINK_TRANSFORM",
+          "message": "shrink JSON transform",
           "source": {
             "file": "products/vpc/main.tea",
             "line": 49858,
@@ -5975,7 +4905,7 @@
     },
     {
       "name": "StartFailoverTestJob",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -5984,23 +4914,11 @@
         "endLine": 50204,
         "endColumn": 47
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 50204,
-            "column": 16,
-            "endLine": 50204,
-            "endColumn": 47
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "StopFailoverTestJob",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -6009,19 +4927,7 @@
         "endLine": 50294,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 50294,
-            "column": 16,
-            "endLine": 50294,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "SwitchActiveRouteTarget",
@@ -6155,7 +5061,7 @@
     },
     {
       "name": "UnassociateNetworkAcl",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -6164,19 +5070,7 @@
         "endLine": 51502,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 51502,
-            "column": 16,
-            "endLine": 51502,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "UnassociatePhysicalConnectionFromVirtualBorderRouter",
@@ -6193,7 +5087,7 @@
     },
     {
       "name": "UnassociateRouteTable",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -6202,23 +5096,11 @@
         "endLine": 51708,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 51708,
-            "column": 16,
-            "endLine": 51708,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "UnassociateVpcCidrBlock",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -6227,19 +5109,7 @@
         "endLine": 51812,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 51812,
-            "column": 16,
-            "endLine": 51812,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "UntagResourcesForExpressConnect",
@@ -6282,7 +5152,7 @@
     },
     {
       "name": "UpdateFailoverTestJob",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -6291,23 +5161,11 @@
         "endLine": 52325,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 52325,
-            "column": 16,
-            "endLine": 52325,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "UpdateGatewayRouteTableEntryAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -6316,19 +5174,7 @@
         "endLine": 52457,
         "endColumn": 64
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 52457,
-            "column": 16,
-            "endLine": 52457,
-            "endColumn": 64
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "UpdateIpsecServer",
@@ -6345,7 +5191,7 @@
     },
     {
       "name": "UpdateIpv4GatewayAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -6354,23 +5200,11 @@
         "endLine": 52742,
         "endColumn": 53
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 52742,
-            "column": 16,
-            "endLine": 52742,
-            "endColumn": 53
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "UpdateNatGatewayNatType",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -6379,23 +5213,11 @@
         "endLine": 52872,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 52872,
-            "column": 16,
-            "endLine": 52872,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "UpdateNetworkAclEntries",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -6404,19 +5226,7 @@
         "endLine": 53093,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 53093,
-            "column": 16,
-            "endLine": 53093,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "UpdatePublicIpAddressPoolAttribute",
@@ -6537,7 +5347,7 @@
     },
     {
       "name": "WithdrawVpcPublishedRouteEntries",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -6546,19 +5356,7 @@
         "endLine": 54284,
         "endColumn": 59
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 54284,
-            "column": 16,
-            "endLine": 54284,
-            "endColumn": 59
-          }
-        }
-      ]
+      "reasons": []
     }
   ]
 }
