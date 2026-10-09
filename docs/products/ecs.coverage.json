@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "product": "ecs",
   "version": "2014-05-26",
-  "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
+  "sourceManifestSHA256": "fda7bc19fbbeb45b230c5dc9c4e69452a1dfe57331452f62dc653261b6d13254",
   "discovered": 380,
   "lowered": 380,
   "emitted": 380,
@@ -11,7 +11,7 @@
   "compilation": "not-assessed",
   "live": "not-assessed",
   "capabilityPolicy": "sparse-reviewed",
-  "policySHA256": "915b58bd8c8af077dcae8eb29648f3b9933090c814712c3da1e0ede0fa1b78f2",
+  "policySHA256": "85f75ecdfa644a832d965cc6324e203c95fa8e472f194c96cfda05d0bb3541d6",
   "operations": [
     {
       "name": "AcceptInquiredSystemEvent",

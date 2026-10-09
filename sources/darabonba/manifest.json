@@ -6,6 +6,7 @@
   "parserVersion": "2.2.1",
   "products": {
     "ecs": "ecs-20140526",
+    "fc": "fc-20230330",
     "sts": "sts-20150401",
     "vpc": "vpc-20160428"
   },
@@ -482,6 +483,26 @@
       "file": "products/ecs/Teafile",
       "sha256": "8f22249efd155db69ddaed48a94f6cb3f26a5a5d704cf4c60e9b307c1a603895",
       "url": "https://raw.githubusercontent.com/aliyun/alibabacloud-sdk/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/Teafile"
+    },
+    {
+      "file": "products/fc/.libraries.json",
+      "url": "local:pinned-import-projection",
+      "sha256": "12ef9e70a292c2be6b66faf46c5ce1b73d328f9c06145503dbb837bdd62b9192"
+    },
+    {
+      "file": "products/fc/api-info.json",
+      "url": "https://raw.githubusercontent.com/aliyun/alibabacloud-sdk/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/api-info.json",
+      "sha256": "615cae5c41562060c32ec562139322a5e21d70785a8eda793f95d2a0f4b4fb60"
+    },
+    {
+      "file": "products/fc/main.tea",
+      "url": "https://raw.githubusercontent.com/aliyun/alibabacloud-sdk/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea",
+      "sha256": "52fbfda4aa0c9d6c10e845fcd7ab7c5efb12fbfb948bcbb03aa92cb771f3957b"
+    },
+    {
+      "file": "products/fc/Teafile",
+      "url": "https://raw.githubusercontent.com/aliyun/alibabacloud-sdk/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/Teafile",
+      "sha256": "43406cb599521ed1102ab64cc8cb7bc844915c69fdf9c6d6fbd7856ff937549b"
     },
     {
       "file": "products/sts/.libraries.json",

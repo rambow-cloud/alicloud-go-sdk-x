@@ -1,0 +1,16 @@
+{
+  "alibabacloud:Credential:*": "../../modules/alibabacloud_Credential_0.5.17",
+  "alibabacloud:EndpointUtil:*": "../../modules/alibabacloud_EndpointUtil_0.2.1",
+  "alibabacloud:GatewayPOP:*": "../../modules/alibabacloud_GatewayPOP_0.1.4",
+  "alibabacloud:GatewaySPI:*": "../../modules/alibabacloud_GatewaySPI_0.0.15",
+  "alibabacloud:OpenApi:*": "../../modules/alibabacloud_OpenApi_0.3.23",
+  "alibabacloud:OpenApiUtil:*": "../../modules/alibabacloud_OpenApiUtil_0.2.11",
+  "alibabacloud:Paginator:*": "../../modules/alibabacloud_Paginator_0.0.3",
+  "darabonba:Array:*": "../../modules/darabonba_Array_0.1.1",
+  "darabonba:EncodeUtil:*": "../../modules/darabonba_EncodeUtil_0.0.6",
+  "darabonba:Map:*": "../../modules/darabonba_Map_0.0.5",
+  "darabonba:SignatureUtil:*": "../../modules/darabonba_SignatureUtil_0.0.11",
+  "darabonba:String:*": "../../modules/darabonba_String_0.0.13",
+  "darabonba:Util:*": "../../modules/darabonba_Util_0.2.19",
+  "darabonba:XML:*": "../../modules/darabonba_XML_0.1.14"
+}

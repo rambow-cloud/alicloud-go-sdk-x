@@ -1,31 +1,39 @@
 {
-  "schemaVersion": 4,
-  "profile": "rpc-query-json-v1",
-  "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
+  "schemaVersion": 5,
+  "profile": "openapi-json-v1",
+  "sourceManifestSHA256": "fda7bc19fbbeb45b230c5dc9c4e69452a1dfe57331452f62dc653261b6d13254",
   "files": [
     {
       "file": "models/ecs/ir.json",
-      "sha256": "108612a0cc3669057cfea6e73b3072fde9ee81b535fa03dafc1607fb373101a3"
+      "sha256": "4f78adfda2a9decd840af94bd66fa26422dcf443434fce735bfc8fb7691fb684"
     },
     {
       "file": "models/ecs/coverage.json",
-      "sha256": "ddc87fcb226fa491ff5fa842adc84044cf95a7f28349df016d3e69f40011af08"
+      "sha256": "10031b66c56beabcf4f077817c67b1e728655714d3a995404582916a0751ef7f"
+    },
+    {
+      "file": "models/fc/ir.json",
+      "sha256": "82b8326e60d56c72dbc27aff07a61888153e25b2b0f58cda92a5b97550cce53b"
+    },
+    {
+      "file": "models/fc/coverage.json",
+      "sha256": "a3ac07f87ef07c638c1c41898b433595f9cc09cc72df9653c8e9c59abfd128dd"
     },
     {
       "file": "models/sts/ir.json",
-      "sha256": "9d29a84505b609ad792af85ca35a37715bedd7f38185591906612e6275f6dfae"
+      "sha256": "802aec2efdfaf4ad0cb6a8439f0e70ddd362e5040c2da3907056a2ae44977899"
     },
     {
       "file": "models/sts/coverage.json",
-      "sha256": "587bfe85cf13ab0f03a32b4b02e0c1d1ed1030e09ee559df7898e32d25d6c647"
+      "sha256": "1247ff2828cb92f697ff9aa414c44f4abdb3a3de8ceeca74f7e39c7a7a583979"
     },
     {
       "file": "models/vpc/ir.json",
-      "sha256": "e9b6597fc3001d31cfce916b3d5034cf025b360d0316e6f4ba96e7320a44f858"
+      "sha256": "ba80f626fb820804093cc0f37e08c762ed1dfb8f8bd323beea0d46e5f78f2524"
     },
     {
       "file": "models/vpc/coverage.json",
-      "sha256": "a59d67eb328ddf510ac52cc2252c1faae487b0f2d32c32818e4672b6a8d4ab15"
+      "sha256": "446c7ceddc1ca60e27129e77688e4feddf020aa91afbd778345fdd1f5ac118a3"
     }
   ]
 }

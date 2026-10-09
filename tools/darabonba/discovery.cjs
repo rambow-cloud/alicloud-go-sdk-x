@@ -252,7 +252,7 @@ function modelGraph(ast, file) {
         source: source(file, value),
       };
     }
-    let kind = value.fieldType ?? lex(value);
+    let kind = value.fieldType ?? lex(value) ?? (["array","map"].includes(value.type) ? value.type : undefined);
     if (kind && typeof kind === "object") {
       if (kind.type === "moduleModel") return type(kind, id, token);
       kind = lex(kind);
@@ -260,7 +260,7 @@ function modelGraph(ast, file) {
     if (kind === "array")
       return {
         kind: "array",
-        items: type(value.fieldItemType, id + "[]", token),
+        items: type(value.fieldItemType || value.subType, id + "[]", token),
       };
     if (kind === "map")
       return {
@@ -339,6 +339,8 @@ function shapeIssue(shape, location, allowJSON = false) {
   return null;
 }
 const reasonPrefixes = {
+  "ROA unsupported response body": "DSL_RESPONSE_BODY_PROFILE",
+  "ROA": "DSL_ROA_PROFILE",
   "operation function": "DSL_OPERATION_FUNCTION",
   "operation signature": "DSL_OPERATION_SIGNATURE",
   "runtime signature": "DSL_RUNTIME_SIGNATURE",
@@ -380,7 +382,7 @@ function profileIssue(error, location) {
     source: location,
   };
 }
-function buildProduct(ast, { pkg, identifier, info, file, provenance }) {
+function buildProduct(ast, { pkg, identifier, info, file, provenance, endpointDecisions=[] }) {
   const graph = modelGraph(ast, file);
   const candidates = discoverCandidates(ast, info, file);
   const operations = [];
@@ -474,10 +476,10 @@ function buildProduct(ast, { pkg, identifier, info, file, provenance }) {
               shapeIssue(
                 input.schema,
                 "request." + input.wire,
-                input.encoding === "json",
+                input.encoding === "json" || ["body","body-member"].includes(input.location),
               ),
             )
-            .find(Boolean) || shapeIssue(lowered.response, "response.body");
+            .find(Boolean) || shapeIssue(lowered.response, "response.body", !!lowered.facade);
         if (invalid)
           record.reasons.push({
             code: "DSL_WIRE_TYPE",
@@ -487,6 +489,22 @@ function buildProduct(ast, { pkg, identifier, info, file, provenance }) {
         else {
           record.status = "lowered";
           record.protocol = lowered.protocol;
+          if(lowered.facade) {
+            const originalRequest=graph.models.get(record.roots.request?.ref),originalBody=graph.models.get(record.roots.body?.ref);
+            const inputID=candidate.name+".$input",outputID=candidate.name+".$output";
+            requireInventory(!graph.models.has(inputID)&&!graph.models.has(outputID),"operation facade identity collision");
+            const inputFields=lowered.inputs.map(input=>{
+              const original=originalRequest?.fields.find(f=>f.dslName===input.field),param=record.parameters.find(p=>p.name===input.field);
+              requireInventory(original||param,"facade parameter source");
+              return original ? structuredClone(original) : {dslName:input.field,wireName:input.wire,required:input.location==="path",type:param.type,source:param.source,attributes:{}};
+            });
+            requireInventory(new Set(inputFields.map(f=>f.dslName)).size===inputFields.length,"facade member collision");
+            graph.models.set(inputID,{id:inputID,source:location,origin:"operation-input-facade",fields:inputFields});
+            requireInventory(lowered.protocol.bodyType==="none"||originalBody,"JSON output facade requires object body");
+            graph.models.set(outputID,{id:outputID,source:originalBody?.source||location,origin:"operation-output-facade",fields:originalBody?structuredClone(originalBody.fields):[]});
+            record.roots.request={kind:"model",ref:inputID};record.roots.body={kind:"model",ref:outputID};
+            record.reachableModels=graph.reachable(Object.values(record.roots));
+          }
           if (lowered.handoff) record.handoff = lowered.handoff;
           // An explicit empty root preserves source absence without inventing a DSL model.
           if (!record.roots.request) record.roots.request = { kind: "empty" };
@@ -541,14 +559,14 @@ function buildProduct(ast, { pkg, identifier, info, file, provenance }) {
       "product protocol version differs: " + op.name,
     );
   const ir = {
-    schemaVersion: 4,
-    profile: "rpc-query-json-v1",
+    schemaVersion: 5,
+    profile: "openapi-json-v1",
     product: pkg,
     identifier,
     version,
     provenance,
     sourceFile: file,
-    endpoints: projectEndpoints(ast,file,source),
+    endpoints: projectEndpoints(ast,file,source,endpointDecisions,provenance.sourceSHA256),
     operations,
     models,
     unusedModels,
@@ -600,6 +618,9 @@ function project(root = repository, selected = []) {
   const verified = verifySources(sourceRoot),
     files = {},
     products = {};
+  const decisionFile=path.join(root,"metadata/endpoint-source-decisions.json");
+  const endpointDecisions=fs.existsSync(decisionFile)?JSON.parse(fs.readFileSync(decisionFile)): {schemaVersion:1,decisions:[]};
+  requireInventory(endpointDecisions.schemaVersion===1&&Array.isArray(endpointDecisions.decisions)&&endpointDecisions.decisions.every(d=>Object.keys(verified.manifest.products).some(p=>d.file===`products/${p}/main.tea`)),"endpoint decision profile or unknown product");
   for (const pkg of Object.keys(verified.manifest.products).sort(order)) {
     requireInventory(/^[a-z][a-z0-9]*$/.test(pkg), "unsafe product key");
     const file = "products/" + pkg + "/main.tea",
@@ -626,6 +647,7 @@ function project(root = repository, selected = []) {
       info,
       file,
       provenance,
+      endpointDecisions:endpointDecisions.decisions.filter(d=>d.file===file),
     });
     products[pkg] = product;
     files[`models/${pkg}/ir.json`] = encodeIR(product.ir);
@@ -648,8 +670,8 @@ function project(root = repository, selected = []) {
     );
   }
   const manifest = {
-    schemaVersion: 4,
-    profile: "rpc-query-json-v1",
+    schemaVersion: 5,
+    profile: "openapi-json-v1",
     sourceManifestSHA256: verified.hash,
     files: Object.entries(files).map(([file, data]) => ({
       file,

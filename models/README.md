@@ -2,6 +2,8 @@
 
 [中文](README.zh-CN.md)
 
+- Current complete IR and lock: schema v5, profile `openapi-json-v1`. STS 4/4, ECS 380/380, VPC 403/403 and FC 72/73; see [FC ROA #92](../docs/fc-roa-product.md). Path/query/header/body locations and operation facades are source-derived. Reports retain schema v1. Older schema/count statements below are stage history.
+
 - Current lowering/emission: ECS 380/380, VPC 403/403, STS 4/4. See [VPC RPC completion #85](../docs/vpc-rpc-completion.md). The older table below is historical.
 - Schema v2 adds optional binding `encoding: "json"`, boolean field `attributes.deprecated`, and `kind: "json", dslType: "any"` for dynamic values inside reviewed JSON transforms. No unknown transform is accepted.
 - Product IR and its lock use schema v3. It adds `location: "form"`, explicit string-array `encoding: "simple"` and native GET methods. Older backends reject the lock before writes. Regenerate with the matching frontend/backend. Reports keep their independent v1 schema.

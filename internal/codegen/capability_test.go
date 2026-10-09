@@ -14,7 +14,7 @@ import (
 func readPolicyProduct(t *testing.T, pkg string) productIR {
 	t.Helper()
 	// The loader validates the whole policy inventory, so supply every pinned product.
-	products := []productIR{readProductIR(t, "ecs"), readProductIR(t, "sts"), readProductIR(t, "vpc")}
+	products := []productIR{readProductIR(t, "ecs"), readProductIR(t, "sts"), readProductIR(t, "vpc"), readProductIR(t, "fc")}
 	if err := loadCapabilityPolicies(filepath.Join("..", ".."), products); err != nil {
 		t.Fatal(err)
 	}
@@ -181,7 +181,11 @@ func TestPolicyLoaderStrictSourceBindingAndAtomicWrites(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	for _, data := range [][]byte{bytes.Replace(original, []byte(`"schemaVersion": 1`), []byte(`"schemaVersion": 2`), 1), bytes.Replace(original, []byte(`"schemaVersion": 1`), []byte(`"unknown": true, "schemaVersion": 1`), 1), bytes.Replace(original, []byte(`7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd`), []byte(strings.Repeat("0", 64)), 1)} {
+	var originalPolicy capabilityPolicy
+	if err := json.Unmarshal(original, &originalPolicy); err != nil {
+		t.Fatal(err)
+	}
+	for _, data := range [][]byte{bytes.Replace(original, []byte(`"schemaVersion": 1`), []byte(`"schemaVersion": 2`), 1), bytes.Replace(original, []byte(`"schemaVersion": 1`), []byte(`"unknown": true, "schemaVersion": 1`), 1), bytes.Replace(original, []byte(originalPolicy.SourceManifestSHA256), []byte(strings.Repeat("0", 64)), 1)} {
 		if err := os.WriteFile(path, data, 0600); err != nil {
 			t.Fatal(err)
 		}

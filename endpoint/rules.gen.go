@@ -99,6 +99,59 @@ func init() {
 		{Service: "ecs", Region: "us-east-1", Network: "vpc", URL: "https://ecs-vpc.us-east-1.aliyuncs.com"},
 		// Reviewed source: https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network.
 		{Service: "ecs", Region: "us-west-1", Network: "vpc", URL: "https://ecs-vpc.us-west-1.aliyuncs.com"},
+		// Source: products/fc/main.tea:16.
+		{Service: "fc", Region: "ap-northeast-1", URL: "https://fcv3.ap-northeast-1.aliyuncs.com"},
+		// Source: products/fc/main.tea:17.
+		{Service: "fc", Region: "ap-northeast-2", URL: "https://fcv3.ap-northeast-2.aliyuncs.com"},
+		// Source: products/fc/main.tea:38.
+		{Service: "fc", Region: "ap-south-1", URL: "https://fcv3.ap-south-1.aliyuncs.com"},
+		// Source: products/fc/main.tea:18.
+		{Service: "fc", Region: "ap-southeast-1", URL: "https://fcv3.ap-southeast-1.aliyuncs.com"},
+		// Source: products/fc/main.tea:19.
+		{Service: "fc", Region: "ap-southeast-2", URL: "https://fcv3.ap-southeast-2.aliyuncs.com"},
+		// Source: products/fc/main.tea:20.
+		{Service: "fc", Region: "ap-southeast-3", URL: "https://fcv3.ap-southeast-3.aliyuncs.com"},
+		// Reviewed source normalization: trim-reviewed-trailing-whitespace; original source bytes preserved.
+		// Source: products/fc/main.tea:21.
+		{Service: "fc", Region: "ap-southeast-5", URL: "https://fcv3.ap-southeast-5.aliyuncs.com"},
+		// Source: products/fc/main.tea:22.
+		{Service: "fc", Region: "ap-southeast-7", URL: "https://fcv3.ap-southeast-7.aliyuncs.com"},
+		// Source: products/fc/main.tea:23.
+		{Service: "fc", Region: "cn-beijing", URL: "https://fcv3.cn-beijing.aliyuncs.com"},
+		// Source: products/fc/main.tea:24.
+		{Service: "fc", Region: "cn-chengdu", URL: "https://fcv3.cn-chengdu.aliyuncs.com"},
+		// Source: products/fc/main.tea:25.
+		{Service: "fc", Region: "cn-hangzhou", URL: "https://fcv3.cn-hangzhou.aliyuncs.com"},
+		// Source: products/fc/main.tea:41.
+		{Service: "fc", Region: "cn-hangzhou-finance", URL: "https://cn-hangzhou-finance.fc.aliyuncs.com"},
+		// Source: products/fc/main.tea:40.
+		{Service: "fc", Region: "cn-heyuan-acdr-1", URL: "https://cn-heyuan-acdr-1.fc.aliyuncs.com"},
+		// Source: products/fc/main.tea:26.
+		{Service: "fc", Region: "cn-hongkong", URL: "https://fcv3.cn-hongkong.aliyuncs.com"},
+		// Source: products/fc/main.tea:27.
+		{Service: "fc", Region: "cn-huhehaote", URL: "https://fcv3.cn-huhehaote.aliyuncs.com"},
+		// Source: products/fc/main.tea:28.
+		{Service: "fc", Region: "cn-qingdao", URL: "https://fcv3.cn-qingdao.aliyuncs.com"},
+		// Source: products/fc/main.tea:29.
+		{Service: "fc", Region: "cn-shanghai", URL: "https://fcv3.cn-shanghai.aliyuncs.com"},
+		// Source: products/fc/main.tea:39.
+		{Service: "fc", Region: "cn-shanghai-finance-1", URL: "https://cn-shanghai-finance-1.fc.aliyuncs.com"},
+		// Source: products/fc/main.tea:30.
+		{Service: "fc", Region: "cn-shenzhen", URL: "https://fcv3.cn-shenzhen.aliyuncs.com"},
+		// Source: products/fc/main.tea:31.
+		{Service: "fc", Region: "cn-wulanchabu", URL: "https://fcv3.cn-wulanchabu.aliyuncs.com"},
+		// Source: products/fc/main.tea:32.
+		{Service: "fc", Region: "cn-zhangjiakou", URL: "https://fcv3.cn-zhangjiakou.aliyuncs.com"},
+		// Source: products/fc/main.tea:36.
+		{Service: "fc", Region: "eu-central-1", URL: "https://fcv3.eu-central-1.aliyuncs.com"},
+		// Source: products/fc/main.tea:35.
+		{Service: "fc", Region: "eu-west-1", URL: "https://fcv3.eu-west-1.aliyuncs.com"},
+		// Source: products/fc/main.tea:37.
+		{Service: "fc", Region: "me-central-1", URL: "https://me-central-1.fc.aliyuncs.com"},
+		// Source: products/fc/main.tea:34.
+		{Service: "fc", Region: "us-east-1", URL: "https://fcv3.us-east-1.aliyuncs.com"},
+		// Source: products/fc/main.tea:33.
+		{Service: "fc", Region: "us-west-1", URL: "https://fcv3.us-west-1.aliyuncs.com"},
 		// Source: products/sts/main.tea:16.
 		{Service: "sts", Region: "ap-northeast-2-pop", URL: "https://sts.aliyuncs.com"},
 		// Source: products/sts/main.tea:17.
@@ -310,6 +363,7 @@ func init() {
 	}
 	defaultDeploymentRules = map[string]deploymentRule{
 		"ecs": {productCode: "ecs", kind: "regional"},
+		"fc":  {productCode: "fc", kind: "regional"},
 		"sts": {productCode: "sts", kind: "regional"},
 		"vpc": {productCode: "vpc", kind: "regional"},
 	}

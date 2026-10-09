@@ -57,7 +57,7 @@ test("field descriptions use parser values and source example values stay absent
 test("documentation projection preserves complete coverage and changes no wire protocol", () => {
   const projected = project(root);
   for (const [pkg, product] of Object.entries(projected.products)) {
-    const expected = { ecs: 380, vpc: 403, sts: 4 }[pkg];
+    const expected = { ecs: 380, vpc: 403, sts: 4, fc:72 }[pkg];
     assert.equal(product.coverage.counts.lowered, expected);
     assert.ok(
       product.ir.operations.some((o) =>

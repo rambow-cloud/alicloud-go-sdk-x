@@ -1,0 +1,1408 @@
+{
+  "generator": "sdkgen product",
+  "schemaVersion": 1,
+  "product": "fc",
+  "version": "2023-03-30",
+  "sourceManifestSHA256": "fda7bc19fbbeb45b230c5dc9c4e69452a1dfe57331452f62dc653261b6d13254",
+  "discovered": 73,
+  "lowered": 72,
+  "emitted": 72,
+  "models": 331,
+  "compilation": "not-assessed",
+  "live": "not-assessed",
+  "capabilityPolicy": "not-assessed",
+  "operations": [
+    {
+      "name": "ChangeResourceGroup",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 1735,
+        "column": 16,
+        "endLine": 1735,
+        "endColumn": 46
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "CreateAlias",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 1789,
+        "column": 16,
+        "endLine": 1789,
+        "endColumn": 38
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "CreateCustomDomain",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 1843,
+        "column": 16,
+        "endLine": 1843,
+        "endColumn": 45
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "CreateFunction",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 1899,
+        "column": 16,
+        "endLine": 1899,
+        "endColumn": 41
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "CreateLayerVersion",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 1953,
+        "column": 16,
+        "endLine": 1953,
+        "endColumn": 45
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "CreateSession",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2004,
+        "column": 16,
+        "endLine": 2004,
+        "endColumn": 40
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "CreateSnapshot",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2067,
+        "column": 16,
+        "endLine": 2067,
+        "endColumn": 41
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "CreateTrigger",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2131,
+        "column": 16,
+        "endLine": 2131,
+        "endColumn": 40
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "CreateVpcBinding",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2182,
+        "column": 16,
+        "endLine": 2182,
+        "endColumn": 43
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "DeleteAlias",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2226,
+        "column": 16,
+        "endLine": 2226,
+        "endColumn": 38
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "DeleteAsyncInvokeConfig",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2272,
+        "column": 16,
+        "endLine": 2272,
+        "endColumn": 50
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "DeleteConcurrencyConfig",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2321,
+        "column": 16,
+        "endLine": 2321,
+        "endColumn": 50
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "DeleteCustomDomain",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2362,
+        "column": 16,
+        "endLine": 2362,
+        "endColumn": 45
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "DeleteFunction",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2403,
+        "column": 16,
+        "endLine": 2403,
+        "endColumn": 41
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "DeleteFunctionVersion",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2444,
+        "column": 16,
+        "endLine": 2444,
+        "endColumn": 48
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "DeleteLayerVersion",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2485,
+        "column": 16,
+        "endLine": 2485,
+        "endColumn": 45
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "DeleteProvisionConfig",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2531,
+        "column": 16,
+        "endLine": 2531,
+        "endColumn": 48
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "DeleteScalingConfig",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2585,
+        "column": 16,
+        "endLine": 2585,
+        "endColumn": 46
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "DeleteSession",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2639,
+        "column": 16,
+        "endLine": 2639,
+        "endColumn": 40
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "DeleteSnapshot",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2698,
+        "column": 16,
+        "endLine": 2698,
+        "endColumn": 41
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "DeleteTrigger",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2747,
+        "column": 16,
+        "endLine": 2747,
+        "endColumn": 40
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "DeleteVpcBinding",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2788,
+        "column": 16,
+        "endLine": 2788,
+        "endColumn": 43
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "DescribeRegions",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2841,
+        "column": 16,
+        "endLine": 2841,
+        "endColumn": 42
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "DisableFunctionInvocation",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2903,
+        "column": 16,
+        "endLine": 2903,
+        "endColumn": 52
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "EnableFunctionInvocation",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2962,
+        "column": 16,
+        "endLine": 2962,
+        "endColumn": 51
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "GetAlias",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3004,
+        "column": 16,
+        "endLine": 3004,
+        "endColumn": 35
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "GetAsyncInvokeConfig",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3051,
+        "column": 16,
+        "endLine": 3051,
+        "endColumn": 47
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "GetAsyncTask",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3106,
+        "column": 16,
+        "endLine": 3106,
+        "endColumn": 39
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "GetConcurrencyConfig",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3156,
+        "column": 16,
+        "endLine": 3156,
+        "endColumn": 47
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "GetCustomDomain",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3198,
+        "column": 16,
+        "endLine": 3198,
+        "endColumn": 42
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "GetFunction",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3245,
+        "column": 16,
+        "endLine": 3245,
+        "endColumn": 38
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "GetFunctionCode",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3300,
+        "column": 16,
+        "endLine": 3300,
+        "endColumn": 42
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "GetLayerVersion",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3350,
+        "column": 16,
+        "endLine": 3350,
+        "endColumn": 42
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "GetLayerVersionByArn",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3392,
+        "column": 16,
+        "endLine": 3392,
+        "endColumn": 47
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "GetProvisionConfig",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3439,
+        "column": 16,
+        "endLine": 3439,
+        "endColumn": 45
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "GetScalingConfig",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3494,
+        "column": 16,
+        "endLine": 3494,
+        "endColumn": 43
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "GetSession",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3549,
+        "column": 16,
+        "endLine": 3549,
+        "endColumn": 37
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "GetSnapshot",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3607,
+        "column": 16,
+        "endLine": 3607,
+        "endColumn": 38
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "GetTrigger",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3655,
+        "column": 16,
+        "endLine": 3655,
+        "endColumn": 37
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "InvokeFunction",
+      "status": "unsupported",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3712,
+        "column": 16,
+        "endLine": 3712,
+        "endColumn": 41
+      },
+      "reasons": [
+        {
+          "code": "DSL_RESPONSE_BODY_PROFILE",
+          "message": "ROA unsupported response body binary",
+          "source": {
+            "file": "products/fc/main.tea",
+            "line": 3712,
+            "column": 16,
+            "endLine": 3712,
+            "endColumn": 41
+          }
+        }
+      ]
+    },
+    {
+      "name": "ListAliases",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3798,
+        "column": 16,
+        "endLine": 3798,
+        "endColumn": 38
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "ListAsyncInvokeConfigs",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3861,
+        "column": 16,
+        "endLine": 3861,
+        "endColumn": 49
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "ListAsyncTasks",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3960,
+        "column": 16,
+        "endLine": 3960,
+        "endColumn": 41
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "ListConcurrencyConfigs",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4041,
+        "column": 16,
+        "endLine": 4041,
+        "endColumn": 49
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "ListCustomDomains",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4104,
+        "column": 16,
+        "endLine": 4104,
+        "endColumn": 44
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "ListFunctionVersions",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4167,
+        "column": 16,
+        "endLine": 4167,
+        "endColumn": 47
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "ListFunctions",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4264,
+        "column": 16,
+        "endLine": 4264,
+        "endColumn": 40
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "ListInstances",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4371,
+        "column": 16,
+        "endLine": 4371,
+        "endColumn": 40
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "ListLayerVersions",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4456,
+        "column": 16,
+        "endLine": 4456,
+        "endColumn": 44
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "ListLayers",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4518,
+        "column": 16,
+        "endLine": 4518,
+        "endColumn": 37
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "ListProvisionConfigs",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4587,
+        "column": 16,
+        "endLine": 4587,
+        "endColumn": 47
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "ListScalingConfigs",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4650,
+        "column": 16,
+        "endLine": 4650,
+        "endColumn": 45
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "ListSessions",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4715,
+        "column": 16,
+        "endLine": 4715,
+        "endColumn": 39
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "ListSnapshots",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4792,
+        "column": 16,
+        "endLine": 4792,
+        "endColumn": 40
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "ListTagResources",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4894,
+        "column": 16,
+        "endLine": 4894,
+        "endColumn": 43
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "ListTriggers",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4971,
+        "column": 16,
+        "endLine": 4971,
+        "endColumn": 39
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "ListVpcBindings",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5027,
+        "column": 16,
+        "endLine": 5027,
+        "endColumn": 42
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "PauseSession",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5077,
+        "column": 16,
+        "endLine": 5077,
+        "endColumn": 39
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "PublishFunctionVersion",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5139,
+        "column": 16,
+        "endLine": 5139,
+        "endColumn": 49
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "PutAsyncInvokeConfig",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5192,
+        "column": 16,
+        "endLine": 5192,
+        "endColumn": 47
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "PutConcurrencyConfig",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5250,
+        "column": 16,
+        "endLine": 5250,
+        "endColumn": 47
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "PutLayerACL",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5300,
+        "column": 16,
+        "endLine": 5300,
+        "endColumn": 38
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "PutProvisionConfig",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5361,
+        "column": 16,
+        "endLine": 5361,
+        "endColumn": 45
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "PutScalingConfig",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5418,
+        "column": 16,
+        "endLine": 5418,
+        "endColumn": 43
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "ResumeSession",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5477,
+        "column": 16,
+        "endLine": 5477,
+        "endColumn": 40
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "StopAsyncTask",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5536,
+        "column": 16,
+        "endLine": 5536,
+        "endColumn": 40
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "TagResources",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5592,
+        "column": 16,
+        "endLine": 5592,
+        "endColumn": 39
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "UntagResources",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5659,
+        "column": 16,
+        "endLine": 5659,
+        "endColumn": 41
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "UpdateAlias",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5733,
+        "column": 16,
+        "endLine": 5733,
+        "endColumn": 38
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "UpdateCustomDomain",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5785,
+        "column": 16,
+        "endLine": 5785,
+        "endColumn": 45
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "UpdateFunction",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5837,
+        "column": 16,
+        "endLine": 5837,
+        "endColumn": 41
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "UpdateSession",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5888,
+        "column": 16,
+        "endLine": 5888,
+        "endColumn": 40
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    },
+    {
+      "name": "UpdateTrigger",
+      "status": "emitted",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5946,
+        "column": 16,
+        "endLine": 5946,
+        "endColumn": 40
+      },
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
+    }
+  ]
+}

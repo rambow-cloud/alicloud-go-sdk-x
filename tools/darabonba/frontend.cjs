@@ -6,6 +6,7 @@ const path = require("node:path");
 const crypto = require("node:crypto");
 const parser = require("@darabonba/parser");
 const { Tag } = require("@darabonba/parser/lib/tag");
+const { roaStyle, lowerROA } = require("./roa.cjs");
 const {
   bindInputs,
   verifyCanonical,
@@ -179,10 +180,10 @@ function shape(value, models, stack = []) {
     }
     return { type: "object", properties };
   }
-  let kind = value.fieldType ?? lex(value);
+  let kind = value.fieldType ?? lex(value) ?? (["array","map"].includes(value.type) ? value.type : undefined);
   if (kind && typeof kind === "object") kind = lex(kind);
   if (kind === "array")
-    return { type: "array", items: shape(value.fieldItemType, models, stack) };
+    return { type: "array", items: shape(value.fieldItemType || value.subType, models, stack) };
   if (kind === "map") {
     requireProfile(lex(value.keyType) === "string", "map key type");
     return { type: "map", values: shape(value.valueType, models, stack) };
@@ -232,6 +233,7 @@ function lowerOperation(ast, operation) {
     fn?.isAsync && !fn.isStatic && !fn.notes?.length,
     "operation function " + operation,
   );
+  if (roaStyle(fn)) return lowerROA(ast, fn, operation, {shape, reviewedAttributes, requireProfile});
   const params = fn.params.params;
   const requestless =
     params.length === 1 && lex(params[0].paramName) === "runtime";
@@ -718,7 +720,11 @@ function project(root = repository) {
       decisions.revision === verified.manifest.revision,
     "decision revision",
   );
-  for (const pkg of Object.keys(verified.manifest.products).sort()) {
+  // This retained fixture checker covers only explicitly declared bridge decisions.
+  // A new full-DSL product needs no per-operation metadata fixture directory.
+  const fixtureProducts = [...new Set(Object.keys(decisions.operations).map(key => key.split("/")[0]))].sort();
+  for (const pkg of fixtureProducts) {
+    requireProfile(Object.hasOwn(verified.manifest.products,pkg),"fixture product source missing");
     const metaDir = path.join(root, "metadata", pkg),
       metadata = JSON.parse(
         fs.readFileSync(path.join(metaDir, "manifest.json"), "utf8"),

@@ -2,6 +2,8 @@
 
 [English](development-path.md)
 
+- #92 按 [FC ROA 生成路线](fc-roa-product.zh-CN.md) 推进：使用 schema v5、完整官方来源及已审核的 JSON/none 参数映射，离线生成 72 个操作，明确排除一个二进制操作。XML、流和真实云验收仍单独跟踪。
+
 - [现有资源验证补充](live-resource-followup.zh-CN.md)新增了 VPC 非空响应和当前状态 waiter 的真实证据；跨页续取和状态转换仍未执行。
 
 - 当前：#85 已合并，后续按[缺口补齐路线 #87](gap-completion.zh-CN.md)执行。

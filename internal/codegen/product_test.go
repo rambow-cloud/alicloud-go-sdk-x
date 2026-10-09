@@ -75,7 +75,7 @@ func TestRenamedProductUsesSharedEmitterAndGuide(t *testing.T) {
 }
 
 func TestCompleteProductsDeterministicModelsMethodsAndExamples(t *testing.T) {
-	for pkg, want := range map[string]int{"ecs": 380, "sts": 4, "vpc": 403} {
+	for pkg, want := range map[string]int{"ecs": 380, "sts": 4, "vpc": 403, "fc": 72} {
 		t.Run(pkg, func(t *testing.T) {
 			p := readProductIR(t, pkg)
 			r, err := newProductRenderer(p)
@@ -274,6 +274,9 @@ func TestProductSchemaVersionsFailBeforeWrites(t *testing.T) {
 	writePins()
 	checkRejected("unsupported IR manifest")
 	pins.SchemaVersion = 4
+	writePins()
+	checkRejected("unsupported IR manifest")
+	pins.SchemaVersion = 5
 	p := readProductIR(t, "ecs")
 	p.SchemaVersion = 2
 	encoded, err := json.Marshal(p)
@@ -414,7 +417,7 @@ func TestFullProductEmissionCompilesInIsolatedModule(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	for _, relative := range []string{".", "credentials", "endpoint", "middleware", "retry", "pagination", "waiter", "sdktest", "internal/signing", "internal/rpcmodel"} {
+	for _, relative := range []string{".", "credentials", "endpoint", "middleware", "retry", "pagination", "waiter", "sdktest", "internal/signing", "internal/rpcmodel", "internal/roamodel"} {
 		entries, err := os.ReadDir(filepath.Join(repository, relative))
 		if err != nil {
 			t.Fatal(err)
@@ -431,7 +434,7 @@ func TestFullProductEmissionCompilesInIsolatedModule(t *testing.T) {
 		}
 	}
 	writeTestFile(t, root, "go.mod", []byte("module "+module+"\n\ngo 1.27.0\n"))
-	for _, pkg := range []string{"ecs", "sts", "vpc"} {
+	for _, pkg := range []string{"ecs", "sts", "vpc", "fc"} {
 		files, err := renderProduct(readPolicyProduct(t, pkg))
 		if err != nil {
 			t.Fatal(err)

@@ -18,7 +18,7 @@ function syntax(value){
   if(value&&typeof value==="object")return Object.fromEntries(Object.entries(value).filter(([k])=>semanticKeys.has(k)).sort(([a],[b])=>a.localeCompare(b)).map(([k,v])=>[k,syntax(v)]));
   return value;
 }
-function projectEndpoints(ast,file,source){
+function projectEndpoints(ast,file,source,decisions=[],sourceSHA256=""){
   const fail=(ok,message)=>{if(!ok)throw Error("discovery: endpoint "+message)};
   const initializers=ast.moduleBody.nodes.filter(n=>n.type==="init");fail(initializers.length===1,"initializer must be unique");
   // Signing declarations are validated separately by operation lowering. A
@@ -31,9 +31,16 @@ function projectEndpoints(ast,file,source){
   fail(map.expr.type==="object","map must be constant");
   const seen=new Set(),overrides=map.expr.fields.map(field=>{
     const region=field.fieldName?.string;fail(typeof region==="string"&&!seen.has(region)&&field.expr?.type==="string","nonconstant or duplicate map entry");seen.add(region);
-    const host=field.expr.value.string;fail(host.split('.').every(label=>/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(label))&&host.endsWith(".aliyuncs.com"),"invalid mapped hostname");
-    return {region,url:"https://"+host,source:source(file,field.fieldName)};
+    let host=field.expr.value.string;
+    const location=source(file,field.fieldName),decision=decisions.find(d=>d.region===region);
+    if(decision){
+      fail(decision.sourceSHA256===sourceSHA256&&decision.file===file&&decision.line===location.line&&decision.before===host&&decision.after===host.trimEnd()&&decision.before!==decision.after&&decision.reason==="trim-reviewed-trailing-whitespace","source-bound normalization differs");
+      host=decision.after;
+    }
+    fail(host.split('.').every(label=>/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(label))&&host.endsWith(".aliyuncs.com"),"invalid mapped hostname");
+    return {region,url:"https://"+host,source:location,...(decision?{normalization:decision}:{})};
   }).sort((a,b)=>a.region.localeCompare(b.region,"en"));
+  fail(decisions.every(d=>d.file===file&&overrides.some(o=>o.region===d.region&&o.normalization===d))&&new Set(decisions.map(d=>d.region)).size===decisions.length,"unused or duplicate normalization");
   const expression=endpoint.expr;
   fail(expression.type==="call"&&lex(expression.left?.id)==="getEndpoint"&&expression.args?.length===7&&expression.args[0].type==="string","unsupported endpoint handoff");
   fail(expression.args.slice(1).every((arg,i)=>arg.type==="virtualVariable"&&lex(arg.vid)===["@regionId","@endpointRule","@network","@suffix","@endpointMap","@endpoint"][i]),"endpoint handoff arguments differ");
