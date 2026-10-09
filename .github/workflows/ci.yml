@@ -84,3 +84,7 @@ jobs:
         run: go -C examples/stsacceptance test ${{ matrix.test_flags }} ./...
       - name: Run account-free STS consumer
         run: go -C examples/stsacceptance run .
+      - name: Test isolated generated product consumers
+        run: go -C examples/productacceptance test ${{ matrix.test_flags }} ./...
+      - name: Run account-free product consumer
+        run: go -C examples/productacceptance run .

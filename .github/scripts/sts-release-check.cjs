@@ -253,6 +253,7 @@ function requireUnchangedBehavior(repository, revision) {
         "policies",
         "tools/darabonba",
         "examples/stsacceptance",
+        "examples/productacceptance",
         "docs/products",
         "docs/credentials.md",
         "docs/default-configuration.md",
