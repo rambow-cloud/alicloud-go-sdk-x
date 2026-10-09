@@ -8,8 +8,8 @@
 
 ## 候选版本及结果
 
-- SDK 提交：`0bd42d8a933bae452d88a99f3274b8e98ebc35ba`；Go 1.27.1，Windows/amd64。该干净候选版本已集成 FC 生成和评审修正；PR #111 的 CI 仍是单独的门禁。
-- 两个独立模块的 `go vet ./...`、`go test -json -count=1 ./...` 和无需账号的 `go run .` 均于 2026-10-09 20:39 UTC 通过。
+- SDK 提交：`426108073437898ab93bc24fc3bc61311530d03e`；Go 1.27.1，Windows/amd64。该干净候选版本已集成 FC 生成、固定 OSS 对比及 JSON 断言修正；最终 main CI 仍是单独的门禁。
+- 两个独立模块的 `go vet ./...`、`go test -json -count=1 ./...` 和无需账号的 `go run .` 均于 2026-10-09 21:19 UTC 通过。
 - STS：五项必需任务、十一项必需测试及两项额外协议一致性测试通过。
 - ECS：十项必需测试、十四项子测试通过。VPC：八项测试、十项子测试通过。
 - 当前记录：[STS](acceptance/sts-agent-result.json)、[ECS](acceptance/ecs-product-result.json)、[VPC](acceptance/vpc-product-result.json)。
@@ -27,3 +27,5 @@
 - 评审来源与策略锁定、Go 1.27、直接 JSON v2、MIT 运行时及 Apache 生成通知、配对发布说明和示例。
 - 门禁通过后发布不可变的实验版 v0.1.0。本记录中的发布、相同版本网页索引仍未执行。
 - 遵循[发布清单](sts-v010-release-checklist.zh-CN.md)，取得真实索引证据后再关闭 #61、#57 和 milestone。
+
+- 20:39 UTC 的记录原样保留：[STS](acceptance/sts-agent-result.2026-10-09T2039.json)、[ECS](acceptance/ecs-product-result.2026-10-09T2039.json)、[VPC](acceptance/vpc-product-result.2026-10-09T2039.json)。本次更新对应 PR #114，不改变任何真实云或来源验证结果。

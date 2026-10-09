@@ -1,0 +1,1026 @@
+{
+  "scope": "private official-semantic-parser discovery only; no lowering/emission/compilation/live acceptance",
+  "sourceRevision": "ec489e5c3deae95496daae2b41503ac58b221adb",
+  "sourceSHA256": "0713683b286a49e4e80fff023f61db426dc035fb8755a7b4616a82f65c22e6ff",
+  "parserVersion": "2.2.1",
+  "modules": 18,
+  "discovered": 90,
+  "declaredModels": 303,
+  "reachableModels": 295,
+  "modes": {
+    "requests": {
+      "xml": 84,
+      "binary": 3,
+      "json": 2,
+      "multiFormData": 1
+    },
+    "responses": {
+      "xml": 79,
+      "json": 3,
+      "none": 4,
+      "string": 1,
+      "binary": 3
+    }
+  },
+  "operations": [
+    {
+      "name": "AbortBucketWorm",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 822,
+        "column": 16,
+        "endLine": 822,
+        "endColumn": 42
+      },
+      "declarations": 1
+    },
+    {
+      "name": "AbortMultipartUpload",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 858,
+        "column": 16,
+        "endLine": 858,
+        "endColumn": 47
+      },
+      "declarations": 1
+    },
+    {
+      "name": "AppendObject",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 915,
+        "column": 16,
+        "endLine": 915,
+        "endColumn": 39
+      },
+      "declarations": 1
+    },
+    {
+      "name": "CompleteBucketWorm",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 991,
+        "column": 16,
+        "endLine": 991,
+        "endColumn": 45
+      },
+      "declarations": 1
+    },
+    {
+      "name": "CompleteMultipartUpload",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1051,
+        "column": 16,
+        "endLine": 1051,
+        "endColumn": 50
+      },
+      "declarations": 1
+    },
+    {
+      "name": "CopyObject",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1127,
+        "column": 16,
+        "endLine": 1127,
+        "endColumn": 37
+      },
+      "declarations": 1
+    },
+    {
+      "name": "CreateSelectObjectMeta",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1209,
+        "column": 16,
+        "endLine": 1209,
+        "endColumn": 49
+      },
+      "declarations": 1
+    },
+    {
+      "name": "DeleteBucket",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1243,
+        "column": 16,
+        "endLine": 1243,
+        "endColumn": 39
+      },
+      "declarations": 1
+    },
+    {
+      "name": "DeleteBucketCors",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1275,
+        "column": 16,
+        "endLine": 1275,
+        "endColumn": 43
+      },
+      "declarations": 1
+    },
+    {
+      "name": "DeleteBucketEncryption",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1307,
+        "column": 16,
+        "endLine": 1307,
+        "endColumn": 49
+      },
+      "declarations": 1
+    },
+    {
+      "name": "DeleteBucketInventory",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1343,
+        "column": 16,
+        "endLine": 1343,
+        "endColumn": 48
+      },
+      "declarations": 1
+    },
+    {
+      "name": "DeleteBucketLifecycle",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1382,
+        "column": 16,
+        "endLine": 1382,
+        "endColumn": 48
+      },
+      "declarations": 1
+    },
+    {
+      "name": "DeleteBucketLogging",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1414,
+        "column": 16,
+        "endLine": 1414,
+        "endColumn": 46
+      },
+      "declarations": 1
+    },
+    {
+      "name": "DeleteBucketPolicy",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1446,
+        "column": 16,
+        "endLine": 1446,
+        "endColumn": 45
+      },
+      "declarations": 1
+    },
+    {
+      "name": "DeleteBucketReplication",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1482,
+        "column": 16,
+        "endLine": 1482,
+        "endColumn": 50
+      },
+      "declarations": 1
+    },
+    {
+      "name": "DeleteBucketTags",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1516,
+        "column": 16,
+        "endLine": 1516,
+        "endColumn": 43
+      },
+      "declarations": 1
+    },
+    {
+      "name": "DeleteBucketWebsite",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1548,
+        "column": 16,
+        "endLine": 1548,
+        "endColumn": 46
+      },
+      "declarations": 1
+    },
+    {
+      "name": "DeleteLiveChannel",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1580,
+        "column": 16,
+        "endLine": 1580,
+        "endColumn": 44
+      },
+      "declarations": 1
+    },
+    {
+      "name": "DeleteMultipleObjects",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1630,
+        "column": 16,
+        "endLine": 1630,
+        "endColumn": 48
+      },
+      "declarations": 1
+    },
+    {
+      "name": "DeleteObject",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1680,
+        "column": 16,
+        "endLine": 1680,
+        "endColumn": 39
+      },
+      "declarations": 1
+    },
+    {
+      "name": "DeleteObjectTagging",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1723,
+        "column": 16,
+        "endLine": 1723,
+        "endColumn": 46
+      },
+      "declarations": 1
+    },
+    {
+      "name": "DescribeRegions",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1773,
+        "column": 16,
+        "endLine": 1773,
+        "endColumn": 42
+      },
+      "declarations": 1
+    },
+    {
+      "name": "ExtendBucketWorm",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1813,
+        "column": 16,
+        "endLine": 1813,
+        "endColumn": 43
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketAcl",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1861,
+        "column": 16,
+        "endLine": 1861,
+        "endColumn": 39
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketCors",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1900,
+        "column": 16,
+        "endLine": 1900,
+        "endColumn": 40
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketEncryption",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1936,
+        "column": 16,
+        "endLine": 1936,
+        "endColumn": 46
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketInfo",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1968,
+        "column": 16,
+        "endLine": 1968,
+        "endColumn": 40
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketInventory",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2018,
+        "column": 16,
+        "endLine": 2018,
+        "endColumn": 45
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketLifecycle",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2063,
+        "column": 16,
+        "endLine": 2063,
+        "endColumn": 45
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketLocation",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2099,
+        "column": 16,
+        "endLine": 2099,
+        "endColumn": 44
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketLogging",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2135,
+        "column": 16,
+        "endLine": 2135,
+        "endColumn": 43
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketPolicy",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2167,
+        "column": 16,
+        "endLine": 2167,
+        "endColumn": 42
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketReferer",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2200,
+        "column": 16,
+        "endLine": 2200,
+        "endColumn": 43
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketReplication",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2239,
+        "column": 16,
+        "endLine": 2239,
+        "endColumn": 47
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketReplicationLocation",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2280,
+        "column": 16,
+        "endLine": 2280,
+        "endColumn": 55
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketReplicationProgress",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2320,
+        "column": 16,
+        "endLine": 2320,
+        "endColumn": 55
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketRequestPayment",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2363,
+        "column": 16,
+        "endLine": 2363,
+        "endColumn": 50
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketTags",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2399,
+        "column": 16,
+        "endLine": 2399,
+        "endColumn": 40
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketTransferAcceleration",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2435,
+        "column": 16,
+        "endLine": 2435,
+        "endColumn": 56
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketVersioning",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2471,
+        "column": 16,
+        "endLine": 2471,
+        "endColumn": 46
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketWebsite",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2513,
+        "column": 16,
+        "endLine": 2513,
+        "endColumn": 43
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetBucketWorm",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2552,
+        "column": 16,
+        "endLine": 2552,
+        "endColumn": 40
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetLiveChannelHistory",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2590,
+        "column": 16,
+        "endLine": 2590,
+        "endColumn": 48
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetLiveChannelInfo",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2628,
+        "column": 16,
+        "endLine": 2628,
+        "endColumn": 45
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetLiveChannelStat",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2668,
+        "column": 16,
+        "endLine": 2668,
+        "endColumn": 45
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetObject",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2752,
+        "column": 16,
+        "endLine": 2752,
+        "endColumn": 36
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetObjectAcl",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2851,
+        "column": 16,
+        "endLine": 2851,
+        "endColumn": 39
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetObjectMeta",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2893,
+        "column": 16,
+        "endLine": 2893,
+        "endColumn": 40
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetObjectTagging",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2941,
+        "column": 16,
+        "endLine": 2941,
+        "endColumn": 43
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetSymlink",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2983,
+        "column": 16,
+        "endLine": 2983,
+        "endColumn": 37
+      },
+      "declarations": 1
+    },
+    {
+      "name": "GetVodPlaylist",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3028,
+        "column": 16,
+        "endLine": 3028,
+        "endColumn": 41
+      },
+      "declarations": 1
+    },
+    {
+      "name": "HeadObject",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3095,
+        "column": 16,
+        "endLine": 3095,
+        "endColumn": 37
+      },
+      "declarations": 1
+    },
+    {
+      "name": "InitiateBucketWorm",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3161,
+        "column": 16,
+        "endLine": 3161,
+        "endColumn": 45
+      },
+      "declarations": 1
+    },
+    {
+      "name": "InitiateMultipartUpload",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3253,
+        "column": 16,
+        "endLine": 3253,
+        "endColumn": 50
+      },
+      "declarations": 1
+    },
+    {
+      "name": "ListBucketInventory",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3346,
+        "column": 16,
+        "endLine": 3346,
+        "endColumn": 46
+      },
+      "declarations": 1
+    },
+    {
+      "name": "ListBuckets",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3408,
+        "column": 16,
+        "endLine": 3408,
+        "endColumn": 38
+      },
+      "declarations": 1
+    },
+    {
+      "name": "ListLiveChannel",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3474,
+        "column": 16,
+        "endLine": 3474,
+        "endColumn": 42
+      },
+      "declarations": 1
+    },
+    {
+      "name": "ListMultipartUploads",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3547,
+        "column": 16,
+        "endLine": 3547,
+        "endColumn": 47
+      },
+      "declarations": 1
+    },
+    {
+      "name": "ListObjectVersions",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3632,
+        "column": 16,
+        "endLine": 3632,
+        "endColumn": 45
+      },
+      "declarations": 1
+    },
+    {
+      "name": "ListObjects",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3711,
+        "column": 16,
+        "endLine": 3711,
+        "endColumn": 38
+      },
+      "declarations": 1
+    },
+    {
+      "name": "ListObjectsV2",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3791,
+        "column": 16,
+        "endLine": 3791,
+        "endColumn": 40
+      },
+      "declarations": 1
+    },
+    {
+      "name": "ListParts",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3875,
+        "column": 16,
+        "endLine": 3875,
+        "endColumn": 36
+      },
+      "declarations": 1
+    },
+    {
+      "name": "OptionObject",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3934,
+        "column": 16,
+        "endLine": 3934,
+        "endColumn": 39
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PostObject",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4007,
+        "column": 16,
+        "endLine": 4007,
+        "endColumn": 37
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PostVodPlaylist",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4070,
+        "column": 16,
+        "endLine": 4070,
+        "endColumn": 42
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutBucket",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4122,
+        "column": 16,
+        "endLine": 4122,
+        "endColumn": 36
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutBucketAcl",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4171,
+        "column": 16,
+        "endLine": 4171,
+        "endColumn": 39
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutBucketCors",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4214,
+        "column": 16,
+        "endLine": 4214,
+        "endColumn": 40
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutBucketEncryption",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4252,
+        "column": 16,
+        "endLine": 4252,
+        "endColumn": 46
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutBucketInventory",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4291,
+        "column": 16,
+        "endLine": 4291,
+        "endColumn": 45
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutBucketLifecycle",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4335,
+        "column": 16,
+        "endLine": 4335,
+        "endColumn": 45
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutBucketLogging",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4373,
+        "column": 16,
+        "endLine": 4373,
+        "endColumn": 43
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutBucketPolicy",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4411,
+        "column": 16,
+        "endLine": 4411,
+        "endColumn": 42
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutBucketReferer",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4449,
+        "column": 16,
+        "endLine": 4449,
+        "endColumn": 43
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutBucketReplication",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4487,
+        "column": 16,
+        "endLine": 4487,
+        "endColumn": 47
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutBucketRequestPayment",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4525,
+        "column": 16,
+        "endLine": 4525,
+        "endColumn": 50
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutBucketTags",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4563,
+        "column": 16,
+        "endLine": 4563,
+        "endColumn": 40
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutBucketTransferAcceleration",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4601,
+        "column": 16,
+        "endLine": 4601,
+        "endColumn": 56
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutBucketVersioning",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4639,
+        "column": 16,
+        "endLine": 4639,
+        "endColumn": 46
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutBucketWebsite",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4677,
+        "column": 16,
+        "endLine": 4677,
+        "endColumn": 43
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutLiveChannel",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4721,
+        "column": 16,
+        "endLine": 4721,
+        "endColumn": 41
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutLiveChannelStatus",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4758,
+        "column": 16,
+        "endLine": 4758,
+        "endColumn": 47
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutObject",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4813,
+        "column": 16,
+        "endLine": 4813,
+        "endColumn": 36
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutObjectAcl",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4885,
+        "column": 16,
+        "endLine": 4885,
+        "endColumn": 39
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutObjectTagging",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4936,
+        "column": 16,
+        "endLine": 4936,
+        "endColumn": 43
+      },
+      "declarations": 1
+    },
+    {
+      "name": "PutSymlink",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4984,
+        "column": 16,
+        "endLine": 4984,
+        "endColumn": 37
+      },
+      "declarations": 1
+    },
+    {
+      "name": "RestoreObject",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 5037,
+        "column": 16,
+        "endLine": 5037,
+        "endColumn": 40
+      },
+      "declarations": 1
+    },
+    {
+      "name": "SelectObject",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 5082,
+        "column": 16,
+        "endLine": 5082,
+        "endColumn": 39
+      },
+      "declarations": 1
+    },
+    {
+      "name": "UploadPart",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 5122,
+        "column": 16,
+        "endLine": 5122,
+        "endColumn": 37
+      },
+      "declarations": 1
+    },
+    {
+      "name": "UploadPartCopy",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 5187,
+        "column": 16,
+        "endLine": 5187,
+        "endColumn": 41
+      },
+      "declarations": 1
+    }
+  ],
+  "executedOn": "2026-10-09",
+  "executionKind": "local-research",
+  "status": "DISCOVERED_ONLY",
+  "productionCorpusChanged": false,
+  "lowered": "NOT RUN",
+  "emitted": "NOT RUN",
+  "compiled": "NOT RUN",
+  "live": "NOT RUN",
+  "moduleImportPlan": "metadata/module-imports/oss.json"
+}
