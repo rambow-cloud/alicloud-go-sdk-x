@@ -26,6 +26,12 @@ func TestROAEmitterReusesFacadesForAnotherProduct(t *testing.T) {
 		t.Fatal(err)
 	}
 	methods := files["service/computecheck/operations.gen.go"]
+	types := files["service/computecheck/types.gen.go"]
+	for _, comment := range []string{"// Body is the native JSON request body, encoded without an extra wrapper.", "// Headers supplies custom service HTTP headers; nil supplies none.", "// FunctionName is the required nonempty path parameter functionName."} {
+		if !bytes.Contains(types, []byte(comment)) {
+			t.Fatal("ROA role contract lost", comment)
+		}
+	}
 	if !bytes.Contains(methods, []byte("invokeROA[")) || !bytes.Contains(methods, []byte("ResponseBody: alicloud.ResponseBodyNone")) {
 		t.Fatal("ROA runtime composition lost")
 	}

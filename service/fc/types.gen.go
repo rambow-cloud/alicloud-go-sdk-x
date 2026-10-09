@@ -443,8 +443,8 @@ type CertConfig struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ChangeResourceGroupInput struct {
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -453,7 +453,8 @@ type ChangeResourceGroupInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L1716
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *ChangeResourceGroupInputModel `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L1735
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
@@ -569,8 +570,8 @@ type ConcurrencyConfig struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type CreateAliasInput struct {
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -581,12 +582,14 @@ type CreateAliasInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L1770
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *CreateAliasInputModel `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L1789
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L1789
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -721,8 +724,8 @@ type CreateAliasResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type CreateCustomDomainInput struct {
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -733,7 +736,8 @@ type CreateCustomDomainInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L1822
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *CreateCustomDomainInputModel `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L1843
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
@@ -973,8 +977,8 @@ type CreateCustomDomainResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type CreateFunctionInput struct {
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -985,7 +989,8 @@ type CreateFunctionInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L1878
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *CreateFunctionInputModel `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L1899
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
@@ -1784,8 +1789,8 @@ type CreateFunctionResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type CreateLayerVersionInput struct {
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -1796,12 +1801,14 @@ type CreateLayerVersionInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L1934
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *CreateLayerVersionInputModel `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L1953
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// LayerName maps to the exact wire member layerName.
+	// LayerName is the required nonempty path parameter layerName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L1953
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -1979,7 +1986,7 @@ type CreateLayerVersionResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type CreateSessionInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -1989,8 +1996,8 @@ type CreateSessionInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L1987
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -1999,12 +2006,14 @@ type CreateSessionInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L1986
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *CreateSessionInputModel `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2004
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2004
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -2329,7 +2338,7 @@ type CreateSessionResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type CreateSnapshotInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -2339,8 +2348,8 @@ type CreateSnapshotInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2044
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -2349,12 +2358,14 @@ type CreateSnapshotInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2043
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *CreateSnapshotInputModel `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2067
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2067
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -2624,8 +2635,8 @@ type CreateSnapshotResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type CreateTriggerInput struct {
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -2636,12 +2647,14 @@ type CreateTriggerInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2112
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *CreateTriggerInputModel `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2131
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2131
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -2888,8 +2901,8 @@ type CreateTriggerResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type CreateVpcBindingInput struct {
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -2900,12 +2913,14 @@ type CreateVpcBindingInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2164
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *CreateVPCBindingInput `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2182
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2182
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -3324,17 +3339,20 @@ type DNSOption struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DeleteAliasInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2226
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2226
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	FunctionName string `json:"functionName,omitzero" roa:"path"`
-	// AliasName maps to the exact wire member aliasName.
+	// AliasName is the required nonempty path parameter aliasName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2226
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -3367,7 +3385,7 @@ type DeleteAliasResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DeleteAsyncInvokeConfigInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -3377,12 +3395,14 @@ type DeleteAsyncInvokeConfigInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2256
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2272
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2272
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -3415,12 +3435,14 @@ type DeleteAsyncInvokeConfigResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DeleteConcurrencyConfigInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2321
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2321
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -3453,12 +3475,14 @@ type DeleteConcurrencyConfigResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DeleteCustomDomainInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2362
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// DomainName maps to the exact wire member domainName.
+	// DomainName is the required nonempty path parameter domainName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2362
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -3491,12 +3515,14 @@ type DeleteCustomDomainResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DeleteFunctionInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2403
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2403
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -3529,17 +3555,20 @@ type DeleteFunctionResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DeleteFunctionVersionInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2444
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2444
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	FunctionName string `json:"functionName,omitzero" roa:"path"`
-	// VersionID maps to the exact wire member versionId.
+	// VersionID is the required nonempty path parameter versionId.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2444
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -3572,17 +3601,20 @@ type DeleteFunctionVersionResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DeleteLayerVersionInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2485
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// LayerName maps to the exact wire member layerName.
+	// LayerName is the required nonempty path parameter layerName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2485
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	LayerName string `json:"layerName,omitzero" roa:"path"`
-	// Version maps to the exact wire member version.
+	// Version is the required nonempty path parameter version.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2485
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -3615,7 +3647,7 @@ type DeleteLayerVersionResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DeleteProvisionConfigInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -3625,12 +3657,14 @@ type DeleteProvisionConfigInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2515
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2531
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2531
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -3663,7 +3697,7 @@ type DeleteProvisionConfigResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DeleteScalingConfigInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -3673,12 +3707,14 @@ type DeleteScalingConfigInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2569
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2585
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2585
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -3711,7 +3747,7 @@ type DeleteScalingConfigResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DeleteSessionInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -3721,17 +3757,20 @@ type DeleteSessionInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2623
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2639
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2639
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	FunctionName string `json:"functionName,omitzero" roa:"path"`
-	// SessionID maps to the exact wire member sessionId.
+	// SessionID is the required nonempty path parameter sessionId.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2639
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -3764,17 +3803,20 @@ type DeleteSessionResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DeleteSnapshotInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2698
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2698
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	FunctionName string `json:"functionName,omitzero" roa:"path"`
-	// SnapshotID maps to the exact wire member snapshotId.
+	// SnapshotID is the required nonempty path parameter snapshotId.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2698
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -3807,17 +3849,20 @@ type DeleteSnapshotResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DeleteTriggerInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2747
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2747
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	FunctionName string `json:"functionName,omitzero" roa:"path"`
-	// TriggerName maps to the exact wire member triggerName.
+	// TriggerName is the required nonempty path parameter triggerName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2747
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -3850,17 +3895,20 @@ type DeleteTriggerResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DeleteVpcBindingInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2788
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2788
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	FunctionName string `json:"functionName,omitzero" roa:"path"`
-	// VPCID maps to the exact wire member vpcId.
+	// VPCID is the required nonempty path parameter vpcId.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2788
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -3893,7 +3941,7 @@ type DeleteVpcBindingResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DescribeRegionsInput struct {
-	// AcceptLanguage maps to the exact wire member AcceptLanguage.
+	// AcceptLanguage maps to the native query parameter AcceptLanguage.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -3909,7 +3957,8 @@ type DescribeRegionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2818
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	AcceptLanguage *string `json:"AcceptLanguage,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2841
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
@@ -4043,7 +4092,7 @@ type DestinationConfig struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DisableFunctionInvocationInput struct {
-	// AbortOngoingRequest maps to the exact wire member abortOngoingRequest.
+	// AbortOngoingRequest maps to the JSON body member abortOngoingRequest.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -4053,7 +4102,7 @@ type DisableFunctionInvocationInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2879
 	// Sent in the reviewed ROA body-member location, preserving the exact native wire name.
 	AbortOngoingRequest *bool `json:"abortOngoingRequest,omitzero" roa:"body-member"`
-	// Reason maps to the exact wire member reason.
+	// Reason maps to the JSON body member reason.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -4063,12 +4112,14 @@ type DisableFunctionInvocationInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2880
 	// Sent in the reviewed ROA body-member location, preserving the exact native wire name.
 	Reason *string `json:"reason,omitzero" roa:"body-member"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2903
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2903
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -4129,12 +4180,14 @@ type DisableFunctionInvocationResponseBody struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type EnableFunctionInvocationInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2962
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L2962
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -4757,17 +4810,20 @@ type GPUConfig struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type GetAliasInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3004
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3004
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	FunctionName string `json:"functionName,omitzero" roa:"path"`
-	// AliasName maps to the exact wire member aliasName.
+	// AliasName is the required nonempty path parameter aliasName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3004
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -4858,7 +4914,7 @@ type GetAliasResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type GetAsyncInvokeConfigInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -4868,12 +4924,14 @@ type GetAsyncInvokeConfigInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3034
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3051
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3051
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -4974,7 +5032,7 @@ type GetAsyncInvokeConfigResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type GetAsyncTaskInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -4984,17 +5042,20 @@ type GetAsyncTaskInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3089
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3106
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3106
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	FunctionName string `json:"functionName,omitzero" roa:"path"`
-	// TaskID maps to the exact wire member taskId.
+	// TaskID is the required nonempty path parameter taskId.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3106
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -5176,12 +5237,14 @@ type GetAsyncTaskResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type GetConcurrencyConfigInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3156
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3156
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -5237,12 +5300,14 @@ type GetConcurrencyConfigResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type GetCustomDomainInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3198
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// DomainName maps to the exact wire member domainName.
+	// DomainName is the required nonempty path parameter domainName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3198
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -5402,7 +5467,7 @@ type GetCustomDomainResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type GetFunctionInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -5412,12 +5477,14 @@ type GetFunctionInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3228
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3245
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3245
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -5869,7 +5936,7 @@ type GetFunctionOutput struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type GetFunctionCodeInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -5879,12 +5946,14 @@ type GetFunctionCodeInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3283
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3300
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3300
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -5959,17 +6028,20 @@ type GetFunctionResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type GetLayerVersionInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3350
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// LayerName maps to the exact wire member layerName.
+	// LayerName is the required nonempty path parameter layerName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3350
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	LayerName string `json:"layerName,omitzero" roa:"path"`
-	// Version maps to the exact wire member version.
+	// Version is the required nonempty path parameter version.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3350
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -6088,12 +6160,14 @@ type GetLayerVersionOutput struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type GetLayerVersionByArnInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3392
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// ARN maps to the exact wire member arn.
+	// ARN is the required nonempty path parameter arn.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3392
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -6250,7 +6324,7 @@ type GetLayerVersionResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type GetProvisionConfigInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -6260,12 +6334,14 @@ type GetProvisionConfigInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3422
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3439
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3439
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -6387,7 +6463,7 @@ type GetProvisionConfigResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type GetScalingConfigInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -6397,12 +6473,14 @@ type GetScalingConfigInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3477
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3494
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3494
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -6537,7 +6615,7 @@ type GetScalingConfigResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type GetSessionInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -6547,17 +6625,20 @@ type GetSessionInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3532
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3549
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3549
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	FunctionName string `json:"functionName,omitzero" roa:"path"`
-	// SessionID maps to the exact wire member sessionId.
+	// SessionID is the required nonempty path parameter sessionId.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3549
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -6749,17 +6830,20 @@ type GetSessionResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type GetSnapshotInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3607
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3607
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	FunctionName string `json:"functionName,omitzero" roa:"path"`
-	// SnapshotID maps to the exact wire member snapshotId.
+	// SnapshotID is the required nonempty path parameter snapshotId.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3607
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -7014,17 +7098,20 @@ type GetSnapshotResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type GetTriggerInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3655
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3655
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	FunctionName string `json:"functionName,omitzero" roa:"path"`
-	// TriggerName maps to the exact wire member triggerName.
+	// TriggerName is the required nonempty path parameter triggerName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3655
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -7520,7 +7607,7 @@ type LifecycleHook struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ListAliasesInput struct {
-	// Limit maps to the exact wire member limit.
+	// Limit maps to the native query parameter limit.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7530,7 +7617,7 @@ type ListAliasesInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3779
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Limit *int32 `json:"limit,omitzero" roa:"query"`
-	// NextToken maps to the exact wire member nextToken.
+	// NextToken maps to the native query parameter nextToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7540,7 +7627,7 @@ type ListAliasesInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3780
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	NextToken *string `json:"nextToken,omitzero" roa:"query"`
-	// Prefix maps to the exact wire member prefix.
+	// Prefix maps to the native query parameter prefix.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7550,12 +7637,14 @@ type ListAliasesInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3781
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Prefix *string `json:"prefix,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3798
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3798
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -7654,7 +7743,7 @@ type ListAsyncInvokeConfigOutput struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ListAsyncInvokeConfigsInput struct {
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName maps to the native query parameter functionName.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7664,7 +7753,7 @@ type ListAsyncInvokeConfigsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3842
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	FunctionName *string `json:"functionName,omitzero" roa:"query"`
-	// Limit maps to the exact wire member limit.
+	// Limit maps to the native query parameter limit.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7674,7 +7763,7 @@ type ListAsyncInvokeConfigsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3843
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Limit *int32 `json:"limit,omitzero" roa:"query"`
-	// NextToken maps to the exact wire member nextToken.
+	// NextToken maps to the native query parameter nextToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7684,7 +7773,8 @@ type ListAsyncInvokeConfigsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3844
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	NextToken *string `json:"nextToken,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3861
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
@@ -7761,7 +7851,7 @@ type ListAsyncTaskOutput struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ListAsyncTasksInput struct {
-	// IncludePayload maps to the exact wire member includePayload.
+	// IncludePayload maps to the native query parameter includePayload.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7777,7 +7867,7 @@ type ListAsyncTasksInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3905
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	IncludePayload *bool `json:"includePayload,omitzero" roa:"query"`
-	// Limit maps to the exact wire member limit.
+	// Limit maps to the native query parameter limit.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7787,7 +7877,7 @@ type ListAsyncTasksInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3912
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Limit *int32 `json:"limit,omitzero" roa:"query"`
-	// NextToken maps to the exact wire member nextToken.
+	// NextToken maps to the native query parameter nextToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7797,7 +7887,7 @@ type ListAsyncTasksInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3913
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	NextToken *string `json:"nextToken,omitzero" roa:"query"`
-	// Prefix maps to the exact wire member prefix.
+	// Prefix maps to the native query parameter prefix.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7807,7 +7897,7 @@ type ListAsyncTasksInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3914
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Prefix *string `json:"prefix,omitzero" roa:"query"`
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7817,7 +7907,7 @@ type ListAsyncTasksInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3915
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// SortOrderByTime maps to the exact wire member sortOrderByTime.
+	// SortOrderByTime maps to the native query parameter sortOrderByTime.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7831,7 +7921,7 @@ type ListAsyncTasksInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3916
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	SortOrderByTime *string `json:"sortOrderByTime,omitzero" roa:"query"`
-	// StartedTimeBegin maps to the exact wire member startedTimeBegin.
+	// StartedTimeBegin maps to the native query parameter startedTimeBegin.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7841,7 +7931,7 @@ type ListAsyncTasksInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3921
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	StartedTimeBegin *int64 `json:"startedTimeBegin,omitzero" roa:"query"`
-	// StartedTimeEnd maps to the exact wire member startedTimeEnd.
+	// StartedTimeEnd maps to the native query parameter startedTimeEnd.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7851,7 +7941,7 @@ type ListAsyncTasksInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3922
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	StartedTimeEnd *int64 `json:"startedTimeEnd,omitzero" roa:"query"`
-	// Status maps to the exact wire member status.
+	// Status maps to the native query parameter status.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7881,12 +7971,14 @@ type ListAsyncTasksInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3923
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Status *string `json:"status,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3960
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3960
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -7941,7 +8033,7 @@ type ListAsyncTasksResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ListConcurrencyConfigsInput struct {
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName maps to the native query parameter functionName.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7951,7 +8043,7 @@ type ListConcurrencyConfigsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4022
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	FunctionName *string `json:"functionName,omitzero" roa:"query"`
-	// Limit maps to the exact wire member limit.
+	// Limit maps to the native query parameter limit.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7961,7 +8053,7 @@ type ListConcurrencyConfigsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4023
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Limit *int32 `json:"limit,omitzero" roa:"query"`
-	// NextToken maps to the exact wire member nextToken.
+	// NextToken maps to the native query parameter nextToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -7971,7 +8063,8 @@ type ListConcurrencyConfigsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4024
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	NextToken *string `json:"nextToken,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4041
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
@@ -8070,7 +8163,7 @@ type ListCustomDomainOutput struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ListCustomDomainsInput struct {
-	// Limit maps to the exact wire member limit.
+	// Limit maps to the native query parameter limit.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8080,7 +8173,7 @@ type ListCustomDomainsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4085
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Limit *int32 `json:"limit,omitzero" roa:"query"`
-	// NextToken maps to the exact wire member nextToken.
+	// NextToken maps to the native query parameter nextToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8090,7 +8183,7 @@ type ListCustomDomainsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4086
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	NextToken *string `json:"nextToken,omitzero" roa:"query"`
-	// Prefix maps to the exact wire member prefix.
+	// Prefix maps to the native query parameter prefix.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8100,7 +8193,8 @@ type ListCustomDomainsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4087
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Prefix *string `json:"prefix,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4104
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
@@ -8155,7 +8249,7 @@ type ListCustomDomainsResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ListFunctionVersionsInput struct {
-	// Direction maps to the exact wire member direction.
+	// Direction maps to the native query parameter direction.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8165,7 +8259,7 @@ type ListFunctionVersionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4148
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Direction *string `json:"direction,omitzero" roa:"query"`
-	// Limit maps to the exact wire member limit.
+	// Limit maps to the native query parameter limit.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8175,7 +8269,7 @@ type ListFunctionVersionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4149
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Limit *int32 `json:"limit,omitzero" roa:"query"`
-	// NextToken maps to the exact wire member nextToken.
+	// NextToken maps to the native query parameter nextToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8185,12 +8279,14 @@ type ListFunctionVersionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4150
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	NextToken *string `json:"nextToken,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4167
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4167
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -8254,7 +8350,7 @@ type ListFunctionVersionsResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ListFunctionsInput struct {
-	// Description maps to the exact wire member description.
+	// Description maps to the native query parameter description.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8264,7 +8360,7 @@ type ListFunctionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4211
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Description *string `json:"description,omitzero" roa:"query"`
-	// FcVersion maps to the exact wire member fcVersion.
+	// FcVersion maps to the native query parameter fcVersion.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8279,7 +8375,7 @@ type ListFunctionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4212
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	FcVersion *string `json:"fcVersion,omitzero" roa:"query"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName maps to the native query parameter functionName.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8289,7 +8385,7 @@ type ListFunctionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4218
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	FunctionName *string `json:"functionName,omitzero" roa:"query"`
-	// GpuType maps to the exact wire member gpuType.
+	// GpuType maps to the native query parameter gpuType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8299,7 +8395,7 @@ type ListFunctionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4219
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	GpuType *string `json:"gpuType,omitzero" roa:"query"`
-	// Limit maps to the exact wire member limit.
+	// Limit maps to the native query parameter limit.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8309,7 +8405,7 @@ type ListFunctionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4220
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Limit *int32 `json:"limit,omitzero" roa:"query"`
-	// NextToken maps to the exact wire member nextToken.
+	// NextToken maps to the native query parameter nextToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8319,7 +8415,7 @@ type ListFunctionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4221
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	NextToken *string `json:"nextToken,omitzero" roa:"query"`
-	// Prefix maps to the exact wire member prefix.
+	// Prefix maps to the native query parameter prefix.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8329,7 +8425,7 @@ type ListFunctionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4222
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Prefix *string `json:"prefix,omitzero" roa:"query"`
-	// ResourceGroupID maps to the exact wire member resourceGroupId.
+	// ResourceGroupID maps to the native query parameter resourceGroupId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8339,7 +8435,7 @@ type ListFunctionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4223
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	ResourceGroupID *string `json:"resourceGroupId,omitzero" roa:"query"`
-	// Runtime maps to the exact wire member runtime.
+	// Runtime maps to the native query parameter runtime.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8349,7 +8445,7 @@ type ListFunctionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4224
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Runtime *string `json:"runtime,omitzero" roa:"query"`
-	// Tags maps to the exact wire member tags.
+	// Tags maps to the native query parameter tags.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -8359,7 +8455,8 @@ type ListFunctionsInput struct {
 	// Encoded as one JSON query value; nil is omitted and explicit empty containers are preserved.
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Tags []Tag `json:"tags,omitzero" rpc:"json" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4264
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
@@ -8436,7 +8533,7 @@ type ListFunctionsResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ListInstancesInput struct {
-	// EndTimeMs maps to the exact wire member endTimeMs.
+	// EndTimeMs maps to the native query parameter endTimeMs.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8446,7 +8543,7 @@ type ListInstancesInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4336
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	EndTimeMs *int64 `json:"endTimeMs,omitzero" roa:"query"`
-	// InstanceIDs maps to the exact wire member instanceIds.
+	// InstanceIDs maps to the native query parameter instanceIds.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -8456,7 +8553,7 @@ type ListInstancesInput struct {
 	// Encoded as one JSON query value; nil is omitted and explicit empty containers are preserved.
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	InstanceIDs []string `json:"instanceIds,omitzero" rpc:"json" roa:"query"`
-	// InstanceStatus maps to the exact wire member instanceStatus.
+	// InstanceStatus maps to the native query parameter instanceStatus.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -8466,7 +8563,7 @@ type ListInstancesInput struct {
 	// Encoded as one JSON query value; nil is omitted and explicit empty containers are preserved.
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	InstanceStatus []string `json:"instanceStatus,omitzero" rpc:"json" roa:"query"`
-	// Limit maps to the exact wire member limit.
+	// Limit maps to the native query parameter limit.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8476,7 +8573,7 @@ type ListInstancesInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4339
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Limit *string `json:"limit,omitzero" roa:"query"`
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8486,7 +8583,7 @@ type ListInstancesInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4340
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// StartKey maps to the exact wire member startKey.
+	// StartKey maps to the native query parameter startKey.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8496,7 +8593,7 @@ type ListInstancesInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4341
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	StartKey *string `json:"startKey,omitzero" roa:"query"`
-	// StartTimeMs maps to the exact wire member startTimeMs.
+	// StartTimeMs maps to the native query parameter startTimeMs.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8506,7 +8603,7 @@ type ListInstancesInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4342
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	StartTimeMs *int64 `json:"startTimeMs,omitzero" roa:"query"`
-	// WithAllActive maps to the exact wire member withAllActive.
+	// WithAllActive maps to the native query parameter withAllActive.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8516,12 +8613,14 @@ type ListInstancesInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4343
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	WithAllActive *bool `json:"withAllActive,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4371
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4371
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -8612,7 +8711,7 @@ type ListLayerVersionOutput struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ListLayerVersionsInput struct {
-	// Limit maps to the exact wire member limit.
+	// Limit maps to the native query parameter limit.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8622,7 +8721,7 @@ type ListLayerVersionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4438
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Limit *int32 `json:"limit,omitzero" roa:"query"`
-	// StartVersion maps to the exact wire member startVersion.
+	// StartVersion maps to the native query parameter startVersion.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8632,12 +8731,14 @@ type ListLayerVersionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4439
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	StartVersion *string `json:"startVersion,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4456
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// LayerName maps to the exact wire member layerName.
+	// LayerName is the required nonempty path parameter layerName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4456
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -8692,7 +8793,7 @@ type ListLayerVersionsResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ListLayersInput struct {
-	// Limit maps to the exact wire member limit.
+	// Limit maps to the native query parameter limit.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8702,7 +8803,7 @@ type ListLayersInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4497
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Limit *int32 `json:"limit,omitzero" roa:"query"`
-	// NextToken maps to the exact wire member nextToken.
+	// NextToken maps to the native query parameter nextToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8712,7 +8813,7 @@ type ListLayersInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4498
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	NextToken *string `json:"nextToken,omitzero" roa:"query"`
-	// Official maps to the exact wire member official.
+	// Official maps to the native query parameter official.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8722,7 +8823,7 @@ type ListLayersInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4499
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Official *string `json:"official,omitzero" roa:"query"`
-	// Prefix maps to the exact wire member prefix.
+	// Prefix maps to the native query parameter prefix.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8732,7 +8833,7 @@ type ListLayersInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4500
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Prefix *string `json:"prefix,omitzero" roa:"query"`
-	// Public maps to the exact wire member public.
+	// Public maps to the native query parameter public.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8742,7 +8843,8 @@ type ListLayersInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4501
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Public *string `json:"public,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4518
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
@@ -8819,7 +8921,7 @@ type ListLayersResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ListProvisionConfigsInput struct {
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName maps to the native query parameter functionName.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8829,7 +8931,7 @@ type ListProvisionConfigsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4568
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	FunctionName *string `json:"functionName,omitzero" roa:"query"`
-	// Limit maps to the exact wire member limit.
+	// Limit maps to the native query parameter limit.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8839,7 +8941,7 @@ type ListProvisionConfigsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4569
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Limit *int32 `json:"limit,omitzero" roa:"query"`
-	// NextToken maps to the exact wire member nextToken.
+	// NextToken maps to the native query parameter nextToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8849,7 +8951,8 @@ type ListProvisionConfigsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4570
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	NextToken *string `json:"nextToken,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4587
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
@@ -8926,7 +9029,7 @@ type ListProvisionConfigsResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ListScalingConfigsInput struct {
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName maps to the native query parameter functionName.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8936,7 +9039,7 @@ type ListScalingConfigsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4631
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	FunctionName *string `json:"functionName,omitzero" roa:"query"`
-	// Limit maps to the exact wire member limit.
+	// Limit maps to the native query parameter limit.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8946,7 +9049,7 @@ type ListScalingConfigsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4632
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Limit *int32 `json:"limit,omitzero" roa:"query"`
-	// NextToken maps to the exact wire member nextToken.
+	// NextToken maps to the native query parameter nextToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -8956,7 +9059,8 @@ type ListScalingConfigsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4633
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	NextToken *string `json:"nextToken,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4650
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
@@ -9033,7 +9137,7 @@ type ListScalingConfigsResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ListSessionsInput struct {
-	// Limit maps to the exact wire member limit.
+	// Limit maps to the native query parameter limit.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -9043,7 +9147,7 @@ type ListSessionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4694
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Limit *int32 `json:"limit,omitzero" roa:"query"`
-	// NextToken maps to the exact wire member nextToken.
+	// NextToken maps to the native query parameter nextToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -9053,7 +9157,7 @@ type ListSessionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4695
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	NextToken *string `json:"nextToken,omitzero" roa:"query"`
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -9063,7 +9167,7 @@ type ListSessionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4696
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// SessionID maps to the exact wire member sessionId.
+	// SessionID maps to the native query parameter sessionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -9073,7 +9177,7 @@ type ListSessionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4697
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	SessionID *string `json:"sessionId,omitzero" roa:"query"`
-	// SessionStatus maps to the exact wire member sessionStatus.
+	// SessionStatus maps to the native query parameter sessionStatus.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -9083,12 +9187,14 @@ type ListSessionsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4698
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	SessionStatus *string `json:"sessionStatus,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4715
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4715
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -9165,7 +9271,7 @@ type ListSessionsResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ListSnapshotsInput struct {
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName maps to the native query parameter functionName.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -9175,7 +9281,7 @@ type ListSnapshotsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4765
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	FunctionName *string `json:"functionName,omitzero" roa:"query"`
-	// Limit maps to the exact wire member limit.
+	// Limit maps to the native query parameter limit.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -9185,7 +9291,7 @@ type ListSnapshotsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4766
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Limit *int32 `json:"limit,omitzero" roa:"query"`
-	// NextToken maps to the exact wire member nextToken.
+	// NextToken maps to the native query parameter nextToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -9195,7 +9301,7 @@ type ListSnapshotsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4767
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	NextToken *string `json:"nextToken,omitzero" roa:"query"`
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -9205,7 +9311,7 @@ type ListSnapshotsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4768
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// SessionID maps to the exact wire member sessionId.
+	// SessionID maps to the native query parameter sessionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -9215,7 +9321,8 @@ type ListSnapshotsInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4769
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	SessionID *string `json:"sessionId,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4792
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
@@ -9296,7 +9403,7 @@ type ListSnapshotsResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ListTagResourcesInput struct {
-	// Limit maps to the exact wire member Limit.
+	// Limit maps to the native query parameter Limit.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -9306,7 +9413,7 @@ type ListTagResourcesInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4848
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Limit *int32 `json:"Limit,omitzero" roa:"query"`
-	// NextToken maps to the exact wire member NextToken.
+	// NextToken maps to the native query parameter NextToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -9316,7 +9423,7 @@ type ListTagResourcesInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4849
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	NextToken *string `json:"NextToken,omitzero" roa:"query"`
-	// ResourceID maps to the exact wire member ResourceId.
+	// ResourceID maps to the native query parameter ResourceId.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -9326,7 +9433,7 @@ type ListTagResourcesInput struct {
 	// Encoded as one JSON query value; nil is omitted and explicit empty containers are preserved.
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	ResourceID []string `json:"ResourceId,omitzero" rpc:"json" roa:"query"`
-	// ResourceType maps to the exact wire member ResourceType.
+	// ResourceType maps to the native query parameter ResourceType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -9338,7 +9445,7 @@ type ListTagResourcesInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4851
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	ResourceType *string `json:"ResourceType,omitzero" roa:"query"`
-	// Tag maps to the exact wire member Tag.
+	// Tag maps to the native query parameter Tag.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -9350,7 +9457,8 @@ type ListTagResourcesInput struct {
 	// Encoded as one JSON query value; nil is omitted and explicit empty containers are preserved.
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Tag []ListTagResourcesRequestTag `json:"Tag,omitzero" rpc:"json" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4894
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
@@ -9472,7 +9580,7 @@ type ListTagResourcesResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ListTriggersInput struct {
-	// Limit maps to the exact wire member limit.
+	// Limit maps to the native query parameter limit.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -9482,7 +9590,7 @@ type ListTriggersInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4952
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Limit *int32 `json:"limit,omitzero" roa:"query"`
-	// NextToken maps to the exact wire member nextToken.
+	// NextToken maps to the native query parameter nextToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -9492,7 +9600,7 @@ type ListTriggersInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4953
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	NextToken *string `json:"nextToken,omitzero" roa:"query"`
-	// Prefix maps to the exact wire member prefix.
+	// Prefix maps to the native query parameter prefix.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -9502,12 +9610,14 @@ type ListTriggersInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4954
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Prefix *string `json:"prefix,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4971
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L4971
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -9615,12 +9725,14 @@ type ListVersionsOutput struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ListVpcBindingsInput struct {
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5027
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5027
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -10010,13 +10122,13 @@ type PathConfig struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type PauseSessionInput struct {
-	// FileSystemOnly maps to the exact wire member fileSystemOnly.
+	// FileSystemOnly maps to the native query parameter fileSystemOnly.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5057
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	FileSystemOnly *string `json:"fileSystemOnly,omitzero" roa:"query"`
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -10026,17 +10138,20 @@ type PauseSessionInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5058
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5077
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5077
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	FunctionName string `json:"functionName,omitzero" roa:"path"`
-	// SessionID maps to the exact wire member sessionId.
+	// SessionID is the required nonempty path parameter sessionId.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5077
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -10389,8 +10504,8 @@ type ProvisionConfig struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type PublishFunctionVersionInput struct {
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -10401,12 +10516,14 @@ type PublishFunctionVersionInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5120
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *PublishVersionInput `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5139
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5139
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -10494,7 +10611,7 @@ type PublishVersionInput struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type PutAsyncInvokeConfigInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -10504,8 +10621,8 @@ type PutAsyncInvokeConfigInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5175
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -10516,12 +10633,14 @@ type PutAsyncInvokeConfigInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5172
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *PutAsyncInvokeConfigInputModel `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5192
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5192
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -10663,8 +10782,8 @@ type PutAsyncInvokeConfigResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type PutConcurrencyConfigInput struct {
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -10675,12 +10794,14 @@ type PutConcurrencyConfigInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5231
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *PutConcurrencyInput `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5250
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5250
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -10752,7 +10873,7 @@ type PutConcurrencyInput struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type PutLayerACLInput struct {
-	// Acl maps to the exact wire member acl.
+	// Acl maps to the native query parameter acl.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -10762,7 +10883,7 @@ type PutLayerACLInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5283
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Acl *string `json:"acl,omitzero" roa:"query"`
-	// Public maps to the exact wire member public.
+	// Public maps to the native query parameter public.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -10774,12 +10895,14 @@ type PutLayerACLInput struct {
 	// Deprecated: The upstream DSL marks this field as deprecated. It remains available for compatibility.
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Public *string `json:"public,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5300
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// LayerName maps to the exact wire member layerName.
+	// LayerName is the required nonempty path parameter layerName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5300
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -10812,7 +10935,7 @@ type PutLayerACLResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type PutProvisionConfigInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -10822,8 +10945,8 @@ type PutProvisionConfigInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5344
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -10834,12 +10957,14 @@ type PutProvisionConfigInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5341
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *PutProvisionConfigInputModel `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5361
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5361
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -11025,7 +11150,7 @@ type PutProvisionConfigResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type PutScalingConfigInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -11035,8 +11160,8 @@ type PutScalingConfigInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5401
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -11045,12 +11170,14 @@ type PutScalingConfigInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5400
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *PutScalingConfigInputModel `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5418
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5418
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -11388,13 +11515,13 @@ type RegistryNetworkConfig struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ResumeSessionInput struct {
-	// FileSystemOnly maps to the exact wire member fileSystemOnly.
+	// FileSystemOnly maps to the native query parameter fileSystemOnly.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5457
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	FileSystemOnly *bool `json:"fileSystemOnly,omitzero" roa:"query"`
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -11404,17 +11531,20 @@ type ResumeSessionInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5458
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5477
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5477
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	FunctionName string `json:"functionName,omitzero" roa:"path"`
-	// SessionID maps to the exact wire member sessionId.
+	// SessionID is the required nonempty path parameter sessionId.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5477
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -12393,7 +12523,7 @@ type Snapshot struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type StopAsyncTaskInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -12403,17 +12533,20 @@ type StopAsyncTaskInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5520
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5536
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5536
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	FunctionName string `json:"functionName,omitzero" roa:"path"`
-	// TaskID maps to the exact wire member taskId.
+	// TaskID is the required nonempty path parameter taskId.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5536
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -12547,8 +12680,8 @@ type TagResource struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type TagResourcesInput struct {
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -12559,7 +12692,8 @@ type TagResourcesInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5574
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *TagResourcesInputModel `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5592
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
@@ -12857,7 +12991,7 @@ type Trigger struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type UntagResourcesInput struct {
-	// All maps to the exact wire member All.
+	// All maps to the native query parameter All.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -12867,7 +13001,7 @@ type UntagResourcesInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5625
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	All *bool `json:"All,omitzero" roa:"query"`
-	// ResourceID maps to the exact wire member ResourceId.
+	// ResourceID maps to the native query parameter ResourceId.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -12879,7 +13013,7 @@ type UntagResourcesInput struct {
 	// Encoded as one JSON query value; nil is omitted and explicit empty containers are preserved.
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	ResourceID []string `json:"ResourceId,omitzero" rpc:"json" roa:"query"`
-	// ResourceType maps to the exact wire member ResourceType.
+	// ResourceType maps to the native query parameter ResourceType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -12891,7 +13025,7 @@ type UntagResourcesInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5629
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	ResourceType *string `json:"ResourceType,omitzero" roa:"query"`
-	// TagKey maps to the exact wire member TagKey.
+	// TagKey maps to the native query parameter TagKey.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -12901,7 +13035,8 @@ type UntagResourcesInput struct {
 	// Encoded as one JSON query value; nil is omitted and explicit empty containers are preserved.
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	TagKey []string `json:"TagKey,omitzero" rpc:"json" roa:"query"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5659
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
@@ -12934,8 +13069,8 @@ type UntagResourcesResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type UpdateAliasInput struct {
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -12946,17 +13081,20 @@ type UpdateAliasInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5714
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *UpdateAliasInputModel `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5733
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5733
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	FunctionName string `json:"functionName,omitzero" roa:"path"`
-	// AliasName maps to the exact wire member aliasName.
+	// AliasName is the required nonempty path parameter aliasName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5733
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -13078,8 +13216,8 @@ type UpdateAliasResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type UpdateCustomDomainInput struct {
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -13090,12 +13228,14 @@ type UpdateCustomDomainInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5766
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *UpdateCustomDomainInputModel `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5785
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// DomainName maps to the exact wire member domainName.
+	// DomainName is the required nonempty path parameter domainName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5785
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -13326,8 +13466,8 @@ type UpdateCustomDomainResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type UpdateFunctionInput struct {
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -13338,12 +13478,14 @@ type UpdateFunctionInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5818
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *UpdateFunctionInputModel `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5837
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5837
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -14114,7 +14256,7 @@ type UpdateFunctionResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type UpdateSessionInput struct {
-	// Qualifier maps to the exact wire member qualifier.
+	// Qualifier maps to the native query parameter qualifier.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
@@ -14124,8 +14266,8 @@ type UpdateSessionInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5871
 	// Sent in the reviewed ROA query location, preserving the exact native wire name.
 	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -14134,17 +14276,20 @@ type UpdateSessionInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5870
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *UpdateSessionInputModel `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5888
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5888
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	FunctionName string `json:"functionName,omitzero" roa:"path"`
-	// SessionID maps to the exact wire member sessionId.
+	// SessionID is the required nonempty path parameter sessionId.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5888
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
@@ -14429,8 +14574,8 @@ type UpdateSessionResponse struct {
 // It preserves native field names and source coordinates; it is not an upstream named model.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type UpdateTriggerInput struct {
-	// Body maps to the exact wire member body.
-	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Body is the native JSON request body, encoded without an extra wrapper.
+	// Nil omits the body; non-nil empty containers preserve their native shape.
 	//
 	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
 	//
@@ -14441,17 +14586,20 @@ type UpdateTriggerInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5927
 	// Sent in the reviewed ROA body location, preserving the exact native wire name.
 	Body *UpdateTriggerInputModel `json:"body,omitzero" roa:"body"`
-	// Headers maps to the exact wire member headers.
+	// Headers supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5946
 	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
 	Headers map[string]string `json:"headers,omitzero" roa:"headers"`
-	// FunctionName maps to the exact wire member functionName.
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5946
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.
 	FunctionName string `json:"functionName,omitzero" roa:"path"`
-	// TriggerName maps to the exact wire member triggerName.
+	// TriggerName is the required nonempty path parameter triggerName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
 	// Upstream prose is unavailable in English; native field contract is documented above.
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L5946
 	// Sent in the reviewed ROA path location, preserving the exact native wire name.

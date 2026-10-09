@@ -385,8 +385,22 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 				return nil, err
 			}
 			field := r.fieldName(id, f)
-			fmt.Fprintf(&types, "// %s maps to the exact wire member %s.\n", field, f.WireName)
-			if strings.HasPrefix(typ, "*") {
+			location := r.roaFields[id][f.DSLName]
+			switch location {
+			case "body":
+				fmt.Fprintf(&types, "// %s is the native JSON request body, encoded without an extra wrapper.\n// Nil omits the body; non-nil empty containers preserve their native shape.\n", field)
+			case "headers":
+				fmt.Fprintf(&types, "// %s supplies custom service HTTP headers; nil supplies none.\n// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.\n", field)
+			case "path":
+				fmt.Fprintf(&types, "// %s is the required nonempty path parameter %s.\n// It is escaped as one RFC3986 segment; slashes remain inside that segment.\n", field, f.WireName)
+			case "query":
+				fmt.Fprintf(&types, "// %s maps to the native query parameter %s.\n", field, f.WireName)
+			case "body-member":
+				fmt.Fprintf(&types, "// %s maps to the JSON body member %s.\n", field, f.WireName)
+			default:
+				fmt.Fprintf(&types, "// %s maps to the exact wire member %s.\n", field, f.WireName)
+			}
+			if strings.HasPrefix(typ, "*") && location != "body" {
 				types.WriteString("// Nil omits this member; non-nil scalar pointers preserve explicit zero values.\n")
 			}
 			r.appendProse(&types, f.Documentation)
@@ -614,12 +628,14 @@ func (r *productRenderer) guide(chinese bool) []byte {
 		if chinese {
 			intro = strings.ReplaceAll(intro, "数组的请求参数索引从 1 开始，字段大小写保持与 API 一致。DSL 中的字符串字段仍使用 string。", "参数按官方 ROA 路径、query、请求头和 JSON 正文位置编码，字段大小写保持与 API 一致。")
 			intro = strings.ReplaceAll(intro, "RegionId 默认使用配置地域，可通过操作选项覆盖。", "区域端点使用配置地域；不额外添加 DSL 未声明的 RegionId query 参数。")
+			intro = strings.ReplaceAll(intro, "输出保留完整的响应体结构，并增加 Metadata；DSL 的响应封装类型另外保留。", "JSON 输出保留原生正文结构并增加 Metadata；none 输出仅含 Metadata。DSL 响应封装类型另外保留。")
 			intro = strings.ReplaceAll(intro, "旧路径 `services/"+r.p.Product+"` 已移除；客户端统一使用单数 service/ 路径。", "该产品只提供单数 service/ 路径，不包含旧兼容桥。")
 			intro = strings.ReplaceAll(intro, "切换导入路径时，也要适配指针字段和完整的响应结构。", "请求和响应遵循本 SDK 的操作外观类型；不宣称与官方 SDK 源码兼容。")
 			intro = strings.ReplaceAll(intro, "示例中的空请求只展示调用方式，不代表可用于真实云请求。", "示例中的必填路径使用虚构值，只展示调用方式，不代表可用于真实云请求。")
 		} else {
 			intro = strings.ReplaceAll(intro, "Array query indexes start at 1. API field case and DSL string types stay unchanged.", "Parameters retain official ROA path, query, header and JSON body locations and exact wire casing.")
 			intro = strings.ReplaceAll(intro, "RegionId defaults to the configured region. Operation options can override it.", "Regional endpoints use the configured region; no undeclared RegionId query is added.")
+			intro = strings.ReplaceAll(intro, "Outputs keep the full response body and add Metadata. DSL envelope types remain separate.", "JSON outputs preserve native body shapes and add Metadata; none outputs contain Metadata only. DSL envelopes remain separate.")
 			intro = strings.ReplaceAll(intro, "`services/"+r.p.Product+"` has been removed; clients use the singular service/ path.", "Use the singular service/ path; this product has no legacy bridge.")
 			intro = strings.ReplaceAll(intro, "Changing imports also requires pointer-field and response-shape changes.", "Requests and responses use SDK operation facades; official SDK source compatibility is not claimed.")
 			intro = strings.ReplaceAll(intro, "Empty sample requests show calling syntax; they are not valid cloud requests.", "Required paths use synthetic values to show calling syntax; they are not valid cloud requests.")

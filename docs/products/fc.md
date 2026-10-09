@@ -20,7 +20,7 @@
 - Official JSON shrink fields keep structured inputs and encode one JSON string query value. Nil omits the field; explicit empty containers remain. No Shrink fields or nested query indexes are emitted. Dynamic JSON values use scalars, string-keyed maps and slices; cycles and unsupported values fail.
 - Deprecated fields retain their wire behavior and have Deprecated Go comments.
 - Regional endpoints use the configured region; no undeclared RegionId query is added.
-- Outputs keep the full response body and add Metadata. DSL envelope types remain separate.
+- JSON outputs preserve native body shapes and add Metadata; none outputs contain Metadata only. DSL envelopes remain separate.
 - Clients support concurrent calls. Small OperationAPI interfaces support mocks.
 - Use errors.Is for cancellation and errors.As for APIError/OperationError.
 - Set Retryer to enable retry. Only reviewed idempotent actions allow it.
@@ -59,7 +59,7 @@
 
 - Inputs combine actual path parameters, request-model fields and a Headers map. Preserve common models; separate operation outputs add Metadata.
 - Path parameters are required nonempty strings. Escape each as one RFC3986 segment; Examples use synthetic example values.
-- Body preserves the official JSON shape without an extra wrapper. Nil omits the body; non-nil empty containers survive. body-member fields form an object with exact wire names.
+- Body preserves the official JSON shape without an extra wrapper. Nil omits the body; non-nil empty containers survive. body-member fields form an object with exact wire names. Encoded JSON bodies are limited to 8 MiB; larger bodies fail before credentials.
 - Headers forwards custom service headers. The SDK manages authentication, Host, content type/length/transfer framing and signing fields. Invalid characters, duplicate casing and reserved fields fail before credentials.
 - none success responses are bounded, read and discarded; zero fields and Metadata remain. Errors still decode structured JSON service errors.
 - No inferred retry, pagination or waiters. Unlisted policy is unreviewed; XML and binary streaming remain unsupported.
