@@ -9,6 +9,8 @@
 
 ## 必需门禁
 
+- [本轮消费者证据](release-consumer-refresh.zh-CN.md)记录集成后的 SDK 提交，同时保留历史记录。
+
 1. 将实际代理消费者结果写入 acceptance/sts-agent-result.json，固定测试过的 SDK 和任务版本。保留明确范围的真实调用、来源、Profile 证据及限制。
 2. 完成 #74、#75 及各自的产品记录。生成数量、空的终止页、跳过的 waiter 检查，不能代替尚未执行的必需验收项。#47/PR #48 单独评审。
 3. 最终 main 提交须通过 Linux Go 1.27 race、Windows Go 1.27、自动化及 issue 关联检查。审核 module/JSON v2、来源和策略锁、MIT 运行时与 Apache 生成包 LICENSE/NOTICE，将配对发布说明更新为实际验收范围。

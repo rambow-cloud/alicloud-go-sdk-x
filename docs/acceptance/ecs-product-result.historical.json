@@ -5,18 +5,18 @@
   "issue": 74,
   "reviewKind": "implementation-agent",
   "independentHuman": false,
-  "sdkCommit": "0365dd8733ffa6aa86061b226d5e8f79d83e70d0",
+  "sdkCommit": "72d92d11b5066eb8b6b38a90cf2734c91ef4a1ea",
   "goVersion": "go1.27.1",
   "os": "windows/amd64",
-  "startedAt": "2026-10-09T16:04:22.935Z",
-  "endedAt": "2026-10-09T16:04:25.583Z",
+  "startedAt": "2026-10-09T11:25:54.141Z",
+  "endedAt": "2026-10-09T11:25:56.194Z",
   "command": "go -C examples/productacceptance test -json -count=1 ./...",
   "timingKind": "automated-test-execution",
   "evidence": "docs/ecs-product-acceptance.md",
   "sourceRevision": "ec489e5c3deae95496daae2b41503ac58b221adb",
   "parserVersion": "2.2.1",
   "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
-  "policySHA256": "83a906f8e2c4f8d69e9494d3a34703878a40376b9f14ad99b59655a37cb3c186",
+  "policySHA256": "fae0ff0fe206eae652af2a902b4434d95b11b43ca89cecd68962e04519ff46b5",
   "coverage": {
     "discovered": 380,
     "lowered": 380,
@@ -24,7 +24,7 @@
     "models": 2053,
     "compiled": 380,
     "unsupported": 0,
-    "live": "historical-selected-fields-and-separate-current-followup"
+    "live": "selected-fields-only"
   },
   "requiredCases": [
     {
@@ -105,7 +105,7 @@
     {
       "name": "TestECSNativeProfileAndCachedGeneratedRole",
       "status": "PASS",
-      "elapsedSeconds": 0.01
+      "elapsedSeconds": 0
     }
   ],
   "subtests": 14,
@@ -127,13 +127,20 @@
     }
   },
   "verification": {
+    "frontendCheck": "PASS",
+    "frontendTests": 84,
+    "automationTests": 25,
+    "generatorCheck": "PASS",
+    "productCheck": "PASS",
+    "doccheckPackages": 15,
+    "vet": "PASS",
+    "rootTests": "PASS",
     "consumerVet": "PASS",
     "consumerRun": "PASS",
-    "irSchemaVersion": 4,
-    "sourceLock": "unchanged",
-    "candidateCI": "see-required-final-main-CI",
-    "scope": "fresh-consumer-execution; root/frontend checks recorded separately in linked implementation PRs"
+    "formatAndLanguage": "PASS",
+    "finalHeadCI": "see-linked-PR-checks",
+    "generatorReviewTests": "PASS",
+    "irSchemaVersion": 3
   },
-  "releaseIssue": 61,
-  "additionalLiveEvidence": "docs/acceptance/existing-resource-live.json"
+  "regressionIssue": 85
 }

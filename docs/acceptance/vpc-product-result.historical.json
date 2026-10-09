@@ -5,18 +5,18 @@
   "issue": 75,
   "reviewKind": "implementation-agent",
   "independentHuman": false,
-  "sdkCommit": "0365dd8733ffa6aa86061b226d5e8f79d83e70d0",
+  "sdkCommit": "72d92d11b5066eb8b6b38a90cf2734c91ef4a1ea",
   "goVersion": "go1.27.1",
   "os": "windows/amd64",
-  "startedAt": "2026-10-09T16:04:22.935Z",
-  "endedAt": "2026-10-09T16:04:25.583Z",
+  "startedAt": "2026-10-09T11:25:54.141Z",
+  "endedAt": "2026-10-09T11:25:56.194Z",
   "command": "go -C examples/productacceptance test -json -count=1 ./...",
   "timingKind": "automated-test-execution",
   "evidence": "docs/vpc-product-acceptance.md",
   "sourceRevision": "ec489e5c3deae95496daae2b41503ac58b221adb",
   "parserVersion": "2.2.1",
   "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
-  "policySHA256": "d77bb1136fd08285b5f8e1b46122185de7ec1948632ab600ad8fbe37a0612f00",
+  "policySHA256": "d5c1511fe4ba20ccb76975c995c45e891838fe89f1dea318879dc2ce7dd54db1",
   "coverage": {
     "discovered": 403,
     "lowered": 403,
@@ -24,7 +24,7 @@
     "models": 1728,
     "compiled": 403,
     "unsupported": 0,
-    "live": "historical-selected-fields-and-separate-current-followup"
+    "live": "selected-fields-only"
   },
   "requiredCases": [
     {
@@ -61,7 +61,7 @@
     {
       "name": "TestVPCNativeProfileAndSharedGeneratedRole",
       "status": "PASS",
-      "elapsedSeconds": 0.01
+      "elapsedSeconds": 0
     },
     {
       "name": "TestVPCRequestlessContract",
@@ -108,13 +108,20 @@
     }
   },
   "verification": {
+    "frontendCheck": "PASS",
+    "frontendTests": 84,
+    "automationTests": 25,
+    "generatorCheck": "PASS",
+    "productCheck": "PASS",
+    "doccheckPackages": 15,
+    "vet": "PASS",
+    "rootTests": "PASS",
     "consumerVet": "PASS",
     "consumerRun": "PASS",
-    "irSchemaVersion": 4,
-    "sourceLock": "unchanged",
-    "candidateCI": "see-required-final-main-CI",
-    "scope": "fresh-consumer-execution; root/frontend checks recorded separately in linked implementation PRs"
+    "formatAndLanguage": "PASS",
+    "finalHeadCI": "see-linked-PR-checks",
+    "generatorReviewTests": "PASS",
+    "irSchemaVersion": 3
   },
-  "releaseIssue": 61,
-  "additionalLiveEvidence": "docs/acceptance/existing-resource-live.json"
+  "regressionIssue": 85
 }
