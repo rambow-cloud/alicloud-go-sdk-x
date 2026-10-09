@@ -4,7 +4,7 @@
 
 - Historical implementation was committed directly to main: shared engine `61d2581` (issue #7), generated native adapters `89e1d07` (issue #28); neither issue is a PR.
 - The #36 full-DSL `service/` backend provides complete operation models and interfaces. #37 adds sparse-policy native adapters for ECS DescribeInstances, DescribeInstanceStatus, DescribeImages and VPC DescribeVpcs, reusing this engine.
-- The earlier `services/` reference adapters remain available.
+- #81 removes the earlier services/ adapters; use generated service/ clients only.
 - See the [policy specification](capability-policy.md).
 - New inputs use optional pointers: nil selects defaults; explicit PageNumber: 0 fails the reviewed positive bound.
 - DescribeImages defaults to page one/size ten (maximum 100).

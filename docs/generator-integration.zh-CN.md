@@ -2,6 +2,8 @@
 
 [English](generator-integration.md)
 
+- 当前客户端路径以[服务整合 #81](service-consolidation.zh-CN.md)为准：旧 services/ 包和 Go 输出器已移除，generate/check 均检查完整产品。下文旧流程仅保留历史证据。
+
 - 用户授权的评审与合并于 2026-10-08（北京时间）完成。
 - 兼容桥、五个产品生成阶段和评审修复已集成到 `main`，实现合并提交为 `19e9107e876b2309808511ad0dbced633cb54d7d`。
 - 父 issue [#33](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/33) 跟踪此验收及文档。

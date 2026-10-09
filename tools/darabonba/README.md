@@ -2,11 +2,11 @@
 
 [中文](README.zh-CN.md)
 
-- The [product roadmap](../../docs/product-generator-roadmap.md) overrides conflicting older per-operation prerequisites. #31 remains a five-operation bridge; #34 adds [source normalization](../../docs/source-normalization.md), and #35 discovers complete products without per-operation snapshots/overlays.
+- Follow the [product roadmap](../../docs/product-generator-roadmap.md) and [service consolidation #81](../../docs/service-consolidation.md). #31 is historical five-operation evidence; #34 adds [source normalization](../../docs/source-normalization.md), and #35 discovers complete products without per-operation snapshots/overlays.
 - Its offline command and coverage/IR contract are in [product discovery](../../docs/product-discovery.md).
 - The #36 [batch Go backend](../../docs/batch-go-emission.md) consumes this complete IR without legacy overlays.
 - Run `go run ./internal/cmd/sdkgen product-generate` and read-only `go run ./internal/cmd/sdkgen product-check` from the root.
-- Outputs use `service/`; the legacy bridge still uses `services/`. #37 reads optional source-bound `policies/<product>.json` for [reviewed capabilities](../../docs/capability-policy.md), without requiring per-operation entries for full emission.
+- Outputs use `service/`; the old `services/` bridge is removed. `sdkgen generate/check` are aliases for product generation/check. #37 reads optional source-bound `policies/<product>.json` for [reviewed capabilities](../../docs/capability-policy.md), without requiring per-operation entries for full emission.
 - Product reports include policy hashes and individual reviewed/unreviewed status.
 
 - #38 [documentation automation](../../docs/product-documentation.md) consumes official parser descriptions/annotations, generates English Go comments and paired usage/source indexes, and reports missing prose/Chinese translations.
@@ -26,19 +26,18 @@
 cd tools/darabonba
 npm ci --ignore-scripts --no-audit --no-fund
 cd ../..
-node tools/darabonba/frontend.cjs generate
-go run ./internal/cmd/sdkgen generate
-node tools/darabonba/frontend.cjs check
 node tools/darabonba/discovery.cjs generate
 node tools/darabonba/discovery.cjs report ecs
-node tools/darabonba/discovery.cjs check
+go run ./internal/cmd/sdkgen product-generate
+npm --prefix tools/darabonba run check
 npm --prefix tools/darabonba test
-go run ./internal/cmd/sdkgen check
+go run ./internal/cmd/sdkgen product-check
 ```
 
 - Installing tools requires the package registry; after installation, projection, generation, checks and tests use local files.
 - Normal Go consumers need no Node.
-- Go generation consumes checksum-pinned projections, verifies the source lock and cross-checks metadata/policy; CI independently re-parses the DSL on Linux and Windows.
+- Generate complete product IR before Go emission. Go generation consumes pinned IR and optional source-bound policy, without per-operation metadata/overlays. CI independently re-parses the DSL on Linux and Windows.
+- Run one Go regeneration check; generate/check and product-generate/product-check use the same backend.
 - Both frontends preflight every product before output writes.
 - OS write failures can leave a partial update; resolve the failure and regenerate.
 
@@ -55,11 +54,13 @@ node tools/darabonba/import-canonical.cjs
 - The importer writes source artifacts as it fetches them; network failure may require repairing the source lock.
 - Generation never fetches or refreshes dependencies.
 
-- Recognized functions are async operationWithOptions(request, runtime), guarded direct query bindings, OpenApiRequest query encoding, constant OpenApi.Params and callApi handoff.
+- The complete discovery profile and unsupported reasons are specified in [product discovery](../../docs/product-discovery.md). The following describes retained frontend.cjs cross-check fixtures, which no longer emit Go clients.
+- Recognized fixture functions are async operationWithOptions(request, runtime), guarded direct query bindings, OpenApiRequest query encoding, constant OpenApi.Params and callApi handoff.
 - They lower to our runtime instead of emitting the imported Tea program.
 - Selected models support bounded named/anonymous objects, arrays and scalars.
 - Unknown behavior, language overrides, new model attributes, incomplete bindings, dynamic parameters and unsupported selected shapes fail.
-- Native pagination, waiters, Go names, presence, redaction and idempotency remain reviewed overlay/runtime policy.
-- This is a bounded frontend for five operations, not a general Darabonba compiler.
+- Full-product native pagination, waiters, names, redaction and idempotency use reviewed policies/, not model-selection overlays.
+- frontend.cjs retains five-operation normalization/conflict evidence. npm run check verifies it separately from complete discovery; reviewed fixture changes may require frontend.cjs generate. Full-product discovery/Go emission do not consume its per-operation projections.
+- Neither frontend is a general Darabonba compiler; unsupported behavior has explicit reasons.
 
 - Read [migration](../../docs/darabonba-migration.md), [decisions](../../docs/darabonba-decisions.md) and [sources/licenses](../../sources/darabonba/README.md) before adding operations.

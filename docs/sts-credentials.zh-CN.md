@@ -4,7 +4,7 @@
 
 - [#51](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/51) 实现 [AC-05 / UX-04](product-acceptance.zh-CN.md) 离线组合。
 - NewAssumeRoleProviderFromClient 接受 service/sts 窄接口和完整原生输入/options，直接组合 credentials.Cache 与生成客户端，无需响应转换。
-- 旧构造器继续保留 services/sts 参考桥调用方式。
+- #81 已移除兼容桥。NewAssumeRoleProvider 接受生成的 service/sts 类型，FromClient 转发到同一实现。
 - [可复用性评审 #72](sts-reuse-review.zh-CN.md) 将共享校验规则与请求模型分离，两个构造器采用同一套返回凭据校验。
 
 ### 生成与手写组件的边界
@@ -13,7 +13,7 @@
 - 这里的手写适配器把生成的响应转换为 `credentials.Credentials`，不另外实现签名或 HTTP 协议。
 - 共享内部角色校验不依赖旧版请求类型；原生输入直接传给生成的 API。
 - 缓存和原生 Profile 的角色配置复用同一适配器。来源发现使用 [LoadDefaultConfig](default-configuration.zh-CN.md)，适配器自身不执行发现。
-- 旧构造器的公开签名仍需导入 `services/sts`；移除签名需要单独安排迁移。
+- 两种构造器命名均使用 service/sts 类型；旧导入及选择性模型已移除，见[迁移说明](service-consolidation.zh-CN.md)。
 
 ### 组合
 

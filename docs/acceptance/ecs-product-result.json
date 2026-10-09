@@ -5,11 +5,11 @@
   "issue": 74,
   "reviewKind": "implementation-agent",
   "independentHuman": false,
-  "sdkCommit": "85795cf3cf1604afe59b0e8af03d5df0c9d3ba38",
+  "sdkCommit": "29d468ad5f8999e92b4e60e4140cb8432efb8a13",
   "goVersion": "go1.27.1",
   "os": "windows/amd64",
-  "startedAt": "2026-10-09T00:55:03.583Z",
-  "endedAt": "2026-10-09T00:55:08.786Z",
+  "startedAt": "2026-10-09T08:08:22.791Z",
+  "endedAt": "2026-10-09T08:08:24.819Z",
   "command": "go -C examples/productacceptance test -json -count=1 -run ^TestECS ./...",
   "timingKind": "automated-test-execution",
   "evidence": "docs/ecs-product-acceptance.md",
@@ -105,7 +105,7 @@
     {
       "name": "TestECSNativeProfileAndCachedGeneratedRole",
       "status": "PASS",
-      "elapsedSeconds": 0.02
+      "elapsedSeconds": 0
     }
   ],
   "subtests": 14,
@@ -132,12 +132,13 @@
     "automationTests": 25,
     "generatorCheck": "PASS",
     "productCheck": "PASS",
-    "doccheckPackages": 18,
+    "doccheckPackages": 15,
     "vet": "PASS",
     "rootTests": "PASS",
     "consumerVet": "PASS",
     "consumerRun": "PASS",
     "formatAndLanguage": "PASS",
-    "finalHeadCI": "recorded-on-PR-before-merge"
+    "finalHeadCI": "see-linked-PR-checks",
+    "unchangedGoChecksWorkload": "e33e5f93d856027569969056e9d4c25e92e51212"
   }
 }

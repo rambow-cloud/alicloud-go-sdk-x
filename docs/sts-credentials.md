@@ -4,7 +4,7 @@
 
 - Issue [#51](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/51) implements the offline composition part of [AC-05 / UX-04](product-acceptance.md). `stscreds.NewAssumeRoleProviderFromClient` accepts `service/sts.AssumeRoleAPI` and complete native input/options.
 - The returned provider composes with credentials.Cache and generated clients without a response translator.
-- The existing NewAssumeRoleProvider keeps its services/sts reference-bridge convention.
+- #81 removes the bridge. NewAssumeRoleProvider accepts generated service/sts types; FromClient forwards to that implementation.
 - [Reuse review #72](sts-reuse-review.md) separates shared helper rules from wire models and applies the same credential checks to both constructors.
 
 ### Generation boundary
@@ -13,7 +13,7 @@
 - This handwritten adapter turns generated responses into `credentials.Credentials`. It implements no signing or HTTP protocol.
 - Shared internal role validation does not depend on the compatibility request type. Native inputs go directly to the generated API.
 - Cache and native Profile role composition reuse this adapter. Use [LoadDefaultConfig](default-configuration.md) for source discovery; the adapter itself performs none.
-- The old constructor's public signature still imports `services/sts`. Removing that signature requires a separate migration.
+- Both constructor spellings use service/sts types. Old imports and selective models are removed; see [migration](service-consolidation.md).
 
 ### Composition
 

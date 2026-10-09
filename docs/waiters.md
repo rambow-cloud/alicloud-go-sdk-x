@@ -2,7 +2,7 @@
 
 [中文](waiters.zh-CN.md)
 
-- #37 emits this contract for full-DSL `service/ecs` using reviewed sparse policies; the earlier `services/ecs` reference remains available.
+- #37 emits this contract for full-DSL `service/ecs` using reviewed sparse policies; the earlier services/ecs reference is removed in #81.
 - Import the chosen package explicitly.
 - See [capability policy](capability-policy.md) for coverage and source binding.
 

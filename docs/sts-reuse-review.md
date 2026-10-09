@@ -15,7 +15,7 @@
 - `feature/stscreds` is a handwritten credential adapter over the generated `AssumeRoleAPI`, not a second STS protocol implementation.
 - `credentials.Cache` handles shared refresh and expiration. Native Profile role composition uses the generated client and the same adapter/cache.
 - Reviewed role validation is shared internal policy. It must not translate native requests through a compatibility wire model.
-- `services/sts` remains a bounded compatibility bridge. Its public constructor remains supported; the primary generated path does not execute through it.
+- #81 removes services/sts and the bridge constructor signature. Both current constructor spellings use the same generated service/sts adapter; historical #72 evidence below is retained.
 
 ## Findings and changes
 

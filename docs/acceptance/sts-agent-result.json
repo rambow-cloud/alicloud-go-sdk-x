@@ -1,10 +1,10 @@
 {
-  "sdkCommit": "85795cf3cf1604afe59b0e8af03d5df0c9d3ba38",
+  "sdkCommit": "29d468ad5f8999e92b4e60e4140cb8432efb8a13",
   "sourceBaseline": "f72bbdbc4ac0733f899e8a54d8c9bb1e1ac25266",
   "goVersion": "go1.27.1",
   "os": "windows/amd64",
-  "startedAt": "2026-10-09T00:55:13.761Z",
-  "endedAt": "2026-10-09T00:55:16.873Z",
+  "startedAt": "2026-10-09T08:08:20.252Z",
+  "endedAt": "2026-10-09T08:08:22.543Z",
   "command": "go -C examples/stsacceptance test -json -count=1 ./...",
   "schemaVersion": 1,
   "status": "PASS",
@@ -17,22 +17,22 @@
     {
       "id": "identity",
       "status": "PASS",
-      "elapsedSeconds": 0.09,
+      "elapsedSeconds": 0.06,
       "tests": [
         {
           "name": "TestExternalDefaultProfileWorkload",
           "status": "PASS",
-          "elapsedSeconds": 0.01
+          "elapsedSeconds": 0
         },
         {
           "name": "TestExternalOAuthRefreshPersistenceAndReuse",
           "status": "PASS",
-          "elapsedSeconds": 0.07
+          "elapsedSeconds": 0.06
         },
         {
           "name": "TestExternalLongLivedProfileRequiresOptIn",
           "status": "PASS",
-          "elapsedSeconds": 0.01
+          "elapsedSeconds": 0
         },
         {
           "name": "TestConsumerReviewIdentityOptionsAndInflightCancellation",

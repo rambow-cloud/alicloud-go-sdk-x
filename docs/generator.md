@@ -2,6 +2,8 @@
 
 [中文](generator.zh-CN.md)
 
+- Current client paths follow [service consolidation #81](service-consolidation.md): the old services/ packages and Go emitter are removed; generate/check use complete products. Earlier bridge workflows below retain historical evidence only.
+
 - The authoritative new direction is [product-generator-roadmap.md](product-generator-roadmap.md).
 - It supersedes conflicting instructions below: complete DSL is primary, metadata is optional, operations/models are discovered automatically and overlays are sparse policy/compatibility exceptions.
 - Below describes the five-operation bridge and historical acceptance, not future product-generator prerequisites.

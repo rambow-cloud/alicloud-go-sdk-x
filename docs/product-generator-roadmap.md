@@ -2,6 +2,8 @@
 
 [中文](product-generator-roadmap.zh-CN.md)
 
+- Current client paths follow [service consolidation #81](service-consolidation.md): the old services/ packages and Go emitter are removed; generate/check use complete products. Earlier bridge workflows below retain historical evidence only.
+
 ## Current delivery route (2026-10-09)
 
 - Follow [STS/ECS/VPC delivery](sts-ecs-vpc-path.md): finish #60, then ECS #74 and VPC #75, then #61 release/indexing.

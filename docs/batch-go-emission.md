@@ -22,8 +22,8 @@ go run ./internal/cmd/sdkgen product-check -operations ecs/DescribeImages,sts/As
 ```
 
 - Generate supported products into `service/<product>` (singular), following AWS-style service imports.
-- The earlier `services/<product>` packages remain the five-operation compatibility/reference bridge, with their existing paginator/waiter contracts intact.
-- They expose selected fields and are not aliases of the complete new models.
+- #81 removes the earlier plural services/ packages and their Go emitter. Only service/ clients are supported; see [migration](service-consolidation.md).
+- The old selective models are removed; callers must use complete native models.
 - Migration is explicit: change the import, use optional scalar pointers, preserve native response containers, and pass DSL string fields such as JSON-encoded IDs as strings.
 - No upstream source compatibility is claimed.
 - New product capability adapters belong to #37.

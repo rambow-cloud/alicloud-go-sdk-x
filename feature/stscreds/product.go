@@ -11,8 +11,8 @@ import (
 	productsts "github.com/rambow-cloud/alicloud-go-sdk-x/service/sts"
 )
 
-// NewAssumeRoleProviderFromClient adapts the complete service/sts AssumeRoleAPI
-// into renewable credentials without converting through the reference bridge.
+// NewAssumeRoleProvider adapts the generated service/sts AssumeRoleAPI
+// into renewable credentials.
 // It validates the reviewed role/session, optional identity/policy and minimum
 // duration rules; authorization and maximum role lifetime remain service decisions.
 // Nil duration is omitted, while an explicit duration below 900 is rejected.
@@ -23,7 +23,7 @@ import (
 // retain inputs/options. Wrap the result in credentials.Cache for synchronized
 // refresh, and configure the STS client with separate source credentials.
 // This constructor adds no Profile discovery, automatic cache or retry behavior.
-func NewAssumeRoleProviderFromClient(api productsts.AssumeRoleAPI, input productsts.AssumeRoleInput, options ...func(*productsts.Options)) (*AssumeRoleProvider, error) {
+func NewAssumeRoleProvider(api productsts.AssumeRoleAPI, input productsts.AssumeRoleInput, options ...func(*productsts.Options)) (*AssumeRoleProvider, error) {
 	if rpcmodel.IsNil(api) {
 		return nil, errors.New("stscreds: STS API required")
 	}
@@ -79,4 +79,10 @@ func value[T any](pointer *T) (v T) {
 		return *pointer
 	}
 	return v
+}
+
+// NewAssumeRoleProviderFromClient forwards to NewAssumeRoleProvider.
+// It has the same validation, ownership, cancellation and concurrency contracts.
+func NewAssumeRoleProviderFromClient(api productsts.AssumeRoleAPI, input productsts.AssumeRoleInput, options ...func(*productsts.Options)) (*AssumeRoleProvider, error) {
+	return NewAssumeRoleProvider(api, input, options...)
 }

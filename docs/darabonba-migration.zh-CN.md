@@ -2,6 +2,8 @@
 
 [English](darabonba-migration.md)
 
+- 当前客户端路径以[服务整合 #81](service-consolidation.zh-CN.md)为准：旧 services/ 包和 Go 输出器已移除，generate/check 均检查完整产品。下文旧流程仅保留历史证据。
+
 - 本文件记录 #31 五操作兼容桥；后续以更新的 [product-generator-roadmap.md](product-generator-roadmap.zh-CN.md) 为准，优先于冲突快照/ 补充配置前置要求。
 - 产品发现使用完整 DSL、可选规范化元数据及自动可达模型，#31 不等于全量验收。
 

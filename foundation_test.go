@@ -7,8 +7,8 @@ import (
 	"github.com/rambow-cloud/alicloud-go-sdk-x/feature/stscreds"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/retry"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/sdktest"
-	"github.com/rambow-cloud/alicloud-go-sdk-x/services/ecs"
-	"github.com/rambow-cloud/alicloud-go-sdk-x/services/sts"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/service/ecs"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/service/sts"
 	sdkotel "github.com/rambow-cloud/alicloud-go-sdk-x/telemetry/otel"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	"go.opentelemetry.io/otel/sdk/trace/tracetest"
@@ -53,7 +53,7 @@ func TestFoundationSTSCacheRetryPaginationWaiterAndTelemetry(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	role, err := stscreds.NewAssumeRoleProvider(stsClient, sts.AssumeRoleInput{RoleARN: "acs:ram::123456789012:role/example", RoleSessionName: "foundation"})
+	role, err := stscreds.NewAssumeRoleProvider(stsClient, sts.AssumeRoleInput{RoleARN: new("acs:ram::123456789012:role/example"), RoleSessionName: new("foundation")})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -70,11 +70,11 @@ func TestFoundationSTSCacheRetryPaginationWaiterAndTelemetry(t *testing.T) {
 		t.Fatal(err)
 	}
 	first, err := pages.NextPage(ctx)
-	if err != nil || first.Metadata.Attempts != 2 || first.Instances[0].InstanceID != "i-a" {
+	if err != nil || first.Metadata.Attempts != 2 || *first.Instances.Instance[0].InstanceID != "i-a" {
 		t.Fatal("first page", err)
 	}
 	second, err := pages.NextPage(ctx)
-	if err != nil || second.Metadata.Attempts != 1 || second.Instances[0].InstanceID != "i-b" || pages.HasMorePages() {
+	if err != nil || second.Metadata.Attempts != 1 || *second.Instances.Instance[0].InstanceID != "i-b" || pages.HasMorePages() {
 		t.Fatal("second page", err)
 	}
 	running, err := ecs.NewInstanceRunningWaiter(ecsClient, func(o *ecs.InstanceRunningWaiterOptions) { o.Now = clock.Now; o.Sleep = clock.Sleep })
@@ -82,7 +82,7 @@ func TestFoundationSTSCacheRetryPaginationWaiterAndTelemetry(t *testing.T) {
 		t.Fatal(err)
 	}
 	out, err := running.WaitForOutput(ctx, &ecs.DescribeInstanceStatusInput{InstanceIDs: []string{"i-a"}}, time.Minute)
-	if err != nil || out.InstanceStatuses[0].Status != "Running" {
+	if err != nil || *out.InstanceStatuses.InstanceStatus[0].Status != "Running" {
 		t.Fatal("waiter", err)
 	}
 	if transport.Calls() != 6 {

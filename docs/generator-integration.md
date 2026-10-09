@@ -2,6 +2,8 @@
 
 [中文](generator-integration.zh-CN.md)
 
+- Current client paths follow [service consolidation #81](service-consolidation.md): the old services/ packages and Go emitter are removed; generate/check use complete products. Earlier bridge workflows below retain historical evidence only.
+
 - The user-authorized review and merge completed on 2026-10-08 (Asia/Shanghai).
 - The compatibility bridge, five product-generator stages and review fix are integrated into `main` at implementation merge `19e9107e876b2309808511ad0dbced633cb54d7d`.
 - Issue [#33](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/33) tracks this acceptance and its documentation.

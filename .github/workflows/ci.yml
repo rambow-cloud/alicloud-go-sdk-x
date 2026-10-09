@@ -72,9 +72,7 @@ jobs:
           fi
       - name: Check documentation and JSON v2 policy
         run: go run ./internal/cmd/doccheck
-      - name: Check offline regeneration
-        run: go run ./internal/cmd/sdkgen check
-      - name: Check complete product emission offline
+      - name: Check complete product emission offline (single service path)
         run: go run ./internal/cmd/sdkgen product-check
       - name: Vet
         run: go vet ./...

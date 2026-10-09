@@ -2,6 +2,10 @@
 
 [English](development-path.md)
 
+## 统一服务路径
+
+- 在 #61 前完成[服务整合 #81](service-consolidation.zh-CN.md)：移除兼容桥，将基础层及 provider 契约迁移到完整 DSL 客户端，并刷新消费者证据。本路线替代此前保留兼容桥的要求。
+
 ## ECS、VPC 的明确范围验收
 
 - #74/#75 按执行前确定的 [ECS 验收](ecs-product-acceptance.zh-CN.md)和 [VPC 验收](vpc-product-acceptance.zh-CN.md)矩阵完成。

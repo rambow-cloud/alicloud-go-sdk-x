@@ -1,24 +1,12 @@
-# ECS reference client
+# ECS usage
 
 [中文](ecs.zh-CN.md)
 
-- `ecs.New(alicloud.Config)` supports three generated read operations in version 2014-05-26: DescribeRegions, DescribeInstances and DescribeInstanceStatus.
-- Inputs use ordinary Go values; nil input means defaults.
-- Outputs flatten service containers and carry transport Metadata.
-- Individual operation interfaces accept the same context/options signature, so consumers can implement small fakes.
-- Region overrides replace wire RegionId consistently.
-- InstanceIDs use a JSON string for DescribeInstances and indexed InstanceId.N for DescribeInstanceStatus.
-- DescribeInstances offers token or legacy page parameters, never both; selected response fields are ID/name/region/zone/status.
-- Status requests support page sizes up to 50, ID lists up to 100.
-- No full response or ECS API coverage is claimed.
-- Unknown fields are ignored.
-- Validation and runtime errors preserve OperationError and context causes.
-- Tests use documented wire fixtures and never call cloud accounts.
-- Protocol sources: [regions](https://help.aliyun.com/zh/ecs/developer-reference/api-ecs-2014-05-26-describeregions), [instances](https://help.aliyun.com/zh/ecs/developer-reference/api-ecs-2014-05-26-describeinstances), [status](https://help.aliyun.com/zh/ecs/developer-reference/api-ecs-2014-05-26-describeinstancestatus).
-
-- Generated field guidance: [ECS](generated/ecs.md); design: [generator](generator.md).
-
-- `NewFromConfig` accepts service Options and `Client.Options()` returns a snapshot.
-- DescribeInstances and DescribeInstanceStatus have dedicated paginator options and per-page NextPage options; the latter keeps native page numbers.
-- InstanceRunningWaiter is reusable with Wait/WaitForOutput inputs supplied per invocation.
-- See [pagination](pagination.md), [waiters](waiters.md) and [migration](aws-style-remediation.md).
+- Import `service/ecs`; the old `services/ecs` package is removed in #81.
+- The pinned full-DSL backend generates 283 supported RPC operations and complete reachable models. This is not all-action live coverage.
+- Use `NewFromConfig`, context-first operations and small operation interfaces for mocks.
+- Optional scalar pointers preserve absence, zero and false. Outputs retain native response containers and include Metadata.
+- DescribeInstances uses native tokens by default; explicit page fields select page mode. Do not mix both modes.
+- DescribeInstances, DescribeInstanceStatus and DescribeImages have reviewed paginators. InstanceRunningWaiter supports reusable Wait/WaitForOutput.
+- Clients share the runtime, providers/cache, reviewed opt-in retry, middleware, structured errors and optional tracing.
+- See the [generated guide](products/ecs.md), [capability policy](capability-policy.md), [consumer acceptance](ecs-product-acceptance.md) and [migration](service-consolidation.md).

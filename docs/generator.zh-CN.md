@@ -2,6 +2,8 @@
 
 [English](generator.md)
 
+- 当前客户端路径以[服务整合 #81](service-consolidation.zh-CN.md)为准：旧 services/ 包和 Go 输出器已移除，generate/check 均检查完整产品。下文旧流程仅保留历史证据。
+
 - 新方向以 [product-generator-roadmap.md](product-generator-roadmap.zh-CN.md) 为准，优先于下文冲突要求：完整 DSL 为主、元数据可选、自动发现操作/模型、补充配置仅补策略/兼容。
 - 下文描述五操作兼容桥与历史验收，不作为未来产品生成器前置要求。
 
