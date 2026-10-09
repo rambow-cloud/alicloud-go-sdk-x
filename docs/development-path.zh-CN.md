@@ -2,7 +2,9 @@
 
 [English](development-path.md)
 
-- #92 下一步实现[内部公共 XML 编解码层](xml-model-codec.zh-CN.md)。先验证根元素与模型契约，再接入 OSS Gateway、签名和 IR；当前尚未验收公共 OSS 客户端。
+- #92 下一步执行[原生 XML 根节点发现](native-xml-traits.zh-CN.md)：完整、绑定哈希的 helper 事实补充官方 DSL；生产 XML/Gateway 接入前明确报告来源冲突。不猜测根元素，不宣称已生成 OSS 操作。
+
+- #92 的[内部公共 XML 编解码层](xml-model-codec.zh-CN.md)已合并。先验证根元素与模型契约，再接入 OSS Gateway、签名和 IR；当前尚未验收公共 OSS 客户端。
 
 - 二进制操作生成前，先实现共享运行时的[有界响应流](response-streaming.zh-CN.md)。流生命周期及发布检查通过，不等于已支持生成的二进制操作。
 

@@ -1,6 +1,6 @@
 # Project working agreements
 
-- The next #92 internal XML codec follows [XML model codec](docs/xml-model-codec.md). Preserve explicit structured/scalar roots and typed DSL wire fields; no inferred roots, public OSS operations or signing fallback.
+- #92 XML root discovery follows [native XML traits](docs/native-xml-traits.md) after the [shared codec](docs/xml-model-codec.md). Official DSL remains authoritative; hash-bound native declarations only supplement explicit serialization facts. Preserve the unresolved ListBuckets case/wrapper conflict and namespace policy; discovery counts are not generated OSS coverage.
 
 [中文](AGENTS.zh-CN.md)
 
