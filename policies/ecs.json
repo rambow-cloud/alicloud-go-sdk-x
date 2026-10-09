@@ -3,33 +3,231 @@
   "product": "ecs",
   "version": "2014-05-26",
   "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
-  "fieldNames": {"DescribeInstanceStatusRequest#instanceId": "InstanceIDs"},
+  "fieldNames": {
+    "DescribeInstanceStatusRequest#instanceId": "InstanceIDs"
+  },
   "operations": {
     "DescribeInstances": {
       "idempotent": true,
-      "evidence": ["https://help.aliyun.com/en/ecs/developer-reference/api-ecs-2014-05-26-describeinstances", "docs/pagination.md"],
-      "paginator": {"mode": "dual", "items": "Instances.Instance", "inputToken": "NextToken", "outputToken": "NextToken", "limit": "MaxResults", "page": "PageNumber", "size": "PageSize", "total": "TotalCount", "defaultSize": 10, "maximumSize": 100},
-      "constraints": [{"path": "PageNumber", "minimum": 1}, {"path": "PageSize", "minimum": 1, "maximum": 100}, {"path": "MaxResults", "minimum": 1, "maximum": 100}]
+      "evidence": [
+        "https://help.aliyun.com/en/ecs/developer-reference/api-ecs-2014-05-26-describeinstances",
+        "docs/pagination.md"
+      ],
+      "paginator": {
+        "mode": "dual",
+        "items": "Instances.Instance",
+        "inputToken": "NextToken",
+        "outputToken": "NextToken",
+        "limit": "MaxResults",
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount",
+        "defaultSize": 10,
+        "maximumSize": 100
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 100
+        },
+        {
+          "path": "MaxResults",
+          "minimum": 1,
+          "maximum": 100
+        }
+      ]
     },
     "DescribeInstanceStatus": {
       "idempotent": true,
-      "evidence": ["https://help.aliyun.com/en/ecs/developer-reference/api-ecs-2014-05-26-describeinstancestatus", "docs/waiters.md"],
-      "paginator": {"mode": "pages", "items": "InstanceStatuses.InstanceStatus", "page": "PageNumber", "size": "PageSize", "total": "TotalCount", "defaultSize": 50, "maximumSize": 50},
-      "waiter": {"name": "InstanceRunningWaiter", "ids": "InstanceId", "items": "InstanceStatuses.InstanceStatus", "id": "InstanceId", "state": "Status", "page": "PageNumber", "size": "PageSize", "maxIDs": 50, "success": "Running", "retry": ["Pending", "Starting", "Stopping", "Stopped"]},
-      "constraints": [{"path": "PageNumber", "minimum": 1}, {"path": "PageSize", "minimum": 1, "maximum": 50}, {"path": "InstanceId", "maximumItems": 100, "nonemptyItems": true}]
+      "evidence": [
+        "https://help.aliyun.com/en/ecs/developer-reference/api-ecs-2014-05-26-describeinstancestatus",
+        "docs/waiters.md"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "InstanceStatuses.InstanceStatus",
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount",
+        "defaultSize": 50,
+        "maximumSize": 50
+      },
+      "waiter": {
+        "name": "InstanceRunningWaiter",
+        "ids": "InstanceId",
+        "items": "InstanceStatuses.InstanceStatus",
+        "id": "InstanceId",
+        "state": "Status",
+        "page": "PageNumber",
+        "size": "PageSize",
+        "maxIDs": 50,
+        "success": "Running",
+        "retry": [
+          "Pending",
+          "Starting",
+          "Stopping",
+          "Stopped"
+        ]
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 50
+        },
+        {
+          "path": "InstanceId",
+          "maximumItems": 100,
+          "nonemptyItems": true
+        }
+      ]
     },
     "DescribeImages": {
       "idempotent": true,
-      "evidence": ["https://help.aliyun.com/en/ecs/developer-reference/api-ecs-2014-05-26-describeimages"],
-      "paginator": {"mode": "pages", "items": "Images.Image", "page": "PageNumber", "size": "PageSize", "total": "TotalCount", "defaultSize": 10, "maximumSize": 100},
-      "constraints": [{"path": "PageNumber", "minimum": 1}, {"path": "PageSize", "minimum": 1, "maximum": 100}]
+      "evidence": [
+        "https://help.aliyun.com/en/ecs/developer-reference/api-ecs-2014-05-26-describeimages"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "Images.Image",
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount",
+        "defaultSize": 10,
+        "maximumSize": 100
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 100
+        }
+      ]
     },
-    "DescribeRegions": {"idempotent": true, "evidence": ["sources/darabonba/products/ecs/main.tea", "docs/support.md"]},
+    "DescribeRegions": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/ecs/main.tea",
+        "docs/support.md"
+      ]
+    },
     "AllocateDedicatedHosts": {
       "idempotent": false,
-      "evidence": ["https://help.aliyun.com/en/ecs/developer-reference/api-ecs-2014-05-26-allocatededicatedhosts"],
+      "evidence": [
+        "https://help.aliyun.com/en/ecs/developer-reference/api-ecs-2014-05-26-allocatededicatedhosts"
+      ],
       "clientToken": "ClientToken",
-      "constraints": [{"path": "ClientToken", "minimumLength": 1, "maximumLength": 64, "ascii": true}]
+      "constraints": [
+        {
+          "path": "ClientToken",
+          "minimumLength": 1,
+          "maximumLength": 64,
+          "ascii": true
+        }
+      ]
     }
-  }
+  },
+  "endpoints": [
+    {
+      "region": "cn-beijing",
+      "network": "vpc",
+      "url": "https://ecs-vpc.cn-beijing.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "cn-fuzhou",
+      "network": "vpc",
+      "url": "https://ecs-vpc.cn-fuzhou.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "cn-hangzhou",
+      "network": "vpc",
+      "url": "https://ecs-vpc.cn-hangzhou.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "cn-nanjing",
+      "network": "vpc",
+      "url": "https://ecs-vpc.cn-nanjing.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "cn-qingdao",
+      "network": "vpc",
+      "url": "https://ecs-vpc.cn-qingdao.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "cn-shanghai",
+      "network": "vpc",
+      "url": "https://ecs-vpc.cn-shanghai.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "cn-zhangjiakou",
+      "network": "vpc",
+      "url": "https://ecs-vpc.cn-zhangjiakou.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "eu-west-1",
+      "network": "vpc",
+      "url": "https://ecs-vpc.eu-west-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "me-east-1",
+      "network": "vpc",
+      "url": "https://ecs-vpc.me-east-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "us-east-1",
+      "network": "vpc",
+      "url": "https://ecs-vpc.us-east-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "us-west-1",
+      "network": "vpc",
+      "url": "https://ecs-vpc.us-west-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    }
+  ]
 }

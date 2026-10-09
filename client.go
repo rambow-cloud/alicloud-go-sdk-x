@@ -47,6 +47,9 @@ type Config struct {
 	EndpointResolver endpoint.Resolver
 	// BaseEndpoint is an optional explicit HTTPS origin.
 	BaseEndpoint string
+	// Network selects a reviewed endpoint network; empty/public uses public rules.
+	// Unsupported combinations fail unless BaseEndpoint explicitly overrides resolution.
+	Network string
 	// Retryer is optional; nil means no retries.
 	Retryer retry.Retryer
 	// Middleware registers shared interceptors in execution order.
@@ -364,7 +367,7 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 			}
 			query.Set("RegionId", e.Region)
 		}
-		resolved, resolveErr := config.EndpointResolver.ResolveEndpoint(ctx, endpoint.Parameters{Service: op.Service, Region: e.Region, BaseEndpoint: options.BaseEndpoint})
+		resolved, resolveErr := config.EndpointResolver.ResolveEndpoint(ctx, endpoint.Parameters{Service: op.Service, Region: e.Region, BaseEndpoint: options.BaseEndpoint, Network: config.Network})
 		if resolveErr != nil {
 			return resolveErr
 		}

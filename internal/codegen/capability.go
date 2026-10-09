@@ -19,6 +19,7 @@ type capabilityPolicy struct {
 	FieldNames           map[string]string          `json:"fieldNames,omitempty"`
 	ModelNames           map[string]string          `json:"modelNames,omitempty"`
 	Operations           map[string]operationPolicy `json:"operations"`
+	Endpoints            []endpointPolicy           `json:"endpoints,omitempty"`
 }
 type operationPolicy struct {
 	Idempotent      *bool             `json:"idempotent"`

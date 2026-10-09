@@ -6,6 +6,7 @@ const path = require("node:path");
 const crypto = require("node:crypto");
 const parser = require("@darabonba/parser");
 const { verifySources, lowerOperation } = require("./frontend.cjs");
+const { projectEndpoints } = require("./endpoints.cjs");
 const repository = path.resolve(__dirname, "../..");
 const lex = (token) => token?.lexeme;
 const order = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
@@ -540,13 +541,14 @@ function buildProduct(ast, { pkg, identifier, info, file, provenance }) {
       "product protocol version differs: " + op.name,
     );
   const ir = {
-    schemaVersion: 3,
+    schemaVersion: 4,
     profile: "rpc-query-json-v1",
     product: pkg,
     identifier,
     version,
     provenance,
     sourceFile: file,
+    endpoints: projectEndpoints(ast,file,source),
     operations,
     models,
     unusedModels,
@@ -646,7 +648,7 @@ function project(root = repository, selected = []) {
     );
   }
   const manifest = {
-    schemaVersion: 3,
+    schemaVersion: 4,
     profile: "rpc-query-json-v1",
     sourceManifestSHA256: verified.hash,
     files: Object.entries(files).map(([file, data]) => ({

@@ -44,6 +44,12 @@
 | CreateNatGateway | `CreateNatGatewayInput.AccessMode` | `AccessMode` |
 | ModifyNatGatewayAttribute | `ModifyNatGatewayAttributeInput.LogDelivery` | `LogDelivery` |
 
+## 端点
+
+- 公开端点使用官方 regional 规则和 36 个准确映射；构造出的区域地址不代表服务已部署或可访问。
+- 已审核私网组合：1 个；设置 Config.Network 为 vpc，不支持的组合直接报错。
+- BaseEndpoint 优先级最高；明确差异与限制见[端点规则](../endpoint-rules.zh-CN.md)。
+
 ## HTTP 方法与参数位置
 
 - HTTP 方法保留官方 DSL 的 GET 或 POST。URL query 与表单 body 分别编码，请求体字节参与签名。

@@ -560,6 +560,7 @@ func (r *productRenderer) guide(chinese bool) []byte {
 		}
 	}
 	r.appendQueryEncodingGuide(&b, chinese)
+	r.appendEndpointGuide(&b, chinese)
 	r.appendRPCPlacementGuide(&b, chinese)
 	r.appendCapabilityGuide(&b, chinese)
 	r.appendDocumentationGuide(&b, chinese)

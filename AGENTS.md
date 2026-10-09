@@ -4,6 +4,8 @@
 
 ## SDK gap completion (2026-10-09)
 
+- #91 projects official endpoint initialization into IR schema v4 and generates the shared catalog. Follow [endpoint rules](docs/endpoint-rules.md); private rules need exact reviewed evidence and never fall back to public origins.
+
 - The user requested completion of remaining gaps. Follow [gap completion](docs/gap-completion.md) and parent #87.
 - This route replaces stale next-step scheduling. Preserve accepted evidence; track implementation, live behavior, human usability and publication separately.
 

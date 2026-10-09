@@ -3,6 +3,7 @@ package endpoint
 import (
 	"context"
 	"errors"
+	"maps"
 	"net/url"
 	"strings"
 )
@@ -21,6 +22,9 @@ type Parameters struct {
 	Region string
 	// BaseEndpoint overrides a rule with an explicit HTTPS origin when nonempty.
 	BaseEndpoint string
+	// Network selects a reviewed endpoint network; empty or public uses public rules.
+	// Other combinations require an exact rule or an explicit BaseEndpoint.
+	Network string
 }
 
 // Endpoint describes the resolved origin.
@@ -54,6 +58,8 @@ func Validate(raw string) error {
 
 // Rule maps one service and region to an origin.
 type Rule struct {
+	// Network selects an exact network; empty is equivalent to public.
+	Network string
 	// Service is the product identifier.
 	Service string
 	// Region is the exact region identifier.
@@ -63,11 +69,18 @@ type Rule struct {
 }
 
 // Rules is an immutable resolver; the zero value supports explicit overrides only.
-type Rules struct{ origins map[[2]string]string }
+type Rules struct {
+	origins    map[[3]string]string
+	deployment map[string]deploymentRule
+}
+type deploymentRule struct{ productCode, kind string }
+
+var defaultEndpointRules []Rule
+var defaultDeploymentRules map[string]deploymentRule
 
 // NewRules copies validated rules and rejects duplicate or empty keys.
 func NewRules(rules []Rule) (*Rules, error) {
-	r := &Rules{origins: map[[2]string]string{}}
+	r := &Rules{origins: map[[3]string]string{}}
 	for _, rule := range rules {
 		if rule.Service == "" || rule.Region == "" {
 			return nil, ErrUnsupported
@@ -75,7 +88,14 @@ func NewRules(rules []Rule) (*Rules, error) {
 		if err := Validate(rule.URL); err != nil {
 			return nil, err
 		}
-		key := [2]string{rule.Service, rule.Region}
+		network := rule.Network
+		if network == "" {
+			network = "public"
+		}
+		if !validLabel(network) {
+			return nil, ErrUnsupported
+		}
+		key := [3]string{rule.Service, rule.Region, network}
 		if _, ok := r.origins[key]; ok {
 			return nil, errors.New("endpoint: duplicate rule")
 		}
@@ -91,7 +111,26 @@ func (r *Rules) ResolveEndpoint(ctx context.Context, p Parameters) (Endpoint, er
 	}
 	raw := p.BaseEndpoint
 	if raw == "" {
-		raw = r.origins[[2]string{p.Service, p.Region}]
+		if r == nil {
+			return Endpoint{}, ErrUnsupported
+		}
+		network := p.Network
+		if network == "" {
+			network = "public"
+		}
+		raw = r.origins[[3]string{p.Service, p.Region, network}]
+		if raw == "" && network == "public" {
+			if rule, ok := r.deployment[p.Service]; ok {
+				switch rule.kind {
+				case "regional":
+					if validLabel(p.Region) {
+						raw = "https://" + rule.productCode + "." + p.Region + ".aliyuncs.com"
+					}
+				case "global":
+					raw = "https://" + rule.productCode + ".aliyuncs.com"
+				}
+			}
+		}
 	}
 	if raw == "" {
 		return Endpoint{}, ErrUnsupported
@@ -102,15 +141,24 @@ func (r *Rules) ResolveEndpoint(ctx context.Context, p Parameters) (Endpoint, er
 	return Endpoint{URL: strings.TrimSuffix(raw, "/")}, nil
 }
 
-// DefaultResolver returns fresh ECS/STS/VPC public rules for cn-hangzhou, cn-shanghai,
-// cn-beijing, cn-shenzhen and ap-southeast-1. Other regions/partitions require custom rules.
+// DefaultResolver returns fresh rules generated from pinned official product DSL.
+// Public mappings precede regional/global construction rules. A syntactically valid
+// region does not prove service availability. Nonpublic combinations require a
+// reviewed exact rule; explicit BaseEndpoint always takes precedence. No network I/O occurs.
 func DefaultResolver() *Rules {
-	var rules []Rule
-	for _, service := range []string{"ecs", "sts", "vpc"} {
-		for _, region := range []string{"cn-hangzhou", "cn-shanghai", "cn-beijing", "cn-shenzhen", "ap-southeast-1"} {
-			rules = append(rules, Rule{Service: service, Region: region, URL: "https://" + service + "." + region + ".aliyuncs.com"})
+	r, _ := NewRules(defaultEndpointRules)
+	r.deployment = maps.Clone(defaultDeploymentRules)
+	return r
+}
+
+func validLabel(value string) bool {
+	if len(value) == 0 || len(value) > 63 || value[0] == '-' || value[len(value)-1] == '-' {
+		return false
+	}
+	for _, c := range value {
+		if !(c >= 'a' && c <= 'z' || c >= '0' && c <= '9' || c == '-') {
+			return false
 		}
 	}
-	r, _ := NewRules(rules)
-	return r
+	return true
 }

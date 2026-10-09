@@ -11,7 +11,7 @@
   "compilation": "not-assessed",
   "live": "not-assessed",
   "capabilityPolicy": "sparse-reviewed",
-  "policySHA256": "d5c1511fe4ba20ccb76975c995c45e891838fe89f1dea318879dc2ce7dd54db1",
+  "policySHA256": "889826010783acd685863ed10241a9d17c2f8ec73507201576600c0ed2048892",
   "operations": [
     {
       "name": "ActivateRouterInterface",

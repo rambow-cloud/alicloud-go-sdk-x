@@ -6,9 +6,39 @@
   "operations": {
     "DescribeVpcs": {
       "idempotent": true,
-      "evidence": ["https://help.aliyun.com/en/vpc/developer-reference/api-vpc-2016-04-28-describevpcs"],
-      "paginator": {"mode": "pages", "items": "Vpcs.Vpc", "page": "PageNumber", "size": "PageSize", "total": "TotalCount", "defaultSize": 10, "maximumSize": 50},
-      "constraints": [{"path": "PageNumber", "minimum": 1}, {"path": "PageSize", "minimum": 1, "maximum": 50}]
+      "evidence": [
+        "https://help.aliyun.com/en/vpc/developer-reference/api-vpc-2016-04-28-describevpcs"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "Vpcs.Vpc",
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount",
+        "defaultSize": 10,
+        "maximumSize": 50
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 50
+        }
+      ]
     }
-  }
+  },
+  "endpoints": [
+    {
+      "region": "cn-beijing",
+      "network": "vpc",
+      "url": "https://vpc-vpc.cn-beijing.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/vpc/use-privatelink-to-access-vpc-openapi-over-private-network"
+      ]
+    }
+  ]
 }

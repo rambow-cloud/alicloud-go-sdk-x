@@ -53,5 +53,14 @@ func TestRulesOverrideAndValidation(t *testing.T) {
 func ExampleDefaultResolver() {
 	e, _ := endpoint.DefaultResolver().ResolveEndpoint(context.Background(), endpoint.Parameters{Service: "ecs", Region: "cn-hangzhou"})
 	fmt.Println(e.URL)
-	// Output: https://ecs.cn-hangzhou.aliyuncs.com
+	// Output: https://ecs-cn-hangzhou.aliyuncs.com
+}
+
+func ExampleDefaultResolver_private() {
+	e, err := endpoint.DefaultResolver().ResolveEndpoint(context.Background(), endpoint.Parameters{Service: "sts", Region: "cn-hangzhou", Network: "vpc"})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(e.URL)
+	// Output: https://sts-vpc.cn-hangzhou.aliyuncs.com
 }
