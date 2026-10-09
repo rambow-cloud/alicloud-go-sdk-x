@@ -29,3 +29,9 @@
 - Node 22: 98 tests covered; 90 passed initially and the affected 29-test set passed after fixture corrections. Frontend/check passed. Go full-suite failures were corrected and affected FC/codegen suites passed; all other packages passed in the initial run. Doccheck, vet, product-check, formatting, diff whitespace and language/local-link checks passed. Final-head Linux race/Windows evidence belongs to the linked PR.
 - No FC live calls, resource creation or inferred pagination/waiter/retry policy. XML, binary streaming and additional signing profiles keep #92 open.
 - The first Linux race run reached the 20-minute suite cap during isolated generated-product compilation (52 seconds into its independently bounded 180-second subprocess). No assertion/race failure was reported. CI now allows 30 minutes for the complete suite; subprocess limits and SDK request defaults are unchanged. Final-head CI must pass before merge.
+
+## Wire assertion correction
+
+- CI exposed a test that compared a multi-member JSON object as ordered bytes. JSON object order is not part of this operation's wire contract.
+- Decode the body and compare exact fields/values, including absent versus explicit false/empty string. Use deterministic JSON only for before/after ownership snapshots.
+- This changes test assertions, not SDK encoding or signatures. Refresh consumers at the integrated candidate before the release guard because its workload checks include Go tests and isolated comparison modules.
