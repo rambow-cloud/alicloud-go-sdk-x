@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "status": "PARTIAL",
+  "reviewKind": "implementation-agent",
+  "sdkCommit": "1a58fe9f26fb2d4ddab713bd561b5ae65c4610a9",
+  "executedOn": "2026-10-09",
+  "goVersion": "go1.27.1",
+  "os": "windows/amd64",
+  "cliVersion": "3.4.11",
+  "nativeProfile": true,
+  "profile": "oss-sftp",
+  "sourceRevision": "ec489e5c3deae95496daae2b41503ac58b221adb",
+  "readOnly": true,
+  "regionsQueried": 33,
+  "totalInstances": 0,
+  "totalVpcs": 2,
+  "evidence": "docs/live-resource-followup.md",
+  "checks": [
+    {
+      "WaitAndWaitForOutput": "PASS existing Available state",
+      "attempts": 1,
+      "httpStatus": 200,
+      "inputOwnership": "PASS",
+      "items": 1,
+      "liveMultiPageContinuation": "NOT RUN (one resource)",
+      "liveTransition": "NOT RUN (no changes)",
+      "pageMetadata": "PASS",
+      "projection": "PASS",
+      "region": "cn-beijing",
+      "terminalCursor": "PASS"
+    },
+    {
+      "WaitAndWaitForOutput": "PASS existing Available state",
+      "attempts": 1,
+      "httpStatus": 200,
+      "inputOwnership": "PASS",
+      "items": 1,
+      "liveMultiPageContinuation": "NOT RUN (one resource)",
+      "liveTransition": "NOT RUN (no changes)",
+      "pageMetadata": "PASS",
+      "projection": "PASS",
+      "region": "cn-zhangjiakou",
+      "terminalCursor": "PASS"
+    }
+  ]
+}
