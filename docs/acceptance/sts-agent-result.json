@@ -1,44 +1,108 @@
 {
+  "sdkCommit": "3d54426d15b6b79b238138a0d8a52bf9ebc0d62c",
+  "sourceBaseline": "f72bbdbc4ac0733f899e8a54d8c9bb1e1ac25266",
+  "goVersion": "go1.27.1",
+  "os": "windows/amd64",
+  "startedAt": "2026-10-09T00:14:07.135Z",
+  "endedAt": "2026-10-09T00:14:09.855Z",
+  "command": "go -C examples/stsacceptance test -json -count=1 ./...",
   "schemaVersion": 1,
-  "status": "NOT RUN",
+  "status": "PASS",
   "reviewKind": "implementation-agent",
   "independentHuman": false,
-  "sdkCommit": "",
-  "goVersion": "",
-  "os": "",
   "officialSTSVersion": "v2.1.0",
   "evidence": "docs/sts-agent-closeout.md",
   "timingKind": "automated-test-execution",
   "tasks": [
     {
       "id": "identity",
-      "status": "NOT RUN",
-      "elapsedSeconds": null,
-      "tests": []
+      "status": "PASS",
+      "elapsedSeconds": 0.07999999999999999,
+      "tests": [
+        {
+          "name": "TestExternalDefaultProfileWorkload",
+          "status": "PASS",
+          "elapsedSeconds": 0.01
+        },
+        {
+          "name": "TestExternalOAuthRefreshPersistenceAndReuse",
+          "status": "PASS",
+          "elapsedSeconds": 0.06
+        },
+        {
+          "name": "TestExternalLongLivedProfileRequiresOptIn",
+          "status": "PASS",
+          "elapsedSeconds": 0.01
+        },
+        {
+          "name": "TestConsumerReviewIdentityOptionsAndInflightCancellation",
+          "status": "PASS",
+          "elapsedSeconds": 0
+        }
+      ]
     },
     {
       "id": "provider-cache",
-      "status": "NOT RUN",
-      "elapsedSeconds": null,
-      "tests": []
+      "status": "PASS",
+      "elapsedSeconds": 0,
+      "tests": [
+        {
+          "name": "TestExternalGeneratedWorkload",
+          "status": "PASS",
+          "elapsedSeconds": 0
+        },
+        {
+          "name": "TestConsumerReviewNativeRoleCacheAndCanceledWaiter",
+          "status": "PASS",
+          "elapsedSeconds": 0
+        }
+      ]
     },
     {
       "id": "mock-errors",
-      "status": "NOT RUN",
-      "elapsedSeconds": null,
-      "tests": []
+      "status": "PASS",
+      "elapsedSeconds": 0,
+      "tests": [
+        {
+          "name": "TestExternalSmallMockStructuredErrorsAndCancellation",
+          "status": "PASS",
+          "elapsedSeconds": 0
+        },
+        {
+          "name": "TestConsumerReviewSmallMockAndErrorIdentity",
+          "status": "PASS",
+          "elapsedSeconds": 0
+        },
+        {
+          "name": "TestConsumerReviewIssuanceDoesNotRetryAndErrorRedaction",
+          "status": "PASS",
+          "elapsedSeconds": 0
+        }
+      ]
     },
     {
       "id": "anonymous",
-      "status": "NOT RUN",
-      "elapsedSeconds": null,
-      "tests": []
+      "status": "PASS",
+      "elapsedSeconds": 0,
+      "tests": [
+        {
+          "name": "TestConsumerReviewAnonymousTokenPreservationAndProviderIsolation",
+          "status": "PASS",
+          "elapsedSeconds": 0
+        }
+      ]
     },
     {
       "id": "comparison",
-      "status": "NOT RUN",
-      "elapsedSeconds": null,
-      "tests": []
+      "status": "PASS",
+      "elapsedSeconds": 0.01,
+      "tests": [
+        {
+          "name": "TestPinnedOfficialWorkload",
+          "status": "PASS",
+          "elapsedSeconds": 0.01
+        }
+      ]
     }
   ]
 }
