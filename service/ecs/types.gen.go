@@ -181,8 +181,13 @@ type AddBandwidthPackageIpsInput struct {
 	BandwidthPackageID *string `json:"BandwidthPackageId,omitzero"`
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L233
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/AddBandwidthPackageIps.json
+	// JSON pointer: /parameters/3/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// IPCount maps to the exact wire member IpCount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -788,28 +793,53 @@ type AllocateDedicatedHostsOutputDedicatedHostIDSets struct {
 type AllocateEipAddressInput struct {
 	// ActivityID maps to the exact wire member ActivityId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L713
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ActivityId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/AllocateEipAddress.json
+	// JSON pointer: /parameters/4/help_en
 	ActivityID *int64 `json:"ActivityId,omitzero"`
 	// Bandwidth maps to the exact wire member Bandwidth.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L714
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Bandwidth
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/AllocateEipAddress.json
+	// JSON pointer: /parameters/1/help_en
 	Bandwidth *string `json:"Bandwidth,omitzero"`
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L715
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/AllocateEipAddress.json
+	// JSON pointer: /parameters/5/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// ISP maps to the exact wire member ISP.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L716
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ISP
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/AllocateEipAddress.json
+	// JSON pointer: /parameters/2/help_en
 	ISP *string `json:"ISP,omitzero"`
 	// InternetChargeType maps to the exact wire member InternetChargeType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L717
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The InternetChargeType
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/AllocateEipAddress.json
+	// JSON pointer: /parameters/3/help_en
 	InternetChargeType *string `json:"InternetChargeType,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -1452,8 +1482,13 @@ type AssociateEipAddressInput struct {
 	InstanceID *string `json:"InstanceId,omitzero"`
 	// InstanceType maps to the exact wire member InstanceType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1283
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The InstanceType
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/AssociateEipAddress.json
+	// JSON pointer: /parameters/3/help_en
 	InstanceType *string `json:"InstanceType,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -1467,8 +1502,13 @@ type AssociateEipAddressInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1286
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RegionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/AssociateEipAddress.json
+	// JSON pointer: /parameters/0/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -1518,8 +1558,13 @@ type AssociateEipAddressOutput struct {
 type AssociateHaVipInput struct {
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1370
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/AssociateHaVip.json
+	// JSON pointer: /parameters/0/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// HaVipID maps to the exact wire member HaVipId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -3568,8 +3613,13 @@ type CancelImagePipelineExecutionOutput struct {
 type CancelPhysicalConnectionInput struct {
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3036
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CancelPhysicalConnection.json
+	// JSON pointer: /parameters/2/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -3611,8 +3661,13 @@ type CancelPhysicalConnectionInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// UserCIDR maps to the exact wire member UserCidr.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3043
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The UserCidr
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CancelPhysicalConnection.json
+	// JSON pointer: /parameters/3/help_en
 	UserCIDR *string `json:"UserCidr,omitzero"`
 }
 
@@ -7048,8 +7103,13 @@ type CreateCapacityReservationInput struct {
 	InstanceAmount *int32 `json:"InstanceAmount,omitzero"`
 	// InstanceChargeType maps to the exact wire member InstanceChargeType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L5669
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The InstanceChargeType
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateCapacityReservation.json
+	// JSON pointer: /parameters/13/help_en
 	InstanceChargeType *string `json:"InstanceChargeType,omitzero"`
 	// InstanceType maps to the exact wire member InstanceType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -9009,18 +9069,33 @@ type CreateForwardEntryOutput struct {
 type CreateHaVipInput struct {
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7086
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateHaVip.json
+	// JSON pointer: /parameters/0/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// Description maps to the exact wire member Description.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7087
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Description
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateHaVip.json
+	// JSON pointer: /parameters/4/help_en
 	Description *string `json:"Description,omitzero"`
 	// IPAddress maps to the exact wire member IpAddress.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7088
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The IpAddress
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateHaVip.json
+	// JSON pointer: /parameters/3/help_en
 	IPAddress *string `json:"IpAddress,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -10321,8 +10396,13 @@ type CreateImageInput struct {
 	DiskDeviceMapping []CreateImageInputDiskDeviceMapping `json:"DiskDeviceMapping,omitzero"`
 	// DryRun maps to the exact wire member DryRun.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7316
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The DryRun
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateImage.json
+	// JSON pointer: /parameters/16/help_en
 	DryRun *bool `json:"DryRun,omitzero"`
 	// Features maps to the exact wire member Features.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -14238,18 +14318,33 @@ type CreateNatGatewayInput struct {
 	BandwidthPackage []CreateNATGatewayInputBandwidthPackage `json:"BandwidthPackage,omitzero"`
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10086
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateNatGateway.json
+	// JSON pointer: /parameters/4/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// Description maps to the exact wire member Description.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10087
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Description
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateNatGateway.json
+	// JSON pointer: /parameters/3/help_en
 	Description *string `json:"Description,omitzero"`
 	// Name maps to the exact wire member Name.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10088
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Name
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateNatGateway.json
+	// JSON pointer: /parameters/2/help_en
 	Name *string `json:"Name,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -14296,18 +14391,33 @@ type CreateNatGatewayInput struct {
 type CreateNATGatewayInputBandwidthPackage struct {
 	// Bandwidth maps to the exact wire member Bandwidth.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10081
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Bandwidth
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateNatGateway.json
+	// JSON pointer: /parameters/5/element/fields/0/help_en
 	Bandwidth *int32 `json:"Bandwidth,omitzero"`
 	// IPCount maps to the exact wire member IpCount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10082
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The IpCount
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateNatGateway.json
+	// JSON pointer: /parameters/5/element/fields/1/help_en
 	IPCount *int32 `json:"IpCount,omitzero"`
 	// Zone maps to the exact wire member Zone.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10083
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Zone
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateNatGateway.json
+	// JSON pointer: /parameters/5/element/fields/2/help_en
 	Zone *string `json:"Zone,omitzero"`
 }
 
@@ -14612,8 +14722,13 @@ type CreateNetworkInterfaceInput struct {
 	Description *string `json:"Description,omitzero"`
 	// EnablePrimaryIPv6 maps to the exact wire member EnablePrimaryIPv6.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10216
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The EnablePrimaryIPv6
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateNetworkInterface.json
+	// JSON pointer: /parameters/31/help_en
 	EnablePrimaryIPv6 *bool `json:"EnablePrimaryIPv6,omitzero"`
 	// EnhancedNetwork maps to the exact wire member EnhancedNetwork.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -14982,8 +15097,13 @@ type CreateNetworkInterfaceInputConnectionTrackingConfiguration struct {
 type CreateNetworkInterfaceInputEnhancedNetwork struct {
 	// EnableExpress maps to the exact wire member EnableExpress.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10218
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The EnableExpress
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateNetworkInterface.json
+	// JSON pointer: /parameters/29/fields/0/help_en
 	EnableExpress *bool `json:"EnableExpress,omitzero"`
 	// EnableRss maps to the exact wire member EnableRss.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -15005,13 +15125,23 @@ type CreateNetworkInterfaceInputEnhancedNetwork struct {
 	EnableSriov *bool `json:"EnableSriov,omitzero"`
 	// VirtualFunctionQuantity maps to the exact wire member VirtualFunctionQuantity.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10221
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The VirtualFunctionQuantity
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateNetworkInterface.json
+	// JSON pointer: /parameters/29/fields/3/help_en
 	VirtualFunctionQuantity *int32 `json:"VirtualFunctionQuantity,omitzero"`
 	// VirtualFunctionTotalQueueNumber maps to the exact wire member VirtualFunctionTotalQueueNumber.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10222
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The VirtualFunctionTotalQueueNumber
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateNetworkInterface.json
+	// JSON pointer: /parameters/29/fields/4/help_en
 	VirtualFunctionTotalQueueNumber *int32 `json:"VirtualFunctionTotalQueueNumber,omitzero"`
 }
 
@@ -15453,18 +15583,33 @@ type CreatePhysicalConnectionInput struct {
 	AccessPointID *string `json:"AccessPointId,omitzero"`
 	// CircuitCode maps to the exact wire member CircuitCode.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10764
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The CircuitCode
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreatePhysicalConnection.json
+	// JSON pointer: /parameters/10/help_en
 	CircuitCode *string `json:"CircuitCode,omitzero"`
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10765
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreatePhysicalConnection.json
+	// JSON pointer: /parameters/11/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// Description maps to the exact wire member Description.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10766
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Description
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreatePhysicalConnection.json
+	// JSON pointer: /parameters/8/help_en
 	Description *string `json:"Description,omitzero"`
 	// LineOperator maps to the exact wire member LineOperator.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -15477,8 +15622,13 @@ type CreatePhysicalConnectionInput struct {
 	LineOperator *string `json:"LineOperator,omitzero"`
 	// Name maps to the exact wire member Name.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10768
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Name
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreatePhysicalConnection.json
+	// JSON pointer: /parameters/9/help_en
 	Name *string `json:"Name,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -15501,13 +15651,23 @@ type CreatePhysicalConnectionInput struct {
 	PeerLocation *string `json:"PeerLocation,omitzero"`
 	// PortType maps to the exact wire member PortType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10772
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PortType
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreatePhysicalConnection.json
+	// JSON pointer: /parameters/6/help_en
 	PortType *string `json:"PortType,omitzero"`
 	// RedundantPhysicalConnectionID maps to the exact wire member RedundantPhysicalConnectionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10773
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RedundantPhysicalConnectionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreatePhysicalConnection.json
+	// JSON pointer: /parameters/7/help_en
 	RedundantPhysicalConnectionID *string `json:"RedundantPhysicalConnectionId,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -15530,18 +15690,33 @@ type CreatePhysicalConnectionInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// Type maps to the exact wire member Type.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10777
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Type
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreatePhysicalConnection.json
+	// JSON pointer: /parameters/2/help_en
 	Type *string `json:"Type,omitzero"`
 	// UserCIDR maps to the exact wire member UserCidr.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10778
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The UserCidr
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreatePhysicalConnection.json
+	// JSON pointer: /parameters/12/help_en
 	UserCIDR *string `json:"UserCidr,omitzero"`
 	// Bandwidth maps to the exact wire member bandwidth.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10779
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The bandwidth
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreatePhysicalConnection.json
+	// JSON pointer: /parameters/4/help_en
 	Bandwidth *int32 `json:"bandwidth,omitzero"`
 }
 
@@ -15600,8 +15775,13 @@ type CreatePlanMaintenanceWindowInput struct {
 	Enable *bool `json:"Enable,omitzero"`
 	// MinMaintenanceInterval maps to the exact wire member MinMaintenanceInterval.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10898
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The MinMaintenanceInterval
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreatePlanMaintenanceWindow.json
+	// JSON pointer: /parameters/6/help_en
 	MinMaintenanceInterval *int32 `json:"MinMaintenanceInterval,omitzero"`
 	// PlanWindowName maps to the exact wire member PlanWindowName.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -16248,8 +16428,13 @@ type CreatePrefixListOutput struct {
 type CreateRouteEntryInput struct {
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11344
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouteEntry.json
+	// JSON pointer: /parameters/4/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// DestinationCIDRBlock maps to the exact wire member DestinationCidrBlock.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -16262,17 +16447,32 @@ type CreateRouteEntryInput struct {
 	DestinationCIDRBlock *string `json:"DestinationCidrBlock,omitzero"`
 	// NextHopID maps to the exact wire member NextHopId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11346
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The NextHopId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouteEntry.json
+	// JSON pointer: /parameters/3/help_en
 	NextHopID *string `json:"NextHopId,omitzero"`
 	// NextHopList maps to the exact wire member NextHopList.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11347
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The NextHopList
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouteEntry.json
+	// JSON pointer: /parameters/6/help_en
 	NextHopList []CreateRouteEntryInputNextHopList `json:"NextHopList,omitzero"`
 	// NextHopType maps to the exact wire member NextHopType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11353
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The NextHopType
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouteEntry.json
+	// JSON pointer: /parameters/5/help_en
 	NextHopType *string `json:"NextHopType,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -16286,8 +16486,13 @@ type CreateRouteEntryInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11356
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RegionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouteEntry.json
+	// JSON pointer: /parameters/0/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -16315,13 +16520,23 @@ type CreateRouteEntryInput struct {
 type CreateRouteEntryInputNextHopList struct {
 	// NextHopID maps to the exact wire member NextHopId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11349
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The NextHopId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouteEntry.json
+	// JSON pointer: /parameters/6/element/fields/0/help_en
 	NextHopID *string `json:"NextHopId,omitzero"`
 	// NextHopType maps to the exact wire member NextHopType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11350
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The NextHopType
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouteEntry.json
+	// JSON pointer: /parameters/6/element/fields/1/help_en
 	NextHopType *string `json:"NextHopType,omitzero"`
 }
 
@@ -16361,58 +16576,113 @@ type CreateRouteEntryOutput struct {
 type CreateRouterInterfaceInput struct {
 	// AccessPointID maps to the exact wire member AccessPointId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11450
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The AccessPointId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouterInterface.json
+	// JSON pointer: /parameters/12/help_en
 	AccessPointID *string `json:"AccessPointId,omitzero"`
 	// AutoPay maps to the exact wire member AutoPay.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11451
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The AutoPay
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouterInterface.json
+	// JSON pointer: /parameters/18/help_en
 	AutoPay *bool `json:"AutoPay,omitzero"`
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11452
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouterInterface.json
+	// JSON pointer: /parameters/20/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// Description maps to the exact wire member Description.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11453
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Description
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouterInterface.json
+	// JSON pointer: /parameters/14/help_en
 	Description *string `json:"Description,omitzero"`
 	// HealthCheckSourceIP maps to the exact wire member HealthCheckSourceIp.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11454
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The HealthCheckSourceIp
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouterInterface.json
+	// JSON pointer: /parameters/10/help_en
 	HealthCheckSourceIP *string `json:"HealthCheckSourceIp,omitzero"`
 	// HealthCheckTargetIP maps to the exact wire member HealthCheckTargetIp.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11455
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The HealthCheckTargetIp
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouterInterface.json
+	// JSON pointer: /parameters/11/help_en
 	HealthCheckTargetIP *string `json:"HealthCheckTargetIp,omitzero"`
 	// InstanceChargeType maps to the exact wire member InstanceChargeType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11456
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The InstanceChargeType
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouterInterface.json
+	// JSON pointer: /parameters/17/help_en
 	InstanceChargeType *string `json:"InstanceChargeType,omitzero"`
 	// Name maps to the exact wire member Name.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11457
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Name
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouterInterface.json
+	// JSON pointer: /parameters/15/help_en
 	Name *string `json:"Name,omitzero"`
 	// OppositeAccessPointID maps to the exact wire member OppositeAccessPointId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11458
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The OppositeAccessPointId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouterInterface.json
+	// JSON pointer: /parameters/13/help_en
 	OppositeAccessPointID *string `json:"OppositeAccessPointId,omitzero"`
 	// OppositeInterfaceID maps to the exact wire member OppositeInterfaceId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11459
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The OppositeInterfaceId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouterInterface.json
+	// JSON pointer: /parameters/6/help_en
 	OppositeInterfaceID *string `json:"OppositeInterfaceId,omitzero"`
 	// OppositeInterfaceOwnerID maps to the exact wire member OppositeInterfaceOwnerId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11460
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The OppositeInterfaceOwnerId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouterInterface.json
+	// JSON pointer: /parameters/9/help_en
 	OppositeInterfaceOwnerID *string `json:"OppositeInterfaceOwnerId,omitzero"`
 	// OppositeRegionID maps to the exact wire member OppositeRegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -16425,13 +16695,23 @@ type CreateRouterInterfaceInput struct {
 	OppositeRegionID *string `json:"OppositeRegionId,omitzero"`
 	// OppositeRouterID maps to the exact wire member OppositeRouterId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11462
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The OppositeRouterId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouterInterface.json
+	// JSON pointer: /parameters/7/help_en
 	OppositeRouterID *string `json:"OppositeRouterId,omitzero"`
 	// OppositeRouterType maps to the exact wire member OppositeRouterType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11463
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The OppositeRouterType
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouterInterface.json
+	// JSON pointer: /parameters/8/help_en
 	OppositeRouterType *string `json:"OppositeRouterType,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -16445,13 +16725,23 @@ type CreateRouterInterfaceInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// Period maps to the exact wire member Period.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11466
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Period
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouterInterface.json
+	// JSON pointer: /parameters/16/help_en
 	Period *int32 `json:"Period,omitzero"`
 	// PricingCycle maps to the exact wire member PricingCycle.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11467
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PricingCycle
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouterInterface.json
+	// JSON pointer: /parameters/19/help_en
 	PricingCycle *string `json:"PricingCycle,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -16510,8 +16800,13 @@ type CreateRouterInterfaceInput struct {
 	Spec *string `json:"Spec,omitzero"`
 	// UserCIDR maps to the exact wire member UserCidr.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11475
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The UserCidr
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateRouterInterface.json
+	// JSON pointer: /parameters/21/help_en
 	UserCIDR *string `json:"UserCidr,omitzero"`
 }
 
@@ -17544,13 +17839,23 @@ type CreateVSwitchInput struct {
 	CIDRBlock *string `json:"CidrBlock,omitzero"`
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12436
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVSwitch.json
+	// JSON pointer: /parameters/6/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// Description maps to the exact wire member Description.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12437
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Description
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVSwitch.json
+	// JSON pointer: /parameters/5/help_en
 	Description *string `json:"Description,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -17564,8 +17869,13 @@ type CreateVSwitchInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12440
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RegionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVSwitch.json
+	// JSON pointer: /parameters/3/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -17579,8 +17889,13 @@ type CreateVSwitchInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// VSwitchName maps to the exact wire member VSwitchName.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12443
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The VSwitchName
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVSwitch.json
+	// JSON pointer: /parameters/4/help_en
 	VSwitchName *string `json:"VSwitchName,omitzero"`
 	// VPCID maps to the exact wire member VpcId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -17643,28 +17958,53 @@ type CreateVSwitchOutput struct {
 type CreateVirtualBorderRouterInput struct {
 	// CircuitCode maps to the exact wire member CircuitCode.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12537
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The CircuitCode
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json
+	// JSON pointer: /parameters/4/help_en
 	CircuitCode *string `json:"CircuitCode,omitzero"`
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12538
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json
+	// JSON pointer: /parameters/10/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// Description maps to the exact wire member Description.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12539
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Description
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json
+	// JSON pointer: /parameters/8/help_en
 	Description *string `json:"Description,omitzero"`
 	// LocalGatewayIP maps to the exact wire member LocalGatewayIp.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12540
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The LocalGatewayIp
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json
+	// JSON pointer: /parameters/5/help_en
 	LocalGatewayIP *string `json:"LocalGatewayIp,omitzero"`
 	// Name maps to the exact wire member Name.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12541
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Name
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json
+	// JSON pointer: /parameters/9/help_en
 	Name *string `json:"Name,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -17678,13 +18018,23 @@ type CreateVirtualBorderRouterInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// PeerGatewayIP maps to the exact wire member PeerGatewayIp.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12544
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PeerGatewayIp
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json
+	// JSON pointer: /parameters/6/help_en
 	PeerGatewayIP *string `json:"PeerGatewayIp,omitzero"`
 	// PeeringSubnetMask maps to the exact wire member PeeringSubnetMask.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12545
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PeeringSubnetMask
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json
+	// JSON pointer: /parameters/7/help_en
 	PeeringSubnetMask *string `json:"PeeringSubnetMask,omitzero"`
 	// PhysicalConnectionID maps to the exact wire member PhysicalConnectionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -17716,13 +18066,23 @@ type CreateVirtualBorderRouterInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// UserCIDR maps to the exact wire member UserCidr.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12550
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The UserCidr
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json
+	// JSON pointer: /parameters/11/help_en
 	UserCIDR *string `json:"UserCidr,omitzero"`
 	// VbrOwnerID maps to the exact wire member VbrOwnerId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12551
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The VbrOwnerId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVirtualBorderRouter.json
+	// JSON pointer: /parameters/2/help_en
 	VbrOwnerID *int64 `json:"VbrOwnerId,omitzero"`
 	// VlanID maps to the exact wire member VlanId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -17776,18 +18136,33 @@ type CreateVirtualBorderRouterOutput struct {
 type CreateVpcInput struct {
 	// CIDRBlock maps to the exact wire member CidrBlock.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12662
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The CidrBlock
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVpc.json
+	// JSON pointer: /parameters/1/help_en
 	CIDRBlock *string `json:"CidrBlock,omitzero"`
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12663
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVpc.json
+	// JSON pointer: /parameters/4/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// Description maps to the exact wire member Description.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12664
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Description
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVpc.json
+	// JSON pointer: /parameters/3/help_en
 	Description *string `json:"Description,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -17820,13 +18195,23 @@ type CreateVpcInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// UserCIDR maps to the exact wire member UserCidr.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12670
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The UserCidr
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVpc.json
+	// JSON pointer: /parameters/5/help_en
 	UserCIDR *string `json:"UserCidr,omitzero"`
 	// VPCName maps to the exact wire member VpcName.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12671
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The VpcName
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/CreateVpc.json
+	// JSON pointer: /parameters/2/help_en
 	VPCName *string `json:"VpcName,omitzero"`
 }
 
@@ -19076,8 +19461,13 @@ type DeleteForwardEntryOutput struct {
 type DeleteHaVipInput struct {
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13843
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DeleteHaVip.json
+	// JSON pointer: /parameters/0/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// HaVipID maps to the exact wire member HaVipId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -19410,8 +19800,13 @@ type DeleteImagePipelineOutput struct {
 type DeleteImageInput struct {
 	// DryRun maps to the exact wire member DryRun.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14014
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The DryRun
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DeleteImage.json
+	// JSON pointer: /parameters/3/help_en
 	DryRun *bool `json:"DryRun,omitzero"`
 	// Force maps to the exact wire member Force.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -20185,8 +20580,13 @@ type DeleteNatGatewayOutput struct {
 type DeleteNetworkInterfacePermissionInput struct {
 	// Force maps to the exact wire member Force.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15028
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Force
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DeleteNetworkInterfacePermission.json
+	// JSON pointer: /parameters/2/help_en
 	Force *bool `json:"Force,omitzero"`
 	// NetworkInterfacePermissionID maps to the exact wire member NetworkInterfacePermissionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -20346,8 +20746,13 @@ type DeleteNetworkInterfaceOutput struct {
 type DeletePhysicalConnectionInput struct {
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15116
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DeletePhysicalConnection.json
+	// JSON pointer: /parameters/2/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -20662,12 +21067,22 @@ type DeleteRouteEntryInput struct {
 	DestinationCIDRBlock *string `json:"DestinationCidrBlock,omitzero"`
 	// NextHopID maps to the exact wire member NextHopId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15435
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The NextHopId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DeleteRouteEntry.json
+	// JSON pointer: /parameters/3/help_en
 	NextHopID *string `json:"NextHopId,omitzero"`
 	// NextHopList maps to the exact wire member NextHopList.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15436
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The NextHopList
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DeleteRouteEntry.json
+	// JSON pointer: /parameters/4/help_en
 	NextHopList []DeleteRouteEntryInputNextHopList `json:"NextHopList,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -20681,8 +21096,13 @@ type DeleteRouteEntryInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15444
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RegionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DeleteRouteEntry.json
+	// JSON pointer: /parameters/0/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -20710,13 +21130,23 @@ type DeleteRouteEntryInput struct {
 type DeleteRouteEntryInputNextHopList struct {
 	// NextHopID maps to the exact wire member NextHopId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15438
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The NextHopId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DeleteRouteEntry.json
+	// JSON pointer: /parameters/4/element/fields/0/help_en
 	NextHopID *string `json:"NextHopId,omitzero"`
 	// NextHopType maps to the exact wire member NextHopType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15439
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The NextHopType
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DeleteRouteEntry.json
+	// JSON pointer: /parameters/4/element/fields/1/help_en
 	NextHopType *string `json:"NextHopType,omitzero"`
 }
 
@@ -20756,8 +21186,13 @@ type DeleteRouteEntryOutput struct {
 type DeleteRouterInterfaceInput struct {
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15532
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DeleteRouterInterface.json
+	// JSON pointer: /parameters/2/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -20799,8 +21234,13 @@ type DeleteRouterInterfaceInput struct {
 	RouterInterfaceID *string `json:"RouterInterfaceId,omitzero"`
 	// UserCIDR maps to the exact wire member UserCidr.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15539
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The UserCidr
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DeleteRouterInterface.json
+	// JSON pointer: /parameters/3/help_en
 	UserCIDR *string `json:"UserCidr,omitzero"`
 }
 
@@ -21242,8 +21682,13 @@ type DeleteVSwitchInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15984
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RegionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DeleteVSwitch.json
+	// JSON pointer: /parameters/1/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -21302,8 +21747,13 @@ type DeleteVSwitchOutput struct {
 type DeleteVirtualBorderRouterInput struct {
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16063
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DeleteVirtualBorderRouter.json
+	// JSON pointer: /parameters/2/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -21336,8 +21786,13 @@ type DeleteVirtualBorderRouterInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// UserCIDR maps to the exact wire member UserCidr.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16069
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The UserCidr
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DeleteVirtualBorderRouter.json
+	// JSON pointer: /parameters/3/help_en
 	UserCIDR *string `json:"UserCidr,omitzero"`
 	// VbrID maps to the exact wire member VbrId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -21396,8 +21851,13 @@ type DeleteVpcInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16154
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RegionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DeleteVpc.json
+	// JSON pointer: /parameters/1/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -21788,8 +22248,13 @@ type DeregisterManagedInstanceOutputInstance struct {
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DescribeAccessPointsInput struct {
 	// Filter maps to the exact wire member Filter.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16434
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Filter
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeAccessPoints.json
+	// JSON pointer: /parameters/4/help_en
 	Filter []DescribeAccessPointsInputFilter `json:"Filter,omitzero"`
 	// OwnerID maps to the exact wire member OwnerId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -21798,13 +22263,23 @@ type DescribeAccessPointsInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// PageNumber maps to the exact wire member PageNumber.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16441
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageNumber
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeAccessPoints.json
+	// JSON pointer: /parameters/2/help_en
 	PageNumber *int32 `json:"PageNumber,omitzero"`
 	// PageSize maps to the exact wire member PageSize.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16442
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageSize
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeAccessPoints.json
+	// JSON pointer: /parameters/3/help_en
 	PageSize *int32 `json:"PageSize,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -21827,8 +22302,13 @@ type DescribeAccessPointsInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// Type maps to the exact wire member Type.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16446
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Type
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeAccessPoints.json
+	// JSON pointer: /parameters/1/help_en
 	Type *string `json:"Type,omitzero"`
 }
 
@@ -21837,12 +22317,22 @@ type DescribeAccessPointsInput struct {
 type DescribeAccessPointsInputFilter struct {
 	// Key maps to the exact wire member Key.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16436
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Key
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeAccessPoints.json
+	// JSON pointer: /parameters/4/element/fields/0/help_en
 	Key *string `json:"Key,omitzero"`
 	// Value maps to the exact wire member Value.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16437
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Value
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeAccessPoints.json
+	// JSON pointer: /parameters/4/element/fields/1/help_en
 	Value []string `json:"Value,omitzero"`
 }
 
@@ -24595,13 +25085,23 @@ type DescribeBandwidthLimitationOutputBandwidthsBandwidth struct {
 type DescribeBandwidthPackagesInput struct {
 	// BandwidthPackageID maps to the exact wire member BandwidthPackageId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18009
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The BandwidthPackageId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeBandwidthPackages.json
+	// JSON pointer: /parameters/1/help_en
 	BandwidthPackageID *string `json:"BandwidthPackageId,omitzero"`
 	// NATGatewayID maps to the exact wire member NatGatewayId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18010
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The NatGatewayId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeBandwidthPackages.json
+	// JSON pointer: /parameters/2/help_en
 	NATGatewayID *string `json:"NatGatewayId,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -24615,13 +25115,23 @@ type DescribeBandwidthPackagesInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// PageNumber maps to the exact wire member PageNumber.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18013
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageNumber
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeBandwidthPackages.json
+	// JSON pointer: /parameters/3/help_en
 	PageNumber *int32 `json:"PageNumber,omitzero"`
 	// PageSize maps to the exact wire member PageSize.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18014
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageSize
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeBandwidthPackages.json
+	// JSON pointer: /parameters/4/help_en
 	PageSize *int32 `json:"PageSize,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -26243,8 +26753,13 @@ type DescribeClustersOutput struct {
 	Clusters *DescribeClustersOutputClusters `json:"Clusters,omitzero"`
 	// RequestID maps to the exact wire member RequestId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18823
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The request ID
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeClusters.json
+	// JSON pointer: /responses/200/schema/properties/RequestId/description_en
 	RequestID *string `json:"RequestId,omitzero"`
 	// Metadata contains request identity, HTTP status and attempt count.
 	Metadata alicloud.Metadata `json:"-"`
@@ -31164,38 +31679,73 @@ type DescribeEipAddressesInput struct {
 	Filter []DescribeEIPAddressesInputFilter `json:"Filter,omitzero"`
 	// AllocationID maps to the exact wire member AllocationId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21355
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The AllocationId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeEipAddresses.json
+	// JSON pointer: /parameters/3/help_en
 	AllocationID *string `json:"AllocationId,omitzero"`
 	// AssociatedInstanceID maps to the exact wire member AssociatedInstanceId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21356
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The AssociatedInstanceId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeEipAddresses.json
+	// JSON pointer: /parameters/13/help_en
 	AssociatedInstanceID *string `json:"AssociatedInstanceId,omitzero"`
 	// AssociatedInstanceType maps to the exact wire member AssociatedInstanceType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21357
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The AssociatedInstanceType
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeEipAddresses.json
+	// JSON pointer: /parameters/12/help_en
 	AssociatedInstanceType *string `json:"AssociatedInstanceType,omitzero"`
 	// ChargeType maps to the exact wire member ChargeType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21358
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ChargeType
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeEipAddresses.json
+	// JSON pointer: /parameters/14/help_en
 	ChargeType *string `json:"ChargeType,omitzero"`
 	// EIPAddress maps to the exact wire member EipAddress.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21359
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The EipAddress
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeEipAddresses.json
+	// JSON pointer: /parameters/2/help_en
 	EIPAddress *string `json:"EipAddress,omitzero"`
 	// ISP maps to the exact wire member ISP.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21360
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ISP
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeEipAddresses.json
+	// JSON pointer: /parameters/4/help_en
 	ISP *string `json:"ISP,omitzero"`
 	// LockReason maps to the exact wire member LockReason.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21361
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The LockReason
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeEipAddresses.json
+	// JSON pointer: /parameters/11/help_en
 	LockReason *string `json:"LockReason,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -31209,13 +31759,23 @@ type DescribeEipAddressesInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// PageNumber maps to the exact wire member PageNumber.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21364
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageNumber
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeEipAddresses.json
+	// JSON pointer: /parameters/5/help_en
 	PageNumber *int32 `json:"PageNumber,omitzero"`
 	// PageSize maps to the exact wire member PageSize.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21365
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageSize
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeEipAddresses.json
+	// JSON pointer: /parameters/6/help_en
 	PageSize *int32 `json:"PageSize,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -31238,8 +31798,13 @@ type DescribeEipAddressesInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// Status maps to the exact wire member Status.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21369
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Status
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeEipAddresses.json
+	// JSON pointer: /parameters/1/help_en
 	Status *string `json:"Status,omitzero"`
 }
 
@@ -31440,13 +32005,23 @@ type DescribeEipMonitorDataInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// Period maps to the exact wire member Period.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21507
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Period
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeEipMonitorData.json
+	// JSON pointer: /parameters/4/help_en
 	Period *int32 `json:"Period,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21508
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RegionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeEipMonitorData.json
+	// JSON pointer: /parameters/0/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -32551,8 +33126,13 @@ type DescribeEniMonitorDataOutputMonitorDataEniMonitorData struct {
 type DescribeForwardTableEntriesInput struct {
 	// ForwardEntryID maps to the exact wire member ForwardEntryId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22148
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ForwardEntryId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeForwardTableEntries.json
+	// JSON pointer: /parameters/2/help_en
 	ForwardEntryID *string `json:"ForwardEntryId,omitzero"`
 	// ForwardTableID maps to the exact wire member ForwardTableId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -32575,13 +33155,23 @@ type DescribeForwardTableEntriesInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// PageNumber maps to the exact wire member PageNumber.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22152
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageNumber
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeForwardTableEntries.json
+	// JSON pointer: /parameters/3/help_en
 	PageNumber *int32 `json:"PageNumber,omitzero"`
 	// PageSize maps to the exact wire member PageSize.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22153
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageSize
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeForwardTableEntries.json
+	// JSON pointer: /parameters/4/help_en
 	PageSize *int32 `json:"PageSize,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -32732,13 +33322,23 @@ type DescribeHaVipsInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// PageNumber maps to the exact wire member PageNumber.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22266
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageNumber
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeHaVips.json
+	// JSON pointer: /parameters/1/help_en
 	PageNumber *int32 `json:"PageNumber,omitzero"`
 	// PageSize maps to the exact wire member PageSize.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22267
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageSize
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeHaVips.json
+	// JSON pointer: /parameters/2/help_en
 	PageSize *int32 `json:"PageSize,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -32766,12 +33366,22 @@ type DescribeHaVipsInput struct {
 type DescribeHaVipsInputFilter struct {
 	// Key maps to the exact wire member Key.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22260
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Key
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeHaVips.json
+	// JSON pointer: /parameters/3/element/fields/0/help_en
 	Key *string `json:"Key,omitzero"`
 	// Value maps to the exact wire member Value.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22261
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Value
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeHaVips.json
+	// JSON pointer: /parameters/3/element/fields/1/help_en
 	Value []string `json:"Value,omitzero"`
 }
 
@@ -37769,8 +38379,13 @@ type DescribeInstanceMaintenanceAttributesOutputMaintenanceAttributesMaintenance
 type DescribeInstanceModificationPriceInput struct {
 	// SystemDisk maps to the exact wire member SystemDisk.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24619
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The system disk modification settings
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeInstanceModificationPrice.json
+	// JSON pointer: /parameters/4/help_en
 	SystemDisk *DescribeInstanceModificationPriceInputSystemDisk `json:"SystemDisk,omitzero"`
 	// DataDisk maps to the exact wire member DataDisk.
 	//
@@ -44391,18 +45006,33 @@ type DescribeLimitationResponse struct {
 type DescribeLimitationOutput struct {
 	// Limitation maps to the exact wire member Limitation.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27723
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The name of the quota limit item
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeLimitation.json
+	// JSON pointer: /responses/200/schema/properties/Limitation/description_en
 	Limitation *string `json:"Limitation,omitzero"`
 	// RequestID maps to the exact wire member RequestId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27724
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The request ID
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeLimitation.json
+	// JSON pointer: /responses/200/schema/properties/RequestId/description_en
 	RequestID *string `json:"RequestId,omitzero"`
 	// Value maps to the exact wire member Value.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27725
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The value of the quota limit item
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeLimitation.json
+	// JSON pointer: /responses/200/schema/properties/Value/description_en
 	Value *string `json:"Value,omitzero"`
 	// Metadata contains request identity, HTTP status and attempt count.
 	Metadata alicloud.Metadata `json:"-"`
@@ -45110,8 +45740,13 @@ type DescribeManagedInstancesOutputInstancesTags struct {
 type DescribeNatGatewaysInput struct {
 	// NATGatewayID maps to the exact wire member NatGatewayId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28123
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The NatGatewayId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeNatGateways.json
+	// JSON pointer: /parameters/1/help_en
 	NATGatewayID *string `json:"NatGatewayId,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -45125,13 +45760,23 @@ type DescribeNatGatewaysInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// PageNumber maps to the exact wire member PageNumber.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28126
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageNumber
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeNatGateways.json
+	// JSON pointer: /parameters/3/help_en
 	PageNumber *int32 `json:"PageNumber,omitzero"`
 	// PageSize maps to the exact wire member PageSize.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28127
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageSize
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeNatGateways.json
+	// JSON pointer: /parameters/4/help_en
 	PageSize *int32 `json:"PageSize,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -45154,8 +45799,13 @@ type DescribeNatGatewaysInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// VPCID maps to the exact wire member VpcId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28131
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The VpcId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeNatGateways.json
+	// JSON pointer: /parameters/2/help_en
 	VPCID *string `json:"VpcId,omitzero"`
 }
 
@@ -47140,13 +47790,23 @@ type DescribeNewProjectEipMonitorDataInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// Period maps to the exact wire member Period.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28913
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Period
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeNewProjectEipMonitorData.json
+	// JSON pointer: /parameters/4/help_en
 	Period *int32 `json:"Period,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28914
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RegionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeNewProjectEipMonitorData.json
+	// JSON pointer: /parameters/0/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -47254,12 +47914,22 @@ type DescribeNewProjectEIPMonitorDataOutputEIPMonitorDatasEIPMonitorData struct 
 type DescribePhysicalConnectionsInput struct {
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29014
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribePhysicalConnections.json
+	// JSON pointer: /parameters/3/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// Filter maps to the exact wire member Filter.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29015
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Filter
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribePhysicalConnections.json
+	// JSON pointer: /parameters/5/help_en
 	Filter []DescribePhysicalConnectionsInputFilter `json:"Filter,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -47273,13 +47943,23 @@ type DescribePhysicalConnectionsInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// PageNumber maps to the exact wire member PageNumber.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29023
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageNumber
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribePhysicalConnections.json
+	// JSON pointer: /parameters/1/help_en
 	PageNumber *int32 `json:"PageNumber,omitzero"`
 	// PageSize maps to the exact wire member PageSize.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29024
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageSize
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribePhysicalConnections.json
+	// JSON pointer: /parameters/2/help_en
 	PageSize *int32 `json:"PageSize,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -47302,8 +47982,13 @@ type DescribePhysicalConnectionsInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// UserCIDR maps to the exact wire member UserCidr.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29028
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The UserCidr
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribePhysicalConnections.json
+	// JSON pointer: /parameters/4/help_en
 	UserCIDR *string `json:"UserCidr,omitzero"`
 }
 
@@ -47312,12 +47997,22 @@ type DescribePhysicalConnectionsInput struct {
 type DescribePhysicalConnectionsInputFilter struct {
 	// Key maps to the exact wire member Key.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29017
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Key
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribePhysicalConnections.json
+	// JSON pointer: /parameters/5/element/fields/0/help_en
 	Key *string `json:"Key,omitzero"`
 	// Value maps to the exact wire member Value.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29018
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Value
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribePhysicalConnections.json
+	// JSON pointer: /parameters/5/element/fields/1/help_en
 	Value []string `json:"Value,omitzero"`
 }
 
@@ -48940,8 +49635,13 @@ type DescribePrefixListsOutputPrefixListsPrefixListTagsTag struct {
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DescribePriceInput struct {
 	// DataDisk maps to the exact wire member DataDisk.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29965
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The list of data disks
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribePrice.json
+	// JSON pointer: /parameters/40/help_en
 	DataDisk []DescribePriceInputDataDisk `json:"DataDisk,omitzero"`
 	// SchedulerOptions maps to the exact wire member SchedulerOptions.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -51880,18 +52580,33 @@ type DescribeRouteTablesInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// PageNumber maps to the exact wire member PageNumber.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31710
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageNumber
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeRouteTables.json
+	// JSON pointer: /parameters/6/help_en
 	PageNumber *int32 `json:"PageNumber,omitzero"`
 	// PageSize maps to the exact wire member PageSize.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31711
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageSize
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeRouteTables.json
+	// JSON pointer: /parameters/7/help_en
 	PageSize *int32 `json:"PageSize,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31712
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RegionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeRouteTables.json
+	// JSON pointer: /parameters/0/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -51905,28 +52620,53 @@ type DescribeRouteTablesInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// RouteTableID maps to the exact wire member RouteTableId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31715
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RouteTableId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeRouteTables.json
+	// JSON pointer: /parameters/2/help_en
 	RouteTableID *string `json:"RouteTableId,omitzero"`
 	// RouteTableName maps to the exact wire member RouteTableName.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31716
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RouteTableName
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeRouteTables.json
+	// JSON pointer: /parameters/5/help_en
 	RouteTableName *string `json:"RouteTableName,omitzero"`
 	// RouterID maps to the exact wire member RouterId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31717
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RouterId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeRouteTables.json
+	// JSON pointer: /parameters/4/help_en
 	RouterID *string `json:"RouterId,omitzero"`
 	// RouterType maps to the exact wire member RouterType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31718
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RouterType
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeRouteTables.json
+	// JSON pointer: /parameters/3/help_en
 	RouterType *string `json:"RouterType,omitzero"`
 	// VRouterID maps to the exact wire member VRouterId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31719
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The VRouterId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeRouteTables.json
+	// JSON pointer: /parameters/1/help_en
 	VRouterID *string `json:"VRouterId,omitzero"`
 }
 
@@ -52112,8 +52852,13 @@ type DescribeRouteTablesOutputRouteTablesRouteTableRouteEntrysRouteEntryNextHops
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DescribeRouterInterfacesInput struct {
 	// Filter maps to the exact wire member Filter.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31849
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Filter
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeRouterInterfaces.json
+	// JSON pointer: /parameters/3/help_en
 	Filter []DescribeRouterInterfacesInputFilter `json:"Filter,omitzero"`
 	// OwnerID maps to the exact wire member OwnerId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -52122,13 +52867,23 @@ type DescribeRouterInterfacesInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// PageNumber maps to the exact wire member PageNumber.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31856
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageNumber
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeRouterInterfaces.json
+	// JSON pointer: /parameters/1/help_en
 	PageNumber *int32 `json:"PageNumber,omitzero"`
 	// PageSize maps to the exact wire member PageSize.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31857
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageSize
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeRouterInterfaces.json
+	// JSON pointer: /parameters/2/help_en
 	PageSize *int32 `json:"PageSize,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -52156,12 +52911,22 @@ type DescribeRouterInterfacesInput struct {
 type DescribeRouterInterfacesInputFilter struct {
 	// Key maps to the exact wire member Key.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31851
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Key
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeRouterInterfaces.json
+	// JSON pointer: /parameters/3/element/fields/0/help_en
 	Key *string `json:"Key,omitzero"`
 	// Value maps to the exact wire member Value.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31852
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Value
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeRouterInterfaces.json
+	// JSON pointer: /parameters/3/element/fields/1/help_en
 	Value []string `json:"Value,omitzero"`
 }
 
@@ -57772,8 +58537,13 @@ type DescribeUserBusinessBehaviorInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35027
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RegionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeUserBusinessBehavior.json
+	// JSON pointer: /parameters/0/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -57953,13 +58723,23 @@ type DescribeVRoutersInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// PageNumber maps to the exact wire member PageNumber.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35189
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageNumber
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVRouters.json
+	// JSON pointer: /parameters/2/help_en
 	PageNumber *int32 `json:"PageNumber,omitzero"`
 	// PageSize maps to the exact wire member PageSize.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35190
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageSize
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVRouters.json
+	// JSON pointer: /parameters/3/help_en
 	PageSize *int32 `json:"PageSize,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -57982,8 +58762,13 @@ type DescribeVRoutersInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// VRouterID maps to the exact wire member VRouterId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35194
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The VRouterId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVRouters.json
+	// JSON pointer: /parameters/0/help_en
 	VRouterID *string `json:"VRouterId,omitzero"`
 }
 
@@ -58101,8 +58886,13 @@ type DescribeVRoutersOutputVRoutersVRouterRouteTableIDs struct {
 type DescribeVSwitchesInput struct {
 	// IsDefault maps to the exact wire member IsDefault.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35294
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The IsDefault
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVSwitches.json
+	// JSON pointer: /parameters/4/help_en
 	IsDefault *bool `json:"IsDefault,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -58116,18 +58906,33 @@ type DescribeVSwitchesInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// PageNumber maps to the exact wire member PageNumber.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35297
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageNumber
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVSwitches.json
+	// JSON pointer: /parameters/5/help_en
 	PageNumber *int32 `json:"PageNumber,omitzero"`
 	// PageSize maps to the exact wire member PageSize.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35298
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageSize
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVSwitches.json
+	// JSON pointer: /parameters/6/help_en
 	PageSize *int32 `json:"PageSize,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35299
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RegionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVSwitches.json
+	// JSON pointer: /parameters/3/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -58141,18 +58946,33 @@ type DescribeVSwitchesInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// VSwitchID maps to the exact wire member VSwitchId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35302
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The VSwitchId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVSwitches.json
+	// JSON pointer: /parameters/1/help_en
 	VSwitchID *string `json:"VSwitchId,omitzero"`
 	// VPCID maps to the exact wire member VpcId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35303
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The VpcId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVSwitches.json
+	// JSON pointer: /parameters/0/help_en
 	VPCID *string `json:"VpcId,omitzero"`
 	// ZoneID maps to the exact wire member ZoneId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35304
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ZoneId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVSwitches.json
+	// JSON pointer: /parameters/2/help_en
 	ZoneID *string `json:"ZoneId,omitzero"`
 }
 
@@ -58280,8 +59100,13 @@ type DescribeVSwitchesOutputVSwitchesVSwitch struct {
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DescribeVirtualBorderRoutersForPhysicalConnectionInput struct {
 	// Filter maps to the exact wire member Filter.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35534
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Filter
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVirtualBorderRoutersForPhysicalConnection.json
+	// JSON pointer: /parameters/4/help_en
 	Filter []DescribeVirtualBorderRoutersForPhysicalConnectionInputFilter `json:"Filter,omitzero"`
 	// OwnerID maps to the exact wire member OwnerId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -58290,13 +59115,23 @@ type DescribeVirtualBorderRoutersForPhysicalConnectionInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// PageNumber maps to the exact wire member PageNumber.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35541
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageNumber
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVirtualBorderRoutersForPhysicalConnection.json
+	// JSON pointer: /parameters/2/help_en
 	PageNumber *int32 `json:"PageNumber,omitzero"`
 	// PageSize maps to the exact wire member PageSize.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35542
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageSize
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVirtualBorderRoutersForPhysicalConnection.json
+	// JSON pointer: /parameters/3/help_en
 	PageSize *int32 `json:"PageSize,omitzero"`
 	// PhysicalConnectionID maps to the exact wire member PhysicalConnectionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -58333,12 +59168,22 @@ type DescribeVirtualBorderRoutersForPhysicalConnectionInput struct {
 type DescribeVirtualBorderRoutersForPhysicalConnectionInputFilter struct {
 	// Key maps to the exact wire member Key.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35536
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Key
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVirtualBorderRoutersForPhysicalConnection.json
+	// JSON pointer: /parameters/4/element/fields/0/help_en
 	Key *string `json:"Key,omitzero"`
 	// Value maps to the exact wire member Value.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35537
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Value
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVirtualBorderRoutersForPhysicalConnection.json
+	// JSON pointer: /parameters/4/element/fields/1/help_en
 	Value []string `json:"Value,omitzero"`
 }
 
@@ -58451,8 +59296,13 @@ type DescribeVirtualBorderRoutersForPhysicalConnectionOutputVirtualBorderRouterF
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DescribeVirtualBorderRoutersInput struct {
 	// Filter maps to the exact wire member Filter.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35415
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Filter
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVirtualBorderRouters.json
+	// JSON pointer: /parameters/3/help_en
 	Filter []DescribeVirtualBorderRoutersInputFilter `json:"Filter,omitzero"`
 	// OwnerID maps to the exact wire member OwnerId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -58461,13 +59311,23 @@ type DescribeVirtualBorderRoutersInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// PageNumber maps to the exact wire member PageNumber.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35422
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageNumber
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVirtualBorderRouters.json
+	// JSON pointer: /parameters/1/help_en
 	PageNumber *int32 `json:"PageNumber,omitzero"`
 	// PageSize maps to the exact wire member PageSize.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35423
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageSize
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVirtualBorderRouters.json
+	// JSON pointer: /parameters/2/help_en
 	PageSize *int32 `json:"PageSize,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -58495,12 +59355,22 @@ type DescribeVirtualBorderRoutersInput struct {
 type DescribeVirtualBorderRoutersInputFilter struct {
 	// Key maps to the exact wire member Key.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35417
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Key
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVirtualBorderRouters.json
+	// JSON pointer: /parameters/3/element/fields/0/help_en
 	Key *string `json:"Key,omitzero"`
 	// Value maps to the exact wire member Value.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35418
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Value
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVirtualBorderRouters.json
+	// JSON pointer: /parameters/3/element/fields/1/help_en
 	Value []string `json:"Value,omitzero"`
 }
 
@@ -58674,8 +59544,13 @@ type DescribeVirtualBorderRoutersOutputVirtualBorderRouterSetVirtualBorderRouter
 type DescribeVpcsInput struct {
 	// IsDefault maps to the exact wire member IsDefault.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35645
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The IsDefault
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVpcs.json
+	// JSON pointer: /parameters/2/help_en
 	IsDefault *bool `json:"IsDefault,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -58689,13 +59564,23 @@ type DescribeVpcsInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// PageNumber maps to the exact wire member PageNumber.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35648
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageNumber
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVpcs.json
+	// JSON pointer: /parameters/3/help_en
 	PageNumber *int32 `json:"PageNumber,omitzero"`
 	// PageSize maps to the exact wire member PageSize.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35649
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PageSize
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVpcs.json
+	// JSON pointer: /parameters/4/help_en
 	PageSize *int32 `json:"PageSize,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -58718,8 +59603,13 @@ type DescribeVpcsInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// VPCID maps to the exact wire member VpcId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35653
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The VpcId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/DescribeVpcs.json
+	// JSON pointer: /parameters/0/help_en
 	VPCID *string `json:"VpcId,omitzero"`
 }
 
@@ -60753,8 +61643,13 @@ type EnablePhysicalConnectionInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// UserCIDR maps to the exact wire member UserCidr.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37067
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The UserCidr
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/EnablePhysicalConnection.json
+	// JSON pointer: /parameters/3/help_en
 	UserCIDR *string `json:"UserCidr,omitzero"`
 }
 
@@ -60876,8 +61771,13 @@ type EndTerminalSessionOutput struct {
 type ExportImageInput struct {
 	// DryRun maps to the exact wire member DryRun.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37234
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether to perform only a dry run. A value of true indicates that the system checks the request without exporting the image. A value of false indicates that the image is exported
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ExportImage.json
+	// JSON pointer: /parameters/6/help_en
 	DryRun *bool `json:"DryRun,omitzero"`
 	// ImageFormat maps to the exact wire member ImageFormat.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -61054,8 +61954,13 @@ type ExportSnapshotInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// RoleName maps to the exact wire member RoleName.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37435
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The name of the RAM role used to export the image
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ExportSnapshot.json
+	// JSON pointer: /parameters/3/help_en
 	RoleName *string `json:"RoleName,omitzero"`
 	// SnapshotID maps to the exact wire member SnapshotId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -61092,13 +61997,23 @@ type ExportSnapshotResponse struct {
 type ExportSnapshotOutput struct {
 	// RequestID maps to the exact wire member RequestId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37440
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The request ID
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ExportSnapshot.json
+	// JSON pointer: /responses/200/schema/properties/RequestId/description_en
 	RequestID *string `json:"RequestId,omitzero"`
 	// TaskID maps to the exact wire member TaskId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37441
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the image export task
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ExportSnapshot.json
+	// JSON pointer: /responses/200/schema/properties/TaskId/description_en
 	TaskID *string `json:"TaskId,omitzero"`
 	// Metadata contains request identity, HTTP status and attempt count.
 	Metadata alicloud.Metadata `json:"-"`
@@ -66532,8 +67447,13 @@ type ModifyEipAddressAttributeInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L41977
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RegionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyEipAddressAttribute.json
+	// JSON pointer: /parameters/0/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -66909,13 +67829,23 @@ type ModifyElasticityAssuranceOutput struct {
 type ModifyForwardEntryInput struct {
 	// ExternalIP maps to the exact wire member ExternalIp.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42292
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ExternalIp
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyForwardEntry.json
+	// JSON pointer: /parameters/2/help_en
 	ExternalIP *string `json:"ExternalIp,omitzero"`
 	// ExternalPort maps to the exact wire member ExternalPort.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42293
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ExternalPort
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyForwardEntry.json
+	// JSON pointer: /parameters/3/help_en
 	ExternalPort *string `json:"ExternalPort,omitzero"`
 	// ForwardEntryID maps to the exact wire member ForwardEntryId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -66937,18 +67867,33 @@ type ModifyForwardEntryInput struct {
 	ForwardTableID *string `json:"ForwardTableId,omitzero"`
 	// InternalIP maps to the exact wire member InternalIp.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42296
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The InternalIp
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyForwardEntry.json
+	// JSON pointer: /parameters/4/help_en
 	InternalIP *string `json:"InternalIp,omitzero"`
 	// InternalPort maps to the exact wire member InternalPort.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42297
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The InternalPort
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyForwardEntry.json
+	// JSON pointer: /parameters/5/help_en
 	InternalPort *string `json:"InternalPort,omitzero"`
 	// IPProtocol maps to the exact wire member IpProtocol.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42298
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The IpProtocol
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyForwardEntry.json
+	// JSON pointer: /parameters/6/help_en
 	IPProtocol *string `json:"IpProtocol,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -67017,13 +67962,23 @@ type ModifyForwardEntryOutput struct {
 type ModifyHaVipAttributeInput struct {
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42397
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyHaVipAttribute.json
+	// JSON pointer: /parameters/0/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// Description maps to the exact wire member Description.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42398
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Description
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyHaVipAttribute.json
+	// JSON pointer: /parameters/3/help_en
 	Description *string `json:"Description,omitzero"`
 	// HaVipID maps to the exact wire member HaVipId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -67243,8 +68198,13 @@ type ModifyImageAttributeInput struct {
 	Description *string `json:"Description,omitzero"`
 	// DryRun maps to the exact wire member DryRun.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42598
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The DryRun
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyImageAttribute.json
+	// JSON pointer: /parameters/9/help_en
 	DryRun *bool `json:"DryRun,omitzero"`
 	// Features maps to the exact wire member Features.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -67487,8 +68447,13 @@ type ModifyImageShareGroupPermissionResponse struct {
 type ModifyImageShareGroupPermissionOutput struct {
 	// RequestID maps to the exact wire member RequestId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42740
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The request ID
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyImageShareGroupPermission.json
+	// JSON pointer: /responses/200/schema/properties/RequestId/description_en
 	RequestID *string `json:"RequestId,omitzero"`
 	// Metadata contains request identity, HTTP status and attempt count.
 	Metadata alicloud.Metadata `json:"-"`
@@ -67507,8 +68472,13 @@ type ModifyImageSharePermissionInput struct {
 	AddAccount []string `json:"AddAccount,omitzero"`
 	// DryRun maps to the exact wire member DryRun.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42819
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The DryRun
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyImageSharePermission.json
+	// JSON pointer: /parameters/6/help_en
 	DryRun *bool `json:"DryRun,omitzero"`
 	// ImageID maps to the exact wire member ImageId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -67746,8 +68716,13 @@ type ModifyInstanceAttachmentAttributesOutput struct {
 type ModifyInstanceAttributeInput struct {
 	// CPUOptions maps to the exact wire member CpuOptions.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L43061
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The CPU options
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyInstanceAttribute.json
+	// JSON pointer: /parameters/17/help_en
 	CPUOptions *ModifyInstanceAttributeInputCPUOptions `json:"CpuOptions,omitzero"`
 	// CreditSpecification maps to the exact wire member CreditSpecification.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -70634,8 +71609,13 @@ type ModifyNetworkInterfaceAttributeInput struct {
 	Description *string `json:"Description,omitzero"`
 	// EnablePrimaryIPv6 maps to the exact wire member EnablePrimaryIPv6.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45552
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The EnablePrimaryIPv6
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyNetworkInterfaceAttribute.json
+	// JSON pointer: /parameters/13/help_en
 	EnablePrimaryIPv6 *bool `json:"EnablePrimaryIPv6,omitzero"`
 	// EnhancedNetwork maps to the exact wire member EnhancedNetwork.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -70833,8 +71813,13 @@ type ModifyNetworkInterfaceAttributeInputConnectionTrackingConfiguration struct 
 type ModifyNetworkInterfaceAttributeInputEnhancedNetwork struct {
 	// EnableExpress maps to the exact wire member EnableExpress.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45554
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The EnableExpress
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyNetworkInterfaceAttribute.json
+	// JSON pointer: /parameters/11/fields/0/help_en
 	EnableExpress *bool `json:"EnableExpress,omitzero"`
 	// EnableRss maps to the exact wire member EnableRss.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -70856,13 +71841,23 @@ type ModifyNetworkInterfaceAttributeInputEnhancedNetwork struct {
 	EnableSriov *bool `json:"EnableSriov,omitzero"`
 	// VirtualFunctionQuantity maps to the exact wire member VirtualFunctionQuantity.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45557
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The VirtualFunctionQuantity
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyNetworkInterfaceAttribute.json
+	// JSON pointer: /parameters/11/fields/3/help_en
 	VirtualFunctionQuantity *int32 `json:"VirtualFunctionQuantity,omitzero"`
 	// VirtualFunctionTotalQueueNumber maps to the exact wire member VirtualFunctionTotalQueueNumber.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45558
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The VirtualFunctionTotalQueueNumber
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyNetworkInterfaceAttribute.json
+	// JSON pointer: /parameters/11/fields/4/help_en
 	VirtualFunctionTotalQueueNumber *int32 `json:"VirtualFunctionTotalQueueNumber,omitzero"`
 }
 
@@ -70989,28 +71984,53 @@ type ModifyNetworkInterfaceAttributeOutput struct {
 type ModifyPhysicalConnectionAttributeInput struct {
 	// CircuitCode maps to the exact wire member CircuitCode.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45758
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The CircuitCode
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json
+	// JSON pointer: /parameters/11/help_en
 	CircuitCode *string `json:"CircuitCode,omitzero"`
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45759
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json
+	// JSON pointer: /parameters/9/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// Description maps to the exact wire member Description.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45760
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Description
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json
+	// JSON pointer: /parameters/7/help_en
 	Description *string `json:"Description,omitzero"`
 	// LineOperator maps to the exact wire member LineOperator.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45761
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The LineOperator
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json
+	// JSON pointer: /parameters/2/help_en
 	LineOperator *string `json:"LineOperator,omitzero"`
 	// Name maps to the exact wire member Name.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45762
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Name
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json
+	// JSON pointer: /parameters/8/help_en
 	Name *string `json:"Name,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -71024,8 +72044,13 @@ type ModifyPhysicalConnectionAttributeInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// PeerLocation maps to the exact wire member PeerLocation.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45765
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PeerLocation
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json
+	// JSON pointer: /parameters/4/help_en
 	PeerLocation *string `json:"PeerLocation,omitzero"`
 	// PhysicalConnectionID maps to the exact wire member PhysicalConnectionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -71038,13 +72063,23 @@ type ModifyPhysicalConnectionAttributeInput struct {
 	PhysicalConnectionID *string `json:"PhysicalConnectionId,omitzero"`
 	// PortType maps to the exact wire member PortType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45767
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PortType
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json
+	// JSON pointer: /parameters/5/help_en
 	PortType *string `json:"PortType,omitzero"`
 	// RedundantPhysicalConnectionID maps to the exact wire member RedundantPhysicalConnectionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45768
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RedundantPhysicalConnectionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json
+	// JSON pointer: /parameters/6/help_en
 	RedundantPhysicalConnectionID *string `json:"RedundantPhysicalConnectionId,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -71067,13 +72102,23 @@ type ModifyPhysicalConnectionAttributeInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// UserCIDR maps to the exact wire member UserCidr.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45772
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The UserCidr
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json
+	// JSON pointer: /parameters/10/help_en
 	UserCIDR *string `json:"UserCidr,omitzero"`
 	// Bandwidth maps to the exact wire member bandwidth.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45773
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The bandwidth
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyPhysicalConnectionAttribute.json
+	// JSON pointer: /parameters/3/help_en
 	Bandwidth *int32 `json:"bandwidth,omitzero"`
 }
 
@@ -72359,43 +73404,83 @@ type ModifyReservedInstancesOutputReservedInstanceIDSets struct {
 type ModifyRouterInterfaceAttributeInput struct {
 	// Description maps to the exact wire member Description.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46891
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Description
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyRouterInterfaceAttribute.json
+	// JSON pointer: /parameters/3/help_en
 	Description *string `json:"Description,omitzero"`
 	// HealthCheckSourceIP maps to the exact wire member HealthCheckSourceIp.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46892
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The HealthCheckSourceIp
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyRouterInterfaceAttribute.json
+	// JSON pointer: /parameters/8/help_en
 	HealthCheckSourceIP *string `json:"HealthCheckSourceIp,omitzero"`
 	// HealthCheckTargetIP maps to the exact wire member HealthCheckTargetIp.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46893
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The HealthCheckTargetIp
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyRouterInterfaceAttribute.json
+	// JSON pointer: /parameters/9/help_en
 	HealthCheckTargetIP *string `json:"HealthCheckTargetIp,omitzero"`
 	// Name maps to the exact wire member Name.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46894
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Name
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyRouterInterfaceAttribute.json
+	// JSON pointer: /parameters/2/help_en
 	Name *string `json:"Name,omitzero"`
 	// OppositeInterfaceID maps to the exact wire member OppositeInterfaceId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46895
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The OppositeInterfaceId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyRouterInterfaceAttribute.json
+	// JSON pointer: /parameters/4/help_en
 	OppositeInterfaceID *string `json:"OppositeInterfaceId,omitzero"`
 	// OppositeInterfaceOwnerID maps to the exact wire member OppositeInterfaceOwnerId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46896
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The OppositeInterfaceOwnerId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyRouterInterfaceAttribute.json
+	// JSON pointer: /parameters/7/help_en
 	OppositeInterfaceOwnerID *int64 `json:"OppositeInterfaceOwnerId,omitzero"`
 	// OppositeRouterID maps to the exact wire member OppositeRouterId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46897
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The OppositeRouterId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyRouterInterfaceAttribute.json
+	// JSON pointer: /parameters/5/help_en
 	OppositeRouterID *string `json:"OppositeRouterId,omitzero"`
 	// OppositeRouterType maps to the exact wire member OppositeRouterType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46898
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The OppositeRouterType
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyRouterInterfaceAttribute.json
+	// JSON pointer: /parameters/6/help_en
 	OppositeRouterType *string `json:"OppositeRouterType,omitzero"`
 	// OwnerID maps to the exact wire member OwnerId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -72468,8 +73553,13 @@ type ModifyRouterInterfaceAttributeOutput struct {
 type ModifyRouterInterfaceSpecInput struct {
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47000
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyRouterInterfaceSpec.json
+	// JSON pointer: /parameters/3/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -72520,8 +73610,13 @@ type ModifyRouterInterfaceSpecInput struct {
 	Spec *string `json:"Spec,omitzero"`
 	// UserCIDR maps to the exact wire member UserCidr.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47008
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The UserCidr
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyRouterInterfaceSpec.json
+	// JSON pointer: /parameters/4/help_en
 	UserCIDR *string `json:"UserCidr,omitzero"`
 }
 
@@ -73990,8 +75085,13 @@ type ModifyUserBusinessBehaviorInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48281
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The region ID. You can call https://help.aliyun.com/document_detail/25609.html to query available regions
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyUserBusinessBehavior.json
+	// JSON pointer: /parameters/0/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -74047,8 +75147,13 @@ type ModifyUserBusinessBehaviorResponse struct {
 type ModifyUserBusinessBehaviorOutput struct {
 	// RequestID maps to the exact wire member RequestId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48289
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The request ID
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyUserBusinessBehavior.json
+	// JSON pointer: /responses/200/schema/properties/RequestId/description_en
 	RequestID *string `json:"RequestId,omitzero"`
 	// Metadata contains request identity, HTTP status and attempt count.
 	Metadata alicloud.Metadata `json:"-"`
@@ -74059,8 +75164,13 @@ type ModifyUserBusinessBehaviorOutput struct {
 type ModifyVRouterAttributeInput struct {
 	// Description maps to the exact wire member Description.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48364
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Description
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVRouterAttribute.json
+	// JSON pointer: /parameters/3/help_en
 	Description *string `json:"Description,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -74074,8 +75184,13 @@ type ModifyVRouterAttributeInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48367
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RegionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVRouterAttribute.json
+	// JSON pointer: /parameters/0/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -74098,8 +75213,13 @@ type ModifyVRouterAttributeInput struct {
 	VRouterID *string `json:"VRouterId,omitzero"`
 	// VRouterName maps to the exact wire member VRouterName.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48371
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The VRouterName
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVRouterAttribute.json
+	// JSON pointer: /parameters/2/help_en
 	VRouterName *string `json:"VRouterName,omitzero"`
 }
 
@@ -74139,8 +75259,13 @@ type ModifyVRouterAttributeOutput struct {
 type ModifyVSwitchAttributeInput struct {
 	// Description maps to the exact wire member Description.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48453
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Description
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVSwitchAttribute.json
+	// JSON pointer: /parameters/3/help_en
 	Description *string `json:"Description,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -74154,8 +75279,13 @@ type ModifyVSwitchAttributeInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48456
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RegionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVSwitchAttribute.json
+	// JSON pointer: /parameters/2/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -74178,8 +75308,13 @@ type ModifyVSwitchAttributeInput struct {
 	VSwitchID *string `json:"VSwitchId,omitzero"`
 	// VSwitchName maps to the exact wire member VSwitchName.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48460
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The VSwitchName
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVSwitchAttribute.json
+	// JSON pointer: /parameters/1/help_en
 	VSwitchName *string `json:"VSwitchName,omitzero"`
 }
 
@@ -74219,28 +75354,53 @@ type ModifyVSwitchAttributeOutput struct {
 type ModifyVirtualBorderRouterAttributeInput struct {
 	// CircuitCode maps to the exact wire member CircuitCode.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48542
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The CircuitCode
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json
+	// JSON pointer: /parameters/3/help_en
 	CircuitCode *string `json:"CircuitCode,omitzero"`
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48543
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json
+	// JSON pointer: /parameters/9/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// Description maps to the exact wire member Description.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48544
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Description
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json
+	// JSON pointer: /parameters/7/help_en
 	Description *string `json:"Description,omitzero"`
 	// LocalGatewayIP maps to the exact wire member LocalGatewayIp.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48545
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The LocalGatewayIp
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json
+	// JSON pointer: /parameters/4/help_en
 	LocalGatewayIP *string `json:"LocalGatewayIp,omitzero"`
 	// Name maps to the exact wire member Name.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48546
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Name
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json
+	// JSON pointer: /parameters/8/help_en
 	Name *string `json:"Name,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -74254,13 +75414,23 @@ type ModifyVirtualBorderRouterAttributeInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// PeerGatewayIP maps to the exact wire member PeerGatewayIp.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48549
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PeerGatewayIp
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json
+	// JSON pointer: /parameters/5/help_en
 	PeerGatewayIP *string `json:"PeerGatewayIp,omitzero"`
 	// PeeringSubnetMask maps to the exact wire member PeeringSubnetMask.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48550
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The PeeringSubnetMask
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json
+	// JSON pointer: /parameters/6/help_en
 	PeeringSubnetMask *string `json:"PeeringSubnetMask,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -74283,8 +75453,13 @@ type ModifyVirtualBorderRouterAttributeInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// UserCIDR maps to the exact wire member UserCidr.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48554
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The UserCidr
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json
+	// JSON pointer: /parameters/10/help_en
 	UserCIDR *string `json:"UserCidr,omitzero"`
 	// VbrID maps to the exact wire member VbrId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -74297,8 +75472,13 @@ type ModifyVirtualBorderRouterAttributeInput struct {
 	VbrID *string `json:"VbrId,omitzero"`
 	// VlanID maps to the exact wire member VlanId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48556
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The VlanId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVirtualBorderRouterAttribute.json
+	// JSON pointer: /parameters/2/help_en
 	VlanID *int32 `json:"VlanId,omitzero"`
 }
 
@@ -74338,13 +75518,23 @@ type ModifyVirtualBorderRouterAttributeOutput struct {
 type ModifyVpcAttributeInput struct {
 	// CIDRBlock maps to the exact wire member CidrBlock.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48659
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The CidrBlock
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVpcAttribute.json
+	// JSON pointer: /parameters/3/help_en
 	CIDRBlock *string `json:"CidrBlock,omitzero"`
 	// Description maps to the exact wire member Description.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48660
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Description
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVpcAttribute.json
+	// JSON pointer: /parameters/1/help_en
 	Description *string `json:"Description,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -74358,8 +75548,13 @@ type ModifyVpcAttributeInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48663
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RegionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVpcAttribute.json
+	// JSON pointer: /parameters/4/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -74373,8 +75568,13 @@ type ModifyVpcAttributeInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// UserCIDR maps to the exact wire member UserCidr.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48666
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The UserCidr
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVpcAttribute.json
+	// JSON pointer: /parameters/5/help_en
 	UserCIDR *string `json:"UserCidr,omitzero"`
 	// VPCID maps to the exact wire member VpcId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -74387,8 +75587,13 @@ type ModifyVpcAttributeInput struct {
 	VPCID *string `json:"VpcId,omitzero"`
 	// VPCName maps to the exact wire member VpcName.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48668
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The VpcName
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ModifyVpcAttribute.json
+	// JSON pointer: /parameters/2/help_en
 	VPCName *string `json:"VpcName,omitzero"`
 }
 
@@ -75517,8 +76722,13 @@ type RebootInstancesOutputInstanceResponsesInstanceResponse struct {
 type RecoverVirtualBorderRouterInput struct {
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L49694
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/RecoverVirtualBorderRouter.json
+	// JSON pointer: /parameters/2/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -75551,8 +76761,13 @@ type RecoverVirtualBorderRouterInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// UserCIDR maps to the exact wire member UserCidr.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L49700
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The UserCidr
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/RecoverVirtualBorderRouter.json
+	// JSON pointer: /parameters/3/help_en
 	UserCIDR *string `json:"UserCidr,omitzero"`
 	// VbrID maps to the exact wire member VbrId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -76009,8 +77224,13 @@ type ReleaseEipAddressInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L50190
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RegionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/ReleaseEipAddress.json
+	// JSON pointer: /parameters/0/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -76156,8 +77376,13 @@ type RemoveBandwidthPackageIpsInput struct {
 	BandwidthPackageID *string `json:"BandwidthPackageId,omitzero"`
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L50345
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/RemoveBandwidthPackageIps.json
+	// JSON pointer: /parameters/2/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -83111,8 +84336,13 @@ type TagResourcesOutput struct {
 type TerminatePhysicalConnectionInput struct {
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55808
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/TerminatePhysicalConnection.json
+	// JSON pointer: /parameters/2/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -83154,8 +84384,13 @@ type TerminatePhysicalConnectionInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// UserCIDR maps to the exact wire member UserCidr.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55815
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The UserCidr
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/TerminatePhysicalConnection.json
+	// JSON pointer: /parameters/3/help_en
 	UserCIDR *string `json:"UserCidr,omitzero"`
 }
 
@@ -83195,8 +84430,13 @@ type TerminatePhysicalConnectionOutput struct {
 type TerminateVirtualBorderRouterInput struct {
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55897
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/TerminateVirtualBorderRouter.json
+	// JSON pointer: /parameters/2/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -83229,8 +84469,13 @@ type TerminateVirtualBorderRouterInput struct {
 	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
 	// UserCIDR maps to the exact wire member UserCidr.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55903
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The UserCidr
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/TerminateVirtualBorderRouter.json
+	// JSON pointer: /parameters/3/help_en
 	UserCIDR *string `json:"UserCidr,omitzero"`
 	// VbrID maps to the exact wire member VbrId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -83493,8 +84738,13 @@ type UnassociateEipAddressInput struct {
 	InstanceID *string `json:"InstanceId,omitzero"`
 	// InstanceType maps to the exact wire member InstanceType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56186
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The InstanceType
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/UnassociateEipAddress.json
+	// JSON pointer: /parameters/3/help_en
 	InstanceType *string `json:"InstanceType,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -83508,8 +84758,13 @@ type UnassociateEipAddressInput struct {
 	OwnerID *int64 `json:"OwnerId,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56189
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The RegionId
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/UnassociateEipAddress.json
+	// JSON pointer: /parameters/0/help_en
 	RegionID *string `json:"RegionId,omitzero"`
 	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -83559,13 +84814,23 @@ type UnassociateEipAddressOutput struct {
 type UnassociateHaVipInput struct {
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56273
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/UnassociateHaVip.json
+	// JSON pointer: /parameters/0/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// Force maps to the exact wire member Force.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56274
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Force
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/ecs/2014-05-26/UnassociateHaVip.json
+	// JSON pointer: /parameters/4/help_en
 	Force *string `json:"Force,omitzero"`
 	// HaVipID maps to the exact wire member HaVipId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.

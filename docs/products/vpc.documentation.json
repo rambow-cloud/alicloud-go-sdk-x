@@ -3,6 +3,175 @@
   "reviewedEnglishTranslations": 0,
   "goOperationContractComments": 403,
   "goFieldContractComments": 9017,
+  "metadataEnglishFields": 11,
+  "metadataRevision": "51286a65c79d008436eb314e636f9c9ad4b1ca08",
+  "metadataSources": {
+    "AllocateEipAddressProRequest#tag": {
+      "operation": "AllocateEipAddressPro",
+      "file": "canonical/vpc/2016-04-28/AllocateEipAddressPro.json",
+      "sourceSHA256": "0264e517e470f9a810a607b9789e48e54825c17110de894e5ac26349fa800497",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 1363,
+        "column": 3,
+        "endLine": 1363,
+        "endColumn": 6
+      },
+      "pointer": "/parameters/12/help_en",
+      "english": "The Tag",
+      "textSHA256": "226a4a7a71195d13f374d20bf122a72794ace8e05ca7b3f41435c23ea099fe1b"
+    },
+    "AllocateEipAddressProRequest.tag[]#key": {
+      "operation": "AllocateEipAddressPro",
+      "file": "canonical/vpc/2016-04-28/AllocateEipAddressPro.json",
+      "sourceSHA256": "0264e517e470f9a810a607b9789e48e54825c17110de894e5ac26349fa800497",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 1365,
+        "column": 7,
+        "endLine": 1365,
+        "endColumn": 10
+      },
+      "pointer": "/parameters/12/element/fields/0/help_en",
+      "english": "The Key",
+      "textSHA256": "0acc83412ae9e296cf035fefdf9a03a09dede639b0119f923de76c32adfd7c65"
+    },
+    "AllocateEipAddressProRequest.tag[]#value": {
+      "operation": "AllocateEipAddressPro",
+      "file": "canonical/vpc/2016-04-28/AllocateEipAddressPro.json",
+      "sourceSHA256": "0264e517e470f9a810a607b9789e48e54825c17110de894e5ac26349fa800497",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 1366,
+        "column": 7,
+        "endLine": 1366,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/12/element/fields/1/help_en",
+      "english": "The Value",
+      "textSHA256": "2220609247dc54d9f54d930b1daf0c679ce1eb4ca1219344a6e8d66ee705d499"
+    },
+    "CreateFlowLogRequest#logFormat": {
+      "operation": "CreateFlowLog",
+      "file": "canonical/vpc/2016-04-28/CreateFlowLog.json",
+      "sourceSHA256": "5b6081bc3e03ad28d316fdfca1dd4e213ced1580866a61a4cbf596e9d2456f65",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 6683,
+        "column": 3,
+        "endLine": 6683,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/13/help_en",
+      "english": "The LogFormat",
+      "textSHA256": "e1b3b957c466f8f96d203ba39a3431aa13772d4acf3b26d869819d96c878def2"
+    },
+    "CreateIPv6TranslatorAclListRequest#clientToken": {
+      "operation": "CreateIPv6TranslatorAclList",
+      "file": "canonical/vpc/2016-04-28/CreateIPv6TranslatorAclList.json",
+      "sourceSHA256": "0778525f33fa775a2bb03fa455e61a377e1124e824234f5380f741d03d5df19e",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 7847,
+        "column": 3,
+        "endLine": 7847,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/1/help_en",
+      "english": "The ClientToken",
+      "textSHA256": "f00302a5a1caab6c157a73a6b93ed8546c2e64455829064e8658a573cbcbc89d"
+    },
+    "CreateNatGatewayRequest#availabilityMode": {
+      "operation": "CreateNatGateway",
+      "file": "canonical/vpc/2016-04-28/CreateNatGateway.json",
+      "sourceSHA256": "db242e2c99016b611081eade070854c5bdb7a83536313e2f39844ad9800ebf7d",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 8688,
+        "column": 3,
+        "endLine": 8688,
+        "endColumn": 19
+      },
+      "pointer": "/parameters/22/help_en",
+      "english": "The AvailabilityMode",
+      "textSHA256": "c713774d54b7b157f6a7cb5e59b36d76b9d41822c08538fa8a2ac30cae95c310"
+    },
+    "CreateSslVpnServerRequest#dnsServers": {
+      "operation": "CreateSslVpnServer",
+      "file": "canonical/vpc/2016-04-28/CreateSslVpnServer.json",
+      "sourceSHA256": "7f27bcaccc7ff98db640db0837e638d1e880dce3eaa7182dda73dabf717e68e7",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 11484,
+        "column": 3,
+        "endLine": 11484,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/15/help_en",
+      "english": "The DnsServers",
+      "textSHA256": "7131557484e19a2cf47349bdfe2774129b53f5ddd4a3325d768f1e5ff10fc6f1"
+    },
+    "DeleteRouteTargetGroupRequest#forceDelete": {
+      "operation": "DeleteRouteTargetGroup",
+      "file": "canonical/vpc/2016-04-28/DeleteRouteTargetGroup.json",
+      "sourceSHA256": "3eaf7ba145044cac651ce183db68a4ccae09674cf725e82bf12346b81cd53598",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 18904,
+        "column": 3,
+        "endLine": 18904,
+        "endColumn": 14
+      },
+      "pointer": "/parameters/4/help_en",
+      "english": "The ForceDelete",
+      "textSHA256": "fb1308cb3be4fe10b401c2067282e1e5cc21d6396e0b245c2aeeb3fde9731526"
+    },
+    "DescribeNatGatewaysRequest#availabilityMode": {
+      "operation": "DescribeNatGateways",
+      "file": "canonical/vpc/2016-04-28/DescribeNatGateways.json",
+      "sourceSHA256": "0aa524a84ee620b87b386af76f0e5bb9a688a3e68a9512ecd1ff140b059ee0b2",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 26133,
+        "column": 3,
+        "endLine": 26133,
+        "endColumn": 19
+      },
+      "pointer": "/parameters/15/help_en",
+      "english": "The AvailabilityMode",
+      "textSHA256": "c713774d54b7b157f6a7cb5e59b36d76b9d41822c08538fa8a2ac30cae95c310"
+    },
+    "ModifyFlowLogAttributeRequest#logFormat": {
+      "operation": "ModifyFlowLogAttribute",
+      "file": "canonical/vpc/2016-04-28/ModifyFlowLogAttribute.json",
+      "sourceSHA256": "4c6cd28f7bc904897bfc5f82c0efe38aced6f59142e29eb13e96eb3b8aecefcf",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 41368,
+        "column": 3,
+        "endLine": 41368,
+        "endColumn": 12
+      },
+      "pointer": "/parameters/6/help_en",
+      "english": "The LogFormat",
+      "textSHA256": "e1b3b957c466f8f96d203ba39a3431aa13772d4acf3b26d869819d96c878def2"
+    },
+    "ModifySslVpnServerRequest#dnsServers": {
+      "operation": "ModifySslVpnServer",
+      "file": "canonical/vpc/2016-04-28/ModifySslVpnServer.json",
+      "sourceSHA256": "3e23b4296251b31c991d2dafd973b9d171bea913015bb7d94ecf01cc31e014d1",
+      "fieldSource": {
+        "file": "products/vpc/main.tea",
+        "line": 44610,
+        "column": 3,
+        "endLine": 44610,
+        "endColumn": 13
+      },
+      "pointer": "/parameters/15/help_en",
+      "english": "The DnsServers",
+      "textSHA256": "7131557484e19a2cf47349bdfe2774129b53f5ddd4a3325d768f1e5ff10fc6f1"
+    }
+  },
   "schemaVersion": 1,
   "product": "vpc",
   "license": "Apache-2.0",
@@ -7494,15 +7663,15 @@
       ]
     },
     "AllocateEipAddressProRequest#tag": {
-      "status": "missing",
+      "status": "metadata-enrichment",
       "sources": []
     },
     "AllocateEipAddressProRequest.tag[]#key": {
-      "status": "missing",
+      "status": "metadata-enrichment",
       "sources": []
     },
     "AllocateEipAddressProRequest.tag[]#value": {
-      "status": "missing",
+      "status": "metadata-enrichment",
       "sources": []
     },
     "AllocateEipAddressProResponse#body": {
@@ -13458,7 +13627,7 @@
       ]
     },
     "CreateFlowLogRequest#logFormat": {
-      "status": "missing",
+      "status": "metadata-enrichment",
       "sources": []
     },
     "CreateFlowLogRequest#logStoreName": {
@@ -14758,7 +14927,7 @@
       ]
     },
     "CreateIPv6TranslatorAclListRequest#clientToken": {
-      "status": "missing",
+      "status": "metadata-enrichment",
       "sources": []
     },
     "CreateIPv6TranslatorAclListRequest#ownerAccount": {
@@ -15978,7 +16147,7 @@
       ]
     },
     "CreateNatGatewayRequest#availabilityMode": {
-      "status": "missing",
+      "status": "metadata-enrichment",
       "sources": []
     },
     "CreateNatGatewayRequest#clientToken": {
@@ -19478,7 +19647,7 @@
       ]
     },
     "CreateSslVpnServerRequest#dnsServers": {
-      "status": "missing",
+      "status": "metadata-enrichment",
       "sources": []
     },
     "CreateSslVpnServerRequest#dryRun": {
@@ -28250,7 +28419,7 @@
       ]
     },
     "DeleteRouteTargetGroupRequest#forceDelete": {
-      "status": "missing",
+      "status": "metadata-enrichment",
       "sources": []
     },
     "DeleteRouteTargetGroupRequest#regionId": {
@@ -39142,7 +39311,7 @@
       "sources": []
     },
     "DescribeNatGatewaysRequest#availabilityMode": {
-      "status": "missing",
+      "status": "metadata-enrichment",
       "sources": []
     },
     "DescribeNatGatewaysRequest#dryRun": {
@@ -66866,7 +67035,7 @@
       ]
     },
     "ModifyFlowLogAttributeRequest#logFormat": {
-      "status": "missing",
+      "status": "metadata-enrichment",
       "sources": []
     },
     "ModifyFlowLogAttributeRequest#ownerAccount": {
@@ -70174,7 +70343,7 @@
       ]
     },
     "ModifySslVpnServerRequest#dnsServers": {
-      "status": "missing",
+      "status": "metadata-enrichment",
       "sources": []
     },
     "ModifySslVpnServerRequest#dryRun": {

@@ -357,7 +357,7 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 				types.WriteString("// Nil omits this member; non-nil scalar pointers preserve explicit zero values.\n")
 			}
 			r.appendProse(&types, f.Documentation)
-			if documentCoverage(f.Documentation).Status != "emitted" {
+			if documentCoverage(f.Documentation).Status != "emitted" && !r.appendMetadataProse(&types, id+"#"+f.DSLName) {
 				fmt.Fprintf(&types, "// Upstream prose is unavailable in English; native field contract is documented above.\n// Source: %s\n", r.sourceURL(f.Source))
 			}
 			if f.Attributes.Deprecated {
@@ -498,6 +498,9 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 	files["docs/products/"+p.Product+".documentation.json"] = append(docReport, '\n')
 	files[base+"LICENSE"] = append([]byte(productGenerated+"\n"), productApacheLicense...)
 	files[base+"NOTICE"] = []byte(fmt.Sprintf("%s\n## English\n\nCopyright (c) 2009-present, Alibaba Cloud All rights reserved.\nUpstream product DSL and descriptions: %s/tree/%s\nSource manifest SHA256: %s\nApache-2.0 applies to upstream-derived definitions and prose; see LICENSE.\nModified by alicloud-go-sdk-x: typed Go models/methods and normalized Go comments.\nOriginal shared runtime, tooling and handwritten tests retain the project MIT license.\nNo imported Tea module implementation is distributed in these product packages.\n\n## 中文\n\n阿里云上游版权、固定产品来源和哈希如英文章节。上游派生定义/说明按 Apache-2.0，\n完整条款见 LICENSE；本项目将其转换为强类型 Go 模型/方法及规范 Go 注释。\n原创 runtime、工具、手写测试保留项目 MIT，不分发导入 Tea 模块实现。\n", productGenerated, p.Provenance.Repository, p.Provenance.Revision, p.Provenance.SourceManifestSHA256))
+	if len(p.MetadataProse) > 0 {
+		files[base+"NOTICE"] = append(files[base+"NOTICE"], []byte(fmt.Sprintf("\n## Optional metadata prose / 可选元数据说明\n\nEnglish field descriptions also derive from https://github.com/aliyun/aliyun-openapi-meta/tree/%s under Apache-2.0. Exact files and JSON pointers appear in generated comments and documentation coverage. Metadata targets CLI builds; no runtime validation/policy is inferred.\n部分英文字段说明补充自上述固定官方 CLI 元数据，保留 Apache-2.0；准确文件和 JSON 指针见生成注释及文档覆盖。元数据面向 CLI 构建，不据此推断运行时校验或策略。\n", p.MetadataProseRevision))...)
+	}
 	report := struct {
 		Generator            string                     `json:"generator"`
 		SchemaVersion        int                        `json:"schemaVersion"`

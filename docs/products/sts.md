@@ -64,6 +64,8 @@
 | AssumeRoleWithOIDC | — | — | false |  | false | true |
 | AssumeRoleWithSAML | — | — | false |  | false | true |
 
+- Optional official CLI metadata adds English prose for 11 fields, without replacing DSL text or changing models/runtime. Source pins, JSON pointers and excluded mappings are recorded in [the enrichment route](../canonical-prose-enrichment.md) and documentation JSON; counted separately from original DSL prose below.
+
 - Reviewed English translations: 0 actions. Go contract comments cover 4 actions and 78 source fields, counted separately from upstream business prose. Fields without English prose keep exact DSL links.
 
 ## Documentation sources

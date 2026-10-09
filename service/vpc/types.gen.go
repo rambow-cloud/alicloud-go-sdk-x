@@ -1256,8 +1256,13 @@ type AllocateEipAddressProInput struct {
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1358
 	SecurityProtectionTypes []string `json:"SecurityProtectionTypes,omitzero"`
 	// Tag maps to the exact wire member Tag.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1363
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Tag
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/vpc/2016-04-28/AllocateEipAddressPro.json
+	// JSON pointer: /parameters/12/help_en
 	Tag []AllocateEIPAddressProInputTag `json:"Tag,omitzero"`
 }
 
@@ -1266,13 +1271,23 @@ type AllocateEipAddressProInput struct {
 type AllocateEIPAddressProInputTag struct {
 	// Key maps to the exact wire member Key.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1365
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Key
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/vpc/2016-04-28/AllocateEipAddressPro.json
+	// JSON pointer: /parameters/12/element/fields/0/help_en
 	Key *string `json:"Key,omitzero"`
 	// Value maps to the exact wire member Value.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1366
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Value
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/vpc/2016-04-28/AllocateEipAddressPro.json
+	// JSON pointer: /parameters/12/element/fields/1/help_en
 	Value *string `json:"Value,omitzero"`
 }
 
@@ -8027,8 +8042,13 @@ type CreateFlowLogInput struct {
 	IPVersion *string `json:"IpVersion,omitzero"`
 	// LogFormat maps to the exact wire member LogFormat.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6683
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The LogFormat
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/vpc/2016-04-28/CreateFlowLog.json
+	// JSON pointer: /parameters/13/help_en
 	LogFormat *string `json:"LogFormat,omitzero"`
 	// LogStoreName maps to the exact wire member LogStoreName.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -9489,8 +9509,13 @@ type CreateIPv6TranslatorAclListInput struct {
 	AclName *string `json:"AclName,omitzero"`
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L7847
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ClientToken
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/vpc/2016-04-28/CreateIPv6TranslatorAclList.json
+	// JSON pointer: /parameters/1/help_en
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -10780,8 +10805,13 @@ type CreateNatGatewayInput struct {
 	AutoPay *bool `json:"AutoPay,omitzero"`
 	// AvailabilityMode maps to the exact wire member AvailabilityMode.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8688
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The AvailabilityMode
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/vpc/2016-04-28/CreateNatGateway.json
+	// JSON pointer: /parameters/22/help_en
 	AvailabilityMode *string `json:"AvailabilityMode,omitzero"`
 	// ClientToken maps to the exact wire member ClientToken.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -14677,8 +14707,13 @@ type CreateSslVpnServerInput struct {
 	Compress *bool `json:"Compress,omitzero"`
 	// DNSServers maps to the exact wire member DnsServers.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L11484
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The DnsServers
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/vpc/2016-04-28/CreateSslVpnServer.json
+	// JSON pointer: /parameters/15/help_en
 	DNSServers *string `json:"DnsServers,omitzero"`
 	// DryRun maps to the exact wire member DryRun.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -24460,8 +24495,13 @@ type DeleteRouteTargetGroupInput struct {
 	ClientToken *string `json:"ClientToken,omitzero"`
 	// ForceDelete maps to the exact wire member ForceDelete.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18904
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ForceDelete
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/vpc/2016-04-28/DeleteRouteTargetGroup.json
+	// JSON pointer: /parameters/4/help_en
 	ForceDelete *bool `json:"ForceDelete,omitzero"`
 	// RegionID maps to the exact wire member RegionId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -36589,8 +36629,13 @@ type DescribeNATGatewayAssociateNetworkInterfacesOutputAssociateNetworkInterface
 type DescribeNatGatewaysInput struct {
 	// AvailabilityMode maps to the exact wire member AvailabilityMode.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L26133
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The AvailabilityMode
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/vpc/2016-04-28/DescribeNatGateways.json
+	// JSON pointer: /parameters/15/help_en
 	AvailabilityMode *string `json:"AvailabilityMode,omitzero"`
 	// DryRun maps to the exact wire member DryRun.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -66093,8 +66138,13 @@ type ModifyFlowLogAttributeInput struct {
 	IPVersion *string `json:"IpVersion,omitzero"`
 	// LogFormat maps to the exact wire member LogFormat.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L41368
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The LogFormat
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/vpc/2016-04-28/ModifyFlowLogAttribute.json
+	// JSON pointer: /parameters/6/help_en
 	LogFormat *string `json:"LogFormat,omitzero"`
 	// OwnerAccount maps to the exact wire member OwnerAccount.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
@@ -69894,8 +69944,13 @@ type ModifySslVpnServerInput struct {
 	Compress *bool `json:"Compress,omitzero"`
 	// DNSServers maps to the exact wire member DnsServers.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L44610
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The DnsServers
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/vpc/2016-04-28/ModifySslVpnServer.json
+	// JSON pointer: /parameters/15/help_en
 	DNSServers *string `json:"DnsServers,omitzero"`
 	// DryRun maps to the exact wire member DryRun.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.

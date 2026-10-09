@@ -94,8 +94,17 @@ type AssumeRoleInput struct {
 	RoleSessionName *string `json:"RoleSessionName,omitzero"`
 	// SourceIdentity maps to the exact wire member SourceIdentity.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L103
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The source identity information.
+	//
+	// When a user assumes a role, the source identity of the user can be specified as the initial identity of a session. The specified source identity persists throughout the role session and cannot be changed. This ensures operation traceability and security.
+	//
+	// The value must be 2 to 64 characters in length, and can contain letters, digits, and the following special characters: =,.@-_. The regular expression for this parameter is [\w+=,.@-]*. The value cannot start with acs:, aliyun:, or alibabacloud:. These prefixes are internally used within Alibaba Cloud
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/sts/2015-04-01/AssumeRole.json
+	// JSON pointer: /parameters/5/help_en
 	SourceIdentity *string `json:"SourceIdentity,omitzero"`
 }
 
@@ -150,8 +159,17 @@ type AssumeRoleOutput struct {
 	RequestID *string `json:"RequestId,omitzero"`
 	// SourceIdentity maps to the exact wire member SourceIdentity.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L120
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The source identity information.
+	//
+	// When a user assumes a role, the source identity of the user can be specified as the initial identity of a session. The specified source identity persists throughout the role session and cannot be changed. This ensures operation traceability and security.
+	//
+	// If the SourceIdentity parameter was not specified in the request, this field is omitted from the response
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/sts/2015-04-01/AssumeRole.json
+	// JSON pointer: /responses/200/schema/properties/SourceIdentity/description_en
 	SourceIdentity *string `json:"SourceIdentity,omitzero"`
 	// Metadata contains request identity, HTTP status and attempt count.
 	Metadata alicloud.Metadata `json:"-"`
@@ -371,8 +389,17 @@ type AssumeRoleWithOIDCOutput struct {
 	RequestID *string `json:"RequestId,omitzero"`
 	// SourceIdentity maps to the exact wire member SourceIdentity.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L273
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The source identity information.
+	//
+	// When assuming a role, you can specify a source identity (SourceIdentity) as the initial identity of the session. The source identity value persists throughout chained role assumption sessions and cannot be changed, ensuring traceability and security of operations.
+	//
+	// If no source identity is specified, this field is not returned
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/sts/2015-04-01/AssumeRoleWithOIDC.json
+	// JSON pointer: /responses/200/schema/properties/SourceIdentity/description_en
 	SourceIdentity *string `json:"SourceIdentity,omitzero"`
 	// Metadata contains request identity, HTTP status and attempt count.
 	Metadata alicloud.Metadata `json:"-"`
@@ -648,8 +675,17 @@ type AssumeRoleWithSAMLOutput struct {
 	SAMLAssertionInfo *AssumeRoleWithSAMLOutputSAMLAssertionInfo `json:"SAMLAssertionInfo,omitzero"`
 	// SourceIdentity maps to the exact wire member SourceIdentity.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L405
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The source identity.
+	//
+	// When you assume a role, you can specify a source identity for the role user. The source identity is used as the initial identity of the session. The value of the source identity persists throughout chained role-assuming sessions and cannot be changed. This ensures the traceability and security of operations.
+	//
+	// This parameter is not returned if you do not set a source identity
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/sts/2015-04-01/AssumeRoleWithSAML.json
+	// JSON pointer: /responses/200/schema/properties/SourceIdentity/description_en
 	SourceIdentity *string `json:"SourceIdentity,omitzero"`
 	// Metadata contains request identity, HTTP status and attempt count.
 	Metadata alicloud.Metadata `json:"-"`
@@ -786,38 +822,84 @@ type GetCallerIdentityResponse struct {
 type GetCallerIdentityOutput struct {
 	// AccountID maps to the exact wire member AccountId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L478
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the Alibaba Cloud account to which the current caller belongs
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/sts/2015-04-01/GetCallerIdentity.json
+	// JSON pointer: /responses/200/schema/properties/AccountId/description_en
 	AccountID *string `json:"AccountId,omitzero"`
 	// ARN maps to the exact wire member Arn.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L479
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The Alibaba Cloud Resource Name (ARN) of the current caller
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/sts/2015-04-01/GetCallerIdentity.json
+	// JSON pointer: /responses/200/schema/properties/Arn/description_en
 	ARN *string `json:"Arn,omitzero"`
 	// IdentityType maps to the exact wire member IdentityType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L480
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The type of the identity. Valid values:
+	//
+	// Account: an Alibaba Cloud account.
+	// RAMUser: a RAM user.
+	// AssumedRoleUser: a RAM role
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/sts/2015-04-01/GetCallerIdentity.json
+	// JSON pointer: /responses/200/schema/properties/IdentityType/description_en
 	IdentityType *string `json:"IdentityType,omitzero"`
 	// PrincipalID maps to the exact wire member PrincipalId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L481
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the principal
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/sts/2015-04-01/GetCallerIdentity.json
+	// JSON pointer: /responses/200/schema/properties/PrincipalId/description_en
 	PrincipalID *string `json:"PrincipalId,omitzero"`
 	// RequestID maps to the exact wire member RequestId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L482
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The request ID
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/sts/2015-04-01/GetCallerIdentity.json
+	// JSON pointer: /responses/200/schema/properties/RequestId/description_en
 	RequestID *string `json:"RequestId,omitzero"`
 	// RoleID maps to the exact wire member RoleId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L483
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the RAM role.
+	//
+	// This parameter is returned only when the caller is a RAM role
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/sts/2015-04-01/GetCallerIdentity.json
+	// JSON pointer: /responses/200/schema/properties/RoleId/description_en
 	RoleID *string `json:"RoleId,omitzero"`
 	// UserID maps to the exact wire member UserId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
-	// Upstream prose is unavailable in English; native field contract is documented above.
-	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L484
+	//
+	// Optional official CLI metadata prose (Apache-2.0; informational, not SDK validation):
+	//
+	// The user ID. Details are as follows:
+	//
+	// If the caller is an Alibaba Cloud account, the ID of the Alibaba Cloud account is returned.
+	// If the caller is a RAM user, the ID of the RAM user is returned.
+	//
+	// This parameter is returned only when the caller is an Alibaba Cloud account or a RAM user
+	//
+	// Source: https://github.com/aliyun/aliyun-openapi-meta/blob/51286a65c79d008436eb314e636f9c9ad4b1ca08/canonical/sts/2015-04-01/GetCallerIdentity.json
+	// JSON pointer: /responses/200/schema/properties/UserId/description_en
 	UserID *string `json:"UserId,omitzero"`
 	// Metadata contains request identity, HTTP status and attempt count.
 	Metadata alicloud.Metadata `json:"-"`

@@ -15,3 +15,8 @@ No imported Tea module implementation is distributed in these product packages.
 阿里云上游版权、固定产品来源和哈希如英文章节。上游派生定义/说明按 Apache-2.0，
 完整条款见 LICENSE；本项目将其转换为强类型 Go 模型/方法及规范 Go 注释。
 原创 runtime、工具、手写测试保留项目 MIT，不分发导入 Tea 模块实现。
+
+## Optional metadata prose / 可选元数据说明
+
+English field descriptions also derive from https://github.com/aliyun/aliyun-openapi-meta/tree/51286a65c79d008436eb314e636f9c9ad4b1ca08 under Apache-2.0. Exact files and JSON pointers appear in generated comments and documentation coverage. Metadata targets CLI builds; no runtime validation/policy is inferred.
+部分英文字段说明补充自上述固定官方 CLI 元数据，保留 Apache-2.0；准确文件和 JSON 指针见生成注释及文档覆盖。元数据面向 CLI 构建，不据此推断运行时校验或策略。

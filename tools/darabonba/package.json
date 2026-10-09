@@ -7,9 +7,9 @@
   },
   "scripts": {
     "project": "node frontend.cjs generate",
-    "discover": "node discovery.cjs",
-    "check": "node frontend.cjs check && node discovery.cjs check",
-    "test": "node --test --test-concurrency=1 frontend.test.cjs endpoints.test.cjs rpc-expansion.test.cjs vpc-completion.test.cjs normalization.test.cjs discovery.test.cjs documentation.test.cjs rehearsal.test.cjs"
+    "discover": "node discovery.cjs && node prose.cjs generate",
+    "check": "node frontend.cjs check && node discovery.cjs check && node prose.cjs check",
+    "test": "node --test --test-concurrency=1 frontend.test.cjs endpoints.test.cjs rpc-expansion.test.cjs vpc-completion.test.cjs normalization.test.cjs discovery.test.cjs documentation.test.cjs prose.test.cjs rehearsal.test.cjs"
   },
   "dependencies": {
     "@darabonba/parser": "2.2.1",
