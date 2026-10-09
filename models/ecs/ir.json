@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 5,
-  "profile": "openapi-json-v1",
+  "schemaVersion": 6,
+  "profile": "openapi-http-v1",
   "product": "ecs",
   "identifier": "ecs-20140526",
   "version": "2014-05-26",

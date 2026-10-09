@@ -5,9 +5,9 @@
   "version": "2023-03-30",
   "sourceManifestSHA256": "fda7bc19fbbeb45b230c5dc9c4e69452a1dfe57331452f62dc653261b6d13254",
   "discovered": 73,
-  "lowered": 72,
-  "emitted": 72,
-  "models": 331,
+  "lowered": 73,
+  "emitted": 73,
+  "models": 335,
   "compilation": "not-assessed",
   "live": "not-assessed",
   "capabilityPolicy": "not-assessed",
@@ -755,7 +755,7 @@
     },
     {
       "name": "InvokeFunction",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/fc/main.tea",
         "line": 3712,
@@ -763,19 +763,14 @@
         "endLine": 3712,
         "endColumn": 41
       },
-      "reasons": [
-        {
-          "code": "DSL_RESPONSE_BODY_PROFILE",
-          "message": "ROA unsupported response body binary",
-          "source": {
-            "file": "products/fc/main.tea",
-            "line": 3712,
-            "column": 16,
-            "endLine": 3712,
-            "endColumn": 41
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListAliases",

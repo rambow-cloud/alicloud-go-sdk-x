@@ -7,7 +7,7 @@
 
 - 导入 `github.com/rambow-cloud/alicloud-go-sdk-x/service/fc`。
 - 官方 DSL 固定在提交 `ec489e5c3deae95496daae2b41503ac58b221adb`，采用 Apache-2.0 许可。原始源码和许可证保存在 `sources/darabonba`。
-- 发现 73 个操作，生成 72 个，暂不支持 1 个；生成 331 个完整模型。
+- 发现 73 个操作，生成 73 个，暂不支持 0 个；生成 335 个完整模型。
 - 生成数量不代表编译或真实调用已经验收。详见 `fc.coverage.json` 和对应 PR。
 
 ## 调用与数据处理
@@ -57,12 +57,14 @@
 
 ## ROA 参数与响应
 
-- 输入由真实路径参数、请求模型字段和 Headers map 组成；公共模型保留，操作输出独立增加 Metadata。
+- 输入由真实路径参数、请求模型字段以及 Headers map 或原生请求头模型组成；公共模型保留，操作输出独立增加 Metadata。
 - 路径参数为必填的非空字符串，各值编码为一个 RFC3986 路径段。Example 使用虚构的 example 值。
-- Body 保留官方 JSON 正文形状；不增加包装层。nil 省略正文，非 nil 的空容器保留。body-member 字段按准确线名称组成 JSON 对象。编码后的 JSON 正文上限为 8 MiB，超限在读取凭据前失败。
+- JSON 操作的 Body 保留官方 JSON 正文形状；不增加包装层。nil 省略正文，非 nil 的空容器保留。body-member 字段按准确线名称组成 JSON 对象。编码后的 JSON 正文上限为 8 MiB，超限在读取凭据前失败。
 - Headers 支持自定义服务头。认证、Host、正文类型/长度/传输方式及签名管理字段由 SDK 管理；非法字符、同名大小写冲突和这些保留字段在读取凭据前失败。
 - none 成功响应受大小限制，读取后丢弃，仅返回零值字段和 Metadata；错误响应仍提取结构化 JSON 服务错误。
-- 生成器不推断重试、分页或 waiter；未列策略仍未审核。XML 和二进制流仍不支持。
+- 生成器不推断重试、分页或 waiter；未列策略仍未审核。二进制操作使用最多 8 MiB 的独立字节切片作为请求正文，不做 JSON 或 Base64 包装；nil 省略正文，非 nil 空切片保留 Content-Type。
+- 原生请求头模型先复制通用 map，再用已提供的专用字段覆盖同名 HTTP 请求头；字符串不做 JSON 引号转换。
+- 二进制输出 Body 为 io.ReadCloser，调用者必须关闭。超时和 context 延续到读取结束，读取错误不重试。Headers 使用小写键和首个值的独立 map，StatusCode 保留 HTTP 状态。默认响应上限为 8 MiB、总超时为 30 秒，可配置。详见 [响应流契约](../response-streaming.zh-CN.md)。XML 与无限制请求流仍不支持。
 - 端点原始尾部空白的审核决策见 [ROA 路线](../roa-generation.zh-CN.md)及 metadata/endpoint-source-decisions.json。上游字节保持不变。
 
 | 操作 | 方法 | 路径模板 | 响应模式 |
@@ -106,6 +108,7 @@
 | GetSession | GET | `/2023-03-30/functions/{functionName}/sessions/{sessionId}` | json |
 | GetSnapshot | GET | `/2023-03-30/functions/{functionName}/snapshots/{snapshotId}` | json |
 | GetTrigger | GET | `/2023-03-30/functions/{functionName}/triggers/{triggerName}` | json |
+| InvokeFunction | POST | `/2023-03-30/functions/{functionName}/invocations` | binary |
 | ListAliases | GET | `/2023-03-30/functions/{functionName}/aliases` | json |
 | ListAsyncInvokeConfigs | GET | `/2023-03-30/async-invoke-configs` | json |
 | ListAsyncTasks | GET | `/2023-03-30/functions/{functionName}/async-tasks` | json |
@@ -151,11 +154,11 @@
 | 操作 | 分页方式 | Waiter | 可安全重试的读取 | Token 字段 | 参数校验 | 敏感格式化 |
 | --- | --- | --- | --- | --- | --- | --- |
 
-- 已审核英文译文：0 个操作；Go 行为注释覆盖 72 个操作和 1591 个来源字段，单独统计，不冒充上游业务说明。缺少英文说明的字段保留准确 DSL 来源链接。
+- 已审核英文译文：0 个操作；Go 行为注释覆盖 73 个操作和 1605 个来源字段，单独统计，不冒充上游业务说明。缺少英文说明的字段保留准确 DSL 来源链接。
 
 ## 文档来源
 
-- 英文 Go 注释复用已授权的官方说明和摘要：72/72 个操作、1118/1591 个字段有说明。
+- 英文 Go 注释复用已授权的官方说明和摘要：73/73 个操作、1123/1605 个字段有说明。
 - 缺失、空白或没有英文内容的说明记录在 `fc.documentation.json` 中。说明不会自动变成校验规则或必填要求。
 - 两份指南分别提供相同的用法、行为约定和来源索引。固定的上游输入不含中文语义翻译，因此不伪造官方译文。
 - 可执行 Example 使用离线模拟响应，不使用上游示例中的账号或资源值。
@@ -202,6 +205,7 @@
 | GetSession | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3549) |
 | GetSnapshot | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3607) |
 | GetTrigger | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3655) |
+| InvokeFunction | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3712) |
 | ListAliases | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3798) |
 | ListAsyncInvokeConfigs | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3861) |
 | ListAsyncTasks | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3960) |

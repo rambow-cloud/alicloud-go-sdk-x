@@ -288,6 +288,7 @@ function modelGraph(ast, file) {
       "uint64",
     ];
     if (kind === "any") return { kind: "json", dslType: "any" };
+    if (kind === "readable") return { kind: "stream", dslType: "readable", wireType: "binary" };
     const wireType = integer.includes(kind)
       ? "integer"
       : ["float", "double"].includes(kind)
@@ -496,16 +497,20 @@ function buildProduct(ast, { pkg, identifier, info, file, provenance, endpointDe
             const inputFields=lowered.inputs.map(input=>{
               const original=originalRequest?.fields.find(f=>f.dslName===input.field),param=record.parameters.find(p=>p.name===input.field);
               requireInventory(original||param,"facade parameter source");
-              return original ? structuredClone(original) : {dslName:input.field,wireName:input.wire,required:input.location==="path",type:param.type,source:param.source,attributes:{}};
+              const field=original ? structuredClone(original) : {dslName:input.field,wireName:input.wire,required:input.location==="path",type:param.type,source:param.source,attributes:{}};
+              if(input.location==="binary-body")field.type={kind:"bytes",dslType:"readable",wireType:"binary"};
+              return field;
             });
             requireInventory(new Set(inputFields.map(f=>f.dslName)).size===inputFields.length,"facade member collision");
             graph.models.set(inputID,{id:inputID,source:location,origin:"operation-input-facade",fields:inputFields});
-            requireInventory(lowered.protocol.bodyType==="none"||originalBody,"JSON output facade requires object body");
-            graph.models.set(outputID,{id:outputID,source:originalBody?.source||location,origin:"operation-output-facade",fields:originalBody?structuredClone(originalBody.fields):[]});
+            const outputModel=lowered.binary?graph.models.get(record.roots.response.ref):originalBody;
+            requireInventory(lowered.protocol.bodyType==="none"||outputModel,"output facade requires reviewed response model");
+            graph.models.set(outputID,{id:outputID,source:outputModel?.source||location,origin:"operation-output-facade",fields:outputModel?structuredClone(outputModel.fields):[]});
             record.roots.request={kind:"model",ref:inputID};record.roots.body={kind:"model",ref:outputID};
             record.reachableModels=graph.reachable(Object.values(record.roots));
           }
           if (lowered.handoff) record.handoff = lowered.handoff;
+          if (lowered.headerBindings) record.headerBindings = lowered.headerBindings;
           // An explicit empty root preserves source absence without inventing a DSL model.
           if (!record.roots.request) record.roots.request = { kind: "empty" };
           const fields =
@@ -559,8 +564,8 @@ function buildProduct(ast, { pkg, identifier, info, file, provenance, endpointDe
       "product protocol version differs: " + op.name,
     );
   const ir = {
-    schemaVersion: 5,
-    profile: "openapi-json-v1",
+    schemaVersion: 6,
+    profile: "openapi-http-v1",
     product: pkg,
     identifier,
     version,
@@ -670,8 +675,8 @@ function project(root = repository, selected = []) {
     );
   }
   const manifest = {
-    schemaVersion: 5,
-    profile: "openapi-json-v1",
+    schemaVersion: 6,
+    profile: "openapi-http-v1",
     sourceManifestSHA256: verified.hash,
     files: Object.entries(files).map(([file, data]) => ({
       file,

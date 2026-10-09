@@ -174,7 +174,7 @@ func invokeROA[I, O any](ctx context.Context, c *Client, input *I, op alicloud.O
 			return err
 		}
 		return json.Unmarshal(data, value)
-	}}
+	}, DecodeStream: roamodel.DecodeStream}
 	out := new(O)
 	meta, err := c.runtime.InvokeModel(ctx, op, in, alicloud.Request{}, out, codec, callOptions...)
 	if err != nil {

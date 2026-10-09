@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "sourceManifestSHA256": "fda7bc19fbbeb45b230c5dc9c4e69452a1dfe57331452f62dc653261b6d13254",
+  "reviewKind": "implementation-agent-source-review",
+  "facts": [
+    {
+      "id": "string-header-identity",
+      "dslModule": "darabonba:Util:0.2.19",
+      "nativeRelease": "github.com/alibabacloud-go/tea-utils/v2/service:v2.0.8",
+      "repository": "https://github.com/alibabacloud-go/tea-utils",
+      "revision": "6bfaf5ce0320c26217c94983f97bbeac4b2435d6",
+      "file": "service/service.go",
+      "sha256": "b69139f99d9dfabb475bb306ef1df6a3f2e1c90f55be6ac7f74becb0d27502ca",
+      "lines": [264, 269],
+      "decision": "ToJSONString returns string values unchanged; do not add JSON quotes to reviewed string header fields."
+    },
+    {
+      "id": "binary-stream-priority",
+      "dslModule": "alibabacloud:OpenApi:0.3.23",
+      "file": "sources/darabonba/modules/alibabacloud_OpenApi_0.3.23/main.tea",
+      "lines": [901, 905],
+      "decision": "A supplied request.stream takes priority over the JSON body: hash exact bytes and use application/octet-stream. Copy and bound bytes in the v0 Go facade."
+    },
+    {
+      "id": "scalar-response-headers",
+      "nativeRelease": "github.com/alibabacloud-go/tea:v1.2.2",
+      "repository": "https://github.com/alibabacloud-go/tea",
+      "revision": "bb7ae5fd3e46dbac00db758063074c89b93cba26",
+      "file": "tea/tea.go",
+      "sha256": "49d67dd9622db7f1f4ab9e51efc44e14938d261bc4f74a78f706e71bb2c03fa1",
+      "lines": [406, 411],
+      "decision": "Use an owned lowercase map with each first response header value, matching this reviewed scalar-map representation. This fixture is not a claim about every Tea release or multi-value parity."
+    }
+  ],
+  "nativeImplementationsCopied": false,
+  "nativeRuntimeDependenciesAdded": false,
+  "liveAcceptance": "NOT RUN"
+}

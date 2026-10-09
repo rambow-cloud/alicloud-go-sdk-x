@@ -1037,6 +1037,31 @@ func (c *Client) GetTrigger(ctx context.Context, input *GetTriggerInput, optFns 
 	return out, nil
 }
 
+// InvokeFunctionAPI is the minimal interface for InvokeFunction mocks and capability adapters.
+type InvokeFunctionAPI interface {
+	// InvokeFunction invokes the native action with owned inputs and per-call options.
+	InvokeFunction(context.Context, *InvokeFunctionInput, ...func(*Options)) (*InvokeFunctionOutput, error)
+}
+
+// InvokeFunction calls the native InvokeFunction action (API version 2023-03-30).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Invokes a function.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3704
+func (c *Client) InvokeFunction(ctx context.Context, input *InvokeFunctionInput, optFns ...func(*Options)) (*InvokeFunctionOutput, error) {
+	out, meta, err := invokeROA[InvokeFunctionInput, InvokeFunctionOutput](ctx, c, input, alicloud.Operation{Service: "fc", Name: "InvokeFunction", Version: "2023-03-30", Idempotent: false, ResponseBody: alicloud.ResponseBodyStream}, "POST", "/2023-03-30/functions/{functionName}/invocations", nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // ListAliasesAPI is the minimal interface for ListAliases mocks and capability adapters.
 type ListAliasesAPI interface {
 	// ListAliases invokes the native action with owned inputs and per-call options.

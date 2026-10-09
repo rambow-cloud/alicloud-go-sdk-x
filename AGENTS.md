@@ -192,6 +192,7 @@
   earlier; interfaces alone do not satisfy the foundation acceptance gate.
 - Read docs/development-path.md before selecting an issue.
 - #92 binary responses follow [response-streaming.md](docs/response-streaming.md): implement bounded ownership, cancellation and codec publication in the shared runtime before DSL/Go emission. No late-read retry or unbounded request stream.
+- Binary ROA generation follows [fc-binary-generation.md](docs/fc-binary-generation.md): schema v6/openapi-http-v1, complete semantic program review and renamed field/model reuse fixtures. Preserve request bytes and stream ownership; no action-name special cases or inferred retry.
 - Document the path, create or
   update the issue, then implement. Keep the issue dependency graph acyclic.
 - Every capability includes implementation, behavior tests, executable examples, paired

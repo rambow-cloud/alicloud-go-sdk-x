@@ -75,7 +75,7 @@ func TestRenamedProductUsesSharedEmitterAndGuide(t *testing.T) {
 }
 
 func TestCompleteProductsDeterministicModelsMethodsAndExamples(t *testing.T) {
-	for pkg, want := range map[string]int{"ecs": 380, "sts": 4, "vpc": 403, "fc": 72} {
+	for pkg, want := range map[string]int{"ecs": 380, "sts": 4, "vpc": 403, "fc": 73} {
 		t.Run(pkg, func(t *testing.T) {
 			p := readProductIR(t, pkg)
 			r, err := newProductRenderer(p)
@@ -277,6 +277,9 @@ func TestProductSchemaVersionsFailBeforeWrites(t *testing.T) {
 	writePins()
 	checkRejected("unsupported IR manifest")
 	pins.SchemaVersion = 5
+	writePins()
+	checkRejected("unsupported IR manifest")
+	pins.SchemaVersion = 6
 	p := readProductIR(t, "ecs")
 	p.SchemaVersion = 2
 	encoded, err := json.Marshal(p)
@@ -451,6 +454,14 @@ func TestFullProductEmissionCompilesInIsolatedModule(t *testing.T) {
 		writeTestFile(t, root, name, data)
 	}
 	writeTestFile(t, root, "service/authfixture/reuse_test.go", []byte(reuseRuntimeTest))
+	binaryFiles, err := renderProduct(readBinaryReuseFixture(t))
+	if err != nil {
+		t.Fatal(err)
+	}
+	for name, data := range binaryFiles {
+		writeTestFile(t, root, name, data)
+	}
+	writeTestFile(t, root, "service/binaryfixture/reuse_test.go", []byte(binaryReuseRuntimeTest))
 	ctx, cancel := context.WithTimeout(context.Background(), 180*time.Second)
 	defer cancel()
 	cmd := exec.CommandContext(ctx, "go", "test", "-p", "1", "./service/...")

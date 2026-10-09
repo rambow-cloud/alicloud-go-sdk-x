@@ -6,6 +6,7 @@
 package fc
 
 import alicloud "github.com/rambow-cloud/alicloud-go-sdk-x"
+import "io"
 
 // AccelerationInfo represents the complete DSL model AccelerationInfo.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
@@ -7395,6 +7396,130 @@ type InstanceLifecycleConfig struct {
 	//
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L697
 	PreStop *LifecycleHook `json:"preStop,omitzero"`
+}
+
+// InvokeFunctionInput is an operation facade derived from official DSL parameters or body fields.
+// It preserves native field names and source coordinates; it is not an upstream named model.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type InvokeFunctionInput struct {
+	// Qualifier maps to the native query parameter qualifier.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Function version or alias
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3695
+	// Sent in the reviewed ROA query location, preserving the exact native wire name.
+	Qualifier *string `json:"qualifier,omitzero" roa:"query"`
+	// Body supplies the exact binary request payload.
+	// Copied raw bytes, limited to 8 MiB before credentials; nil omits the binary body. No JSON wrapper or base64 encoding.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Function invocation parameter
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3694
+	// Sent in the reviewed ROA binary-body location, preserving the exact native wire name.
+	Body []byte `json:"body,omitzero" roa:"binary-body"`
+	// Headers supplies the native header model. Typed fields override common headers.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3712
+	// Sent in the reviewed ROA header-model location, preserving the exact native wire name.
+	Headers *InvokeFunctionHeaders `json:"headers,omitzero" roa:"header-model"`
+	// FunctionName is the required nonempty path parameter functionName.
+	// It is escaped as one RFC3986 segment; slashes remain inside that segment.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3712
+	// Sent in the reviewed ROA path location, preserving the exact native wire name.
+	FunctionName string `json:"functionName,omitzero" roa:"path"`
+}
+
+// InvokeFunctionOutput is an operation facade derived from official DSL parameters or body fields.
+// It preserves native field names and source coordinates; it is not an upstream named model.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type InvokeFunctionOutput struct {
+	// Headers maps to the exact wire member headers.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3699
+	Headers map[string]string `json:"headers,omitzero"`
+	// StatusCode maps to the exact wire member statusCode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3700
+	StatusCode *int32 `json:"statusCode,omitzero"`
+	// Body maps to the exact wire member body.
+	// Caller owns the stream and must close it. Context, timeout and byte limits remain active through reads.
+	// Read has one owner; Close may run concurrently. Late read failures never retry.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3701
+	Body io.ReadCloser `json:"body,omitzero"`
+	// Metadata contains request identity, HTTP status and attempt count.
+	Metadata alicloud.Metadata `json:"-"`
+}
+
+// InvokeFunctionHeaders represents the complete DSL model InvokeFunctionHeaders.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type InvokeFunctionHeaders struct {
+	// CommonHeaders supplies custom service HTTP headers; nil supplies none.
+	// The map is copied. Invalid, duplicate-case and SDK-managed headers fail before credentials.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3685
+	// Sent in the reviewed ROA headers location, preserving the exact native wire name.
+	CommonHeaders map[string]string `json:"commonHeaders,omitzero" roa:"headers"`
+	// XFcAsyncTaskID maps to the HTTP header x-fc-async-task-id without JSON quoting.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Asynchronous task ID. Enable asynchronous tasks beforehand.
+	//
+	// > When using the SDK for invocation, set a business-related ID. This helps with subsequent operations on the execution. For example, a video processing function can use the video filename as the invocation ID. Use this ID to check if the video processing is complete or to stop it. The ID naming convention must start with an English letter (uppercase or lowercase) or an underscore (_). It can contain English letters (uppercase or lowercase), digits (0-9), underscores (_), and hyphens (-). The ID cannot exceed 128 characters. If you do not set an ID for asynchronous invocation, the system automatically generates one.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3686
+	// Sent in the reviewed ROA header location, preserving the exact native wire name.
+	XFcAsyncTaskID *string `json:"x-fc-async-task-id,omitzero" roa:"header"`
+	// XFcInvocationType maps to the HTTP header x-fc-invocation-type without JSON quoting.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Function invocation type. Sync or Async.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3689
+	// Sent in the reviewed ROA header location, preserving the exact native wire name.
+	XFcInvocationType *string `json:"x-fc-invocation-type,omitzero" roa:"header"`
+	// XFcLogType maps to the HTTP header x-fc-log-type without JSON quoting.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Log type returned by function invocation. None or Tail.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3690
+	// Sent in the reviewed ROA header location, preserving the exact native wire name.
+	XFcLogType *string `json:"x-fc-log-type,omitzero" roa:"header"`
+}
+
+// InvokeFunctionResponse represents the complete DSL model InvokeFunctionResponse.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type InvokeFunctionResponse struct {
+	// Headers maps to the exact wire member headers.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3699
+	Headers map[string]string `json:"headers,omitzero"`
+	// StatusCode maps to the exact wire member statusCode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3700
+	StatusCode *int32 `json:"statusCode,omitzero"`
+	// Body maps to the exact wire member body.
+	// Caller owns the stream and must close it. Context, timeout and byte limits remain active through reads.
+	// Read has one owner; Close may run concurrently. Late read failures never retry.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3701
+	Body io.ReadCloser `json:"body,omitzero"`
 }
 
 // JuiceFsConfig represents the complete DSL model JuiceFsConfig.

@@ -2,6 +2,8 @@
 
 [中文](fc-roa-product.zh-CN.md)
 
+- This file records the accepted JSON/none baseline. [Binary generation](fc-binary-generation.md) extends it to schema v6 and 73 FC actions, preserving the results below as history.
+
 - Issue #92. Depends on the explicit response-mode runtime stage in PR #109.
 - Use the complete official `fc-20230330` DSL at `ec489e5c3deae95496daae2b41503ac58b221adb`, its original Teafile/catalog and already pinned import modules. Preserve all upstream bytes and notices.
 - Official parser research found 73 WithOptions actions: 54 JSON responses, 18 none and one binary. Discovery must retain all actions; emission must report unsupported cases explicitly.

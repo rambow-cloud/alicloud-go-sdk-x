@@ -1,11 +1,11 @@
 {
-  "schemaVersion": 5,
-  "profile": "openapi-json-v1",
+  "schemaVersion": 6,
+  "profile": "openapi-http-v1",
   "sourceManifestSHA256": "fda7bc19fbbeb45b230c5dc9c4e69452a1dfe57331452f62dc653261b6d13254",
   "files": [
     {
       "file": "models/ecs/ir.json",
-      "sha256": "4f78adfda2a9decd840af94bd66fa26422dcf443434fce735bfc8fb7691fb684"
+      "sha256": "eb1c352539141d0ab0c098fc0b47401e736cf607dc43a09019ae7615319b27a5"
     },
     {
       "file": "models/ecs/coverage.json",
@@ -13,15 +13,15 @@
     },
     {
       "file": "models/fc/ir.json",
-      "sha256": "82b8326e60d56c72dbc27aff07a61888153e25b2b0f58cda92a5b97550cce53b"
+      "sha256": "156bb6e4a609db3c1c17dd103d916b8e1706fecbb24efc248ebb8b2712341861"
     },
     {
       "file": "models/fc/coverage.json",
-      "sha256": "a3ac07f87ef07c638c1c41898b433595f9cc09cc72df9653c8e9c59abfd128dd"
+      "sha256": "7876401614ae9e0478a02987ffb022648259a94ac9a7a8acb1936f933b1de067"
     },
     {
       "file": "models/sts/ir.json",
-      "sha256": "802aec2efdfaf4ad0cb6a8439f0e70ddd362e5040c2da3907056a2ae44977899"
+      "sha256": "e402a22b91a031f7caf5b3b2be060577d6b77f7badc3a8919f311ce991a138d9"
     },
     {
       "file": "models/sts/coverage.json",
@@ -29,7 +29,7 @@
     },
     {
       "file": "models/vpc/ir.json",
-      "sha256": "ba80f626fb820804093cc0f37e08c762ed1dfb8f8bd323beea0d46e5f78f2524"
+      "sha256": "fa382d2b9e18d405488c8dda0913f1deac61d92a98824f5d5f641a78eed7a503"
     },
     {
       "file": "models/vpc/coverage.json",

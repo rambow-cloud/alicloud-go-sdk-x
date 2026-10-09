@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 5,
-  "profile": "openapi-json-v1",
+  "schemaVersion": 6,
+  "profile": "openapi-http-v1",
   "product": "vpc",
   "identifier": "vpc-20160428",
   "version": "2016-04-28",

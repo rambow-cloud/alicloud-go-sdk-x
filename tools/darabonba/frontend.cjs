@@ -233,7 +233,11 @@ function lowerOperation(ast, operation) {
     fn?.isAsync && !fn.isStatic && !fn.notes?.length,
     "operation function " + operation,
   );
-  if (roaStyle(fn)) return lowerROA(ast, fn, operation, {shape, reviewedAttributes, requireProfile});
+  if (roaStyle(fn)) {
+    const inspect=node=>{if(!node||typeof node!=="object")return;if(node.type==="assign"&&node.left?.type==="virtualVariable"&&lex(node.left.vid)==="@signatureAlgorithm")requireProfile(node.expr?.type==="string"&&node.expr.value.string==="ACS3-HMAC-SHA256","signed product signature initializer");for(const value of Object.values(node)){if(Array.isArray(value))value.forEach(inspect);else if(value&&typeof value==="object")inspect(value);}};
+    nodes.filter(n=>n.type==="init").forEach(inspect);
+    return lowerROA(ast, fn, operation, {shape, reviewedAttributes, requireProfile});
+  }
   const params = fn.params.params;
   const requestless =
     params.length === 1 && lex(params[0].paramName) === "runtime";

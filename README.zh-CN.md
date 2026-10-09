@@ -30,7 +30,7 @@
 
 ## 支持范围
 
-- 完整官方 DSL 生成 STS 4、ECS 380、VPC 403 个操作，提供类型化模型、小型测试替身接口和离线 Example。FC 另提供 [ROA 离线预览](docs/fc-roa-product.zh-CN.md)：73 个操作中生成 72 个，二进制 InvokeFunction 暂不支持。生成、编译、消费者验收及真实调用分别记录。
+- 完整官方 DSL 生成 STS 4、ECS 380、VPC 403 个操作，提供类型化模型、小型测试替身接口和离线 Example。FC 另提供 [ROA 离线预览](docs/fc-binary-generation.zh-CN.md)：生成全部 73 个操作，包括返回由调用者持有的响应流的二进制 InvokeFunction。生成、编译、消费者验收及真实调用分别记录。
 
 - 已审核策略提供 ECS 14/VPC 15 个分页器、ECS 2/VPC 3 个 waiter。ECS 16/380、VPC 15/403 个操作有已审核策略；其余操作仍未审核。生成数量不代表真实调用已经验收。
 

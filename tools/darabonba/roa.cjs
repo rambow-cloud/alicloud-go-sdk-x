@@ -1,4 +1,5 @@
 "use strict";
+const {lowerHeaderProgram,lowerBinaryResult}=require("./binary.cjs");
 
 // Recognize reviewed ROA SDK programs through official semantic AST nodes.
 const lex = t => t?.lexeme;
@@ -13,10 +14,11 @@ function roaStyle(fn) {
 function lowerROA(ast, fn, operation, {shape, reviewedAttributes, requireProfile}) {
   const check = (ok, reason) => requireProfile(ok, "ROA " + reason);
   const declaredBody = fn.functionBody.stmts.stmts.find(s => s.type === "declare" && lex(s.id) === "params")?.expr?.object?.fields?.find(f => lex(f.fieldName) === "bodyType");
-  check(["json","none"].includes(constant(declaredBody?.expr)),"unsupported response body "+constant(declaredBody?.expr));
+  const binary=constant(declaredBody?.expr)==="binary";
+  check(["json","none","binary"].includes(constant(declaredBody?.expr)),"unsupported response body "+constant(declaredBody?.expr));
   const params = fn.params.params, headers = params.at(-2), runtime = params.at(-1);
   check(runtime && lex(runtime.paramName) === "runtime" && runtime.paramType.type === "moduleModel" && runtime.paramType.path.map(lex).join(".") === "Util.RuntimeOptions", "runtime signature");
-  check(headers && lex(headers.paramName) === "headers" && headers.paramType.type === "map" && lex(headers.paramType.keyType) === "string" && lex(headers.paramType.valueType) === "string", "headers signature");
+  check(headers && lex(headers.paramName) === "headers" && (binary ? !!lex(headers.paramType) : headers.paramType.type === "map" && lex(headers.paramType.keyType) === "string" && lex(headers.paramType.valueType) === "string"), "headers signature");
   const inputParams = params.slice(0,-2), requestParam = inputParams.find(p => ["request","tmpReq"].includes(lex(p.paramName)));
   const paths = inputParams.filter(p => p !== requestParam);
   check(paths.every(p => lex(p.paramType) === "string" && !p.defaultValue) && new Set(inputParams.map(p => lex(p.paramName))).size === inputParams.length, "path signature");
@@ -52,7 +54,7 @@ function lowerROA(ast, fn, operation, {shape, reviewedAttributes, requireProfile
     const original=transforms.get(name)||name,f = fields.get(original),encoded=queryFields.get(name);
     check(f && encoded && wire(encoded) === nativeWire && !bound.has(original), "binding identity"); bound.add(original);
     check(location !== "query" || transforms.has(name) || ["string","boolean","integer","number","long","int32","int64","float","double"].includes(shape(f.fieldValue,models).type), "query requires scalar or reviewed JSON transform");
-    inputs.push({field:original,wire:nativeWire,location,guard:"isUnset",...(transforms.has(name)?{encoding:"json"}:encoding?{encoding}:{}),schema:{...shape(f.fieldValue,models),required:!!f.required}});
+    inputs.push({field:original,wire:nativeWire,location,guard:location==="binary-body"?"direct":"isUnset",...(transforms.has(name)?{encoding:"json"}:encoding?{encoding}:{}),schema:{...(location==="binary-body"?{type:"binary"}:shape(f.fieldValue,models)),required:!!f.required}});
   }
   let hasQuery = false,hasBodyFields=false;
   while(statements[index]?.type === "declare" && ["query","body"].includes(lex(statements[index].id))) {
@@ -66,21 +68,26 @@ function lowerROA(ast, fn, operation, {shape, reviewedAttributes, requireProfile
       bind(name,constant(assignment.left.accessKey),target === "query" ? "query" : "body-member");
     }
   }
+  let headerBindings;
+  if(binary){const lowered=lowerHeaderProgram(statements,index,models.get(lex(headers.paramType)),{check,lex,variable,property,constant,call,wire,reviewedAttributes});index=lowered.index;headerBindings={model:lex(headers.paramType),fields:lowered.bindings};}
   const req = statements[index++]; check(req?.type === "declare" && lex(req.id) === "req" && construct(req.expr,"OpenApiRequest"),"request construction");
   const seen = new Set(); let queryUsed = false,bodyUsed=false;
   for(const f of req.expr.object.fields) {
     const name=lex(f.fieldName); check(f.type === "objectField" && !seen.has(name),"request member"); seen.add(name);
-    if(name === "headers")check(variable(f.expr,"headers"),"headers handoff");
+    if(name === "headers")check(variable(f.expr,binary?"realHeaders":"headers"),"headers handoff");
     else if(name === "query") {check(hasQuery && call(f.expr,"OpenApiUtil","query",e => variable(e,"query")),"query handoff");queryUsed=true;}
     else if(name === "body") {
+      if(binary){const name=property(f.expr);check(fields.get(name)?.fieldValue.fieldType==="readable","binary body source");bind(name,wire(fields.get(name)),"binary-body","bytes");bodyUsed=true;continue;}
       if(hasBodyFields) {check(call(f.expr,"OpenApiUtil","parseToMap",e=>variable(e,"body")),"JSON map body handoff");bodyUsed=true;continue;}
       const bodyName = property(f.expr?.args?.[0]);
       check(fields.has(bodyName) && call(f.expr,"OpenApiUtil","parseToMap",e => !!property(e)),"JSON body conversion");
       bind(bodyName,wire(fields.get(bodyName)),"body","json");
-    } else check(false,"unsupported request member "+name);
+    } else if(name==="stream"&&binary){check(property(f.expr)===property(req.expr.object.fields.find(f=>lex(f.fieldName)==="body")?.expr),"identical binary stream/body");}
+    else check(false,"unsupported request member "+name);
   }
   check(seen.has("headers") && (!hasQuery || queryUsed) && (!hasBodyFields || bodyUsed) && bound.size === fields.size,"unbound input");
-  inputs.push({field:"headers",wire:"headers",location:"headers",guard:"isUnset",schema:{type:"map",values:{type:"string"}}});
+  check(!binary||bodyUsed&&seen.has("stream")&&!hasBodyFields,"binary stream handoff");
+  inputs.push({field:"headers",wire:"headers",location:binary?"header-model":"headers",guard:"isUnset",schema:binary?shape(headers.paramType,models):{type:"map",values:{type:"string"}}});
   const protocol=statements[index++]; check(protocol?.type === "declare" && lex(protocol.id) === "params" && construct(protocol.expr,"Params"),"protocol construction");
   const expected=["action","version","protocol","pathname","method","authType","style","reqBodyType","bodyType"], facts={}, usedPaths=new Set();
   for(const f of protocol.expr.object.fields) {
@@ -99,12 +106,13 @@ function lowerROA(ast, fn, operation, {shape, reviewedAttributes, requireProfile
     check(template.startsWith("/"),"absolute path");facts.pathname=template;
   }
   check(Object.keys(facts).length === expected.length && facts.action === operation && facts.protocol === "HTTPS" && facts.authType === "AK" && facts.style === "ROA" && facts.reqBodyType === "json" && ["GET","POST","PUT","DELETE","PATCH"].includes(facts.method),"profile");
-  check(["json","none"].includes(facts.bodyType),"unsupported response body "+facts.bodyType);
+  check(["json","none","binary"].includes(facts.bodyType),"unsupported response body "+facts.bodyType);
   check(usedPaths.size === paths.length,"unused path parameter");
   for(const p of paths)inputs.push({field:lex(p.paramName),wire:lex(p.paramName),location:"path",guard:"required",schema:{type:"string",required:true}});
+  const responseModel=models.get(lex(fn.returnType)); check(responseModel,"response model");
+  if(binary){lowerBinaryResult(statements,index,responseModel,{check,lex,variable,property,call,wire,reviewedAttributes});return {name:operation,protocol:facts,inputs,facade:true,binary:true,headerBindings,response:{type:"binary"}};}
   const result=statements[index++], handoff=result?.expr;
   check(result?.type === "return" && handoff?.type === "call" && handoff.left.type === "method_call" && lex(handoff.left.id) === "callApi" && handoff.args.length === 3 && handoff.args.every((e,i)=>variable(e,["params","req","runtime"][i])) && index === statements.length,"runtime handoff and trailing statements");
-  const responseModel=models.get(lex(fn.returnType)); check(responseModel,"response model");
   const body=responseModel.modelBody.nodes.find(f => wire(f) === "body");
   check(facts.bodyType === "none" || body,"response body");
   return {name:operation,protocol:facts,inputs,facade:true,response:facts.bodyType === "none" ? {type:"object",properties:{}} : shape(body.fieldValue,models)};
