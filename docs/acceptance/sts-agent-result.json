@@ -1,10 +1,10 @@
 {
-  "sdkCommit": "358013c7b9f0466cacb36ac7f43ac9d30839286f",
+  "sdkCommit": "a304a1b720a223fd7c3c3d3142a6c868262cda18",
   "sourceBaseline": "f72bbdbc4ac0733f899e8a54d8c9bb1e1ac25266",
   "goVersion": "go1.27.1",
   "os": "windows/amd64",
-  "startedAt": "2026-10-09T09:15:20.208Z",
-  "endedAt": "2026-10-09T09:15:22.643Z",
+  "startedAt": "2026-10-09T09:29:02.892Z",
+  "endedAt": "2026-10-09T09:29:05.076Z",
   "command": "go -C examples/stsacceptance test -json -count=1 ./...",
   "schemaVersion": 1,
   "status": "PASS",
@@ -17,17 +17,17 @@
     {
       "id": "identity",
       "status": "PASS",
-      "elapsedSeconds": 0.07999999999999999,
+      "elapsedSeconds": 0.060000000000000005,
       "tests": [
         {
           "name": "TestExternalDefaultProfileWorkload",
           "status": "PASS",
-          "elapsedSeconds": 0.01
+          "elapsedSeconds": 0
         },
         {
           "name": "TestExternalOAuthRefreshPersistenceAndReuse",
           "status": "PASS",
-          "elapsedSeconds": 0.06
+          "elapsedSeconds": 0.05
         },
         {
           "name": "TestExternalLongLivedProfileRequiresOptIn",
