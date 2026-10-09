@@ -1,18 +1,18 @@
 {
   "generator": "sdkgen product",
   "reviewedEnglishTranslations": 0,
-  "goOperationContractComments": 72,
-  "goFieldContractComments": 1591,
+  "goOperationContractComments": 73,
+  "goFieldContractComments": 1605,
   "metadataEnglishFields": 0,
   "metadataRevision": "51286a65c79d008436eb314e636f9c9ad4b1ca08",
   "schemaVersion": 1,
   "product": "fc",
   "license": "Apache-2.0",
   "sourceManifestSHA256": "fda7bc19fbbeb45b230c5dc9c4e69452a1dfe57331452f62dc653261b6d13254",
-  "englishOperations": 72,
-  "totalOperations": 72,
-  "englishFields": 1118,
-  "totalFields": 1591,
+  "englishOperations": 73,
+  "totalOperations": 73,
+  "englishFields": 1123,
+  "totalFields": 1605,
   "chineseSemanticTranslation": "not-available-in-pinned-input",
   "pairedGuides": "usage-contracts-and-source-index",
   "examples": "offline-invocation-and-reviewed-capability-examples",
@@ -530,6 +530,18 @@
           "line": 3648,
           "column": 1,
           "endLine": 3654,
+          "endColumn": 4
+        }
+      ]
+    },
+    "InvokeFunction": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/fc/main.tea",
+          "line": 3704,
+          "column": 1,
+          "endLine": 3711,
           "endColumn": 4
         }
       ]
@@ -8491,6 +8503,102 @@
           "endColumn": 84
         }
       ]
+    },
+    "InvokeFunction.$input#body": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/fc/main.tea",
+          "line": 3694,
+          "column": 45,
+          "endLine": 3694,
+          "endColumn": 74
+        }
+      ]
+    },
+    "InvokeFunction.$input#functionName": {
+      "status": "missing",
+      "sources": []
+    },
+    "InvokeFunction.$input#headers": {
+      "status": "missing",
+      "sources": []
+    },
+    "InvokeFunction.$input#qualifier": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/fc/main.tea",
+          "line": 3695,
+          "column": 53,
+          "endLine": 3695,
+          "endColumn": 78
+        }
+      ]
+    },
+    "InvokeFunction.$output#body": {
+      "status": "missing",
+      "sources": []
+    },
+    "InvokeFunction.$output#headers": {
+      "status": "missing",
+      "sources": []
+    },
+    "InvokeFunction.$output#statusCode": {
+      "status": "missing",
+      "sources": []
+    },
+    "InvokeFunctionHeaders#commonHeaders": {
+      "status": "missing",
+      "sources": []
+    },
+    "InvokeFunctionHeaders#xFcAsyncTaskId": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/fc/main.tea",
+          "line": 3686,
+          "column": 67,
+          "endLine": 3688,
+          "endColumn": 623
+        }
+      ]
+    },
+    "InvokeFunctionHeaders#xFcInvocationType": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/fc/main.tea",
+          "line": 3689,
+          "column": 72,
+          "endLine": 3689,
+          "endColumn": 112
+        }
+      ]
+    },
+    "InvokeFunctionHeaders#xFcLogType": {
+      "status": "emitted",
+      "sources": [
+        {
+          "file": "products/fc/main.tea",
+          "line": 3690,
+          "column": 58,
+          "endLine": 3690,
+          "endColumn": 113
+        }
+      ]
+    },
+    "InvokeFunctionResponse#body": {
+      "status": "missing",
+      "sources": []
+    },
+    "InvokeFunctionResponse#headers": {
+      "status": "missing",
+      "sources": []
+    },
+    "InvokeFunctionResponse#statusCode": {
+      "status": "missing",
+      "sources": []
     },
     "JuiceFsConfig#envs": {
       "status": "emitted",

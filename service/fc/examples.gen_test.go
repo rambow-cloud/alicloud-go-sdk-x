@@ -10,6 +10,7 @@ import (
 	"github.com/rambow-cloud/alicloud-go-sdk-x/service/fc"
 	"net/http"
 )
+import "io"
 
 func ExampleClient_ChangeResourceGroup() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
@@ -708,6 +709,28 @@ func ExampleClient_GetTrigger() {
 	var api fc.GetTriggerAPI = client
 	out, err := api.GetTrigger(context.Background(), &fc.GetTriggerInput{FunctionName: "example", TriggerName: "example"})
 	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_InvokeFunction() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := fc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api fc.InvokeFunctionAPI = client
+	out, err := api.InvokeFunction(context.Background(), &fc.InvokeFunctionInput{Body: []byte("event"), FunctionName: "example"})
+	if err != nil {
+		panic(err)
+	}
+	defer out.Body.Close()
+	if _, err := io.Copy(io.Discard, out.Body); err != nil {
 		panic(err)
 	}
 	fmt.Println(out.Metadata.HTTPStatusCode)

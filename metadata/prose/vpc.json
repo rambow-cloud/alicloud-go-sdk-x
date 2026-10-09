@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "product": "vpc",
   "version": "2016-04-28",
-  "irSHA256": "ba80f626fb820804093cc0f37e08c762ed1dfb8f8bd323beea0d46e5f78f2524",
+  "irSHA256": "fa382d2b9e18d405488c8dda0913f1deac61d92a98824f5d5f641a78eed7a503",
   "corpusManifestSHA256": "8a53b4e6a0829555805dde8960e65b2a2dd9d4a78358569ef053edd29c0564da",
   "repository": "https://github.com/aliyun/aliyun-openapi-meta",
   "revision": "51286a65c79d008436eb314e636f9c9ad4b1ca08",

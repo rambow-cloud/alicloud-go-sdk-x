@@ -7,7 +7,7 @@
 
 - Import `github.com/rambow-cloud/alicloud-go-sdk-x/service/fc`.
 - Official DSL commit: `ec489e5c3deae95496daae2b41503ac58b221adb`. License: Apache-2.0. Source files and licenses are in `sources/darabonba`.
-- 73 actions found; 72 generated; 1 unsupported; 331 complete models.
+- 73 actions found; 73 generated; 0 unsupported; 335 complete models.
 - Generation does not prove compilation or live behavior. See `fc.coverage.json` and the PR checks.
 
 ## Calls and data
@@ -57,12 +57,14 @@
 
 ## ROA parameters and responses
 
-- Inputs combine actual path parameters, request-model fields and a Headers map. Preserve common models; separate operation outputs add Metadata.
+- Inputs combine actual path parameters, request-model fields and a Headers map or native header model. Preserve common models; separate operation outputs add Metadata.
 - Path parameters are required nonempty strings. Escape each as one RFC3986 segment; Examples use synthetic example values.
-- Body preserves the official JSON shape without an extra wrapper. Nil omits the body; non-nil empty containers survive. body-member fields form an object with exact wire names. Encoded JSON bodies are limited to 8 MiB; larger bodies fail before credentials.
+- For JSON operations, Body preserves the official JSON shape without an extra wrapper. Nil omits the body; non-nil empty containers survive. body-member fields form an object with exact wire names. Encoded JSON bodies are limited to 8 MiB; larger bodies fail before credentials.
 - Headers forwards custom service headers. The SDK manages authentication, Host, content type/length/transfer framing and signing fields. Invalid characters, duplicate casing and reserved fields fail before credentials.
 - none success responses are bounded, read and discarded; zero fields and Metadata remain. Errors still decode structured JSON service errors.
-- No inferred retry, pagination or waiters. Unlisted policy is unreviewed; XML and binary streaming remain unsupported.
+- No inferred retry, pagination or waiters. Unlisted policy is unreviewed; Binary operations send copied raw byte slices limited to 8 MiB, without JSON or base64 encoding. Nil omits the body; an explicit empty slice keeps Content-Type.
+- Native header models copy the common map, then supplied typed fields override the same HTTP header. String headers are not JSON quoted.
+- Binary output Body is an owned io.ReadCloser; callers must close it. Timeout and context cover reads, which never retry. Headers is a copied lowercase map with each first value; StatusCode retains the HTTP status. Defaults remain 8 MiB and 30 seconds, configurable. See [response streaming](../response-streaming.md). XML and unbounded request streams remain unsupported.
 - Reviewed endpoint whitespace normalization is recorded in [the ROA route](../roa-generation.md) and metadata/endpoint-source-decisions.json. Upstream bytes stay unchanged.
 
 | Action | Method | Path template | Response mode |
@@ -106,6 +108,7 @@
 | GetSession | GET | `/2023-03-30/functions/{functionName}/sessions/{sessionId}` | json |
 | GetSnapshot | GET | `/2023-03-30/functions/{functionName}/snapshots/{snapshotId}` | json |
 | GetTrigger | GET | `/2023-03-30/functions/{functionName}/triggers/{triggerName}` | json |
+| InvokeFunction | POST | `/2023-03-30/functions/{functionName}/invocations` | binary |
 | ListAliases | GET | `/2023-03-30/functions/{functionName}/aliases` | json |
 | ListAsyncInvokeConfigs | GET | `/2023-03-30/async-invoke-configs` | json |
 | ListAsyncTasks | GET | `/2023-03-30/functions/{functionName}/async-tasks` | json |
@@ -151,11 +154,11 @@
 | Action | Pagination | Waiter | Retry-safe read | Token field | Validation | Sensitive formatting |
 | --- | --- | --- | --- | --- | --- | --- |
 
-- Reviewed English translations: 0 actions. Go contract comments cover 72 actions and 1591 source fields, counted separately from upstream business prose. Fields without English prose keep exact DSL links.
+- Reviewed English translations: 0 actions. Go contract comments cover 73 actions and 1605 source fields, counted separately from upstream business prose. Fields without English prose keep exact DSL links.
 
 ## Documentation sources
 
-- English Go comments reuse licensed descriptions: 72/72 actions and 1118/1591 fields have prose.
+- English Go comments reuse licensed descriptions: 73/73 actions and 1123/1605 fields have prose.
 - Missing, empty or non-English descriptions are recorded in `fc.documentation.json`. Prose does not add validation or required fields.
 - Both guides include the same usage, contracts and source index. Pinned inputs have no Chinese semantic translations; none are invented.
 - Runnable Examples use offline responses, not upstream account/resource values.
@@ -202,6 +205,7 @@
 | GetSession | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3549) |
 | GetSnapshot | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3607) |
 | GetTrigger | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3655) |
+| InvokeFunction | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3712) |
 | ListAliases | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3798) |
 | ListAsyncInvokeConfigs | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3861) |
 | ListAsyncTasks | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea#L3960) |

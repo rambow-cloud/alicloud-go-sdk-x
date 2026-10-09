@@ -14,7 +14,7 @@ const formActions = ["CreateVpnAttachment", "CreateVpnConnection", "ModifyVpnAtt
 
 test("complete pinned VPC lowers all 403 actions with native locations and methods", () => {
   const { ir, coverage } = buildProduct(ast, { pkg:"vpc", identifier:"vpc-20160428", file:"products/vpc/main.tea", info:JSON.parse(fs.readFileSync(path.join(path.dirname(main), "api-info.json"))), provenance:{fixture:true} });
-  assert.equal(ir.schemaVersion, 5);
+  assert.equal(ir.schemaVersion, 6);
   assert.equal(coverage.counts.discovered, 403);
   assert.equal(coverage.counts.lowered, 403);
   for (const name of formActions) {

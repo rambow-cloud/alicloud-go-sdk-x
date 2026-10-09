@@ -45,8 +45,8 @@ func TestROAEmitterReusesFacadesForAnotherProduct(t *testing.T) {
 
 func TestROAUnsupportedSelectionFailsBeforeWrites(t *testing.T) {
 	root := fullProductFixture(t)
-	if err := GenerateProducts(context.Background(), root, false, []string{"fc/InvokeFunction"}); err == nil {
-		t.Fatal("binary operation emitted")
+	if err := GenerateProducts(context.Background(), root, false, []string{"fc/UnknownBinary"}); err == nil {
+		t.Fatal("unknown operation emitted")
 	}
 	if _, err := os.Stat(filepath.Join(root, "service")); !errors.Is(err, os.ErrNotExist) {
 		t.Fatal("unsupported selection wrote files")

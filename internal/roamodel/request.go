@@ -32,6 +32,8 @@ func Request(ctx context.Context, input any, method, template string) (alicloud.
 	members := map[string]any{}
 	var body any
 	bodyRoot, bodyFields := false, false
+	var binaryBody []byte
+	binaryPresent := false
 	for index := 0; index < value.NumField(); index++ {
 		if err := ctx.Err(); err != nil {
 			return alicloud.Request{}, err
@@ -43,7 +45,7 @@ func Request(ctx context.Context, input any, method, template string) (alicloud.
 			return alicloud.Request{}, invalid
 		}
 		switch location {
-		case "path", "headers", "query", "body", "body-member":
+		case "path", "headers", "header-model", "query", "body", "body-member", "binary-body":
 		default:
 			return alicloud.Request{}, invalid
 		}
@@ -75,18 +77,22 @@ func Request(ctx context.Context, input any, method, template string) (alicloud.
 			}
 			parameters[wire] = field.String()
 		case "headers":
-			if field.Kind() != reflect.Map || field.Type().Key().Kind() != reflect.String || field.Type().Elem().Kind() != reflect.String {
+			if err := appendHeaderMap(headers, field); err != nil {
+				return alicloud.Request{}, err
+			}
+		case "header-model":
+			if err := appendHeaderModel(headers, field); err != nil {
+				return alicloud.Request{}, err
+			}
+		case "binary-body":
+			if bodyRoot || bodyFields || binaryPresent || field.Type() != reflect.TypeFor[[]byte]() {
 				return alicloud.Request{}, invalid
 			}
-			iter := field.MapRange()
-			for iter.Next() {
-				name, text := iter.Key().String(), iter.Value().String()
-				canonical := http.CanonicalHeaderKey(name)
-				if !headerName(name) || headers[canonical] != nil || managedHeader(strings.ToLower(name)) || !utf8.ValidString(text) || strings.ContainsFunc(text, func(r rune) bool { return r < 32 && r != '\t' || r == 127 }) {
-					return alicloud.Request{}, invalid
-				}
-				headers[canonical] = []string{text}
+			if field.Len() > 8<<20 {
+				return alicloud.Request{}, errors.New("roamodel: request body exceeds byte limit")
 			}
+			binaryBody = append([]byte{}, field.Bytes()...)
+			binaryPresent = true
 		case "query":
 			if definition.Tag.Get("rpc") != "" && definition.Tag.Get("rpc") != "json" {
 				return alicloud.Request{}, invalid
@@ -105,13 +111,13 @@ func Request(ctx context.Context, input any, method, template string) (alicloud.
 				query.Set(wire, text)
 			}
 		case "body":
-			if bodyRoot || bodyFields || field.Kind() != reflect.Struct && field.Kind() != reflect.Map {
+			if binaryPresent || bodyRoot || bodyFields || field.Kind() != reflect.Struct && field.Kind() != reflect.Map {
 				return alicloud.Request{}, invalid
 			}
 			bodyRoot = true
 			body = field.Interface()
 		case "body-member":
-			if bodyRoot {
+			if binaryPresent || bodyRoot {
 				return alicloud.Request{}, invalid
 			}
 			members[wire] = field.Interface()
@@ -124,6 +130,10 @@ func Request(ctx context.Context, input any, method, template string) (alicloud.
 		return alicloud.Request{}, err
 	}
 	request := alicloud.Request{Method: method, Path: decoded, RawPath: escaped, Query: query, Header: headers}
+	if binaryPresent {
+		request.Body = binaryBody
+		headers.Set("Content-Type", "application/octet-stream")
+	}
 	if bodyFields {
 		body = members
 	}
@@ -142,6 +152,68 @@ func Request(ctx context.Context, input any, method, template string) (alicloud.
 		return alicloud.Request{}, err
 	}
 	return request, nil
+}
+
+func setHeader(headers http.Header, name, text string, override bool) error {
+	canonical := http.CanonicalHeaderKey(name)
+	if !headerName(name) || !override && headers[canonical] != nil || managedHeader(strings.ToLower(name)) || !utf8.ValidString(text) || strings.ContainsFunc(text, func(r rune) bool { return r < 32 && r != '\t' || r == 127 }) {
+		return errors.New("roamodel: invalid request header")
+	}
+	headers[canonical] = []string{text}
+	return nil
+}
+
+func appendHeaderMap(headers http.Header, field reflect.Value) error {
+	if field.Kind() != reflect.Map || field.Type().Key().Kind() != reflect.String || field.Type().Elem().Kind() != reflect.String {
+		return errors.New("roamodel: invalid header map")
+	}
+	iter := field.MapRange()
+	for iter.Next() {
+		if err := setHeader(headers, iter.Key().String(), iter.Value().String(), false); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func appendHeaderModel(headers http.Header, value reflect.Value) error {
+	if value.Kind() != reflect.Struct {
+		return errors.New("roamodel: invalid header model")
+	}
+	common := 0
+	for _, location := range []string{"headers", "header"} {
+		for i := 0; i < value.NumField(); i++ {
+			field, definition := value.Field(i), value.Type().Field(i)
+			tag := definition.Tag.Get("roa")
+			if !field.CanInterface() || tag != "headers" && tag != "header" {
+				return errors.New("roamodel: invalid header model field")
+			}
+			if tag != location {
+				continue
+			}
+			if tag == "headers" {
+				common++
+				if err := appendHeaderMap(headers, field); err != nil {
+					return err
+				}
+				continue
+			}
+			if field.Kind() != reflect.Pointer || field.Type().Elem().Kind() != reflect.String {
+				return errors.New("roamodel: invalid string header field")
+			}
+			if field.IsNil() {
+				continue
+			}
+			wire := strings.Split(definition.Tag.Get("json"), ",")[0]
+			if err := setHeader(headers, wire, field.Elem().String(), true); err != nil {
+				return err
+			}
+		}
+	}
+	if common != 1 {
+		return errors.New("roamodel: incomplete header model")
+	}
+	return nil
 }
 
 func queryScalar(v reflect.Value) (string, bool) {

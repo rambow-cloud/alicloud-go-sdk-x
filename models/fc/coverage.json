@@ -13,14 +13,14 @@
   },
   "counts": {
     "discovered": 73,
-    "lowered": 72,
-    "unsupported": 1,
+    "lowered": 73,
+    "unsupported": 0,
     "dslOperations": 73,
     "catalogOnlyOperations": 0,
     "dslOnlyOperations": 0,
     "declaredModels": 304,
     "reachableNamedModels": 243,
-    "reachableAnonymousModels": 147,
+    "reachableAnonymousModels": 149,
     "unusedNamedModels": 61
   },
   "acceptance": {
@@ -29,9 +29,7 @@
     "compilation": "not-assessed",
     "live": "not-assessed"
   },
-  "reasonCounts": {
-    "DSL_RESPONSE_BODY_PROFILE": 1
-  },
+  "reasonCounts": {},
   "operations": [
     {
       "name": "ChangeResourceGroup",
@@ -542,7 +540,7 @@
     },
     {
       "name": "InvokeFunction",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/fc/main.tea",
@@ -551,19 +549,7 @@
         "endLine": 3712,
         "endColumn": 41
       },
-      "reasons": [
-        {
-          "code": "DSL_RESPONSE_BODY_PROFILE",
-          "message": "ROA unsupported response body binary",
-          "source": {
-            "file": "products/fc/main.tea",
-            "line": 3712,
-            "column": 16,
-            "endLine": 3712,
-            "endColumn": 41
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ListAliases",

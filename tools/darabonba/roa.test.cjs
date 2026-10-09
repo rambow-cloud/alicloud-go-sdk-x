@@ -9,9 +9,12 @@ const ast=()=>parser.parse(bytes.toString("utf8"),main);
 const build=(a,options={})=>buildProduct(a,{pkg:"fc",identifier:"fc-20230330",file,provenance:{sourceSHA256},endpointDecisions:decisions,...options});
 const fn=(a,name)=>a.moduleBody.nodes.find(n=>n.functionName?.lexeme===name[0].toLowerCase()+name.slice(1)+"WithOptions");
 
-test("complete FC discovery preserves native ROA facades and the binary exclusion",()=>{
-  const {ir,coverage}=build(ast());assert.equal(coverage.counts.discovered,73);assert.equal(coverage.counts.lowered,72);assert.equal(coverage.counts.unsupported,1);
-  const unsupported=ir.operations.find(o=>o.name==="InvokeFunction");assert.equal(unsupported.status,"unsupported");assert.ok(unsupported.reasons.some(r=>r.code==="DSL_RESPONSE_BODY_PROFILE"));
+test("complete FC discovery preserves native ROA and binary facades",()=>{
+  const {ir,coverage}=build(ast());assert.equal(coverage.counts.discovered,73);assert.equal(coverage.counts.lowered,73);assert.equal(coverage.counts.unsupported,0);
+  const binary=ir.operations.find(o=>o.name==="InvokeFunction");assert.equal(binary.status,"lowered");assert.equal(binary.protocol.bodyType,"binary");
+  assert.equal(binary.bindings.find(b=>b.field==="body").encoding,"bytes");assert.equal(binary.headerBindings.model,"InvokeFunctionHeaders");
+  assert.equal(ir.models.find(m=>m.id===binary.roots.request.ref).fields.find(f=>f.dslName==="body").type.kind,"bytes");
+  assert.equal(ir.models.find(m=>m.id===binary.roots.body.ref).fields.find(f=>f.dslName==="body").type.kind,"stream");
   const create=ir.operations.find(o=>o.name==="CreateAlias");assert.equal(create.protocol.pathname,"/2023-03-30/functions/{functionName}/aliases");
   assert.deepEqual(create.bindings.map(b=>b.location).sort(),["body","headers","path"]);
   const input=ir.models.find(m=>m.id===create.roots.request.ref),output=ir.models.find(m=>m.id===create.roots.body.ref);
@@ -42,14 +45,42 @@ test("endpoint normalization is exact, source-bound and leaves official bytes un
   assert.deepEqual(fs.readFileSync(main),bytes);
 });
 
-test("selected binary operation and invalid endpoint approvals fail before IR writes",()=>{
+test("unknown selections and invalid endpoint approvals fail before IR writes",()=>{
   const temp=fs.mkdtempSync(path.join(os.tmpdir(),"sdk-roa-"));try{
     fs.cpSync(path.join(root,"sources/darabonba"),path.join(temp,"sources/darabonba"),{recursive:true});fs.mkdirSync(path.join(temp,"metadata"));
     const approval=path.join(temp,"metadata/endpoint-source-decisions.json");fs.copyFileSync(path.join(root,"metadata/endpoint-source-decisions.json"),approval);
-    assert.throws(()=>run("generate",{root:temp,selected:["fc/InvokeFunction"]}),/unsupported|selected/);assert.equal(fs.existsSync(path.join(temp,"models")),false);
+    assert.throws(()=>run("generate",{root:temp,selected:["fc/UnknownBinary"]}),/unknown|selected/);assert.equal(fs.existsSync(path.join(temp,"models")),false);
     fs.writeFileSync(approval,JSON.stringify({schemaVersion:1,decisions:[{...decisions[0],line:22}]}));
     assert.throws(()=>run("generate",{root:temp}),/endpoint/);assert.equal(fs.existsSync(path.join(temp,"models")),false);
   }finally{fs.rmSync(temp,{recursive:true,force:true});}
+});
+
+test("binary ROA programs reuse lowering after product/action renames",()=>{
+  const a=ast(),operation=fn(a,"InvokeFunction");operation.functionName.lexeme="executePayloadWithOptions";
+  operation.functionBody.stmts.stmts.find(s=>s.id?.lexeme==="params").expr.object.fields.find(f=>f.fieldName.lexeme==="action").expr.value.string="ExecutePayload";
+  const renamed=build(a,{pkg:"computecheck"}).ir.operations.find(o=>o.name==="ExecutePayload");assert.equal(renamed.status,"lowered");assert.equal(renamed.protocol.bodyType,"binary");assert.equal(renamed.headerBindings.fields.length,4);
+});
+
+test("selected changed binary source fails before IR writes",()=>{
+  const temp=fs.mkdtempSync(path.join(os.tmpdir(),"sdk-binary-drift-"));try {
+    fs.cpSync(path.join(root,"sources/darabonba"),path.join(temp,"sources/darabonba"),{recursive:true});fs.mkdirSync(path.join(temp,"metadata"));
+    const sourceFile=path.join(temp,"sources/darabonba",file),changed=fs.readFileSync(sourceFile,"utf8").replace("stream = request.body,","");
+    const changedHash=crypto.createHash("sha256").update(changed).digest("hex");fs.writeFileSync(sourceFile,changed);
+    const manifestFile=path.join(temp,"sources/darabonba/manifest.json"),manifest=JSON.parse(fs.readFileSync(manifestFile));manifest.files.find(f=>f.file===file).sha256=changedHash;fs.writeFileSync(manifestFile,JSON.stringify(manifest));
+    fs.writeFileSync(path.join(temp,"metadata/endpoint-source-decisions.json"),JSON.stringify({schemaVersion:1,decisions:decisions.map(d=>({...d,sourceSHA256:changedHash}))}));
+    assert.throws(()=>run("generate",{root:temp,selected:["fc/InvokeFunction"]}),/unsupported/);assert.equal(fs.existsSync(path.join(temp,"models")),false);
+  }finally{fs.rmSync(temp,{recursive:true,force:true});}
+});
+
+test("binary programs reject changed body, headers, conversions and signature algorithms",()=>{
+  for(const mutate of [
+    f=>f.functionBody.stmts.stmts.find(s=>s.id?.lexeme==="req").expr.object.fields.find(f=>f.fieldName.lexeme==="stream").expr.propertyPath[0].lexeme="qualifier",
+    f=>f.functionBody.stmts.stmts.find(s=>s.type==="if"&&s.stmts.stmts[0]?.expr?.left?.propertyPath?.[0]?.lexeme==="toJSONString").stmts.stmts[0].expr.left.propertyPath[0].lexeme="unknown",
+    f=>f.functionBody.stmts.stmts.find(s=>s.type==="if"&&s.stmts.stmts[0]?.expr?.left?.propertyPath?.[0]?.lexeme==="assertAsReadable").stmts.stmts[0].expr.left.propertyPath[0].lexeme="assertAsString",
+    f=>f.functionBody.stmts.stmts.push({type:"return",expr:{type:"variable",id:{lexeme:"res"}}}),
+  ]){const a=ast();mutate(fn(a,"InvokeFunction"));assert.equal(build(a).ir.operations.find(o=>o.name==="InvokeFunction").status,"unsupported");}
+  const a=ast(),init=a.moduleBody.nodes.find(n=>n.type==="init");init.initBody.stmts.push({type:"assign",left:{type:"virtualVariable",vid:{lexeme:"@signatureAlgorithm"}},expr:{type:"string",value:{string:"v2"}}});
+  assert.equal(build(a).ir.operations.find(o=>o.name==="InvokeFunction").status,"unsupported");
 });
 
 test("product import retains all pinned transitive modules without wildcard resolution",()=>{

@@ -72,7 +72,7 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 		roa := pr.Style == "ROA"
 		validProtocol := pr.Style == "RPC" && pr.Path == "/" && (pr.Method == "POST" || pr.Method == "GET") && pr.RequestBodyType == "formData" && pr.BodyType == "json"
 		if roa {
-			validProtocol = strings.HasPrefix(pr.Path, "/") && !strings.ContainsAny(pr.Path, "?#\r\n\t") && slices.Contains([]string{"GET", "POST", "PUT", "DELETE", "PATCH"}, pr.Method) && pr.AuthType == "AK" && pr.RequestBodyType == "json" && slices.Contains([]string{"json", "none"}, pr.BodyType)
+			validProtocol = strings.HasPrefix(pr.Path, "/") && !strings.ContainsAny(pr.Path, "?#\r\n\t") && slices.Contains([]string{"GET", "POST", "PUT", "DELETE", "PATCH"}, pr.Method) && pr.AuthType == "AK" && pr.RequestBodyType == "json" && slices.Contains([]string{"json", "none", "binary"}, pr.BodyType)
 		}
 		if !validProtocol || pr.Action != op.Name || pr.Version != p.Version || pr.Protocol != "HTTPS" || (pr.AuthType != "AK" && pr.AuthType != "Anonymous") || (pr.AuthType == "Anonymous" && op.Handoff != "doRPCRequest") || (pr.AuthType == "AK" && op.Handoff != "") {
 			return nil, fmt.Errorf("%s: unsupported protocol", op.Name)
@@ -122,7 +122,7 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 			if err := r.validateROABindings(op, request); err != nil {
 				return nil, err
 			}
-			if err := r.validateWireType(op.Roots.Body, true, map[string]bool{}); err != nil {
+			if err := r.validateROAOutput(op); err != nil {
 				return nil, err
 			}
 			r.operations = append(r.operations, op)
@@ -279,6 +279,8 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 
 func (r *productRenderer) validateWireType(t productType, allowJSON bool, active map[string]bool) error {
 	switch t.Kind {
+	case "stream", "bytes":
+		return errors.New("binary types require an explicit reviewed binary binding")
 	case "json":
 		if !allowJSON || t.DSLType != "any" {
 			return errors.New("dynamic values require a reviewed JSON query transform")
@@ -312,6 +314,14 @@ func (r *productRenderer) validateWireType(t productType, allowJSON bool, active
 func (r *productRenderer) goType(t productType, optional bool) (string, error) {
 	var name string
 	switch t.Kind {
+	case "stream", "bytes":
+		if t.DSLType != "readable" || t.WireType != "binary" {
+			return "", errors.New("unsupported binary type")
+		}
+		if t.Kind == "stream" {
+			return "io.ReadCloser", nil
+		}
+		return "[]byte", nil
 	case "json":
 		if t.DSLType != "any" {
 			return "", errors.New("unsupported JSON type")
@@ -366,6 +376,12 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 	var types bytes.Buffer
 	fmt.Fprintf(&types, "%s// SPDX-License-Identifier: Apache-2.0\n// Copyright (c) 2009-present, Alibaba Cloud All rights reserved.\n// Modified: models and descriptions converted to native Go by alicloud-go-sdk-x.\n// See package LICENSE and NOTICE for source attribution.\npackage %s\nimport alicloud %q\n", productGenerated, p.Product, module)
 	for _, op := range r.operations {
+		if op.Protocol.BodyType == "binary" {
+			types.WriteString("import \"io\"\n")
+			break
+		}
+	}
+	for _, op := range r.operations {
 		if op.Roots.Request.Kind == "empty" {
 			fmt.Fprintf(&types, "// %sInput is the empty input for the requestless native action.\n// Its zero value and nil operation input send no query fields.\n// This Go calling-convention type is not an upstream DSL model.\ntype %sInput struct{}\n", op.Name, op.Name)
 		}
@@ -397,8 +413,20 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 				fmt.Fprintf(&types, "// %s maps to the native query parameter %s.\n", field, f.WireName)
 			case "body-member":
 				fmt.Fprintf(&types, "// %s maps to the JSON body member %s.\n", field, f.WireName)
+			case "binary-body":
+				fmt.Fprintf(&types, "// %s supplies the exact binary request payload.\n", field)
+			case "header-model":
+				fmt.Fprintf(&types, "// %s supplies the native header model. Typed fields override common headers.\n", field)
+			case "header":
+				fmt.Fprintf(&types, "// %s maps to the HTTP header %s without JSON quoting.\n", field, f.WireName)
 			default:
 				fmt.Fprintf(&types, "// %s maps to the exact wire member %s.\n", field, f.WireName)
+			}
+			if f.Type.Kind == "stream" {
+				types.WriteString("// Caller owns the stream and must close it. Context, timeout and byte limits remain active through reads.\n// Read has one owner; Close may run concurrently. Late read failures never retry.\n")
+			}
+			if f.Type.Kind == "bytes" {
+				types.WriteString("// Copied raw bytes, limited to 8 MiB before credentials; nil omits the binary body. No JSON wrapper or base64 encoding.\n")
 			}
 			if strings.HasPrefix(typ, "*") && location != "body" {
 				types.WriteString("// Nil omits this member; non-nil scalar pointers preserve explicit zero values.\n")
@@ -495,6 +523,9 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 			if op.Protocol.BodyType == "none" {
 				authentication += ",ResponseBody:alicloud.ResponseBodyNone"
 			}
+			if op.Protocol.BodyType == "binary" {
+				authentication += ",ResponseBody:alicloud.ResponseBodyStream"
+			}
 			fmt.Fprintf(&methods, "out,meta,err:=invokeROA[%sInput,%sOutput](ctx,c,input,alicloud.Operation{Service:%q,Name:%q,Version:%q,Idempotent:%t%s},%q,%q,%s,%s,optFns);if err!=nil{return nil,err};out.Metadata=meta;return out,nil}\n", op.Name, op.Name, p.Product, op.Protocol.Action, op.Protocol.Version, idempotent, authentication, op.Protocol.Method, op.Protocol.Path, prepare, validate)
 			continue
 		}
@@ -536,12 +567,25 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 	var examples bytes.Buffer
 	fmt.Fprintf(&examples, "%spackage %s_test\nimport(\"context\";\"fmt\";\"net/http\";alicloud %q;%q;%q;%q)\n", productGenerated, p.Product, module, module+"/credentials", module+"/sdktest", module+"/service/"+p.Product)
 	for _, op := range r.operations {
+		if op.Protocol.BodyType == "binary" {
+			examples.WriteString("import \"io\"\n")
+			break
+		}
+	}
+	for _, op := range r.operations {
 		provider := "provider,err:=credentials.NewStaticProvider(credentials.Credentials{AccessKeyID:\"placeholder\",AccessKeySecret:\"placeholder\"});if err!=nil{panic(err)};"
 		if op.Protocol.AuthType == "Anonymous" {
 			provider = "provider:=credentials.AnonymousProvider{};"
 		}
 		var inputExample strings.Builder
 		for _, b := range op.Bindings {
+			if b.Location == "binary-body" {
+				for _, field := range r.models[op.Roots.Request.Ref].Fields {
+					if field.DSLName == b.Field {
+						fmt.Fprintf(&inputExample, "%s:[]byte(\"event\"),", r.fieldName(op.Roots.Request.Ref, field))
+					}
+				}
+			}
 			if b.Location == "path" {
 				for _, f := range r.models[op.Roots.Request.Ref].Fields {
 					if f.DSLName == b.Field {
@@ -550,7 +594,16 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 				}
 			}
 		}
-		fmt.Fprintf(&examples, "func ExampleClient_%s(){%stransport:=sdktest.NewTransport(sdktest.Step{Body:\"{}\"});client,err:=%s.NewFromConfig(alicloud.Config{Region:\"cn-hangzhou\",BaseEndpoint:\"https://example.invalid\",CredentialsProvider:provider,HTTPClient:&http.Client{Transport:transport}});if err!=nil{panic(err)};var api %s.%sAPI=client;out,err:=api.%s(context.Background(),&%s.%sInput{%s});if err!=nil{panic(err)};fmt.Println(out.Metadata.HTTPStatusCode)\n// Output: 200\n}\n", op.Name, provider, p.Product, p.Product, op.Name, op.Name, p.Product, op.Name, inputExample.String())
+		closeStream := ""
+		if op.Protocol.BodyType == "binary" {
+			for _, field := range r.models[op.Roots.Body.Ref].Fields {
+				if field.WireName == "body" {
+					streamField := "out." + r.fieldName(op.Roots.Body.Ref, field)
+					closeStream = "defer " + streamField + ".Close();if _,err:=io.Copy(io.Discard," + streamField + ");err!=nil{panic(err)};"
+				}
+			}
+		}
+		fmt.Fprintf(&examples, "func ExampleClient_%s(){%stransport:=sdktest.NewTransport(sdktest.Step{Body:\"{}\"});client,err:=%s.NewFromConfig(alicloud.Config{Region:\"cn-hangzhou\",BaseEndpoint:\"https://example.invalid\",CredentialsProvider:provider,HTTPClient:&http.Client{Transport:transport}});if err!=nil{panic(err)};var api %s.%sAPI=client;out,err:=api.%s(context.Background(),&%s.%sInput{%s});if err!=nil{panic(err)};%sfmt.Println(out.Metadata.HTTPStatusCode)\n// Output: 200\n}\n", op.Name, provider, p.Product, p.Product, op.Name, op.Name, p.Product, op.Name, inputExample.String(), closeStream)
 	}
 	files[base+"examples.gen_test.go"], err = productFormat(&examples)
 	if err != nil {
@@ -560,6 +613,12 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 	files[base+"doc.go"], err = format.Source([]byte(fmtDoc))
 	if len(r.roaFields) > 0 {
 		files[base+"doc.go"], err = format.Source([]byte(strings.Replace(fmtDoc, "supported native RPC actions", "supported native ROA actions", 1)))
+		for _, op := range r.operations {
+			if op.Protocol.BodyType == "binary" {
+				files[base+"doc.go"], err = format.Source(bytes.ReplaceAll(files[base+"doc.go"], []byte("// Output preserves the JSON body containers and adds transport Metadata."), []byte("// JSON outputs preserve body containers and add transport Metadata. Binary outputs\n// return owned io.ReadCloser bodies: close them after use. Timeout and context\n// cover reads; byte limits apply and late read failures never retry.")))
+				break
+			}
+		}
 	}
 	if err != nil {
 		return nil, err

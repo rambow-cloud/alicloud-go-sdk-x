@@ -2,6 +2,8 @@
 
 [English](fc-roa-product.md)
 
+- 本文记录已验收的 JSON/none 基线。[二进制生成](fc-binary-generation.zh-CN.md)在此基础上扩展为 schema v6 和 73 个 FC 操作，下述结果保留为历史证据。
+
 - 对应 #92，依赖 PR #109 的显式响应模式运行时能力。
 - 使用 `ec489e5c3deae95496daae2b41503ac58b221adb` 中完整的官方 `fc-20230330` DSL、原始 Teafile/目录以及已固定的导入模块。保留全部上游字节和许可声明。
 - 官方 parser 调研发现 73 个 WithOptions 操作：54 个 JSON 响应、18 个 none 和 1 个二进制响应。发现阶段保留全部操作，生成阶段明确列出不支持的原因。
