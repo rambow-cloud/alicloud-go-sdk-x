@@ -31,3 +31,9 @@
 - Preflight archive paths/types/checksums, module identities, the complete import closure and license evidence before writes. Refresh every product's transitive import map deterministically; publish the manifest last.
 - Test wrong checksums, unsafe archives, unknown imports/licenses and replacement attempts without writes. Filesystem errors during the final write phase can leave a partial import; generation must fail source verification until repaired.
 - New module pins do not themselves establish OSS lowering, signing or XML/streaming support. Review source hash bindings and regenerate the current products before any production corpus extension is merged.
+
+## Source research result
+
+- [Explicit module tool](module-source-extension.md) preflighted all four real archive pins: 18 total modules and 14 staged files, without production writes.
+- In a separate local candidate corpus, the official parser 2.2.1 discovered 90 OSS operations, 303 declared models and 295 operation-referenced models. AST protocol counts match the source counts above. See [recorded discovery facts](research/oss-source-discovery.json).
+- This private-corpus experiment does not change production discovery or establish IR lowering/Go emission/compilation/live acceptance. Exact XML traits and the SPI/gateway initializer still need supported production projection.
