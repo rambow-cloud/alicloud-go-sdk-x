@@ -191,6 +191,7 @@
   contract tests before starting generator implementation. Metadata research is allowed
   earlier; interfaces alone do not satisfy the foundation acceptance gate.
 - Read docs/development-path.md before selecting an issue.
+- #92 binary responses follow [response-streaming.md](docs/response-streaming.md): implement bounded ownership, cancellation and codec publication in the shared runtime before DSL/Go emission. No late-read retry or unbounded request stream.
 - Document the path, create or
   update the issue, then implement. Keep the issue dependency graph acyclic.
 - Every capability includes implementation, behavior tests, executable examples, paired
