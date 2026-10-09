@@ -5,8 +5,7 @@
 - Issue: #92, partial delivery. RPC generation stays supported.
 - First implement and verify exact escaped resource paths in the shared runtime.
 - Then lower official ROA parameters, headers and JSON bodies into complete IR and emit typed calls.
-- Empty responses, XML, streaming ownership and additional signing profiles remain separate implementation stages within #92. Path support alone does not complete that issue.
-- Next shared-runtime stage: [explicit response modes](roa-response-modes.md). Full FC product lowering remains separate.
+- [Explicit response modes](roa-response-modes.md) and [FC JSON/none generation](fc-roa-product.md) extend the path stage. XML, streaming ownership and additional signing profiles remain separate #92 stages.
 
 ## Path contract
 
@@ -22,4 +21,4 @@
 - FC source: [pinned complete DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/fc-20230330/main.tea).
 - It uses multiple path parameters, a separate headers map, request-model JSON bodies, shared response models and `none` response bodies.
 - `ap-southeast-5` contains trailing whitespace in the pinned endpoint map. Keep upstream bytes unchanged. Record a source-bound normalization decision before accepting this entry.
-- This stage does not add generated FC coverage or call live FC operations.
+- FC discovery retains 73 operations and emits 72 offline; binary InvokeFunction remains unsupported. No live FC acceptance.

@@ -4,6 +4,9 @@
 
 ## SDK 缺口补齐路线（2026-10-09）
 
+- #92 遵循 [FC ROA 生成路线](docs/fc-roa-product.zh-CN.md)。当前完整 IR 和锁文件使用 schema v5（`openapi-json-v1`），明确记录路径、query、请求头、正文及操作外观类型；旧 v3/v4 说明保留为阶段历史。FC 用于离线验证：发现 73 个操作，生成 72 个；二进制 InvokeFunction 暂不支持。不得推断能力策略或宣称真实云验收。
+- 使用 tools/darabonba/import-product.cjs 增加固定产品，复用全部已锁定的直接和间接导入。端点例外写入 metadata/endpoint-source-decisions.json；保留官方原始字节，未经批准的源码、坐标或原值变化在写入前失败。
+
 - #91 将官方端点初始化投影到 IR schema v4，并生成公共目录。遵循[端点规则](docs/endpoint-rules.zh-CN.md)；私网规则必须有准确的审核依据，不回退到公网地址。
 
 - 用户要求补齐剩余能力，按[缺口补齐路线](docs/gap-completion.zh-CN.md)和父 issue #87 执行。

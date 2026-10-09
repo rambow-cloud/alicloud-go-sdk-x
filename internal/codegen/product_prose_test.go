@@ -113,7 +113,7 @@ func proseFixture(t *testing.T) string {
 		t.Fatal(err)
 	}
 	writeTestFile(t, root, "sources/openapi-meta/prose/manifest.json", manifestBytes)
-	for _, product := range []string{"sts", "ecs", "vpc"} {
+	for _, product := range []string{"sts", "ecs", "vpc", "fc"} {
 		ir, err := os.ReadFile(filepath.Join(root, "models", product, "ir.json"))
 		if err != nil {
 			t.Fatal(err)

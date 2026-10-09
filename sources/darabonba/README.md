@@ -3,7 +3,7 @@
 [中文](README.zh-CN.md)
 
 - Products come from [aliyun/alibabacloud-sdk](https://github.com/aliyun/alibabacloud-sdk/tree/ec489e5c3deae95496daae2b41503ac58b221adb) at commit ec489e5c3deae95496daae2b41503ac58b221adb.
-- Keep main.tea, Teafile and api-info.json bytes intact for ECS 2014-05-26, STS 2015-04-01 and VPC 2016-04-28.
+- Keep main.tea, Teafile and api-info.json bytes intact for ECS 2014-05-26, STS 2015-04-01, VPC 2016-04-28 and FC 2023-03-30.
 - The upstream [Apache notice](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/LICENSE) is preserved as LICENSE.upstream.
 - Product source descriptions are part of this licensed corpus; public metadata snapshots separately exclude descriptions/examples.
 - Product comments now reuse licensed parser descriptions/annotations under #38; paired usage/contracts/source indexes record language and prose coverage.

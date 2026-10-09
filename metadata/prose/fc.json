@@ -1,0 +1,307 @@
+{
+  "generator": "darabonba prose",
+  "schemaVersion": 1,
+  "product": "fc",
+  "version": "2023-03-30",
+  "irSHA256": "82b8326e60d56c72dbc27aff07a61888153e25b2b0f58cda92a5b97550cce53b",
+  "corpusManifestSHA256": "8a53b4e6a0829555805dde8960e65b2a2dd9d4a78358569ef053edd29c0564da",
+  "repository": "https://github.com/aliyun/aliyun-openapi-meta",
+  "revision": "51286a65c79d008436eb314e636f9c9ad4b1ca08",
+  "license": "Apache-2.0",
+  "matchedOperations": 0,
+  "fields": {},
+  "reasons": [
+    {
+      "operation": "ChangeResourceGroup",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "CreateAlias",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "CreateCustomDomain",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "CreateFunction",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "CreateLayerVersion",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "CreateSession",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "CreateSnapshot",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "CreateTrigger",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "CreateVpcBinding",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DeleteAlias",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DeleteAsyncInvokeConfig",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DeleteConcurrencyConfig",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DeleteCustomDomain",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DeleteFunction",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DeleteFunctionVersion",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DeleteLayerVersion",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DeleteProvisionConfig",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DeleteScalingConfig",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DeleteSession",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DeleteSnapshot",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DeleteTrigger",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DeleteVpcBinding",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DescribeRegions",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "DisableFunctionInvocation",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "EnableFunctionInvocation",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "GetAlias",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "GetAsyncInvokeConfig",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "GetAsyncTask",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "GetConcurrencyConfig",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "GetCustomDomain",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "GetFunction",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "GetFunctionCode",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "GetLayerVersion",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "GetLayerVersionByArn",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "GetProvisionConfig",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "GetScalingConfig",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "GetSession",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "GetSnapshot",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "GetTrigger",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "InvokeFunction",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ListAliases",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ListAsyncInvokeConfigs",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ListAsyncTasks",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ListConcurrencyConfigs",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ListCustomDomains",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ListFunctionVersions",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ListFunctions",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ListInstances",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ListLayerVersions",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ListLayers",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ListProvisionConfigs",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ListScalingConfigs",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ListSessions",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ListSnapshots",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ListTagResources",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ListTriggers",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ListVpcBindings",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "PauseSession",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "PublishFunctionVersion",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "PutAsyncInvokeConfig",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "PutConcurrencyConfig",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "PutLayerACL",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "PutProvisionConfig",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "PutScalingConfig",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "ResumeSession",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "StopAsyncTask",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "TagResources",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "UntagResources",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "UpdateAlias",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "UpdateCustomDomain",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "UpdateFunction",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "UpdateSession",
+      "reason": "metadata-absent-at-pinned-revision"
+    },
+    {
+      "operation": "UpdateTrigger",
+      "reason": "metadata-absent-at-pinned-revision"
+    }
+  ]
+}

@@ -2,6 +2,8 @@
 
 [中文](README.zh-CN.md)
 
+- #92 [FC ROA generation](../../docs/fc-roa-product.md) uses schema v5 and exact official JSON/none bindings. Add an already-pinned product with `node tools/darabonba/import-product.cjs fc fc-20230330` from the root. The command refuses existing products and unknown imports; it keeps every locked transitive module. Review source bindings and endpoint decisions before discovery. Full discovery needs no new per-operation metadata; retained frontend fixtures stay scoped to their original products.
+
 - #93 [optional canonical prose](../../docs/canonical-prose-enrichment.md) enriches missing field descriptions after exact representation/type normalization. `npm run discover` regenerates these projections; `npm run check` verifies them. Source corpus absence does not require per-operation metadata. Runtime models and policy remain DSL-driven.
 
 - Follow the [product roadmap](../../docs/product-generator-roadmap.md) and [service consolidation #81](../../docs/service-consolidation.md). #31 is historical five-operation evidence; #34 adds [source normalization](../../docs/source-normalization.md), and #35 discovers complete products without per-operation snapshots/overlays.

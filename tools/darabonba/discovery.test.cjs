@@ -83,7 +83,7 @@ test("complete real corpus is deterministic and accounts for every SDK operation
     );
   for (const [pkg, product] of Object.entries(first.products)) {
     const { ir, coverage } = product;
-    assert.equal(ir.schemaVersion, 4);
+    assert.equal(ir.schemaVersion, 5);
     const sourceFile = path.join(
       root,
       "sources/darabonba/products",
@@ -125,7 +125,7 @@ test("complete real corpus is deterministic and accounts for every SDK operation
     }
   }
   const lock = JSON.parse(first.files["models/manifest.json"]);
-  assert.equal(lock.schemaVersion, 4);
+  assert.equal(lock.schemaVersion, 5);
   for (const artifact of lock.files)
     assert.equal(
       crypto
@@ -275,7 +275,7 @@ for (const [description, change, code] of [
         (f) => f.fieldName.lexeme === "style",
       ).expr.value.string = "ROA";
     },
-    "DSL_PROTOCOL_PROFILE",
+    "DSL_ROA_PROFILE",
   ],
   [
     "helper transform",
@@ -392,9 +392,11 @@ function sourceFixture(t) {
     path.join(temporary, "sources/darabonba"),
     { recursive: true },
   );
+  fs.mkdirSync(path.join(temporary,"metadata"));
+  fs.copyFileSync(path.join(root,"metadata/endpoint-source-decisions.json"),path.join(temporary,"metadata/endpoint-source-decisions.json"));
   return temporary;
 }
-test("discovery runs without metadata, decisions, overlays or canonical fixtures; check is read-only", (t) => {
+test("discovery needs no per-operation metadata, overlays or canonical fixtures; exact source exceptions stay explicit and check is read-only", (t) => {
   const temporary = sourceFixture(t);
   assert.throws(() => run("check", { root: temporary }), /artifact drift/);
   assert.equal(fs.existsSync(path.join(temporary, "models")), false);

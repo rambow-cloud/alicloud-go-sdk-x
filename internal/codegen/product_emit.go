@@ -36,6 +36,7 @@ type productRenderer struct {
 	jsonFields   map[string]map[string]bool
 	simpleFields map[string]map[string]bool
 	formFields   map[string]map[string]bool
+	roaFields    map[string]map[string]string
 	operations   []productOperation
 }
 
@@ -46,7 +47,7 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 	if !packageName.MatchString(p.Product) || token.Lookup(p.Product).IsKeyword() {
 		return nil, errors.New("invalid package name")
 	}
-	r := &productRenderer{p: p, models: map[string]productModel{}, names: map[string]string{}, output: map[string]bool{}, jsonFields: map[string]map[string]bool{}, simpleFields: map[string]map[string]bool{}, formFields: map[string]map[string]bool{}}
+	r := &productRenderer{p: p, models: map[string]productModel{}, names: map[string]string{}, output: map[string]bool{}, jsonFields: map[string]map[string]bool{}, simpleFields: map[string]map[string]bool{}, formFields: map[string]map[string]bool{}, roaFields: map[string]map[string]string{}}
 	all := map[string]productModel{}
 	for _, m := range p.Models {
 		if m.ID == "" {
@@ -68,7 +69,12 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 			return nil, errors.New("unrecognized operation status")
 		}
 		pr := op.Protocol
-		if pr.Action != op.Name || pr.Version != p.Version || pr.Protocol != "HTTPS" || pr.Path != "/" || (pr.Method != "POST" && pr.Method != "GET") || (pr.AuthType != "AK" && pr.AuthType != "Anonymous") || pr.Style != "RPC" || pr.RequestBodyType != "formData" || pr.BodyType != "json" || (pr.AuthType == "Anonymous" && op.Handoff != "doRPCRequest") || (pr.AuthType == "AK" && op.Handoff != "") {
+		roa := pr.Style == "ROA"
+		validProtocol := pr.Style == "RPC" && pr.Path == "/" && (pr.Method == "POST" || pr.Method == "GET") && pr.RequestBodyType == "formData" && pr.BodyType == "json"
+		if roa {
+			validProtocol = strings.HasPrefix(pr.Path, "/") && !strings.ContainsAny(pr.Path, "?#\r\n\t") && slices.Contains([]string{"GET", "POST", "PUT", "DELETE", "PATCH"}, pr.Method) && pr.AuthType == "AK" && pr.RequestBodyType == "json" && slices.Contains([]string{"json", "none"}, pr.BodyType)
+		}
+		if !validProtocol || pr.Action != op.Name || pr.Version != p.Version || pr.Protocol != "HTTPS" || (pr.AuthType != "AK" && pr.AuthType != "Anonymous") || (pr.AuthType == "Anonymous" && op.Handoff != "doRPCRequest") || (pr.AuthType == "AK" && op.Handoff != "") {
 			return nil, fmt.Errorf("%s: unsupported protocol", op.Name)
 		}
 		roots := []productType{op.Roots.Response, op.Roots.Body}
@@ -111,6 +117,16 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 		request, ok := r.models[op.Roots.Request.Ref]
 		if !ok && !emptyInput {
 			return nil, errors.New("request not reachable")
+		}
+		if roa {
+			if err := r.validateROABindings(op, request); err != nil {
+				return nil, err
+			}
+			if err := r.validateWireType(op.Roots.Body, true, map[string]bool{}); err != nil {
+				return nil, err
+			}
+			r.operations = append(r.operations, op)
+			continue
 		}
 		bound := map[string]bool{}
 		wires := map[string]bool{}
@@ -195,6 +211,15 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 				base += productName(part)
 			}
 			r.names[id] = productName(base)
+			// Native named body models coexist with operation input/output facades.
+			if r.models[id].Origin == "" {
+				for other, name := range r.names {
+					if other != id && name == r.names[id] && r.models[other].Origin != "" {
+						r.names[id] += "Model"
+						break
+					}
+				}
+			}
 		}
 		if p.Policy != nil && p.Policy.ModelNames[id] != "" {
 			r.names[id] = p.Policy.ModelNames[id]
@@ -205,6 +230,9 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 		}
 		used[name] = true
 		m := r.models[id]
+		if m.Origin != "" && m.Origin != "operation-input-facade" && m.Origin != "operation-output-facade" {
+			return nil, errors.New("unknown model origin")
+		}
 		if m.Extends != nil || len(m.InheritedFields) > 0 {
 			return nil, errors.New("model inheritance requires an expanded profile")
 		}
@@ -345,7 +373,12 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 	for _, id := range sortedKeys(r.models) {
 		m := r.models[id]
 		name := r.names[id]
-		fmt.Fprintf(&types, "// %s represents the complete DSL model %s.\n// Optional pointers preserve absence; callers must not mutate inputs during a call.\ntype %s struct{\n", name, id, name)
+		if m.Origin != "" {
+			fmt.Fprintf(&types, "// %s is an operation facade derived from official DSL parameters or body fields.\n// It preserves native field names and source coordinates; it is not an upstream named model.\n", name)
+		} else {
+			fmt.Fprintf(&types, "// %s represents the complete DSL model %s.\n", name, id)
+		}
+		fmt.Fprintf(&types, "// Optional pointers preserve absence; callers must not mutate inputs during a call.\ntype %s struct{\n", name)
 		for _, f := range m.Fields {
 			typ, err := r.goType(f.Type, !f.Required)
 			if err != nil {
@@ -378,6 +411,10 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 				encoding += " rpcLocation:\"form\""
 				types.WriteString("// Sent in the form body with one-based repeated indexes, rather than the URL query.\n")
 			}
+			if location := r.roaFields[id][f.DSLName]; location != "" {
+				encoding += " roa:" + quote(location)
+				fmt.Fprintf(&types, "// Sent in the reviewed ROA %s location, preserving the exact native wire name.\n", location)
+			}
 			fmt.Fprintf(&types, "%s %s `json:%s%s`\n", field, typ, quote(f.WireName+",omitzero"), encoding)
 		}
 		if r.output[id] {
@@ -391,7 +428,11 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 	}
 	var client bytes.Buffer
 	fmt.Fprintf(&client, "%spackage %s\n", productGenerated, p.Product)
-	fmt.Fprintf(&client, productClientTemplate, module, module+"/internal/rpcmodel")
+	clientTemplate := productClientTemplate
+	if len(r.roaFields) > 0 {
+		clientTemplate = strings.Replace(clientTemplate, "import (", "import "+quote(module+"/internal/roamodel")+"\nimport (", 1) + roaClientTemplate
+	}
+	fmt.Fprintf(&client, clientTemplate, module, module+"/internal/rpcmodel")
 	files[base+"client.gen.go"], err = productFormat(&client)
 	if err != nil {
 		return nil, err
@@ -436,6 +477,13 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 		if op.Protocol.AuthType == "Anonymous" {
 			authentication = ",Authentication:alicloud.AuthenticationAnonymousRPC"
 		}
+		if op.Protocol.Style == "ROA" {
+			if op.Protocol.BodyType == "none" {
+				authentication += ",ResponseBody:alicloud.ResponseBodyNone"
+			}
+			fmt.Fprintf(&methods, "out,meta,err:=invokeROA[%sInput,%sOutput](ctx,c,input,alicloud.Operation{Service:%q,Name:%q,Version:%q,Idempotent:%t%s},%q,%q,%s,%s,optFns);if err!=nil{return nil,err};out.Metadata=meta;return out,nil}\n", op.Name, op.Name, p.Product, op.Protocol.Action, op.Protocol.Version, idempotent, authentication, op.Protocol.Method, op.Protocol.Path, prepare, validate)
+			continue
+		}
 		fmt.Fprintf(&methods, "out,meta,err:=invoke[%sInput,%sOutput](ctx,c,input,alicloud.Operation{Service:%q,Name:%q,Version:%q,Idempotent:%t%s},%q,%t,%s,%s,optFns);if err!=nil{return nil,err};out.Metadata=meta;return out,nil}\n", op.Name, op.Name, p.Product, op.Protocol.Action, op.Protocol.Version, idempotent, authentication, op.Protocol.Method, hasRegion, prepare, validate)
 	}
 	files[base+"operations.gen.go"], err = productFormat(&methods)
@@ -478,7 +526,17 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 		if op.Protocol.AuthType == "Anonymous" {
 			provider = "provider:=credentials.AnonymousProvider{};"
 		}
-		fmt.Fprintf(&examples, "func ExampleClient_%s(){%stransport:=sdktest.NewTransport(sdktest.Step{Body:\"{}\"});client,err:=%s.NewFromConfig(alicloud.Config{Region:\"cn-hangzhou\",BaseEndpoint:\"https://example.invalid\",CredentialsProvider:provider,HTTPClient:&http.Client{Transport:transport}});if err!=nil{panic(err)};var api %s.%sAPI=client;out,err:=api.%s(context.Background(),&%s.%sInput{});if err!=nil{panic(err)};fmt.Println(out.Metadata.HTTPStatusCode)\n// Output: 200\n}\n", op.Name, provider, p.Product, p.Product, op.Name, op.Name, p.Product, op.Name)
+		var inputExample strings.Builder
+		for _, b := range op.Bindings {
+			if b.Location == "path" {
+				for _, f := range r.models[op.Roots.Request.Ref].Fields {
+					if f.DSLName == b.Field {
+						fmt.Fprintf(&inputExample, "%s:\"example\",", r.fieldName(op.Roots.Request.Ref, f))
+					}
+				}
+			}
+		}
+		fmt.Fprintf(&examples, "func ExampleClient_%s(){%stransport:=sdktest.NewTransport(sdktest.Step{Body:\"{}\"});client,err:=%s.NewFromConfig(alicloud.Config{Region:\"cn-hangzhou\",BaseEndpoint:\"https://example.invalid\",CredentialsProvider:provider,HTTPClient:&http.Client{Transport:transport}});if err!=nil{panic(err)};var api %s.%sAPI=client;out,err:=api.%s(context.Background(),&%s.%sInput{%s});if err!=nil{panic(err)};fmt.Println(out.Metadata.HTTPStatusCode)\n// Output: 200\n}\n", op.Name, provider, p.Product, p.Product, op.Name, op.Name, p.Product, op.Name, inputExample.String())
 	}
 	files[base+"examples.gen_test.go"], err = productFormat(&examples)
 	if err != nil {
@@ -486,6 +544,9 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 	}
 	fmtDoc := productGenerated + "\n" + fmt.Sprintf("// Package %s provides complete models and methods for %d supported native RPC actions.\n// Construct with NewFromConfig. Clients are safe for concurrent use; inputs must not\n// be mutated during calls. Nil optional pointers omit members; explicit zeros survive.\n// Output preserves the JSON body containers and adds transport Metadata.\n// Unsupported DSL actions are listed in docs/products/%s.coverage.json.\n// Reviewed native adapters and operation policies are listed in the product guide.\n// See docs/products/%s.md for bilingual usage, coverage and migration guidance.\n// Models and service descriptions derive from pinned Apache-2.0 Alibaba Cloud DSL.\n// Package LICENSE and NOTICE preserve terms and attribution; see documentation coverage.\n// Service prose is informational and does not create SDK validation. No Tea runtime is required.\npackage %s\n", p.Product, len(r.operations), p.Product, p.Product, p.Product)
 	files[base+"doc.go"], err = format.Source([]byte(fmtDoc))
+	if len(r.roaFields) > 0 {
+		files[base+"doc.go"], err = format.Source([]byte(strings.Replace(fmtDoc, "supported native RPC actions", "supported native ROA actions", 1)))
+	}
 	if err != nil {
 		return nil, err
 	}
@@ -548,6 +609,24 @@ func (r *productRenderer) guide(chinese bool) []byte {
 	} else {
 		fmt.Fprintf(&b, "%s# %s SDK guide\n\n[中文](%s.zh-CN.md)\n\n## Source and coverage\n\n- Import \x60%s/service/%s\x60.\n- Official DSL commit: \x60%s\x60. License: Apache-2.0. Source files and licenses are in \x60sources/darabonba\x60.\n- %d actions found; %d generated; %d unsupported; %d complete models.\n- Generation does not prove compilation or live behavior. See \x60%s.coverage.json\x60 and the PR checks.\n\n## Calls and data\n\n- Construct with \x60NewFromConfig(config)\x60. Call \x60client.Operation(ctx, &OperationInput{}, optFns...)\x60.\n- Nil input means an empty request. Required parameters still apply.\n- Nil optional pointers omit fields. Non-nil pointers preserve 0, false and empty strings.\n- Inputs are copied before middleware. Do not change inputs during calls or retain hook models/options.\n- Array query indexes start at 1. API field case and DSL string types stay unchanged.\n- Official JSON shrink fields keep structured inputs and encode one JSON string query value. Nil omits the field; explicit empty containers remain. No Shrink fields or nested query indexes are emitted. Dynamic JSON values use scalars, string-keyed maps and slices; cycles and unsupported values fail.\n- Deprecated fields retain their wire behavior and have Deprecated Go comments.\n- RegionId defaults to the configured region. Operation options can override it.\n- Outputs keep the full response body and add Metadata. DSL envelope types remain separate.\n- Clients support concurrent calls. Small OperationAPI interfaces support mocks.\n- Use errors.Is for cancellation and errors.As for APIError/OperationError.\n- Set Retryer to enable retry. Only reviewed idempotent actions allow it.\n\n## Migration and examples\n\n- \x60services/%s\x60 has been removed; clients use the singular service/ path.\n- Changing imports also requires pointer-field and response-shape changes.\n- The tables below list reviewed adapters. Token-shaped fields do not imply support.\n- The generator extracts licensed descriptions and source indexes. Go comments keep source and ownership details.\n- Each action has an offline Example with scripted HTTP. Empty sample requests show calling syntax; they are not valid cloud requests.\n\n", productMarkdown, r.p.Product, r.p.Product, module, r.p.Product, r.p.Provenance.Revision, len(r.p.Operations), len(r.operations), len(r.p.Operations)-len(r.operations), len(r.models), r.p.Product, r.p.Product)
 	}
+	if len(r.roaFields) > 0 {
+		intro := b.String()
+		if chinese {
+			intro = strings.ReplaceAll(intro, "数组的请求参数索引从 1 开始，字段大小写保持与 API 一致。DSL 中的字符串字段仍使用 string。", "参数按官方 ROA 路径、query、请求头和 JSON 正文位置编码，字段大小写保持与 API 一致。")
+			intro = strings.ReplaceAll(intro, "RegionId 默认使用配置地域，可通过操作选项覆盖。", "区域端点使用配置地域；不额外添加 DSL 未声明的 RegionId query 参数。")
+			intro = strings.ReplaceAll(intro, "旧路径 `services/"+r.p.Product+"` 已移除；客户端统一使用单数 service/ 路径。", "该产品只提供单数 service/ 路径，不包含旧兼容桥。")
+			intro = strings.ReplaceAll(intro, "切换导入路径时，也要适配指针字段和完整的响应结构。", "请求和响应遵循本 SDK 的操作外观类型；不宣称与官方 SDK 源码兼容。")
+			intro = strings.ReplaceAll(intro, "示例中的空请求只展示调用方式，不代表可用于真实云请求。", "示例中的必填路径使用虚构值，只展示调用方式，不代表可用于真实云请求。")
+		} else {
+			intro = strings.ReplaceAll(intro, "Array query indexes start at 1. API field case and DSL string types stay unchanged.", "Parameters retain official ROA path, query, header and JSON body locations and exact wire casing.")
+			intro = strings.ReplaceAll(intro, "RegionId defaults to the configured region. Operation options can override it.", "Regional endpoints use the configured region; no undeclared RegionId query is added.")
+			intro = strings.ReplaceAll(intro, "`services/"+r.p.Product+"` has been removed; clients use the singular service/ path.", "Use the singular service/ path; this product has no legacy bridge.")
+			intro = strings.ReplaceAll(intro, "Changing imports also requires pointer-field and response-shape changes.", "Requests and responses use SDK operation facades; official SDK source compatibility is not claimed.")
+			intro = strings.ReplaceAll(intro, "Empty sample requests show calling syntax; they are not valid cloud requests.", "Required paths use synthetic values to show calling syntax; they are not valid cloud requests.")
+		}
+		b.Reset()
+		b.WriteString(intro)
+	}
 	var anonymous []string
 	for _, op := range r.operations {
 		if op.Protocol.AuthType == "Anonymous" {
@@ -571,6 +650,7 @@ func (r *productRenderer) guide(chinese bool) []byte {
 	r.appendQueryEncodingGuide(&b, chinese)
 	r.appendEndpointGuide(&b, chinese)
 	r.appendRPCPlacementGuide(&b, chinese)
+	r.appendROAGuide(&b, chinese)
 	r.appendCapabilityGuide(&b, chinese)
 	r.appendDocumentationGuide(&b, chinese)
 	for _, op := range r.operations {
@@ -589,6 +669,9 @@ func (r *productRenderer) appendQueryEncodingGuide(b *bytes.Buffer, chinese bool
 	rows := []string{}
 	for _, op := range r.operations {
 		for _, binding := range op.Bindings {
+			if binding.Location != "query" {
+				continue
+			}
 			if binding.Encoding != "json" {
 				continue
 			}
@@ -607,6 +690,13 @@ func (r *productRenderer) appendQueryEncodingGuide(b *bytes.Buffer, chinese bool
 	} else {
 		b.WriteString("## JSON string parameters\n\n- These fields keep structured Go inputs. The official DSL selects one JSON query value; no manual serialization is needed.\n- Nil omits the field. Non-nil empty maps, slices and models remain empty objects, arrays or model objects.\n- Ordinary arrays retain native indexed parameters. This table does not establish retry safety or live acceptance.\n\n| Action | Go input field | Query key |\n| --- | --- | --- |\n")
 	}
+	if len(r.roaFields) > 0 {
+		text := b.String()
+		text = strings.ReplaceAll(text, "普通数组仍使用原生索引参数；本表不表示操作允许重试或已有真实调用验收。", "参数编码由准确的 DSL 映射决定；本表不表示操作允许重试或已有真实调用验收。")
+		text = strings.ReplaceAll(text, "Ordinary arrays retain native indexed parameters. This table does not establish retry safety or live acceptance.", "Exact DSL bindings select encoding. This table does not establish retry safety or live acceptance.")
+		b.Reset()
+		b.WriteString(text)
+	}
 	for _, row := range rows {
 		b.WriteString(row)
 	}
@@ -616,6 +706,9 @@ func (r *productRenderer) appendQueryEncodingGuide(b *bytes.Buffer, chinese bool
 func (r *productRenderer) appendRPCPlacementGuide(b *bytes.Buffer, chinese bool) {
 	var rows strings.Builder
 	for _, op := range r.operations {
+		if op.Protocol.Style != "RPC" {
+			continue
+		}
 		var form, simple []string
 		for _, binding := range op.Bindings {
 			if binding.Location == "form" {

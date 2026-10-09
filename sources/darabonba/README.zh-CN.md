@@ -3,7 +3,7 @@
 [English](README.md)
 
 - 产品来源为 [aliyun/alibabacloud-sdk](https://github.com/aliyun/alibabacloud-sdk/tree/ec489e5c3deae95496daae2b41503ac58b221adb)， commit 固定 ec489e5c3deae95496daae2b41503ac58b221adb。
-- ECS 2014-05-26、STS 2015-04-01、VPC 2016-04-28 的 main.tea、Teafile、api-info.json 保留原始字节。
+- ECS 2014-05-26、STS 2015-04-01、VPC 2016-04-28、FC 2023-03-30 的 main.tea、Teafile、api-info.json 保留原始字节。
 - 上游[Apache 通知](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/LICENSE) 保存在 LICENSE.upstream。
 - 产品说明属于该授权源码集合；公共元数据快照仍单独排除说明和示例。
 - #38 生成注释复用授权语义解析器说明/摘要；双语使用/契约/来源索引明确语言及说明覆盖，原始 example 值不进入可执行 Example。

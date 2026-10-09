@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "decisions": [
+    {
+      "file": "products/fc/main.tea",
+      "line": 21,
+      "sourceSHA256": "52fbfda4aa0c9d6c10e845fcd7ab7c5efb12fbfb948bcbb03aa92cb771f3957b",
+      "region": "ap-southeast-5",
+      "before": "fcv3.ap-southeast-5.aliyuncs.com\t",
+      "after": "fcv3.ap-southeast-5.aliyuncs.com",
+      "reason": "trim-reviewed-trailing-whitespace"
+    }
+  ]
+}

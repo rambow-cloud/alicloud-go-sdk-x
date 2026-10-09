@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "product": "ecs",
-  "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
+  "sourceManifestSHA256": "fda7bc19fbbeb45b230c5dc9c4e69452a1dfe57331452f62dc653261b6d13254",
   "operations": {
     "CreateSavingsPlan": {
       "attribute": "summary",

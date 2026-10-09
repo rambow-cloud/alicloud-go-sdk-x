@@ -2,6 +2,8 @@
 
 [English](README.md)
 
+- 当前完整 IR 和锁文件使用 schema v5、profile `openapi-json-v1`。STS 4/4、ECS 380/380、VPC 403/403、FC 72/73，见 [FC ROA #92](../docs/fc-roa-product.zh-CN.md)。路径、query、请求头、正文和操作外观类型均来自源码；覆盖报告继续使用 schema v1。下文旧 schema 和数量保留为阶段历史。
+
 - 当前降低及生成范围为 ECS 380/380、VPC 403/403、STS 4/4，见 [VPC RPC 生成补齐 #85](../docs/vpc-rpc-completion.zh-CN.md)。下表保留历史数量。
 - v2 schema 增加可选绑定 `encoding: "json"`、布尔字段属性 `attributes.deprecated`，以及仅用于已审核 JSON 转换内动态值的 `kind: "json", dslType: "any"`。未知转换仍拒绝。
 - 产品 IR 及其锁文件使用 schema v3，增加 `location: "form"`、字符串数组显式 `encoding: "simple"` 和原生 GET 方法。旧后端在写文件前拒绝新锁文件。前后端须配套重新生成；覆盖报告仍使用独立的 v1 schema。

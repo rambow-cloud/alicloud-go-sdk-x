@@ -20,9 +20,20 @@ type productEndpoints struct {
 	Overrides      []productEndpointOverride `json:"overrides"`
 }
 type productEndpointOverride struct {
-	Region string        `json:"region"`
-	URL    string        `json:"url"`
-	Source productSource `json:"source"`
+	Region        string                 `json:"region"`
+	URL           string                 `json:"url"`
+	Source        productSource          `json:"source"`
+	Normalization *endpointNormalization `json:"normalization,omitempty"`
+}
+
+type endpointNormalization struct {
+	File         string `json:"file"`
+	Line         int    `json:"line"`
+	SourceSHA256 string `json:"sourceSHA256"`
+	Region       string `json:"region"`
+	Before       string `json:"before"`
+	After        string `json:"after"`
+	Reason       string `json:"reason"`
 }
 type endpointPolicy struct {
 	Region   string   `json:"region"`
@@ -54,6 +65,12 @@ func renderEndpoints(products []productIR) (map[string][]byte, error) {
 				return nil, errors.New("product: invalid endpoint override")
 			}
 			seen[rule.Region] = true
+			if d := rule.Normalization; d != nil {
+				if d.File != rule.Source.File || d.Line != rule.Source.Line || d.Region != rule.Region || len(d.SourceSHA256) != 64 || d.SourceSHA256 != p.Provenance.SourceSHA256 || d.Before == d.After || strings.TrimRight(d.Before, " \t\r\n") != d.After || "https://"+d.After != rule.URL || d.Reason != "trim-reviewed-trailing-whitespace" {
+					return nil, errors.New("product: invalid source-bound endpoint normalization")
+				}
+				fmt.Fprintf(&b, "// Reviewed source normalization: %s; original source bytes preserved.\n", d.Reason)
+			}
 			fmt.Fprintf(&b, "// Source: %s:%d.\n{Service:%q,Region:%q,URL:%q},\n", rule.Source.File, rule.Source.Line, p.Product, rule.Region, rule.URL)
 		}
 		if p.Policy != nil {

@@ -1,0 +1,998 @@
+{
+  "schemaVersion": 1,
+  "product": "fc",
+  "version": "2023-03-30",
+  "provenance": {
+    "repository": "https://github.com/aliyun/alibabacloud-sdk",
+    "revision": "ec489e5c3deae95496daae2b41503ac58b221adb",
+    "license": "Apache-2.0",
+    "parserVersion": "2.2.1",
+    "sourceManifestSHA256": "fda7bc19fbbeb45b230c5dc9c4e69452a1dfe57331452f62dc653261b6d13254",
+    "sourceSHA256": "52fbfda4aa0c9d6c10e845fcd7ab7c5efb12fbfb948bcbb03aa92cb771f3957b",
+    "apiInfoSHA256": "615cae5c41562060c32ec562139322a5e21d70785a8eda793f95d2a0f4b4fb60"
+  },
+  "counts": {
+    "discovered": 73,
+    "lowered": 72,
+    "unsupported": 1,
+    "dslOperations": 73,
+    "catalogOnlyOperations": 0,
+    "dslOnlyOperations": 0,
+    "declaredModels": 304,
+    "reachableNamedModels": 243,
+    "reachableAnonymousModels": 147,
+    "unusedNamedModels": 61
+  },
+  "acceptance": {
+    "lowering": "assessed",
+    "goEmission": "not-assessed",
+    "compilation": "not-assessed",
+    "live": "not-assessed"
+  },
+  "reasonCounts": {
+    "DSL_RESPONSE_BODY_PROFILE": 1
+  },
+  "operations": [
+    {
+      "name": "ChangeResourceGroup",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 1735,
+        "column": 16,
+        "endLine": 1735,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateAlias",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 1789,
+        "column": 16,
+        "endLine": 1789,
+        "endColumn": 38
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateCustomDomain",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 1843,
+        "column": 16,
+        "endLine": 1843,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateFunction",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 1899,
+        "column": 16,
+        "endLine": 1899,
+        "endColumn": 41
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateLayerVersion",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 1953,
+        "column": 16,
+        "endLine": 1953,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateSession",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2004,
+        "column": 16,
+        "endLine": 2004,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateSnapshot",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2067,
+        "column": 16,
+        "endLine": 2067,
+        "endColumn": 41
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateTrigger",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2131,
+        "column": 16,
+        "endLine": 2131,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "CreateVpcBinding",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2182,
+        "column": 16,
+        "endLine": 2182,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteAlias",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2226,
+        "column": 16,
+        "endLine": 2226,
+        "endColumn": 38
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteAsyncInvokeConfig",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2272,
+        "column": 16,
+        "endLine": 2272,
+        "endColumn": 50
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteConcurrencyConfig",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2321,
+        "column": 16,
+        "endLine": 2321,
+        "endColumn": 50
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteCustomDomain",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2362,
+        "column": 16,
+        "endLine": 2362,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteFunction",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2403,
+        "column": 16,
+        "endLine": 2403,
+        "endColumn": 41
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteFunctionVersion",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2444,
+        "column": 16,
+        "endLine": 2444,
+        "endColumn": 48
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteLayerVersion",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2485,
+        "column": 16,
+        "endLine": 2485,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteProvisionConfig",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2531,
+        "column": 16,
+        "endLine": 2531,
+        "endColumn": 48
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteScalingConfig",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2585,
+        "column": 16,
+        "endLine": 2585,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteSession",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2639,
+        "column": 16,
+        "endLine": 2639,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteSnapshot",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2698,
+        "column": 16,
+        "endLine": 2698,
+        "endColumn": 41
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteTrigger",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2747,
+        "column": 16,
+        "endLine": 2747,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "DeleteVpcBinding",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2788,
+        "column": 16,
+        "endLine": 2788,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "DescribeRegions",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2841,
+        "column": 16,
+        "endLine": 2841,
+        "endColumn": 42
+      },
+      "reasons": []
+    },
+    {
+      "name": "DisableFunctionInvocation",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2903,
+        "column": 16,
+        "endLine": 2903,
+        "endColumn": 52
+      },
+      "reasons": []
+    },
+    {
+      "name": "EnableFunctionInvocation",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 2962,
+        "column": 16,
+        "endLine": 2962,
+        "endColumn": 51
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetAlias",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3004,
+        "column": 16,
+        "endLine": 3004,
+        "endColumn": 35
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetAsyncInvokeConfig",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3051,
+        "column": 16,
+        "endLine": 3051,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetAsyncTask",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3106,
+        "column": 16,
+        "endLine": 3106,
+        "endColumn": 39
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetConcurrencyConfig",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3156,
+        "column": 16,
+        "endLine": 3156,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetCustomDomain",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3198,
+        "column": 16,
+        "endLine": 3198,
+        "endColumn": 42
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetFunction",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3245,
+        "column": 16,
+        "endLine": 3245,
+        "endColumn": 38
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetFunctionCode",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3300,
+        "column": 16,
+        "endLine": 3300,
+        "endColumn": 42
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetLayerVersion",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3350,
+        "column": 16,
+        "endLine": 3350,
+        "endColumn": 42
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetLayerVersionByArn",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3392,
+        "column": 16,
+        "endLine": 3392,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetProvisionConfig",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3439,
+        "column": 16,
+        "endLine": 3439,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetScalingConfig",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3494,
+        "column": 16,
+        "endLine": 3494,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetSession",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3549,
+        "column": 16,
+        "endLine": 3549,
+        "endColumn": 37
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetSnapshot",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3607,
+        "column": 16,
+        "endLine": 3607,
+        "endColumn": 38
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetTrigger",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3655,
+        "column": 16,
+        "endLine": 3655,
+        "endColumn": 37
+      },
+      "reasons": []
+    },
+    {
+      "name": "InvokeFunction",
+      "status": "unsupported",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3712,
+        "column": 16,
+        "endLine": 3712,
+        "endColumn": 41
+      },
+      "reasons": [
+        {
+          "code": "DSL_RESPONSE_BODY_PROFILE",
+          "message": "ROA unsupported response body binary",
+          "source": {
+            "file": "products/fc/main.tea",
+            "line": 3712,
+            "column": 16,
+            "endLine": 3712,
+            "endColumn": 41
+          }
+        }
+      ]
+    },
+    {
+      "name": "ListAliases",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3798,
+        "column": 16,
+        "endLine": 3798,
+        "endColumn": 38
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListAsyncInvokeConfigs",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3861,
+        "column": 16,
+        "endLine": 3861,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListAsyncTasks",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 3960,
+        "column": 16,
+        "endLine": 3960,
+        "endColumn": 41
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListConcurrencyConfigs",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4041,
+        "column": 16,
+        "endLine": 4041,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListCustomDomains",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4104,
+        "column": 16,
+        "endLine": 4104,
+        "endColumn": 44
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListFunctionVersions",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4167,
+        "column": 16,
+        "endLine": 4167,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListFunctions",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4264,
+        "column": 16,
+        "endLine": 4264,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListInstances",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4371,
+        "column": 16,
+        "endLine": 4371,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListLayerVersions",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4456,
+        "column": 16,
+        "endLine": 4456,
+        "endColumn": 44
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListLayers",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4518,
+        "column": 16,
+        "endLine": 4518,
+        "endColumn": 37
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListProvisionConfigs",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4587,
+        "column": 16,
+        "endLine": 4587,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListScalingConfigs",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4650,
+        "column": 16,
+        "endLine": 4650,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListSessions",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4715,
+        "column": 16,
+        "endLine": 4715,
+        "endColumn": 39
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListSnapshots",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4792,
+        "column": 16,
+        "endLine": 4792,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListTagResources",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4894,
+        "column": 16,
+        "endLine": 4894,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListTriggers",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 4971,
+        "column": 16,
+        "endLine": 4971,
+        "endColumn": 39
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListVpcBindings",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5027,
+        "column": 16,
+        "endLine": 5027,
+        "endColumn": 42
+      },
+      "reasons": []
+    },
+    {
+      "name": "PauseSession",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5077,
+        "column": 16,
+        "endLine": 5077,
+        "endColumn": 39
+      },
+      "reasons": []
+    },
+    {
+      "name": "PublishFunctionVersion",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5139,
+        "column": 16,
+        "endLine": 5139,
+        "endColumn": 49
+      },
+      "reasons": []
+    },
+    {
+      "name": "PutAsyncInvokeConfig",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5192,
+        "column": 16,
+        "endLine": 5192,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "PutConcurrencyConfig",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5250,
+        "column": 16,
+        "endLine": 5250,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "PutLayerACL",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5300,
+        "column": 16,
+        "endLine": 5300,
+        "endColumn": 38
+      },
+      "reasons": []
+    },
+    {
+      "name": "PutProvisionConfig",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5361,
+        "column": 16,
+        "endLine": 5361,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "PutScalingConfig",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5418,
+        "column": 16,
+        "endLine": 5418,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "ResumeSession",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5477,
+        "column": 16,
+        "endLine": 5477,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "StopAsyncTask",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5536,
+        "column": 16,
+        "endLine": 5536,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "TagResources",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5592,
+        "column": 16,
+        "endLine": 5592,
+        "endColumn": 39
+      },
+      "reasons": []
+    },
+    {
+      "name": "UntagResources",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5659,
+        "column": 16,
+        "endLine": 5659,
+        "endColumn": 41
+      },
+      "reasons": []
+    },
+    {
+      "name": "UpdateAlias",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5733,
+        "column": 16,
+        "endLine": 5733,
+        "endColumn": 38
+      },
+      "reasons": []
+    },
+    {
+      "name": "UpdateCustomDomain",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5785,
+        "column": 16,
+        "endLine": 5785,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "UpdateFunction",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5837,
+        "column": 16,
+        "endLine": 5837,
+        "endColumn": 41
+      },
+      "reasons": []
+    },
+    {
+      "name": "UpdateSession",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5888,
+        "column": 16,
+        "endLine": 5888,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "UpdateTrigger",
+      "status": "lowered",
+      "origin": "dsl-and-catalog",
+      "source": {
+        "file": "products/fc/main.tea",
+        "line": 5946,
+        "column": 16,
+        "endLine": 5946,
+        "endColumn": 40
+      },
+      "reasons": []
+    }
+  ]
+}

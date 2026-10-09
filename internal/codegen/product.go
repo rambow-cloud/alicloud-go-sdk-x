@@ -43,6 +43,7 @@ type productDocument struct {
 }
 type productModel struct {
 	ID              string         `json:"id"`
+	Origin          string         `json:"origin,omitempty"`
 	Fields          []productField `json:"fields"`
 	Extends         *productType   `json:"extends"`
 	InheritedFields []productField `json:"inheritedFields"`
@@ -106,6 +107,7 @@ type productIR struct {
 		License              string `json:"license"`
 		ParserVersion        string `json:"parserVersion"`
 		SourceManifestSHA256 string `json:"sourceManifestSHA256"`
+		SourceSHA256         string `json:"sourceSHA256"`
 	} `json:"provenance"`
 	Operations []productOperation `json:"operations"`
 	Models     []productModel     `json:"models"`
@@ -142,7 +144,7 @@ func GenerateProducts(ctx context.Context, root string, check bool, selected []s
 	if err := json.Unmarshal(data, &pins); err != nil {
 		return err
 	}
-	if pins.SchemaVersion != 4 || pins.Profile != "rpc-query-json-v1" || len(pins.Files) == 0 {
+	if pins.SchemaVersion != 5 || pins.Profile != "openapi-json-v1" || len(pins.Files) == 0 {
 		return errors.New("product: unsupported IR manifest")
 	}
 	if err := verifyDSLSource(root, map[string]bool{pins.SourceManifestSHA256: true}); err != nil {
@@ -176,7 +178,7 @@ func GenerateProducts(ctx context.Context, root string, check bool, selected []s
 		if err := json.Unmarshal(content, &p); err != nil {
 			return err
 		}
-		if p.SchemaVersion != 4 || p.Profile != pins.Profile || p.Product != parts[1] || p.Version == "" || p.Provenance.SourceManifestSHA256 != pins.SourceManifestSHA256 || p.Provenance.Repository != "https://github.com/aliyun/alibabacloud-sdk" || p.Provenance.License != "Apache-2.0" || p.Provenance.ParserVersion != "2.2.1" || len(p.Provenance.Revision) != 40 {
+		if p.SchemaVersion != 5 || p.Profile != pins.Profile || p.Product != parts[1] || p.Version == "" || p.Provenance.SourceManifestSHA256 != pins.SourceManifestSHA256 || p.Provenance.Repository != "https://github.com/aliyun/alibabacloud-sdk" || p.Provenance.License != "Apache-2.0" || p.Provenance.ParserVersion != "2.2.1" || len(p.Provenance.Revision) != 40 {
 			return errors.New("product: IR provenance mismatch")
 		}
 		products = append(products, p)

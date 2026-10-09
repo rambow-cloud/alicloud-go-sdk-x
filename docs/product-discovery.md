@@ -2,7 +2,7 @@
 
 [中文](product-discovery.zh-CN.md)
 
-- Current generation follows [RPC expansion #83](dsl-rpc-expansion.md): ECS 380/380; VPC 396/403. Earlier counts and consumer records below describe their accepted revisions.
+- Current: STS 4/4, ECS 380/380, VPC 403/403 and FC 72/73. Schema v5 (`openapi-json-v1`) adds exact ROA JSON/none bindings and operation facades; see [FC generation #92](fc-roa-product.md). Earlier profiles and consumer records below describe their accepted stages.
 
 - Stage [#35](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/35) follows the [authoritative roadmap](product-generator-roadmap.md) and #34 normalization.
 - Branch issue/35-product-discovery is stacked on issue/34-source-normalization / PR #39, which originally depended on #32.
@@ -10,7 +10,7 @@
 
 - The build-time command uses Node 22, official parser 2.2.1 and the complete pinned product/import corpus.
 - It verifies source hashes and import resolution, then performs semantic parsing offline.
-- It never reads legacy metadata manifests, decisions, snapshots or overlays; canonical enrichment is optional and not needed for discovery.
+- Discovery does not require legacy per-operation metadata manifests, decisions, snapshots or overlays. Optional exact endpoint source exceptions are reviewed separately; canonical enrichment is not required.
 - No Go runtime dependency, generated service API or automatic retry policy is added.
 
 - Operation candidates come from DSL WithOptions functions, API declarations and functions constructing OpenApi.Params.
@@ -26,8 +26,8 @@
 - Unreachable product declarations are accounted for.
 
 - Coverage distinguishes discovered, lowered and unsupported operations.
-- Lowering is limited to the existing reviewed HTTPS POST RPC direct-query/json-body profile, with every wire input/response shape checked for unsupported constructs.
-- ROA, body/stream, helper transforms, unresolved/recursive/inherited wire models or other unsupported patterns have stable reason codes, messages and source locations.
+- Initial #35 lowering was limited to HTTPS POST RPC direct-query/json-body behavior. Later reviewed stages add form/GET/shrink and ROA JSON/none; every wire shape still rejects unknown constructs.
+- Unsupported ROA patterns, binary/XML, unknown helper transforms and unresolved/recursive/inherited wire models retain stable reasons and source locations.
 - A lowered record is not a claim of Go emission, compilation, runtime policy or live-cloud acceptance.
 - Those later acceptance stages remain unassessed here.
 

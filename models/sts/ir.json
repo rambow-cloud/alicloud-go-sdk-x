@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 4,
-  "profile": "rpc-query-json-v1",
+  "schemaVersion": 5,
+  "profile": "openapi-json-v1",
   "product": "sts",
   "identifier": "sts-20150401",
   "version": "2015-04-01",
@@ -9,7 +9,7 @@
     "revision": "ec489e5c3deae95496daae2b41503ac58b221adb",
     "license": "Apache-2.0",
     "parserVersion": "2.2.1",
-    "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
+    "sourceManifestSHA256": "fda7bc19fbbeb45b230c5dc9c4e69452a1dfe57331452f62dc653261b6d13254",
     "sourceSHA256": "99e3d971f8c80993650253b123c5851ffc757c7a2b729ba290eb823f37d654a4",
     "apiInfoSHA256": "9fe5ac3ce2f5fb81f033ef33a2e8205fbe7895907b8ea8d521414fb281f9a2f3"
   },

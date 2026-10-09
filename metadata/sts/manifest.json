@@ -17,8 +17,8 @@
   ],
   "dsl": {
     "file": "dsl.json",
-    "sha256": "64dc8900f38c1279df4a50a0da8dc2c1e3b947520baeaba30953ab159526f76b",
-    "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
+    "sha256": "15a962b3996206a9f5126661a03ac2e5885231a23ad6a502cddc86352833234d",
+    "sourceManifestSHA256": "fda7bc19fbbeb45b230c5dc9c4e69452a1dfe57331452f62dc653261b6d13254",
     "decisionsSHA256": "3d95b943e57bc9cc91afc0052df123b24f470b2cd912dd6ce9a0a7ca00208055"
   }
 }
