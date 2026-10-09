@@ -13,6 +13,8 @@
 
 ## One service path
 
+- #92 checksum arithmetic follows [OSS checksums](oss-checksums.md). Fixed byte vectors and redacted verification precede operation/stream integrity policy; no automatic checksum behavior is enabled by this foundation.
+
 - Follow [service consolidation #81](service-consolidation.md) before #61: remove the bridge, migrate foundation/provider contracts to full-DSL clients and refresh consumer evidence. This overrides earlier bridge preservation requirements.
 
 ## Scoped ECS and VPC acceptance
