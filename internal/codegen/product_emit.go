@@ -33,6 +33,7 @@ type productRenderer struct {
 	models     map[string]productModel
 	names      map[string]string
 	output     map[string]bool
+	jsonFields map[string]map[string]bool
 	operations []productOperation
 }
 
@@ -40,7 +41,7 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 	if !packageName.MatchString(p.Product) || token.Lookup(p.Product).IsKeyword() {
 		return nil, errors.New("invalid package name")
 	}
-	r := &productRenderer{p: p, models: map[string]productModel{}, names: map[string]string{}, output: map[string]bool{}}
+	r := &productRenderer{p: p, models: map[string]productModel{}, names: map[string]string{}, output: map[string]bool{}, jsonFields: map[string]map[string]bool{}}
 	all := map[string]productModel{}
 	for _, m := range p.Models {
 		if m.ID == "" {
@@ -132,6 +133,12 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 			}
 			bound[binding.Field] = true
 			wires[binding.Wire] = true
+			if binding.Encoding == "json" {
+				if r.jsonFields[op.Roots.Request.Ref] == nil {
+					r.jsonFields[op.Roots.Request.Ref] = map[string]bool{}
+				}
+				r.jsonFields[op.Roots.Request.Ref][binding.Field] = true
+			}
 		}
 		if len(bound) != len(request.Fields) {
 			return nil, errors.New("unbound request field")
@@ -335,15 +342,8 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 				types.WriteString("//\n// Deprecated: The upstream DSL marks this field as deprecated. It remains available for compatibility.\n")
 			}
 			encoding := ""
-			for _, op := range r.operations {
-				if op.Roots.Request.Ref != id {
-					continue
-				}
-				for _, binding := range op.Bindings {
-					if binding.Field == f.DSLName && binding.Encoding == "json" {
-						encoding = " rpc:\"json\""
-					}
-				}
+			if r.jsonFields[id][f.DSLName] {
+				encoding = " rpc:\"json\""
 			}
 			if encoding != "" {
 				types.WriteString("// Encoded as one JSON query value; nil is omitted and explicit empty containers are preserved.\n")
