@@ -19,9 +19,9 @@ func TestParameterLocationsRejectUnknownAndNestedLocations(t *testing.T) {
 			Value []int `json:"Value" rpc:"simple"`
 		}{[]int{1}},
 		struct {
-			First  string `json:"Value" rpcLocation:"form"`
-			Second string `json:"Value" rpcLocation:"form"`
-		}{"x", "y"},
+			First  string            `json:"Value.Key" rpcLocation:"form"`
+			Second map[string]string `json:"Value" rpcLocation:"form"`
+		}{"x", map[string]string{"Key": "y"}},
 	} {
 		if _, _, err := Parameters(context.Background(), input); err == nil {
 			t.Fatal("invalid location/encoding/collision accepted")
