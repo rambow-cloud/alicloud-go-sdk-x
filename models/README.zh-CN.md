@@ -2,9 +2,9 @@
 
 [English](README.md)
 
-- 当前降低及生成范围为 ECS 380/380、VPC 396/403、STS 4/4，见 [RPC 扩展 #83](../docs/dsl-rpc-expansion.zh-CN.md)。下表保留历史数量。
+- 当前降低及生成范围为 ECS 380/380、VPC 403/403、STS 4/4，见 [VPC RPC 生成补齐 #85](../docs/vpc-rpc-completion.zh-CN.md)。下表保留历史数量。
 - v2 schema 增加可选绑定 `encoding: "json"`、布尔字段属性 `attributes.deprecated`，以及仅用于已审核 JSON 转换内动态值的 `kind: "json", dslType: "any"`。未知转换仍拒绝。
-- 产品 IR 及其锁文件使用 schema v2，旧生成器会拒绝新锁文件，避免忽略 JSON 参数编码。前后端须配套重新生成；覆盖报告仍使用独立的 v1 schema。
+- 产品 IR 及其锁文件使用 schema v3，增加 `location: "form"`、字符串数组显式 `encoding: "simple"` 和原生 GET 方法。旧后端在写文件前拒绝新锁文件。前后端须配套重新生成；覆盖报告仍使用独立的 v1 schema。
 
 - 本目录为 [#35](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/35) 生成的构建产物，消费前阅读[产品发现](../docs/product-discovery.zh-CN.md)。
 - Schema 版本 2、profile rpc-query-json-v1 记录固定官方 DSL、语义解析器版本、完整来源锁哈希、源码/API catalog 哈希和 Apache-2.0 来源。

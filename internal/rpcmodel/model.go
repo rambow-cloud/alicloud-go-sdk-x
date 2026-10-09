@@ -151,14 +151,23 @@ func clone(ctx context.Context, v reflect.Value, active map[visit]bool) (reflect
 // Reviewed rpc:"json" fields become one JSON query value; nil fields are omitted.
 // Ordinary string payloads remain unchanged. Collisions and unknown encodings fail.
 func Query(ctx context.Context, model any) (url.Values, error) {
-	result := url.Values{}
-	if err := flatten(ctx, reflect.ValueOf(model), "", result, 0); err != nil {
-		return nil, err
-	}
-	return result, nil
+	query, _, err := Parameters(ctx, model)
+	return query, err
 }
 
-func flatten(ctx context.Context, v reflect.Value, prefix string, result url.Values, depth int) error {
+// Parameters encodes owned model fields into separate query and form values.
+// Root rpcLocation:"form" fields use the form body; untagged fields use query.
+// Nested locations, unknown encodings and key collisions fail. Cancellation is preserved.
+func Parameters(ctx context.Context, model any) (url.Values, url.Values, error) {
+	result := url.Values{}
+	form := url.Values{}
+	if err := flatten(ctx, reflect.ValueOf(model), "", result, form, 0); err != nil {
+		return nil, nil, err
+	}
+	return result, form, nil
+}
+
+func flatten(ctx context.Context, v reflect.Value, prefix string, result, form url.Values, depth int) error {
 	if err := ctx.Err(); err != nil {
 		return err
 	}
@@ -172,7 +181,7 @@ func flatten(ctx context.Context, v reflect.Value, prefix string, result url.Val
 		if v.IsNil() {
 			return nil
 		}
-		return flatten(ctx, v.Elem(), prefix, result, depth+1)
+		return flatten(ctx, v.Elem(), prefix, result, form, depth+1)
 	}
 	join := func(name string) string {
 		if prefix == "" {
@@ -190,36 +199,59 @@ func flatten(ctx context.Context, v reflect.Value, prefix string, result url.Val
 			if name == "" {
 				return errors.New("rpcmodel: missing wire name")
 			}
+			destination := result
+			if location := v.Type().Field(i).Tag.Get("rpcLocation"); location != "" {
+				if location != "form" || prefix != "" || form == nil {
+					return errors.New("rpcmodel: unsupported field location")
+				}
+				destination = form
+			}
 			if encoding := v.Type().Field(i).Tag.Get("rpc"); encoding != "" {
-				if encoding != "json" {
+				if encoding != "json" && encoding != "simple" {
 					return errors.New("rpcmodel: unsupported field encoding")
 				}
 				field := v.Field(i)
 				if IsNil(field.Interface()) {
 					continue
 				}
-				data, err := json.Marshal(field.Interface(), json.Deterministic(true))
-				if err != nil {
-					return err
+				var encoded string
+				if encoding == "simple" {
+					if field.Kind() != reflect.Slice || field.Type().Elem().Kind() != reflect.String {
+						return errors.New("rpcmodel: simple encoding requires a string slice")
+					}
+					values := make([]string, field.Len())
+					for j := range values {
+						if err := ctx.Err(); err != nil {
+							return err
+						}
+						values[j] = field.Index(j).String()
+					}
+					encoded = strings.Join(values, ",")
+				} else {
+					data, err := json.Marshal(field.Interface(), json.Deterministic(true))
+					if err != nil {
+						return err
+					}
+					encoded = string(data)
 				}
 				if err := ctx.Err(); err != nil {
 					return err
 				}
 				key := join(name)
-				if _, exists := result[key]; exists {
+				if _, exists := destination[key]; exists {
 					return errors.New("rpcmodel: duplicate query key")
 				}
-				result.Set(key, string(data))
+				destination.Set(key, encoded)
 				continue
 			}
-			if err := flatten(ctx, v.Field(i), join(name), result, depth+1); err != nil {
+			if err := flatten(ctx, v.Field(i), join(name), destination, nil, depth+1); err != nil {
 				return err
 			}
 		}
 		return nil
 	case reflect.Slice:
 		for i := 0; i < v.Len(); i++ {
-			if err := flatten(ctx, v.Index(i), join(strconv.Itoa(i+1)), result, depth+1); err != nil {
+			if err := flatten(ctx, v.Index(i), join(strconv.Itoa(i+1)), result, nil, depth+1); err != nil {
 				return err
 			}
 		}
@@ -231,7 +263,7 @@ func flatten(ctx context.Context, v reflect.Value, prefix string, result url.Val
 		keys := v.MapKeys()
 		sort.Slice(keys, func(i, j int) bool { return keys[i].String() < keys[j].String() })
 		for _, key := range keys {
-			if err := flatten(ctx, v.MapIndex(key), join(key.String()), result, depth+1); err != nil {
+			if err := flatten(ctx, v.MapIndex(key), join(key.String()), result, nil, depth+1); err != nil {
 				return err
 			}
 		}

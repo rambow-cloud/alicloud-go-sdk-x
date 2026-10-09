@@ -35,7 +35,7 @@ type ActivateRouterInterfaceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L94
 func (c *Client) ActivateRouterInterface(ctx context.Context, input *ActivateRouterInterfaceInput, optFns ...func(*Options)) (*ActivateRouterInterfaceOutput, error) {
-	out, meta, err := invoke[ActivateRouterInterfaceInput, ActivateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ActivateRouterInterface", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ActivateRouterInterfaceInput, ActivateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ActivateRouterInterface", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -69,7 +69,7 @@ type ActiveFlowLogAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L182
 func (c *Client) ActiveFlowLog(ctx context.Context, input *ActiveFlowLogInput, optFns ...func(*Options)) (*ActiveFlowLogOutput, error) {
-	out, meta, err := invoke[ActiveFlowLogInput, ActiveFlowLogOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ActiveFlowLog", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ActiveFlowLogInput, ActiveFlowLogOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ActiveFlowLog", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -94,7 +94,7 @@ type AddBgpNetworkAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L282
 func (c *Client) AddBgpNetwork(ctx context.Context, input *AddBgpNetworkInput, optFns ...func(*Options)) (*AddBgpNetworkOutput, error) {
-	out, meta, err := invoke[AddBgpNetworkInput, AddBgpNetworkOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AddBgpNetwork", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AddBgpNetworkInput, AddBgpNetworkOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AddBgpNetwork", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -132,7 +132,7 @@ type AddCommonBandwidthPackageIpAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L384
 func (c *Client) AddCommonBandwidthPackageIp(ctx context.Context, input *AddCommonBandwidthPackageIpInput, optFns ...func(*Options)) (*AddCommonBandwidthPackageIpOutput, error) {
-	out, meta, err := invoke[AddCommonBandwidthPackageIpInput, AddCommonBandwidthPackageIpOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AddCommonBandwidthPackageIp", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AddCommonBandwidthPackageIpInput, AddCommonBandwidthPackageIpOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AddCommonBandwidthPackageIp", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -170,7 +170,7 @@ type AddCommonBandwidthPackageIpsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L506
 func (c *Client) AddCommonBandwidthPackageIps(ctx context.Context, input *AddCommonBandwidthPackageIpsInput, optFns ...func(*Options)) (*AddCommonBandwidthPackageIpsOutput, error) {
-	out, meta, err := invoke[AddCommonBandwidthPackageIpsInput, AddCommonBandwidthPackageIpsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AddCommonBandwidthPackageIps", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AddCommonBandwidthPackageIpsInput, AddCommonBandwidthPackageIpsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AddCommonBandwidthPackageIps", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -195,7 +195,7 @@ type AddGlobalAccelerationInstanceIpAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L619
 func (c *Client) AddGlobalAccelerationInstanceIp(ctx context.Context, input *AddGlobalAccelerationInstanceIpInput, optFns ...func(*Options)) (*AddGlobalAccelerationInstanceIpOutput, error) {
-	out, meta, err := invoke[AddGlobalAccelerationInstanceIpInput, AddGlobalAccelerationInstanceIpOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AddGlobalAccelerationInstanceIp", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AddGlobalAccelerationInstanceIpInput, AddGlobalAccelerationInstanceIpOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AddGlobalAccelerationInstanceIp", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -220,7 +220,7 @@ type AddIPv6TranslatorAclListEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L708
 func (c *Client) AddIPv6TranslatorAclListEntry(ctx context.Context, input *AddIPv6TranslatorAclListEntryInput, optFns ...func(*Options)) (*AddIPv6TranslatorAclListEntryOutput, error) {
-	out, meta, err := invoke[AddIPv6TranslatorAclListEntryInput, AddIPv6TranslatorAclListEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AddIPv6TranslatorAclListEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AddIPv6TranslatorAclListEntryInput, AddIPv6TranslatorAclListEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AddIPv6TranslatorAclListEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -257,7 +257,7 @@ type AddPublicIpAddressPoolCidrBlockAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L816
 func (c *Client) AddPublicIpAddressPoolCidrBlock(ctx context.Context, input *AddPublicIpAddressPoolCidrBlockInput, optFns ...func(*Options)) (*AddPublicIpAddressPoolCidrBlockOutput, error) {
-	out, meta, err := invoke[AddPublicIpAddressPoolCidrBlockInput, AddPublicIpAddressPoolCidrBlockOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AddPublicIpAddressPoolCidrBlock", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AddPublicIpAddressPoolCidrBlockInput, AddPublicIpAddressPoolCidrBlockOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AddPublicIpAddressPoolCidrBlock", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -291,7 +291,7 @@ type AddSourcesToTrafficMirrorSessionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L940
 func (c *Client) AddSourcesToTrafficMirrorSession(ctx context.Context, input *AddSourcesToTrafficMirrorSessionInput, optFns ...func(*Options)) (*AddSourcesToTrafficMirrorSessionOutput, error) {
-	out, meta, err := invoke[AddSourcesToTrafficMirrorSessionInput, AddSourcesToTrafficMirrorSessionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AddSourcesToTrafficMirrorSession", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AddSourcesToTrafficMirrorSessionInput, AddSourcesToTrafficMirrorSessionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AddSourcesToTrafficMirrorSession", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -323,7 +323,7 @@ type AllocateEipAddressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1148
 func (c *Client) AllocateEipAddress(ctx context.Context, input *AllocateEipAddressInput, optFns ...func(*Options)) (*AllocateEipAddressOutput, error) {
-	out, meta, err := invoke[AllocateEipAddressInput, AllocateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AllocateEipAddress", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AllocateEipAddressInput, AllocateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AllocateEipAddress", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -348,7 +348,7 @@ type AllocateEipAddressProAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1387
 func (c *Client) AllocateEipAddressPro(ctx context.Context, input *AllocateEipAddressProInput, optFns ...func(*Options)) (*AllocateEipAddressProOutput, error) {
-	out, meta, err := invoke[AllocateEipAddressProInput, AllocateEipAddressProOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AllocateEipAddressPro", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AllocateEipAddressProInput, AllocateEipAddressProOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AllocateEipAddressPro", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -381,7 +381,7 @@ type AllocateEipSegmentAddressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1559
 func (c *Client) AllocateEipSegmentAddress(ctx context.Context, input *AllocateEipSegmentAddressInput, optFns ...func(*Options)) (*AllocateEipSegmentAddressOutput, error) {
-	out, meta, err := invoke[AllocateEipSegmentAddressInput, AllocateEipSegmentAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AllocateEipSegmentAddress", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AllocateEipSegmentAddressInput, AllocateEipSegmentAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AllocateEipSegmentAddress", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -413,7 +413,7 @@ type AllocateIpv6AddressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1706
 func (c *Client) AllocateIpv6Address(ctx context.Context, input *AllocateIpv6AddressInput, optFns ...func(*Options)) (*AllocateIpv6AddressOutput, error) {
-	out, meta, err := invoke[AllocateIpv6AddressInput, AllocateIpv6AddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AllocateIpv6Address", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AllocateIpv6AddressInput, AllocateIpv6AddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AllocateIpv6Address", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -454,7 +454,7 @@ type AllocateIpv6InternetBandwidthAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L1859
 func (c *Client) AllocateIpv6InternetBandwidth(ctx context.Context, input *AllocateIpv6InternetBandwidthInput, optFns ...func(*Options)) (*AllocateIpv6InternetBandwidthOutput, error) {
-	out, meta, err := invoke[AllocateIpv6InternetBandwidthInput, AllocateIpv6InternetBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AllocateIpv6InternetBandwidth", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AllocateIpv6InternetBandwidthInput, AllocateIpv6InternetBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AllocateIpv6InternetBandwidth", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -487,7 +487,7 @@ type AllocateVpcIpv6CidrAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2003
 func (c *Client) AllocateVpcIpv6Cidr(ctx context.Context, input *AllocateVpcIpv6CidrInput, optFns ...func(*Options)) (*AllocateVpcIpv6CidrOutput, error) {
-	out, meta, err := invoke[AllocateVpcIpv6CidrInput, AllocateVpcIpv6CidrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AllocateVpcIpv6Cidr", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AllocateVpcIpv6CidrInput, AllocateVpcIpv6CidrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AllocateVpcIpv6Cidr", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -512,7 +512,7 @@ type ApplyPhysicalConnectionLOAAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2146
 func (c *Client) ApplyPhysicalConnectionLOA(ctx context.Context, input *ApplyPhysicalConnectionLOAInput, optFns ...func(*Options)) (*ApplyPhysicalConnectionLOAOutput, error) {
-	out, meta, err := invoke[ApplyPhysicalConnectionLOAInput, ApplyPhysicalConnectionLOAOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ApplyPhysicalConnectionLOA", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ApplyPhysicalConnectionLOAInput, ApplyPhysicalConnectionLOAOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ApplyPhysicalConnectionLOA", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -547,7 +547,7 @@ type AssociateEipAddressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2299
 func (c *Client) AssociateEipAddress(ctx context.Context, input *AssociateEipAddressInput, optFns ...func(*Options)) (*AssociateEipAddressOutput, error) {
-	out, meta, err := invoke[AssociateEipAddressInput, AssociateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateEipAddress", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AssociateEipAddressInput, AssociateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateEipAddress", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -582,7 +582,7 @@ type AssociateEipAddressBatchAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2431
 func (c *Client) AssociateEipAddressBatch(ctx context.Context, input *AssociateEipAddressBatchInput, optFns ...func(*Options)) (*AssociateEipAddressBatchOutput, error) {
-	out, meta, err := invoke[AssociateEipAddressBatchInput, AssociateEipAddressBatchOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateEipAddressBatch", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AssociateEipAddressBatchInput, AssociateEipAddressBatchOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateEipAddressBatch", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -622,7 +622,7 @@ type AssociateHaVipAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2549
 func (c *Client) AssociateHaVip(ctx context.Context, input *AssociateHaVipInput, optFns ...func(*Options)) (*AssociateHaVipOutput, error) {
-	out, meta, err := invoke[AssociateHaVipInput, AssociateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateHaVip", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AssociateHaVipInput, AssociateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateHaVip", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -660,7 +660,7 @@ type AssociateMacSecKeyAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2674
 func (c *Client) AssociateMacSecKey(ctx context.Context, input *AssociateMacSecKeyInput, optFns ...func(*Options)) (*AssociateMacSecKeyOutput, error) {
-	out, meta, err := invoke[AssociateMacSecKeyInput, AssociateMacSecKeyOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateMacSecKey", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AssociateMacSecKeyInput, AssociateMacSecKeyOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateMacSecKey", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -694,7 +694,7 @@ type AssociateNetworkAclAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2784
 func (c *Client) AssociateNetworkAcl(ctx context.Context, input *AssociateNetworkAclInput, optFns ...func(*Options)) (*AssociateNetworkAclOutput, error) {
-	out, meta, err := invoke[AssociateNetworkAclInput, AssociateNetworkAclOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateNetworkAcl", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AssociateNetworkAclInput, AssociateNetworkAclOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateNetworkAcl", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -719,7 +719,7 @@ type AssociatePhysicalConnectionToVirtualBorderRouterAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L2924
 func (c *Client) AssociatePhysicalConnectionToVirtualBorderRouter(ctx context.Context, input *AssociatePhysicalConnectionToVirtualBorderRouterInput, optFns ...func(*Options)) (*AssociatePhysicalConnectionToVirtualBorderRouterOutput, error) {
-	out, meta, err := invoke[AssociatePhysicalConnectionToVirtualBorderRouterInput, AssociatePhysicalConnectionToVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociatePhysicalConnectionToVirtualBorderRouter", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AssociatePhysicalConnectionToVirtualBorderRouterInput, AssociatePhysicalConnectionToVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociatePhysicalConnectionToVirtualBorderRouter", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -752,7 +752,7 @@ type AssociateRouteTableAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3046
 func (c *Client) AssociateRouteTable(ctx context.Context, input *AssociateRouteTableInput, optFns ...func(*Options)) (*AssociateRouteTableOutput, error) {
-	out, meta, err := invoke[AssociateRouteTableInput, AssociateRouteTableOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateRouteTable", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AssociateRouteTableInput, AssociateRouteTableOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateRouteTable", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -777,7 +777,7 @@ type AssociateRouteTableWithGatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3158
 func (c *Client) AssociateRouteTableWithGateway(ctx context.Context, input *AssociateRouteTableWithGatewayInput, optFns ...func(*Options)) (*AssociateRouteTableWithGatewayOutput, error) {
-	out, meta, err := invoke[AssociateRouteTableWithGatewayInput, AssociateRouteTableWithGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateRouteTableWithGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AssociateRouteTableWithGatewayInput, AssociateRouteTableWithGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateRouteTableWithGateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -818,7 +818,7 @@ type AssociateRouteTablesWithVpcGatewayEndpointAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3265
 func (c *Client) AssociateRouteTablesWithVpcGatewayEndpoint(ctx context.Context, input *AssociateRouteTablesWithVpcGatewayEndpointInput, optFns ...func(*Options)) (*AssociateRouteTablesWithVpcGatewayEndpointOutput, error) {
-	out, meta, err := invoke[AssociateRouteTablesWithVpcGatewayEndpointInput, AssociateRouteTablesWithVpcGatewayEndpointOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateRouteTablesWithVpcGatewayEndpoint", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AssociateRouteTablesWithVpcGatewayEndpointInput, AssociateRouteTablesWithVpcGatewayEndpointOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateRouteTablesWithVpcGatewayEndpoint", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -852,7 +852,7 @@ type AssociateVpcCidrBlockAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3412
 func (c *Client) AssociateVpcCidrBlock(ctx context.Context, input *AssociateVpcCidrBlockInput, optFns ...func(*Options)) (*AssociateVpcCidrBlockOutput, error) {
-	out, meta, err := invoke[AssociateVpcCidrBlockInput, AssociateVpcCidrBlockOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateVpcCidrBlock", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AssociateVpcCidrBlockInput, AssociateVpcCidrBlockOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateVpcCidrBlock", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -894,7 +894,7 @@ type AssociateVpnGatewayWithCertificateAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3544
 func (c *Client) AssociateVpnGatewayWithCertificate(ctx context.Context, input *AssociateVpnGatewayWithCertificateInput, optFns ...func(*Options)) (*AssociateVpnGatewayWithCertificateOutput, error) {
-	out, meta, err := invoke[AssociateVpnGatewayWithCertificateInput, AssociateVpnGatewayWithCertificateOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateVpnGatewayWithCertificate", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AssociateVpnGatewayWithCertificateInput, AssociateVpnGatewayWithCertificateOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AssociateVpnGatewayWithCertificate", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -928,7 +928,7 @@ type AttachDhcpOptionsSetToVpcAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3662
 func (c *Client) AttachDhcpOptionsSetToVpc(ctx context.Context, input *AttachDhcpOptionsSetToVpcInput, optFns ...func(*Options)) (*AttachDhcpOptionsSetToVpcOutput, error) {
-	out, meta, err := invoke[AttachDhcpOptionsSetToVpcInput, AttachDhcpOptionsSetToVpcOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AttachDhcpOptionsSetToVpc", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AttachDhcpOptionsSetToVpcInput, AttachDhcpOptionsSetToVpcOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AttachDhcpOptionsSetToVpc", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -953,7 +953,7 @@ type AttachVbrToVpconnAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3771
 func (c *Client) AttachVbrToVpconn(ctx context.Context, input *AttachVbrToVpconnInput, optFns ...func(*Options)) (*AttachVbrToVpconnOutput, error) {
-	out, meta, err := invoke[AttachVbrToVpconnInput, AttachVbrToVpconnOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AttachVbrToVpconn", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AttachVbrToVpconnInput, AttachVbrToVpconnOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "AttachVbrToVpconn", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -986,7 +986,7 @@ type CancelCommonBandwidthPackageIpBandwidthAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3850
 func (c *Client) CancelCommonBandwidthPackageIpBandwidth(ctx context.Context, input *CancelCommonBandwidthPackageIpBandwidthInput, optFns ...func(*Options)) (*CancelCommonBandwidthPackageIpBandwidthOutput, error) {
-	out, meta, err := invoke[CancelCommonBandwidthPackageIpBandwidthInput, CancelCommonBandwidthPackageIpBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CancelCommonBandwidthPackageIpBandwidth", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CancelCommonBandwidthPackageIpBandwidthInput, CancelCommonBandwidthPackageIpBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CancelCommonBandwidthPackageIpBandwidth", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1017,7 +1017,7 @@ type CancelPhysicalConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L3945
 func (c *Client) CancelPhysicalConnection(ctx context.Context, input *CancelPhysicalConnectionInput, optFns ...func(*Options)) (*CancelPhysicalConnectionOutput, error) {
-	out, meta, err := invoke[CancelPhysicalConnectionInput, CancelPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CancelPhysicalConnection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CancelPhysicalConnectionInput, CancelPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CancelPhysicalConnection", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1048,7 +1048,7 @@ type ChangeResourceGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4041
 func (c *Client) ChangeResourceGroup(ctx context.Context, input *ChangeResourceGroupInput, optFns ...func(*Options)) (*ChangeResourceGroupOutput, error) {
-	out, meta, err := invoke[ChangeResourceGroupInput, ChangeResourceGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ChangeResourceGroup", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ChangeResourceGroupInput, ChangeResourceGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ChangeResourceGroup", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1079,7 +1079,7 @@ type CheckCanAllocateVpcPrivateIpAddressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4131
 func (c *Client) CheckCanAllocateVpcPrivateIpAddress(ctx context.Context, input *CheckCanAllocateVpcPrivateIpAddressInput, optFns ...func(*Options)) (*CheckCanAllocateVpcPrivateIpAddressOutput, error) {
-	out, meta, err := invoke[CheckCanAllocateVpcPrivateIpAddressInput, CheckCanAllocateVpcPrivateIpAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CheckCanAllocateVpcPrivateIpAddress", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CheckCanAllocateVpcPrivateIpAddressInput, CheckCanAllocateVpcPrivateIpAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CheckCanAllocateVpcPrivateIpAddress", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1104,7 +1104,7 @@ type CheckVpnBgpEnabledAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4227
 func (c *Client) CheckVpnBgpEnabled(ctx context.Context, input *CheckVpnBgpEnabledInput, optFns ...func(*Options)) (*CheckVpnBgpEnabledOutput, error) {
-	out, meta, err := invoke[CheckVpnBgpEnabledInput, CheckVpnBgpEnabledOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CheckVpnBgpEnabled", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CheckVpnBgpEnabledInput, CheckVpnBgpEnabledOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CheckVpnBgpEnabled", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1137,7 +1137,7 @@ type CompletePhysicalConnectionLOAAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4321
 func (c *Client) CompletePhysicalConnectionLOA(ctx context.Context, input *CompletePhysicalConnectionLOAInput, optFns ...func(*Options)) (*CompletePhysicalConnectionLOAOutput, error) {
-	out, meta, err := invoke[CompletePhysicalConnectionLOAInput, CompletePhysicalConnectionLOAOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CompletePhysicalConnectionLOA", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CompletePhysicalConnectionLOAInput, CompletePhysicalConnectionLOAOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CompletePhysicalConnectionLOA", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1162,7 +1162,7 @@ type ConfirmPhysicalConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4436
 func (c *Client) ConfirmPhysicalConnection(ctx context.Context, input *ConfirmPhysicalConnectionInput, optFns ...func(*Options)) (*ConfirmPhysicalConnectionOutput, error) {
-	out, meta, err := invoke[ConfirmPhysicalConnectionInput, ConfirmPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ConfirmPhysicalConnection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ConfirmPhysicalConnectionInput, ConfirmPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ConfirmPhysicalConnection", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1197,7 +1197,7 @@ type ConnectRouterInterfaceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4519
 func (c *Client) ConnectRouterInterface(ctx context.Context, input *ConnectRouterInterfaceInput, optFns ...func(*Options)) (*ConnectRouterInterfaceOutput, error) {
-	out, meta, err := invoke[ConnectRouterInterfaceInput, ConnectRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ConnectRouterInterface", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ConnectRouterInterfaceInput, ConnectRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ConnectRouterInterface", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1231,7 +1231,7 @@ type CopyNetworkAclEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4618
 func (c *Client) CopyNetworkAclEntries(ctx context.Context, input *CopyNetworkAclEntriesInput, optFns ...func(*Options)) (*CopyNetworkAclEntriesOutput, error) {
-	out, meta, err := invoke[CopyNetworkAclEntriesInput, CopyNetworkAclEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CopyNetworkAclEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CopyNetworkAclEntriesInput, CopyNetworkAclEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CopyNetworkAclEntries", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1269,7 +1269,7 @@ type CreateBgpGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4755
 func (c *Client) CreateBgpGroup(ctx context.Context, input *CreateBgpGroupInput, optFns ...func(*Options)) (*CreateBgpGroupOutput, error) {
-	out, meta, err := invoke[CreateBgpGroupInput, CreateBgpGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateBgpGroup", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateBgpGroupInput, CreateBgpGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateBgpGroup", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1294,7 +1294,7 @@ type CreateBgpPeerAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L4903
 func (c *Client) CreateBgpPeer(ctx context.Context, input *CreateBgpPeerInput, optFns ...func(*Options)) (*CreateBgpPeerOutput, error) {
-	out, meta, err := invoke[CreateBgpPeerInput, CreateBgpPeerOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateBgpPeer", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateBgpPeerInput, CreateBgpPeerOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateBgpPeer", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1325,7 +1325,7 @@ type CreateCommonBandwidthPackageAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L5071
 func (c *Client) CreateCommonBandwidthPackage(ctx context.Context, input *CreateCommonBandwidthPackageInput, optFns ...func(*Options)) (*CreateCommonBandwidthPackageOutput, error) {
-	out, meta, err := invoke[CreateCommonBandwidthPackageInput, CreateCommonBandwidthPackageOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateCommonBandwidthPackage", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateCommonBandwidthPackageInput, CreateCommonBandwidthPackageOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateCommonBandwidthPackage", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1350,7 +1350,7 @@ type CreateCustomerGatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L5247
 func (c *Client) CreateCustomerGateway(ctx context.Context, input *CreateCustomerGatewayInput, optFns ...func(*Options)) (*CreateCustomerGatewayOutput, error) {
-	out, meta, err := invoke[CreateCustomerGatewayInput, CreateCustomerGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateCustomerGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateCustomerGatewayInput, CreateCustomerGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateCustomerGateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1390,7 +1390,7 @@ type CreateDefaultVSwitchAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L5358
 func (c *Client) CreateDefaultVSwitch(ctx context.Context, input *CreateDefaultVSwitchInput, optFns ...func(*Options)) (*CreateDefaultVSwitchOutput, error) {
-	out, meta, err := invoke[CreateDefaultVSwitchInput, CreateDefaultVSwitchOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateDefaultVSwitch", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateDefaultVSwitchInput, CreateDefaultVSwitchOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateDefaultVSwitch", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1432,7 +1432,7 @@ type CreateDefaultVpcAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L5480
 func (c *Client) CreateDefaultVpc(ctx context.Context, input *CreateDefaultVpcInput, optFns ...func(*Options)) (*CreateDefaultVpcOutput, error) {
-	out, meta, err := invoke[CreateDefaultVpcInput, CreateDefaultVpcOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateDefaultVpc", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateDefaultVpcInput, CreateDefaultVpcOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateDefaultVpc", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1465,7 +1465,7 @@ type CreateDhcpOptionsSetAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L5642
 func (c *Client) CreateDhcpOptionsSet(ctx context.Context, input *CreateDhcpOptionsSetInput, optFns ...func(*Options)) (*CreateDhcpOptionsSetOutput, error) {
-	out, meta, err := invoke[CreateDhcpOptionsSetInput, CreateDhcpOptionsSetOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateDhcpOptionsSet", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateDhcpOptionsSetInput, CreateDhcpOptionsSetOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateDhcpOptionsSet", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1500,7 +1500,7 @@ type CreateEnhancedVpnGatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L5790
 func (c *Client) CreateEnhancedVpnGateway(ctx context.Context, input *CreateEnhancedVpnGatewayInput, optFns ...func(*Options)) (*CreateEnhancedVpnGatewayOutput, error) {
-	out, meta, err := invoke[CreateEnhancedVpnGatewayInput, CreateEnhancedVpnGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateEnhancedVpnGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateEnhancedVpnGatewayInput, CreateEnhancedVpnGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateEnhancedVpnGateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1525,7 +1525,7 @@ type CreateExpressCloudConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L5938
 func (c *Client) CreateExpressCloudConnection(ctx context.Context, input *CreateExpressCloudConnectionInput, optFns ...func(*Options)) (*CreateExpressCloudConnectionOutput, error) {
-	out, meta, err := invoke[CreateExpressCloudConnectionInput, CreateExpressCloudConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateExpressCloudConnection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateExpressCloudConnectionInput, CreateExpressCloudConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateExpressCloudConnection", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1557,7 +1557,7 @@ type CreateExpressConnectTrafficQosAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6068
 func (c *Client) CreateExpressConnectTrafficQos(ctx context.Context, input *CreateExpressConnectTrafficQosInput, optFns ...func(*Options)) (*CreateExpressConnectTrafficQosOutput, error) {
-	out, meta, err := invoke[CreateExpressConnectTrafficQosInput, CreateExpressConnectTrafficQosOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateExpressConnectTrafficQos", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateExpressConnectTrafficQosInput, CreateExpressConnectTrafficQosOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateExpressConnectTrafficQos", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1591,7 +1591,7 @@ type CreateExpressConnectTrafficQosQueueAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6194
 func (c *Client) CreateExpressConnectTrafficQosQueue(ctx context.Context, input *CreateExpressConnectTrafficQosQueueInput, optFns ...func(*Options)) (*CreateExpressConnectTrafficQosQueueOutput, error) {
-	out, meta, err := invoke[CreateExpressConnectTrafficQosQueueInput, CreateExpressConnectTrafficQosQueueOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateExpressConnectTrafficQosQueue", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateExpressConnectTrafficQosQueueInput, CreateExpressConnectTrafficQosQueueOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateExpressConnectTrafficQosQueue", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1623,7 +1623,7 @@ type CreateExpressConnectTrafficQosRuleAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6402
 func (c *Client) CreateExpressConnectTrafficQosRule(ctx context.Context, input *CreateExpressConnectTrafficQosRuleInput, optFns ...func(*Options)) (*CreateExpressConnectTrafficQosRuleOutput, error) {
-	out, meta, err := invoke[CreateExpressConnectTrafficQosRuleInput, CreateExpressConnectTrafficQosRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateExpressConnectTrafficQosRule", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateExpressConnectTrafficQosRuleInput, CreateExpressConnectTrafficQosRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateExpressConnectTrafficQosRule", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1672,7 +1672,7 @@ type CreateFailoverTestJobAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6557
 func (c *Client) CreateFailoverTestJob(ctx context.Context, input *CreateFailoverTestJobInput, optFns ...func(*Options)) (*CreateFailoverTestJobOutput, error) {
-	out, meta, err := invoke[CreateFailoverTestJobInput, CreateFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateFailoverTestJob", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateFailoverTestJobInput, CreateFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateFailoverTestJob", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1705,7 +1705,7 @@ type CreateFlowLogAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6761
 func (c *Client) CreateFlowLog(ctx context.Context, input *CreateFlowLogInput, optFns ...func(*Options)) (*CreateFlowLogOutput, error) {
-	out, meta, err := invoke[CreateFlowLogInput, CreateFlowLogOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateFlowLog", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateFlowLogInput, CreateFlowLogOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateFlowLog", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1747,7 +1747,7 @@ type CreateForwardEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L6943
 func (c *Client) CreateForwardEntry(ctx context.Context, input *CreateForwardEntryInput, optFns ...func(*Options)) (*CreateForwardEntryOutput, error) {
-	out, meta, err := invoke[CreateForwardEntryInput, CreateForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateForwardEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateForwardEntryInput, CreateForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateForwardEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1780,7 +1780,7 @@ type CreateFullNatEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L7111
 func (c *Client) CreateFullNatEntry(ctx context.Context, input *CreateFullNatEntryInput, optFns ...func(*Options)) (*CreateFullNatEntryOutput, error) {
-	out, meta, err := invoke[CreateFullNatEntryInput, CreateFullNatEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateFullNatEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateFullNatEntryInput, CreateFullNatEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateFullNatEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1812,7 +1812,7 @@ type CreateGlobalAccelerationInstanceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L7262
 func (c *Client) CreateGlobalAccelerationInstance(ctx context.Context, input *CreateGlobalAccelerationInstanceInput, optFns ...func(*Options)) (*CreateGlobalAccelerationInstanceOutput, error) {
-	out, meta, err := invoke[CreateGlobalAccelerationInstanceInput, CreateGlobalAccelerationInstanceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateGlobalAccelerationInstance", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateGlobalAccelerationInstanceInput, CreateGlobalAccelerationInstanceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateGlobalAccelerationInstance", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1845,7 +1845,7 @@ type CreateHaVipAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L7395
 func (c *Client) CreateHaVip(ctx context.Context, input *CreateHaVipInput, optFns ...func(*Options)) (*CreateHaVipOutput, error) {
-	out, meta, err := invoke[CreateHaVipInput, CreateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateHaVip", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateHaVipInput, CreateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateHaVip", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1879,7 +1879,7 @@ type CreateHighReliablePhysicalConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L7622
 func (c *Client) CreateHighReliablePhysicalConnection(ctx context.Context, input *CreateHighReliablePhysicalConnectionInput, optFns ...func(*Options)) (*CreateHighReliablePhysicalConnectionOutput, error) {
-	out, meta, err := invoke[CreateHighReliablePhysicalConnectionInput, CreateHighReliablePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateHighReliablePhysicalConnection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateHighReliablePhysicalConnectionInput, CreateHighReliablePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateHighReliablePhysicalConnection", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1904,7 +1904,7 @@ type CreateIPv6TranslatorAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L7760
 func (c *Client) CreateIPv6Translator(ctx context.Context, input *CreateIPv6TranslatorInput, optFns ...func(*Options)) (*CreateIPv6TranslatorOutput, error) {
-	out, meta, err := invoke[CreateIPv6TranslatorInput, CreateIPv6TranslatorOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateIPv6Translator", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateIPv6TranslatorInput, CreateIPv6TranslatorOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateIPv6Translator", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1929,7 +1929,7 @@ type CreateIPv6TranslatorAclListAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L7868
 func (c *Client) CreateIPv6TranslatorAclList(ctx context.Context, input *CreateIPv6TranslatorAclListInput, optFns ...func(*Options)) (*CreateIPv6TranslatorAclListOutput, error) {
-	out, meta, err := invoke[CreateIPv6TranslatorAclListInput, CreateIPv6TranslatorAclListOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateIPv6TranslatorAclList", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateIPv6TranslatorAclListInput, CreateIPv6TranslatorAclListOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateIPv6TranslatorAclList", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1954,7 +1954,7 @@ type CreateIPv6TranslatorEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L7989
 func (c *Client) CreateIPv6TranslatorEntry(ctx context.Context, input *CreateIPv6TranslatorEntryInput, optFns ...func(*Options)) (*CreateIPv6TranslatorEntryOutput, error) {
-	out, meta, err := invoke[CreateIPv6TranslatorEntryInput, CreateIPv6TranslatorEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateIPv6TranslatorEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateIPv6TranslatorEntryInput, CreateIPv6TranslatorEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateIPv6TranslatorEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1990,7 +1990,7 @@ type CreateIpsecServerAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8171
 func (c *Client) CreateIpsecServer(ctx context.Context, input *CreateIpsecServerInput, optFns ...func(*Options)) (*CreateIpsecServerOutput, error) {
-	out, meta, err := invoke[CreateIpsecServerInput, CreateIpsecServerOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateIpsecServer", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateIpsecServerInput, CreateIpsecServerOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateIpsecServer", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2024,7 +2024,7 @@ type CreateIpv4GatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8313
 func (c *Client) CreateIpv4Gateway(ctx context.Context, input *CreateIpv4GatewayInput, optFns ...func(*Options)) (*CreateIpv4GatewayOutput, error) {
-	out, meta, err := invoke[CreateIpv4GatewayInput, CreateIpv4GatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateIpv4Gateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateIpv4GatewayInput, CreateIpv4GatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateIpv4Gateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2058,7 +2058,7 @@ type CreateIpv6EgressOnlyRuleAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8444
 func (c *Client) CreateIpv6EgressOnlyRule(ctx context.Context, input *CreateIpv6EgressOnlyRuleInput, optFns ...func(*Options)) (*CreateIpv6EgressOnlyRuleOutput, error) {
-	out, meta, err := invoke[CreateIpv6EgressOnlyRuleInput, CreateIpv6EgressOnlyRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateIpv6EgressOnlyRule", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateIpv6EgressOnlyRuleInput, CreateIpv6EgressOnlyRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateIpv6EgressOnlyRule", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2094,7 +2094,7 @@ type CreateIpv6GatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8581
 func (c *Client) CreateIpv6Gateway(ctx context.Context, input *CreateIpv6GatewayInput, optFns ...func(*Options)) (*CreateIpv6GatewayOutput, error) {
-	out, meta, err := invoke[CreateIpv6GatewayInput, CreateIpv6GatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateIpv6Gateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateIpv6GatewayInput, CreateIpv6GatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateIpv6Gateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2132,7 +2132,7 @@ type CreateNatGatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L8865
 func (c *Client) CreateNatGateway(ctx context.Context, input *CreateNatGatewayInput, optFns ...func(*Options)) (*CreateNatGatewayOutput, error) {
-	out, meta, err := invoke[CreateNatGatewayInput, CreateNatGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateNatGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateNatGatewayInput, CreateNatGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateNatGateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2166,7 +2166,7 @@ type CreateNatIpAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9070
 func (c *Client) CreateNatIp(ctx context.Context, input *CreateNatIpInput, optFns ...func(*Options)) (*CreateNatIpOutput, error) {
-	out, meta, err := invoke[CreateNatIpInput, CreateNatIpOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateNatIp", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateNatIpInput, CreateNatIpOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateNatIp", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2197,7 +2197,7 @@ type CreateNatIpCidrAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9213
 func (c *Client) CreateNatIpCidr(ctx context.Context, input *CreateNatIpCidrInput, optFns ...func(*Options)) (*CreateNatIpCidrOutput, error) {
-	out, meta, err := invoke[CreateNatIpCidrInput, CreateNatIpCidrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateNatIpCidr", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateNatIpCidrInput, CreateNatIpCidrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateNatIpCidr", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2222,7 +2222,7 @@ type CreateNetworkAclAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9389
 func (c *Client) CreateNetworkAcl(ctx context.Context, input *CreateNetworkAclInput, optFns ...func(*Options)) (*CreateNetworkAclOutput, error) {
-	out, meta, err := invoke[CreateNetworkAclInput, CreateNetworkAclOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateNetworkAcl", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateNetworkAclInput, CreateNetworkAclOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateNetworkAcl", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2258,7 +2258,7 @@ type CreatePhysicalConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9567
 func (c *Client) CreatePhysicalConnection(ctx context.Context, input *CreatePhysicalConnectionInput, optFns ...func(*Options)) (*CreatePhysicalConnectionOutput, error) {
-	out, meta, err := invoke[CreatePhysicalConnectionInput, CreatePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreatePhysicalConnection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreatePhysicalConnectionInput, CreatePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreatePhysicalConnection", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2289,7 +2289,7 @@ type CreatePhysicalConnectionOccupancyOrderAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9733
 func (c *Client) CreatePhysicalConnectionOccupancyOrder(ctx context.Context, input *CreatePhysicalConnectionOccupancyOrderInput, optFns ...func(*Options)) (*CreatePhysicalConnectionOccupancyOrderOutput, error) {
-	out, meta, err := invoke[CreatePhysicalConnectionOccupancyOrderInput, CreatePhysicalConnectionOccupancyOrderOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreatePhysicalConnectionOccupancyOrder", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreatePhysicalConnectionOccupancyOrderInput, CreatePhysicalConnectionOccupancyOrderOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreatePhysicalConnectionOccupancyOrder", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2314,7 +2314,7 @@ type CreatePhysicalConnectionSetupOrderAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L9885
 func (c *Client) CreatePhysicalConnectionSetupOrder(ctx context.Context, input *CreatePhysicalConnectionSetupOrderInput, optFns ...func(*Options)) (*CreatePhysicalConnectionSetupOrderOutput, error) {
-	out, meta, err := invoke[CreatePhysicalConnectionSetupOrderInput, CreatePhysicalConnectionSetupOrderOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreatePhysicalConnectionSetupOrder", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreatePhysicalConnectionSetupOrderInput, CreatePhysicalConnectionSetupOrderOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreatePhysicalConnectionSetupOrder", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2345,7 +2345,7 @@ type CreatePublicIpAddressPoolAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10033
 func (c *Client) CreatePublicIpAddressPool(ctx context.Context, input *CreatePublicIpAddressPoolInput, optFns ...func(*Options)) (*CreatePublicIpAddressPoolOutput, error) {
-	out, meta, err := invoke[CreatePublicIpAddressPoolInput, CreatePublicIpAddressPoolOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreatePublicIpAddressPool", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreatePublicIpAddressPoolInput, CreatePublicIpAddressPoolOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreatePublicIpAddressPool", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2387,7 +2387,7 @@ type CreateRouteEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10215
 func (c *Client) CreateRouteEntries(ctx context.Context, input *CreateRouteEntriesInput, optFns ...func(*Options)) (*CreateRouteEntriesOutput, error) {
-	out, meta, err := invoke[CreateRouteEntriesInput, CreateRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateRouteEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateRouteEntriesInput, CreateRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateRouteEntries", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2455,7 +2455,7 @@ type CreateRouteEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10382
 func (c *Client) CreateRouteEntry(ctx context.Context, input *CreateRouteEntryInput, optFns ...func(*Options)) (*CreateRouteEntryOutput, error) {
-	out, meta, err := invoke[CreateRouteEntryInput, CreateRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateRouteEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateRouteEntryInput, CreateRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateRouteEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2489,7 +2489,7 @@ type CreateRouteTableAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10591
 func (c *Client) CreateRouteTable(ctx context.Context, input *CreateRouteTableInput, optFns ...func(*Options)) (*CreateRouteTableOutput, error) {
-	out, meta, err := invoke[CreateRouteTableInput, CreateRouteTableOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateRouteTable", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateRouteTableInput, CreateRouteTableOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateRouteTable", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2525,7 +2525,7 @@ type CreateRouteTargetGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10749
 func (c *Client) CreateRouteTargetGroup(ctx context.Context, input *CreateRouteTargetGroupInput, optFns ...func(*Options)) (*CreateRouteTargetGroupOutput, error) {
-	out, meta, err := invoke[CreateRouteTargetGroupInput, CreateRouteTargetGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateRouteTargetGroup", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateRouteTargetGroupInput, CreateRouteTargetGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateRouteTargetGroup", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2563,7 +2563,7 @@ type CreateRouterInterfaceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L10984
 func (c *Client) CreateRouterInterface(ctx context.Context, input *CreateRouterInterfaceInput, optFns ...func(*Options)) (*CreateRouterInterfaceOutput, error) {
-	out, meta, err := invoke[CreateRouterInterfaceInput, CreateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateRouterInterface", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateRouterInterfaceInput, CreateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateRouterInterface", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2602,7 +2602,7 @@ type CreateSnatEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L11215
 func (c *Client) CreateSnatEntry(ctx context.Context, input *CreateSnatEntryInput, optFns ...func(*Options)) (*CreateSnatEntryOutput, error) {
-	out, meta, err := invoke[CreateSnatEntryInput, CreateSnatEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateSnatEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateSnatEntryInput, CreateSnatEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateSnatEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2633,7 +2633,7 @@ type CreateSslVpnClientCertAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L11350
 func (c *Client) CreateSslVpnClientCert(ctx context.Context, input *CreateSslVpnClientCertInput, optFns ...func(*Options)) (*CreateSslVpnClientCertOutput, error) {
-	out, meta, err := invoke[CreateSslVpnClientCertInput, CreateSslVpnClientCertOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateSslVpnClientCert", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateSslVpnClientCertInput, CreateSslVpnClientCertOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateSslVpnClientCert", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2670,7 +2670,7 @@ type CreateSslVpnServerAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L11555
 func (c *Client) CreateSslVpnServer(ctx context.Context, input *CreateSslVpnServerInput, optFns ...func(*Options)) (*CreateSslVpnServerOutput, error) {
-	out, meta, err := invoke[CreateSslVpnServerInput, CreateSslVpnServerOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateSslVpnServer", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateSslVpnServerInput, CreateSslVpnServerOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateSslVpnServer", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2703,7 +2703,7 @@ type CreateTrafficMirrorFilterAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L11776
 func (c *Client) CreateTrafficMirrorFilter(ctx context.Context, input *CreateTrafficMirrorFilterInput, optFns ...func(*Options)) (*CreateTrafficMirrorFilterOutput, error) {
-	out, meta, err := invoke[CreateTrafficMirrorFilterInput, CreateTrafficMirrorFilterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateTrafficMirrorFilter", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateTrafficMirrorFilterInput, CreateTrafficMirrorFilterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateTrafficMirrorFilter", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2737,7 +2737,7 @@ type CreateTrafficMirrorFilterRulesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L11961
 func (c *Client) CreateTrafficMirrorFilterRules(ctx context.Context, input *CreateTrafficMirrorFilterRulesInput, optFns ...func(*Options)) (*CreateTrafficMirrorFilterRulesOutput, error) {
-	out, meta, err := invoke[CreateTrafficMirrorFilterRulesInput, CreateTrafficMirrorFilterRulesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateTrafficMirrorFilterRules", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateTrafficMirrorFilterRulesInput, CreateTrafficMirrorFilterRulesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateTrafficMirrorFilterRules", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2770,7 +2770,7 @@ type CreateTrafficMirrorSessionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L12120
 func (c *Client) CreateTrafficMirrorSession(ctx context.Context, input *CreateTrafficMirrorSessionInput, optFns ...func(*Options)) (*CreateTrafficMirrorSessionOutput, error) {
-	out, meta, err := invoke[CreateTrafficMirrorSessionInput, CreateTrafficMirrorSessionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateTrafficMirrorSession", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateTrafficMirrorSessionInput, CreateTrafficMirrorSessionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateTrafficMirrorSession", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2812,7 +2812,7 @@ type CreateVSwitchAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L12292
 func (c *Client) CreateVSwitch(ctx context.Context, input *CreateVSwitchInput, optFns ...func(*Options)) (*CreateVSwitchOutput, error) {
-	out, meta, err := invoke[CreateVSwitchInput, CreateVSwitchOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVSwitch", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateVSwitchInput, CreateVSwitchOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVSwitch", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2850,7 +2850,7 @@ type CreateVSwitchCidrReservationAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L12478
 func (c *Client) CreateVSwitchCidrReservation(ctx context.Context, input *CreateVSwitchCidrReservationInput, optFns ...func(*Options)) (*CreateVSwitchCidrReservationOutput, error) {
-	out, meta, err := invoke[CreateVSwitchCidrReservationInput, CreateVSwitchCidrReservationOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVSwitchCidrReservation", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateVSwitchCidrReservationInput, CreateVSwitchCidrReservationOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVSwitchCidrReservation", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2875,7 +2875,7 @@ type CreateVbrHaAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L12623
 func (c *Client) CreateVbrHa(ctx context.Context, input *CreateVbrHaInput, optFns ...func(*Options)) (*CreateVbrHaOutput, error) {
-	out, meta, err := invoke[CreateVbrHaInput, CreateVbrHaOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVbrHa", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateVbrHaInput, CreateVbrHaOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVbrHa", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2912,7 +2912,7 @@ type CreateVcoRouteEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L12757
 func (c *Client) CreateVcoRouteEntry(ctx context.Context, input *CreateVcoRouteEntryInput, optFns ...func(*Options)) (*CreateVcoRouteEntryOutput, error) {
-	out, meta, err := invoke[CreateVcoRouteEntryInput, CreateVcoRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVcoRouteEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateVcoRouteEntryInput, CreateVcoRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVcoRouteEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2943,7 +2943,7 @@ type CreateVirtualBorderRouterAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L12937
 func (c *Client) CreateVirtualBorderRouter(ctx context.Context, input *CreateVirtualBorderRouterInput, optFns ...func(*Options)) (*CreateVirtualBorderRouterOutput, error) {
-	out, meta, err := invoke[CreateVirtualBorderRouterInput, CreateVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVirtualBorderRouter", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateVirtualBorderRouterInput, CreateVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVirtualBorderRouter", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2985,7 +2985,7 @@ type CreateVirtualPhysicalConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13123
 func (c *Client) CreateVirtualPhysicalConnection(ctx context.Context, input *CreateVirtualPhysicalConnectionInput, optFns ...func(*Options)) (*CreateVirtualPhysicalConnectionOutput, error) {
-	out, meta, err := invoke[CreateVirtualPhysicalConnectionInput, CreateVirtualPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVirtualPhysicalConnection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateVirtualPhysicalConnectionInput, CreateVirtualPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVirtualPhysicalConnection", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3027,7 +3027,7 @@ type CreateVpcAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13306
 func (c *Client) CreateVpc(ctx context.Context, input *CreateVpcInput, optFns ...func(*Options)) (*CreateVpcOutput, error) {
-	out, meta, err := invoke[CreateVpcInput, CreateVpcOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVpc", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateVpcInput, CreateVpcOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVpc", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3061,7 +3061,7 @@ type CreateVpcGatewayEndpointAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13503
 func (c *Client) CreateVpcGatewayEndpoint(ctx context.Context, input *CreateVpcGatewayEndpointInput, optFns ...func(*Options)) (*CreateVpcGatewayEndpointOutput, error) {
-	out, meta, err := invoke[CreateVpcGatewayEndpointInput, CreateVpcGatewayEndpointOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVpcGatewayEndpoint", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateVpcGatewayEndpointInput, CreateVpcGatewayEndpointOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVpcGatewayEndpoint", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3092,7 +3092,7 @@ type CreateVpcPrefixListAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13655
 func (c *Client) CreateVpcPrefixList(ctx context.Context, input *CreateVpcPrefixListInput, optFns ...func(*Options)) (*CreateVpcPrefixListOutput, error) {
-	out, meta, err := invoke[CreateVpcPrefixListInput, CreateVpcPrefixListOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVpcPrefixList", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateVpcPrefixListInput, CreateVpcPrefixListOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVpcPrefixList", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3128,7 +3128,75 @@ type CreateVpconnFromVbrAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13772
 func (c *Client) CreateVpconnFromVbr(ctx context.Context, input *CreateVpconnFromVbrInput, optFns ...func(*Options)) (*CreateVpconnFromVbrOutput, error) {
-	out, meta, err := invoke[CreateVpconnFromVbrInput, CreateVpconnFromVbrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVpconnFromVbr", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateVpconnFromVbrInput, CreateVpconnFromVbrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVpconnFromVbr", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateVpnAttachmentAPI is the minimal interface for CreateVpnAttachment mocks and capability adapters.
+type CreateVpnAttachmentAPI interface {
+	// CreateVpnAttachment invokes the native action with owned inputs and per-call options.
+	CreateVpnAttachment(context.Context, *CreateVpnAttachmentInput, ...func(*Options)) (*CreateVpnAttachmentOutput, error)
+}
+
+// CreateVpnAttachment calls the native CreateVpnAttachment action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates an IPsec-VPN connection to be associated with a transit router instance by calling the CreateVpnAttachment operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14052
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// >Notice:
+// Before you begin.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14052
+func (c *Client) CreateVpnAttachment(ctx context.Context, input *CreateVpnAttachmentInput, optFns ...func(*Options)) (*CreateVpnAttachmentOutput, error) {
+	out, meta, err := invoke[CreateVpnAttachmentInput, CreateVpnAttachmentOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVpnAttachment", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateVpnConnectionAPI is the minimal interface for CreateVpnConnection mocks and capability adapters.
+type CreateVpnConnectionAPI interface {
+	// CreateVpnConnection invokes the native action with owned inputs and per-call options.
+	CreateVpnConnection(context.Context, *CreateVpnConnectionInput, ...func(*Options)) (*CreateVpnConnectionOutput, error)
+}
+
+// CreateVpnConnection calls the native CreateVpnConnection action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates an IPsec-VPN connection by calling the CreateVpnConnection operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14464
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - If the VPN gateway instance supports creating IPsec-VPN connections in dual-tunnel mode, you can configure the following request parameters in addition to the required parameters when you call the CreateVpnConnection operation:
+// ClientToken, Name, EffectImmediately, AutoConfigRoute, Tags array, TunnelOptionsSpecification array, and EnableTunnelsBgp.
+// For information about the regions and zones that support IPsec-VPN connections in dual-tunnel mode, see Upgrade an IPsec-VPN connection to dual-tunnel mode (https://help.aliyun.com/document_detail/2358946.html).
+// ClientToken, CustomerGatewayId, Name, EffectImmediately, IkeConfig, IpsecConfig, HealthCheckConfig, AutoConfigRoute, EnableDpd, EnableNatTraversal, BgpConfig, RemoteCaCertificate, and Tags array.
+// - The CreateVpnConnection operation is asynchronous. After you send a request, the system returns an instance ID, but the IPsec-VPN connection is not yet created. The creation task is still running in the background. You can call DescribeVpnGateway (https://help.aliyun.com/document_detail/73720.html) to query the status of the VPN gateway instance to determine the creation status of the IPsec-VPN connection.
+// - The CreateVpnConnection operation does not support concurrent creation of IPsec-VPN connections under the same VPN gateway.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14464
+func (c *Client) CreateVpnConnection(ctx context.Context, input *CreateVpnConnectionInput, optFns ...func(*Options)) (*CreateVpnConnectionOutput, error) {
+	out, meta, err := invoke[CreateVpnConnectionInput, CreateVpnConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVpnConnection", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3164,7 +3232,7 @@ type CreateVpnGatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14695
 func (c *Client) CreateVpnGateway(ctx context.Context, input *CreateVpnGatewayInput, optFns ...func(*Options)) (*CreateVpnGatewayOutput, error) {
-	out, meta, err := invoke[CreateVpnGatewayInput, CreateVpnGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVpnGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateVpnGatewayInput, CreateVpnGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVpnGateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3205,7 +3273,7 @@ type CreateVpnPbrRouteEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14897
 func (c *Client) CreateVpnPbrRouteEntry(ctx context.Context, input *CreateVpnPbrRouteEntryInput, optFns ...func(*Options)) (*CreateVpnPbrRouteEntryOutput, error) {
-	out, meta, err := invoke[CreateVpnPbrRouteEntryInput, CreateVpnPbrRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVpnPbrRouteEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateVpnPbrRouteEntryInput, CreateVpnPbrRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVpnPbrRouteEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3245,7 +3313,7 @@ type CreateVpnRouteEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L15090
 func (c *Client) CreateVpnRouteEntry(ctx context.Context, input *CreateVpnRouteEntryInput, optFns ...func(*Options)) (*CreateVpnRouteEntryOutput, error) {
-	out, meta, err := invoke[CreateVpnRouteEntryInput, CreateVpnRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVpnRouteEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateVpnRouteEntryInput, CreateVpnRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "CreateVpnRouteEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3270,7 +3338,7 @@ type DeactivateRouterInterfaceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L15216
 func (c *Client) DeactivateRouterInterface(ctx context.Context, input *DeactivateRouterInterfaceInput, optFns ...func(*Options)) (*DeactivateRouterInterfaceOutput, error) {
-	out, meta, err := invoke[DeactivateRouterInterfaceInput, DeactivateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeactivateRouterInterface", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeactivateRouterInterfaceInput, DeactivateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeactivateRouterInterface", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3304,7 +3372,7 @@ type DeactiveFlowLogAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L15296
 func (c *Client) DeactiveFlowLog(ctx context.Context, input *DeactiveFlowLogInput, optFns ...func(*Options)) (*DeactiveFlowLogOutput, error) {
-	out, meta, err := invoke[DeactiveFlowLogInput, DeactiveFlowLogOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeactiveFlowLog", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeactiveFlowLogInput, DeactiveFlowLogOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeactiveFlowLog", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3329,7 +3397,7 @@ type DeleteBgpGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L15392
 func (c *Client) DeleteBgpGroup(ctx context.Context, input *DeleteBgpGroupInput, optFns ...func(*Options)) (*DeleteBgpGroupOutput, error) {
-	out, meta, err := invoke[DeleteBgpGroupInput, DeleteBgpGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteBgpGroup", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteBgpGroupInput, DeleteBgpGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteBgpGroup", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3360,7 +3428,7 @@ type DeleteBgpNetworkAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L15484
 func (c *Client) DeleteBgpNetwork(ctx context.Context, input *DeleteBgpNetworkInput, optFns ...func(*Options)) (*DeleteBgpNetworkOutput, error) {
-	out, meta, err := invoke[DeleteBgpNetworkInput, DeleteBgpNetworkOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteBgpNetwork", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteBgpNetworkInput, DeleteBgpNetworkOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteBgpNetwork", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3385,7 +3453,7 @@ type DeleteBgpPeerAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L15580
 func (c *Client) DeleteBgpPeer(ctx context.Context, input *DeleteBgpPeerInput, optFns ...func(*Options)) (*DeleteBgpPeerOutput, error) {
-	out, meta, err := invoke[DeleteBgpPeerInput, DeleteBgpPeerOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteBgpPeer", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteBgpPeerInput, DeleteBgpPeerOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteBgpPeer", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3416,7 +3484,7 @@ type DeleteCommonBandwidthPackageAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L15669
 func (c *Client) DeleteCommonBandwidthPackage(ctx context.Context, input *DeleteCommonBandwidthPackageInput, optFns ...func(*Options)) (*DeleteCommonBandwidthPackageOutput, error) {
-	out, meta, err := invoke[DeleteCommonBandwidthPackageInput, DeleteCommonBandwidthPackageOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteCommonBandwidthPackage", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteCommonBandwidthPackageInput, DeleteCommonBandwidthPackageOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteCommonBandwidthPackage", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3447,7 +3515,7 @@ type DeleteCustomerGatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L15760
 func (c *Client) DeleteCustomerGateway(ctx context.Context, input *DeleteCustomerGatewayInput, optFns ...func(*Options)) (*DeleteCustomerGatewayOutput, error) {
-	out, meta, err := invoke[DeleteCustomerGatewayInput, DeleteCustomerGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteCustomerGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteCustomerGatewayInput, DeleteCustomerGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteCustomerGateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3481,7 +3549,7 @@ type DeleteDhcpOptionsSetAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L15856
 func (c *Client) DeleteDhcpOptionsSet(ctx context.Context, input *DeleteDhcpOptionsSetInput, optFns ...func(*Options)) (*DeleteDhcpOptionsSetOutput, error) {
-	out, meta, err := invoke[DeleteDhcpOptionsSetInput, DeleteDhcpOptionsSetOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteDhcpOptionsSet", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteDhcpOptionsSetInput, DeleteDhcpOptionsSetOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteDhcpOptionsSet", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3512,7 +3580,7 @@ type DeleteEnhancedVpnGatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L15956
 func (c *Client) DeleteEnhancedVpnGateway(ctx context.Context, input *DeleteEnhancedVpnGatewayInput, optFns ...func(*Options)) (*DeleteEnhancedVpnGatewayOutput, error) {
-	out, meta, err := invoke[DeleteEnhancedVpnGatewayInput, DeleteEnhancedVpnGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteEnhancedVpnGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteEnhancedVpnGatewayInput, DeleteEnhancedVpnGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteEnhancedVpnGateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3537,7 +3605,7 @@ type DeleteExpressConnectAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16050
 func (c *Client) DeleteExpressConnect(ctx context.Context, input *DeleteExpressConnectInput, optFns ...func(*Options)) (*DeleteExpressConnectOutput, error) {
-	out, meta, err := invoke[DeleteExpressConnectInput, DeleteExpressConnectOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteExpressConnect", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteExpressConnectInput, DeleteExpressConnectOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteExpressConnect", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3568,7 +3636,7 @@ type DeleteExpressConnectTrafficQosAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16141
 func (c *Client) DeleteExpressConnectTrafficQos(ctx context.Context, input *DeleteExpressConnectTrafficQosInput, optFns ...func(*Options)) (*DeleteExpressConnectTrafficQosOutput, error) {
-	out, meta, err := invoke[DeleteExpressConnectTrafficQosInput, DeleteExpressConnectTrafficQosOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteExpressConnectTrafficQos", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteExpressConnectTrafficQosInput, DeleteExpressConnectTrafficQosOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteExpressConnectTrafficQos", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3593,7 +3661,7 @@ type DeleteExpressConnectTrafficQosQueueAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16236
 func (c *Client) DeleteExpressConnectTrafficQosQueue(ctx context.Context, input *DeleteExpressConnectTrafficQosQueueInput, optFns ...func(*Options)) (*DeleteExpressConnectTrafficQosQueueOutput, error) {
-	out, meta, err := invoke[DeleteExpressConnectTrafficQosQueueInput, DeleteExpressConnectTrafficQosQueueOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteExpressConnectTrafficQosQueue", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteExpressConnectTrafficQosQueueInput, DeleteExpressConnectTrafficQosQueueOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteExpressConnectTrafficQosQueue", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3618,7 +3686,7 @@ type DeleteExpressConnectTrafficQosRuleAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16333
 func (c *Client) DeleteExpressConnectTrafficQosRule(ctx context.Context, input *DeleteExpressConnectTrafficQosRuleInput, optFns ...func(*Options)) (*DeleteExpressConnectTrafficQosRuleOutput, error) {
-	out, meta, err := invoke[DeleteExpressConnectTrafficQosRuleInput, DeleteExpressConnectTrafficQosRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteExpressConnectTrafficQosRule", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteExpressConnectTrafficQosRuleInput, DeleteExpressConnectTrafficQosRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteExpressConnectTrafficQosRule", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3649,7 +3717,7 @@ type DeleteFailoverTestJobAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16425
 func (c *Client) DeleteFailoverTestJob(ctx context.Context, input *DeleteFailoverTestJobInput, optFns ...func(*Options)) (*DeleteFailoverTestJobOutput, error) {
-	out, meta, err := invoke[DeleteFailoverTestJobInput, DeleteFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteFailoverTestJob", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteFailoverTestJobInput, DeleteFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteFailoverTestJob", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3683,7 +3751,7 @@ type DeleteFlowLogAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16517
 func (c *Client) DeleteFlowLog(ctx context.Context, input *DeleteFlowLogInput, optFns ...func(*Options)) (*DeleteFlowLogOutput, error) {
-	out, meta, err := invoke[DeleteFlowLogInput, DeleteFlowLogOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteFlowLog", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteFlowLogInput, DeleteFlowLogOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteFlowLog", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3717,7 +3785,7 @@ type DeleteForwardEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16616
 func (c *Client) DeleteForwardEntry(ctx context.Context, input *DeleteForwardEntryInput, optFns ...func(*Options)) (*DeleteForwardEntryOutput, error) {
-	out, meta, err := invoke[DeleteForwardEntryInput, DeleteForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteForwardEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteForwardEntryInput, DeleteForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteForwardEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3750,7 +3818,7 @@ type DeleteFullNatEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16725
 func (c *Client) DeleteFullNatEntry(ctx context.Context, input *DeleteFullNatEntryInput, optFns ...func(*Options)) (*DeleteFullNatEntryOutput, error) {
-	out, meta, err := invoke[DeleteFullNatEntryInput, DeleteFullNatEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteFullNatEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteFullNatEntryInput, DeleteFullNatEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteFullNatEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3784,7 +3852,7 @@ type DeleteGlobalAccelerationInstanceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16823
 func (c *Client) DeleteGlobalAccelerationInstance(ctx context.Context, input *DeleteGlobalAccelerationInstanceInput, optFns ...func(*Options)) (*DeleteGlobalAccelerationInstanceOutput, error) {
-	out, meta, err := invoke[DeleteGlobalAccelerationInstanceInput, DeleteGlobalAccelerationInstanceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteGlobalAccelerationInstance", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteGlobalAccelerationInstanceInput, DeleteGlobalAccelerationInstanceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteGlobalAccelerationInstance", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3822,7 +3890,7 @@ type DeleteHaVipAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L16917
 func (c *Client) DeleteHaVip(ctx context.Context, input *DeleteHaVipInput, optFns ...func(*Options)) (*DeleteHaVipOutput, error) {
-	out, meta, err := invoke[DeleteHaVipInput, DeleteHaVipOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteHaVip", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteHaVipInput, DeleteHaVipOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteHaVip", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3847,7 +3915,7 @@ type DeleteIPv6TranslatorAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17020
 func (c *Client) DeleteIPv6Translator(ctx context.Context, input *DeleteIPv6TranslatorInput, optFns ...func(*Options)) (*DeleteIPv6TranslatorOutput, error) {
-	out, meta, err := invoke[DeleteIPv6TranslatorInput, DeleteIPv6TranslatorOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIPv6Translator", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteIPv6TranslatorInput, DeleteIPv6TranslatorOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIPv6Translator", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3872,7 +3940,7 @@ type DeleteIPv6TranslatorAclListAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17105
 func (c *Client) DeleteIPv6TranslatorAclList(ctx context.Context, input *DeleteIPv6TranslatorAclListInput, optFns ...func(*Options)) (*DeleteIPv6TranslatorAclListOutput, error) {
-	out, meta, err := invoke[DeleteIPv6TranslatorAclListInput, DeleteIPv6TranslatorAclListOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIPv6TranslatorAclList", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteIPv6TranslatorAclListInput, DeleteIPv6TranslatorAclListOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIPv6TranslatorAclList", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3897,7 +3965,7 @@ type DeleteIPv6TranslatorEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17197
 func (c *Client) DeleteIPv6TranslatorEntry(ctx context.Context, input *DeleteIPv6TranslatorEntryInput, optFns ...func(*Options)) (*DeleteIPv6TranslatorEntryOutput, error) {
-	out, meta, err := invoke[DeleteIPv6TranslatorEntryInput, DeleteIPv6TranslatorEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIPv6TranslatorEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteIPv6TranslatorEntryInput, DeleteIPv6TranslatorEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIPv6TranslatorEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3931,7 +3999,7 @@ type DeleteIpsecServerAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17294
 func (c *Client) DeleteIpsecServer(ctx context.Context, input *DeleteIpsecServerInput, optFns ...func(*Options)) (*DeleteIpsecServerOutput, error) {
-	out, meta, err := invoke[DeleteIpsecServerInput, DeleteIpsecServerOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIpsecServer", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteIpsecServerInput, DeleteIpsecServerOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIpsecServer", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3966,7 +4034,7 @@ type DeleteIpv4GatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17391
 func (c *Client) DeleteIpv4Gateway(ctx context.Context, input *DeleteIpv4GatewayInput, optFns ...func(*Options)) (*DeleteIpv4GatewayOutput, error) {
-	out, meta, err := invoke[DeleteIpv4GatewayInput, DeleteIpv4GatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIpv4Gateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteIpv4GatewayInput, DeleteIpv4GatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIpv4Gateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4000,7 +4068,7 @@ type DeleteIpv6EgressOnlyRuleAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17500
 func (c *Client) DeleteIpv6EgressOnlyRule(ctx context.Context, input *DeleteIpv6EgressOnlyRuleInput, optFns ...func(*Options)) (*DeleteIpv6EgressOnlyRuleOutput, error) {
-	out, meta, err := invoke[DeleteIpv6EgressOnlyRuleInput, DeleteIpv6EgressOnlyRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIpv6EgressOnlyRule", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteIpv6EgressOnlyRuleInput, DeleteIpv6EgressOnlyRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIpv6EgressOnlyRule", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4035,7 +4103,7 @@ type DeleteIpv6GatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17608
 func (c *Client) DeleteIpv6Gateway(ctx context.Context, input *DeleteIpv6GatewayInput, optFns ...func(*Options)) (*DeleteIpv6GatewayOutput, error) {
-	out, meta, err := invoke[DeleteIpv6GatewayInput, DeleteIpv6GatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIpv6Gateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteIpv6GatewayInput, DeleteIpv6GatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIpv6Gateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4066,7 +4134,7 @@ type DeleteIpv6InternetBandwidthAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17719
 func (c *Client) DeleteIpv6InternetBandwidth(ctx context.Context, input *DeleteIpv6InternetBandwidthInput, optFns ...func(*Options)) (*DeleteIpv6InternetBandwidthOutput, error) {
-	out, meta, err := invoke[DeleteIpv6InternetBandwidthInput, DeleteIpv6InternetBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIpv6InternetBandwidth", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteIpv6InternetBandwidthInput, DeleteIpv6InternetBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteIpv6InternetBandwidth", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4102,7 +4170,7 @@ type DeleteNatGatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17837
 func (c *Client) DeleteNatGateway(ctx context.Context, input *DeleteNatGatewayInput, optFns ...func(*Options)) (*DeleteNatGatewayOutput, error) {
-	out, meta, err := invoke[DeleteNatGatewayInput, DeleteNatGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteNatGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteNatGatewayInput, DeleteNatGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteNatGateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4135,7 +4203,7 @@ type DeleteNatIpAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L17945
 func (c *Client) DeleteNatIp(ctx context.Context, input *DeleteNatIpInput, optFns ...func(*Options)) (*DeleteNatIpOutput, error) {
-	out, meta, err := invoke[DeleteNatIpInput, DeleteNatIpOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteNatIp", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteNatIpInput, DeleteNatIpOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteNatIp", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4160,7 +4228,7 @@ type DeleteNatIpCidrAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18065
 func (c *Client) DeleteNatIpCidr(ctx context.Context, input *DeleteNatIpCidrInput, optFns ...func(*Options)) (*DeleteNatIpCidrOutput, error) {
-	out, meta, err := invoke[DeleteNatIpCidrInput, DeleteNatIpCidrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteNatIpCidr", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteNatIpCidrInput, DeleteNatIpCidrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteNatIpCidr", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4191,7 +4259,7 @@ type DeleteNetworkAclAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18166
 func (c *Client) DeleteNetworkAcl(ctx context.Context, input *DeleteNetworkAclInput, optFns ...func(*Options)) (*DeleteNetworkAclOutput, error) {
-	out, meta, err := invoke[DeleteNetworkAclInput, DeleteNetworkAclOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteNetworkAcl", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteNetworkAclInput, DeleteNetworkAclOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteNetworkAcl", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4222,7 +4290,7 @@ type DeletePhysicalConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18263
 func (c *Client) DeletePhysicalConnection(ctx context.Context, input *DeletePhysicalConnectionInput, optFns ...func(*Options)) (*DeletePhysicalConnectionOutput, error) {
-	out, meta, err := invoke[DeletePhysicalConnectionInput, DeletePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeletePhysicalConnection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeletePhysicalConnectionInput, DeletePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeletePhysicalConnection", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4258,7 +4326,7 @@ type DeletePublicIpAddressPoolAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18355
 func (c *Client) DeletePublicIpAddressPool(ctx context.Context, input *DeletePublicIpAddressPoolInput, optFns ...func(*Options)) (*DeletePublicIpAddressPoolOutput, error) {
-	out, meta, err := invoke[DeletePublicIpAddressPoolInput, DeletePublicIpAddressPoolOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeletePublicIpAddressPool", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeletePublicIpAddressPoolInput, DeletePublicIpAddressPoolOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeletePublicIpAddressPool", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4294,7 +4362,7 @@ type DeletePublicIpAddressPoolCidrBlockAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18463
 func (c *Client) DeletePublicIpAddressPoolCidrBlock(ctx context.Context, input *DeletePublicIpAddressPoolCidrBlockInput, optFns ...func(*Options)) (*DeletePublicIpAddressPoolCidrBlockOutput, error) {
-	out, meta, err := invoke[DeletePublicIpAddressPoolCidrBlockInput, DeletePublicIpAddressPoolCidrBlockOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeletePublicIpAddressPoolCidrBlock", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeletePublicIpAddressPoolCidrBlockInput, DeletePublicIpAddressPoolCidrBlockOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeletePublicIpAddressPoolCidrBlock", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4331,7 +4399,7 @@ type DeleteRouteEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18596
 func (c *Client) DeleteRouteEntries(ctx context.Context, input *DeleteRouteEntriesInput, optFns ...func(*Options)) (*DeleteRouteEntriesOutput, error) {
-	out, meta, err := invoke[DeleteRouteEntriesInput, DeleteRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteRouteEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteRouteEntriesInput, DeleteRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteRouteEntries", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4369,7 +4437,7 @@ type DeleteRouteEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18715
 func (c *Client) DeleteRouteEntry(ctx context.Context, input *DeleteRouteEntryInput, optFns ...func(*Options)) (*DeleteRouteEntryOutput, error) {
-	out, meta, err := invoke[DeleteRouteEntryInput, DeleteRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteRouteEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteRouteEntryInput, DeleteRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteRouteEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4403,7 +4471,7 @@ type DeleteRouteTableAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18829
 func (c *Client) DeleteRouteTable(ctx context.Context, input *DeleteRouteTableInput, optFns ...func(*Options)) (*DeleteRouteTableOutput, error) {
-	out, meta, err := invoke[DeleteRouteTableInput, DeleteRouteTableOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteRouteTable", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteRouteTableInput, DeleteRouteTableOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteRouteTable", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4436,7 +4504,7 @@ type DeleteRouteTargetGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L18935
 func (c *Client) DeleteRouteTargetGroup(ctx context.Context, input *DeleteRouteTargetGroupInput, optFns ...func(*Options)) (*DeleteRouteTargetGroupOutput, error) {
-	out, meta, err := invoke[DeleteRouteTargetGroupInput, DeleteRouteTargetGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteRouteTargetGroup", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteRouteTargetGroupInput, DeleteRouteTargetGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteRouteTargetGroup", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4469,7 +4537,7 @@ type DeleteRouterInterfaceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L19026
 func (c *Client) DeleteRouterInterface(ctx context.Context, input *DeleteRouterInterfaceInput, optFns ...func(*Options)) (*DeleteRouterInterfaceOutput, error) {
-	out, meta, err := invoke[DeleteRouterInterfaceInput, DeleteRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteRouterInterface", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteRouterInterfaceInput, DeleteRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteRouterInterface", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4503,7 +4571,7 @@ type DeleteSnatEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L19126
 func (c *Client) DeleteSnatEntry(ctx context.Context, input *DeleteSnatEntryInput, optFns ...func(*Options)) (*DeleteSnatEntryOutput, error) {
-	out, meta, err := invoke[DeleteSnatEntryInput, DeleteSnatEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteSnatEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteSnatEntryInput, DeleteSnatEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteSnatEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4541,7 +4609,7 @@ type DeleteSslVpnClientCertAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L19228
 func (c *Client) DeleteSslVpnClientCert(ctx context.Context, input *DeleteSslVpnClientCertInput, optFns ...func(*Options)) (*DeleteSslVpnClientCertOutput, error) {
-	out, meta, err := invoke[DeleteSslVpnClientCertInput, DeleteSslVpnClientCertOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteSslVpnClientCert", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteSslVpnClientCertInput, DeleteSslVpnClientCertOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteSslVpnClientCert", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4575,7 +4643,7 @@ type DeleteSslVpnServerAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L19335
 func (c *Client) DeleteSslVpnServer(ctx context.Context, input *DeleteSslVpnServerInput, optFns ...func(*Options)) (*DeleteSslVpnServerOutput, error) {
-	out, meta, err := invoke[DeleteSslVpnServerInput, DeleteSslVpnServerOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteSslVpnServer", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteSslVpnServerInput, DeleteSslVpnServerOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteSslVpnServer", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4609,7 +4677,7 @@ type DeleteTrafficMirrorFilterAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L19436
 func (c *Client) DeleteTrafficMirrorFilter(ctx context.Context, input *DeleteTrafficMirrorFilterInput, optFns ...func(*Options)) (*DeleteTrafficMirrorFilterOutput, error) {
-	out, meta, err := invoke[DeleteTrafficMirrorFilterInput, DeleteTrafficMirrorFilterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteTrafficMirrorFilter", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteTrafficMirrorFilterInput, DeleteTrafficMirrorFilterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteTrafficMirrorFilter", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4643,7 +4711,7 @@ type DeleteTrafficMirrorFilterRulesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L19544
 func (c *Client) DeleteTrafficMirrorFilterRules(ctx context.Context, input *DeleteTrafficMirrorFilterRulesInput, optFns ...func(*Options)) (*DeleteTrafficMirrorFilterRulesOutput, error) {
-	out, meta, err := invoke[DeleteTrafficMirrorFilterRulesInput, DeleteTrafficMirrorFilterRulesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteTrafficMirrorFilterRules", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteTrafficMirrorFilterRulesInput, DeleteTrafficMirrorFilterRulesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteTrafficMirrorFilterRules", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4677,7 +4745,7 @@ type DeleteTrafficMirrorSessionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L19652
 func (c *Client) DeleteTrafficMirrorSession(ctx context.Context, input *DeleteTrafficMirrorSessionInput, optFns ...func(*Options)) (*DeleteTrafficMirrorSessionOutput, error) {
-	out, meta, err := invoke[DeleteTrafficMirrorSessionInput, DeleteTrafficMirrorSessionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteTrafficMirrorSession", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteTrafficMirrorSessionInput, DeleteTrafficMirrorSessionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteTrafficMirrorSession", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4715,7 +4783,7 @@ type DeleteVSwitchAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L19750
 func (c *Client) DeleteVSwitch(ctx context.Context, input *DeleteVSwitchInput, optFns ...func(*Options)) (*DeleteVSwitchOutput, error) {
-	out, meta, err := invoke[DeleteVSwitchInput, DeleteVSwitchOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVSwitch", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteVSwitchInput, DeleteVSwitchOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVSwitch", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4749,7 +4817,7 @@ type DeleteVSwitchCidrReservationAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L19860
 func (c *Client) DeleteVSwitchCidrReservation(ctx context.Context, input *DeleteVSwitchCidrReservationInput, optFns ...func(*Options)) (*DeleteVSwitchCidrReservationOutput, error) {
-	out, meta, err := invoke[DeleteVSwitchCidrReservationInput, DeleteVSwitchCidrReservationOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVSwitchCidrReservation", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteVSwitchCidrReservationInput, DeleteVSwitchCidrReservationOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVSwitchCidrReservation", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4774,7 +4842,7 @@ type DeleteVbrHaAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L19960
 func (c *Client) DeleteVbrHa(ctx context.Context, input *DeleteVbrHaInput, optFns ...func(*Options)) (*DeleteVbrHaOutput, error) {
-	out, meta, err := invoke[DeleteVbrHaInput, DeleteVbrHaOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVbrHa", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteVbrHaInput, DeleteVbrHaOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVbrHa", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4808,7 +4876,7 @@ type DeleteVcoRouteEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L20061
 func (c *Client) DeleteVcoRouteEntry(ctx context.Context, input *DeleteVcoRouteEntryInput, optFns ...func(*Options)) (*DeleteVcoRouteEntryOutput, error) {
-	out, meta, err := invoke[DeleteVcoRouteEntryInput, DeleteVcoRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVcoRouteEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteVcoRouteEntryInput, DeleteVcoRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVcoRouteEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4842,7 +4910,7 @@ type DeleteVirtualBorderRouterAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L20165
 func (c *Client) DeleteVirtualBorderRouter(ctx context.Context, input *DeleteVirtualBorderRouterInput, optFns ...func(*Options)) (*DeleteVirtualBorderRouterOutput, error) {
-	out, meta, err := invoke[DeleteVirtualBorderRouterInput, DeleteVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVirtualBorderRouter", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteVirtualBorderRouterInput, DeleteVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVirtualBorderRouter", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4880,7 +4948,7 @@ type DeleteVpcAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L20273
 func (c *Client) DeleteVpc(ctx context.Context, input *DeleteVpcInput, optFns ...func(*Options)) (*DeleteVpcOutput, error) {
-	out, meta, err := invoke[DeleteVpcInput, DeleteVpcOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVpc", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteVpcInput, DeleteVpcOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVpc", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4905,7 +4973,7 @@ type DeleteVpcGatewayEndpointAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L20389
 func (c *Client) DeleteVpcGatewayEndpoint(ctx context.Context, input *DeleteVpcGatewayEndpointInput, optFns ...func(*Options)) (*DeleteVpcGatewayEndpointOutput, error) {
-	out, meta, err := invoke[DeleteVpcGatewayEndpointInput, DeleteVpcGatewayEndpointOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVpcGatewayEndpoint", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteVpcGatewayEndpointInput, DeleteVpcGatewayEndpointOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVpcGatewayEndpoint", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4936,7 +5004,7 @@ type DeleteVpcPrefixListAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L20484
 func (c *Client) DeleteVpcPrefixList(ctx context.Context, input *DeleteVpcPrefixListInput, optFns ...func(*Options)) (*DeleteVpcPrefixListOutput, error) {
-	out, meta, err := invoke[DeleteVpcPrefixListInput, DeleteVpcPrefixListOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVpcPrefixList", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteVpcPrefixListInput, DeleteVpcPrefixListOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVpcPrefixList", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4968,7 +5036,7 @@ type DeleteVpnAttachmentAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L20585
 func (c *Client) DeleteVpnAttachment(ctx context.Context, input *DeleteVpnAttachmentInput, optFns ...func(*Options)) (*DeleteVpnAttachmentOutput, error) {
-	out, meta, err := invoke[DeleteVpnAttachmentInput, DeleteVpnAttachmentOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVpnAttachment", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteVpnAttachmentInput, DeleteVpnAttachmentOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVpnAttachment", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5003,7 +5071,7 @@ type DeleteVpnConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L20677
 func (c *Client) DeleteVpnConnection(ctx context.Context, input *DeleteVpnConnectionInput, optFns ...func(*Options)) (*DeleteVpnConnectionOutput, error) {
-	out, meta, err := invoke[DeleteVpnConnectionInput, DeleteVpnConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVpnConnection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteVpnConnectionInput, DeleteVpnConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVpnConnection", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5034,7 +5102,7 @@ type DeleteVpnGatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L20778
 func (c *Client) DeleteVpnGateway(ctx context.Context, input *DeleteVpnGatewayInput, optFns ...func(*Options)) (*DeleteVpnGatewayOutput, error) {
-	out, meta, err := invoke[DeleteVpnGatewayInput, DeleteVpnGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVpnGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteVpnGatewayInput, DeleteVpnGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVpnGateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5068,7 +5136,7 @@ type DeleteVpnPbrRouteEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L20890
 func (c *Client) DeleteVpnPbrRouteEntry(ctx context.Context, input *DeleteVpnPbrRouteEntryInput, optFns ...func(*Options)) (*DeleteVpnPbrRouteEntryOutput, error) {
-	out, meta, err := invoke[DeleteVpnPbrRouteEntryInput, DeleteVpnPbrRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVpnPbrRouteEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteVpnPbrRouteEntryInput, DeleteVpnPbrRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVpnPbrRouteEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5102,7 +5170,7 @@ type DeleteVpnRouteEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L21019
 func (c *Client) DeleteVpnRouteEntry(ctx context.Context, input *DeleteVpnRouteEntryInput, optFns ...func(*Options)) (*DeleteVpnRouteEntryOutput, error) {
-	out, meta, err := invoke[DeleteVpnRouteEntryInput, DeleteVpnRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVpnRouteEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteVpnRouteEntryInput, DeleteVpnRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeleteVpnRouteEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5134,7 +5202,7 @@ type DeletionProtectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L21143
 func (c *Client) DeletionProtection(ctx context.Context, input *DeletionProtectionInput, optFns ...func(*Options)) (*DeletionProtectionOutput, error) {
-	out, meta, err := invoke[DeletionProtectionInput, DeletionProtectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeletionProtection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeletionProtectionInput, DeletionProtectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DeletionProtection", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5159,7 +5227,7 @@ type Describe95TrafficAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L21269
 func (c *Client) Describe95Traffic(ctx context.Context, input *Describe95TrafficInput, optFns ...func(*Options)) (*Describe95TrafficOutput, error) {
-	out, meta, err := invoke[Describe95TrafficInput, Describe95TrafficOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "Describe95Traffic", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[Describe95TrafficInput, Describe95TrafficOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "Describe95Traffic", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5184,7 +5252,7 @@ type DescribeAccessPointsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L21383
 func (c *Client) DescribeAccessPoints(ctx context.Context, input *DescribeAccessPointsInput, optFns ...func(*Options)) (*DescribeAccessPointsOutput, error) {
-	out, meta, err := invoke[DescribeAccessPointsInput, DescribeAccessPointsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeAccessPoints", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeAccessPointsInput, DescribeAccessPointsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeAccessPoints", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5209,7 +5277,7 @@ type DescribeBgpGroupsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L21495
 func (c *Client) DescribeBgpGroups(ctx context.Context, input *DescribeBgpGroupsInput, optFns ...func(*Options)) (*DescribeBgpGroupsOutput, error) {
-	out, meta, err := invoke[DescribeBgpGroupsInput, DescribeBgpGroupsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeBgpGroups", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeBgpGroupsInput, DescribeBgpGroupsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeBgpGroups", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5234,7 +5302,7 @@ type DescribeBgpNetworksAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L21601
 func (c *Client) DescribeBgpNetworks(ctx context.Context, input *DescribeBgpNetworksInput, optFns ...func(*Options)) (*DescribeBgpNetworksOutput, error) {
-	out, meta, err := invoke[DescribeBgpNetworksInput, DescribeBgpNetworksOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeBgpNetworks", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeBgpNetworksInput, DescribeBgpNetworksOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeBgpNetworks", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5259,7 +5327,7 @@ type DescribeBgpPeersAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L21727
 func (c *Client) DescribeBgpPeers(ctx context.Context, input *DescribeBgpPeersInput, optFns ...func(*Options)) (*DescribeBgpPeersOutput, error) {
-	out, meta, err := invoke[DescribeBgpPeersInput, DescribeBgpPeersOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeBgpPeers", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeBgpPeersInput, DescribeBgpPeersOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeBgpPeers", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5284,7 +5352,7 @@ type DescribeCommonBandwidthPackagesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L21901
 func (c *Client) DescribeCommonBandwidthPackages(ctx context.Context, input *DescribeCommonBandwidthPackagesInput, optFns ...func(*Options)) (*DescribeCommonBandwidthPackagesOutput, error) {
-	out, meta, err := invoke[DescribeCommonBandwidthPackagesInput, DescribeCommonBandwidthPackagesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeCommonBandwidthPackages", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeCommonBandwidthPackagesInput, DescribeCommonBandwidthPackagesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeCommonBandwidthPackages", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5309,7 +5377,7 @@ type DescribeCustomerGatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22026
 func (c *Client) DescribeCustomerGateway(ctx context.Context, input *DescribeCustomerGatewayInput, optFns ...func(*Options)) (*DescribeCustomerGatewayOutput, error) {
-	out, meta, err := invoke[DescribeCustomerGatewayInput, DescribeCustomerGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeCustomerGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeCustomerGatewayInput, DescribeCustomerGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeCustomerGateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5334,7 +5402,7 @@ type DescribeCustomerGatewaysAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22151
 func (c *Client) DescribeCustomerGateways(ctx context.Context, input *DescribeCustomerGatewaysInput, optFns ...func(*Options)) (*DescribeCustomerGatewaysOutput, error) {
-	out, meta, err := invoke[DescribeCustomerGatewaysInput, DescribeCustomerGatewaysOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeCustomerGateways", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeCustomerGatewaysInput, DescribeCustomerGatewaysOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeCustomerGateways", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5359,7 +5427,7 @@ type DescribeEcGrantRelationAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22277
 func (c *Client) DescribeEcGrantRelation(ctx context.Context, input *DescribeEcGrantRelationInput, optFns ...func(*Options)) (*DescribeEcGrantRelationOutput, error) {
-	out, meta, err := invoke[DescribeEcGrantRelationInput, DescribeEcGrantRelationOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeEcGrantRelation", Version: "2016-04-28", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[DescribeEcGrantRelationInput, DescribeEcGrantRelationOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeEcGrantRelation", Version: "2016-04-28", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5390,7 +5458,7 @@ type DescribeEipAddressesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22446
 func (c *Client) DescribeEipAddresses(ctx context.Context, input *DescribeEipAddressesInput, optFns ...func(*Options)) (*DescribeEipAddressesOutput, error) {
-	out, meta, err := invoke[DescribeEipAddressesInput, DescribeEipAddressesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeEipAddresses", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeEipAddressesInput, DescribeEipAddressesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeEipAddresses", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5421,7 +5489,7 @@ type DescribeEipGatewayInfoAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22597
 func (c *Client) DescribeEipGatewayInfo(ctx context.Context, input *DescribeEipGatewayInfoInput, optFns ...func(*Options)) (*DescribeEipGatewayInfoOutput, error) {
-	out, meta, err := invoke[DescribeEipGatewayInfoInput, DescribeEipGatewayInfoOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeEipGatewayInfo", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeEipGatewayInfoInput, DescribeEipGatewayInfoOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeEipGatewayInfo", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5452,7 +5520,7 @@ type DescribeEipMonitorDataAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22707
 func (c *Client) DescribeEipMonitorData(ctx context.Context, input *DescribeEipMonitorDataInput, optFns ...func(*Options)) (*DescribeEipMonitorDataOutput, error) {
-	out, meta, err := invoke[DescribeEipMonitorDataInput, DescribeEipMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeEipMonitorData", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeEipMonitorDataInput, DescribeEipMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeEipMonitorData", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5477,7 +5545,7 @@ type DescribeEipSegmentAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22824
 func (c *Client) DescribeEipSegment(ctx context.Context, input *DescribeEipSegmentInput, optFns ...func(*Options)) (*DescribeEipSegmentOutput, error) {
-	out, meta, err := invoke[DescribeEipSegmentInput, DescribeEipSegmentOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeEipSegment", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeEipSegmentInput, DescribeEipSegmentOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeEipSegment", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5502,7 +5570,7 @@ type DescribeExpressConnectTrafficQosAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23015
 func (c *Client) DescribeExpressConnectTrafficQos(ctx context.Context, input *DescribeExpressConnectTrafficQosInput, optFns ...func(*Options)) (*DescribeExpressConnectTrafficQosOutput, error) {
-	out, meta, err := invoke[DescribeExpressConnectTrafficQosInput, DescribeExpressConnectTrafficQosOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeExpressConnectTrafficQos", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeExpressConnectTrafficQosInput, DescribeExpressConnectTrafficQosOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeExpressConnectTrafficQos", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5533,7 +5601,7 @@ type DescribeExpressConnectTrafficQosQueueAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23255
 func (c *Client) DescribeExpressConnectTrafficQosQueue(ctx context.Context, input *DescribeExpressConnectTrafficQosQueueInput, optFns ...func(*Options)) (*DescribeExpressConnectTrafficQosQueueOutput, error) {
-	out, meta, err := invoke[DescribeExpressConnectTrafficQosQueueInput, DescribeExpressConnectTrafficQosQueueOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeExpressConnectTrafficQosQueue", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeExpressConnectTrafficQosQueueInput, DescribeExpressConnectTrafficQosQueueOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeExpressConnectTrafficQosQueue", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5558,7 +5626,7 @@ type DescribeExpressConnectTrafficQosRuleAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23460
 func (c *Client) DescribeExpressConnectTrafficQosRule(ctx context.Context, input *DescribeExpressConnectTrafficQosRuleInput, optFns ...func(*Options)) (*DescribeExpressConnectTrafficQosRuleOutput, error) {
-	out, meta, err := invoke[DescribeExpressConnectTrafficQosRuleInput, DescribeExpressConnectTrafficQosRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeExpressConnectTrafficQosRule", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeExpressConnectTrafficQosRuleInput, DescribeExpressConnectTrafficQosRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeExpressConnectTrafficQosRule", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5583,7 +5651,7 @@ type DescribeFailoverTestJobAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23585
 func (c *Client) DescribeFailoverTestJob(ctx context.Context, input *DescribeFailoverTestJobInput, optFns ...func(*Options)) (*DescribeFailoverTestJobOutput, error) {
-	out, meta, err := invoke[DescribeFailoverTestJobInput, DescribeFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeFailoverTestJob", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeFailoverTestJobInput, DescribeFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeFailoverTestJob", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5608,7 +5676,7 @@ type DescribeFailoverTestJobsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23736
 func (c *Client) DescribeFailoverTestJobs(ctx context.Context, input *DescribeFailoverTestJobsInput, optFns ...func(*Options)) (*DescribeFailoverTestJobsOutput, error) {
-	out, meta, err := invoke[DescribeFailoverTestJobsInput, DescribeFailoverTestJobsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeFailoverTestJobs", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeFailoverTestJobsInput, DescribeFailoverTestJobsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeFailoverTestJobs", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5633,7 +5701,7 @@ type DescribeFlowLogsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L23910
 func (c *Client) DescribeFlowLogs(ctx context.Context, input *DescribeFlowLogsInput, optFns ...func(*Options)) (*DescribeFlowLogsOutput, error) {
-	out, meta, err := invoke[DescribeFlowLogsInput, DescribeFlowLogsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeFlowLogs", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeFlowLogsInput, DescribeFlowLogsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeFlowLogs", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5658,7 +5726,7 @@ type DescribeForwardTableEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L24082
 func (c *Client) DescribeForwardTableEntries(ctx context.Context, input *DescribeForwardTableEntriesInput, optFns ...func(*Options)) (*DescribeForwardTableEntriesOutput, error) {
-	out, meta, err := invoke[DescribeForwardTableEntriesInput, DescribeForwardTableEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeForwardTableEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeForwardTableEntriesInput, DescribeForwardTableEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeForwardTableEntries", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5683,7 +5751,7 @@ type DescribeGlobalAccelerationInstancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L24263
 func (c *Client) DescribeGlobalAccelerationInstances(ctx context.Context, input *DescribeGlobalAccelerationInstancesInput, optFns ...func(*Options)) (*DescribeGlobalAccelerationInstancesOutput, error) {
-	out, meta, err := invoke[DescribeGlobalAccelerationInstancesInput, DescribeGlobalAccelerationInstancesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeGlobalAccelerationInstances", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeGlobalAccelerationInstancesInput, DescribeGlobalAccelerationInstancesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeGlobalAccelerationInstances", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5708,7 +5776,7 @@ type DescribeGrantRulesToCenAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L24398
 func (c *Client) DescribeGrantRulesToCen(ctx context.Context, input *DescribeGrantRulesToCenInput, optFns ...func(*Options)) (*DescribeGrantRulesToCenOutput, error) {
-	out, meta, err := invoke[DescribeGrantRulesToCenInput, DescribeGrantRulesToCenOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeGrantRulesToCen", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeGrantRulesToCenInput, DescribeGrantRulesToCenOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeGrantRulesToCen", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5733,7 +5801,7 @@ type DescribeGrantRulesToEcrAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L24512
 func (c *Client) DescribeGrantRulesToEcr(ctx context.Context, input *DescribeGrantRulesToEcrInput, optFns ...func(*Options)) (*DescribeGrantRulesToEcrOutput, error) {
-	out, meta, err := invoke[DescribeGrantRulesToEcrInput, DescribeGrantRulesToEcrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeGrantRulesToEcr", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeGrantRulesToEcrInput, DescribeGrantRulesToEcrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeGrantRulesToEcr", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5758,7 +5826,7 @@ type DescribeHaVipsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L24661
 func (c *Client) DescribeHaVips(ctx context.Context, input *DescribeHaVipsInput, optFns ...func(*Options)) (*DescribeHaVipsOutput, error) {
-	out, meta, err := invoke[DescribeHaVipsInput, DescribeHaVipsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeHaVips", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeHaVipsInput, DescribeHaVipsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeHaVips", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5783,7 +5851,7 @@ type DescribeHighDefinitionMonitorLogAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L24763
 func (c *Client) DescribeHighDefinitionMonitorLogAttribute(ctx context.Context, input *DescribeHighDefinitionMonitorLogAttributeInput, optFns ...func(*Options)) (*DescribeHighDefinitionMonitorLogAttributeOutput, error) {
-	out, meta, err := invoke[DescribeHighDefinitionMonitorLogAttributeInput, DescribeHighDefinitionMonitorLogAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeHighDefinitionMonitorLogAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeHighDefinitionMonitorLogAttributeInput, DescribeHighDefinitionMonitorLogAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeHighDefinitionMonitorLogAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5808,7 +5876,7 @@ type DescribeIPv6TranslatorAclListAttributesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L24861
 func (c *Client) DescribeIPv6TranslatorAclListAttributes(ctx context.Context, input *DescribeIPv6TranslatorAclListAttributesInput, optFns ...func(*Options)) (*DescribeIPv6TranslatorAclListAttributesOutput, error) {
-	out, meta, err := invoke[DescribeIPv6TranslatorAclListAttributesInput, DescribeIPv6TranslatorAclListAttributesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIPv6TranslatorAclListAttributes", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeIPv6TranslatorAclListAttributesInput, DescribeIPv6TranslatorAclListAttributesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIPv6TranslatorAclListAttributes", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5833,7 +5901,7 @@ type DescribeIPv6TranslatorAclListsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L24958
 func (c *Client) DescribeIPv6TranslatorAclLists(ctx context.Context, input *DescribeIPv6TranslatorAclListsInput, optFns ...func(*Options)) (*DescribeIPv6TranslatorAclListsOutput, error) {
-	out, meta, err := invoke[DescribeIPv6TranslatorAclListsInput, DescribeIPv6TranslatorAclListsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIPv6TranslatorAclLists", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeIPv6TranslatorAclListsInput, DescribeIPv6TranslatorAclListsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIPv6TranslatorAclLists", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5858,7 +5926,7 @@ type DescribeIPv6TranslatorEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L25097
 func (c *Client) DescribeIPv6TranslatorEntries(ctx context.Context, input *DescribeIPv6TranslatorEntriesInput, optFns ...func(*Options)) (*DescribeIPv6TranslatorEntriesOutput, error) {
-	out, meta, err := invoke[DescribeIPv6TranslatorEntriesInput, DescribeIPv6TranslatorEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIPv6TranslatorEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeIPv6TranslatorEntriesInput, DescribeIPv6TranslatorEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIPv6TranslatorEntries", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5883,7 +5951,7 @@ type DescribeIPv6TranslatorsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L25276
 func (c *Client) DescribeIPv6Translators(ctx context.Context, input *DescribeIPv6TranslatorsInput, optFns ...func(*Options)) (*DescribeIPv6TranslatorsOutput, error) {
-	out, meta, err := invoke[DescribeIPv6TranslatorsInput, DescribeIPv6TranslatorsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIPv6Translators", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeIPv6TranslatorsInput, DescribeIPv6TranslatorsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIPv6Translators", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5908,7 +5976,7 @@ type DescribeIpv6AddressesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L25476
 func (c *Client) DescribeIpv6Addresses(ctx context.Context, input *DescribeIpv6AddressesInput, optFns ...func(*Options)) (*DescribeIpv6AddressesOutput, error) {
-	out, meta, err := invoke[DescribeIpv6AddressesInput, DescribeIpv6AddressesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIpv6Addresses", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeIpv6AddressesInput, DescribeIpv6AddressesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIpv6Addresses", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5933,7 +6001,7 @@ type DescribeIpv6EgressOnlyRulesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L25627
 func (c *Client) DescribeIpv6EgressOnlyRules(ctx context.Context, input *DescribeIpv6EgressOnlyRulesInput, optFns ...func(*Options)) (*DescribeIpv6EgressOnlyRulesOutput, error) {
-	out, meta, err := invoke[DescribeIpv6EgressOnlyRulesInput, DescribeIpv6EgressOnlyRulesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIpv6EgressOnlyRules", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeIpv6EgressOnlyRulesInput, DescribeIpv6EgressOnlyRulesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIpv6EgressOnlyRules", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5958,7 +6026,7 @@ type DescribeIpv6GatewayAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L25763
 func (c *Client) DescribeIpv6GatewayAttribute(ctx context.Context, input *DescribeIpv6GatewayAttributeInput, optFns ...func(*Options)) (*DescribeIpv6GatewayAttributeOutput, error) {
-	out, meta, err := invoke[DescribeIpv6GatewayAttributeInput, DescribeIpv6GatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIpv6GatewayAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeIpv6GatewayAttributeInput, DescribeIpv6GatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIpv6GatewayAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5983,7 +6051,7 @@ type DescribeIpv6GatewaysAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L25889
 func (c *Client) DescribeIpv6Gateways(ctx context.Context, input *DescribeIpv6GatewaysInput, optFns ...func(*Options)) (*DescribeIpv6GatewaysOutput, error) {
-	out, meta, err := invoke[DescribeIpv6GatewaysInput, DescribeIpv6GatewaysOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIpv6Gateways", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeIpv6GatewaysInput, DescribeIpv6GatewaysOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeIpv6Gateways", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6008,7 +6076,7 @@ type DescribeNatGatewayAssociateNetworkInterfacesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L26055
 func (c *Client) DescribeNatGatewayAssociateNetworkInterfaces(ctx context.Context, input *DescribeNatGatewayAssociateNetworkInterfacesInput, optFns ...func(*Options)) (*DescribeNatGatewayAssociateNetworkInterfacesOutput, error) {
-	out, meta, err := invoke[DescribeNatGatewayAssociateNetworkInterfacesInput, DescribeNatGatewayAssociateNetworkInterfacesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeNatGatewayAssociateNetworkInterfaces", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeNatGatewayAssociateNetworkInterfacesInput, DescribeNatGatewayAssociateNetworkInterfacesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeNatGatewayAssociateNetworkInterfaces", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6039,7 +6107,7 @@ type DescribeNatGatewaysAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L26295
 func (c *Client) DescribeNatGateways(ctx context.Context, input *DescribeNatGatewaysInput, optFns ...func(*Options)) (*DescribeNatGatewaysOutput, error) {
-	out, meta, err := invoke[DescribeNatGatewaysInput, DescribeNatGatewaysOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeNatGateways", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeNatGatewaysInput, DescribeNatGatewaysOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeNatGateways", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6064,7 +6132,7 @@ type DescribeNetworkAclAttributesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L26490
 func (c *Client) DescribeNetworkAclAttributes(ctx context.Context, input *DescribeNetworkAclAttributesInput, optFns ...func(*Options)) (*DescribeNetworkAclAttributesOutput, error) {
-	out, meta, err := invoke[DescribeNetworkAclAttributesInput, DescribeNetworkAclAttributesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeNetworkAclAttributes", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeNetworkAclAttributesInput, DescribeNetworkAclAttributesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeNetworkAclAttributes", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6089,7 +6157,7 @@ type DescribeNetworkAclsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L26664
 func (c *Client) DescribeNetworkAcls(ctx context.Context, input *DescribeNetworkAclsInput, optFns ...func(*Options)) (*DescribeNetworkAclsOutput, error) {
-	out, meta, err := invoke[DescribeNetworkAclsInput, DescribeNetworkAclsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeNetworkAcls", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeNetworkAclsInput, DescribeNetworkAclsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeNetworkAcls", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6114,7 +6182,7 @@ type DescribePhysicalConnectionLOAAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L26821
 func (c *Client) DescribePhysicalConnectionLOA(ctx context.Context, input *DescribePhysicalConnectionLOAInput, optFns ...func(*Options)) (*DescribePhysicalConnectionLOAOutput, error) {
-	out, meta, err := invoke[DescribePhysicalConnectionLOAInput, DescribePhysicalConnectionLOAOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribePhysicalConnectionLOA", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribePhysicalConnectionLOAInput, DescribePhysicalConnectionLOAOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribePhysicalConnectionLOA", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6145,7 +6213,7 @@ type DescribePhysicalConnectionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L27040
 func (c *Client) DescribePhysicalConnections(ctx context.Context, input *DescribePhysicalConnectionsInput, optFns ...func(*Options)) (*DescribePhysicalConnectionsOutput, error) {
-	out, meta, err := invoke[DescribePhysicalConnectionsInput, DescribePhysicalConnectionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribePhysicalConnections", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribePhysicalConnectionsInput, DescribePhysicalConnectionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribePhysicalConnections", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6176,7 +6244,7 @@ type DescribePublicIpAddressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L27160
 func (c *Client) DescribePublicIpAddress(ctx context.Context, input *DescribePublicIpAddressInput, optFns ...func(*Options)) (*DescribePublicIpAddressOutput, error) {
-	out, meta, err := invoke[DescribePublicIpAddressInput, DescribePublicIpAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribePublicIpAddress", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribePublicIpAddressInput, DescribePublicIpAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribePublicIpAddress", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6201,7 +6269,7 @@ type DescribeRegionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L27261
 func (c *Client) DescribeRegions(ctx context.Context, input *DescribeRegionsInput, optFns ...func(*Options)) (*DescribeRegionsOutput, error) {
-	out, meta, err := invoke[DescribeRegionsInput, DescribeRegionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeRegions", Version: "2016-04-28", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[DescribeRegionsInput, DescribeRegionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeRegions", Version: "2016-04-28", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6232,7 +6300,7 @@ type DescribeRouteEntryListAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L27425
 func (c *Client) DescribeRouteEntryList(ctx context.Context, input *DescribeRouteEntryListInput, optFns ...func(*Options)) (*DescribeRouteEntryListOutput, error) {
-	out, meta, err := invoke[DescribeRouteEntryListInput, DescribeRouteEntryListOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeRouteEntryList", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeRouteEntryListInput, DescribeRouteEntryListOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeRouteEntryList", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6257,7 +6325,7 @@ type DescribeRouteTableListAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L27608
 func (c *Client) DescribeRouteTableList(ctx context.Context, input *DescribeRouteTableListInput, optFns ...func(*Options)) (*DescribeRouteTableListOutput, error) {
-	out, meta, err := invoke[DescribeRouteTableListInput, DescribeRouteTableListOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeRouteTableList", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeRouteTableListInput, DescribeRouteTableListOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeRouteTableList", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6282,7 +6350,7 @@ type DescribeRouteTablesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L27782
 func (c *Client) DescribeRouteTables(ctx context.Context, input *DescribeRouteTablesInput, optFns ...func(*Options)) (*DescribeRouteTablesOutput, error) {
-	out, meta, err := invoke[DescribeRouteTablesInput, DescribeRouteTablesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeRouteTables", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeRouteTablesInput, DescribeRouteTablesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeRouteTables", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6307,7 +6375,7 @@ type DescribeRouterInterfaceAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L28033
 func (c *Client) DescribeRouterInterfaceAttribute(ctx context.Context, input *DescribeRouterInterfaceAttributeInput, optFns ...func(*Options)) (*DescribeRouterInterfaceAttributeOutput, error) {
-	out, meta, err := invoke[DescribeRouterInterfaceAttributeInput, DescribeRouterInterfaceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeRouterInterfaceAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeRouterInterfaceAttributeInput, DescribeRouterInterfaceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeRouterInterfaceAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6332,7 +6400,7 @@ type DescribeRouterInterfacesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L28212
 func (c *Client) DescribeRouterInterfaces(ctx context.Context, input *DescribeRouterInterfacesInput, optFns ...func(*Options)) (*DescribeRouterInterfacesOutput, error) {
-	out, meta, err := invoke[DescribeRouterInterfacesInput, DescribeRouterInterfacesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeRouterInterfaces", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeRouterInterfacesInput, DescribeRouterInterfacesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeRouterInterfaces", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6363,7 +6431,7 @@ type DescribeServerRelatedGlobalAccelerationInstancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L28320
 func (c *Client) DescribeServerRelatedGlobalAccelerationInstances(ctx context.Context, input *DescribeServerRelatedGlobalAccelerationInstancesInput, optFns ...func(*Options)) (*DescribeServerRelatedGlobalAccelerationInstancesOutput, error) {
-	out, meta, err := invoke[DescribeServerRelatedGlobalAccelerationInstancesInput, DescribeServerRelatedGlobalAccelerationInstancesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeServerRelatedGlobalAccelerationInstances", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeServerRelatedGlobalAccelerationInstancesInput, DescribeServerRelatedGlobalAccelerationInstancesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeServerRelatedGlobalAccelerationInstances", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6388,7 +6456,7 @@ type DescribeSnatTableEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L28446
 func (c *Client) DescribeSnatTableEntries(ctx context.Context, input *DescribeSnatTableEntriesInput, optFns ...func(*Options)) (*DescribeSnatTableEntriesOutput, error) {
-	out, meta, err := invoke[DescribeSnatTableEntriesInput, DescribeSnatTableEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeSnatTableEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSnatTableEntriesInput, DescribeSnatTableEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeSnatTableEntries", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6413,7 +6481,7 @@ type DescribeSslVpnClientCertAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L28595
 func (c *Client) DescribeSslVpnClientCert(ctx context.Context, input *DescribeSslVpnClientCertInput, optFns ...func(*Options)) (*DescribeSslVpnClientCertOutput, error) {
-	out, meta, err := invoke[DescribeSslVpnClientCertInput, DescribeSslVpnClientCertOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeSslVpnClientCert", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSslVpnClientCertInput, DescribeSslVpnClientCertOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeSslVpnClientCert", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6438,7 +6506,7 @@ type DescribeSslVpnClientCertsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L28698
 func (c *Client) DescribeSslVpnClientCerts(ctx context.Context, input *DescribeSslVpnClientCertsInput, optFns ...func(*Options)) (*DescribeSslVpnClientCertsOutput, error) {
-	out, meta, err := invoke[DescribeSslVpnClientCertsInput, DescribeSslVpnClientCertsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeSslVpnClientCerts", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSslVpnClientCertsInput, DescribeSslVpnClientCertsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeSslVpnClientCerts", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6470,7 +6538,7 @@ type DescribeSslVpnClientsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L28819
 func (c *Client) DescribeSslVpnClients(ctx context.Context, input *DescribeSslVpnClientsInput, optFns ...func(*Options)) (*DescribeSslVpnClientsOutput, error) {
-	out, meta, err := invoke[DescribeSslVpnClientsInput, DescribeSslVpnClientsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeSslVpnClients", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSslVpnClientsInput, DescribeSslVpnClientsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeSslVpnClients", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6495,7 +6563,7 @@ type DescribeSslVpnServersAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L28949
 func (c *Client) DescribeSslVpnServers(ctx context.Context, input *DescribeSslVpnServersInput, optFns ...func(*Options)) (*DescribeSslVpnServersOutput, error) {
-	out, meta, err := invoke[DescribeSslVpnServersInput, DescribeSslVpnServersOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeSslVpnServers", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSslVpnServersInput, DescribeSslVpnServersOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeSslVpnServers", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6520,7 +6588,7 @@ type DescribeTagKeysAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L29068
 func (c *Client) DescribeTagKeys(ctx context.Context, input *DescribeTagKeysInput, optFns ...func(*Options)) (*DescribeTagKeysOutput, error) {
-	out, meta, err := invoke[DescribeTagKeysInput, DescribeTagKeysOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeTagKeys", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeTagKeysInput, DescribeTagKeysOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeTagKeys", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6545,7 +6613,7 @@ type DescribeTagKeysForExpressConnectAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L29182
 func (c *Client) DescribeTagKeysForExpressConnect(ctx context.Context, input *DescribeTagKeysForExpressConnectInput, optFns ...func(*Options)) (*DescribeTagKeysForExpressConnectOutput, error) {
-	out, meta, err := invoke[DescribeTagKeysForExpressConnectInput, DescribeTagKeysForExpressConnectOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeTagKeysForExpressConnect", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeTagKeysForExpressConnectInput, DescribeTagKeysForExpressConnectOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeTagKeysForExpressConnect", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6579,7 +6647,7 @@ type DescribeTagsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L29319
 func (c *Client) DescribeTags(ctx context.Context, input *DescribeTagsInput, optFns ...func(*Options)) (*DescribeTagsOutput, error) {
-	out, meta, err := invoke[DescribeTagsInput, DescribeTagsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeTags", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeTagsInput, DescribeTagsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeTags", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6604,7 +6672,7 @@ type DescribeVRoutersAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L29440
 func (c *Client) DescribeVRouters(ctx context.Context, input *DescribeVRoutersInput, optFns ...func(*Options)) (*DescribeVRoutersOutput, error) {
-	out, meta, err := invoke[DescribeVRoutersInput, DescribeVRoutersOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVRouters", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVRoutersInput, DescribeVRoutersOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVRouters", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6629,7 +6697,7 @@ type DescribeVSwitchAttributesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L29575
 func (c *Client) DescribeVSwitchAttributes(ctx context.Context, input *DescribeVSwitchAttributesInput, optFns ...func(*Options)) (*DescribeVSwitchAttributesOutput, error) {
-	out, meta, err := invoke[DescribeVSwitchAttributesInput, DescribeVSwitchAttributesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVSwitchAttributes", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVSwitchAttributesInput, DescribeVSwitchAttributesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVSwitchAttributes", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6660,7 +6728,7 @@ type DescribeVSwitchesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L29731
 func (c *Client) DescribeVSwitches(ctx context.Context, input *DescribeVSwitchesInput, optFns ...func(*Options)) (*DescribeVSwitchesOutput, error) {
-	out, meta, err := invoke[DescribeVSwitchesInput, DescribeVSwitchesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVSwitches", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVSwitchesInput, DescribeVSwitchesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVSwitches", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6685,7 +6753,7 @@ type DescribeVbrHaAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L29873
 func (c *Client) DescribeVbrHa(ctx context.Context, input *DescribeVbrHaInput, optFns ...func(*Options)) (*DescribeVbrHaOutput, error) {
-	out, meta, err := invoke[DescribeVbrHaInput, DescribeVbrHaOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVbrHa", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVbrHaInput, DescribeVbrHaOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVbrHa", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6710,7 +6778,7 @@ type DescribeVcoRouteEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L30022
 func (c *Client) DescribeVcoRouteEntries(ctx context.Context, input *DescribeVcoRouteEntriesInput, optFns ...func(*Options)) (*DescribeVcoRouteEntriesOutput, error) {
-	out, meta, err := invoke[DescribeVcoRouteEntriesInput, DescribeVcoRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVcoRouteEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVcoRouteEntriesInput, DescribeVcoRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVcoRouteEntries", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6735,7 +6803,7 @@ type DescribeVirtualBorderRoutersAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L30212
 func (c *Client) DescribeVirtualBorderRouters(ctx context.Context, input *DescribeVirtualBorderRoutersInput, optFns ...func(*Options)) (*DescribeVirtualBorderRoutersOutput, error) {
-	out, meta, err := invoke[DescribeVirtualBorderRoutersInput, DescribeVirtualBorderRoutersOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVirtualBorderRouters", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVirtualBorderRoutersInput, DescribeVirtualBorderRoutersOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVirtualBorderRouters", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6760,7 +6828,7 @@ type DescribeVirtualBorderRoutersForPhysicalConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L30357
 func (c *Client) DescribeVirtualBorderRoutersForPhysicalConnection(ctx context.Context, input *DescribeVirtualBorderRoutersForPhysicalConnectionInput, optFns ...func(*Options)) (*DescribeVirtualBorderRoutersForPhysicalConnectionOutput, error) {
-	out, meta, err := invoke[DescribeVirtualBorderRoutersForPhysicalConnectionInput, DescribeVirtualBorderRoutersForPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVirtualBorderRoutersForPhysicalConnection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVirtualBorderRoutersForPhysicalConnectionInput, DescribeVirtualBorderRoutersForPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVirtualBorderRoutersForPhysicalConnection", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6785,7 +6853,7 @@ type DescribeVpcAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L30550
 func (c *Client) DescribeVpcAttribute(ctx context.Context, input *DescribeVpcAttributeInput, optFns ...func(*Options)) (*DescribeVpcAttributeOutput, error) {
-	out, meta, err := invoke[DescribeVpcAttributeInput, DescribeVpcAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpcAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVpcAttributeInput, DescribeVpcAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpcAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6810,7 +6878,7 @@ type DescribeVpcGrantRulesToEcrAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L30676
 func (c *Client) DescribeVpcGrantRulesToEcr(ctx context.Context, input *DescribeVpcGrantRulesToEcrInput, optFns ...func(*Options)) (*DescribeVpcGrantRulesToEcrOutput, error) {
-	out, meta, err := invoke[DescribeVpcGrantRulesToEcrInput, DescribeVpcGrantRulesToEcrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpcGrantRulesToEcr", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVpcGrantRulesToEcrInput, DescribeVpcGrantRulesToEcrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpcGrantRulesToEcr", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6841,7 +6909,7 @@ type DescribeVpcsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L30865
 func (c *Client) DescribeVpcs(ctx context.Context, input *DescribeVpcsInput, optFns ...func(*Options)) (*DescribeVpcsOutput, error) {
-	out, meta, err := invoke[DescribeVpcsInput, DescribeVpcsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpcs", Version: "2016-04-28", Idempotent: true}, true, nil, ValidateDescribeVpcsInput, optFns)
+	out, meta, err := invoke[DescribeVpcsInput, DescribeVpcsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpcs", Version: "2016-04-28", Idempotent: true}, "POST", true, nil, ValidateDescribeVpcsInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6866,7 +6934,7 @@ type DescribeVpnAttachmentsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L31018
 func (c *Client) DescribeVpnAttachments(ctx context.Context, input *DescribeVpnAttachmentsInput, optFns ...func(*Options)) (*DescribeVpnAttachmentsOutput, error) {
-	out, meta, err := invoke[DescribeVpnAttachmentsInput, DescribeVpnAttachmentsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnAttachments", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVpnAttachmentsInput, DescribeVpnAttachmentsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnAttachments", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6891,7 +6959,7 @@ type DescribeVpnConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L31253
 func (c *Client) DescribeVpnConnection(ctx context.Context, input *DescribeVpnConnectionInput, optFns ...func(*Options)) (*DescribeVpnConnectionOutput, error) {
-	out, meta, err := invoke[DescribeVpnConnectionInput, DescribeVpnConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnConnection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVpnConnectionInput, DescribeVpnConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnConnection", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6916,7 +6984,7 @@ type DescribeVpnConnectionLogsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L31358
 func (c *Client) DescribeVpnConnectionLogs(ctx context.Context, input *DescribeVpnConnectionLogsInput, optFns ...func(*Options)) (*DescribeVpnConnectionLogsOutput, error) {
-	out, meta, err := invoke[DescribeVpnConnectionLogsInput, DescribeVpnConnectionLogsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnConnectionLogs", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVpnConnectionLogsInput, DescribeVpnConnectionLogsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnConnectionLogs", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6941,7 +7009,7 @@ type DescribeVpnConnectionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L31594
 func (c *Client) DescribeVpnConnections(ctx context.Context, input *DescribeVpnConnectionsInput, optFns ...func(*Options)) (*DescribeVpnConnectionsOutput, error) {
-	out, meta, err := invoke[DescribeVpnConnectionsInput, DescribeVpnConnectionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnConnections", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVpnConnectionsInput, DescribeVpnConnectionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnConnections", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6966,7 +7034,7 @@ type DescribeVpnCrossAccountAuthorizationsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L31716
 func (c *Client) DescribeVpnCrossAccountAuthorizations(ctx context.Context, input *DescribeVpnCrossAccountAuthorizationsInput, optFns ...func(*Options)) (*DescribeVpnCrossAccountAuthorizationsOutput, error) {
-	out, meta, err := invoke[DescribeVpnCrossAccountAuthorizationsInput, DescribeVpnCrossAccountAuthorizationsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnCrossAccountAuthorizations", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVpnCrossAccountAuthorizationsInput, DescribeVpnCrossAccountAuthorizationsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnCrossAccountAuthorizations", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6991,7 +7059,32 @@ type DescribeVpnGatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L31958
 func (c *Client) DescribeVpnGateway(ctx context.Context, input *DescribeVpnGatewayInput, optFns ...func(*Options)) (*DescribeVpnGatewayOutput, error) {
-	out, meta, err := invoke[DescribeVpnGatewayInput, DescribeVpnGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVpnGatewayInput, DescribeVpnGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnGateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeVpnGatewayAvailableZonesAPI is the minimal interface for DescribeVpnGatewayAvailableZones mocks and capability adapters.
+type DescribeVpnGatewayAvailableZonesAPI interface {
+	// DescribeVpnGatewayAvailableZones invokes the native action with owned inputs and per-call options.
+	DescribeVpnGatewayAvailableZones(context.Context, *DescribeVpnGatewayAvailableZonesInput, ...func(*Options)) (*DescribeVpnGatewayAvailableZonesOutput, error)
+}
+
+// DescribeVpnGatewayAvailableZones calls the native DescribeVpnGatewayAvailableZones action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the list of zones that support IPsec-VPN connection deployment in a specified region.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32068
+func (c *Client) DescribeVpnGatewayAvailableZones(ctx context.Context, input *DescribeVpnGatewayAvailableZonesInput, optFns ...func(*Options)) (*DescribeVpnGatewayAvailableZonesOutput, error) {
+	out, meta, err := invoke[DescribeVpnGatewayAvailableZonesInput, DescribeVpnGatewayAvailableZonesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnGatewayAvailableZones", Version: "2016-04-28", Idempotent: false}, "GET", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7016,7 +7109,7 @@ type DescribeVpnGatewaysAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32223
 func (c *Client) DescribeVpnGateways(ctx context.Context, input *DescribeVpnGatewaysInput, optFns ...func(*Options)) (*DescribeVpnGatewaysOutput, error) {
-	out, meta, err := invoke[DescribeVpnGatewaysInput, DescribeVpnGatewaysOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnGateways", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVpnGatewaysInput, DescribeVpnGatewaysOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnGateways", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7041,7 +7134,7 @@ type DescribeVpnPbrRouteEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32351
 func (c *Client) DescribeVpnPbrRouteEntries(ctx context.Context, input *DescribeVpnPbrRouteEntriesInput, optFns ...func(*Options)) (*DescribeVpnPbrRouteEntriesOutput, error) {
-	out, meta, err := invoke[DescribeVpnPbrRouteEntriesInput, DescribeVpnPbrRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnPbrRouteEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVpnPbrRouteEntriesInput, DescribeVpnPbrRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnPbrRouteEntries", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7066,7 +7159,7 @@ type DescribeVpnRouteEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32473
 func (c *Client) DescribeVpnRouteEntries(ctx context.Context, input *DescribeVpnRouteEntriesInput, optFns ...func(*Options)) (*DescribeVpnRouteEntriesOutput, error) {
-	out, meta, err := invoke[DescribeVpnRouteEntriesInput, DescribeVpnRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnRouteEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVpnRouteEntriesInput, DescribeVpnRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnRouteEntries", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7091,7 +7184,7 @@ type DescribeVpnSslServerLogsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32584
 func (c *Client) DescribeVpnSslServerLogs(ctx context.Context, input *DescribeVpnSslServerLogsInput, optFns ...func(*Options)) (*DescribeVpnSslServerLogsOutput, error) {
-	out, meta, err := invoke[DescribeVpnSslServerLogsInput, DescribeVpnSslServerLogsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnSslServerLogs", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVpnSslServerLogsInput, DescribeVpnSslServerLogsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeVpnSslServerLogs", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7116,7 +7209,7 @@ type DescribeZonesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32695
 func (c *Client) DescribeZones(ctx context.Context, input *DescribeZonesInput, optFns ...func(*Options)) (*DescribeZonesOutput, error) {
-	out, meta, err := invoke[DescribeZonesInput, DescribeZonesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeZones", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeZonesInput, DescribeZonesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DescribeZones", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7150,7 +7243,7 @@ type DetachDhcpOptionsSetFromVpcAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32790
 func (c *Client) DetachDhcpOptionsSetFromVpc(ctx context.Context, input *DetachDhcpOptionsSetFromVpcInput, optFns ...func(*Options)) (*DetachDhcpOptionsSetFromVpcOutput, error) {
-	out, meta, err := invoke[DetachDhcpOptionsSetFromVpcInput, DetachDhcpOptionsSetFromVpcOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DetachDhcpOptionsSetFromVpc", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DetachDhcpOptionsSetFromVpcInput, DetachDhcpOptionsSetFromVpcOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DetachDhcpOptionsSetFromVpc", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7183,7 +7276,7 @@ type DiagnoseVpnConnectionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32911
 func (c *Client) DiagnoseVpnConnections(ctx context.Context, input *DiagnoseVpnConnectionsInput, optFns ...func(*Options)) (*DiagnoseVpnConnectionsOutput, error) {
-	out, meta, err := invoke[DiagnoseVpnConnectionsInput, DiagnoseVpnConnectionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DiagnoseVpnConnections", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DiagnoseVpnConnectionsInput, DiagnoseVpnConnectionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DiagnoseVpnConnections", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7214,7 +7307,7 @@ type DiagnoseVpnGatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33019
 func (c *Client) DiagnoseVpnGateway(ctx context.Context, input *DiagnoseVpnGatewayInput, optFns ...func(*Options)) (*DiagnoseVpnGatewayOutput, error) {
-	out, meta, err := invoke[DiagnoseVpnGatewayInput, DiagnoseVpnGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DiagnoseVpnGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DiagnoseVpnGatewayInput, DiagnoseVpnGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DiagnoseVpnGateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7239,7 +7332,7 @@ type DisableVpcClassicLinkAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33109
 func (c *Client) DisableVpcClassicLink(ctx context.Context, input *DisableVpcClassicLinkInput, optFns ...func(*Options)) (*DisableVpcClassicLinkOutput, error) {
-	out, meta, err := invoke[DisableVpcClassicLinkInput, DisableVpcClassicLinkOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DisableVpcClassicLink", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DisableVpcClassicLinkInput, DisableVpcClassicLinkOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DisableVpcClassicLink", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7271,7 +7364,7 @@ type DisassociateMacSecKeyAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33198
 func (c *Client) DisassociateMacSecKey(ctx context.Context, input *DisassociateMacSecKeyInput, optFns ...func(*Options)) (*DisassociateMacSecKeyOutput, error) {
-	out, meta, err := invoke[DisassociateMacSecKeyInput, DisassociateMacSecKeyOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DisassociateMacSecKey", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DisassociateMacSecKeyInput, DisassociateMacSecKeyOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DisassociateMacSecKey", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7296,7 +7389,7 @@ type DissociateRouteTableFromGatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33288
 func (c *Client) DissociateRouteTableFromGateway(ctx context.Context, input *DissociateRouteTableFromGatewayInput, optFns ...func(*Options)) (*DissociateRouteTableFromGatewayOutput, error) {
-	out, meta, err := invoke[DissociateRouteTableFromGatewayInput, DissociateRouteTableFromGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DissociateRouteTableFromGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DissociateRouteTableFromGatewayInput, DissociateRouteTableFromGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DissociateRouteTableFromGateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7321,7 +7414,7 @@ type DissociateRouteTablesFromVpcGatewayEndpointAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33394
 func (c *Client) DissociateRouteTablesFromVpcGatewayEndpoint(ctx context.Context, input *DissociateRouteTablesFromVpcGatewayEndpointInput, optFns ...func(*Options)) (*DissociateRouteTablesFromVpcGatewayEndpointOutput, error) {
-	out, meta, err := invoke[DissociateRouteTablesFromVpcGatewayEndpointInput, DissociateRouteTablesFromVpcGatewayEndpointOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DissociateRouteTablesFromVpcGatewayEndpoint", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DissociateRouteTablesFromVpcGatewayEndpointInput, DissociateRouteTablesFromVpcGatewayEndpointOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DissociateRouteTablesFromVpcGatewayEndpoint", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7355,7 +7448,7 @@ type DissociateVpnGatewayWithCertificateAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33503
 func (c *Client) DissociateVpnGatewayWithCertificate(ctx context.Context, input *DissociateVpnGatewayWithCertificateInput, optFns ...func(*Options)) (*DissociateVpnGatewayWithCertificateOutput, error) {
-	out, meta, err := invoke[DissociateVpnGatewayWithCertificateInput, DissociateVpnGatewayWithCertificateOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DissociateVpnGatewayWithCertificate", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DissociateVpnGatewayWithCertificateInput, DissociateVpnGatewayWithCertificateOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DissociateVpnGatewayWithCertificate", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7380,7 +7473,7 @@ type DownloadVpnConnectionConfigAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33658
 func (c *Client) DownloadVpnConnectionConfig(ctx context.Context, input *DownloadVpnConnectionConfigInput, optFns ...func(*Options)) (*DownloadVpnConnectionConfigOutput, error) {
-	out, meta, err := invoke[DownloadVpnConnectionConfigInput, DownloadVpnConnectionConfigOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DownloadVpnConnectionConfig", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DownloadVpnConnectionConfigInput, DownloadVpnConnectionConfigOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "DownloadVpnConnectionConfig", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7416,7 +7509,7 @@ type EnablePhysicalConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33745
 func (c *Client) EnablePhysicalConnection(ctx context.Context, input *EnablePhysicalConnectionInput, optFns ...func(*Options)) (*EnablePhysicalConnectionOutput, error) {
-	out, meta, err := invoke[EnablePhysicalConnectionInput, EnablePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "EnablePhysicalConnection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[EnablePhysicalConnectionInput, EnablePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "EnablePhysicalConnection", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7441,7 +7534,7 @@ type EnableVpcClassicLinkAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33851
 func (c *Client) EnableVpcClassicLink(ctx context.Context, input *EnableVpcClassicLinkInput, optFns ...func(*Options)) (*EnableVpcClassicLinkOutput, error) {
-	out, meta, err := invoke[EnableVpcClassicLinkInput, EnableVpcClassicLinkOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "EnableVpcClassicLink", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[EnableVpcClassicLinkInput, EnableVpcClassicLinkOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "EnableVpcClassicLink", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7475,7 +7568,7 @@ type EnableVpcIpv4GatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L33950
 func (c *Client) EnableVpcIpv4Gateway(ctx context.Context, input *EnableVpcIpv4GatewayInput, optFns ...func(*Options)) (*EnableVpcIpv4GatewayOutput, error) {
-	out, meta, err := invoke[EnableVpcIpv4GatewayInput, EnableVpcIpv4GatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "EnableVpcIpv4Gateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[EnableVpcIpv4GatewayInput, EnableVpcIpv4GatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "EnableVpcIpv4Gateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7500,7 +7593,7 @@ type GetDhcpOptionsSetAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34098
 func (c *Client) GetDhcpOptionsSet(ctx context.Context, input *GetDhcpOptionsSetInput, optFns ...func(*Options)) (*GetDhcpOptionsSetOutput, error) {
-	out, meta, err := invoke[GetDhcpOptionsSetInput, GetDhcpOptionsSetOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetDhcpOptionsSet", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[GetDhcpOptionsSetInput, GetDhcpOptionsSetOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetDhcpOptionsSet", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7525,7 +7618,7 @@ type GetFlowLogServiceStatusAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34186
 func (c *Client) GetFlowLogServiceStatus(ctx context.Context, input *GetFlowLogServiceStatusInput, optFns ...func(*Options)) (*GetFlowLogServiceStatusOutput, error) {
-	out, meta, err := invoke[GetFlowLogServiceStatusInput, GetFlowLogServiceStatusOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetFlowLogServiceStatus", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[GetFlowLogServiceStatusInput, GetFlowLogServiceStatusOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetFlowLogServiceStatus", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7550,7 +7643,7 @@ type GetIpv4GatewayAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34301
 func (c *Client) GetIpv4GatewayAttribute(ctx context.Context, input *GetIpv4GatewayAttributeInput, optFns ...func(*Options)) (*GetIpv4GatewayAttributeOutput, error) {
-	out, meta, err := invoke[GetIpv4GatewayAttributeInput, GetIpv4GatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetIpv4GatewayAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[GetIpv4GatewayAttributeInput, GetIpv4GatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetIpv4GatewayAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7581,7 +7674,7 @@ type GetNatGatewayAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34506
 func (c *Client) GetNatGatewayAttribute(ctx context.Context, input *GetNatGatewayAttributeInput, optFns ...func(*Options)) (*GetNatGatewayAttributeOutput, error) {
-	out, meta, err := invoke[GetNatGatewayAttributeInput, GetNatGatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetNatGatewayAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[GetNatGatewayAttributeInput, GetNatGatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetNatGatewayAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7613,7 +7706,7 @@ type GetPhysicalConnectionServiceStatusAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34595
 func (c *Client) GetPhysicalConnectionServiceStatus(ctx context.Context, input *GetPhysicalConnectionServiceStatusInput, optFns ...func(*Options)) (*GetPhysicalConnectionServiceStatusOutput, error) {
-	out, meta, err := invoke[GetPhysicalConnectionServiceStatusInput, GetPhysicalConnectionServiceStatusOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetPhysicalConnectionServiceStatus", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[GetPhysicalConnectionServiceStatusInput, GetPhysicalConnectionServiceStatusOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetPhysicalConnectionServiceStatus", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7638,7 +7731,7 @@ type GetPublicIpAddressPoolServiceStatusAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34686
 func (c *Client) GetPublicIpAddressPoolServiceStatus(ctx context.Context, input *GetPublicIpAddressPoolServiceStatusInput, optFns ...func(*Options)) (*GetPublicIpAddressPoolServiceStatusOutput, error) {
-	out, meta, err := invoke[GetPublicIpAddressPoolServiceStatusInput, GetPublicIpAddressPoolServiceStatusOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetPublicIpAddressPoolServiceStatus", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[GetPublicIpAddressPoolServiceStatusInput, GetPublicIpAddressPoolServiceStatusOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetPublicIpAddressPoolServiceStatus", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7669,7 +7762,7 @@ type GetRouteTargetGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34831
 func (c *Client) GetRouteTargetGroup(ctx context.Context, input *GetRouteTargetGroupInput, optFns ...func(*Options)) (*GetRouteTargetGroupOutput, error) {
-	out, meta, err := invoke[GetRouteTargetGroupInput, GetRouteTargetGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetRouteTargetGroup", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[GetRouteTargetGroupInput, GetRouteTargetGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetRouteTargetGroup", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7694,7 +7787,7 @@ type GetTrafficMirrorServiceStatusAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L34915
 func (c *Client) GetTrafficMirrorServiceStatus(ctx context.Context, input *GetTrafficMirrorServiceStatusInput, optFns ...func(*Options)) (*GetTrafficMirrorServiceStatusOutput, error) {
-	out, meta, err := invoke[GetTrafficMirrorServiceStatusInput, GetTrafficMirrorServiceStatusOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetTrafficMirrorServiceStatus", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[GetTrafficMirrorServiceStatusInput, GetTrafficMirrorServiceStatusOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetTrafficMirrorServiceStatus", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7719,7 +7812,7 @@ type GetVSwitchCidrReservationUsageAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35018
 func (c *Client) GetVSwitchCidrReservationUsage(ctx context.Context, input *GetVSwitchCidrReservationUsageInput, optFns ...func(*Options)) (*GetVSwitchCidrReservationUsageOutput, error) {
-	out, meta, err := invoke[GetVSwitchCidrReservationUsageInput, GetVSwitchCidrReservationUsageOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetVSwitchCidrReservationUsage", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[GetVSwitchCidrReservationUsageInput, GetVSwitchCidrReservationUsageOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetVSwitchCidrReservationUsage", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7744,7 +7837,7 @@ type GetVpcGatewayEndpointAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35133
 func (c *Client) GetVpcGatewayEndpointAttribute(ctx context.Context, input *GetVpcGatewayEndpointAttributeInput, optFns ...func(*Options)) (*GetVpcGatewayEndpointAttributeOutput, error) {
-	out, meta, err := invoke[GetVpcGatewayEndpointAttributeInput, GetVpcGatewayEndpointAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetVpcGatewayEndpointAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[GetVpcGatewayEndpointAttributeInput, GetVpcGatewayEndpointAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetVpcGatewayEndpointAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7769,7 +7862,7 @@ type GetVpcPrefixListAssociationsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35247
 func (c *Client) GetVpcPrefixListAssociations(ctx context.Context, input *GetVpcPrefixListAssociationsInput, optFns ...func(*Options)) (*GetVpcPrefixListAssociationsOutput, error) {
-	out, meta, err := invoke[GetVpcPrefixListAssociationsInput, GetVpcPrefixListAssociationsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetVpcPrefixListAssociations", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[GetVpcPrefixListAssociationsInput, GetVpcPrefixListAssociationsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetVpcPrefixListAssociations", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7794,7 +7887,7 @@ type GetVpcPrefixListEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35351
 func (c *Client) GetVpcPrefixListEntries(ctx context.Context, input *GetVpcPrefixListEntriesInput, optFns ...func(*Options)) (*GetVpcPrefixListEntriesOutput, error) {
-	out, meta, err := invoke[GetVpcPrefixListEntriesInput, GetVpcPrefixListEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetVpcPrefixListEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[GetVpcPrefixListEntriesInput, GetVpcPrefixListEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetVpcPrefixListEntries", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7819,7 +7912,7 @@ type GetVpcRouteEntrySummaryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35471
 func (c *Client) GetVpcRouteEntrySummary(ctx context.Context, input *GetVpcRouteEntrySummaryInput, optFns ...func(*Options)) (*GetVpcRouteEntrySummaryOutput, error) {
-	out, meta, err := invoke[GetVpcRouteEntrySummaryInput, GetVpcRouteEntrySummaryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetVpcRouteEntrySummary", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[GetVpcRouteEntrySummaryInput, GetVpcRouteEntrySummaryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetVpcRouteEntrySummary", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7850,7 +7943,7 @@ type GetVpnGatewayDiagnoseResultAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35627
 func (c *Client) GetVpnGatewayDiagnoseResult(ctx context.Context, input *GetVpnGatewayDiagnoseResultInput, optFns ...func(*Options)) (*GetVpnGatewayDiagnoseResultOutput, error) {
-	out, meta, err := invoke[GetVpnGatewayDiagnoseResultInput, GetVpnGatewayDiagnoseResultOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetVpnGatewayDiagnoseResult", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[GetVpnGatewayDiagnoseResultInput, GetVpnGatewayDiagnoseResultOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GetVpnGatewayDiagnoseResult", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7883,7 +7976,49 @@ type GrantInstanceToCenAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35724
 func (c *Client) GrantInstanceToCen(ctx context.Context, input *GrantInstanceToCenInput, optFns ...func(*Options)) (*GrantInstanceToCenOutput, error) {
-	out, meta, err := invoke[GrantInstanceToCenInput, GrantInstanceToCenOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GrantInstanceToCen", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[GrantInstanceToCenInput, GrantInstanceToCenOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GrantInstanceToCen", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// GrantInstanceToVbrAPI is the minimal interface for GrantInstanceToVbr mocks and capability adapters.
+type GrantInstanceToVbrAPI interface {
+	// GrantInstanceToVbr invokes the native action with owned inputs and per-call options.
+	GrantInstanceToVbr(context.Context, *GrantInstanceToVbrInput, ...func(*Options)) (*GrantInstanceToVbrOutput, error)
+}
+
+// GrantInstanceToVbr calls the native GrantInstanceToVbr action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Invokes the GrantInstanceToVbr operation to grant authorization of a VPC-connected instance to a VBR instance for cross-account VBR uplink scenarios.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35858
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// This operation is used for cross-account scenarios. Before calling this operation, ensure that the following resources are ready:
+// Account A (VPC owner, the caller of this operation):
+// - A VPC has been created and is in the Available state (CreateVpc).
+// Account B (VBR owner, the account specified by VbrOwnerUid): When GrantType=Specify, the VBRs specified in VbrInstanceIds must already be created. Creating a VBR depends on the complete Express Connect circuit lifecycle:
+// 1. Call CreatePhysicalConnection to create an Express Connect circuit.
+// 2. Apply for a Letter of Authorization (LOA) and complete the construction (ApplyPhysicalConnectionLOA → CompletePhysicalConnectionLOA). The Express Connect circuit enters the Confirmed state.
+// 3. Call EnablePhysicalConnection to enable the Express Connect circuit (the circuit must be in the Confirmed state).
+// 4. Call CreateVirtualBorderRouter to create a VBR (the Express Connect circuit must be in the Enabled state. Otherwise, the error InvalidPhysicalConnectionId.NotEnabled is returned).
+// After the preceding preparations are complete, Account A calls this operation to grant the VPC to the VBR of Account B:
+// - GrantType=All: Grants authorization to all VBRs under Account B (only the validity of VbrOwnerUid is verified. The VBRs do not need to be created yet).
+// - GrantType=Specify: Grants authorization to specified VBRs. The instances in VbrInstanceIds must already exist in the region specified by VbrRegionNo under the account specified by VbrOwnerUid. Otherwise, the error Instance.NotExist is returned.
+// Note: VbrOwnerUid cannot be the same as the caller\\"s account. Otherwise, the error Parameter.Illegal is returned.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35858
+func (c *Client) GrantInstanceToVbr(ctx context.Context, input *GrantInstanceToVbrInput, optFns ...func(*Options)) (*GrantInstanceToVbrOutput, error) {
+	out, meta, err := invoke[GrantInstanceToVbrInput, GrantInstanceToVbrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "GrantInstanceToVbr", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7908,7 +8043,7 @@ type ListBusinessAccessPointsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36017
 func (c *Client) ListBusinessAccessPoints(ctx context.Context, input *ListBusinessAccessPointsInput, optFns ...func(*Options)) (*ListBusinessAccessPointsOutput, error) {
-	out, meta, err := invoke[ListBusinessAccessPointsInput, ListBusinessAccessPointsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListBusinessAccessPoints", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListBusinessAccessPointsInput, ListBusinessAccessPointsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListBusinessAccessPoints", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7933,7 +8068,7 @@ type ListBusinessRegionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36086
 func (c *Client) ListBusinessRegions(ctx context.Context, input *ListBusinessRegionsInput, optFns ...func(*Options)) (*ListBusinessRegionsOutput, error) {
-	out, meta, err := invoke[ListBusinessRegionsInput, ListBusinessRegionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListBusinessRegions", Version: "2016-04-28", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[ListBusinessRegionsInput, ListBusinessRegionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListBusinessRegions", Version: "2016-04-28", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7958,7 +8093,7 @@ type ListDhcpOptionsSetsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36215
 func (c *Client) ListDhcpOptionsSets(ctx context.Context, input *ListDhcpOptionsSetsInput, optFns ...func(*Options)) (*ListDhcpOptionsSetsOutput, error) {
-	out, meta, err := invoke[ListDhcpOptionsSetsInput, ListDhcpOptionsSetsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListDhcpOptionsSets", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListDhcpOptionsSetsInput, ListDhcpOptionsSetsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListDhcpOptionsSets", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7989,7 +8124,7 @@ type ListEnhanhcedNatGatewayAvailableZonesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36330
 func (c *Client) ListEnhanhcedNatGatewayAvailableZones(ctx context.Context, input *ListEnhanhcedNatGatewayAvailableZonesInput, optFns ...func(*Options)) (*ListEnhanhcedNatGatewayAvailableZonesOutput, error) {
-	out, meta, err := invoke[ListEnhanhcedNatGatewayAvailableZonesInput, ListEnhanhcedNatGatewayAvailableZonesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListEnhanhcedNatGatewayAvailableZones", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListEnhanhcedNatGatewayAvailableZonesInput, ListEnhanhcedNatGatewayAvailableZonesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListEnhanhcedNatGatewayAvailableZones", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8014,7 +8149,7 @@ type ListFullNatEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36484
 func (c *Client) ListFullNatEntries(ctx context.Context, input *ListFullNatEntriesInput, optFns ...func(*Options)) (*ListFullNatEntriesOutput, error) {
-	out, meta, err := invoke[ListFullNatEntriesInput, ListFullNatEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListFullNatEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListFullNatEntriesInput, ListFullNatEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListFullNatEntries", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8039,7 +8174,7 @@ type ListGatewayRouteTableEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36644
 func (c *Client) ListGatewayRouteTableEntries(ctx context.Context, input *ListGatewayRouteTableEntriesInput, optFns ...func(*Options)) (*ListGatewayRouteTableEntriesOutput, error) {
-	out, meta, err := invoke[ListGatewayRouteTableEntriesInput, ListGatewayRouteTableEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListGatewayRouteTableEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListGatewayRouteTableEntriesInput, ListGatewayRouteTableEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListGatewayRouteTableEntries", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8064,7 +8199,7 @@ type ListGeographicSubRegionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36724
 func (c *Client) ListGeographicSubRegions(ctx context.Context, input *ListGeographicSubRegionsInput, optFns ...func(*Options)) (*ListGeographicSubRegionsOutput, error) {
-	out, meta, err := invoke[ListGeographicSubRegionsInput, ListGeographicSubRegionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListGeographicSubRegions", Version: "2016-04-28", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[ListGeographicSubRegionsInput, ListGeographicSubRegionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListGeographicSubRegions", Version: "2016-04-28", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8089,7 +8224,7 @@ type ListIpsecServerLogsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36796
 func (c *Client) ListIpsecServerLogs(ctx context.Context, input *ListIpsecServerLogsInput, optFns ...func(*Options)) (*ListIpsecServerLogsOutput, error) {
-	out, meta, err := invoke[ListIpsecServerLogsInput, ListIpsecServerLogsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListIpsecServerLogs", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListIpsecServerLogsInput, ListIpsecServerLogsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListIpsecServerLogs", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8114,7 +8249,7 @@ type ListIpsecServersAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36945
 func (c *Client) ListIpsecServers(ctx context.Context, input *ListIpsecServersInput, optFns ...func(*Options)) (*ListIpsecServersOutput, error) {
-	out, meta, err := invoke[ListIpsecServersInput, ListIpsecServersOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListIpsecServers", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListIpsecServersInput, ListIpsecServersOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListIpsecServers", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8139,7 +8274,7 @@ type ListIpv4GatewaysAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L37078
 func (c *Client) ListIpv4Gateways(ctx context.Context, input *ListIpv4GatewaysInput, optFns ...func(*Options)) (*ListIpv4GatewaysOutput, error) {
-	out, meta, err := invoke[ListIpv4GatewaysInput, ListIpv4GatewaysOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListIpv4Gateways", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListIpv4GatewaysInput, ListIpv4GatewaysOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListIpv4Gateways", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8164,7 +8299,7 @@ type ListNatIpCidrsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L37217
 func (c *Client) ListNatIpCidrs(ctx context.Context, input *ListNatIpCidrsInput, optFns ...func(*Options)) (*ListNatIpCidrsOutput, error) {
-	out, meta, err := invoke[ListNatIpCidrsInput, ListNatIpCidrsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListNatIpCidrs", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListNatIpCidrsInput, ListNatIpCidrsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListNatIpCidrs", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8189,7 +8324,7 @@ type ListNatIpsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L37380
 func (c *Client) ListNatIps(ctx context.Context, input *ListNatIpsInput, optFns ...func(*Options)) (*ListNatIpsOutput, error) {
-	out, meta, err := invoke[ListNatIpsInput, ListNatIpsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListNatIps", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListNatIpsInput, ListNatIpsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListNatIps", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8214,7 +8349,7 @@ type ListPhysicalConnectionFeaturesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L37517
 func (c *Client) ListPhysicalConnectionFeatures(ctx context.Context, input *ListPhysicalConnectionFeaturesInput, optFns ...func(*Options)) (*ListPhysicalConnectionFeaturesOutput, error) {
-	out, meta, err := invoke[ListPhysicalConnectionFeaturesInput, ListPhysicalConnectionFeaturesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListPhysicalConnectionFeatures", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListPhysicalConnectionFeaturesInput, ListPhysicalConnectionFeaturesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListPhysicalConnectionFeatures", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8239,7 +8374,7 @@ type ListPrefixListsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L37662
 func (c *Client) ListPrefixLists(ctx context.Context, input *ListPrefixListsInput, optFns ...func(*Options)) (*ListPrefixListsOutput, error) {
-	out, meta, err := invoke[ListPrefixListsInput, ListPrefixListsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListPrefixLists", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListPrefixListsInput, ListPrefixListsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListPrefixLists", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8264,7 +8399,7 @@ type ListPublicIpAddressPoolCidrBlocksAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L37781
 func (c *Client) ListPublicIpAddressPoolCidrBlocks(ctx context.Context, input *ListPublicIpAddressPoolCidrBlocksInput, optFns ...func(*Options)) (*ListPublicIpAddressPoolCidrBlocksOutput, error) {
-	out, meta, err := invoke[ListPublicIpAddressPoolCidrBlocksInput, ListPublicIpAddressPoolCidrBlocksOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListPublicIpAddressPoolCidrBlocks", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListPublicIpAddressPoolCidrBlocksInput, ListPublicIpAddressPoolCidrBlocksOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListPublicIpAddressPoolCidrBlocks", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8289,7 +8424,7 @@ type ListPublicIpAddressPoolsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L37987
 func (c *Client) ListPublicIpAddressPools(ctx context.Context, input *ListPublicIpAddressPoolsInput, optFns ...func(*Options)) (*ListPublicIpAddressPoolsOutput, error) {
-	out, meta, err := invoke[ListPublicIpAddressPoolsInput, ListPublicIpAddressPoolsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListPublicIpAddressPools", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListPublicIpAddressPoolsInput, ListPublicIpAddressPoolsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListPublicIpAddressPools", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8320,7 +8455,7 @@ type ListRouteTargetGroupsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L38170
 func (c *Client) ListRouteTargetGroups(ctx context.Context, input *ListRouteTargetGroupsInput, optFns ...func(*Options)) (*ListRouteTargetGroupsOutput, error) {
-	out, meta, err := invoke[ListRouteTargetGroupsInput, ListRouteTargetGroupsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListRouteTargetGroups", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListRouteTargetGroupsInput, ListRouteTargetGroupsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListRouteTargetGroups", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8354,7 +8489,7 @@ type ListTagResourcesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L38319
 func (c *Client) ListTagResources(ctx context.Context, input *ListTagResourcesInput, optFns ...func(*Options)) (*ListTagResourcesOutput, error) {
-	out, meta, err := invoke[ListTagResourcesInput, ListTagResourcesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListTagResources", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListTagResourcesInput, ListTagResourcesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListTagResources", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8388,7 +8523,7 @@ type ListTagResourcesForExpressConnectAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L38454
 func (c *Client) ListTagResourcesForExpressConnect(ctx context.Context, input *ListTagResourcesForExpressConnectInput, optFns ...func(*Options)) (*ListTagResourcesForExpressConnectOutput, error) {
-	out, meta, err := invoke[ListTagResourcesForExpressConnectInput, ListTagResourcesForExpressConnectOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListTagResourcesForExpressConnect", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListTagResourcesForExpressConnectInput, ListTagResourcesForExpressConnectOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListTagResourcesForExpressConnect", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8413,7 +8548,7 @@ type ListTrafficMirrorFiltersAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L38675
 func (c *Client) ListTrafficMirrorFilters(ctx context.Context, input *ListTrafficMirrorFiltersInput, optFns ...func(*Options)) (*ListTrafficMirrorFiltersOutput, error) {
-	out, meta, err := invoke[ListTrafficMirrorFiltersInput, ListTrafficMirrorFiltersOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListTrafficMirrorFilters", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListTrafficMirrorFiltersInput, ListTrafficMirrorFiltersOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListTrafficMirrorFilters", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8438,7 +8573,7 @@ type ListTrafficMirrorSessionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L38848
 func (c *Client) ListTrafficMirrorSessions(ctx context.Context, input *ListTrafficMirrorSessionsInput, optFns ...func(*Options)) (*ListTrafficMirrorSessionsOutput, error) {
-	out, meta, err := invoke[ListTrafficMirrorSessionsInput, ListTrafficMirrorSessionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListTrafficMirrorSessions", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListTrafficMirrorSessionsInput, ListTrafficMirrorSessionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListTrafficMirrorSessions", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8463,7 +8598,7 @@ type ListVSwitchCidrReservationsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L39017
 func (c *Client) ListVSwitchCidrReservations(ctx context.Context, input *ListVSwitchCidrReservationsInput, optFns ...func(*Options)) (*ListVSwitchCidrReservationsOutput, error) {
-	out, meta, err := invoke[ListVSwitchCidrReservationsInput, ListVSwitchCidrReservationsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListVSwitchCidrReservations", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListVSwitchCidrReservationsInput, ListVSwitchCidrReservationsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListVSwitchCidrReservations", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8488,7 +8623,7 @@ type ListVirtualPhysicalConnectionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L39245
 func (c *Client) ListVirtualPhysicalConnections(ctx context.Context, input *ListVirtualPhysicalConnectionsInput, optFns ...func(*Options)) (*ListVirtualPhysicalConnectionsOutput, error) {
-	out, meta, err := invoke[ListVirtualPhysicalConnectionsInput, ListVirtualPhysicalConnectionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListVirtualPhysicalConnections", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListVirtualPhysicalConnectionsInput, ListVirtualPhysicalConnectionsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListVirtualPhysicalConnections", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8513,7 +8648,7 @@ type ListVpcEndpointServicesByEndUserAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L39363
 func (c *Client) ListVpcEndpointServicesByEndUser(ctx context.Context, input *ListVpcEndpointServicesByEndUserInput, optFns ...func(*Options)) (*ListVpcEndpointServicesByEndUserOutput, error) {
-	out, meta, err := invoke[ListVpcEndpointServicesByEndUserInput, ListVpcEndpointServicesByEndUserOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListVpcEndpointServicesByEndUser", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListVpcEndpointServicesByEndUserInput, ListVpcEndpointServicesByEndUserOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListVpcEndpointServicesByEndUser", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8538,7 +8673,7 @@ type ListVpcGatewayEndpointsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L39502
 func (c *Client) ListVpcGatewayEndpoints(ctx context.Context, input *ListVpcGatewayEndpointsInput, optFns ...func(*Options)) (*ListVpcGatewayEndpointsOutput, error) {
-	out, meta, err := invoke[ListVpcGatewayEndpointsInput, ListVpcGatewayEndpointsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListVpcGatewayEndpoints", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListVpcGatewayEndpointsInput, ListVpcGatewayEndpointsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListVpcGatewayEndpoints", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8563,7 +8698,7 @@ type ListVpcPublishedRouteEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L39627
 func (c *Client) ListVpcPublishedRouteEntries(ctx context.Context, input *ListVpcPublishedRouteEntriesInput, optFns ...func(*Options)) (*ListVpcPublishedRouteEntriesOutput, error) {
-	out, meta, err := invoke[ListVpcPublishedRouteEntriesInput, ListVpcPublishedRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListVpcPublishedRouteEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListVpcPublishedRouteEntriesInput, ListVpcPublishedRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListVpcPublishedRouteEntries", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8598,7 +8733,7 @@ type ListVpnCertificateAssociationsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L39758
 func (c *Client) ListVpnCertificateAssociations(ctx context.Context, input *ListVpnCertificateAssociationsInput, optFns ...func(*Options)) (*ListVpnCertificateAssociationsOutput, error) {
-	out, meta, err := invoke[ListVpnCertificateAssociationsInput, ListVpnCertificateAssociationsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListVpnCertificateAssociations", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListVpnCertificateAssociationsInput, ListVpnCertificateAssociationsOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ListVpnCertificateAssociations", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8623,7 +8758,7 @@ type ModifyBgpGroupAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L39882
 func (c *Client) ModifyBgpGroupAttribute(ctx context.Context, input *ModifyBgpGroupAttributeInput, optFns ...func(*Options)) (*ModifyBgpGroupAttributeOutput, error) {
-	out, meta, err := invoke[ModifyBgpGroupAttributeInput, ModifyBgpGroupAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyBgpGroupAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyBgpGroupAttributeInput, ModifyBgpGroupAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyBgpGroupAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8648,7 +8783,7 @@ type ModifyBgpPeerAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40008
 func (c *Client) ModifyBgpPeerAttribute(ctx context.Context, input *ModifyBgpPeerAttributeInput, optFns ...func(*Options)) (*ModifyBgpPeerAttributeOutput, error) {
-	out, meta, err := invoke[ModifyBgpPeerAttributeInput, ModifyBgpPeerAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyBgpPeerAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyBgpPeerAttributeInput, ModifyBgpPeerAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyBgpPeerAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8673,7 +8808,7 @@ type ModifyCommonBandwidthPackageAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40106
 func (c *Client) ModifyCommonBandwidthPackageAttribute(ctx context.Context, input *ModifyCommonBandwidthPackageAttributeInput, optFns ...func(*Options)) (*ModifyCommonBandwidthPackageAttributeOutput, error) {
-	out, meta, err := invoke[ModifyCommonBandwidthPackageAttributeInput, ModifyCommonBandwidthPackageAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyCommonBandwidthPackageAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyCommonBandwidthPackageAttributeInput, ModifyCommonBandwidthPackageAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyCommonBandwidthPackageAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8709,7 +8844,7 @@ type ModifyCommonBandwidthPackageIpBandwidthAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40197
 func (c *Client) ModifyCommonBandwidthPackageIpBandwidth(ctx context.Context, input *ModifyCommonBandwidthPackageIpBandwidthInput, optFns ...func(*Options)) (*ModifyCommonBandwidthPackageIpBandwidthOutput, error) {
-	out, meta, err := invoke[ModifyCommonBandwidthPackageIpBandwidthInput, ModifyCommonBandwidthPackageIpBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyCommonBandwidthPackageIpBandwidth", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyCommonBandwidthPackageIpBandwidthInput, ModifyCommonBandwidthPackageIpBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyCommonBandwidthPackageIpBandwidth", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8744,7 +8879,7 @@ type ModifyCommonBandwidthPackageSpecAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40310
 func (c *Client) ModifyCommonBandwidthPackageSpec(ctx context.Context, input *ModifyCommonBandwidthPackageSpecInput, optFns ...func(*Options)) (*ModifyCommonBandwidthPackageSpecOutput, error) {
-	out, meta, err := invoke[ModifyCommonBandwidthPackageSpecInput, ModifyCommonBandwidthPackageSpecOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyCommonBandwidthPackageSpec", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyCommonBandwidthPackageSpecInput, ModifyCommonBandwidthPackageSpecOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyCommonBandwidthPackageSpec", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8779,7 +8914,7 @@ type ModifyCustomerGatewayAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40428
 func (c *Client) ModifyCustomerGatewayAttribute(ctx context.Context, input *ModifyCustomerGatewayAttributeInput, optFns ...func(*Options)) (*ModifyCustomerGatewayAttributeOutput, error) {
-	out, meta, err := invoke[ModifyCustomerGatewayAttributeInput, ModifyCustomerGatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyCustomerGatewayAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyCustomerGatewayAttributeInput, ModifyCustomerGatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyCustomerGatewayAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8804,7 +8939,7 @@ type ModifyEipAddressAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40542
 func (c *Client) ModifyEipAddressAttribute(ctx context.Context, input *ModifyEipAddressAttributeInput, optFns ...func(*Options)) (*ModifyEipAddressAttributeOutput, error) {
-	out, meta, err := invoke[ModifyEipAddressAttributeInput, ModifyEipAddressAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyEipAddressAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyEipAddressAttributeInput, ModifyEipAddressAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyEipAddressAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8829,7 +8964,7 @@ type ModifyEipForwardModeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40646
 func (c *Client) ModifyEipForwardMode(ctx context.Context, input *ModifyEipForwardModeInput, optFns ...func(*Options)) (*ModifyEipForwardModeOutput, error) {
-	out, meta, err := invoke[ModifyEipForwardModeInput, ModifyEipForwardModeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyEipForwardMode", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyEipForwardModeInput, ModifyEipForwardModeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyEipForwardMode", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8854,7 +8989,7 @@ type ModifyExpressCloudConnectionAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40736
 func (c *Client) ModifyExpressCloudConnectionAttribute(ctx context.Context, input *ModifyExpressCloudConnectionAttributeInput, optFns ...func(*Options)) (*ModifyExpressCloudConnectionAttributeOutput, error) {
-	out, meta, err := invoke[ModifyExpressCloudConnectionAttributeInput, ModifyExpressCloudConnectionAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyExpressCloudConnectionAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyExpressCloudConnectionAttributeInput, ModifyExpressCloudConnectionAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyExpressCloudConnectionAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8879,7 +9014,7 @@ type ModifyExpressCloudConnectionBandwidthAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40831
 func (c *Client) ModifyExpressCloudConnectionBandwidth(ctx context.Context, input *ModifyExpressCloudConnectionBandwidthInput, optFns ...func(*Options)) (*ModifyExpressCloudConnectionBandwidthOutput, error) {
-	out, meta, err := invoke[ModifyExpressCloudConnectionBandwidthInput, ModifyExpressCloudConnectionBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyExpressCloudConnectionBandwidth", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyExpressCloudConnectionBandwidthInput, ModifyExpressCloudConnectionBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyExpressCloudConnectionBandwidth", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8914,7 +9049,7 @@ type ModifyExpressConnectTrafficQosAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L40937
 func (c *Client) ModifyExpressConnectTrafficQos(ctx context.Context, input *ModifyExpressConnectTrafficQosInput, optFns ...func(*Options)) (*ModifyExpressConnectTrafficQosOutput, error) {
-	out, meta, err := invoke[ModifyExpressConnectTrafficQosInput, ModifyExpressConnectTrafficQosOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyExpressConnectTrafficQos", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyExpressConnectTrafficQosInput, ModifyExpressConnectTrafficQosOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyExpressConnectTrafficQos", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8939,7 +9074,7 @@ type ModifyExpressConnectTrafficQosQueueAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L41061
 func (c *Client) ModifyExpressConnectTrafficQosQueue(ctx context.Context, input *ModifyExpressConnectTrafficQosQueueInput, optFns ...func(*Options)) (*ModifyExpressConnectTrafficQosQueueOutput, error) {
-	out, meta, err := invoke[ModifyExpressConnectTrafficQosQueueInput, ModifyExpressConnectTrafficQosQueueOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyExpressConnectTrafficQosQueue", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyExpressConnectTrafficQosQueueInput, ModifyExpressConnectTrafficQosQueueOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyExpressConnectTrafficQosQueue", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8964,7 +9099,7 @@ type ModifyExpressConnectTrafficQosRuleAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L41255
 func (c *Client) ModifyExpressConnectTrafficQosRule(ctx context.Context, input *ModifyExpressConnectTrafficQosRuleInput, optFns ...func(*Options)) (*ModifyExpressConnectTrafficQosRuleOutput, error) {
-	out, meta, err := invoke[ModifyExpressConnectTrafficQosRuleInput, ModifyExpressConnectTrafficQosRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyExpressConnectTrafficQosRule", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyExpressConnectTrafficQosRuleInput, ModifyExpressConnectTrafficQosRuleOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyExpressConnectTrafficQosRule", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8998,7 +9133,7 @@ type ModifyFlowLogAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L41395
 func (c *Client) ModifyFlowLogAttribute(ctx context.Context, input *ModifyFlowLogAttributeInput, optFns ...func(*Options)) (*ModifyFlowLogAttributeOutput, error) {
-	out, meta, err := invoke[ModifyFlowLogAttributeInput, ModifyFlowLogAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyFlowLogAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyFlowLogAttributeInput, ModifyFlowLogAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyFlowLogAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9032,7 +9167,7 @@ type ModifyForwardEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L41541
 func (c *Client) ModifyForwardEntry(ctx context.Context, input *ModifyForwardEntryInput, optFns ...func(*Options)) (*ModifyForwardEntryOutput, error) {
-	out, meta, err := invoke[ModifyForwardEntryInput, ModifyForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyForwardEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyForwardEntryInput, ModifyForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyForwardEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9066,7 +9201,7 @@ type ModifyFullNatEntryAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L41690
 func (c *Client) ModifyFullNatEntryAttribute(ctx context.Context, input *ModifyFullNatEntryAttributeInput, optFns ...func(*Options)) (*ModifyFullNatEntryAttributeOutput, error) {
-	out, meta, err := invoke[ModifyFullNatEntryAttributeInput, ModifyFullNatEntryAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyFullNatEntryAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyFullNatEntryAttributeInput, ModifyFullNatEntryAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyFullNatEntryAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9091,7 +9226,7 @@ type ModifyGlobalAccelerationInstanceAttributesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L41823
 func (c *Client) ModifyGlobalAccelerationInstanceAttributes(ctx context.Context, input *ModifyGlobalAccelerationInstanceAttributesInput, optFns ...func(*Options)) (*ModifyGlobalAccelerationInstanceAttributesOutput, error) {
-	out, meta, err := invoke[ModifyGlobalAccelerationInstanceAttributesInput, ModifyGlobalAccelerationInstanceAttributesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyGlobalAccelerationInstanceAttributes", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyGlobalAccelerationInstanceAttributesInput, ModifyGlobalAccelerationInstanceAttributesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyGlobalAccelerationInstanceAttributes", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9123,7 +9258,7 @@ type ModifyGlobalAccelerationInstanceSpecAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L41913
 func (c *Client) ModifyGlobalAccelerationInstanceSpec(ctx context.Context, input *ModifyGlobalAccelerationInstanceSpecInput, optFns ...func(*Options)) (*ModifyGlobalAccelerationInstanceSpecOutput, error) {
-	out, meta, err := invoke[ModifyGlobalAccelerationInstanceSpecInput, ModifyGlobalAccelerationInstanceSpecOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyGlobalAccelerationInstanceSpec", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyGlobalAccelerationInstanceSpecInput, ModifyGlobalAccelerationInstanceSpecOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyGlobalAccelerationInstanceSpec", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9154,7 +9289,7 @@ type ModifyHaVipAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42014
 func (c *Client) ModifyHaVipAttribute(ctx context.Context, input *ModifyHaVipAttributeInput, optFns ...func(*Options)) (*ModifyHaVipAttributeOutput, error) {
-	out, meta, err := invoke[ModifyHaVipAttributeInput, ModifyHaVipAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyHaVipAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyHaVipAttributeInput, ModifyHaVipAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyHaVipAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9179,7 +9314,7 @@ type ModifyIPv6TranslatorAclAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42112
 func (c *Client) ModifyIPv6TranslatorAclAttribute(ctx context.Context, input *ModifyIPv6TranslatorAclAttributeInput, optFns ...func(*Options)) (*ModifyIPv6TranslatorAclAttributeOutput, error) {
-	out, meta, err := invoke[ModifyIPv6TranslatorAclAttributeInput, ModifyIPv6TranslatorAclAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIPv6TranslatorAclAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyIPv6TranslatorAclAttributeInput, ModifyIPv6TranslatorAclAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIPv6TranslatorAclAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9204,7 +9339,7 @@ type ModifyIPv6TranslatorAclListEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42211
 func (c *Client) ModifyIPv6TranslatorAclListEntry(ctx context.Context, input *ModifyIPv6TranslatorAclListEntryInput, optFns ...func(*Options)) (*ModifyIPv6TranslatorAclListEntryOutput, error) {
-	out, meta, err := invoke[ModifyIPv6TranslatorAclListEntryInput, ModifyIPv6TranslatorAclListEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIPv6TranslatorAclListEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyIPv6TranslatorAclListEntryInput, ModifyIPv6TranslatorAclListEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIPv6TranslatorAclListEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9229,7 +9364,7 @@ type ModifyIPv6TranslatorAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42301
 func (c *Client) ModifyIPv6TranslatorAttribute(ctx context.Context, input *ModifyIPv6TranslatorAttributeInput, optFns ...func(*Options)) (*ModifyIPv6TranslatorAttributeOutput, error) {
-	out, meta, err := invoke[ModifyIPv6TranslatorAttributeInput, ModifyIPv6TranslatorAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIPv6TranslatorAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyIPv6TranslatorAttributeInput, ModifyIPv6TranslatorAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIPv6TranslatorAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9254,7 +9389,7 @@ type ModifyIPv6TranslatorBandwidthAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42401
 func (c *Client) ModifyIPv6TranslatorBandwidth(ctx context.Context, input *ModifyIPv6TranslatorBandwidthInput, optFns ...func(*Options)) (*ModifyIPv6TranslatorBandwidthOutput, error) {
-	out, meta, err := invoke[ModifyIPv6TranslatorBandwidthInput, ModifyIPv6TranslatorBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIPv6TranslatorBandwidth", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyIPv6TranslatorBandwidthInput, ModifyIPv6TranslatorBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIPv6TranslatorBandwidth", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9279,7 +9414,7 @@ type ModifyIPv6TranslatorEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42514
 func (c *Client) ModifyIPv6TranslatorEntry(ctx context.Context, input *ModifyIPv6TranslatorEntryInput, optFns ...func(*Options)) (*ModifyIPv6TranslatorEntryOutput, error) {
-	out, meta, err := invoke[ModifyIPv6TranslatorEntryInput, ModifyIPv6TranslatorEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIPv6TranslatorEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyIPv6TranslatorEntryInput, ModifyIPv6TranslatorEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIPv6TranslatorEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9304,7 +9439,7 @@ type ModifyIpv6AddressAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42643
 func (c *Client) ModifyIpv6AddressAttribute(ctx context.Context, input *ModifyIpv6AddressAttributeInput, optFns ...func(*Options)) (*ModifyIpv6AddressAttributeOutput, error) {
-	out, meta, err := invoke[ModifyIpv6AddressAttributeInput, ModifyIpv6AddressAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIpv6AddressAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyIpv6AddressAttributeInput, ModifyIpv6AddressAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIpv6AddressAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9329,7 +9464,7 @@ type ModifyIpv6GatewayAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42753
 func (c *Client) ModifyIpv6GatewayAttribute(ctx context.Context, input *ModifyIpv6GatewayAttributeInput, optFns ...func(*Options)) (*ModifyIpv6GatewayAttributeOutput, error) {
-	out, meta, err := invoke[ModifyIpv6GatewayAttributeInput, ModifyIpv6GatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIpv6GatewayAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyIpv6GatewayAttributeInput, ModifyIpv6GatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIpv6GatewayAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9360,7 +9495,7 @@ type ModifyIpv6InternetBandwidthAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L42872
 func (c *Client) ModifyIpv6InternetBandwidth(ctx context.Context, input *ModifyIpv6InternetBandwidthInput, optFns ...func(*Options)) (*ModifyIpv6InternetBandwidthOutput, error) {
-	out, meta, err := invoke[ModifyIpv6InternetBandwidthInput, ModifyIpv6InternetBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIpv6InternetBandwidth", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyIpv6InternetBandwidthInput, ModifyIpv6InternetBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyIpv6InternetBandwidth", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9391,7 +9526,7 @@ type ModifyNatGatewayAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43037
 func (c *Client) ModifyNatGatewayAttribute(ctx context.Context, input *ModifyNatGatewayAttributeInput, optFns ...func(*Options)) (*ModifyNatGatewayAttributeOutput, error) {
-	out, meta, err := invoke[ModifyNatGatewayAttributeInput, ModifyNatGatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyNatGatewayAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyNatGatewayAttributeInput, ModifyNatGatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyNatGatewayAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9433,7 +9568,7 @@ type ModifyNatGatewaySpecAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43162
 func (c *Client) ModifyNatGatewaySpec(ctx context.Context, input *ModifyNatGatewaySpecInput, optFns ...func(*Options)) (*ModifyNatGatewaySpecOutput, error) {
-	out, meta, err := invoke[ModifyNatGatewaySpecInput, ModifyNatGatewaySpecOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyNatGatewaySpec", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyNatGatewaySpecInput, ModifyNatGatewaySpecOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyNatGatewaySpec", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9464,7 +9599,7 @@ type ModifyNatIpAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43294
 func (c *Client) ModifyNatIpAttribute(ctx context.Context, input *ModifyNatIpAttributeInput, optFns ...func(*Options)) (*ModifyNatIpAttributeOutput, error) {
-	out, meta, err := invoke[ModifyNatIpAttributeInput, ModifyNatIpAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyNatIpAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyNatIpAttributeInput, ModifyNatIpAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyNatIpAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9489,7 +9624,7 @@ type ModifyNatIpCidrAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43413
 func (c *Client) ModifyNatIpCidrAttribute(ctx context.Context, input *ModifyNatIpCidrAttributeInput, optFns ...func(*Options)) (*ModifyNatIpCidrAttributeOutput, error) {
-	out, meta, err := invoke[ModifyNatIpCidrAttributeInput, ModifyNatIpCidrAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyNatIpCidrAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyNatIpCidrAttributeInput, ModifyNatIpCidrAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyNatIpCidrAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9514,7 +9649,7 @@ type ModifyNetworkAclAttributesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43526
 func (c *Client) ModifyNetworkAclAttributes(ctx context.Context, input *ModifyNetworkAclAttributesInput, optFns ...func(*Options)) (*ModifyNetworkAclAttributesOutput, error) {
-	out, meta, err := invoke[ModifyNetworkAclAttributesInput, ModifyNetworkAclAttributesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyNetworkAclAttributes", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyNetworkAclAttributesInput, ModifyNetworkAclAttributesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyNetworkAclAttributes", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9548,7 +9683,7 @@ type ModifyPhysicalConnectionAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43657
 func (c *Client) ModifyPhysicalConnectionAttribute(ctx context.Context, input *ModifyPhysicalConnectionAttributeInput, optFns ...func(*Options)) (*ModifyPhysicalConnectionAttributeOutput, error) {
-	out, meta, err := invoke[ModifyPhysicalConnectionAttributeInput, ModifyPhysicalConnectionAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyPhysicalConnectionAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyPhysicalConnectionAttributeInput, ModifyPhysicalConnectionAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyPhysicalConnectionAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9580,7 +9715,7 @@ type ModifyRouteEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43819
 func (c *Client) ModifyRouteEntry(ctx context.Context, input *ModifyRouteEntryInput, optFns ...func(*Options)) (*ModifyRouteEntryOutput, error) {
-	out, meta, err := invoke[ModifyRouteEntryInput, ModifyRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyRouteEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyRouteEntryInput, ModifyRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyRouteEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9614,7 +9749,7 @@ type ModifyRouteTableAttributesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L43937
 func (c *Client) ModifyRouteTableAttributes(ctx context.Context, input *ModifyRouteTableAttributesInput, optFns ...func(*Options)) (*ModifyRouteTableAttributesOutput, error) {
-	out, meta, err := invoke[ModifyRouteTableAttributesInput, ModifyRouteTableAttributesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyRouteTableAttributes", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyRouteTableAttributesInput, ModifyRouteTableAttributesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyRouteTableAttributes", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9639,7 +9774,7 @@ type ModifyRouterInterfaceAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L44065
 func (c *Client) ModifyRouterInterfaceAttribute(ctx context.Context, input *ModifyRouterInterfaceAttributeInput, optFns ...func(*Options)) (*ModifyRouterInterfaceAttributeOutput, error) {
-	out, meta, err := invoke[ModifyRouterInterfaceAttributeInput, ModifyRouterInterfaceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyRouterInterfaceAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyRouterInterfaceAttributeInput, ModifyRouterInterfaceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyRouterInterfaceAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9672,7 +9807,7 @@ type ModifyRouterInterfaceSpecAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L44235
 func (c *Client) ModifyRouterInterfaceSpec(ctx context.Context, input *ModifyRouterInterfaceSpecInput, optFns ...func(*Options)) (*ModifyRouterInterfaceSpecOutput, error) {
-	out, meta, err := invoke[ModifyRouterInterfaceSpecInput, ModifyRouterInterfaceSpecOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyRouterInterfaceSpec", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyRouterInterfaceSpecInput, ModifyRouterInterfaceSpecOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyRouterInterfaceSpec", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9707,7 +9842,7 @@ type ModifySnatEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L44363
 func (c *Client) ModifySnatEntry(ctx context.Context, input *ModifySnatEntryInput, optFns ...func(*Options)) (*ModifySnatEntryOutput, error) {
-	out, meta, err := invoke[ModifySnatEntryInput, ModifySnatEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifySnatEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifySnatEntryInput, ModifySnatEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifySnatEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9732,7 +9867,7 @@ type ModifySslVpnClientCertAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L44487
 func (c *Client) ModifySslVpnClientCert(ctx context.Context, input *ModifySslVpnClientCertInput, optFns ...func(*Options)) (*ModifySslVpnClientCertOutput, error) {
-	out, meta, err := invoke[ModifySslVpnClientCertInput, ModifySslVpnClientCertOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifySslVpnClientCert", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifySslVpnClientCertInput, ModifySslVpnClientCertOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifySslVpnClientCert", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9768,7 +9903,7 @@ type ModifySslVpnServerAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L44704
 func (c *Client) ModifySslVpnServer(ctx context.Context, input *ModifySslVpnServerInput, optFns ...func(*Options)) (*ModifySslVpnServerOutput, error) {
-	out, meta, err := invoke[ModifySslVpnServerInput, ModifySslVpnServerOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifySslVpnServer", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifySslVpnServerInput, ModifySslVpnServerOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifySslVpnServer", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9793,7 +9928,7 @@ type ModifyTunnelAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L45002
 func (c *Client) ModifyTunnelAttribute(ctx context.Context, input *ModifyTunnelAttributeInput, optFns ...func(*Options)) (*ModifyTunnelAttributeOutput, error) {
-	out, meta, err := invoke[ModifyTunnelAttributeInput, ModifyTunnelAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyTunnelAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyTunnelAttributeInput, ModifyTunnelAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyTunnelAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9824,7 +9959,7 @@ type ModifyVRouterAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L45096
 func (c *Client) ModifyVRouterAttribute(ctx context.Context, input *ModifyVRouterAttributeInput, optFns ...func(*Options)) (*ModifyVRouterAttributeOutput, error) {
-	out, meta, err := invoke[ModifyVRouterAttributeInput, ModifyVRouterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVRouterAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyVRouterAttributeInput, ModifyVRouterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVRouterAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9858,7 +9993,7 @@ type ModifyVSwitchAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L45201
 func (c *Client) ModifyVSwitchAttribute(ctx context.Context, input *ModifyVSwitchAttributeInput, optFns ...func(*Options)) (*ModifyVSwitchAttributeOutput, error) {
-	out, meta, err := invoke[ModifyVSwitchAttributeInput, ModifyVSwitchAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVSwitchAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyVSwitchAttributeInput, ModifyVSwitchAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVSwitchAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9889,7 +10024,7 @@ type ModifyVSwitchCidrReservationAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L45324
 func (c *Client) ModifyVSwitchCidrReservationAttribute(ctx context.Context, input *ModifyVSwitchCidrReservationAttributeInput, optFns ...func(*Options)) (*ModifyVSwitchCidrReservationAttributeOutput, error) {
-	out, meta, err := invoke[ModifyVSwitchCidrReservationAttributeInput, ModifyVSwitchCidrReservationAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVSwitchCidrReservationAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyVSwitchCidrReservationAttributeInput, ModifyVSwitchCidrReservationAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVSwitchCidrReservationAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9923,7 +10058,7 @@ type ModifyVcoRouteEntryWeightAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L45444
 func (c *Client) ModifyVcoRouteEntryWeight(ctx context.Context, input *ModifyVcoRouteEntryWeightInput, optFns ...func(*Options)) (*ModifyVcoRouteEntryWeightOutput, error) {
-	out, meta, err := invoke[ModifyVcoRouteEntryWeightInput, ModifyVcoRouteEntryWeightOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVcoRouteEntryWeight", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyVcoRouteEntryWeightInput, ModifyVcoRouteEntryWeightOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVcoRouteEntryWeight", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9959,7 +10094,7 @@ type ModifyVirtualBorderRouterAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L45628
 func (c *Client) ModifyVirtualBorderRouterAttribute(ctx context.Context, input *ModifyVirtualBorderRouterAttributeInput, optFns ...func(*Options)) (*ModifyVirtualBorderRouterAttributeOutput, error) {
-	out, meta, err := invoke[ModifyVirtualBorderRouterAttributeInput, ModifyVirtualBorderRouterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVirtualBorderRouterAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyVirtualBorderRouterAttributeInput, ModifyVirtualBorderRouterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVirtualBorderRouterAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9991,7 +10126,7 @@ type ModifyVpcAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L45807
 func (c *Client) ModifyVpcAttribute(ctx context.Context, input *ModifyVpcAttributeInput, optFns ...func(*Options)) (*ModifyVpcAttributeOutput, error) {
-	out, meta, err := invoke[ModifyVpcAttributeInput, ModifyVpcAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpcAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyVpcAttributeInput, ModifyVpcAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpcAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10016,7 +10151,7 @@ type ModifyVpcCidrBlockAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L45926
 func (c *Client) ModifyVpcCidrBlock(ctx context.Context, input *ModifyVpcCidrBlockInput, optFns ...func(*Options)) (*ModifyVpcCidrBlockOutput, error) {
-	out, meta, err := invoke[ModifyVpcCidrBlockInput, ModifyVpcCidrBlockOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpcCidrBlock", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyVpcCidrBlockInput, ModifyVpcCidrBlockOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpcCidrBlock", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10051,7 +10186,79 @@ type ModifyVpcPrefixListAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46037
 func (c *Client) ModifyVpcPrefixList(ctx context.Context, input *ModifyVpcPrefixListInput, optFns ...func(*Options)) (*ModifyVpcPrefixListOutput, error) {
-	out, meta, err := invoke[ModifyVpcPrefixListInput, ModifyVpcPrefixListOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpcPrefixList", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyVpcPrefixListInput, ModifyVpcPrefixListOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpcPrefixList", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyVpnAttachmentAttributeAPI is the minimal interface for ModifyVpnAttachmentAttribute mocks and capability adapters.
+type ModifyVpnAttachmentAttributeAPI interface {
+	// ModifyVpnAttachmentAttribute invokes the native action with owned inputs and per-call options.
+	ModifyVpnAttachmentAttribute(context.Context, *ModifyVpnAttachmentAttributeInput, ...func(*Options)) (*ModifyVpnAttachmentAttributeOutput, error)
+}
+
+// ModifyVpnAttachmentAttribute calls the native ModifyVpnAttachmentAttribute action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the configuration of an IPsec-VPN connection.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46425
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - When you modify a dual-tunnel IPsec-VPN connection, in addition to the required parameters, the following request parameters are supported: ClientToken, Name, LocalSubnet, RemoteSubnet, EffectImmediately, the TunnelOptionsSpecification array, and EnableTunnelsBgp.
+// - When you modify a single-tunnel IPsec-VPN connection, in addition to the required parameters, the following request parameters are supported: ClientToken, Name, LocalSubnet, RemoteSubnet, EffectImmediately, IkeConfig, IpsecConfig, HealthCheckConfig, EnableDpd, EnableNatTraversal, BgpConfig, and CustomerGatewayId.
+// - The ModifyVpnAttachmentAttribute operation is asynchronous. After a request is sent, the system returns a request ID. However, the IPsec-VPN connection configuration has not been modified. The modification task is still running in the background. You can call DescribeVpnConnection (https://help.aliyun.com/document_detail/53046.html) to query the modification status of the IPsec-VPN connection configuration:
+// - If the IPsec-VPN connection is in the updating state, the configuration is being modified.
+// - If the IPsec-VPN connection is in the attached state, the configuration has been modified.
+// - The ModifyVpnAttachmentAttribute operation does not support concurrent modifications to the IPsec-VPN connection configuration.
+// - When you call the ModifyVpnAttachmentAttribute operation, you cannot modify the gateway type of the IPsec-VPN connection.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46425
+func (c *Client) ModifyVpnAttachmentAttribute(ctx context.Context, input *ModifyVpnAttachmentAttributeInput, optFns ...func(*Options)) (*ModifyVpnAttachmentAttributeOutput, error) {
+	out, meta, err := invoke[ModifyVpnAttachmentAttributeInput, ModifyVpnAttachmentAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpnAttachmentAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyVpnConnectionAttributeAPI is the minimal interface for ModifyVpnConnectionAttribute mocks and capability adapters.
+type ModifyVpnConnectionAttributeAPI interface {
+	// ModifyVpnConnectionAttribute invokes the native action with owned inputs and per-call options.
+	ModifyVpnConnectionAttribute(context.Context, *ModifyVpnConnectionAttributeInput, ...func(*Options)) (*ModifyVpnConnectionAttributeOutput, error)
+}
+
+// ModifyVpnConnectionAttribute calls the native ModifyVpnConnectionAttribute action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the configuration of an IPsec-VPN connection.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46879
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - To modify a dual-tunnel mode IPsec-VPN connection, the ModifyVpnConnectionAttribute operation supports the following request parameters in addition to the required parameters:
+// ClientToken, Name, LocalSubnet, RemoteSubnet, EffectImmediately, AutoConfigRoute, TunnelOptionsSpecification array, and EnableTunnelsBgp.
+// - To modify a single-tunnel mode IPsec-VPN connection, the ModifyVpnConnectionAttribute operation supports the following request parameters in addition to the required parameters:
+// ClientToken, Name, LocalSubnet, RemoteSubnet, EffectImmediately, IkeConfig, IpsecConfig, HealthCheckConfig, AutoConfigRoute, EnableDpd, EnableNatTraversal, BgpConfig, and RemoteCaCertificate.
+// - The ModifyVpnConnectionAttribute operation is asynchronous. After a request is sent, the system returns a request ID, but the configuration of the IPsec-VPN connection has not been modified yet. The modification node is still running in the background. You can invoke DescribeVpnGateway (https://help.aliyun.com/document_detail/73720.html) to query the instance status of the VPN gateway to determine the modification status of the IPsec-VPN connection configuration:
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46879
+func (c *Client) ModifyVpnConnectionAttribute(ctx context.Context, input *ModifyVpnConnectionAttributeInput, optFns ...func(*Options)) (*ModifyVpnConnectionAttributeOutput, error) {
+	out, meta, err := invoke[ModifyVpnConnectionAttributeInput, ModifyVpnConnectionAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpnConnectionAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10085,7 +10292,7 @@ type ModifyVpnGatewayAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L47095
 func (c *Client) ModifyVpnGatewayAttribute(ctx context.Context, input *ModifyVpnGatewayAttributeInput, optFns ...func(*Options)) (*ModifyVpnGatewayAttributeOutput, error) {
-	out, meta, err := invoke[ModifyVpnGatewayAttributeInput, ModifyVpnGatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpnGatewayAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyVpnGatewayAttributeInput, ModifyVpnGatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpnGatewayAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10124,7 +10331,7 @@ type ModifyVpnPbrRouteEntryAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L47237
 func (c *Client) ModifyVpnPbrRouteEntryAttribute(ctx context.Context, input *ModifyVpnPbrRouteEntryAttributeInput, optFns ...func(*Options)) (*ModifyVpnPbrRouteEntryAttributeOutput, error) {
-	out, meta, err := invoke[ModifyVpnPbrRouteEntryAttributeInput, ModifyVpnPbrRouteEntryAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpnPbrRouteEntryAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyVpnPbrRouteEntryAttributeInput, ModifyVpnPbrRouteEntryAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpnPbrRouteEntryAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10158,7 +10365,7 @@ type ModifyVpnPbrRouteEntryPriorityAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L47387
 func (c *Client) ModifyVpnPbrRouteEntryPriority(ctx context.Context, input *ModifyVpnPbrRouteEntryPriorityInput, optFns ...func(*Options)) (*ModifyVpnPbrRouteEntryPriorityOutput, error) {
-	out, meta, err := invoke[ModifyVpnPbrRouteEntryPriorityInput, ModifyVpnPbrRouteEntryPriorityOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpnPbrRouteEntryPriority", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyVpnPbrRouteEntryPriorityInput, ModifyVpnPbrRouteEntryPriorityOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpnPbrRouteEntryPriority", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10194,7 +10401,7 @@ type ModifyVpnPbrRouteEntryWeightAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L47530
 func (c *Client) ModifyVpnPbrRouteEntryWeight(ctx context.Context, input *ModifyVpnPbrRouteEntryWeightInput, optFns ...func(*Options)) (*ModifyVpnPbrRouteEntryWeightOutput, error) {
-	out, meta, err := invoke[ModifyVpnPbrRouteEntryWeightInput, ModifyVpnPbrRouteEntryWeightOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpnPbrRouteEntryWeight", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyVpnPbrRouteEntryWeightInput, ModifyVpnPbrRouteEntryWeightOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpnPbrRouteEntryWeight", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10230,7 +10437,7 @@ type ModifyVpnRouteEntryWeightAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L47673
 func (c *Client) ModifyVpnRouteEntryWeight(ctx context.Context, input *ModifyVpnRouteEntryWeightInput, optFns ...func(*Options)) (*ModifyVpnRouteEntryWeightOutput, error) {
-	out, meta, err := invoke[ModifyVpnRouteEntryWeightInput, ModifyVpnRouteEntryWeightOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpnRouteEntryWeight", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyVpnRouteEntryWeightInput, ModifyVpnRouteEntryWeightOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ModifyVpnRouteEntryWeight", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10261,7 +10468,7 @@ type MoveResourceGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L47809
 func (c *Client) MoveResourceGroup(ctx context.Context, input *MoveResourceGroupInput, optFns ...func(*Options)) (*MoveResourceGroupOutput, error) {
-	out, meta, err := invoke[MoveResourceGroupInput, MoveResourceGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "MoveResourceGroup", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[MoveResourceGroupInput, MoveResourceGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "MoveResourceGroup", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10286,7 +10493,7 @@ type MoveVpnResourceGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L47914
 func (c *Client) MoveVpnResourceGroup(ctx context.Context, input *MoveVpnResourceGroupInput, optFns ...func(*Options)) (*MoveVpnResourceGroupOutput, error) {
-	out, meta, err := invoke[MoveVpnResourceGroupInput, MoveVpnResourceGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "MoveVpnResourceGroup", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[MoveVpnResourceGroupInput, MoveVpnResourceGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "MoveVpnResourceGroup", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10318,7 +10525,7 @@ type OpenFlowLogServiceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48005
 func (c *Client) OpenFlowLogService(ctx context.Context, input *OpenFlowLogServiceInput, optFns ...func(*Options)) (*OpenFlowLogServiceOutput, error) {
-	out, meta, err := invoke[OpenFlowLogServiceInput, OpenFlowLogServiceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "OpenFlowLogService", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[OpenFlowLogServiceInput, OpenFlowLogServiceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "OpenFlowLogService", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10343,7 +10550,7 @@ type OpenPhysicalConnectionServiceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48092
 func (c *Client) OpenPhysicalConnectionService(ctx context.Context, input *OpenPhysicalConnectionServiceInput, optFns ...func(*Options)) (*OpenPhysicalConnectionServiceOutput, error) {
-	out, meta, err := invoke[OpenPhysicalConnectionServiceInput, OpenPhysicalConnectionServiceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "OpenPhysicalConnectionService", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[OpenPhysicalConnectionServiceInput, OpenPhysicalConnectionServiceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "OpenPhysicalConnectionService", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10375,7 +10582,7 @@ type OpenPublicIpAddressPoolServiceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48174
 func (c *Client) OpenPublicIpAddressPoolService(ctx context.Context, input *OpenPublicIpAddressPoolServiceInput, optFns ...func(*Options)) (*OpenPublicIpAddressPoolServiceOutput, error) {
-	out, meta, err := invoke[OpenPublicIpAddressPoolServiceInput, OpenPublicIpAddressPoolServiceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "OpenPublicIpAddressPoolService", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[OpenPublicIpAddressPoolServiceInput, OpenPublicIpAddressPoolServiceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "OpenPublicIpAddressPoolService", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10406,7 +10613,7 @@ type OpenTrafficMirrorServiceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48266
 func (c *Client) OpenTrafficMirrorService(ctx context.Context, input *OpenTrafficMirrorServiceInput, optFns ...func(*Options)) (*OpenTrafficMirrorServiceOutput, error) {
-	out, meta, err := invoke[OpenTrafficMirrorServiceInput, OpenTrafficMirrorServiceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "OpenTrafficMirrorService", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[OpenTrafficMirrorServiceInput, OpenTrafficMirrorServiceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "OpenTrafficMirrorService", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10431,7 +10638,7 @@ type PublishVpcRouteEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48368
 func (c *Client) PublishVpcRouteEntries(ctx context.Context, input *PublishVpcRouteEntriesInput, optFns ...func(*Options)) (*PublishVpcRouteEntriesOutput, error) {
-	out, meta, err := invoke[PublishVpcRouteEntriesInput, PublishVpcRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "PublishVpcRouteEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[PublishVpcRouteEntriesInput, PublishVpcRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "PublishVpcRouteEntries", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10456,7 +10663,7 @@ type PublishVpnRouteEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48489
 func (c *Client) PublishVpnRouteEntry(ctx context.Context, input *PublishVpnRouteEntryInput, optFns ...func(*Options)) (*PublishVpnRouteEntryOutput, error) {
-	out, meta, err := invoke[PublishVpnRouteEntryInput, PublishVpnRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "PublishVpnRouteEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[PublishVpnRouteEntryInput, PublishVpnRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "PublishVpnRouteEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10488,7 +10695,7 @@ type RecoverPhysicalConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48590
 func (c *Client) RecoverPhysicalConnection(ctx context.Context, input *RecoverPhysicalConnectionInput, optFns ...func(*Options)) (*RecoverPhysicalConnectionOutput, error) {
-	out, meta, err := invoke[RecoverPhysicalConnectionInput, RecoverPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "RecoverPhysicalConnection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RecoverPhysicalConnectionInput, RecoverPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "RecoverPhysicalConnection", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10523,7 +10730,7 @@ type RecoverVirtualBorderRouterAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48674
 func (c *Client) RecoverVirtualBorderRouter(ctx context.Context, input *RecoverVirtualBorderRouterInput, optFns ...func(*Options)) (*RecoverVirtualBorderRouterOutput, error) {
-	out, meta, err := invoke[RecoverVirtualBorderRouterInput, RecoverVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "RecoverVirtualBorderRouter", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RecoverVirtualBorderRouterInput, RecoverVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "RecoverVirtualBorderRouter", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10561,7 +10768,7 @@ type ReleaseEipAddressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48766
 func (c *Client) ReleaseEipAddress(ctx context.Context, input *ReleaseEipAddressInput, optFns ...func(*Options)) (*ReleaseEipAddressOutput, error) {
-	out, meta, err := invoke[ReleaseEipAddressInput, ReleaseEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ReleaseEipAddress", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ReleaseEipAddressInput, ReleaseEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ReleaseEipAddress", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10599,7 +10806,7 @@ type ReleaseEipSegmentAddressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48870
 func (c *Client) ReleaseEipSegmentAddress(ctx context.Context, input *ReleaseEipSegmentAddressInput, optFns ...func(*Options)) (*ReleaseEipSegmentAddressOutput, error) {
-	out, meta, err := invoke[ReleaseEipSegmentAddressInput, ReleaseEipSegmentAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ReleaseEipSegmentAddress", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ReleaseEipSegmentAddressInput, ReleaseEipSegmentAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ReleaseEipSegmentAddress", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10624,7 +10831,7 @@ type ReleaseIpv6AddressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L48978
 func (c *Client) ReleaseIpv6Address(ctx context.Context, input *ReleaseIpv6AddressInput, optFns ...func(*Options)) (*ReleaseIpv6AddressOutput, error) {
-	out, meta, err := invoke[ReleaseIpv6AddressInput, ReleaseIpv6AddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ReleaseIpv6Address", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ReleaseIpv6AddressInput, ReleaseIpv6AddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ReleaseIpv6Address", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10649,7 +10856,7 @@ type RemoveCommonBandwidthPackageIpAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49079
 func (c *Client) RemoveCommonBandwidthPackageIp(ctx context.Context, input *RemoveCommonBandwidthPackageIpInput, optFns ...func(*Options)) (*RemoveCommonBandwidthPackageIpOutput, error) {
-	out, meta, err := invoke[RemoveCommonBandwidthPackageIpInput, RemoveCommonBandwidthPackageIpOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "RemoveCommonBandwidthPackageIp", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RemoveCommonBandwidthPackageIpInput, RemoveCommonBandwidthPackageIpOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "RemoveCommonBandwidthPackageIp", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10674,7 +10881,7 @@ type RemoveGlobalAccelerationInstanceIpAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49172
 func (c *Client) RemoveGlobalAccelerationInstanceIp(ctx context.Context, input *RemoveGlobalAccelerationInstanceIpInput, optFns ...func(*Options)) (*RemoveGlobalAccelerationInstanceIpOutput, error) {
-	out, meta, err := invoke[RemoveGlobalAccelerationInstanceIpInput, RemoveGlobalAccelerationInstanceIpOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "RemoveGlobalAccelerationInstanceIp", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RemoveGlobalAccelerationInstanceIpInput, RemoveGlobalAccelerationInstanceIpOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "RemoveGlobalAccelerationInstanceIp", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10699,7 +10906,7 @@ type RemoveIPv6TranslatorAclListEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49260
 func (c *Client) RemoveIPv6TranslatorAclListEntry(ctx context.Context, input *RemoveIPv6TranslatorAclListEntryInput, optFns ...func(*Options)) (*RemoveIPv6TranslatorAclListEntryOutput, error) {
-	out, meta, err := invoke[RemoveIPv6TranslatorAclListEntryInput, RemoveIPv6TranslatorAclListEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "RemoveIPv6TranslatorAclListEntry", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RemoveIPv6TranslatorAclListEntryInput, RemoveIPv6TranslatorAclListEntryOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "RemoveIPv6TranslatorAclListEntry", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10733,7 +10940,7 @@ type RemoveSourcesFromTrafficMirrorSessionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49358
 func (c *Client) RemoveSourcesFromTrafficMirrorSession(ctx context.Context, input *RemoveSourcesFromTrafficMirrorSessionInput, optFns ...func(*Options)) (*RemoveSourcesFromTrafficMirrorSessionOutput, error) {
-	out, meta, err := invoke[RemoveSourcesFromTrafficMirrorSessionInput, RemoveSourcesFromTrafficMirrorSessionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "RemoveSourcesFromTrafficMirrorSession", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RemoveSourcesFromTrafficMirrorSessionInput, RemoveSourcesFromTrafficMirrorSessionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "RemoveSourcesFromTrafficMirrorSession", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10767,7 +10974,7 @@ type ReplaceVpcDhcpOptionsSetAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49469
 func (c *Client) ReplaceVpcDhcpOptionsSet(ctx context.Context, input *ReplaceVpcDhcpOptionsSetInput, optFns ...func(*Options)) (*ReplaceVpcDhcpOptionsSetOutput, error) {
-	out, meta, err := invoke[ReplaceVpcDhcpOptionsSetInput, ReplaceVpcDhcpOptionsSetOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ReplaceVpcDhcpOptionsSet", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ReplaceVpcDhcpOptionsSetInput, ReplaceVpcDhcpOptionsSetOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "ReplaceVpcDhcpOptionsSet", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10805,7 +11012,7 @@ type RetryVpcPrefixListAssociationAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49586
 func (c *Client) RetryVpcPrefixListAssociation(ctx context.Context, input *RetryVpcPrefixListAssociationInput, optFns ...func(*Options)) (*RetryVpcPrefixListAssociationOutput, error) {
-	out, meta, err := invoke[RetryVpcPrefixListAssociationInput, RetryVpcPrefixListAssociationOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "RetryVpcPrefixListAssociation", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RetryVpcPrefixListAssociationInput, RetryVpcPrefixListAssociationOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "RetryVpcPrefixListAssociation", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10837,7 +11044,32 @@ type RevokeInstanceFromCenAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49717
 func (c *Client) RevokeInstanceFromCen(ctx context.Context, input *RevokeInstanceFromCenInput, optFns ...func(*Options)) (*RevokeInstanceFromCenOutput, error) {
-	out, meta, err := invoke[RevokeInstanceFromCenInput, RevokeInstanceFromCenOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "RevokeInstanceFromCen", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RevokeInstanceFromCenInput, RevokeInstanceFromCenOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "RevokeInstanceFromCen", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// RevokeInstanceFromVbrAPI is the minimal interface for RevokeInstanceFromVbr mocks and capability adapters.
+type RevokeInstanceFromVbrAPI interface {
+	// RevokeInstanceFromVbr invokes the native action with owned inputs and per-call options.
+	RevokeInstanceFromVbr(context.Context, *RevokeInstanceFromVbrInput, ...func(*Options)) (*RevokeInstanceFromVbrOutput, error)
+}
+
+// RevokeInstanceFromVbr calls the native RevokeInstanceFromVbr action (API version 2016-04-28).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Invokes the RevokeInstanceFromVbr operation to revoke the authorization of a VPC-connected instance on a VBR instance in a cross-account VBR uplink scenario.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49851
+func (c *Client) RevokeInstanceFromVbr(ctx context.Context, input *RevokeInstanceFromVbrInput, optFns ...func(*Options)) (*RevokeInstanceFromVbrOutput, error) {
+	out, meta, err := invoke[RevokeInstanceFromVbrInput, RevokeInstanceFromVbrOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "RevokeInstanceFromVbr", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10862,7 +11094,7 @@ type SecondApplyPhysicalConnectionLOAAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49975
 func (c *Client) SecondApplyPhysicalConnectionLOA(ctx context.Context, input *SecondApplyPhysicalConnectionLOAInput, optFns ...func(*Options)) (*SecondApplyPhysicalConnectionLOAOutput, error) {
-	out, meta, err := invoke[SecondApplyPhysicalConnectionLOAInput, SecondApplyPhysicalConnectionLOAOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "SecondApplyPhysicalConnectionLOA", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[SecondApplyPhysicalConnectionLOAInput, SecondApplyPhysicalConnectionLOAOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "SecondApplyPhysicalConnectionLOA", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10893,7 +11125,7 @@ type SetHighDefinitionMonitorLogStatusAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50096
 func (c *Client) SetHighDefinitionMonitorLogStatus(ctx context.Context, input *SetHighDefinitionMonitorLogStatusInput, optFns ...func(*Options)) (*SetHighDefinitionMonitorLogStatusOutput, error) {
-	out, meta, err := invoke[SetHighDefinitionMonitorLogStatusInput, SetHighDefinitionMonitorLogStatusOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "SetHighDefinitionMonitorLogStatus", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[SetHighDefinitionMonitorLogStatusInput, SetHighDefinitionMonitorLogStatusOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "SetHighDefinitionMonitorLogStatus", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10924,7 +11156,7 @@ type StartFailoverTestJobAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50195
 func (c *Client) StartFailoverTestJob(ctx context.Context, input *StartFailoverTestJobInput, optFns ...func(*Options)) (*StartFailoverTestJobOutput, error) {
-	out, meta, err := invoke[StartFailoverTestJobInput, StartFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "StartFailoverTestJob", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[StartFailoverTestJobInput, StartFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "StartFailoverTestJob", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10955,7 +11187,7 @@ type StopFailoverTestJobAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50285
 func (c *Client) StopFailoverTestJob(ctx context.Context, input *StopFailoverTestJobInput, optFns ...func(*Options)) (*StopFailoverTestJobOutput, error) {
-	out, meta, err := invoke[StopFailoverTestJobInput, StopFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "StopFailoverTestJob", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[StopFailoverTestJobInput, StopFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "StopFailoverTestJob", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10986,7 +11218,7 @@ type SwitchActiveRouteTargetAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50380
 func (c *Client) SwitchActiveRouteTarget(ctx context.Context, input *SwitchActiveRouteTargetInput, optFns ...func(*Options)) (*SwitchActiveRouteTargetOutput, error) {
-	out, meta, err := invoke[SwitchActiveRouteTargetInput, SwitchActiveRouteTargetOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "SwitchActiveRouteTarget", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[SwitchActiveRouteTargetInput, SwitchActiveRouteTargetOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "SwitchActiveRouteTarget", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11024,7 +11256,7 @@ type TagResourcesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50500
 func (c *Client) TagResources(ctx context.Context, input *TagResourcesInput, optFns ...func(*Options)) (*TagResourcesOutput, error) {
-	out, meta, err := invoke[TagResourcesInput, TagResourcesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "TagResources", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[TagResourcesInput, TagResourcesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "TagResources", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11060,7 +11292,7 @@ type TagResourcesForExpressConnectAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50624
 func (c *Client) TagResourcesForExpressConnect(ctx context.Context, input *TagResourcesForExpressConnectInput, optFns ...func(*Options)) (*TagResourcesForExpressConnectOutput, error) {
-	out, meta, err := invoke[TagResourcesForExpressConnectInput, TagResourcesForExpressConnectOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "TagResourcesForExpressConnect", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[TagResourcesForExpressConnectInput, TagResourcesForExpressConnectOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "TagResourcesForExpressConnect", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11094,7 +11326,7 @@ type TerminatePhysicalConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50730
 func (c *Client) TerminatePhysicalConnection(ctx context.Context, input *TerminatePhysicalConnectionInput, optFns ...func(*Options)) (*TerminatePhysicalConnectionOutput, error) {
-	out, meta, err := invoke[TerminatePhysicalConnectionInput, TerminatePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "TerminatePhysicalConnection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[TerminatePhysicalConnectionInput, TerminatePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "TerminatePhysicalConnection", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11126,7 +11358,7 @@ type TerminateVirtualBorderRouterAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50829
 func (c *Client) TerminateVirtualBorderRouter(ctx context.Context, input *TerminateVirtualBorderRouterInput, optFns ...func(*Options)) (*TerminateVirtualBorderRouterOutput, error) {
-	out, meta, err := invoke[TerminateVirtualBorderRouterInput, TerminateVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "TerminateVirtualBorderRouter", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[TerminateVirtualBorderRouterInput, TerminateVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "TerminateVirtualBorderRouter", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11151,7 +11383,7 @@ type TransformEipSegmentToPublicIpAddressPoolAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50927
 func (c *Client) TransformEipSegmentToPublicIpAddressPool(ctx context.Context, input *TransformEipSegmentToPublicIpAddressPoolInput, optFns ...func(*Options)) (*TransformEipSegmentToPublicIpAddressPoolOutput, error) {
-	out, meta, err := invoke[TransformEipSegmentToPublicIpAddressPoolInput, TransformEipSegmentToPublicIpAddressPoolOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "TransformEipSegmentToPublicIpAddressPool", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[TransformEipSegmentToPublicIpAddressPoolInput, TransformEipSegmentToPublicIpAddressPoolOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "TransformEipSegmentToPublicIpAddressPool", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11176,7 +11408,7 @@ type UnTagResourcesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51038
 func (c *Client) UnTagResources(ctx context.Context, input *UnTagResourcesInput, optFns ...func(*Options)) (*UnTagResourcesOutput, error) {
-	out, meta, err := invoke[UnTagResourcesInput, UnTagResourcesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnTagResources", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UnTagResourcesInput, UnTagResourcesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnTagResources", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11210,7 +11442,7 @@ type UnassociateEipAddressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51150
 func (c *Client) UnassociateEipAddress(ctx context.Context, input *UnassociateEipAddressInput, optFns ...func(*Options)) (*UnassociateEipAddressOutput, error) {
-	out, meta, err := invoke[UnassociateEipAddressInput, UnassociateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociateEipAddress", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UnassociateEipAddressInput, UnassociateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociateEipAddress", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11235,7 +11467,7 @@ type UnassociateGlobalAccelerationInstanceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51263
 func (c *Client) UnassociateGlobalAccelerationInstance(ctx context.Context, input *UnassociateGlobalAccelerationInstanceInput, optFns ...func(*Options)) (*UnassociateGlobalAccelerationInstanceOutput, error) {
-	out, meta, err := invoke[UnassociateGlobalAccelerationInstanceInput, UnassociateGlobalAccelerationInstanceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociateGlobalAccelerationInstance", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UnassociateGlobalAccelerationInstanceInput, UnassociateGlobalAccelerationInstanceOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociateGlobalAccelerationInstance", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11272,7 +11504,7 @@ type UnassociateHaVipAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51365
 func (c *Client) UnassociateHaVip(ctx context.Context, input *UnassociateHaVipInput, optFns ...func(*Options)) (*UnassociateHaVipOutput, error) {
-	out, meta, err := invoke[UnassociateHaVipInput, UnassociateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociateHaVip", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UnassociateHaVipInput, UnassociateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociateHaVip", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11306,7 +11538,7 @@ type UnassociateNetworkAclAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51490
 func (c *Client) UnassociateNetworkAcl(ctx context.Context, input *UnassociateNetworkAclInput, optFns ...func(*Options)) (*UnassociateNetworkAclOutput, error) {
-	out, meta, err := invoke[UnassociateNetworkAclInput, UnassociateNetworkAclOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociateNetworkAcl", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UnassociateNetworkAclInput, UnassociateNetworkAclOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociateNetworkAcl", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11331,7 +11563,7 @@ type UnassociatePhysicalConnectionFromVirtualBorderRouterAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51601
 func (c *Client) UnassociatePhysicalConnectionFromVirtualBorderRouter(ctx context.Context, input *UnassociatePhysicalConnectionFromVirtualBorderRouterInput, optFns ...func(*Options)) (*UnassociatePhysicalConnectionFromVirtualBorderRouterOutput, error) {
-	out, meta, err := invoke[UnassociatePhysicalConnectionFromVirtualBorderRouterInput, UnassociatePhysicalConnectionFromVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociatePhysicalConnectionFromVirtualBorderRouter", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UnassociatePhysicalConnectionFromVirtualBorderRouterInput, UnassociatePhysicalConnectionFromVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociatePhysicalConnectionFromVirtualBorderRouter", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11365,7 +11597,7 @@ type UnassociateRouteTableAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51696
 func (c *Client) UnassociateRouteTable(ctx context.Context, input *UnassociateRouteTableInput, optFns ...func(*Options)) (*UnassociateRouteTableOutput, error) {
-	out, meta, err := invoke[UnassociateRouteTableInput, UnassociateRouteTableOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociateRouteTable", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UnassociateRouteTableInput, UnassociateRouteTableOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociateRouteTable", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11397,7 +11629,7 @@ type UnassociateVpcCidrBlockAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51802
 func (c *Client) UnassociateVpcCidrBlock(ctx context.Context, input *UnassociateVpcCidrBlockInput, optFns ...func(*Options)) (*UnassociateVpcCidrBlockOutput, error) {
-	out, meta, err := invoke[UnassociateVpcCidrBlockInput, UnassociateVpcCidrBlockOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociateVpcCidrBlock", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UnassociateVpcCidrBlockInput, UnassociateVpcCidrBlockOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UnassociateVpcCidrBlock", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11422,7 +11654,7 @@ type UntagResourcesForExpressConnectAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L51910
 func (c *Client) UntagResourcesForExpressConnect(ctx context.Context, input *UntagResourcesForExpressConnectInput, optFns ...func(*Options)) (*UntagResourcesForExpressConnectOutput, error) {
-	out, meta, err := invoke[UntagResourcesForExpressConnectInput, UntagResourcesForExpressConnectOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UntagResourcesForExpressConnect", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UntagResourcesForExpressConnectInput, UntagResourcesForExpressConnectOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UntagResourcesForExpressConnect", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11447,7 +11679,7 @@ type UpdateDhcpOptionsSetAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52034
 func (c *Client) UpdateDhcpOptionsSetAttribute(ctx context.Context, input *UpdateDhcpOptionsSetAttributeInput, optFns ...func(*Options)) (*UpdateDhcpOptionsSetAttributeOutput, error) {
-	out, meta, err := invoke[UpdateDhcpOptionsSetAttributeInput, UpdateDhcpOptionsSetAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateDhcpOptionsSetAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UpdateDhcpOptionsSetAttributeInput, UpdateDhcpOptionsSetAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateDhcpOptionsSetAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11481,7 +11713,7 @@ type UpdateEnhancedVpnGatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52199
 func (c *Client) UpdateEnhancedVpnGateway(ctx context.Context, input *UpdateEnhancedVpnGatewayInput, optFns ...func(*Options)) (*UpdateEnhancedVpnGatewayOutput, error) {
-	out, meta, err := invoke[UpdateEnhancedVpnGatewayInput, UpdateEnhancedVpnGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateEnhancedVpnGateway", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UpdateEnhancedVpnGatewayInput, UpdateEnhancedVpnGatewayOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateEnhancedVpnGateway", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11512,7 +11744,7 @@ type UpdateFailoverTestJobAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52316
 func (c *Client) UpdateFailoverTestJob(ctx context.Context, input *UpdateFailoverTestJobInput, optFns ...func(*Options)) (*UpdateFailoverTestJobOutput, error) {
-	out, meta, err := invoke[UpdateFailoverTestJobInput, UpdateFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateFailoverTestJob", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UpdateFailoverTestJobInput, UpdateFailoverTestJobOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateFailoverTestJob", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11537,7 +11769,7 @@ type UpdateGatewayRouteTableEntryAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52450
 func (c *Client) UpdateGatewayRouteTableEntryAttribute(ctx context.Context, input *UpdateGatewayRouteTableEntryAttributeInput, optFns ...func(*Options)) (*UpdateGatewayRouteTableEntryAttributeOutput, error) {
-	out, meta, err := invoke[UpdateGatewayRouteTableEntryAttributeInput, UpdateGatewayRouteTableEntryAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateGatewayRouteTableEntryAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UpdateGatewayRouteTableEntryAttributeInput, UpdateGatewayRouteTableEntryAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateGatewayRouteTableEntryAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11572,7 +11804,7 @@ type UpdateIpsecServerAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52612
 func (c *Client) UpdateIpsecServer(ctx context.Context, input *UpdateIpsecServerInput, optFns ...func(*Options)) (*UpdateIpsecServerOutput, error) {
-	out, meta, err := invoke[UpdateIpsecServerInput, UpdateIpsecServerOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateIpsecServer", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UpdateIpsecServerInput, UpdateIpsecServerOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateIpsecServer", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11603,7 +11835,7 @@ type UpdateIpv4GatewayAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52733
 func (c *Client) UpdateIpv4GatewayAttribute(ctx context.Context, input *UpdateIpv4GatewayAttributeInput, optFns ...func(*Options)) (*UpdateIpv4GatewayAttributeOutput, error) {
-	out, meta, err := invoke[UpdateIpv4GatewayAttributeInput, UpdateIpv4GatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateIpv4GatewayAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UpdateIpv4GatewayAttributeInput, UpdateIpv4GatewayAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateIpv4GatewayAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11643,7 +11875,7 @@ type UpdateNatGatewayNatTypeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L52851
 func (c *Client) UpdateNatGatewayNatType(ctx context.Context, input *UpdateNatGatewayNatTypeInput, optFns ...func(*Options)) (*UpdateNatGatewayNatTypeOutput, error) {
-	out, meta, err := invoke[UpdateNatGatewayNatTypeInput, UpdateNatGatewayNatTypeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateNatGatewayNatType", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UpdateNatGatewayNatTypeInput, UpdateNatGatewayNatTypeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateNatGatewayNatType", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11677,7 +11909,7 @@ type UpdateNetworkAclEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L53081
 func (c *Client) UpdateNetworkAclEntries(ctx context.Context, input *UpdateNetworkAclEntriesInput, optFns ...func(*Options)) (*UpdateNetworkAclEntriesOutput, error) {
-	out, meta, err := invoke[UpdateNetworkAclEntriesInput, UpdateNetworkAclEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateNetworkAclEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UpdateNetworkAclEntriesInput, UpdateNetworkAclEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateNetworkAclEntries", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11708,7 +11940,7 @@ type UpdatePublicIpAddressPoolAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L53205
 func (c *Client) UpdatePublicIpAddressPoolAttribute(ctx context.Context, input *UpdatePublicIpAddressPoolAttributeInput, optFns ...func(*Options)) (*UpdatePublicIpAddressPoolAttributeOutput, error) {
-	out, meta, err := invoke[UpdatePublicIpAddressPoolAttributeInput, UpdatePublicIpAddressPoolAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdatePublicIpAddressPoolAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UpdatePublicIpAddressPoolAttributeInput, UpdatePublicIpAddressPoolAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdatePublicIpAddressPoolAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11741,7 +11973,7 @@ type UpdateRouteTargetGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L53326
 func (c *Client) UpdateRouteTargetGroup(ctx context.Context, input *UpdateRouteTargetGroupInput, optFns ...func(*Options)) (*UpdateRouteTargetGroupOutput, error) {
-	out, meta, err := invoke[UpdateRouteTargetGroupInput, UpdateRouteTargetGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateRouteTargetGroup", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UpdateRouteTargetGroupInput, UpdateRouteTargetGroupOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateRouteTargetGroup", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11772,7 +12004,7 @@ type UpdateTrafficMirrorFilterAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L53430
 func (c *Client) UpdateTrafficMirrorFilterAttribute(ctx context.Context, input *UpdateTrafficMirrorFilterAttributeInput, optFns ...func(*Options)) (*UpdateTrafficMirrorFilterAttributeOutput, error) {
-	out, meta, err := invoke[UpdateTrafficMirrorFilterAttributeInput, UpdateTrafficMirrorFilterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateTrafficMirrorFilterAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UpdateTrafficMirrorFilterAttributeInput, UpdateTrafficMirrorFilterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateTrafficMirrorFilterAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11806,7 +12038,7 @@ type UpdateTrafficMirrorFilterRuleAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L53559
 func (c *Client) UpdateTrafficMirrorFilterRuleAttribute(ctx context.Context, input *UpdateTrafficMirrorFilterRuleAttributeInput, optFns ...func(*Options)) (*UpdateTrafficMirrorFilterRuleAttributeOutput, error) {
-	out, meta, err := invoke[UpdateTrafficMirrorFilterRuleAttributeInput, UpdateTrafficMirrorFilterRuleAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateTrafficMirrorFilterRuleAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UpdateTrafficMirrorFilterRuleAttributeInput, UpdateTrafficMirrorFilterRuleAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateTrafficMirrorFilterRuleAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11840,7 +12072,7 @@ type UpdateTrafficMirrorSessionAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L53711
 func (c *Client) UpdateTrafficMirrorSessionAttribute(ctx context.Context, input *UpdateTrafficMirrorSessionAttributeInput, optFns ...func(*Options)) (*UpdateTrafficMirrorSessionAttributeOutput, error) {
-	out, meta, err := invoke[UpdateTrafficMirrorSessionAttributeInput, UpdateTrafficMirrorSessionAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateTrafficMirrorSessionAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UpdateTrafficMirrorSessionAttributeInput, UpdateTrafficMirrorSessionAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateTrafficMirrorSessionAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11865,7 +12097,7 @@ type UpdateVirtualBorderBandwidthAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L53851
 func (c *Client) UpdateVirtualBorderBandwidth(ctx context.Context, input *UpdateVirtualBorderBandwidthInput, optFns ...func(*Options)) (*UpdateVirtualBorderBandwidthOutput, error) {
-	out, meta, err := invoke[UpdateVirtualBorderBandwidthInput, UpdateVirtualBorderBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateVirtualBorderBandwidth", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UpdateVirtualBorderBandwidthInput, UpdateVirtualBorderBandwidthOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateVirtualBorderBandwidth", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11890,7 +12122,7 @@ type UpdateVirtualPhysicalConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L53964
 func (c *Client) UpdateVirtualPhysicalConnection(ctx context.Context, input *UpdateVirtualPhysicalConnectionInput, optFns ...func(*Options)) (*UpdateVirtualPhysicalConnectionOutput, error) {
-	out, meta, err := invoke[UpdateVirtualPhysicalConnectionInput, UpdateVirtualPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateVirtualPhysicalConnection", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UpdateVirtualPhysicalConnectionInput, UpdateVirtualPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateVirtualPhysicalConnection", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11924,7 +12156,7 @@ type UpdateVpcGatewayEndpointAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L54064
 func (c *Client) UpdateVpcGatewayEndpointAttribute(ctx context.Context, input *UpdateVpcGatewayEndpointAttributeInput, optFns ...func(*Options)) (*UpdateVpcGatewayEndpointAttributeOutput, error) {
-	out, meta, err := invoke[UpdateVpcGatewayEndpointAttributeInput, UpdateVpcGatewayEndpointAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateVpcGatewayEndpointAttribute", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UpdateVpcGatewayEndpointAttributeInput, UpdateVpcGatewayEndpointAttributeOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "UpdateVpcGatewayEndpointAttribute", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11955,7 +12187,7 @@ type VpcDescribeVpcNatGatewayNetworkInterfaceQuotaAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L54173
 func (c *Client) VpcDescribeVpcNatGatewayNetworkInterfaceQuota(ctx context.Context, input *VpcDescribeVpcNatGatewayNetworkInterfaceQuotaInput, optFns ...func(*Options)) (*VpcDescribeVpcNatGatewayNetworkInterfaceQuotaOutput, error) {
-	out, meta, err := invoke[VpcDescribeVpcNatGatewayNetworkInterfaceQuotaInput, VpcDescribeVpcNatGatewayNetworkInterfaceQuotaOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "VpcDescribeVpcNatGatewayNetworkInterfaceQuota", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[VpcDescribeVpcNatGatewayNetworkInterfaceQuotaInput, VpcDescribeVpcNatGatewayNetworkInterfaceQuotaOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "VpcDescribeVpcNatGatewayNetworkInterfaceQuota", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11980,7 +12212,7 @@ type WithdrawVpcPublishedRouteEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L54277
 func (c *Client) WithdrawVpcPublishedRouteEntries(ctx context.Context, input *WithdrawVpcPublishedRouteEntriesInput, optFns ...func(*Options)) (*WithdrawVpcPublishedRouteEntriesOutput, error) {
-	out, meta, err := invoke[WithdrawVpcPublishedRouteEntriesInput, WithdrawVpcPublishedRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "WithdrawVpcPublishedRouteEntries", Version: "2016-04-28", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[WithdrawVpcPublishedRouteEntriesInput, WithdrawVpcPublishedRouteEntriesOutput](ctx, c, input, alicloud.Operation{Service: "vpc", Name: "WithdrawVpcPublishedRouteEntries", Version: "2016-04-28", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}

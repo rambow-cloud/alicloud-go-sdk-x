@@ -5,9 +5,9 @@
   "version": "2016-04-28",
   "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
   "discovered": 403,
-  "lowered": 396,
-  "emitted": 396,
-  "models": 1671,
+  "lowered": 403,
+  "emitted": 403,
+  "models": 1728,
   "compilation": "not-assessed",
   "live": "not-assessed",
   "capabilityPolicy": "sparse-reviewed",
@@ -1782,7 +1782,7 @@
     },
     {
       "name": "CreateVpnAttachment",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 14062,
@@ -1790,23 +1790,18 @@
         "endLine": 14062,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_UNBOUND_INPUT",
-          "message": "unbound model input",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 14062,
-            "column": 16,
-            "endLine": 14062,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVpnConnection",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 14478,
@@ -1814,19 +1809,14 @@
         "endLine": 14478,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_UNBOUND_INPUT",
-          "message": "unbound model input",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 14478,
-            "column": 16,
-            "endLine": 14478,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateVpnGateway",
@@ -4358,7 +4348,7 @@
     },
     {
       "name": "DescribeVpnGatewayAvailableZones",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 32075,
@@ -4366,19 +4356,14 @@
         "endLine": 32075,
         "endColumn": 59
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_INITIALIZATION",
-          "message": "query initialization",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 32075,
-            "column": 16,
-            "endLine": 32075,
-            "endColumn": 59
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVpnGateways",
@@ -4990,7 +4975,7 @@
     },
     {
       "name": "GrantInstanceToVbr",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 35878,
@@ -4998,19 +4983,14 @@
         "endLine": 35878,
         "endColumn": 45
       },
-      "reasons": [
-        {
-          "code": "DSL_SHRINK_TRANSFORM",
-          "message": "shrink JSON transform",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 35878,
-            "column": 16,
-            "endLine": 35878,
-            "endColumn": 45
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListBusinessAccessPoints",
@@ -6458,7 +6438,7 @@
     },
     {
       "name": "ModifyVpnAttachmentAttribute",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 46440,
@@ -6466,23 +6446,18 @@
         "endLine": 46440,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_UNBOUND_INPUT",
-          "message": "unbound model input",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 46440,
-            "column": 16,
-            "endLine": 46440,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVpnConnectionAttribute",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 46892,
@@ -6490,19 +6465,14 @@
         "endLine": 46892,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_UNBOUND_INPUT",
-          "message": "unbound model input",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 46892,
-            "column": 16,
-            "endLine": 46892,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyVpnGatewayAttribute",
@@ -6981,7 +6951,7 @@
     },
     {
       "name": "RevokeInstanceFromVbr",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 49858,
@@ -6989,19 +6959,14 @@
         "endLine": 49858,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_SHRINK_TRANSFORM",
-          "message": "shrink JSON transform",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 49858,
-            "column": 16,
-            "endLine": 49858,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "SecondApplyPhysicalConnectionLOA",

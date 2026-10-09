@@ -42,7 +42,7 @@ type AssumeRoleAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L129
 func (c *Client) AssumeRole(ctx context.Context, input *AssumeRoleInput, optFns ...func(*Options)) (*AssumeRoleOutput, error) {
-	out, meta, err := invoke[AssumeRoleInput, AssumeRoleOutput](ctx, c, input, alicloud.Operation{Service: "sts", Name: "AssumeRole", Version: "2015-04-01", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[AssumeRoleInput, AssumeRoleOutput](ctx, c, input, alicloud.Operation{Service: "sts", Name: "AssumeRole", Version: "2015-04-01", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -77,7 +77,7 @@ type AssumeRoleWithOIDCAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L282
 func (c *Client) AssumeRoleWithOIDC(ctx context.Context, input *AssumeRoleWithOIDCInput, optFns ...func(*Options)) (*AssumeRoleWithOIDCOutput, error) {
-	out, meta, err := invoke[AssumeRoleWithOIDCInput, AssumeRoleWithOIDCOutput](ctx, c, input, alicloud.Operation{Service: "sts", Name: "AssumeRoleWithOIDC", Version: "2015-04-01", Idempotent: false, Authentication: alicloud.AuthenticationAnonymousRPC}, false, nil, nil, optFns)
+	out, meta, err := invoke[AssumeRoleWithOIDCInput, AssumeRoleWithOIDCOutput](ctx, c, input, alicloud.Operation{Service: "sts", Name: "AssumeRoleWithOIDC", Version: "2015-04-01", Idempotent: false, Authentication: alicloud.AuthenticationAnonymousRPC}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -111,7 +111,7 @@ type AssumeRoleWithSAMLAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L414
 func (c *Client) AssumeRoleWithSAML(ctx context.Context, input *AssumeRoleWithSAMLInput, optFns ...func(*Options)) (*AssumeRoleWithSAMLOutput, error) {
-	out, meta, err := invoke[AssumeRoleWithSAMLInput, AssumeRoleWithSAMLOutput](ctx, c, input, alicloud.Operation{Service: "sts", Name: "AssumeRoleWithSAML", Version: "2015-04-01", Idempotent: false, Authentication: alicloud.AuthenticationAnonymousRPC}, false, nil, nil, optFns)
+	out, meta, err := invoke[AssumeRoleWithSAMLInput, AssumeRoleWithSAMLOutput](ctx, c, input, alicloud.Operation{Service: "sts", Name: "AssumeRoleWithSAML", Version: "2015-04-01", Idempotent: false, Authentication: alicloud.AuthenticationAnonymousRPC}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -136,7 +136,7 @@ type GetCallerIdentityAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L493
 func (c *Client) GetCallerIdentity(ctx context.Context, input *GetCallerIdentityInput, optFns ...func(*Options)) (*GetCallerIdentityOutput, error) {
-	out, meta, err := invoke[GetCallerIdentityInput, GetCallerIdentityOutput](ctx, c, input, alicloud.Operation{Service: "sts", Name: "GetCallerIdentity", Version: "2015-04-01", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[GetCallerIdentityInput, GetCallerIdentityOutput](ctx, c, input, alicloud.Operation{Service: "sts", Name: "GetCallerIdentity", Version: "2015-04-01", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}

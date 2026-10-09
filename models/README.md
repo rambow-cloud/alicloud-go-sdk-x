@@ -2,9 +2,9 @@
 
 [中文](README.zh-CN.md)
 
-- Current lowering/emission: ECS 380/380, VPC 396/403, STS 4/4. See [RPC expansion #83](../docs/dsl-rpc-expansion.md). The older table below is historical.
+- Current lowering/emission: ECS 380/380, VPC 403/403, STS 4/4. See [VPC RPC completion #85](../docs/vpc-rpc-completion.md). The older table below is historical.
 - Schema v2 adds optional binding `encoding: "json"`, boolean field `attributes.deprecated`, and `kind: "json", dslType: "any"` for dynamic values inside reviewed JSON transforms. No unknown transform is accepted.
-- Product IR and its lock use schema v2. Old generators reject the lock instead of ignoring JSON query encoding. Regenerate with the matching frontend/backend. Reports keep their independent v1 schema.
+- Product IR and its lock use schema v3. It adds `location: "form"`, explicit string-array `encoding: "simple"` and native GET methods. Older backends reject the lock before writes. Regenerate with the matching frontend/backend. Reports keep their independent v1 schema.
 
 - Generated build-time artifacts for [#35](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/35).
 - Read [product-discovery.md](../docs/product-discovery.md) before consuming them.

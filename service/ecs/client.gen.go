@@ -57,7 +57,7 @@ func (c *Client) callOptions(region string, optFns []func(*Options)) ([]func(*al
 	config := alicloud.Config(options)
 	return []func(*alicloud.CallOptions){func(o *alicloud.CallOptions) { o.Config = &config; o.Region = config.Region }}, nil
 }
-func invoke[I, O any](ctx context.Context, c *Client, input *I, op alicloud.Operation, hasRegion bool, prepare func(context.Context, *I) error, validate func(*I) error, optFns []func(*Options)) (*O, alicloud.Metadata, error) {
+func invoke[I, O any](ctx context.Context, c *Client, input *I, op alicloud.Operation, method string, hasRegion bool, prepare func(context.Context, *I) error, validate func(*I) error, optFns []func(*Options)) (*O, alicloud.Metadata, error) {
 	fail := func(err error) (*O, alicloud.Metadata, error) {
 		if ctx.Err() != nil {
 			err = ctx.Err()
@@ -103,7 +103,7 @@ func invoke[I, O any](ctx context.Context, c *Client, input *I, op alicloud.Oper
 					return alicloud.Request{}, err
 				}
 			}
-			q, err := rpcmodel.Query(ctx, value)
+			q, form, err := rpcmodel.Parameters(ctx, value)
 			if err != nil {
 				return alicloud.Request{}, err
 			}
@@ -112,7 +112,10 @@ func invoke[I, O any](ctx context.Context, c *Client, input *I, op alicloud.Oper
 				requestRegion = c.runtime.Region()
 				q.Set("RegionId", requestRegion)
 			}
-			return alicloud.Request{Method: "POST", Path: "/", Region: requestRegion, Query: q, Header: map[string][]string{"Content-Type": {"application/x-www-form-urlencoded"}}}, nil
+			if err := ctx.Err(); err != nil {
+				return alicloud.Request{}, err
+			}
+			return alicloud.Request{Method: method, Path: "/", Region: requestRegion, Query: q, Body: []byte(form.Encode()), Header: map[string][]string{"Content-Type": {"application/x-www-form-urlencoded"}}}, nil
 		}, Decode: func(ctx context.Context, data []byte, value any) error {
 			if err := ctx.Err(); err != nil {
 				return err

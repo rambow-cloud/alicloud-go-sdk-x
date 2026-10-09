@@ -83,7 +83,7 @@ test("complete real corpus is deterministic and accounts for every SDK operation
     );
   for (const [pkg, product] of Object.entries(first.products)) {
     const { ir, coverage } = product;
-    assert.equal(ir.schemaVersion, 2);
+    assert.equal(ir.schemaVersion, 3);
     const sourceFile = path.join(
       root,
       "sources/darabonba/products",
@@ -125,7 +125,7 @@ test("complete real corpus is deterministic and accounts for every SDK operation
     }
   }
   const lock = JSON.parse(first.files["models/manifest.json"]);
-  assert.equal(lock.schemaVersion, 2);
+  assert.equal(lock.schemaVersion, 3);
   for (const artifact of lock.files)
     assert.equal(
       crypto
@@ -414,7 +414,7 @@ test("strict unknown/unsupported selections fail before creating outputs", (t) =
   const temporary = sourceFixture(t);
   for (const target of [
     "ecs/DoesNotExist",
-    "vpc/GrantInstanceToVbr",
+    "vpc/DoesNotExist",
     "../AssumeRole",
   ]) {
     assert.throws(
@@ -469,7 +469,7 @@ test("report distinguishes lowering from Go/live acceptance and prints reason lo
   );
   assert.match(
     run("report", { product: "vpc" }),
-    /GrantInstanceToVbr: DSL_SHRINK_TRANSFORM/,
+    /^vpc: 403 discovered, 403 lowered, 0 unsupported/,
   );
 });
 

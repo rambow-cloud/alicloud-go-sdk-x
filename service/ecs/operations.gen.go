@@ -27,7 +27,7 @@ type AcceptInquiredSystemEventAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L92
 func (c *Client) AcceptInquiredSystemEvent(ctx context.Context, input *AcceptInquiredSystemEventInput, optFns ...func(*Options)) (*AcceptInquiredSystemEventOutput, error) {
-	out, meta, err := invoke[AcceptInquiredSystemEventInput, AcceptInquiredSystemEventOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AcceptInquiredSystemEvent", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AcceptInquiredSystemEventInput, AcceptInquiredSystemEventOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AcceptInquiredSystemEvent", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ type ActivateRouterInterfaceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L172
 func (c *Client) ActivateRouterInterface(ctx context.Context, input *ActivateRouterInterfaceInput, optFns ...func(*Options)) (*ActivateRouterInterfaceOutput, error) {
-	out, meta, err := invoke[ActivateRouterInterfaceInput, ActivateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ActivateRouterInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ActivateRouterInterfaceInput, ActivateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ActivateRouterInterface", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -77,7 +77,7 @@ type AddBandwidthPackageIpsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L252
 func (c *Client) AddBandwidthPackageIps(ctx context.Context, input *AddBandwidthPackageIpsInput, optFns ...func(*Options)) (*AddBandwidthPackageIpsOutput, error) {
-	out, meta, err := invoke[AddBandwidthPackageIpsInput, AddBandwidthPackageIpsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AddBandwidthPackageIps", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AddBandwidthPackageIpsInput, AddBandwidthPackageIpsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AddBandwidthPackageIps", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -111,7 +111,7 @@ type AddTagsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L368
 func (c *Client) AddTags(ctx context.Context, input *AddTagsInput, optFns ...func(*Options)) (*AddTagsOutput, error) {
-	out, meta, err := invoke[AddTagsInput, AddTagsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AddTags", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AddTagsInput, AddTagsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AddTags", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -148,7 +148,7 @@ type AllocateDedicatedHostsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L585
 func (c *Client) AllocateDedicatedHosts(ctx context.Context, input *AllocateDedicatedHostsInput, optFns ...func(*Options)) (*AllocateDedicatedHostsOutput, error) {
-	out, meta, err := invoke[AllocateDedicatedHostsInput, AllocateDedicatedHostsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AllocateDedicatedHosts", Version: "2014-05-26", Idempotent: false}, true, prepareAllocateDedicatedHostsInput, ValidateAllocateDedicatedHostsInput, optFns)
+	out, meta, err := invoke[AllocateDedicatedHostsInput, AllocateDedicatedHostsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AllocateDedicatedHosts", Version: "2014-05-26", Idempotent: false}, "POST", true, prepareAllocateDedicatedHostsInput, ValidateAllocateDedicatedHostsInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -179,7 +179,7 @@ type AllocateEipAddressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L737
 func (c *Client) AllocateEipAddress(ctx context.Context, input *AllocateEipAddressInput, optFns ...func(*Options)) (*AllocateEipAddressOutput, error) {
-	out, meta, err := invoke[AllocateEipAddressInput, AllocateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AllocateEipAddress", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AllocateEipAddressInput, AllocateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AllocateEipAddress", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -218,7 +218,7 @@ type AllocatePublicIpAddressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L843
 func (c *Client) AllocatePublicIpAddress(ctx context.Context, input *AllocatePublicIpAddressInput, optFns ...func(*Options)) (*AllocatePublicIpAddressOutput, error) {
-	out, meta, err := invoke[AllocatePublicIpAddressInput, AllocatePublicIpAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AllocatePublicIpAddress", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[AllocatePublicIpAddressInput, AllocatePublicIpAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AllocatePublicIpAddress", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -251,7 +251,7 @@ type ApplyAutoSnapshotPolicyAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L947
 func (c *Client) ApplyAutoSnapshotPolicy(ctx context.Context, input *ApplyAutoSnapshotPolicyInput, optFns ...func(*Options)) (*ApplyAutoSnapshotPolicyOutput, error) {
-	out, meta, err := invoke[ApplyAutoSnapshotPolicyInput, ApplyAutoSnapshotPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ApplyAutoSnapshotPolicy", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[ApplyAutoSnapshotPolicyInput, ApplyAutoSnapshotPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ApplyAutoSnapshotPolicy", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -290,7 +290,7 @@ type AssignIpv6AddressesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1054
 func (c *Client) AssignIpv6Addresses(ctx context.Context, input *AssignIpv6AddressesInput, optFns ...func(*Options)) (*AssignIpv6AddressesOutput, error) {
-	out, meta, err := invoke[AssignIpv6AddressesInput, AssignIpv6AddressesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AssignIpv6Addresses", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AssignIpv6AddressesInput, AssignIpv6AddressesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AssignIpv6Addresses", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -325,7 +325,7 @@ type AssignPrivateIpAddressesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1194
 func (c *Client) AssignPrivateIpAddresses(ctx context.Context, input *AssignPrivateIpAddressesInput, optFns ...func(*Options)) (*AssignPrivateIpAddressesOutput, error) {
-	out, meta, err := invoke[AssignPrivateIpAddressesInput, AssignPrivateIpAddressesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AssignPrivateIpAddresses", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AssignPrivateIpAddressesInput, AssignPrivateIpAddressesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AssignPrivateIpAddresses", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -350,7 +350,7 @@ type AssociateEipAddressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1301
 func (c *Client) AssociateEipAddress(ctx context.Context, input *AssociateEipAddressInput, optFns ...func(*Options)) (*AssociateEipAddressOutput, error) {
-	out, meta, err := invoke[AssociateEipAddressInput, AssociateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AssociateEipAddress", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AssociateEipAddressInput, AssociateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AssociateEipAddress", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -375,7 +375,7 @@ type AssociateHaVipAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1390
 func (c *Client) AssociateHaVip(ctx context.Context, input *AssociateHaVipInput, optFns ...func(*Options)) (*AssociateHaVipOutput, error) {
-	out, meta, err := invoke[AssociateHaVipInput, AssociateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AssociateHaVip", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AssociateHaVipInput, AssociateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AssociateHaVip", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -409,7 +409,7 @@ type AttachClassicLinkVpcAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1483
 func (c *Client) AttachClassicLinkVpc(ctx context.Context, input *AttachClassicLinkVpcInput, optFns ...func(*Options)) (*AttachClassicLinkVpcOutput, error) {
-	out, meta, err := invoke[AttachClassicLinkVpcInput, AttachClassicLinkVpcOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachClassicLinkVpc", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AttachClassicLinkVpcInput, AttachClassicLinkVpcOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachClassicLinkVpc", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -457,7 +457,7 @@ type AttachDiskAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1622
 func (c *Client) AttachDisk(ctx context.Context, input *AttachDiskInput, optFns ...func(*Options)) (*AttachDiskOutput, error) {
-	out, meta, err := invoke[AttachDiskInput, AttachDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachDisk", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[AttachDiskInput, AttachDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachDisk", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -489,7 +489,7 @@ type AttachInstanceRamRoleAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1773
 func (c *Client) AttachInstanceRamRole(ctx context.Context, input *AttachInstanceRamRoleInput, optFns ...func(*Options)) (*AttachInstanceRamRoleOutput, error) {
-	out, meta, err := invoke[AttachInstanceRamRoleInput, AttachInstanceRamRoleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachInstanceRamRole", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AttachInstanceRamRoleInput, AttachInstanceRamRoleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachInstanceRamRole", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -529,7 +529,7 @@ type AttachKeyPairAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1876
 func (c *Client) AttachKeyPair(ctx context.Context, input *AttachKeyPairInput, optFns ...func(*Options)) (*AttachKeyPairOutput, error) {
-	out, meta, err := invoke[AttachKeyPairInput, AttachKeyPairOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachKeyPair", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AttachKeyPairInput, AttachKeyPairOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachKeyPair", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -572,7 +572,7 @@ type AttachNetworkInterfaceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1986
 func (c *Client) AttachNetworkInterface(ctx context.Context, input *AttachNetworkInterfaceInput, optFns ...func(*Options)) (*AttachNetworkInterfaceOutput, error) {
-	out, meta, err := invoke[AttachNetworkInterfaceInput, AttachNetworkInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachNetworkInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AttachNetworkInterfaceInput, AttachNetworkInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachNetworkInterface", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -646,7 +646,7 @@ type AuthorizeSecurityGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L2221
 func (c *Client) AuthorizeSecurityGroup(ctx context.Context, input *AuthorizeSecurityGroupInput, optFns ...func(*Options)) (*AuthorizeSecurityGroupOutput, error) {
-	out, meta, err := invoke[AuthorizeSecurityGroupInput, AuthorizeSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AuthorizeSecurityGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AuthorizeSecurityGroupInput, AuthorizeSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AuthorizeSecurityGroup", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -720,7 +720,7 @@ type AuthorizeSecurityGroupEgressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L2560
 func (c *Client) AuthorizeSecurityGroupEgress(ctx context.Context, input *AuthorizeSecurityGroupEgressInput, optFns ...func(*Options)) (*AuthorizeSecurityGroupEgressOutput, error) {
-	out, meta, err := invoke[AuthorizeSecurityGroupEgressInput, AuthorizeSecurityGroupEgressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AuthorizeSecurityGroupEgress", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[AuthorizeSecurityGroupEgressInput, AuthorizeSecurityGroupEgressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AuthorizeSecurityGroupEgress", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -745,7 +745,7 @@ type CancelAutoSnapshotPolicyAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L2797
 func (c *Client) CancelAutoSnapshotPolicy(ctx context.Context, input *CancelAutoSnapshotPolicyInput, optFns ...func(*Options)) (*CancelAutoSnapshotPolicyOutput, error) {
-	out, meta, err := invoke[CancelAutoSnapshotPolicyInput, CancelAutoSnapshotPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelAutoSnapshotPolicy", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[CancelAutoSnapshotPolicyInput, CancelAutoSnapshotPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelAutoSnapshotPolicy", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -778,7 +778,7 @@ type CancelCopyImageAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L2876
 func (c *Client) CancelCopyImage(ctx context.Context, input *CancelCopyImageInput, optFns ...func(*Options)) (*CancelCopyImageOutput, error) {
-	out, meta, err := invoke[CancelCopyImageInput, CancelCopyImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelCopyImage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CancelCopyImageInput, CancelCopyImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelCopyImage", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -809,7 +809,7 @@ type CancelImagePipelineExecutionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L2969
 func (c *Client) CancelImagePipelineExecution(ctx context.Context, input *CancelImagePipelineExecutionInput, optFns ...func(*Options)) (*CancelImagePipelineExecutionOutput, error) {
-	out, meta, err := invoke[CancelImagePipelineExecutionInput, CancelImagePipelineExecutionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelImagePipelineExecution", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CancelImagePipelineExecutionInput, CancelImagePipelineExecutionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelImagePipelineExecution", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -834,7 +834,7 @@ type CancelPhysicalConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3056
 func (c *Client) CancelPhysicalConnection(ctx context.Context, input *CancelPhysicalConnectionInput, optFns ...func(*Options)) (*CancelPhysicalConnectionOutput, error) {
-	out, meta, err := invoke[CancelPhysicalConnectionInput, CancelPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelPhysicalConnection", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CancelPhysicalConnectionInput, CancelPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelPhysicalConnection", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -859,7 +859,7 @@ type CancelSimulatedSystemEventsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3147
 func (c *Client) CancelSimulatedSystemEvents(ctx context.Context, input *CancelSimulatedSystemEventsInput, optFns ...func(*Options)) (*CancelSimulatedSystemEventsOutput, error) {
-	out, meta, err := invoke[CancelSimulatedSystemEventsInput, CancelSimulatedSystemEventsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelSimulatedSystemEvents", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CancelSimulatedSystemEventsInput, CancelSimulatedSystemEventsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelSimulatedSystemEvents", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -884,7 +884,7 @@ type CancelTaskAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3228
 func (c *Client) CancelTask(ctx context.Context, input *CancelTaskInput, optFns ...func(*Options)) (*CancelTaskOutput, error) {
-	out, meta, err := invoke[CancelTaskInput, CancelTaskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelTask", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CancelTaskInput, CancelTaskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelTask", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -934,7 +934,7 @@ type CloneDisksAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3381
 func (c *Client) CloneDisks(ctx context.Context, input *CloneDisksInput, optFns ...func(*Options)) (*CloneDisksOutput, error) {
-	out, meta, err := invoke[CloneDisksInput, CloneDisksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CloneDisks", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CloneDisksInput, CloneDisksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CloneDisks", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -959,7 +959,7 @@ type ConnectRouterInterfaceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3533
 func (c *Client) ConnectRouterInterface(ctx context.Context, input *ConnectRouterInterfaceInput, optFns ...func(*Options)) (*ConnectRouterInterfaceOutput, error) {
-	out, meta, err := invoke[ConnectRouterInterfaceInput, ConnectRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ConnectRouterInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ConnectRouterInterfaceInput, ConnectRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ConnectRouterInterface", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -998,7 +998,7 @@ type ConvertNatPublicIpToEipAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3614
 func (c *Client) ConvertNatPublicIpToEip(ctx context.Context, input *ConvertNatPublicIpToEipInput, optFns ...func(*Options)) (*ConvertNatPublicIpToEipOutput, error) {
-	out, meta, err := invoke[ConvertNatPublicIpToEipInput, ConvertNatPublicIpToEipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ConvertNatPublicIpToEip", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ConvertNatPublicIpToEipInput, ConvertNatPublicIpToEipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ConvertNatPublicIpToEip", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1036,7 +1036,7 @@ type CopyImageAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3739
 func (c *Client) CopyImage(ctx context.Context, input *CopyImageInput, optFns ...func(*Options)) (*CopyImageOutput, error) {
-	out, meta, err := invoke[CopyImageInput, CopyImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CopyImage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CopyImageInput, CopyImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CopyImage", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1069,7 +1069,7 @@ type CopySnapshotAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3905
 func (c *Client) CopySnapshot(ctx context.Context, input *CopySnapshotInput, optFns ...func(*Options)) (*CopySnapshotOutput, error) {
-	out, meta, err := invoke[CopySnapshotInput, CopySnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CopySnapshot", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CopySnapshotInput, CopySnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CopySnapshot", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1113,7 +1113,7 @@ type CreateActivationAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L4049
 func (c *Client) CreateActivation(ctx context.Context, input *CreateActivationInput, optFns ...func(*Options)) (*CreateActivationOutput, error) {
-	out, meta, err := invoke[CreateActivationInput, CreateActivationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateActivation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateActivationInput, CreateActivationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateActivation", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1147,7 +1147,7 @@ type CreateAutoProvisioningGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L5275
 func (c *Client) CreateAutoProvisioningGroup(ctx context.Context, input *CreateAutoProvisioningGroupInput, optFns ...func(*Options)) (*CreateAutoProvisioningGroupOutput, error) {
-	out, meta, err := invoke[CreateAutoProvisioningGroupInput, CreateAutoProvisioningGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateAutoProvisioningGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateAutoProvisioningGroupInput, CreateAutoProvisioningGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateAutoProvisioningGroup", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1183,7 +1183,7 @@ type CreateAutoSnapshotPolicyAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L5544
 func (c *Client) CreateAutoSnapshotPolicy(ctx context.Context, input *CreateAutoSnapshotPolicyInput, optFns ...func(*Options)) (*CreateAutoSnapshotPolicyOutput, error) {
-	out, meta, err := invoke[CreateAutoSnapshotPolicyInput, CreateAutoSnapshotPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateAutoSnapshotPolicy", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[CreateAutoSnapshotPolicyInput, CreateAutoSnapshotPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateAutoSnapshotPolicy", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1220,7 +1220,7 @@ type CreateCapacityReservationAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L5714
 func (c *Client) CreateCapacityReservation(ctx context.Context, input *CreateCapacityReservationInput, optFns ...func(*Options)) (*CreateCapacityReservationOutput, error) {
-	out, meta, err := invoke[CreateCapacityReservationInput, CreateCapacityReservationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateCapacityReservation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateCapacityReservationInput, CreateCapacityReservationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateCapacityReservation", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1264,7 +1264,7 @@ type CreateCommandAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L5919
 func (c *Client) CreateCommand(ctx context.Context, input *CreateCommandInput, optFns ...func(*Options)) (*CreateCommandOutput, error) {
-	out, meta, err := invoke[CreateCommandInput, CreateCommandOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateCommand", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateCommandInput, CreateCommandOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateCommand", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1289,7 +1289,7 @@ type CreateDedicatedHostClusterAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L6084
 func (c *Client) CreateDedicatedHostCluster(ctx context.Context, input *CreateDedicatedHostClusterInput, optFns ...func(*Options)) (*CreateDedicatedHostClusterOutput, error) {
-	out, meta, err := invoke[CreateDedicatedHostClusterInput, CreateDedicatedHostClusterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDedicatedHostCluster", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateDedicatedHostClusterInput, CreateDedicatedHostClusterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDedicatedHostCluster", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1314,7 +1314,7 @@ type CreateDeploymentSetAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L6207
 func (c *Client) CreateDeploymentSet(ctx context.Context, input *CreateDeploymentSetInput, optFns ...func(*Options)) (*CreateDeploymentSetOutput, error) {
-	out, meta, err := invoke[CreateDeploymentSetInput, CreateDeploymentSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDeploymentSet", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateDeploymentSetInput, CreateDeploymentSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDeploymentSet", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1339,7 +1339,7 @@ type CreateDiagnosticMetricSetAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L6317
 func (c *Client) CreateDiagnosticMetricSet(ctx context.Context, input *CreateDiagnosticMetricSetInput, optFns ...func(*Options)) (*CreateDiagnosticMetricSetOutput, error) {
-	out, meta, err := invoke[CreateDiagnosticMetricSetInput, CreateDiagnosticMetricSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDiagnosticMetricSet", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateDiagnosticMetricSetInput, CreateDiagnosticMetricSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDiagnosticMetricSet", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1364,7 +1364,7 @@ type CreateDiagnosticReportAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L6407
 func (c *Client) CreateDiagnosticReport(ctx context.Context, input *CreateDiagnosticReportInput, optFns ...func(*Options)) (*CreateDiagnosticReportOutput, error) {
-	out, meta, err := invoke[CreateDiagnosticReportInput, CreateDiagnosticReportOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDiagnosticReport", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateDiagnosticReportInput, CreateDiagnosticReportOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDiagnosticReport", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1402,7 +1402,7 @@ type CreateDiskAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L6625
 func (c *Client) CreateDisk(ctx context.Context, input *CreateDiskInput, optFns ...func(*Options)) (*CreateDiskOutput, error) {
-	out, meta, err := invoke[CreateDiskInput, CreateDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDisk", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateDiskInput, CreateDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDisk", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1436,7 +1436,7 @@ type CreateElasticityAssuranceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L6872
 func (c *Client) CreateElasticityAssurance(ctx context.Context, input *CreateElasticityAssuranceInput, optFns ...func(*Options)) (*CreateElasticityAssuranceOutput, error) {
-	out, meta, err := invoke[CreateElasticityAssuranceInput, CreateElasticityAssuranceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateElasticityAssurance", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateElasticityAssuranceInput, CreateElasticityAssuranceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateElasticityAssurance", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1461,7 +1461,7 @@ type CreateForwardEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7008
 func (c *Client) CreateForwardEntry(ctx context.Context, input *CreateForwardEntryInput, optFns ...func(*Options)) (*CreateForwardEntryOutput, error) {
-	out, meta, err := invoke[CreateForwardEntryInput, CreateForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateForwardEntry", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateForwardEntryInput, CreateForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateForwardEntry", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1486,7 +1486,7 @@ type CreateHaVipAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7108
 func (c *Client) CreateHaVip(ctx context.Context, input *CreateHaVipInput, optFns ...func(*Options)) (*CreateHaVipOutput, error) {
-	out, meta, err := invoke[CreateHaVipInput, CreateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateHaVip", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateHaVipInput, CreateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateHaVip", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1511,7 +1511,7 @@ type CreateHpcClusterAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7207
 func (c *Client) CreateHpcCluster(ctx context.Context, input *CreateHpcClusterInput, optFns ...func(*Options)) (*CreateHpcClusterOutput, error) {
-	out, meta, err := invoke[CreateHpcClusterInput, CreateHpcClusterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateHpcCluster", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateHpcClusterInput, CreateHpcClusterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateHpcCluster", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1557,7 +1557,7 @@ type CreateImageAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7398
 func (c *Client) CreateImage(ctx context.Context, input *CreateImageInput, optFns ...func(*Options)) (*CreateImageOutput, error) {
-	out, meta, err := invoke[CreateImageInput, CreateImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateImage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateImageInput, CreateImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateImage", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1593,7 +1593,7 @@ type CreateImageComponentAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7592
 func (c *Client) CreateImageComponent(ctx context.Context, input *CreateImageComponentInput, optFns ...func(*Options)) (*CreateImageComponentOutput, error) {
-	out, meta, err := invoke[CreateImageComponentInput, CreateImageComponentOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateImageComponent", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateImageComponentInput, CreateImageComponentOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateImageComponent", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1632,7 +1632,7 @@ type CreateImagePipelineAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7989
 func (c *Client) CreateImagePipeline(ctx context.Context, input *CreateImagePipelineInput, optFns ...func(*Options)) (*CreateImagePipelineOutput, error) {
-	out, meta, err := invoke[CreateImagePipelineInput, CreateImagePipelineOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateImagePipeline", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateImagePipelineInput, CreateImagePipelineOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateImagePipeline", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1685,7 +1685,7 @@ type CreateInstanceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L8487
 func (c *Client) CreateInstance(ctx context.Context, input *CreateInstanceInput, optFns ...func(*Options)) (*CreateInstanceOutput, error) {
-	out, meta, err := invoke[CreateInstanceInput, CreateInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateInstance", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateInstanceInput, CreateInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateInstance", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1717,7 +1717,7 @@ type CreateKeyPairAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L8792
 func (c *Client) CreateKeyPair(ctx context.Context, input *CreateKeyPairInput, optFns ...func(*Options)) (*CreateKeyPairOutput, error) {
-	out, meta, err := invoke[CreateKeyPairInput, CreateKeyPairOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateKeyPair", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateKeyPairInput, CreateKeyPairOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateKeyPair", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1753,7 +1753,7 @@ type CreateLaunchTemplateAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L9275
 func (c *Client) CreateLaunchTemplate(ctx context.Context, input *CreateLaunchTemplateInput, optFns ...func(*Options)) (*CreateLaunchTemplateOutput, error) {
-	out, meta, err := invoke[CreateLaunchTemplateInput, CreateLaunchTemplateOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateLaunchTemplate", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateLaunchTemplateInput, CreateLaunchTemplateOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateLaunchTemplate", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1785,7 +1785,7 @@ type CreateLaunchTemplateVersionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L9869
 func (c *Client) CreateLaunchTemplateVersion(ctx context.Context, input *CreateLaunchTemplateVersionInput, optFns ...func(*Options)) (*CreateLaunchTemplateVersionOutput, error) {
-	out, meta, err := invoke[CreateLaunchTemplateVersionInput, CreateLaunchTemplateVersionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateLaunchTemplateVersion", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateLaunchTemplateVersionInput, CreateLaunchTemplateVersionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateLaunchTemplateVersion", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1810,7 +1810,7 @@ type CreateNatGatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10114
 func (c *Client) CreateNatGateway(ctx context.Context, input *CreateNatGatewayInput, optFns ...func(*Options)) (*CreateNatGatewayOutput, error) {
-	out, meta, err := invoke[CreateNatGatewayInput, CreateNatGatewayOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateNatGateway", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateNatGatewayInput, CreateNatGatewayOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateNatGateway", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1862,7 +1862,7 @@ type CreateNetworkInterfaceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10450
 func (c *Client) CreateNetworkInterface(ctx context.Context, input *CreateNetworkInterfaceInput, optFns ...func(*Options)) (*CreateNetworkInterfaceOutput, error) {
-	out, meta, err := invoke[CreateNetworkInterfaceInput, CreateNetworkInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateNetworkInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateNetworkInterfaceInput, CreateNetworkInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateNetworkInterface", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1887,7 +1887,7 @@ type CreateNetworkInterfacePermissionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10697
 func (c *Client) CreateNetworkInterfacePermission(ctx context.Context, input *CreateNetworkInterfacePermissionInput, optFns ...func(*Options)) (*CreateNetworkInterfacePermissionOutput, error) {
-	out, meta, err := invoke[CreateNetworkInterfacePermissionInput, CreateNetworkInterfacePermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateNetworkInterfacePermission", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateNetworkInterfacePermissionInput, CreateNetworkInterfacePermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateNetworkInterfacePermission", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1912,7 +1912,7 @@ type CreatePhysicalConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10793
 func (c *Client) CreatePhysicalConnection(ctx context.Context, input *CreatePhysicalConnectionInput, optFns ...func(*Options)) (*CreatePhysicalConnectionOutput, error) {
-	out, meta, err := invoke[CreatePhysicalConnectionInput, CreatePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreatePhysicalConnection", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreatePhysicalConnectionInput, CreatePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreatePhysicalConnection", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1937,7 +1937,7 @@ type CreatePlanMaintenanceWindowAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10982
 func (c *Client) CreatePlanMaintenanceWindow(ctx context.Context, input *CreatePlanMaintenanceWindowInput, optFns ...func(*Options)) (*CreatePlanMaintenanceWindowOutput, error) {
-	out, meta, err := invoke[CreatePlanMaintenanceWindowInput, CreatePlanMaintenanceWindowOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreatePlanMaintenanceWindow", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreatePlanMaintenanceWindowInput, CreatePlanMaintenanceWindowOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreatePlanMaintenanceWindow", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1962,7 +1962,7 @@ type CreatePortRangeListAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11101
 func (c *Client) CreatePortRangeList(ctx context.Context, input *CreatePortRangeListInput, optFns ...func(*Options)) (*CreatePortRangeListOutput, error) {
-	out, meta, err := invoke[CreatePortRangeListInput, CreatePortRangeListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreatePortRangeList", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreatePortRangeListInput, CreatePortRangeListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreatePortRangeList", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2000,7 +2000,7 @@ type CreatePrefixListAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11245
 func (c *Client) CreatePrefixList(ctx context.Context, input *CreatePrefixListInput, optFns ...func(*Options)) (*CreatePrefixListOutput, error) {
-	out, meta, err := invoke[CreatePrefixListInput, CreatePrefixListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreatePrefixList", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreatePrefixListInput, CreatePrefixListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreatePrefixList", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2025,7 +2025,7 @@ type CreateRouteEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11372
 func (c *Client) CreateRouteEntry(ctx context.Context, input *CreateRouteEntryInput, optFns ...func(*Options)) (*CreateRouteEntryOutput, error) {
-	out, meta, err := invoke[CreateRouteEntryInput, CreateRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateRouteEntry", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateRouteEntryInput, CreateRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateRouteEntry", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2050,7 +2050,7 @@ type CreateRouterInterfaceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11490
 func (c *Client) CreateRouterInterface(ctx context.Context, input *CreateRouterInterfaceInput, optFns ...func(*Options)) (*CreateRouterInterfaceOutput, error) {
-	out, meta, err := invoke[CreateRouterInterfaceInput, CreateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateRouterInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateRouterInterfaceInput, CreateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateRouterInterface", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2069,7 +2069,7 @@ type CreateSavingsPlanAPI interface {
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateSavingsPlan(ctx context.Context, input *CreateSavingsPlanInput, optFns ...func(*Options)) (*CreateSavingsPlanOutput, error) {
-	out, meta, err := invoke[CreateSavingsPlanInput, CreateSavingsPlanOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSavingsPlan", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateSavingsPlanInput, CreateSavingsPlanOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSavingsPlan", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2103,7 +2103,7 @@ type CreateSecurityGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11753
 func (c *Client) CreateSecurityGroup(ctx context.Context, input *CreateSecurityGroupInput, optFns ...func(*Options)) (*CreateSecurityGroupOutput, error) {
-	out, meta, err := invoke[CreateSecurityGroupInput, CreateSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSecurityGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateSecurityGroupInput, CreateSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSecurityGroup", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2144,7 +2144,7 @@ type CreateSimulatedSystemEventsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11884
 func (c *Client) CreateSimulatedSystemEvents(ctx context.Context, input *CreateSimulatedSystemEventsInput, optFns ...func(*Options)) (*CreateSimulatedSystemEventsOutput, error) {
-	out, meta, err := invoke[CreateSimulatedSystemEventsInput, CreateSimulatedSystemEventsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSimulatedSystemEvents", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateSimulatedSystemEventsInput, CreateSimulatedSystemEventsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSimulatedSystemEvents", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2195,7 +2195,7 @@ type CreateSnapshotAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12033
 func (c *Client) CreateSnapshot(ctx context.Context, input *CreateSnapshotInput, optFns ...func(*Options)) (*CreateSnapshotOutput, error) {
-	out, meta, err := invoke[CreateSnapshotInput, CreateSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSnapshot", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[CreateSnapshotInput, CreateSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSnapshot", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2236,7 +2236,7 @@ type CreateSnapshotGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12219
 func (c *Client) CreateSnapshotGroup(ctx context.Context, input *CreateSnapshotGroupInput, optFns ...func(*Options)) (*CreateSnapshotGroupOutput, error) {
-	out, meta, err := invoke[CreateSnapshotGroupInput, CreateSnapshotGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSnapshotGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateSnapshotGroupInput, CreateSnapshotGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSnapshotGroup", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2255,7 +2255,7 @@ type CreateStorageSetAPI interface {
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
 func (c *Client) CreateStorageSet(ctx context.Context, input *CreateStorageSetInput, optFns ...func(*Options)) (*CreateStorageSetOutput, error) {
-	out, meta, err := invoke[CreateStorageSetInput, CreateStorageSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateStorageSet", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateStorageSetInput, CreateStorageSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateStorageSet", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2280,7 +2280,7 @@ type CreateVSwitchAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12459
 func (c *Client) CreateVSwitch(ctx context.Context, input *CreateVSwitchInput, optFns ...func(*Options)) (*CreateVSwitchOutput, error) {
-	out, meta, err := invoke[CreateVSwitchInput, CreateVSwitchOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateVSwitch", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateVSwitchInput, CreateVSwitchOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateVSwitch", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2305,7 +2305,7 @@ type CreateVirtualBorderRouterAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12566
 func (c *Client) CreateVirtualBorderRouter(ctx context.Context, input *CreateVirtualBorderRouterInput, optFns ...func(*Options)) (*CreateVirtualBorderRouterOutput, error) {
-	out, meta, err := invoke[CreateVirtualBorderRouterInput, CreateVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateVirtualBorderRouter", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateVirtualBorderRouterInput, CreateVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateVirtualBorderRouter", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2330,7 +2330,7 @@ type CreateVpcAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12687
 func (c *Client) CreateVpc(ctx context.Context, input *CreateVpcInput, optFns ...func(*Options)) (*CreateVpcOutput, error) {
-	out, meta, err := invoke[CreateVpcInput, CreateVpcOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateVpc", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateVpcInput, CreateVpcOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateVpc", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2362,7 +2362,7 @@ type CreateVscAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12799
 func (c *Client) CreateVsc(ctx context.Context, input *CreateVscInput, optFns ...func(*Options)) (*CreateVscOutput, error) {
-	out, meta, err := invoke[CreateVscInput, CreateVscOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateVsc", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[CreateVscInput, CreateVscOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateVsc", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2387,7 +2387,7 @@ type DeactivateRouterInterfaceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12900
 func (c *Client) DeactivateRouterInterface(ctx context.Context, input *DeactivateRouterInterfaceInput, optFns ...func(*Options)) (*DeactivateRouterInterfaceOutput, error) {
-	out, meta, err := invoke[DeactivateRouterInterfaceInput, DeactivateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeactivateRouterInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeactivateRouterInterfaceInput, DeactivateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeactivateRouterInterface", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2419,7 +2419,7 @@ type DeleteActivationAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12995
 func (c *Client) DeleteActivation(ctx context.Context, input *DeleteActivationInput, optFns ...func(*Options)) (*DeleteActivationOutput, error) {
-	out, meta, err := invoke[DeleteActivationInput, DeleteActivationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteActivation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteActivationInput, DeleteActivationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteActivation", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2444,7 +2444,7 @@ type DeleteAutoProvisioningGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13089
 func (c *Client) DeleteAutoProvisioningGroup(ctx context.Context, input *DeleteAutoProvisioningGroupInput, optFns ...func(*Options)) (*DeleteAutoProvisioningGroupOutput, error) {
-	out, meta, err := invoke[DeleteAutoProvisioningGroupInput, DeleteAutoProvisioningGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteAutoProvisioningGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteAutoProvisioningGroupInput, DeleteAutoProvisioningGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteAutoProvisioningGroup", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2469,7 +2469,7 @@ type DeleteAutoSnapshotPolicyAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13170
 func (c *Client) DeleteAutoSnapshotPolicy(ctx context.Context, input *DeleteAutoSnapshotPolicyInput, optFns ...func(*Options)) (*DeleteAutoSnapshotPolicyOutput, error) {
-	out, meta, err := invoke[DeleteAutoSnapshotPolicyInput, DeleteAutoSnapshotPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteAutoSnapshotPolicy", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[DeleteAutoSnapshotPolicyInput, DeleteAutoSnapshotPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteAutoSnapshotPolicy", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2494,7 +2494,7 @@ type DeleteBandwidthPackageAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13242
 func (c *Client) DeleteBandwidthPackage(ctx context.Context, input *DeleteBandwidthPackageInput, optFns ...func(*Options)) (*DeleteBandwidthPackageOutput, error) {
-	out, meta, err := invoke[DeleteBandwidthPackageInput, DeleteBandwidthPackageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteBandwidthPackage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteBandwidthPackageInput, DeleteBandwidthPackageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteBandwidthPackage", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2519,7 +2519,7 @@ type DeleteCommandAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13321
 func (c *Client) DeleteCommand(ctx context.Context, input *DeleteCommandInput, optFns ...func(*Options)) (*DeleteCommandOutput, error) {
-	out, meta, err := invoke[DeleteCommandInput, DeleteCommandOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteCommand", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteCommandInput, DeleteCommandOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteCommand", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2544,7 +2544,7 @@ type DeleteDedicatedHostClusterAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13403
 func (c *Client) DeleteDedicatedHostCluster(ctx context.Context, input *DeleteDedicatedHostClusterInput, optFns ...func(*Options)) (*DeleteDedicatedHostClusterOutput, error) {
-	out, meta, err := invoke[DeleteDedicatedHostClusterInput, DeleteDedicatedHostClusterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDedicatedHostCluster", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteDedicatedHostClusterInput, DeleteDedicatedHostClusterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDedicatedHostCluster", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2575,7 +2575,7 @@ type DeleteDeploymentSetAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13482
 func (c *Client) DeleteDeploymentSet(ctx context.Context, input *DeleteDeploymentSetInput, optFns ...func(*Options)) (*DeleteDeploymentSetOutput, error) {
-	out, meta, err := invoke[DeleteDeploymentSetInput, DeleteDeploymentSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDeploymentSet", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteDeploymentSetInput, DeleteDeploymentSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDeploymentSet", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2600,7 +2600,7 @@ type DeleteDiagnosticMetricSetsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13561
 func (c *Client) DeleteDiagnosticMetricSets(ctx context.Context, input *DeleteDiagnosticMetricSetsInput, optFns ...func(*Options)) (*DeleteDiagnosticMetricSetsOutput, error) {
-	out, meta, err := invoke[DeleteDiagnosticMetricSetsInput, DeleteDiagnosticMetricSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDiagnosticMetricSets", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteDiagnosticMetricSetsInput, DeleteDiagnosticMetricSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDiagnosticMetricSets", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2631,7 +2631,7 @@ type DeleteDiagnosticReportsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13624
 func (c *Client) DeleteDiagnosticReports(ctx context.Context, input *DeleteDiagnosticReportsInput, optFns ...func(*Options)) (*DeleteDiagnosticReportsOutput, error) {
-	out, meta, err := invoke[DeleteDiagnosticReportsInput, DeleteDiagnosticReportsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDiagnosticReports", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteDiagnosticReportsInput, DeleteDiagnosticReportsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDiagnosticReports", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2666,7 +2666,7 @@ type DeleteDiskAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13692
 func (c *Client) DeleteDisk(ctx context.Context, input *DeleteDiskInput, optFns ...func(*Options)) (*DeleteDiskOutput, error) {
-	out, meta, err := invoke[DeleteDiskInput, DeleteDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDisk", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[DeleteDiskInput, DeleteDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteDisk", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2691,7 +2691,7 @@ type DeleteForwardEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13777
 func (c *Client) DeleteForwardEntry(ctx context.Context, input *DeleteForwardEntryInput, optFns ...func(*Options)) (*DeleteForwardEntryOutput, error) {
-	out, meta, err := invoke[DeleteForwardEntryInput, DeleteForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteForwardEntry", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteForwardEntryInput, DeleteForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteForwardEntry", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2716,7 +2716,7 @@ type DeleteHaVipAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13862
 func (c *Client) DeleteHaVip(ctx context.Context, input *DeleteHaVipInput, optFns ...func(*Options)) (*DeleteHaVipOutput, error) {
-	out, meta, err := invoke[DeleteHaVipInput, DeleteHaVipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteHaVip", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteHaVipInput, DeleteHaVipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteHaVip", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2741,7 +2741,7 @@ type DeleteHpcClusterAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13951
 func (c *Client) DeleteHpcCluster(ctx context.Context, input *DeleteHpcClusterInput, optFns ...func(*Options)) (*DeleteHpcClusterOutput, error) {
-	out, meta, err := invoke[DeleteHpcClusterInput, DeleteHpcClusterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteHpcCluster", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteHpcClusterInput, DeleteHpcClusterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteHpcCluster", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2772,7 +2772,7 @@ type DeleteImageAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14043
 func (c *Client) DeleteImage(ctx context.Context, input *DeleteImageInput, optFns ...func(*Options)) (*DeleteImageOutput, error) {
-	out, meta, err := invoke[DeleteImageInput, DeleteImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteImage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteImageInput, DeleteImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteImage", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2804,7 +2804,7 @@ type DeleteImageComponentAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14132
 func (c *Client) DeleteImageComponent(ctx context.Context, input *DeleteImageComponentInput, optFns ...func(*Options)) (*DeleteImageComponentOutput, error) {
-	out, meta, err := invoke[DeleteImageComponentInput, DeleteImageComponentOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteImageComponent", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteImageComponentInput, DeleteImageComponentOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteImageComponent", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2835,7 +2835,7 @@ type DeleteImagePipelineAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14220
 func (c *Client) DeleteImagePipeline(ctx context.Context, input *DeleteImagePipelineInput, optFns ...func(*Options)) (*DeleteImagePipelineOutput, error) {
-	out, meta, err := invoke[DeleteImagePipelineInput, DeleteImagePipelineOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteImagePipeline", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteImagePipelineInput, DeleteImagePipelineOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteImagePipeline", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2873,7 +2873,7 @@ type DeleteInstanceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14327
 func (c *Client) DeleteInstance(ctx context.Context, input *DeleteInstanceInput, optFns ...func(*Options)) (*DeleteInstanceOutput, error) {
-	out, meta, err := invoke[DeleteInstanceInput, DeleteInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteInstance", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[DeleteInstanceInput, DeleteInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteInstance", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2911,7 +2911,7 @@ type DeleteInstancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14460
 func (c *Client) DeleteInstances(ctx context.Context, input *DeleteInstancesInput, optFns ...func(*Options)) (*DeleteInstancesOutput, error) {
-	out, meta, err := invoke[DeleteInstancesInput, DeleteInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteInstancesInput, DeleteInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteInstances", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2944,7 +2944,7 @@ type DeleteKeyPairsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14573
 func (c *Client) DeleteKeyPairs(ctx context.Context, input *DeleteKeyPairsInput, optFns ...func(*Options)) (*DeleteKeyPairsOutput, error) {
-	out, meta, err := invoke[DeleteKeyPairsInput, DeleteKeyPairsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteKeyPairs", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteKeyPairsInput, DeleteKeyPairsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteKeyPairs", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2977,7 +2977,7 @@ type DeleteLaunchTemplateAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14666
 func (c *Client) DeleteLaunchTemplate(ctx context.Context, input *DeleteLaunchTemplateInput, optFns ...func(*Options)) (*DeleteLaunchTemplateOutput, error) {
-	out, meta, err := invoke[DeleteLaunchTemplateInput, DeleteLaunchTemplateOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteLaunchTemplate", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteLaunchTemplateInput, DeleteLaunchTemplateOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteLaunchTemplate", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3011,7 +3011,7 @@ type DeleteLaunchTemplateVersionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14766
 func (c *Client) DeleteLaunchTemplateVersion(ctx context.Context, input *DeleteLaunchTemplateVersionInput, optFns ...func(*Options)) (*DeleteLaunchTemplateVersionOutput, error) {
-	out, meta, err := invoke[DeleteLaunchTemplateVersionInput, DeleteLaunchTemplateVersionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteLaunchTemplateVersion", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteLaunchTemplateVersionInput, DeleteLaunchTemplateVersionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteLaunchTemplateVersion", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3036,7 +3036,7 @@ type DeleteNatGatewayAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14857
 func (c *Client) DeleteNatGateway(ctx context.Context, input *DeleteNatGatewayInput, optFns ...func(*Options)) (*DeleteNatGatewayOutput, error) {
-	out, meta, err := invoke[DeleteNatGatewayInput, DeleteNatGatewayOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteNatGateway", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteNatGatewayInput, DeleteNatGatewayOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteNatGateway", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3078,7 +3078,7 @@ type DeleteNetworkInterfaceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14942
 func (c *Client) DeleteNetworkInterface(ctx context.Context, input *DeleteNetworkInterfaceInput, optFns ...func(*Options)) (*DeleteNetworkInterfaceOutput, error) {
-	out, meta, err := invoke[DeleteNetworkInterfaceInput, DeleteNetworkInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteNetworkInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteNetworkInterfaceInput, DeleteNetworkInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteNetworkInterface", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3103,7 +3103,7 @@ type DeleteNetworkInterfacePermissionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15047
 func (c *Client) DeleteNetworkInterfacePermission(ctx context.Context, input *DeleteNetworkInterfacePermissionInput, optFns ...func(*Options)) (*DeleteNetworkInterfacePermissionOutput, error) {
-	out, meta, err := invoke[DeleteNetworkInterfacePermissionInput, DeleteNetworkInterfacePermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteNetworkInterfacePermission", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteNetworkInterfacePermissionInput, DeleteNetworkInterfacePermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteNetworkInterfacePermission", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3128,7 +3128,7 @@ type DeletePhysicalConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15135
 func (c *Client) DeletePhysicalConnection(ctx context.Context, input *DeletePhysicalConnectionInput, optFns ...func(*Options)) (*DeletePhysicalConnectionOutput, error) {
-	out, meta, err := invoke[DeletePhysicalConnectionInput, DeletePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeletePhysicalConnection", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeletePhysicalConnectionInput, DeletePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeletePhysicalConnection", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3153,7 +3153,7 @@ type DeletePlanMaintenanceWindowAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15219
 func (c *Client) DeletePlanMaintenanceWindow(ctx context.Context, input *DeletePlanMaintenanceWindowInput, optFns ...func(*Options)) (*DeletePlanMaintenanceWindowOutput, error) {
-	out, meta, err := invoke[DeletePlanMaintenanceWindowInput, DeletePlanMaintenanceWindowOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeletePlanMaintenanceWindow", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeletePlanMaintenanceWindowInput, DeletePlanMaintenanceWindowOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeletePlanMaintenanceWindow", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3178,7 +3178,7 @@ type DeletePortRangeListAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15288
 func (c *Client) DeletePortRangeList(ctx context.Context, input *DeletePortRangeListInput, optFns ...func(*Options)) (*DeletePortRangeListOutput, error) {
-	out, meta, err := invoke[DeletePortRangeListInput, DeletePortRangeListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeletePortRangeList", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeletePortRangeListInput, DeletePortRangeListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeletePortRangeList", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3209,7 +3209,7 @@ type DeletePrefixListAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15370
 func (c *Client) DeletePrefixList(ctx context.Context, input *DeletePrefixListInput, optFns ...func(*Options)) (*DeletePrefixListOutput, error) {
-	out, meta, err := invoke[DeletePrefixListInput, DeletePrefixListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeletePrefixList", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeletePrefixListInput, DeletePrefixListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeletePrefixList", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3234,7 +3234,7 @@ type DeleteRouteEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15460
 func (c *Client) DeleteRouteEntry(ctx context.Context, input *DeleteRouteEntryInput, optFns ...func(*Options)) (*DeleteRouteEntryOutput, error) {
-	out, meta, err := invoke[DeleteRouteEntryInput, DeleteRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteRouteEntry", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteRouteEntryInput, DeleteRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteRouteEntry", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3259,7 +3259,7 @@ type DeleteRouterInterfaceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15552
 func (c *Client) DeleteRouterInterface(ctx context.Context, input *DeleteRouterInterfaceInput, optFns ...func(*Options)) (*DeleteRouterInterfaceOutput, error) {
-	out, meta, err := invoke[DeleteRouterInterfaceInput, DeleteRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteRouterInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteRouterInterfaceInput, DeleteRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteRouterInterface", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3293,7 +3293,7 @@ type DeleteSecurityGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15643
 func (c *Client) DeleteSecurityGroup(ctx context.Context, input *DeleteSecurityGroupInput, optFns ...func(*Options)) (*DeleteSecurityGroupOutput, error) {
-	out, meta, err := invoke[DeleteSecurityGroupInput, DeleteSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteSecurityGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteSecurityGroupInput, DeleteSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteSecurityGroup", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3327,7 +3327,7 @@ type DeleteSnapshotAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15736
 func (c *Client) DeleteSnapshot(ctx context.Context, input *DeleteSnapshotInput, optFns ...func(*Options)) (*DeleteSnapshotOutput, error) {
-	out, meta, err := invoke[DeleteSnapshotInput, DeleteSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteSnapshot", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[DeleteSnapshotInput, DeleteSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteSnapshot", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3358,7 +3358,7 @@ type DeleteSnapshotGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15842
 func (c *Client) DeleteSnapshotGroup(ctx context.Context, input *DeleteSnapshotGroupInput, optFns ...func(*Options)) (*DeleteSnapshotGroupOutput, error) {
-	out, meta, err := invoke[DeleteSnapshotGroupInput, DeleteSnapshotGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteSnapshotGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteSnapshotGroupInput, DeleteSnapshotGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteSnapshotGroup", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3377,7 +3377,7 @@ type DeleteStorageSetAPI interface {
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
 func (c *Client) DeleteStorageSet(ctx context.Context, input *DeleteStorageSetInput, optFns ...func(*Options)) (*DeleteStorageSetOutput, error) {
-	out, meta, err := invoke[DeleteStorageSetInput, DeleteStorageSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteStorageSet", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteStorageSetInput, DeleteStorageSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteStorageSet", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3402,7 +3402,7 @@ type DeleteVSwitchAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16000
 func (c *Client) DeleteVSwitch(ctx context.Context, input *DeleteVSwitchInput, optFns ...func(*Options)) (*DeleteVSwitchOutput, error) {
-	out, meta, err := invoke[DeleteVSwitchInput, DeleteVSwitchOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteVSwitch", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteVSwitchInput, DeleteVSwitchOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteVSwitch", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3427,7 +3427,7 @@ type DeleteVirtualBorderRouterAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16083
 func (c *Client) DeleteVirtualBorderRouter(ctx context.Context, input *DeleteVirtualBorderRouterInput, optFns ...func(*Options)) (*DeleteVirtualBorderRouterOutput, error) {
-	out, meta, err := invoke[DeleteVirtualBorderRouterInput, DeleteVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteVirtualBorderRouter", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteVirtualBorderRouterInput, DeleteVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteVirtualBorderRouter", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3452,7 +3452,7 @@ type DeleteVpcAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16170
 func (c *Client) DeleteVpc(ctx context.Context, input *DeleteVpcInput, optFns ...func(*Options)) (*DeleteVpcOutput, error) {
-	out, meta, err := invoke[DeleteVpcInput, DeleteVpcOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteVpc", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteVpcInput, DeleteVpcOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteVpc", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3486,7 +3486,7 @@ type DeleteVscAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16257
 func (c *Client) DeleteVsc(ctx context.Context, input *DeleteVscInput, optFns ...func(*Options)) (*DeleteVscOutput, error) {
-	out, meta, err := invoke[DeleteVscInput, DeleteVscOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteVsc", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeleteVscInput, DeleteVscOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteVsc", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3511,7 +3511,7 @@ type DeregisterManagedInstanceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16371
 func (c *Client) DeregisterManagedInstance(ctx context.Context, input *DeregisterManagedInstanceInput, optFns ...func(*Options)) (*DeregisterManagedInstanceOutput, error) {
-	out, meta, err := invoke[DeregisterManagedInstanceInput, DeregisterManagedInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeregisterManagedInstance", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DeregisterManagedInstanceInput, DeregisterManagedInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeregisterManagedInstance", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3536,7 +3536,7 @@ type DescribeAccessPointsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16476
 func (c *Client) DescribeAccessPoints(ctx context.Context, input *DescribeAccessPointsInput, optFns ...func(*Options)) (*DescribeAccessPointsOutput, error) {
-	out, meta, err := invoke[DescribeAccessPointsInput, DescribeAccessPointsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAccessPoints", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeAccessPointsInput, DescribeAccessPointsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAccessPoints", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3569,7 +3569,7 @@ type DescribeAccountAttributesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16605
 func (c *Client) DescribeAccountAttributes(ctx context.Context, input *DescribeAccountAttributesInput, optFns ...func(*Options)) (*DescribeAccountAttributesOutput, error) {
-	out, meta, err := invoke[DescribeAccountAttributesInput, DescribeAccountAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAccountAttributes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeAccountAttributesInput, DescribeAccountAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAccountAttributes", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3603,7 +3603,7 @@ type DescribeActivationsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16747
 func (c *Client) DescribeActivations(ctx context.Context, input *DescribeActivationsInput, optFns ...func(*Options)) (*DescribeActivationsOutput, error) {
-	out, meta, err := invoke[DescribeActivationsInput, DescribeActivationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeActivations", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeActivationsInput, DescribeActivationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeActivations", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3628,7 +3628,7 @@ type DescribeAutoProvisioningGroupHistoryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16906
 func (c *Client) DescribeAutoProvisioningGroupHistory(ctx context.Context, input *DescribeAutoProvisioningGroupHistoryInput, optFns ...func(*Options)) (*DescribeAutoProvisioningGroupHistoryOutput, error) {
-	out, meta, err := invoke[DescribeAutoProvisioningGroupHistoryInput, DescribeAutoProvisioningGroupHistoryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoProvisioningGroupHistory", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeAutoProvisioningGroupHistoryInput, DescribeAutoProvisioningGroupHistoryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoProvisioningGroupHistory", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3653,7 +3653,7 @@ type DescribeAutoProvisioningGroupInstancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L17028
 func (c *Client) DescribeAutoProvisioningGroupInstances(ctx context.Context, input *DescribeAutoProvisioningGroupInstancesInput, optFns ...func(*Options)) (*DescribeAutoProvisioningGroupInstancesOutput, error) {
-	out, meta, err := invoke[DescribeAutoProvisioningGroupInstancesInput, DescribeAutoProvisioningGroupInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoProvisioningGroupInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeAutoProvisioningGroupInstancesInput, DescribeAutoProvisioningGroupInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoProvisioningGroupInstances", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3678,7 +3678,7 @@ type DescribeAutoProvisioningGroupsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L17205
 func (c *Client) DescribeAutoProvisioningGroups(ctx context.Context, input *DescribeAutoProvisioningGroupsInput, optFns ...func(*Options)) (*DescribeAutoProvisioningGroupsOutput, error) {
-	out, meta, err := invoke[DescribeAutoProvisioningGroupsInput, DescribeAutoProvisioningGroupsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoProvisioningGroups", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeAutoProvisioningGroupsInput, DescribeAutoProvisioningGroupsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoProvisioningGroups", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3703,7 +3703,7 @@ type DescribeAutoSnapshotPolicyAssociationsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L17321
 func (c *Client) DescribeAutoSnapshotPolicyAssociations(ctx context.Context, input *DescribeAutoSnapshotPolicyAssociationsInput, optFns ...func(*Options)) (*DescribeAutoSnapshotPolicyAssociationsOutput, error) {
-	out, meta, err := invoke[DescribeAutoSnapshotPolicyAssociationsInput, DescribeAutoSnapshotPolicyAssociationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoSnapshotPolicyAssociations", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeAutoSnapshotPolicyAssociationsInput, DescribeAutoSnapshotPolicyAssociationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoSnapshotPolicyAssociations", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3728,7 +3728,7 @@ type DescribeAutoSnapshotPolicyExAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L17472
 func (c *Client) DescribeAutoSnapshotPolicyEx(ctx context.Context, input *DescribeAutoSnapshotPolicyExInput, optFns ...func(*Options)) (*DescribeAutoSnapshotPolicyExOutput, error) {
-	out, meta, err := invoke[DescribeAutoSnapshotPolicyExInput, DescribeAutoSnapshotPolicyExOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoSnapshotPolicyEx", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeAutoSnapshotPolicyExInput, DescribeAutoSnapshotPolicyExOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoSnapshotPolicyEx", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3796,7 +3796,7 @@ type DescribeAvailableResourceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L17690
 func (c *Client) DescribeAvailableResource(ctx context.Context, input *DescribeAvailableResourceInput, optFns ...func(*Options)) (*DescribeAvailableResourceOutput, error) {
-	out, meta, err := invoke[DescribeAvailableResourceInput, DescribeAvailableResourceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAvailableResource", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeAvailableResourceInput, DescribeAvailableResourceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAvailableResource", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3821,7 +3821,7 @@ type DescribeBandwidthLimitationAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L17940
 func (c *Client) DescribeBandwidthLimitation(ctx context.Context, input *DescribeBandwidthLimitationInput, optFns ...func(*Options)) (*DescribeBandwidthLimitationOutput, error) {
-	out, meta, err := invoke[DescribeBandwidthLimitationInput, DescribeBandwidthLimitationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeBandwidthLimitation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeBandwidthLimitationInput, DescribeBandwidthLimitationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeBandwidthLimitation", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3846,7 +3846,7 @@ type DescribeBandwidthPackagesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18061
 func (c *Client) DescribeBandwidthPackages(ctx context.Context, input *DescribeBandwidthPackagesInput, optFns ...func(*Options)) (*DescribeBandwidthPackagesOutput, error) {
-	out, meta, err := invoke[DescribeBandwidthPackagesInput, DescribeBandwidthPackagesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeBandwidthPackages", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeBandwidthPackagesInput, DescribeBandwidthPackagesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeBandwidthPackages", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3871,7 +3871,7 @@ type DescribeCapacityReservationInstancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18167
 func (c *Client) DescribeCapacityReservationInstances(ctx context.Context, input *DescribeCapacityReservationInstancesInput, optFns ...func(*Options)) (*DescribeCapacityReservationInstancesOutput, error) {
-	out, meta, err := invoke[DescribeCapacityReservationInstancesInput, DescribeCapacityReservationInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCapacityReservationInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeCapacityReservationInstancesInput, DescribeCapacityReservationInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCapacityReservationInstances", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3896,7 +3896,7 @@ type DescribeCapacityReservationsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18352
 func (c *Client) DescribeCapacityReservations(ctx context.Context, input *DescribeCapacityReservationsInput, optFns ...func(*Options)) (*DescribeCapacityReservationsOutput, error) {
-	out, meta, err := invoke[DescribeCapacityReservationsInput, DescribeCapacityReservationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCapacityReservations", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeCapacityReservationsInput, DescribeCapacityReservationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCapacityReservations", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3930,7 +3930,7 @@ type DescribeClassicLinkInstancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18473
 func (c *Client) DescribeClassicLinkInstances(ctx context.Context, input *DescribeClassicLinkInstancesInput, optFns ...func(*Options)) (*DescribeClassicLinkInstancesOutput, error) {
-	out, meta, err := invoke[DescribeClassicLinkInstancesInput, DescribeClassicLinkInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeClassicLinkInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeClassicLinkInstancesInput, DescribeClassicLinkInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeClassicLinkInstances", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3955,7 +3955,7 @@ type DescribeCloudAssistantSettingsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18616
 func (c *Client) DescribeCloudAssistantSettings(ctx context.Context, input *DescribeCloudAssistantSettingsInput, optFns ...func(*Options)) (*DescribeCloudAssistantSettingsOutput, error) {
-	out, meta, err := invoke[DescribeCloudAssistantSettingsInput, DescribeCloudAssistantSettingsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCloudAssistantSettings", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeCloudAssistantSettingsInput, DescribeCloudAssistantSettingsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCloudAssistantSettings", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3988,7 +3988,7 @@ type DescribeCloudAssistantStatusAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18725
 func (c *Client) DescribeCloudAssistantStatus(ctx context.Context, input *DescribeCloudAssistantStatusInput, optFns ...func(*Options)) (*DescribeCloudAssistantStatusOutput, error) {
-	out, meta, err := invoke[DescribeCloudAssistantStatusInput, DescribeCloudAssistantStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCloudAssistantStatus", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeCloudAssistantStatusInput, DescribeCloudAssistantStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCloudAssistantStatus", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4013,7 +4013,7 @@ type DescribeClustersAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18832
 func (c *Client) DescribeClusters(ctx context.Context, input *DescribeClustersInput, optFns ...func(*Options)) (*DescribeClustersOutput, error) {
-	out, meta, err := invoke[DescribeClustersInput, DescribeClustersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeClusters", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeClustersInput, DescribeClustersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeClusters", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4046,7 +4046,7 @@ type DescribeCommandsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L19018
 func (c *Client) DescribeCommands(ctx context.Context, input *DescribeCommandsInput, optFns ...func(*Options)) (*DescribeCommandsOutput, error) {
-	out, meta, err := invoke[DescribeCommandsInput, DescribeCommandsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCommands", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeCommandsInput, DescribeCommandsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCommands", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4071,7 +4071,7 @@ type DescribeDedicatedHostAutoRenewAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L19156
 func (c *Client) DescribeDedicatedHostAutoRenew(ctx context.Context, input *DescribeDedicatedHostAutoRenewInput, optFns ...func(*Options)) (*DescribeDedicatedHostAutoRenewOutput, error) {
-	out, meta, err := invoke[DescribeDedicatedHostAutoRenewInput, DescribeDedicatedHostAutoRenewOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDedicatedHostAutoRenew", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeDedicatedHostAutoRenewInput, DescribeDedicatedHostAutoRenewOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDedicatedHostAutoRenew", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4103,7 +4103,7 @@ type DescribeDedicatedHostClustersAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L19307
 func (c *Client) DescribeDedicatedHostClusters(ctx context.Context, input *DescribeDedicatedHostClustersInput, optFns ...func(*Options)) (*DescribeDedicatedHostClustersOutput, error) {
-	out, meta, err := invoke[DescribeDedicatedHostClustersInput, DescribeDedicatedHostClustersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDedicatedHostClusters", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeDedicatedHostClustersInput, DescribeDedicatedHostClustersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDedicatedHostClusters", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4128,7 +4128,7 @@ type DescribeDedicatedHostTypesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L19440
 func (c *Client) DescribeDedicatedHostTypes(ctx context.Context, input *DescribeDedicatedHostTypesInput, optFns ...func(*Options)) (*DescribeDedicatedHostTypesOutput, error) {
-	out, meta, err := invoke[DescribeDedicatedHostTypesInput, DescribeDedicatedHostTypesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDedicatedHostTypes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeDedicatedHostTypesInput, DescribeDedicatedHostTypesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDedicatedHostTypes", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4162,7 +4162,7 @@ type DescribeDedicatedHostsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L19679
 func (c *Client) DescribeDedicatedHosts(ctx context.Context, input *DescribeDedicatedHostsInput, optFns ...func(*Options)) (*DescribeDedicatedHostsOutput, error) {
-	out, meta, err := invoke[DescribeDedicatedHostsInput, DescribeDedicatedHostsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDedicatedHosts", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeDedicatedHostsInput, DescribeDedicatedHostsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDedicatedHosts", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4194,7 +4194,7 @@ type DescribeDeploymentSetSupportedInstanceTypeFamilyAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L19820
 func (c *Client) DescribeDeploymentSetSupportedInstanceTypeFamily(ctx context.Context, input *DescribeDeploymentSetSupportedInstanceTypeFamilyInput, optFns ...func(*Options)) (*DescribeDeploymentSetSupportedInstanceTypeFamilyOutput, error) {
-	out, meta, err := invoke[DescribeDeploymentSetSupportedInstanceTypeFamilyInput, DescribeDeploymentSetSupportedInstanceTypeFamilyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDeploymentSetSupportedInstanceTypeFamily", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeDeploymentSetSupportedInstanceTypeFamilyInput, DescribeDeploymentSetSupportedInstanceTypeFamilyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDeploymentSetSupportedInstanceTypeFamily", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4219,7 +4219,7 @@ type DescribeDeploymentSetsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L19963
 func (c *Client) DescribeDeploymentSets(ctx context.Context, input *DescribeDeploymentSetsInput, optFns ...func(*Options)) (*DescribeDeploymentSetsOutput, error) {
-	out, meta, err := invoke[DescribeDeploymentSetsInput, DescribeDeploymentSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDeploymentSets", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeDeploymentSetsInput, DescribeDeploymentSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDeploymentSets", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4244,7 +4244,7 @@ type DescribeDiagnosticMetricSetsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L20088
 func (c *Client) DescribeDiagnosticMetricSets(ctx context.Context, input *DescribeDiagnosticMetricSetsInput, optFns ...func(*Options)) (*DescribeDiagnosticMetricSetsOutput, error) {
-	out, meta, err := invoke[DescribeDiagnosticMetricSetsInput, DescribeDiagnosticMetricSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiagnosticMetricSets", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeDiagnosticMetricSetsInput, DescribeDiagnosticMetricSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiagnosticMetricSets", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4269,7 +4269,7 @@ type DescribeDiagnosticMetricsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L20185
 func (c *Client) DescribeDiagnosticMetrics(ctx context.Context, input *DescribeDiagnosticMetricsInput, optFns ...func(*Options)) (*DescribeDiagnosticMetricsOutput, error) {
-	out, meta, err := invoke[DescribeDiagnosticMetricsInput, DescribeDiagnosticMetricsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiagnosticMetrics", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeDiagnosticMetricsInput, DescribeDiagnosticMetricsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiagnosticMetrics", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4294,7 +4294,7 @@ type DescribeDiagnosticReportAttributesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L20300
 func (c *Client) DescribeDiagnosticReportAttributes(ctx context.Context, input *DescribeDiagnosticReportAttributesInput, optFns ...func(*Options)) (*DescribeDiagnosticReportAttributesOutput, error) {
-	out, meta, err := invoke[DescribeDiagnosticReportAttributesInput, DescribeDiagnosticReportAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiagnosticReportAttributes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeDiagnosticReportAttributesInput, DescribeDiagnosticReportAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiagnosticReportAttributes", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4319,7 +4319,7 @@ type DescribeDiagnosticReportsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L20408
 func (c *Client) DescribeDiagnosticReports(ctx context.Context, input *DescribeDiagnosticReportsInput, optFns ...func(*Options)) (*DescribeDiagnosticReportsOutput, error) {
-	out, meta, err := invoke[DescribeDiagnosticReportsInput, DescribeDiagnosticReportsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiagnosticReports", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeDiagnosticReportsInput, DescribeDiagnosticReportsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiagnosticReports", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4344,7 +4344,7 @@ type DescribeDiskDefaultKMSKeyIdAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L20486
 func (c *Client) DescribeDiskDefaultKMSKeyId(ctx context.Context, input *DescribeDiskDefaultKMSKeyIdInput, optFns ...func(*Options)) (*DescribeDiskDefaultKMSKeyIdOutput, error) {
-	out, meta, err := invoke[DescribeDiskDefaultKMSKeyIdInput, DescribeDiskDefaultKMSKeyIdOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiskDefaultKMSKeyId", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeDiskDefaultKMSKeyIdInput, DescribeDiskDefaultKMSKeyIdOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiskDefaultKMSKeyId", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4369,7 +4369,7 @@ type DescribeDiskEncryptionByDefaultStatusAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L20560
 func (c *Client) DescribeDiskEncryptionByDefaultStatus(ctx context.Context, input *DescribeDiskEncryptionByDefaultStatusInput, optFns ...func(*Options)) (*DescribeDiskEncryptionByDefaultStatusOutput, error) {
-	out, meta, err := invoke[DescribeDiskEncryptionByDefaultStatusInput, DescribeDiskEncryptionByDefaultStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiskEncryptionByDefaultStatus", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeDiskEncryptionByDefaultStatusInput, DescribeDiskEncryptionByDefaultStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiskEncryptionByDefaultStatus", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4412,7 +4412,7 @@ type DescribeDiskMonitorDataAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L20661
 func (c *Client) DescribeDiskMonitorData(ctx context.Context, input *DescribeDiskMonitorDataInput, optFns ...func(*Options)) (*DescribeDiskMonitorDataOutput, error) {
-	out, meta, err := invoke[DescribeDiskMonitorDataInput, DescribeDiskMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiskMonitorData", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[DescribeDiskMonitorDataInput, DescribeDiskMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDiskMonitorData", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4447,7 +4447,7 @@ type DescribeDisksAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21004
 func (c *Client) DescribeDisks(ctx context.Context, input *DescribeDisksInput, optFns ...func(*Options)) (*DescribeDisksOutput, error) {
-	out, meta, err := invoke[DescribeDisksInput, DescribeDisksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDisks", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeDisksInput, DescribeDisksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDisks", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4479,7 +4479,7 @@ type DescribeDisksFullStatusAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21256
 func (c *Client) DescribeDisksFullStatus(ctx context.Context, input *DescribeDisksFullStatusInput, optFns ...func(*Options)) (*DescribeDisksFullStatusOutput, error) {
-	out, meta, err := invoke[DescribeDisksFullStatusInput, DescribeDisksFullStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDisksFullStatus", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeDisksFullStatusInput, DescribeDisksFullStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDisksFullStatus", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4504,7 +4504,7 @@ type DescribeEipAddressesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21410
 func (c *Client) DescribeEipAddresses(ctx context.Context, input *DescribeEipAddressesInput, optFns ...func(*Options)) (*DescribeEipAddressesOutput, error) {
-	out, meta, err := invoke[DescribeEipAddressesInput, DescribeEipAddressesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeEipAddresses", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeEipAddressesInput, DescribeEipAddressesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeEipAddresses", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4529,7 +4529,7 @@ type DescribeEipMonitorDataAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21536
 func (c *Client) DescribeEipMonitorData(ctx context.Context, input *DescribeEipMonitorDataInput, optFns ...func(*Options)) (*DescribeEipMonitorDataOutput, error) {
-	out, meta, err := invoke[DescribeEipMonitorDataInput, DescribeEipMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeEipMonitorData", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeEipMonitorDataInput, DescribeEipMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeEipMonitorData", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4554,7 +4554,7 @@ type DescribeElasticityAssuranceAutoRenewAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21643
 func (c *Client) DescribeElasticityAssuranceAutoRenewAttribute(ctx context.Context, input *DescribeElasticityAssuranceAutoRenewAttributeInput, optFns ...func(*Options)) (*DescribeElasticityAssuranceAutoRenewAttributeOutput, error) {
-	out, meta, err := invoke[DescribeElasticityAssuranceAutoRenewAttributeInput, DescribeElasticityAssuranceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeElasticityAssuranceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeElasticityAssuranceAutoRenewAttributeInput, DescribeElasticityAssuranceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeElasticityAssuranceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4585,7 +4585,7 @@ type DescribeElasticityAssuranceInstancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21740
 func (c *Client) DescribeElasticityAssuranceInstances(ctx context.Context, input *DescribeElasticityAssuranceInstancesInput, optFns ...func(*Options)) (*DescribeElasticityAssuranceInstancesOutput, error) {
-	out, meta, err := invoke[DescribeElasticityAssuranceInstancesInput, DescribeElasticityAssuranceInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeElasticityAssuranceInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeElasticityAssuranceInstancesInput, DescribeElasticityAssuranceInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeElasticityAssuranceInstances", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4610,7 +4610,7 @@ type DescribeElasticityAssurancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21932
 func (c *Client) DescribeElasticityAssurances(ctx context.Context, input *DescribeElasticityAssurancesInput, optFns ...func(*Options)) (*DescribeElasticityAssurancesOutput, error) {
-	out, meta, err := invoke[DescribeElasticityAssurancesInput, DescribeElasticityAssurancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeElasticityAssurances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeElasticityAssurancesInput, DescribeElasticityAssurancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeElasticityAssurances", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4644,7 +4644,7 @@ type DescribeEniMonitorDataAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22069
 func (c *Client) DescribeEniMonitorData(ctx context.Context, input *DescribeEniMonitorDataInput, optFns ...func(*Options)) (*DescribeEniMonitorDataOutput, error) {
-	out, meta, err := invoke[DescribeEniMonitorDataInput, DescribeEniMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeEniMonitorData", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeEniMonitorDataInput, DescribeEniMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeEniMonitorData", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4669,7 +4669,7 @@ type DescribeForwardTableEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22186
 func (c *Client) DescribeForwardTableEntries(ctx context.Context, input *DescribeForwardTableEntriesInput, optFns ...func(*Options)) (*DescribeForwardTableEntriesOutput, error) {
-	out, meta, err := invoke[DescribeForwardTableEntriesInput, DescribeForwardTableEntriesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeForwardTableEntries", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeForwardTableEntriesInput, DescribeForwardTableEntriesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeForwardTableEntries", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4694,7 +4694,7 @@ type DescribeHaVipsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22307
 func (c *Client) DescribeHaVips(ctx context.Context, input *DescribeHaVipsInput, optFns ...func(*Options)) (*DescribeHaVipsOutput, error) {
-	out, meta, err := invoke[DescribeHaVipsInput, DescribeHaVipsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeHaVips", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeHaVipsInput, DescribeHaVipsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeHaVips", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4719,7 +4719,7 @@ type DescribeHpcClustersAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22419
 func (c *Client) DescribeHpcClusters(ctx context.Context, input *DescribeHpcClustersInput, optFns ...func(*Options)) (*DescribeHpcClustersOutput, error) {
-	out, meta, err := invoke[DescribeHpcClustersInput, DescribeHpcClustersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeHpcClusters", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeHpcClustersInput, DescribeHpcClustersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeHpcClusters", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4750,7 +4750,7 @@ type DescribeImageComponentsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22574
 func (c *Client) DescribeImageComponents(ctx context.Context, input *DescribeImageComponentsInput, optFns ...func(*Options)) (*DescribeImageComponentsOutput, error) {
-	out, meta, err := invoke[DescribeImageComponentsInput, DescribeImageComponentsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImageComponents", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeImageComponentsInput, DescribeImageComponentsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImageComponents", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4782,7 +4782,7 @@ type DescribeImageFromFamilyAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22750
 func (c *Client) DescribeImageFromFamily(ctx context.Context, input *DescribeImageFromFamilyInput, optFns ...func(*Options)) (*DescribeImageFromFamilyOutput, error) {
-	out, meta, err := invoke[DescribeImageFromFamilyInput, DescribeImageFromFamilyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImageFromFamily", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeImageFromFamilyInput, DescribeImageFromFamilyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImageFromFamily", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4816,7 +4816,7 @@ type DescribeImagePipelineExecutionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22887
 func (c *Client) DescribeImagePipelineExecutions(ctx context.Context, input *DescribeImagePipelineExecutionsInput, optFns ...func(*Options)) (*DescribeImagePipelineExecutionsOutput, error) {
-	out, meta, err := invoke[DescribeImagePipelineExecutionsInput, DescribeImagePipelineExecutionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImagePipelineExecutions", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeImagePipelineExecutionsInput, DescribeImagePipelineExecutionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImagePipelineExecutions", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4847,7 +4847,7 @@ type DescribeImagePipelinesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L23104
 func (c *Client) DescribeImagePipelines(ctx context.Context, input *DescribeImagePipelinesInput, optFns ...func(*Options)) (*DescribeImagePipelinesOutput, error) {
-	out, meta, err := invoke[DescribeImagePipelinesInput, DescribeImagePipelinesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImagePipelines", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeImagePipelinesInput, DescribeImagePipelinesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImagePipelines", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4872,7 +4872,7 @@ type DescribeImageSharePermissionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L23238
 func (c *Client) DescribeImageSharePermission(ctx context.Context, input *DescribeImageSharePermissionInput, optFns ...func(*Options)) (*DescribeImageSharePermissionOutput, error) {
-	out, meta, err := invoke[DescribeImageSharePermissionInput, DescribeImageSharePermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImageSharePermission", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeImageSharePermissionInput, DescribeImageSharePermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImageSharePermission", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4897,7 +4897,7 @@ type DescribeImageSupportInstanceTypesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L23347
 func (c *Client) DescribeImageSupportInstanceTypes(ctx context.Context, input *DescribeImageSupportInstanceTypesInput, optFns ...func(*Options)) (*DescribeImageSupportInstanceTypesOutput, error) {
-	out, meta, err := invoke[DescribeImageSupportInstanceTypesInput, DescribeImageSupportInstanceTypesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImageSupportInstanceTypes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeImageSupportInstanceTypesInput, DescribeImageSupportInstanceTypesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImageSupportInstanceTypes", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4931,7 +4931,7 @@ type DescribeImagesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L23630
 func (c *Client) DescribeImages(ctx context.Context, input *DescribeImagesInput, optFns ...func(*Options)) (*DescribeImagesOutput, error) {
-	out, meta, err := invoke[DescribeImagesInput, DescribeImagesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImages", Version: "2014-05-26", Idempotent: true}, true, nil, ValidateDescribeImagesInput, optFns)
+	out, meta, err := invoke[DescribeImagesInput, DescribeImagesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImages", Version: "2014-05-26", Idempotent: true}, "POST", true, nil, ValidateDescribeImagesInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4964,7 +4964,7 @@ type DescribeInstanceAttachmentAttributesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L23807
 func (c *Client) DescribeInstanceAttachmentAttributes(ctx context.Context, input *DescribeInstanceAttachmentAttributesInput, optFns ...func(*Options)) (*DescribeInstanceAttachmentAttributesOutput, error) {
-	out, meta, err := invoke[DescribeInstanceAttachmentAttributesInput, DescribeInstanceAttachmentAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceAttachmentAttributes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInstanceAttachmentAttributesInput, DescribeInstanceAttachmentAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceAttachmentAttributes", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4989,7 +4989,7 @@ type DescribeInstanceAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24023
 func (c *Client) DescribeInstanceAttribute(ctx context.Context, input *DescribeInstanceAttributeInput, optFns ...func(*Options)) (*DescribeInstanceAttributeOutput, error) {
-	out, meta, err := invoke[DescribeInstanceAttributeInput, DescribeInstanceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceAttribute", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInstanceAttributeInput, DescribeInstanceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceAttribute", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5021,7 +5021,7 @@ type DescribeInstanceAutoRenewAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24131
 func (c *Client) DescribeInstanceAutoRenewAttribute(ctx context.Context, input *DescribeInstanceAutoRenewAttributeInput, optFns ...func(*Options)) (*DescribeInstanceAutoRenewAttributeOutput, error) {
-	out, meta, err := invoke[DescribeInstanceAutoRenewAttributeInput, DescribeInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInstanceAutoRenewAttributeInput, DescribeInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5054,7 +5054,7 @@ type DescribeInstanceHistoryEventsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24378
 func (c *Client) DescribeInstanceHistoryEvents(ctx context.Context, input *DescribeInstanceHistoryEventsInput, optFns ...func(*Options)) (*DescribeInstanceHistoryEventsOutput, error) {
-	out, meta, err := invoke[DescribeInstanceHistoryEventsInput, DescribeInstanceHistoryEventsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceHistoryEvents", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInstanceHistoryEventsInput, DescribeInstanceHistoryEventsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceHistoryEvents", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5087,7 +5087,7 @@ type DescribeInstanceMaintenanceAttributesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24548
 func (c *Client) DescribeInstanceMaintenanceAttributes(ctx context.Context, input *DescribeInstanceMaintenanceAttributesInput, optFns ...func(*Options)) (*DescribeInstanceMaintenanceAttributesOutput, error) {
-	out, meta, err := invoke[DescribeInstanceMaintenanceAttributesInput, DescribeInstanceMaintenanceAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceMaintenanceAttributes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInstanceMaintenanceAttributesInput, DescribeInstanceMaintenanceAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceMaintenanceAttributes", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5120,7 +5120,7 @@ type DescribeInstanceModificationPriceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24732
 func (c *Client) DescribeInstanceModificationPrice(ctx context.Context, input *DescribeInstanceModificationPriceInput, optFns ...func(*Options)) (*DescribeInstanceModificationPriceOutput, error) {
-	out, meta, err := invoke[DescribeInstanceModificationPriceInput, DescribeInstanceModificationPriceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceModificationPrice", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInstanceModificationPriceInput, DescribeInstanceModificationPriceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceModificationPrice", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5156,7 +5156,7 @@ type DescribeInstanceMonitorDataAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24879
 func (c *Client) DescribeInstanceMonitorData(ctx context.Context, input *DescribeInstanceMonitorDataInput, optFns ...func(*Options)) (*DescribeInstanceMonitorDataOutput, error) {
-	out, meta, err := invoke[DescribeInstanceMonitorDataInput, DescribeInstanceMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceMonitorData", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInstanceMonitorDataInput, DescribeInstanceMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceMonitorData", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5188,7 +5188,7 @@ type DescribeInstanceRamRoleAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24998
 func (c *Client) DescribeInstanceRamRole(ctx context.Context, input *DescribeInstanceRamRoleInput, optFns ...func(*Options)) (*DescribeInstanceRamRoleOutput, error) {
-	out, meta, err := invoke[DescribeInstanceRamRoleInput, DescribeInstanceRamRoleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceRamRole", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInstanceRamRoleInput, DescribeInstanceRamRoleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceRamRole", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5233,7 +5233,7 @@ type DescribeInstanceStatusAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L25112
 func (c *Client) DescribeInstanceStatus(ctx context.Context, input *DescribeInstanceStatusInput, optFns ...func(*Options)) (*DescribeInstanceStatusOutput, error) {
-	out, meta, err := invoke[DescribeInstanceStatusInput, DescribeInstanceStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceStatus", Version: "2014-05-26", Idempotent: true}, true, nil, ValidateDescribeInstanceStatusInput, optFns)
+	out, meta, err := invoke[DescribeInstanceStatusInput, DescribeInstanceStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceStatus", Version: "2014-05-26", Idempotent: true}, "POST", true, nil, ValidateDescribeInstanceStatusInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5252,7 +5252,7 @@ type DescribeInstanceTopologyAPI interface {
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeInstanceTopology(ctx context.Context, input *DescribeInstanceTopologyInput, optFns ...func(*Options)) (*DescribeInstanceTopologyOutput, error) {
-	out, meta, err := invoke[DescribeInstanceTopologyInput, DescribeInstanceTopologyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceTopology", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInstanceTopologyInput, DescribeInstanceTopologyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceTopology", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5277,7 +5277,7 @@ type DescribeInstanceTypeFamiliesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L25337
 func (c *Client) DescribeInstanceTypeFamilies(ctx context.Context, input *DescribeInstanceTypeFamiliesInput, optFns ...func(*Options)) (*DescribeInstanceTypeFamiliesOutput, error) {
-	out, meta, err := invoke[DescribeInstanceTypeFamiliesInput, DescribeInstanceTypeFamiliesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceTypeFamilies", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInstanceTypeFamiliesInput, DescribeInstanceTypeFamiliesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceTypeFamilies", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5316,7 +5316,7 @@ type DescribeInstanceTypesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L25638
 func (c *Client) DescribeInstanceTypes(ctx context.Context, input *DescribeInstanceTypesInput, optFns ...func(*Options)) (*DescribeInstanceTypesOutput, error) {
-	out, meta, err := invoke[DescribeInstanceTypesInput, DescribeInstanceTypesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceTypes", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInstanceTypesInput, DescribeInstanceTypesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceTypes", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5357,7 +5357,7 @@ type DescribeInstanceVncUrlAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L25866
 func (c *Client) DescribeInstanceVncUrl(ctx context.Context, input *DescribeInstanceVncUrlInput, optFns ...func(*Options)) (*DescribeInstanceVncUrlOutput, error) {
-	out, meta, err := invoke[DescribeInstanceVncUrlInput, DescribeInstanceVncUrlOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceVncUrl", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInstanceVncUrlInput, DescribeInstanceVncUrlOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceVncUrl", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5392,7 +5392,7 @@ type DescribeInstancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L26270
 func (c *Client) DescribeInstances(ctx context.Context, input *DescribeInstancesInput, optFns ...func(*Options)) (*DescribeInstancesOutput, error) {
-	out, meta, err := invoke[DescribeInstancesInput, DescribeInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstances", Version: "2014-05-26", Idempotent: true}, true, nil, ValidateDescribeInstancesInput, optFns)
+	out, meta, err := invoke[DescribeInstancesInput, DescribeInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstances", Version: "2014-05-26", Idempotent: true}, "POST", true, nil, ValidateDescribeInstancesInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5425,7 +5425,7 @@ type DescribeInstancesFullStatusAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L26558
 func (c *Client) DescribeInstancesFullStatus(ctx context.Context, input *DescribeInstancesFullStatusInput, optFns ...func(*Options)) (*DescribeInstancesFullStatusOutput, error) {
-	out, meta, err := invoke[DescribeInstancesFullStatusInput, DescribeInstancesFullStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstancesFullStatus", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInstancesFullStatusInput, DescribeInstancesFullStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstancesFullStatus", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5468,7 +5468,7 @@ type DescribeInvocationResultsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L26770
 func (c *Client) DescribeInvocationResults(ctx context.Context, input *DescribeInvocationResultsInput, optFns ...func(*Options)) (*DescribeInvocationResultsOutput, error) {
-	out, meta, err := invoke[DescribeInvocationResultsInput, DescribeInvocationResultsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInvocationResults", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInvocationResultsInput, DescribeInvocationResultsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInvocationResults", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5510,7 +5510,7 @@ type DescribeInvocationsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27050
 func (c *Client) DescribeInvocations(ctx context.Context, input *DescribeInvocationsInput, optFns ...func(*Options)) (*DescribeInvocationsOutput, error) {
-	out, meta, err := invoke[DescribeInvocationsInput, DescribeInvocationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInvocations", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInvocationsInput, DescribeInvocationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInvocations", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5535,7 +5535,7 @@ type DescribeKeyPairsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27247
 func (c *Client) DescribeKeyPairs(ctx context.Context, input *DescribeKeyPairsInput, optFns ...func(*Options)) (*DescribeKeyPairsOutput, error) {
-	out, meta, err := invoke[DescribeKeyPairsInput, DescribeKeyPairsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeKeyPairs", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeKeyPairsInput, DescribeKeyPairsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeKeyPairs", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5560,7 +5560,7 @@ type DescribeLaunchTemplateVersionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27490
 func (c *Client) DescribeLaunchTemplateVersions(ctx context.Context, input *DescribeLaunchTemplateVersionsInput, optFns ...func(*Options)) (*DescribeLaunchTemplateVersionsOutput, error) {
-	out, meta, err := invoke[DescribeLaunchTemplateVersionsInput, DescribeLaunchTemplateVersionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeLaunchTemplateVersions", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeLaunchTemplateVersionsInput, DescribeLaunchTemplateVersionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeLaunchTemplateVersions", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5585,7 +5585,7 @@ type DescribeLaunchTemplatesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27643
 func (c *Client) DescribeLaunchTemplates(ctx context.Context, input *DescribeLaunchTemplatesInput, optFns ...func(*Options)) (*DescribeLaunchTemplatesOutput, error) {
-	out, meta, err := invoke[DescribeLaunchTemplatesInput, DescribeLaunchTemplatesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeLaunchTemplates", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeLaunchTemplatesInput, DescribeLaunchTemplatesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeLaunchTemplates", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5610,7 +5610,7 @@ type DescribeLimitationAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27734
 func (c *Client) DescribeLimitation(ctx context.Context, input *DescribeLimitationInput, optFns ...func(*Options)) (*DescribeLimitationOutput, error) {
-	out, meta, err := invoke[DescribeLimitationInput, DescribeLimitationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeLimitation", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[DescribeLimitationInput, DescribeLimitationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeLimitation", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5635,7 +5635,7 @@ type DescribeLockedSnapshotsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27845
 func (c *Client) DescribeLockedSnapshots(ctx context.Context, input *DescribeLockedSnapshotsInput, optFns ...func(*Options)) (*DescribeLockedSnapshotsOutput, error) {
-	out, meta, err := invoke[DescribeLockedSnapshotsInput, DescribeLockedSnapshotsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeLockedSnapshots", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeLockedSnapshotsInput, DescribeLockedSnapshotsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeLockedSnapshots", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5666,7 +5666,7 @@ type DescribeManagedInstancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28023
 func (c *Client) DescribeManagedInstances(ctx context.Context, input *DescribeManagedInstancesInput, optFns ...func(*Options)) (*DescribeManagedInstancesOutput, error) {
-	out, meta, err := invoke[DescribeManagedInstancesInput, DescribeManagedInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeManagedInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeManagedInstancesInput, DescribeManagedInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeManagedInstances", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5691,7 +5691,7 @@ type DescribeNatGatewaysAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28169
 func (c *Client) DescribeNatGateways(ctx context.Context, input *DescribeNatGatewaysInput, optFns ...func(*Options)) (*DescribeNatGatewaysOutput, error) {
-	out, meta, err := invoke[DescribeNatGatewaysInput, DescribeNatGatewaysOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNatGateways", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeNatGatewaysInput, DescribeNatGatewaysOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNatGateways", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5716,7 +5716,7 @@ type DescribeNetworkInterfaceAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28443
 func (c *Client) DescribeNetworkInterfaceAttribute(ctx context.Context, input *DescribeNetworkInterfaceAttributeInput, optFns ...func(*Options)) (*DescribeNetworkInterfaceAttributeOutput, error) {
-	out, meta, err := invoke[DescribeNetworkInterfaceAttributeInput, DescribeNetworkInterfaceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNetworkInterfaceAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeNetworkInterfaceAttributeInput, DescribeNetworkInterfaceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNetworkInterfaceAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5741,7 +5741,7 @@ type DescribeNetworkInterfacePermissionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28555
 func (c *Client) DescribeNetworkInterfacePermissions(ctx context.Context, input *DescribeNetworkInterfacePermissionsInput, optFns ...func(*Options)) (*DescribeNetworkInterfacePermissionsOutput, error) {
-	out, meta, err := invoke[DescribeNetworkInterfacePermissionsInput, DescribeNetworkInterfacePermissionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNetworkInterfacePermissions", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeNetworkInterfacePermissionsInput, DescribeNetworkInterfacePermissionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNetworkInterfacePermissions", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5775,7 +5775,7 @@ type DescribeNetworkInterfacesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28785
 func (c *Client) DescribeNetworkInterfaces(ctx context.Context, input *DescribeNetworkInterfacesInput, optFns ...func(*Options)) (*DescribeNetworkInterfacesOutput, error) {
-	out, meta, err := invoke[DescribeNetworkInterfacesInput, DescribeNetworkInterfacesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNetworkInterfaces", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeNetworkInterfacesInput, DescribeNetworkInterfacesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNetworkInterfaces", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5800,7 +5800,7 @@ type DescribeNewProjectEipMonitorDataAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28942
 func (c *Client) DescribeNewProjectEipMonitorData(ctx context.Context, input *DescribeNewProjectEipMonitorDataInput, optFns ...func(*Options)) (*DescribeNewProjectEipMonitorDataOutput, error) {
-	out, meta, err := invoke[DescribeNewProjectEipMonitorDataInput, DescribeNewProjectEipMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNewProjectEipMonitorData", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeNewProjectEipMonitorDataInput, DescribeNewProjectEipMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNewProjectEipMonitorData", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5825,7 +5825,7 @@ type DescribePhysicalConnectionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29068
 func (c *Client) DescribePhysicalConnections(ctx context.Context, input *DescribePhysicalConnectionsInput, optFns ...func(*Options)) (*DescribePhysicalConnectionsOutput, error) {
-	out, meta, err := invoke[DescribePhysicalConnectionsInput, DescribePhysicalConnectionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePhysicalConnections", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribePhysicalConnectionsInput, DescribePhysicalConnectionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePhysicalConnections", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5858,7 +5858,7 @@ type DescribePlanMaintenanceWindowsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29220
 func (c *Client) DescribePlanMaintenanceWindows(ctx context.Context, input *DescribePlanMaintenanceWindowsInput, optFns ...func(*Options)) (*DescribePlanMaintenanceWindowsOutput, error) {
-	out, meta, err := invoke[DescribePlanMaintenanceWindowsInput, DescribePlanMaintenanceWindowsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePlanMaintenanceWindows", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribePlanMaintenanceWindowsInput, DescribePlanMaintenanceWindowsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePlanMaintenanceWindows", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5883,7 +5883,7 @@ type DescribePortRangeListAssociationsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29331
 func (c *Client) DescribePortRangeListAssociations(ctx context.Context, input *DescribePortRangeListAssociationsInput, optFns ...func(*Options)) (*DescribePortRangeListAssociationsOutput, error) {
-	out, meta, err := invoke[DescribePortRangeListAssociationsInput, DescribePortRangeListAssociationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePortRangeListAssociations", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribePortRangeListAssociationsInput, DescribePortRangeListAssociationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePortRangeListAssociations", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5908,7 +5908,7 @@ type DescribePortRangeListEntriesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29425
 func (c *Client) DescribePortRangeListEntries(ctx context.Context, input *DescribePortRangeListEntriesInput, optFns ...func(*Options)) (*DescribePortRangeListEntriesOutput, error) {
-	out, meta, err := invoke[DescribePortRangeListEntriesInput, DescribePortRangeListEntriesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePortRangeListEntries", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribePortRangeListEntriesInput, DescribePortRangeListEntriesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePortRangeListEntries", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5933,7 +5933,7 @@ type DescribePortRangeListsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29541
 func (c *Client) DescribePortRangeLists(ctx context.Context, input *DescribePortRangeListsInput, optFns ...func(*Options)) (*DescribePortRangeListsOutput, error) {
-	out, meta, err := invoke[DescribePortRangeListsInput, DescribePortRangeListsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePortRangeLists", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribePortRangeListsInput, DescribePortRangeListsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePortRangeLists", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5958,7 +5958,7 @@ type DescribePrefixListAssociationsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29653
 func (c *Client) DescribePrefixListAssociations(ctx context.Context, input *DescribePrefixListAssociationsInput, optFns ...func(*Options)) (*DescribePrefixListAssociationsOutput, error) {
-	out, meta, err := invoke[DescribePrefixListAssociationsInput, DescribePrefixListAssociationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePrefixListAssociations", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribePrefixListAssociationsInput, DescribePrefixListAssociationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePrefixListAssociations", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5983,7 +5983,7 @@ type DescribePrefixListAttributesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29758
 func (c *Client) DescribePrefixListAttributes(ctx context.Context, input *DescribePrefixListAttributesInput, optFns ...func(*Options)) (*DescribePrefixListAttributesOutput, error) {
-	out, meta, err := invoke[DescribePrefixListAttributesInput, DescribePrefixListAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePrefixListAttributes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribePrefixListAttributesInput, DescribePrefixListAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePrefixListAttributes", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6014,7 +6014,7 @@ type DescribePrefixListsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29883
 func (c *Client) DescribePrefixLists(ctx context.Context, input *DescribePrefixListsInput, optFns ...func(*Options)) (*DescribePrefixListsOutput, error) {
-	out, meta, err := invoke[DescribePrefixListsInput, DescribePrefixListsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePrefixLists", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribePrefixListsInput, DescribePrefixListsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePrefixLists", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6053,7 +6053,7 @@ type DescribePriceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L30285
 func (c *Client) DescribePrice(ctx context.Context, input *DescribePriceInput, optFns ...func(*Options)) (*DescribePriceOutput, error) {
-	out, meta, err := invoke[DescribePriceInput, DescribePriceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePrice", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribePriceInput, DescribePriceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePrice", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6078,7 +6078,7 @@ type DescribeRecommendInstanceTypeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L30577
 func (c *Client) DescribeRecommendInstanceType(ctx context.Context, input *DescribeRecommendInstanceTypeInput, optFns ...func(*Options)) (*DescribeRecommendInstanceTypeOutput, error) {
-	out, meta, err := invoke[DescribeRecommendInstanceTypeInput, DescribeRecommendInstanceTypeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRecommendInstanceType", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeRecommendInstanceTypeInput, DescribeRecommendInstanceTypeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRecommendInstanceType", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6103,7 +6103,7 @@ type DescribeRegionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L30729
 func (c *Client) DescribeRegions(ctx context.Context, input *DescribeRegionsInput, optFns ...func(*Options)) (*DescribeRegionsOutput, error) {
-	out, meta, err := invoke[DescribeRegionsInput, DescribeRegionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRegions", Version: "2014-05-26", Idempotent: true}, false, nil, nil, optFns)
+	out, meta, err := invoke[DescribeRegionsInput, DescribeRegionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRegions", Version: "2014-05-26", Idempotent: true}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6137,7 +6137,7 @@ type DescribeRenewalPriceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L30883
 func (c *Client) DescribeRenewalPrice(ctx context.Context, input *DescribeRenewalPriceInput, optFns ...func(*Options)) (*DescribeRenewalPriceOutput, error) {
-	out, meta, err := invoke[DescribeRenewalPriceInput, DescribeRenewalPriceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRenewalPrice", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeRenewalPriceInput, DescribeRenewalPriceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRenewalPrice", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6162,7 +6162,7 @@ type DescribeReservedInstanceAutoRenewAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L30994
 func (c *Client) DescribeReservedInstanceAutoRenewAttribute(ctx context.Context, input *DescribeReservedInstanceAutoRenewAttributeInput, optFns ...func(*Options)) (*DescribeReservedInstanceAutoRenewAttributeOutput, error) {
-	out, meta, err := invoke[DescribeReservedInstanceAutoRenewAttributeInput, DescribeReservedInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeReservedInstanceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeReservedInstanceAutoRenewAttributeInput, DescribeReservedInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeReservedInstanceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6218,7 +6218,7 @@ type DescribeReservedInstancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31153
 func (c *Client) DescribeReservedInstances(ctx context.Context, input *DescribeReservedInstancesInput, optFns ...func(*Options)) (*DescribeReservedInstancesOutput, error) {
-	out, meta, err := invoke[DescribeReservedInstancesInput, DescribeReservedInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeReservedInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeReservedInstancesInput, DescribeReservedInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeReservedInstances", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6243,7 +6243,7 @@ type DescribeResourceByTagsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31375
 func (c *Client) DescribeResourceByTags(ctx context.Context, input *DescribeResourceByTagsInput, optFns ...func(*Options)) (*DescribeResourceByTagsOutput, error) {
-	out, meta, err := invoke[DescribeResourceByTagsInput, DescribeResourceByTagsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeResourceByTags", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeResourceByTagsInput, DescribeResourceByTagsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeResourceByTags", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6306,7 +6306,7 @@ type DescribeResourcesModificationAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31557
 func (c *Client) DescribeResourcesModification(ctx context.Context, input *DescribeResourcesModificationInput, optFns ...func(*Options)) (*DescribeResourcesModificationOutput, error) {
-	out, meta, err := invoke[DescribeResourcesModificationInput, DescribeResourcesModificationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeResourcesModification", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeResourcesModificationInput, DescribeResourcesModificationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeResourcesModification", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6331,7 +6331,7 @@ type DescribeRouteTablesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31768
 func (c *Client) DescribeRouteTables(ctx context.Context, input *DescribeRouteTablesInput, optFns ...func(*Options)) (*DescribeRouteTablesOutput, error) {
-	out, meta, err := invoke[DescribeRouteTablesInput, DescribeRouteTablesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRouteTables", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeRouteTablesInput, DescribeRouteTablesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRouteTables", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6356,7 +6356,7 @@ type DescribeRouterInterfacesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31907
 func (c *Client) DescribeRouterInterfaces(ctx context.Context, input *DescribeRouterInterfacesInput, optFns ...func(*Options)) (*DescribeRouterInterfacesOutput, error) {
-	out, meta, err := invoke[DescribeRouterInterfacesInput, DescribeRouterInterfacesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRouterInterfaces", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeRouterInterfacesInput, DescribeRouterInterfacesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeRouterInterfaces", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6375,7 +6375,7 @@ type DescribeSavingsPlanEstimationAPI interface {
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeSavingsPlanEstimation(ctx context.Context, input *DescribeSavingsPlanEstimationInput, optFns ...func(*Options)) (*DescribeSavingsPlanEstimationOutput, error) {
-	out, meta, err := invoke[DescribeSavingsPlanEstimationInput, DescribeSavingsPlanEstimationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSavingsPlanEstimation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSavingsPlanEstimationInput, DescribeSavingsPlanEstimationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSavingsPlanEstimation", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6394,7 +6394,7 @@ type DescribeSavingsPlanPriceAPI interface {
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeSavingsPlanPrice(ctx context.Context, input *DescribeSavingsPlanPriceInput, optFns ...func(*Options)) (*DescribeSavingsPlanPriceOutput, error) {
-	out, meta, err := invoke[DescribeSavingsPlanPriceInput, DescribeSavingsPlanPriceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSavingsPlanPrice", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSavingsPlanPriceInput, DescribeSavingsPlanPriceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSavingsPlanPrice", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6419,7 +6419,7 @@ type DescribeSecurityGroupAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32261
 func (c *Client) DescribeSecurityGroupAttribute(ctx context.Context, input *DescribeSecurityGroupAttributeInput, optFns ...func(*Options)) (*DescribeSecurityGroupAttributeOutput, error) {
-	out, meta, err := invoke[DescribeSecurityGroupAttributeInput, DescribeSecurityGroupAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSecurityGroupAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSecurityGroupAttributeInput, DescribeSecurityGroupAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSecurityGroupAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6450,7 +6450,7 @@ type DescribeSecurityGroupReferencesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32370
 func (c *Client) DescribeSecurityGroupReferences(ctx context.Context, input *DescribeSecurityGroupReferencesInput, optFns ...func(*Options)) (*DescribeSecurityGroupReferencesOutput, error) {
-	out, meta, err := invoke[DescribeSecurityGroupReferencesInput, DescribeSecurityGroupReferencesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSecurityGroupReferences", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSecurityGroupReferencesInput, DescribeSecurityGroupReferencesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSecurityGroupReferences", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6486,7 +6486,7 @@ type DescribeSecurityGroupsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32531
 func (c *Client) DescribeSecurityGroups(ctx context.Context, input *DescribeSecurityGroupsInput, optFns ...func(*Options)) (*DescribeSecurityGroupsOutput, error) {
-	out, meta, err := invoke[DescribeSecurityGroupsInput, DescribeSecurityGroupsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSecurityGroups", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSecurityGroupsInput, DescribeSecurityGroupsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSecurityGroups", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6520,7 +6520,7 @@ type DescribeSendFileResultsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32742
 func (c *Client) DescribeSendFileResults(ctx context.Context, input *DescribeSendFileResultsInput, optFns ...func(*Options)) (*DescribeSendFileResultsOutput, error) {
-	out, meta, err := invoke[DescribeSendFileResultsInput, DescribeSendFileResultsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSendFileResults", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSendFileResultsInput, DescribeSendFileResultsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSendFileResults", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6551,7 +6551,7 @@ type DescribeSnapshotGroupsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32928
 func (c *Client) DescribeSnapshotGroups(ctx context.Context, input *DescribeSnapshotGroupsInput, optFns ...func(*Options)) (*DescribeSnapshotGroupsOutput, error) {
-	out, meta, err := invoke[DescribeSnapshotGroupsInput, DescribeSnapshotGroupsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotGroups", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSnapshotGroupsInput, DescribeSnapshotGroupsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotGroups", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6585,7 +6585,7 @@ type DescribeSnapshotLinksAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L33069
 func (c *Client) DescribeSnapshotLinks(ctx context.Context, input *DescribeSnapshotLinksInput, optFns ...func(*Options)) (*DescribeSnapshotLinksOutput, error) {
-	out, meta, err := invoke[DescribeSnapshotLinksInput, DescribeSnapshotLinksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotLinks", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSnapshotLinksInput, DescribeSnapshotLinksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotLinks", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6619,7 +6619,7 @@ type DescribeSnapshotMonitorDataAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L33201
 func (c *Client) DescribeSnapshotMonitorData(ctx context.Context, input *DescribeSnapshotMonitorDataInput, optFns ...func(*Options)) (*DescribeSnapshotMonitorDataOutput, error) {
-	out, meta, err := invoke[DescribeSnapshotMonitorDataInput, DescribeSnapshotMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotMonitorData", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSnapshotMonitorDataInput, DescribeSnapshotMonitorDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotMonitorData", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6644,7 +6644,7 @@ type DescribeSnapshotPackageAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L33315
 func (c *Client) DescribeSnapshotPackage(ctx context.Context, input *DescribeSnapshotPackageInput, optFns ...func(*Options)) (*DescribeSnapshotPackageOutput, error) {
-	out, meta, err := invoke[DescribeSnapshotPackageInput, DescribeSnapshotPackageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotPackage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSnapshotPackageInput, DescribeSnapshotPackageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotPackage", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6698,7 +6698,7 @@ type DescribeSnapshotsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L33510
 func (c *Client) DescribeSnapshots(ctx context.Context, input *DescribeSnapshotsInput, optFns ...func(*Options)) (*DescribeSnapshotsOutput, error) {
-	out, meta, err := invoke[DescribeSnapshotsInput, DescribeSnapshotsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshots", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSnapshotsInput, DescribeSnapshotsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshots", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6730,7 +6730,7 @@ type DescribeSnapshotsUsageAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L33711
 func (c *Client) DescribeSnapshotsUsage(ctx context.Context, input *DescribeSnapshotsUsageInput, optFns ...func(*Options)) (*DescribeSnapshotsUsageOutput, error) {
-	out, meta, err := invoke[DescribeSnapshotsUsageInput, DescribeSnapshotsUsageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotsUsage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSnapshotsUsageInput, DescribeSnapshotsUsageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshotsUsage", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6766,7 +6766,7 @@ type DescribeSpotAdviceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L33833
 func (c *Client) DescribeSpotAdvice(ctx context.Context, input *DescribeSpotAdviceInput, optFns ...func(*Options)) (*DescribeSpotAdviceOutput, error) {
-	out, meta, err := invoke[DescribeSpotAdviceInput, DescribeSpotAdviceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSpotAdvice", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSpotAdviceInput, DescribeSpotAdviceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSpotAdvice", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6798,7 +6798,7 @@ type DescribeSpotPriceHistoryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34008
 func (c *Client) DescribeSpotPriceHistory(ctx context.Context, input *DescribeSpotPriceHistoryInput, optFns ...func(*Options)) (*DescribeSpotPriceHistoryOutput, error) {
-	out, meta, err := invoke[DescribeSpotPriceHistoryInput, DescribeSpotPriceHistoryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSpotPriceHistory", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSpotPriceHistoryInput, DescribeSpotPriceHistoryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSpotPriceHistory", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6823,7 +6823,7 @@ type DescribeStorageCapacityUnitsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34170
 func (c *Client) DescribeStorageCapacityUnits(ctx context.Context, input *DescribeStorageCapacityUnitsInput, optFns ...func(*Options)) (*DescribeStorageCapacityUnitsOutput, error) {
-	out, meta, err := invoke[DescribeStorageCapacityUnitsInput, DescribeStorageCapacityUnitsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeStorageCapacityUnits", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeStorageCapacityUnitsInput, DescribeStorageCapacityUnitsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeStorageCapacityUnits", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6842,7 +6842,7 @@ type DescribeStorageSetDetailsAPI interface {
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeStorageSetDetails(ctx context.Context, input *DescribeStorageSetDetailsInput, optFns ...func(*Options)) (*DescribeStorageSetDetailsOutput, error) {
-	out, meta, err := invoke[DescribeStorageSetDetailsInput, DescribeStorageSetDetailsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeStorageSetDetails", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeStorageSetDetailsInput, DescribeStorageSetDetailsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeStorageSetDetails", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6861,7 +6861,7 @@ type DescribeStorageSetsAPI interface {
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
 func (c *Client) DescribeStorageSets(ctx context.Context, input *DescribeStorageSetsInput, optFns ...func(*Options)) (*DescribeStorageSetsOutput, error) {
-	out, meta, err := invoke[DescribeStorageSetsInput, DescribeStorageSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeStorageSets", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeStorageSetsInput, DescribeStorageSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeStorageSets", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6892,7 +6892,7 @@ type DescribeTagsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34566
 func (c *Client) DescribeTags(ctx context.Context, input *DescribeTagsInput, optFns ...func(*Options)) (*DescribeTagsOutput, error) {
-	out, meta, err := invoke[DescribeTagsInput, DescribeTagsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeTags", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeTagsInput, DescribeTagsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeTags", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6917,7 +6917,7 @@ type DescribeTaskAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34697
 func (c *Client) DescribeTaskAttribute(ctx context.Context, input *DescribeTaskAttributeInput, optFns ...func(*Options)) (*DescribeTaskAttributeOutput, error) {
-	out, meta, err := invoke[DescribeTaskAttributeInput, DescribeTaskAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeTaskAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeTaskAttributeInput, DescribeTaskAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeTaskAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6942,7 +6942,7 @@ type DescribeTasksAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34820
 func (c *Client) DescribeTasks(ctx context.Context, input *DescribeTasksInput, optFns ...func(*Options)) (*DescribeTasksOutput, error) {
-	out, meta, err := invoke[DescribeTasksInput, DescribeTasksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeTasks", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeTasksInput, DescribeTasksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeTasks", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6973,7 +6973,7 @@ type DescribeTerminalSessionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34955
 func (c *Client) DescribeTerminalSessions(ctx context.Context, input *DescribeTerminalSessionsInput, optFns ...func(*Options)) (*DescribeTerminalSessionsOutput, error) {
-	out, meta, err := invoke[DescribeTerminalSessionsInput, DescribeTerminalSessionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeTerminalSessions", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeTerminalSessionsInput, DescribeTerminalSessionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeTerminalSessions", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6998,7 +6998,7 @@ type DescribeUserBusinessBehaviorAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35044
 func (c *Client) DescribeUserBusinessBehavior(ctx context.Context, input *DescribeUserBusinessBehaviorInput, optFns ...func(*Options)) (*DescribeUserBusinessBehaviorOutput, error) {
-	out, meta, err := invoke[DescribeUserBusinessBehaviorInput, DescribeUserBusinessBehaviorOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeUserBusinessBehavior", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeUserBusinessBehaviorInput, DescribeUserBusinessBehaviorOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeUserBusinessBehavior", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7023,7 +7023,7 @@ type DescribeUserDataAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35133
 func (c *Client) DescribeUserData(ctx context.Context, input *DescribeUserDataInput, optFns ...func(*Options)) (*DescribeUserDataOutput, error) {
-	out, meta, err := invoke[DescribeUserDataInput, DescribeUserDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeUserData", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeUserDataInput, DescribeUserDataOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeUserData", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7048,7 +7048,7 @@ type DescribeVRoutersAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35225
 func (c *Client) DescribeVRouters(ctx context.Context, input *DescribeVRoutersInput, optFns ...func(*Options)) (*DescribeVRoutersOutput, error) {
-	out, meta, err := invoke[DescribeVRoutersInput, DescribeVRoutersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVRouters", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVRoutersInput, DescribeVRoutersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVRouters", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7073,7 +7073,7 @@ type DescribeVSwitchesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35337
 func (c *Client) DescribeVSwitches(ctx context.Context, input *DescribeVSwitchesInput, optFns ...func(*Options)) (*DescribeVSwitchesOutput, error) {
-	out, meta, err := invoke[DescribeVSwitchesInput, DescribeVSwitchesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVSwitches", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVSwitchesInput, DescribeVSwitchesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVSwitches", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7098,7 +7098,7 @@ type DescribeVirtualBorderRoutersAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35468
 func (c *Client) DescribeVirtualBorderRouters(ctx context.Context, input *DescribeVirtualBorderRoutersInput, optFns ...func(*Options)) (*DescribeVirtualBorderRoutersOutput, error) {
-	out, meta, err := invoke[DescribeVirtualBorderRoutersInput, DescribeVirtualBorderRoutersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVirtualBorderRouters", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVirtualBorderRoutersInput, DescribeVirtualBorderRoutersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVirtualBorderRouters", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7123,7 +7123,7 @@ type DescribeVirtualBorderRoutersForPhysicalConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35576
 func (c *Client) DescribeVirtualBorderRoutersForPhysicalConnection(ctx context.Context, input *DescribeVirtualBorderRoutersForPhysicalConnectionInput, optFns ...func(*Options)) (*DescribeVirtualBorderRoutersForPhysicalConnectionOutput, error) {
-	out, meta, err := invoke[DescribeVirtualBorderRoutersForPhysicalConnectionInput, DescribeVirtualBorderRoutersForPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVirtualBorderRoutersForPhysicalConnection", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVirtualBorderRoutersForPhysicalConnectionInput, DescribeVirtualBorderRoutersForPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVirtualBorderRoutersForPhysicalConnection", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7148,7 +7148,7 @@ type DescribeVpcsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35690
 func (c *Client) DescribeVpcs(ctx context.Context, input *DescribeVpcsInput, optFns ...func(*Options)) (*DescribeVpcsOutput, error) {
-	out, meta, err := invoke[DescribeVpcsInput, DescribeVpcsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVpcs", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVpcsInput, DescribeVpcsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVpcs", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7179,7 +7179,7 @@ type DescribeVscsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L35834
 func (c *Client) DescribeVscs(ctx context.Context, input *DescribeVscsInput, optFns ...func(*Options)) (*DescribeVscsOutput, error) {
-	out, meta, err := invoke[DescribeVscsInput, DescribeVscsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVscs", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeVscsInput, DescribeVscsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeVscs", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7210,7 +7210,7 @@ type DescribeZonesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36014
 func (c *Client) DescribeZones(ctx context.Context, input *DescribeZonesInput, optFns ...func(*Options)) (*DescribeZonesOutput, error) {
-	out, meta, err := invoke[DescribeZonesInput, DescribeZonesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeZones", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeZonesInput, DescribeZonesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeZones", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7235,7 +7235,7 @@ type DetachClassicLinkVpcAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36108
 func (c *Client) DetachClassicLinkVpc(ctx context.Context, input *DetachClassicLinkVpcInput, optFns ...func(*Options)) (*DetachClassicLinkVpcOutput, error) {
-	out, meta, err := invoke[DetachClassicLinkVpcInput, DetachClassicLinkVpcOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachClassicLinkVpc", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DetachClassicLinkVpcInput, DetachClassicLinkVpcOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachClassicLinkVpc", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7269,7 +7269,7 @@ type DetachDiskAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36205
 func (c *Client) DetachDisk(ctx context.Context, input *DetachDiskInput, optFns ...func(*Options)) (*DetachDiskOutput, error) {
-	out, meta, err := invoke[DetachDiskInput, DetachDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachDisk", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[DetachDiskInput, DetachDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachDisk", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7294,7 +7294,7 @@ type DetachInstanceRamRoleAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36318
 func (c *Client) DetachInstanceRamRole(ctx context.Context, input *DetachInstanceRamRoleInput, optFns ...func(*Options)) (*DetachInstanceRamRoleOutput, error) {
-	out, meta, err := invoke[DetachInstanceRamRoleInput, DetachInstanceRamRoleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachInstanceRamRole", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DetachInstanceRamRoleInput, DetachInstanceRamRoleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachInstanceRamRole", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7327,7 +7327,7 @@ type DetachKeyPairAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36412
 func (c *Client) DetachKeyPair(ctx context.Context, input *DetachKeyPairInput, optFns ...func(*Options)) (*DetachKeyPairOutput, error) {
-	out, meta, err := invoke[DetachKeyPairInput, DetachKeyPairOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachKeyPair", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DetachKeyPairInput, DetachKeyPairOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachKeyPair", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7367,7 +7367,7 @@ type DetachNetworkInterfaceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36504
 func (c *Client) DetachNetworkInterface(ctx context.Context, input *DetachNetworkInterfaceInput, optFns ...func(*Options)) (*DetachNetworkInterfaceOutput, error) {
-	out, meta, err := invoke[DetachNetworkInterfaceInput, DetachNetworkInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachNetworkInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DetachNetworkInterfaceInput, DetachNetworkInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachNetworkInterface", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7399,7 +7399,7 @@ type DisableActivationAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36628
 func (c *Client) DisableActivation(ctx context.Context, input *DisableActivationInput, optFns ...func(*Options)) (*DisableActivationOutput, error) {
-	out, meta, err := invoke[DisableActivationInput, DisableActivationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DisableActivation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DisableActivationInput, DisableActivationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DisableActivation", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7434,7 +7434,7 @@ type DisableDiskEncryptionByDefaultAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36711
 func (c *Client) DisableDiskEncryptionByDefault(ctx context.Context, input *DisableDiskEncryptionByDefaultInput, optFns ...func(*Options)) (*DisableDiskEncryptionByDefaultOutput, error) {
-	out, meta, err := invoke[DisableDiskEncryptionByDefaultInput, DisableDiskEncryptionByDefaultOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DisableDiskEncryptionByDefault", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DisableDiskEncryptionByDefaultInput, DisableDiskEncryptionByDefaultOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DisableDiskEncryptionByDefault", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7459,7 +7459,7 @@ type DisableNetworkInterfaceQoSAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36793
 func (c *Client) DisableNetworkInterfaceQoS(ctx context.Context, input *DisableNetworkInterfaceQoSInput, optFns ...func(*Options)) (*DisableNetworkInterfaceQoSOutput, error) {
-	out, meta, err := invoke[DisableNetworkInterfaceQoSInput, DisableNetworkInterfaceQoSOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DisableNetworkInterfaceQoS", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[DisableNetworkInterfaceQoSInput, DisableNetworkInterfaceQoSOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DisableNetworkInterfaceQoS", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7504,7 +7504,7 @@ type EnableDiskEncryptionByDefaultAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36872
 func (c *Client) EnableDiskEncryptionByDefault(ctx context.Context, input *EnableDiskEncryptionByDefaultInput, optFns ...func(*Options)) (*EnableDiskEncryptionByDefaultOutput, error) {
-	out, meta, err := invoke[EnableDiskEncryptionByDefaultInput, EnableDiskEncryptionByDefaultOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "EnableDiskEncryptionByDefault", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[EnableDiskEncryptionByDefaultInput, EnableDiskEncryptionByDefaultOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "EnableDiskEncryptionByDefault", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7529,7 +7529,7 @@ type EnableNetworkInterfaceQoSAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36997
 func (c *Client) EnableNetworkInterfaceQoS(ctx context.Context, input *EnableNetworkInterfaceQoSInput, optFns ...func(*Options)) (*EnableNetworkInterfaceQoSOutput, error) {
-	out, meta, err := invoke[EnableNetworkInterfaceQoSInput, EnableNetworkInterfaceQoSOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "EnableNetworkInterfaceQoS", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[EnableNetworkInterfaceQoSInput, EnableNetworkInterfaceQoSOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "EnableNetworkInterfaceQoS", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7554,7 +7554,7 @@ type EnablePhysicalConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37080
 func (c *Client) EnablePhysicalConnection(ctx context.Context, input *EnablePhysicalConnectionInput, optFns ...func(*Options)) (*EnablePhysicalConnectionOutput, error) {
-	out, meta, err := invoke[EnablePhysicalConnectionInput, EnablePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "EnablePhysicalConnection", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[EnablePhysicalConnectionInput, EnablePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "EnablePhysicalConnection", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7586,7 +7586,7 @@ type EndTerminalSessionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37171
 func (c *Client) EndTerminalSession(ctx context.Context, input *EndTerminalSessionInput, optFns ...func(*Options)) (*EndTerminalSessionOutput, error) {
-	out, meta, err := invoke[EndTerminalSessionInput, EndTerminalSessionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "EndTerminalSession", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[EndTerminalSessionInput, EndTerminalSessionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "EndTerminalSession", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7660,7 +7660,7 @@ type ExportImageAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37271
 func (c *Client) ExportImage(ctx context.Context, input *ExportImageInput, optFns ...func(*Options)) (*ExportImageOutput, error) {
-	out, meta, err := invoke[ExportImageInput, ExportImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ExportImage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ExportImageInput, ExportImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ExportImage", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7685,7 +7685,7 @@ type ExportSnapshotAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37450
 func (c *Client) ExportSnapshot(ctx context.Context, input *ExportSnapshotInput, optFns ...func(*Options)) (*ExportSnapshotOutput, error) {
-	out, meta, err := invoke[ExportSnapshotInput, ExportSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ExportSnapshot", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ExportSnapshotInput, ExportSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ExportSnapshot", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7718,7 +7718,7 @@ type GetInstanceConsoleOutputAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37547
 func (c *Client) GetInstanceConsoleOutput(ctx context.Context, input *GetInstanceConsoleOutputInput, optFns ...func(*Options)) (*GetInstanceConsoleOutputOutput, error) {
-	out, meta, err := invoke[GetInstanceConsoleOutputInput, GetInstanceConsoleOutputOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "GetInstanceConsoleOutput", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[GetInstanceConsoleOutputInput, GetInstanceConsoleOutputOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "GetInstanceConsoleOutput", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7752,7 +7752,7 @@ type GetInstanceScreenshotAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37645
 func (c *Client) GetInstanceScreenshot(ctx context.Context, input *GetInstanceScreenshotInput, optFns ...func(*Options)) (*GetInstanceScreenshotOutput, error) {
-	out, meta, err := invoke[GetInstanceScreenshotInput, GetInstanceScreenshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "GetInstanceScreenshot", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[GetInstanceScreenshotInput, GetInstanceScreenshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "GetInstanceScreenshot", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7872,7 +7872,7 @@ type ImportImageAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37874
 func (c *Client) ImportImage(ctx context.Context, input *ImportImageInput, optFns ...func(*Options)) (*ImportImageOutput, error) {
-	out, meta, err := invoke[ImportImageInput, ImportImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ImportImage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ImportImageInput, ImportImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ImportImage", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7911,7 +7911,7 @@ type ImportKeyPairAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L38192
 func (c *Client) ImportKeyPair(ctx context.Context, input *ImportKeyPairInput, optFns ...func(*Options)) (*ImportKeyPairOutput, error) {
-	out, meta, err := invoke[ImportKeyPairInput, ImportKeyPairOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ImportKeyPair", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ImportKeyPairInput, ImportKeyPairOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ImportKeyPair", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7943,7 +7943,7 @@ type InstallCloudAssistantAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L38297
 func (c *Client) InstallCloudAssistant(ctx context.Context, input *InstallCloudAssistantInput, optFns ...func(*Options)) (*InstallCloudAssistantOutput, error) {
-	out, meta, err := invoke[InstallCloudAssistantInput, InstallCloudAssistantOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "InstallCloudAssistant", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[InstallCloudAssistantInput, InstallCloudAssistantOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "InstallCloudAssistant", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8004,7 +8004,7 @@ type InvokeCommandAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L38685
 func (c *Client) InvokeCommand(ctx context.Context, input *InvokeCommandInput, optFns ...func(*Options)) (*InvokeCommandOutput, error) {
-	out, meta, err := invoke[InvokeCommandInput, InvokeCommandOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "InvokeCommand", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[InvokeCommandInput, InvokeCommandOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "InvokeCommand", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8036,7 +8036,7 @@ type JoinResourceGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L38904
 func (c *Client) JoinResourceGroup(ctx context.Context, input *JoinResourceGroupInput, optFns ...func(*Options)) (*JoinResourceGroupOutput, error) {
-	out, meta, err := invoke[JoinResourceGroupInput, JoinResourceGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "JoinResourceGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[JoinResourceGroupInput, JoinResourceGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "JoinResourceGroup", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8072,7 +8072,7 @@ type JoinSecurityGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39002
 func (c *Client) JoinSecurityGroup(ctx context.Context, input *JoinSecurityGroupInput, optFns ...func(*Options)) (*JoinSecurityGroupOutput, error) {
-	out, meta, err := invoke[JoinSecurityGroupInput, JoinSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "JoinSecurityGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[JoinSecurityGroupInput, JoinSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "JoinSecurityGroup", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8108,7 +8108,7 @@ type LeaveSecurityGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39108
 func (c *Client) LeaveSecurityGroup(ctx context.Context, input *LeaveSecurityGroupInput, optFns ...func(*Options)) (*LeaveSecurityGroupOutput, error) {
-	out, meta, err := invoke[LeaveSecurityGroupInput, LeaveSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "LeaveSecurityGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[LeaveSecurityGroupInput, LeaveSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "LeaveSecurityGroup", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8142,7 +8142,7 @@ type ListPluginStatusAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39242
 func (c *Client) ListPluginStatus(ctx context.Context, input *ListPluginStatusInput, optFns ...func(*Options)) (*ListPluginStatusOutput, error) {
-	out, meta, err := invoke[ListPluginStatusInput, ListPluginStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ListPluginStatus", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListPluginStatusInput, ListPluginStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ListPluginStatus", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8180,7 +8180,7 @@ type ListTagResourcesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39427
 func (c *Client) ListTagResources(ctx context.Context, input *ListTagResourcesInput, optFns ...func(*Options)) (*ListTagResourcesOutput, error) {
-	out, meta, err := invoke[ListTagResourcesInput, ListTagResourcesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ListTagResources", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ListTagResourcesInput, ListTagResourcesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ListTagResources", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8214,7 +8214,7 @@ type LockSnapshotAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39584
 func (c *Client) LockSnapshot(ctx context.Context, input *LockSnapshotInput, optFns ...func(*Options)) (*LockSnapshotOutput, error) {
-	out, meta, err := invoke[LockSnapshotInput, LockSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "LockSnapshot", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[LockSnapshotInput, LockSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "LockSnapshot", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8247,7 +8247,7 @@ type ModifyAutoProvisioningGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39721
 func (c *Client) ModifyAutoProvisioningGroup(ctx context.Context, input *ModifyAutoProvisioningGroupInput, optFns ...func(*Options)) (*ModifyAutoProvisioningGroupOutput, error) {
-	out, meta, err := invoke[ModifyAutoProvisioningGroupInput, ModifyAutoProvisioningGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyAutoProvisioningGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyAutoProvisioningGroupInput, ModifyAutoProvisioningGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyAutoProvisioningGroup", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8281,7 +8281,7 @@ type ModifyAutoSnapshotPolicyExAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39896
 func (c *Client) ModifyAutoSnapshotPolicyEx(ctx context.Context, input *ModifyAutoSnapshotPolicyExInput, optFns ...func(*Options)) (*ModifyAutoSnapshotPolicyExOutput, error) {
-	out, meta, err := invoke[ModifyAutoSnapshotPolicyExInput, ModifyAutoSnapshotPolicyExOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyAutoSnapshotPolicyEx", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[ModifyAutoSnapshotPolicyExInput, ModifyAutoSnapshotPolicyExOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyAutoSnapshotPolicyEx", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8306,7 +8306,7 @@ type ModifyBandwidthPackageSpecAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40006
 func (c *Client) ModifyBandwidthPackageSpec(ctx context.Context, input *ModifyBandwidthPackageSpecInput, optFns ...func(*Options)) (*ModifyBandwidthPackageSpecOutput, error) {
-	out, meta, err := invoke[ModifyBandwidthPackageSpecInput, ModifyBandwidthPackageSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyBandwidthPackageSpec", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyBandwidthPackageSpecInput, ModifyBandwidthPackageSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyBandwidthPackageSpec", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8331,7 +8331,7 @@ type ModifyCapacityReservationAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40115
 func (c *Client) ModifyCapacityReservation(ctx context.Context, input *ModifyCapacityReservationInput, optFns ...func(*Options)) (*ModifyCapacityReservationOutput, error) {
-	out, meta, err := invoke[ModifyCapacityReservationInput, ModifyCapacityReservationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyCapacityReservation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyCapacityReservationInput, ModifyCapacityReservationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyCapacityReservation", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8356,7 +8356,7 @@ type ModifyCloudAssistantSettingsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40337
 func (c *Client) ModifyCloudAssistantSettings(ctx context.Context, input *ModifyCloudAssistantSettingsInput, optFns ...func(*Options)) (*ModifyCloudAssistantSettingsOutput, error) {
-	out, meta, err := invoke[ModifyCloudAssistantSettingsInput, ModifyCloudAssistantSettingsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyCloudAssistantSettings", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyCloudAssistantSettingsInput, ModifyCloudAssistantSettingsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyCloudAssistantSettings", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8381,7 +8381,7 @@ type ModifyCommandAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40454
 func (c *Client) ModifyCommand(ctx context.Context, input *ModifyCommandInput, optFns ...func(*Options)) (*ModifyCommandOutput, error) {
-	out, meta, err := invoke[ModifyCommandInput, ModifyCommandOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyCommand", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyCommandInput, ModifyCommandOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyCommand", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8414,7 +8414,7 @@ type ModifyDedicatedHostAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40580
 func (c *Client) ModifyDedicatedHostAttribute(ctx context.Context, input *ModifyDedicatedHostAttributeInput, optFns ...func(*Options)) (*ModifyDedicatedHostAttributeOutput, error) {
-	out, meta, err := invoke[ModifyDedicatedHostAttributeInput, ModifyDedicatedHostAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyDedicatedHostAttributeInput, ModifyDedicatedHostAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8446,7 +8446,7 @@ type ModifyDedicatedHostAutoReleaseTimeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40694
 func (c *Client) ModifyDedicatedHostAutoReleaseTime(ctx context.Context, input *ModifyDedicatedHostAutoReleaseTimeInput, optFns ...func(*Options)) (*ModifyDedicatedHostAutoReleaseTimeOutput, error) {
-	out, meta, err := invoke[ModifyDedicatedHostAutoReleaseTimeInput, ModifyDedicatedHostAutoReleaseTimeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostAutoReleaseTime", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyDedicatedHostAutoReleaseTimeInput, ModifyDedicatedHostAutoReleaseTimeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostAutoReleaseTime", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8478,7 +8478,7 @@ type ModifyDedicatedHostAutoRenewAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40841
 func (c *Client) ModifyDedicatedHostAutoRenewAttribute(ctx context.Context, input *ModifyDedicatedHostAutoRenewAttributeInput, optFns ...func(*Options)) (*ModifyDedicatedHostAutoRenewAttributeOutput, error) {
-	out, meta, err := invoke[ModifyDedicatedHostAutoRenewAttributeInput, ModifyDedicatedHostAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyDedicatedHostAutoRenewAttributeInput, ModifyDedicatedHostAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8503,7 +8503,7 @@ type ModifyDedicatedHostClusterAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40943
 func (c *Client) ModifyDedicatedHostClusterAttribute(ctx context.Context, input *ModifyDedicatedHostClusterAttributeInput, optFns ...func(*Options)) (*ModifyDedicatedHostClusterAttributeOutput, error) {
-	out, meta, err := invoke[ModifyDedicatedHostClusterAttributeInput, ModifyDedicatedHostClusterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostClusterAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyDedicatedHostClusterAttributeInput, ModifyDedicatedHostClusterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostClusterAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8528,7 +8528,7 @@ type ModifyDedicatedHostsChargeTypeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L41068
 func (c *Client) ModifyDedicatedHostsChargeType(ctx context.Context, input *ModifyDedicatedHostsChargeTypeInput, optFns ...func(*Options)) (*ModifyDedicatedHostsChargeTypeOutput, error) {
-	out, meta, err := invoke[ModifyDedicatedHostsChargeTypeInput, ModifyDedicatedHostsChargeTypeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostsChargeType", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyDedicatedHostsChargeTypeInput, ModifyDedicatedHostsChargeTypeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDedicatedHostsChargeType", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8553,7 +8553,7 @@ type ModifyDeploymentSetAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L41172
 func (c *Client) ModifyDeploymentSetAttribute(ctx context.Context, input *ModifyDeploymentSetAttributeInput, optFns ...func(*Options)) (*ModifyDeploymentSetAttributeOutput, error) {
-	out, meta, err := invoke[ModifyDeploymentSetAttributeInput, ModifyDeploymentSetAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDeploymentSetAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyDeploymentSetAttributeInput, ModifyDeploymentSetAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDeploymentSetAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8578,7 +8578,7 @@ type ModifyDiagnosticMetricSetAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L41260
 func (c *Client) ModifyDiagnosticMetricSet(ctx context.Context, input *ModifyDiagnosticMetricSetInput, optFns ...func(*Options)) (*ModifyDiagnosticMetricSetOutput, error) {
-	out, meta, err := invoke[ModifyDiagnosticMetricSetInput, ModifyDiagnosticMetricSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiagnosticMetricSet", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyDiagnosticMetricSetInput, ModifyDiagnosticMetricSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiagnosticMetricSet", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8609,7 +8609,7 @@ type ModifyDiskAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L41371
 func (c *Client) ModifyDiskAttribute(ctx context.Context, input *ModifyDiskAttributeInput, optFns ...func(*Options)) (*ModifyDiskAttributeOutput, error) {
-	out, meta, err := invoke[ModifyDiskAttributeInput, ModifyDiskAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyDiskAttributeInput, ModifyDiskAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8647,7 +8647,7 @@ type ModifyDiskChargeTypeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L41490
 func (c *Client) ModifyDiskChargeType(ctx context.Context, input *ModifyDiskChargeTypeInput, optFns ...func(*Options)) (*ModifyDiskChargeTypeOutput, error) {
-	out, meta, err := invoke[ModifyDiskChargeTypeInput, ModifyDiskChargeTypeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskChargeType", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyDiskChargeTypeInput, ModifyDiskChargeTypeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskChargeType", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8680,7 +8680,7 @@ type ModifyDiskDefaultKMSKeyIdAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L41597
 func (c *Client) ModifyDiskDefaultKMSKeyId(ctx context.Context, input *ModifyDiskDefaultKMSKeyIdInput, optFns ...func(*Options)) (*ModifyDiskDefaultKMSKeyIdOutput, error) {
-	out, meta, err := invoke[ModifyDiskDefaultKMSKeyIdInput, ModifyDiskDefaultKMSKeyIdOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskDefaultKMSKeyId", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyDiskDefaultKMSKeyIdInput, ModifyDiskDefaultKMSKeyIdOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskDefaultKMSKeyId", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8722,7 +8722,7 @@ type ModifyDiskDeploymentAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L41694
 func (c *Client) ModifyDiskDeployment(ctx context.Context, input *ModifyDiskDeploymentInput, optFns ...func(*Options)) (*ModifyDiskDeploymentOutput, error) {
-	out, meta, err := invoke[ModifyDiskDeploymentInput, ModifyDiskDeploymentOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskDeployment", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[ModifyDiskDeploymentInput, ModifyDiskDeploymentOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskDeployment", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8768,7 +8768,7 @@ type ModifyDiskSpecAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L41867
 func (c *Client) ModifyDiskSpec(ctx context.Context, input *ModifyDiskSpecInput, optFns ...func(*Options)) (*ModifyDiskSpecOutput, error) {
-	out, meta, err := invoke[ModifyDiskSpecInput, ModifyDiskSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskSpec", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[ModifyDiskSpecInput, ModifyDiskSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyDiskSpec", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8793,7 +8793,7 @@ type ModifyEipAddressAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L41992
 func (c *Client) ModifyEipAddressAttribute(ctx context.Context, input *ModifyEipAddressAttributeInput, optFns ...func(*Options)) (*ModifyEipAddressAttributeOutput, error) {
-	out, meta, err := invoke[ModifyEipAddressAttributeInput, ModifyEipAddressAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyEipAddressAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyEipAddressAttributeInput, ModifyEipAddressAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyEipAddressAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8818,7 +8818,7 @@ type ModifyElasticityAssuranceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42107
 func (c *Client) ModifyElasticityAssurance(ctx context.Context, input *ModifyElasticityAssuranceInput, optFns ...func(*Options)) (*ModifyElasticityAssuranceOutput, error) {
-	out, meta, err := invoke[ModifyElasticityAssuranceInput, ModifyElasticityAssuranceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyElasticityAssurance", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyElasticityAssuranceInput, ModifyElasticityAssuranceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyElasticityAssurance", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8843,7 +8843,7 @@ type ModifyElasticityAssuranceAutoRenewAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42226
 func (c *Client) ModifyElasticityAssuranceAutoRenewAttribute(ctx context.Context, input *ModifyElasticityAssuranceAutoRenewAttributeInput, optFns ...func(*Options)) (*ModifyElasticityAssuranceAutoRenewAttributeOutput, error) {
-	out, meta, err := invoke[ModifyElasticityAssuranceAutoRenewAttributeInput, ModifyElasticityAssuranceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyElasticityAssuranceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyElasticityAssuranceAutoRenewAttributeInput, ModifyElasticityAssuranceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyElasticityAssuranceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8868,7 +8868,7 @@ type ModifyForwardEntryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42316
 func (c *Client) ModifyForwardEntry(ctx context.Context, input *ModifyForwardEntryInput, optFns ...func(*Options)) (*ModifyForwardEntryOutput, error) {
-	out, meta, err := invoke[ModifyForwardEntryInput, ModifyForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyForwardEntry", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyForwardEntryInput, ModifyForwardEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyForwardEntry", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8893,7 +8893,7 @@ type ModifyHaVipAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42417
 func (c *Client) ModifyHaVipAttribute(ctx context.Context, input *ModifyHaVipAttributeInput, optFns ...func(*Options)) (*ModifyHaVipAttributeOutput, error) {
-	out, meta, err := invoke[ModifyHaVipAttributeInput, ModifyHaVipAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyHaVipAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyHaVipAttributeInput, ModifyHaVipAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyHaVipAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8918,7 +8918,7 @@ type ModifyHpcClusterAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42515
 func (c *Client) ModifyHpcClusterAttribute(ctx context.Context, input *ModifyHpcClusterAttributeInput, optFns ...func(*Options)) (*ModifyHpcClusterAttributeOutput, error) {
-	out, meta, err := invoke[ModifyHpcClusterAttributeInput, ModifyHpcClusterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyHpcClusterAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyHpcClusterAttributeInput, ModifyHpcClusterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyHpcClusterAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8943,7 +8943,7 @@ type ModifyImageAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42648
 func (c *Client) ModifyImageAttribute(ctx context.Context, input *ModifyImageAttributeInput, optFns ...func(*Options)) (*ModifyImageAttributeOutput, error) {
-	out, meta, err := invoke[ModifyImageAttributeInput, ModifyImageAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyImageAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyImageAttributeInput, ModifyImageAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyImageAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8968,7 +8968,7 @@ type ModifyImageShareGroupPermissionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42749
 func (c *Client) ModifyImageShareGroupPermission(ctx context.Context, input *ModifyImageShareGroupPermissionInput, optFns ...func(*Options)) (*ModifyImageShareGroupPermissionOutput, error) {
-	out, meta, err := invoke[ModifyImageShareGroupPermissionInput, ModifyImageShareGroupPermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyImageShareGroupPermission", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyImageShareGroupPermissionInput, ModifyImageShareGroupPermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyImageShareGroupPermission", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9009,7 +9009,7 @@ type ModifyImageSharePermissionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42852
 func (c *Client) ModifyImageSharePermission(ctx context.Context, input *ModifyImageSharePermissionInput, optFns ...func(*Options)) (*ModifyImageSharePermissionOutput, error) {
-	out, meta, err := invoke[ModifyImageSharePermissionInput, ModifyImageSharePermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyImageSharePermission", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyImageSharePermissionInput, ModifyImageSharePermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyImageSharePermission", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9047,7 +9047,7 @@ type ModifyInstanceAttachmentAttributesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42983
 func (c *Client) ModifyInstanceAttachmentAttributes(ctx context.Context, input *ModifyInstanceAttachmentAttributesInput, optFns ...func(*Options)) (*ModifyInstanceAttachmentAttributesOutput, error) {
-	out, meta, err := invoke[ModifyInstanceAttachmentAttributesInput, ModifyInstanceAttachmentAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceAttachmentAttributes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyInstanceAttachmentAttributesInput, ModifyInstanceAttachmentAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceAttachmentAttributes", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9078,7 +9078,7 @@ type ModifyInstanceAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L43206
 func (c *Client) ModifyInstanceAttribute(ctx context.Context, input *ModifyInstanceAttributeInput, optFns ...func(*Options)) (*ModifyInstanceAttributeOutput, error) {
-	out, meta, err := invoke[ModifyInstanceAttributeInput, ModifyInstanceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceAttribute", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[ModifyInstanceAttributeInput, ModifyInstanceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceAttribute", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9103,7 +9103,7 @@ type ModifyInstanceAutoReleaseTimeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L43338
 func (c *Client) ModifyInstanceAutoReleaseTime(ctx context.Context, input *ModifyInstanceAutoReleaseTimeInput, optFns ...func(*Options)) (*ModifyInstanceAutoReleaseTimeOutput, error) {
-	out, meta, err := invoke[ModifyInstanceAutoReleaseTimeInput, ModifyInstanceAutoReleaseTimeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceAutoReleaseTime", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyInstanceAutoReleaseTimeInput, ModifyInstanceAutoReleaseTimeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceAutoReleaseTime", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9140,7 +9140,7 @@ type ModifyInstanceAutoRenewAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L43471
 func (c *Client) ModifyInstanceAutoRenewAttribute(ctx context.Context, input *ModifyInstanceAutoRenewAttributeInput, optFns ...func(*Options)) (*ModifyInstanceAutoRenewAttributeOutput, error) {
-	out, meta, err := invoke[ModifyInstanceAutoRenewAttributeInput, ModifyInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyInstanceAutoRenewAttributeInput, ModifyInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9185,7 +9185,7 @@ type ModifyInstanceChargeTypeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L43642
 func (c *Client) ModifyInstanceChargeType(ctx context.Context, input *ModifyInstanceChargeTypeInput, optFns ...func(*Options)) (*ModifyInstanceChargeTypeOutput, error) {
-	out, meta, err := invoke[ModifyInstanceChargeTypeInput, ModifyInstanceChargeTypeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceChargeType", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyInstanceChargeTypeInput, ModifyInstanceChargeTypeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceChargeType", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9218,7 +9218,7 @@ type ModifyInstanceClockOptionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L43795
 func (c *Client) ModifyInstanceClockOptions(ctx context.Context, input *ModifyInstanceClockOptionsInput, optFns ...func(*Options)) (*ModifyInstanceClockOptionsOutput, error) {
-	out, meta, err := invoke[ModifyInstanceClockOptionsInput, ModifyInstanceClockOptionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceClockOptions", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyInstanceClockOptionsInput, ModifyInstanceClockOptionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceClockOptions", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9255,7 +9255,7 @@ type ModifyInstanceDeploymentAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L43944
 func (c *Client) ModifyInstanceDeployment(ctx context.Context, input *ModifyInstanceDeploymentInput, optFns ...func(*Options)) (*ModifyInstanceDeploymentOutput, error) {
-	out, meta, err := invoke[ModifyInstanceDeploymentInput, ModifyInstanceDeploymentOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceDeployment", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyInstanceDeploymentInput, ModifyInstanceDeploymentOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceDeployment", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9288,7 +9288,7 @@ type ModifyInstanceMaintenanceAttributesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L44084
 func (c *Client) ModifyInstanceMaintenanceAttributes(ctx context.Context, input *ModifyInstanceMaintenanceAttributesInput, optFns ...func(*Options)) (*ModifyInstanceMaintenanceAttributesOutput, error) {
-	out, meta, err := invoke[ModifyInstanceMaintenanceAttributesInput, ModifyInstanceMaintenanceAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceMaintenanceAttributes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyInstanceMaintenanceAttributesInput, ModifyInstanceMaintenanceAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceMaintenanceAttributes", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9313,7 +9313,7 @@ type ModifyInstanceMetadataOptionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L44203
 func (c *Client) ModifyInstanceMetadataOptions(ctx context.Context, input *ModifyInstanceMetadataOptionsInput, optFns ...func(*Options)) (*ModifyInstanceMetadataOptionsOutput, error) {
-	out, meta, err := invoke[ModifyInstanceMetadataOptionsInput, ModifyInstanceMetadataOptionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceMetadataOptions", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyInstanceMetadataOptionsInput, ModifyInstanceMetadataOptionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceMetadataOptions", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9347,7 +9347,7 @@ type ModifyInstanceNetworkOptionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L44291
 func (c *Client) ModifyInstanceNetworkOptions(ctx context.Context, input *ModifyInstanceNetworkOptionsInput, optFns ...func(*Options)) (*ModifyInstanceNetworkOptionsOutput, error) {
-	out, meta, err := invoke[ModifyInstanceNetworkOptionsInput, ModifyInstanceNetworkOptionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceNetworkOptions", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[ModifyInstanceNetworkOptionsInput, ModifyInstanceNetworkOptionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceNetworkOptions", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9385,7 +9385,7 @@ type ModifyInstanceNetworkSpecAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L44422
 func (c *Client) ModifyInstanceNetworkSpec(ctx context.Context, input *ModifyInstanceNetworkSpecInput, optFns ...func(*Options)) (*ModifyInstanceNetworkSpecOutput, error) {
-	out, meta, err := invoke[ModifyInstanceNetworkSpecInput, ModifyInstanceNetworkSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceNetworkSpec", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[ModifyInstanceNetworkSpecInput, ModifyInstanceNetworkSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceNetworkSpec", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9410,7 +9410,7 @@ type ModifyInstanceSecurityOptionsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L44553
 func (c *Client) ModifyInstanceSecurityOptions(ctx context.Context, input *ModifyInstanceSecurityOptionsInput, optFns ...func(*Options)) (*ModifyInstanceSecurityOptionsOutput, error) {
-	out, meta, err := invoke[ModifyInstanceSecurityOptionsInput, ModifyInstanceSecurityOptionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceSecurityOptions", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyInstanceSecurityOptionsInput, ModifyInstanceSecurityOptionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceSecurityOptions", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9451,7 +9451,7 @@ type ModifyInstanceSpecAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L44689
 func (c *Client) ModifyInstanceSpec(ctx context.Context, input *ModifyInstanceSpecInput, optFns ...func(*Options)) (*ModifyInstanceSpecOutput, error) {
-	out, meta, err := invoke[ModifyInstanceSpecInput, ModifyInstanceSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceSpec", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[ModifyInstanceSpecInput, ModifyInstanceSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceSpec", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9485,7 +9485,7 @@ type ModifyInstanceVncPasswdAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L44825
 func (c *Client) ModifyInstanceVncPasswd(ctx context.Context, input *ModifyInstanceVncPasswdInput, optFns ...func(*Options)) (*ModifyInstanceVncPasswdOutput, error) {
-	out, meta, err := invoke[ModifyInstanceVncPasswdInput, ModifyInstanceVncPasswdOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceVncPasswd", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyInstanceVncPasswdInput, ModifyInstanceVncPasswdOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceVncPasswd", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9537,7 +9537,7 @@ type ModifyInstanceVpcAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L44936
 func (c *Client) ModifyInstanceVpcAttribute(ctx context.Context, input *ModifyInstanceVpcAttributeInput, optFns ...func(*Options)) (*ModifyInstanceVpcAttributeOutput, error) {
-	out, meta, err := invoke[ModifyInstanceVpcAttributeInput, ModifyInstanceVpcAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceVpcAttribute", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[ModifyInstanceVpcAttributeInput, ModifyInstanceVpcAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInstanceVpcAttribute", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9582,7 +9582,7 @@ type ModifyInvocationAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45221
 func (c *Client) ModifyInvocationAttribute(ctx context.Context, input *ModifyInvocationAttributeInput, optFns ...func(*Options)) (*ModifyInvocationAttributeOutput, error) {
-	out, meta, err := invoke[ModifyInvocationAttributeInput, ModifyInvocationAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInvocationAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyInvocationAttributeInput, ModifyInvocationAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInvocationAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9607,7 +9607,7 @@ type ModifyLaunchTemplateDefaultVersionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45364
 func (c *Client) ModifyLaunchTemplateDefaultVersion(ctx context.Context, input *ModifyLaunchTemplateDefaultVersionInput, optFns ...func(*Options)) (*ModifyLaunchTemplateDefaultVersionOutput, error) {
-	out, meta, err := invoke[ModifyLaunchTemplateDefaultVersionInput, ModifyLaunchTemplateDefaultVersionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyLaunchTemplateDefaultVersion", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyLaunchTemplateDefaultVersionInput, ModifyLaunchTemplateDefaultVersionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyLaunchTemplateDefaultVersion", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9639,7 +9639,7 @@ type ModifyManagedInstanceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45458
 func (c *Client) ModifyManagedInstance(ctx context.Context, input *ModifyManagedInstanceInput, optFns ...func(*Options)) (*ModifyManagedInstanceOutput, error) {
-	out, meta, err := invoke[ModifyManagedInstanceInput, ModifyManagedInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyManagedInstance", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyManagedInstanceInput, ModifyManagedInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyManagedInstance", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9664,7 +9664,7 @@ type ModifyNetworkInterfaceAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45662
 func (c *Client) ModifyNetworkInterfaceAttribute(ctx context.Context, input *ModifyNetworkInterfaceAttributeInput, optFns ...func(*Options)) (*ModifyNetworkInterfaceAttributeOutput, error) {
-	out, meta, err := invoke[ModifyNetworkInterfaceAttributeInput, ModifyNetworkInterfaceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyNetworkInterfaceAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyNetworkInterfaceAttributeInput, ModifyNetworkInterfaceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyNetworkInterfaceAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9689,7 +9689,7 @@ type ModifyPhysicalConnectionAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45786
 func (c *Client) ModifyPhysicalConnectionAttribute(ctx context.Context, input *ModifyPhysicalConnectionAttributeInput, optFns ...func(*Options)) (*ModifyPhysicalConnectionAttributeOutput, error) {
-	out, meta, err := invoke[ModifyPhysicalConnectionAttributeInput, ModifyPhysicalConnectionAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyPhysicalConnectionAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyPhysicalConnectionAttributeInput, ModifyPhysicalConnectionAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyPhysicalConnectionAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9720,7 +9720,7 @@ type ModifyPlanMaintenanceWindowAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45946
 func (c *Client) ModifyPlanMaintenanceWindow(ctx context.Context, input *ModifyPlanMaintenanceWindowInput, optFns ...func(*Options)) (*ModifyPlanMaintenanceWindowOutput, error) {
-	out, meta, err := invoke[ModifyPlanMaintenanceWindowInput, ModifyPlanMaintenanceWindowOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyPlanMaintenanceWindow", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyPlanMaintenanceWindowInput, ModifyPlanMaintenanceWindowOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyPlanMaintenanceWindow", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9745,7 +9745,7 @@ type ModifyPortRangeListAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46067
 func (c *Client) ModifyPortRangeList(ctx context.Context, input *ModifyPortRangeListInput, optFns ...func(*Options)) (*ModifyPortRangeListOutput, error) {
-	out, meta, err := invoke[ModifyPortRangeListInput, ModifyPortRangeListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyPortRangeList", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyPortRangeListInput, ModifyPortRangeListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyPortRangeList", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9782,7 +9782,7 @@ type ModifyPrefixListAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46190
 func (c *Client) ModifyPrefixList(ctx context.Context, input *ModifyPrefixListInput, optFns ...func(*Options)) (*ModifyPrefixListOutput, error) {
-	out, meta, err := invoke[ModifyPrefixListInput, ModifyPrefixListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyPrefixList", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyPrefixListInput, ModifyPrefixListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyPrefixList", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9827,7 +9827,7 @@ type ModifyPrepayInstanceSpecAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46356
 func (c *Client) ModifyPrepayInstanceSpec(ctx context.Context, input *ModifyPrepayInstanceSpecInput, optFns ...func(*Options)) (*ModifyPrepayInstanceSpecOutput, error) {
-	out, meta, err := invoke[ModifyPrepayInstanceSpecInput, ModifyPrepayInstanceSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyPrepayInstanceSpec", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyPrepayInstanceSpecInput, ModifyPrepayInstanceSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyPrepayInstanceSpec", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9852,7 +9852,7 @@ type ModifyReservedInstanceAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46507
 func (c *Client) ModifyReservedInstanceAttribute(ctx context.Context, input *ModifyReservedInstanceAttributeInput, optFns ...func(*Options)) (*ModifyReservedInstanceAttributeOutput, error) {
-	out, meta, err := invoke[ModifyReservedInstanceAttributeInput, ModifyReservedInstanceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyReservedInstanceAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyReservedInstanceAttributeInput, ModifyReservedInstanceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyReservedInstanceAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9877,7 +9877,7 @@ type ModifyReservedInstanceAutoRenewAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46610
 func (c *Client) ModifyReservedInstanceAutoRenewAttribute(ctx context.Context, input *ModifyReservedInstanceAutoRenewAttributeInput, optFns ...func(*Options)) (*ModifyReservedInstanceAutoRenewAttributeOutput, error) {
-	out, meta, err := invoke[ModifyReservedInstanceAutoRenewAttributeInput, ModifyReservedInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyReservedInstanceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyReservedInstanceAutoRenewAttributeInput, ModifyReservedInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyReservedInstanceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9958,7 +9958,7 @@ type ModifyReservedInstancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46725
 func (c *Client) ModifyReservedInstances(ctx context.Context, input *ModifyReservedInstancesInput, optFns ...func(*Options)) (*ModifyReservedInstancesOutput, error) {
-	out, meta, err := invoke[ModifyReservedInstancesInput, ModifyReservedInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyReservedInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyReservedInstancesInput, ModifyReservedInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyReservedInstances", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -9983,7 +9983,7 @@ type ModifyRouterInterfaceAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46916
 func (c *Client) ModifyRouterInterfaceAttribute(ctx context.Context, input *ModifyRouterInterfaceAttributeInput, optFns ...func(*Options)) (*ModifyRouterInterfaceAttributeOutput, error) {
-	out, meta, err := invoke[ModifyRouterInterfaceAttributeInput, ModifyRouterInterfaceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyRouterInterfaceAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyRouterInterfaceAttributeInput, ModifyRouterInterfaceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyRouterInterfaceAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10008,7 +10008,7 @@ type ModifyRouterInterfaceSpecAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47022
 func (c *Client) ModifyRouterInterfaceSpec(ctx context.Context, input *ModifyRouterInterfaceSpecInput, optFns ...func(*Options)) (*ModifyRouterInterfaceSpecOutput, error) {
-	out, meta, err := invoke[ModifyRouterInterfaceSpecInput, ModifyRouterInterfaceSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyRouterInterfaceSpec", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyRouterInterfaceSpecInput, ModifyRouterInterfaceSpecOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyRouterInterfaceSpec", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10033,7 +10033,7 @@ type ModifySecurityGroupAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47122
 func (c *Client) ModifySecurityGroupAttribute(ctx context.Context, input *ModifySecurityGroupAttributeInput, optFns ...func(*Options)) (*ModifySecurityGroupAttributeOutput, error) {
-	out, meta, err := invoke[ModifySecurityGroupAttributeInput, ModifySecurityGroupAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySecurityGroupAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifySecurityGroupAttributeInput, ModifySecurityGroupAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySecurityGroupAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10066,7 +10066,7 @@ type ModifySecurityGroupEgressRuleAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47281
 func (c *Client) ModifySecurityGroupEgressRule(ctx context.Context, input *ModifySecurityGroupEgressRuleInput, optFns ...func(*Options)) (*ModifySecurityGroupEgressRuleOutput, error) {
-	out, meta, err := invoke[ModifySecurityGroupEgressRuleInput, ModifySecurityGroupEgressRuleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySecurityGroupEgressRule", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifySecurityGroupEgressRuleInput, ModifySecurityGroupEgressRuleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySecurityGroupEgressRule", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10100,7 +10100,7 @@ type ModifySecurityGroupPolicyAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47434
 func (c *Client) ModifySecurityGroupPolicy(ctx context.Context, input *ModifySecurityGroupPolicyInput, optFns ...func(*Options)) (*ModifySecurityGroupPolicyOutput, error) {
-	out, meta, err := invoke[ModifySecurityGroupPolicyInput, ModifySecurityGroupPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySecurityGroupPolicy", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifySecurityGroupPolicyInput, ModifySecurityGroupPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySecurityGroupPolicy", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10133,7 +10133,7 @@ type ModifySecurityGroupRuleAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47609
 func (c *Client) ModifySecurityGroupRule(ctx context.Context, input *ModifySecurityGroupRuleInput, optFns ...func(*Options)) (*ModifySecurityGroupRuleOutput, error) {
-	out, meta, err := invoke[ModifySecurityGroupRuleInput, ModifySecurityGroupRuleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySecurityGroupRule", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifySecurityGroupRuleInput, ModifySecurityGroupRuleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySecurityGroupRule", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10158,7 +10158,7 @@ type ModifySnapshotAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47765
 func (c *Client) ModifySnapshotAttribute(ctx context.Context, input *ModifySnapshotAttributeInput, optFns ...func(*Options)) (*ModifySnapshotAttributeOutput, error) {
-	out, meta, err := invoke[ModifySnapshotAttributeInput, ModifySnapshotAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySnapshotAttribute", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[ModifySnapshotAttributeInput, ModifySnapshotAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySnapshotAttribute", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10193,7 +10193,7 @@ type ModifySnapshotCategoryAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47861
 func (c *Client) ModifySnapshotCategory(ctx context.Context, input *ModifySnapshotCategoryInput, optFns ...func(*Options)) (*ModifySnapshotCategoryOutput, error) {
-	out, meta, err := invoke[ModifySnapshotCategoryInput, ModifySnapshotCategoryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySnapshotCategory", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[ModifySnapshotCategoryInput, ModifySnapshotCategoryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySnapshotCategory", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10218,7 +10218,7 @@ type ModifySnapshotGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47957
 func (c *Client) ModifySnapshotGroup(ctx context.Context, input *ModifySnapshotGroupInput, optFns ...func(*Options)) (*ModifySnapshotGroupOutput, error) {
-	out, meta, err := invoke[ModifySnapshotGroupInput, ModifySnapshotGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySnapshotGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifySnapshotGroupInput, ModifySnapshotGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySnapshotGroup", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10243,7 +10243,7 @@ type ModifyStorageCapacityUnitAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48044
 func (c *Client) ModifyStorageCapacityUnitAttribute(ctx context.Context, input *ModifyStorageCapacityUnitAttributeInput, optFns ...func(*Options)) (*ModifyStorageCapacityUnitAttributeOutput, error) {
-	out, meta, err := invoke[ModifyStorageCapacityUnitAttributeInput, ModifyStorageCapacityUnitAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyStorageCapacityUnitAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyStorageCapacityUnitAttributeInput, ModifyStorageCapacityUnitAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyStorageCapacityUnitAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10262,7 +10262,7 @@ type ModifyStorageSetAttributeAPI interface {
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
 func (c *Client) ModifyStorageSetAttribute(ctx context.Context, input *ModifyStorageSetAttributeInput, optFns ...func(*Options)) (*ModifyStorageSetAttributeOutput, error) {
-	out, meta, err := invoke[ModifyStorageSetAttributeInput, ModifyStorageSetAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyStorageSetAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyStorageSetAttributeInput, ModifyStorageSetAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyStorageSetAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10296,7 +10296,7 @@ type ModifySystemEventAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48218
 func (c *Client) ModifySystemEventAttribute(ctx context.Context, input *ModifySystemEventAttributeInput, optFns ...func(*Options)) (*ModifySystemEventAttributeOutput, error) {
-	out, meta, err := invoke[ModifySystemEventAttributeInput, ModifySystemEventAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySystemEventAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifySystemEventAttributeInput, ModifySystemEventAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySystemEventAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10321,7 +10321,7 @@ type ModifyUserBusinessBehaviorAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48298
 func (c *Client) ModifyUserBusinessBehavior(ctx context.Context, input *ModifyUserBusinessBehaviorInput, optFns ...func(*Options)) (*ModifyUserBusinessBehaviorOutput, error) {
-	out, meta, err := invoke[ModifyUserBusinessBehaviorInput, ModifyUserBusinessBehaviorOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyUserBusinessBehavior", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyUserBusinessBehaviorInput, ModifyUserBusinessBehaviorOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyUserBusinessBehavior", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10346,7 +10346,7 @@ type ModifyVRouterAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48384
 func (c *Client) ModifyVRouterAttribute(ctx context.Context, input *ModifyVRouterAttributeInput, optFns ...func(*Options)) (*ModifyVRouterAttributeOutput, error) {
-	out, meta, err := invoke[ModifyVRouterAttributeInput, ModifyVRouterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyVRouterAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyVRouterAttributeInput, ModifyVRouterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyVRouterAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10371,7 +10371,7 @@ type ModifyVSwitchAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48473
 func (c *Client) ModifyVSwitchAttribute(ctx context.Context, input *ModifyVSwitchAttributeInput, optFns ...func(*Options)) (*ModifyVSwitchAttributeOutput, error) {
-	out, meta, err := invoke[ModifyVSwitchAttributeInput, ModifyVSwitchAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyVSwitchAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyVSwitchAttributeInput, ModifyVSwitchAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyVSwitchAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10396,7 +10396,7 @@ type ModifyVirtualBorderRouterAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48569
 func (c *Client) ModifyVirtualBorderRouterAttribute(ctx context.Context, input *ModifyVirtualBorderRouterAttributeInput, optFns ...func(*Options)) (*ModifyVirtualBorderRouterAttributeOutput, error) {
-	out, meta, err := invoke[ModifyVirtualBorderRouterAttributeInput, ModifyVirtualBorderRouterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyVirtualBorderRouterAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyVirtualBorderRouterAttributeInput, ModifyVirtualBorderRouterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyVirtualBorderRouterAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10421,7 +10421,7 @@ type ModifyVpcAttributeAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48681
 func (c *Client) ModifyVpcAttribute(ctx context.Context, input *ModifyVpcAttributeInput, optFns ...func(*Options)) (*ModifyVpcAttributeOutput, error) {
-	out, meta, err := invoke[ModifyVpcAttributeInput, ModifyVpcAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyVpcAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ModifyVpcAttributeInput, ModifyVpcAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyVpcAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10446,7 +10446,7 @@ type OpenSnapshotServiceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48774
 func (c *Client) OpenSnapshotService(ctx context.Context, input *OpenSnapshotServiceInput, optFns ...func(*Options)) (*OpenSnapshotServiceOutput, error) {
-	out, meta, err := invoke[OpenSnapshotServiceInput, OpenSnapshotServiceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "OpenSnapshotService", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[OpenSnapshotServiceInput, OpenSnapshotServiceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "OpenSnapshotService", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10506,7 +10506,7 @@ type PurchaseReservedInstancesOfferingAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48928
 func (c *Client) PurchaseReservedInstancesOffering(ctx context.Context, input *PurchaseReservedInstancesOfferingInput, optFns ...func(*Options)) (*PurchaseReservedInstancesOfferingOutput, error) {
-	out, meta, err := invoke[PurchaseReservedInstancesOfferingInput, PurchaseReservedInstancesOfferingOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "PurchaseReservedInstancesOffering", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[PurchaseReservedInstancesOfferingInput, PurchaseReservedInstancesOfferingOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "PurchaseReservedInstancesOffering", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10540,7 +10540,7 @@ type PurchaseStorageCapacityUnitAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L49149
 func (c *Client) PurchaseStorageCapacityUnit(ctx context.Context, input *PurchaseStorageCapacityUnitInput, optFns ...func(*Options)) (*PurchaseStorageCapacityUnitOutput, error) {
-	out, meta, err := invoke[PurchaseStorageCapacityUnitInput, PurchaseStorageCapacityUnitOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "PurchaseStorageCapacityUnit", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[PurchaseStorageCapacityUnitInput, PurchaseStorageCapacityUnitOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "PurchaseStorageCapacityUnit", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10575,7 +10575,7 @@ type ReActivateInstancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L49266
 func (c *Client) ReActivateInstances(ctx context.Context, input *ReActivateInstancesInput, optFns ...func(*Options)) (*ReActivateInstancesOutput, error) {
-	out, meta, err := invoke[ReActivateInstancesInput, ReActivateInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReActivateInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ReActivateInstancesInput, ReActivateInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReActivateInstances", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10612,7 +10612,7 @@ type ReInitDiskAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L49379
 func (c *Client) ReInitDisk(ctx context.Context, input *ReInitDiskInput, optFns ...func(*Options)) (*ReInitDiskOutput, error) {
-	out, meta, err := invoke[ReInitDiskInput, ReInitDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReInitDisk", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[ReInitDiskInput, ReInitDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReInitDisk", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10646,7 +10646,7 @@ type RebootInstanceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L49493
 func (c *Client) RebootInstance(ctx context.Context, input *RebootInstanceInput, optFns ...func(*Options)) (*RebootInstanceOutput, error) {
-	out, meta, err := invoke[RebootInstanceInput, RebootInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RebootInstance", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[RebootInstanceInput, RebootInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RebootInstance", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10680,7 +10680,7 @@ type RebootInstancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L49618
 func (c *Client) RebootInstances(ctx context.Context, input *RebootInstancesInput, optFns ...func(*Options)) (*RebootInstancesOutput, error) {
-	out, meta, err := invoke[RebootInstancesInput, RebootInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RebootInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RebootInstancesInput, RebootInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RebootInstances", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10705,7 +10705,7 @@ type RecoverVirtualBorderRouterAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L49714
 func (c *Client) RecoverVirtualBorderRouter(ctx context.Context, input *RecoverVirtualBorderRouterInput, optFns ...func(*Options)) (*RecoverVirtualBorderRouterOutput, error) {
-	out, meta, err := invoke[RecoverVirtualBorderRouterInput, RecoverVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RecoverVirtualBorderRouter", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RecoverVirtualBorderRouterInput, RecoverVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RecoverVirtualBorderRouter", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10736,7 +10736,7 @@ type RedeployDedicatedHostAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L49812
 func (c *Client) RedeployDedicatedHost(ctx context.Context, input *RedeployDedicatedHostInput, optFns ...func(*Options)) (*RedeployDedicatedHostOutput, error) {
-	out, meta, err := invoke[RedeployDedicatedHostInput, RedeployDedicatedHostOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RedeployDedicatedHost", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RedeployDedicatedHostInput, RedeployDedicatedHostOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RedeployDedicatedHost", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10788,7 +10788,7 @@ type RedeployInstanceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L49903
 func (c *Client) RedeployInstance(ctx context.Context, input *RedeployInstanceInput, optFns ...func(*Options)) (*RedeployInstanceOutput, error) {
-	out, meta, err := invoke[RedeployInstanceInput, RedeployInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RedeployInstance", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[RedeployInstanceInput, RedeployInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RedeployInstance", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10819,7 +10819,7 @@ type ReleaseCapacityReservationAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L50031
 func (c *Client) ReleaseCapacityReservation(ctx context.Context, input *ReleaseCapacityReservationInput, optFns ...func(*Options)) (*ReleaseCapacityReservationOutput, error) {
-	out, meta, err := invoke[ReleaseCapacityReservationInput, ReleaseCapacityReservationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReleaseCapacityReservation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ReleaseCapacityReservationInput, ReleaseCapacityReservationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReleaseCapacityReservation", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10850,7 +10850,7 @@ type ReleaseDedicatedHostAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L50123
 func (c *Client) ReleaseDedicatedHost(ctx context.Context, input *ReleaseDedicatedHostInput, optFns ...func(*Options)) (*ReleaseDedicatedHostOutput, error) {
-	out, meta, err := invoke[ReleaseDedicatedHostInput, ReleaseDedicatedHostOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReleaseDedicatedHost", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ReleaseDedicatedHostInput, ReleaseDedicatedHostOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReleaseDedicatedHost", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10875,7 +10875,7 @@ type ReleaseEipAddressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L50205
 func (c *Client) ReleaseEipAddress(ctx context.Context, input *ReleaseEipAddressInput, optFns ...func(*Options)) (*ReleaseEipAddressOutput, error) {
-	out, meta, err := invoke[ReleaseEipAddressInput, ReleaseEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReleaseEipAddress", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ReleaseEipAddressInput, ReleaseEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReleaseEipAddress", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10900,7 +10900,7 @@ type ReleasePublicIpAddressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L50287
 func (c *Client) ReleasePublicIpAddress(ctx context.Context, input *ReleasePublicIpAddressInput, optFns ...func(*Options)) (*ReleasePublicIpAddressOutput, error) {
-	out, meta, err := invoke[ReleasePublicIpAddressInput, ReleasePublicIpAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReleasePublicIpAddress", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ReleasePublicIpAddressInput, ReleasePublicIpAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReleasePublicIpAddress", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10925,7 +10925,7 @@ type RemoveBandwidthPackageIpsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L50364
 func (c *Client) RemoveBandwidthPackageIps(ctx context.Context, input *RemoveBandwidthPackageIpsInput, optFns ...func(*Options)) (*RemoveBandwidthPackageIpsOutput, error) {
-	out, meta, err := invoke[RemoveBandwidthPackageIpsInput, RemoveBandwidthPackageIpsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RemoveBandwidthPackageIps", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RemoveBandwidthPackageIpsInput, RemoveBandwidthPackageIpsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RemoveBandwidthPackageIps", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10950,7 +10950,7 @@ type RemoveTagsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L50472
 func (c *Client) RemoveTags(ctx context.Context, input *RemoveTagsInput, optFns ...func(*Options)) (*RemoveTagsOutput, error) {
-	out, meta, err := invoke[RemoveTagsInput, RemoveTagsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RemoveTags", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RemoveTagsInput, RemoveTagsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RemoveTags", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -10983,7 +10983,7 @@ type RenewDedicatedHostsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L50592
 func (c *Client) RenewDedicatedHosts(ctx context.Context, input *RenewDedicatedHostsInput, optFns ...func(*Options)) (*RenewDedicatedHostsOutput, error) {
-	out, meta, err := invoke[RenewDedicatedHostsInput, RenewDedicatedHostsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RenewDedicatedHosts", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RenewDedicatedHostsInput, RenewDedicatedHostsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RenewDedicatedHosts", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11008,7 +11008,7 @@ type RenewElasticityAssurancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L50738
 func (c *Client) RenewElasticityAssurances(ctx context.Context, input *RenewElasticityAssurancesInput, optFns ...func(*Options)) (*RenewElasticityAssurancesOutput, error) {
-	out, meta, err := invoke[RenewElasticityAssurancesInput, RenewElasticityAssurancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RenewElasticityAssurances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RenewElasticityAssurancesInput, RenewElasticityAssurancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RenewElasticityAssurances", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11042,7 +11042,7 @@ type RenewInstanceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L50861
 func (c *Client) RenewInstance(ctx context.Context, input *RenewInstanceInput, optFns ...func(*Options)) (*RenewInstanceOutput, error) {
-	out, meta, err := invoke[RenewInstanceInput, RenewInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RenewInstance", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[RenewInstanceInput, RenewInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RenewInstance", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11079,7 +11079,7 @@ type RenewReservedInstancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51001
 func (c *Client) RenewReservedInstances(ctx context.Context, input *RenewReservedInstancesInput, optFns ...func(*Options)) (*RenewReservedInstancesOutput, error) {
-	out, meta, err := invoke[RenewReservedInstancesInput, RenewReservedInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RenewReservedInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RenewReservedInstancesInput, RenewReservedInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RenewReservedInstances", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11120,7 +11120,7 @@ type ReplaceSystemDiskAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51179
 func (c *Client) ReplaceSystemDisk(ctx context.Context, input *ReplaceSystemDiskInput, optFns ...func(*Options)) (*ReplaceSystemDiskOutput, error) {
-	out, meta, err := invoke[ReplaceSystemDiskInput, ReplaceSystemDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReplaceSystemDisk", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[ReplaceSystemDiskInput, ReplaceSystemDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReplaceSystemDisk", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11145,7 +11145,7 @@ type ReportInstancesStatusAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51355
 func (c *Client) ReportInstancesStatus(ctx context.Context, input *ReportInstancesStatusInput, optFns ...func(*Options)) (*ReportInstancesStatusOutput, error) {
-	out, meta, err := invoke[ReportInstancesStatusInput, ReportInstancesStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReportInstancesStatus", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ReportInstancesStatusInput, ReportInstancesStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReportInstancesStatus", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11181,7 +11181,7 @@ type ResetDiskAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51464
 func (c *Client) ResetDisk(ctx context.Context, input *ResetDiskInput, optFns ...func(*Options)) (*ResetDiskOutput, error) {
-	out, meta, err := invoke[ResetDiskInput, ResetDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ResetDisk", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[ResetDiskInput, ResetDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ResetDisk", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11213,7 +11213,7 @@ type ResetDiskDefaultKMSKeyIdAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51555
 func (c *Client) ResetDiskDefaultKMSKeyId(ctx context.Context, input *ResetDiskDefaultKMSKeyIdInput, optFns ...func(*Options)) (*ResetDiskDefaultKMSKeyIdOutput, error) {
-	out, meta, err := invoke[ResetDiskDefaultKMSKeyIdInput, ResetDiskDefaultKMSKeyIdOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ResetDiskDefaultKMSKeyId", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ResetDiskDefaultKMSKeyIdInput, ResetDiskDefaultKMSKeyIdOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ResetDiskDefaultKMSKeyId", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11244,7 +11244,7 @@ type ResetDisksAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51659
 func (c *Client) ResetDisks(ctx context.Context, input *ResetDisksInput, optFns ...func(*Options)) (*ResetDisksOutput, error) {
-	out, meta, err := invoke[ResetDisksInput, ResetDisksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ResetDisks", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[ResetDisksInput, ResetDisksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ResetDisks", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11285,7 +11285,7 @@ type ResizeDiskAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51781
 func (c *Client) ResizeDisk(ctx context.Context, input *ResizeDiskInput, optFns ...func(*Options)) (*ResizeDiskOutput, error) {
-	out, meta, err := invoke[ResizeDiskInput, ResizeDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ResizeDisk", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[ResizeDiskInput, ResizeDiskOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ResizeDisk", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11368,7 +11368,7 @@ type RevokeSecurityGroupAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51995
 func (c *Client) RevokeSecurityGroup(ctx context.Context, input *RevokeSecurityGroupInput, optFns ...func(*Options)) (*RevokeSecurityGroupOutput, error) {
-	out, meta, err := invoke[RevokeSecurityGroupInput, RevokeSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RevokeSecurityGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RevokeSecurityGroupInput, RevokeSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RevokeSecurityGroup", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11451,7 +11451,7 @@ type RevokeSecurityGroupEgressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L52348
 func (c *Client) RevokeSecurityGroupEgress(ctx context.Context, input *RevokeSecurityGroupEgressInput, optFns ...func(*Options)) (*RevokeSecurityGroupEgressOutput, error) {
-	out, meta, err := invoke[RevokeSecurityGroupEgressInput, RevokeSecurityGroupEgressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RevokeSecurityGroupEgress", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RevokeSecurityGroupEgressInput, RevokeSecurityGroupEgressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RevokeSecurityGroupEgress", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11493,7 +11493,7 @@ type RunCommandAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L52982
 func (c *Client) RunCommand(ctx context.Context, input *RunCommandInput, optFns ...func(*Options)) (*RunCommandOutput, error) {
-	out, meta, err := invoke[RunCommandInput, RunCommandOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RunCommand", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RunCommandInput, RunCommandOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RunCommand", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11616,7 +11616,7 @@ type RunInstancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L54013
 func (c *Client) RunInstances(ctx context.Context, input *RunInstancesInput, optFns ...func(*Options)) (*RunInstancesOutput, error) {
-	out, meta, err := invoke[RunInstancesInput, RunInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RunInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[RunInstancesInput, RunInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RunInstances", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11653,7 +11653,7 @@ type SendDiagnosticInterruptAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L54512
 func (c *Client) SendDiagnosticInterrupt(ctx context.Context, input *SendDiagnosticInterruptInput, optFns ...func(*Options)) (*SendDiagnosticInterruptOutput, error) {
-	out, meta, err := invoke[SendDiagnosticInterruptInput, SendDiagnosticInterruptOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "SendDiagnosticInterrupt", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[SendDiagnosticInterruptInput, SendDiagnosticInterruptOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "SendDiagnosticInterrupt", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11691,7 +11691,7 @@ type SendFileAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L54652
 func (c *Client) SendFile(ctx context.Context, input *SendFileInput, optFns ...func(*Options)) (*SendFileOutput, error) {
-	out, meta, err := invoke[SendFileInput, SendFileOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "SendFile", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[SendFileInput, SendFileOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "SendFile", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11724,7 +11724,7 @@ type StartImagePipelineExecutionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L54805
 func (c *Client) StartImagePipelineExecution(ctx context.Context, input *StartImagePipelineExecutionInput, optFns ...func(*Options)) (*StartImagePipelineExecutionOutput, error) {
-	out, meta, err := invoke[StartImagePipelineExecutionInput, StartImagePipelineExecutionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StartImagePipelineExecution", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[StartImagePipelineExecutionInput, StartImagePipelineExecutionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StartImagePipelineExecution", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11759,7 +11759,7 @@ type StartInstanceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L54915
 func (c *Client) StartInstance(ctx context.Context, input *StartInstanceInput, optFns ...func(*Options)) (*StartInstanceOutput, error) {
-	out, meta, err := invoke[StartInstanceInput, StartInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StartInstance", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[StartInstanceInput, StartInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StartInstance", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11794,7 +11794,7 @@ type StartInstancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55035
 func (c *Client) StartInstances(ctx context.Context, input *StartInstancesInput, optFns ...func(*Options)) (*StartInstancesOutput, error) {
-	out, meta, err := invoke[StartInstancesInput, StartInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StartInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[StartInstancesInput, StartInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StartInstances", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11837,7 +11837,7 @@ type StartTerminalSessionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55195
 func (c *Client) StartTerminalSession(ctx context.Context, input *StartTerminalSessionInput, optFns ...func(*Options)) (*StartTerminalSessionOutput, error) {
-	out, meta, err := invoke[StartTerminalSessionInput, StartTerminalSessionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StartTerminalSession", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[StartTerminalSessionInput, StartTerminalSessionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StartTerminalSession", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11871,7 +11871,7 @@ type StopInstanceAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55361
 func (c *Client) StopInstance(ctx context.Context, input *StopInstanceInput, optFns ...func(*Options)) (*StopInstanceOutput, error) {
-	out, meta, err := invoke[StopInstanceInput, StopInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StopInstance", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	out, meta, err := invoke[StopInstanceInput, StopInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StopInstance", Version: "2014-05-26", Idempotent: false}, "POST", false, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11905,7 +11905,7 @@ type StopInstancesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55510
 func (c *Client) StopInstances(ctx context.Context, input *StopInstancesInput, optFns ...func(*Options)) (*StopInstancesOutput, error) {
-	out, meta, err := invoke[StopInstancesInput, StopInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StopInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[StopInstancesInput, StopInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StopInstances", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11938,7 +11938,7 @@ type StopInvocationAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55612
 func (c *Client) StopInvocation(ctx context.Context, input *StopInvocationInput, optFns ...func(*Options)) (*StopInvocationOutput, error) {
-	out, meta, err := invoke[StopInvocationInput, StopInvocationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StopInvocation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[StopInvocationInput, StopInvocationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StopInvocation", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11970,7 +11970,7 @@ type TagResourcesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55739
 func (c *Client) TagResources(ctx context.Context, input *TagResourcesInput, optFns ...func(*Options)) (*TagResourcesOutput, error) {
-	out, meta, err := invoke[TagResourcesInput, TagResourcesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "TagResources", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[TagResourcesInput, TagResourcesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "TagResources", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -11995,7 +11995,7 @@ type TerminatePhysicalConnectionAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55828
 func (c *Client) TerminatePhysicalConnection(ctx context.Context, input *TerminatePhysicalConnectionInput, optFns ...func(*Options)) (*TerminatePhysicalConnectionOutput, error) {
-	out, meta, err := invoke[TerminatePhysicalConnectionInput, TerminatePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "TerminatePhysicalConnection", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[TerminatePhysicalConnectionInput, TerminatePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "TerminatePhysicalConnection", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -12020,7 +12020,7 @@ type TerminateVirtualBorderRouterAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55917
 func (c *Client) TerminateVirtualBorderRouter(ctx context.Context, input *TerminateVirtualBorderRouterInput, optFns ...func(*Options)) (*TerminateVirtualBorderRouterOutput, error) {
-	out, meta, err := invoke[TerminateVirtualBorderRouterInput, TerminateVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "TerminateVirtualBorderRouter", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[TerminateVirtualBorderRouterInput, TerminateVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "TerminateVirtualBorderRouter", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -12054,7 +12054,7 @@ type UnassignIpv6AddressesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56010
 func (c *Client) UnassignIpv6Addresses(ctx context.Context, input *UnassignIpv6AddressesInput, optFns ...func(*Options)) (*UnassignIpv6AddressesOutput, error) {
-	out, meta, err := invoke[UnassignIpv6AddressesInput, UnassignIpv6AddressesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnassignIpv6Addresses", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UnassignIpv6AddressesInput, UnassignIpv6AddressesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnassignIpv6Addresses", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -12087,7 +12087,7 @@ type UnassignPrivateIpAddressesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56110
 func (c *Client) UnassignPrivateIpAddresses(ctx context.Context, input *UnassignPrivateIpAddressesInput, optFns ...func(*Options)) (*UnassignPrivateIpAddressesOutput, error) {
-	out, meta, err := invoke[UnassignPrivateIpAddressesInput, UnassignPrivateIpAddressesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnassignPrivateIpAddresses", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UnassignPrivateIpAddressesInput, UnassignPrivateIpAddressesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnassignPrivateIpAddresses", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -12112,7 +12112,7 @@ type UnassociateEipAddressAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56204
 func (c *Client) UnassociateEipAddress(ctx context.Context, input *UnassociateEipAddressInput, optFns ...func(*Options)) (*UnassociateEipAddressOutput, error) {
-	out, meta, err := invoke[UnassociateEipAddressInput, UnassociateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnassociateEipAddress", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UnassociateEipAddressInput, UnassociateEipAddressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnassociateEipAddress", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -12137,7 +12137,7 @@ type UnassociateHaVipAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56294
 func (c *Client) UnassociateHaVip(ctx context.Context, input *UnassociateHaVipInput, optFns ...func(*Options)) (*UnassociateHaVipOutput, error) {
-	out, meta, err := invoke[UnassociateHaVipInput, UnassociateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnassociateHaVip", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UnassociateHaVipInput, UnassociateHaVipOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnassociateHaVip", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -12162,7 +12162,7 @@ type UnlockSnapshotAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56392
 func (c *Client) UnlockSnapshot(ctx context.Context, input *UnlockSnapshotInput, optFns ...func(*Options)) (*UnlockSnapshotOutput, error) {
-	out, meta, err := invoke[UnlockSnapshotInput, UnlockSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnlockSnapshot", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UnlockSnapshotInput, UnlockSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnlockSnapshot", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -12187,7 +12187,7 @@ type UntagResourcesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56504
 func (c *Client) UntagResources(ctx context.Context, input *UntagResourcesInput, optFns ...func(*Options)) (*UntagResourcesOutput, error) {
-	out, meta, err := invoke[UntagResourcesInput, UntagResourcesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UntagResources", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	out, meta, err := invoke[UntagResourcesInput, UntagResourcesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UntagResources", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}

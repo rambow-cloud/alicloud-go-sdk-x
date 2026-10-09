@@ -540,7 +540,7 @@ function buildProduct(ast, { pkg, identifier, info, file, provenance }) {
       "product protocol version differs: " + op.name,
     );
   const ir = {
-    schemaVersion: 2,
+    schemaVersion: 3,
     profile: "rpc-query-json-v1",
     product: pkg,
     identifier,
@@ -646,7 +646,7 @@ function project(root = repository, selected = []) {
     );
   }
   const manifest = {
-    schemaVersion: 2,
+    schemaVersion: 3,
     profile: "rpc-query-json-v1",
     sourceManifestSHA256: verified.hash,
     files: Object.entries(files).map(([file, data]) => ({

@@ -138,7 +138,7 @@ func GenerateProducts(ctx context.Context, root string, check bool, selected []s
 	if err := json.Unmarshal(data, &pins); err != nil {
 		return err
 	}
-	if pins.SchemaVersion != 2 || pins.Profile != "rpc-query-json-v1" || len(pins.Files) == 0 {
+	if pins.SchemaVersion != 3 || pins.Profile != "rpc-query-json-v1" || len(pins.Files) == 0 {
 		return errors.New("product: unsupported IR manifest")
 	}
 	if err := verifyDSLSource(root, map[string]bool{pins.SourceManifestSHA256: true}); err != nil {
@@ -172,7 +172,7 @@ func GenerateProducts(ctx context.Context, root string, check bool, selected []s
 		if err := json.Unmarshal(content, &p); err != nil {
 			return err
 		}
-		if p.SchemaVersion != 2 || p.Profile != pins.Profile || p.Product != parts[1] || p.Version == "" || p.Provenance.SourceManifestSHA256 != pins.SourceManifestSHA256 || p.Provenance.Repository != "https://github.com/aliyun/alibabacloud-sdk" || p.Provenance.License != "Apache-2.0" || p.Provenance.ParserVersion != "2.2.1" || len(p.Provenance.Revision) != 40 {
+		if p.SchemaVersion != 3 || p.Profile != pins.Profile || p.Product != parts[1] || p.Version == "" || p.Provenance.SourceManifestSHA256 != pins.SourceManifestSHA256 || p.Provenance.Repository != "https://github.com/aliyun/alibabacloud-sdk" || p.Provenance.License != "Apache-2.0" || p.Provenance.ParserVersion != "2.2.1" || len(p.Provenance.Revision) != 40 {
 			return errors.New("product: IR provenance mismatch")
 		}
 		products = append(products, p)

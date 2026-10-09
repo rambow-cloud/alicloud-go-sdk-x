@@ -29,19 +29,21 @@ func productName(value string) string {
 }
 
 type productRenderer struct {
-	p          productIR
-	models     map[string]productModel
-	names      map[string]string
-	output     map[string]bool
-	jsonFields map[string]map[string]bool
-	operations []productOperation
+	p            productIR
+	models       map[string]productModel
+	names        map[string]string
+	output       map[string]bool
+	jsonFields   map[string]map[string]bool
+	simpleFields map[string]map[string]bool
+	formFields   map[string]map[string]bool
+	operations   []productOperation
 }
 
 func newProductRenderer(p productIR) (*productRenderer, error) {
 	if !packageName.MatchString(p.Product) || token.Lookup(p.Product).IsKeyword() {
 		return nil, errors.New("invalid package name")
 	}
-	r := &productRenderer{p: p, models: map[string]productModel{}, names: map[string]string{}, output: map[string]bool{}, jsonFields: map[string]map[string]bool{}}
+	r := &productRenderer{p: p, models: map[string]productModel{}, names: map[string]string{}, output: map[string]bool{}, jsonFields: map[string]map[string]bool{}, simpleFields: map[string]map[string]bool{}, formFields: map[string]map[string]bool{}}
 	all := map[string]productModel{}
 	for _, m := range p.Models {
 		if m.ID == "" {
@@ -63,7 +65,7 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 			return nil, errors.New("unrecognized operation status")
 		}
 		pr := op.Protocol
-		if pr.Action != op.Name || pr.Version != p.Version || pr.Protocol != "HTTPS" || pr.Path != "/" || pr.Method != "POST" || (pr.AuthType != "AK" && pr.AuthType != "Anonymous") || pr.Style != "RPC" || pr.RequestBodyType != "formData" || pr.BodyType != "json" || (pr.AuthType == "Anonymous" && op.Handoff != "doRPCRequest") || (pr.AuthType == "AK" && op.Handoff != "") {
+		if pr.Action != op.Name || pr.Version != p.Version || pr.Protocol != "HTTPS" || pr.Path != "/" || (pr.Method != "POST" && pr.Method != "GET") || (pr.AuthType != "AK" && pr.AuthType != "Anonymous") || pr.Style != "RPC" || pr.RequestBodyType != "formData" || pr.BodyType != "json" || (pr.AuthType == "Anonymous" && op.Handoff != "doRPCRequest") || (pr.AuthType == "AK" && op.Handoff != "") {
 			return nil, fmt.Errorf("%s: unsupported protocol", op.Name)
 		}
 		roots := []productType{op.Roots.Response, op.Roots.Body}
@@ -116,13 +118,16 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 					return nil, errors.New("anonymous reserved query member")
 				}
 			}
-			if binding.Location != "query" || binding.Guard != "isUnset" || bound[binding.Field] || wires[binding.Wire] || (binding.Encoding != "" && binding.Encoding != "json") {
+			if (binding.Location != "query" && binding.Location != "form") || (binding.Location == "form" && pr.Method != "POST") || binding.Guard != "isUnset" || bound[binding.Field] || wires[binding.Wire] || (binding.Encoding != "" && binding.Encoding != "json" && binding.Encoding != "simple") {
 				return nil, errors.New("unsupported query binding")
 			}
 			found := false
 			for _, f := range request.Fields {
 				if f.DSLName == binding.Field && f.WireName == binding.Wire {
 					found = true
+					if binding.Encoding == "simple" && (f.Type.Kind != "array" || f.Type.Items == nil || f.Type.Items.Kind != "scalar" || f.Type.Items.DSLType != "string") {
+						return nil, errors.New("simple encoding requires a string array")
+					}
 					if err := r.validateWireType(f.Type, binding.Encoding == "json", map[string]bool{}); err != nil {
 						return nil, fmt.Errorf("%s.%s: %w", op.Name, f.DSLName, err)
 					}
@@ -133,6 +138,17 @@ func newProductRenderer(p productIR) (*productRenderer, error) {
 			}
 			bound[binding.Field] = true
 			wires[binding.Wire] = true
+			for _, rule := range []struct {
+				enabled bool
+				fields  map[string]map[string]bool
+			}{{binding.Encoding == "simple", r.simpleFields}, {binding.Location == "form", r.formFields}} {
+				if rule.enabled {
+					if rule.fields[op.Roots.Request.Ref] == nil {
+						rule.fields[op.Roots.Request.Ref] = map[string]bool{}
+					}
+					rule.fields[op.Roots.Request.Ref][binding.Field] = true
+				}
+			}
 			if binding.Encoding == "json" {
 				if r.jsonFields[op.Roots.Request.Ref] == nil {
 					r.jsonFields[op.Roots.Request.Ref] = map[string]bool{}
@@ -348,6 +364,14 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 			if encoding != "" {
 				types.WriteString("// Encoded as one JSON query value; nil is omitted and explicit empty containers are preserved.\n")
 			}
+			if r.simpleFields[id][f.DSLName] {
+				encoding = " rpc:\"simple\""
+				types.WriteString("// Encoded as one comma-separated value; nil is omitted and a non-nil empty slice sends an empty value.\n")
+			}
+			if r.formFields[id][f.DSLName] {
+				encoding += " rpcLocation:\"form\""
+				types.WriteString("// Sent in the form body with one-based repeated indexes, rather than the URL query.\n")
+			}
 			fmt.Fprintf(&types, "%s %s `json:%s%s`\n", field, typ, quote(f.WireName+",omitzero"), encoding)
 		}
 		if r.output[id] {
@@ -406,7 +430,7 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 		if op.Protocol.AuthType == "Anonymous" {
 			authentication = ",Authentication:alicloud.AuthenticationAnonymousRPC"
 		}
-		fmt.Fprintf(&methods, "out,meta,err:=invoke[%sInput,%sOutput](ctx,c,input,alicloud.Operation{Service:%q,Name:%q,Version:%q,Idempotent:%t%s},%t,%s,%s,optFns);if err!=nil{return nil,err};out.Metadata=meta;return out,nil}\n", op.Name, op.Name, p.Product, op.Protocol.Action, op.Protocol.Version, idempotent, authentication, hasRegion, prepare, validate)
+		fmt.Fprintf(&methods, "out,meta,err:=invoke[%sInput,%sOutput](ctx,c,input,alicloud.Operation{Service:%q,Name:%q,Version:%q,Idempotent:%t%s},%q,%t,%s,%s,optFns);if err!=nil{return nil,err};out.Metadata=meta;return out,nil}\n", op.Name, op.Name, p.Product, op.Protocol.Action, op.Protocol.Version, idempotent, authentication, op.Protocol.Method, hasRegion, prepare, validate)
 	}
 	files[base+"operations.gen.go"], err = productFormat(&methods)
 	if err != nil {
@@ -536,6 +560,7 @@ func (r *productRenderer) guide(chinese bool) []byte {
 		}
 	}
 	r.appendQueryEncodingGuide(&b, chinese)
+	r.appendRPCPlacementGuide(&b, chinese)
 	r.appendCapabilityGuide(&b, chinese)
 	r.appendDocumentationGuide(&b, chinese)
 	for _, op := range r.operations {
@@ -578,6 +603,34 @@ func (r *productRenderer) appendQueryEncodingGuide(b *bytes.Buffer, chinese bool
 	b.WriteString("\n")
 }
 
+func (r *productRenderer) appendRPCPlacementGuide(b *bytes.Buffer, chinese bool) {
+	var rows strings.Builder
+	for _, op := range r.operations {
+		var form, simple []string
+		for _, binding := range op.Bindings {
+			if binding.Location == "form" {
+				form = append(form, binding.Wire)
+			}
+			if binding.Encoding == "simple" {
+				simple = append(simple, binding.Wire)
+			}
+		}
+		if op.Protocol.Method != "POST" || len(form) > 0 || len(simple) > 0 {
+			fmt.Fprintf(&rows, "| %s | %s | %s | %s |\n", op.Name, op.Protocol.Method, strings.Join(form, ", "), strings.Join(simple, ", "))
+		}
+	}
+	if rows.Len() == 0 {
+		return
+	}
+	if chinese {
+		b.WriteString("## HTTP 方法与参数位置\n\n- HTTP 方法保留官方 DSL 的 GET 或 POST。URL query 与表单 body 分别编码，请求体字节参与签名。\n- 表单数组使用从 1 开始的索引；nil 和空数组都不产生索引成员。\n- 显式 simple 数组编码为一个逗号分隔值。nil 省略，非 nil 的空数组发送空值；特殊字符随后进行 URL 编码。\n- 输入会在中间件前复制，取消通过 errors.Is 保留。编码方式不意味着操作允许重试。\n\n| 操作 | HTTP 方法 | 表单字段 | simple 数组字段 |\n| --- | --- | --- | --- |\n")
+	} else {
+		b.WriteString("## HTTP methods and parameter locations\n\n- Preserve GET or POST from the official DSL. Encode URL query and form body separately; sign the exact payload bytes.\n- Form arrays use one-based indexes. Nil and empty arrays produce no indexed members.\n- Explicit simple arrays become one comma-separated value. Nil omits the field; a non-nil empty array sends an empty value. URL encoding then escapes special characters.\n- Copy inputs before middleware and preserve cancellation for errors.Is. Encoding does not establish retry safety.\n\n| Action | HTTP method | Form fields | Simple array fields |\n| --- | --- | --- | --- |\n")
+	}
+	b.WriteString(rows.String())
+	b.WriteByte('\n')
+}
+
 const productClientTemplate = `
 import ("context";"encoding/json/v2";"errors";alicloud %q;%q)
 // Options configures this service. Configured extension objects remain shared.
@@ -600,7 +653,7 @@ func(c *Client)callOptions(region string,optFns []func(*Options))([]func(*aliclo
  for _,f:=range optFns {if f==nil{return nil,errors.New("nil operation option")};f(&options)}
  config:=alicloud.Config(options);return []func(*alicloud.CallOptions){func(o *alicloud.CallOptions){o.Config=&config;o.Region=config.Region}},nil
 }
-func invoke[I,O any](ctx context.Context,c *Client,input *I,op alicloud.Operation,hasRegion bool,prepare func(context.Context,*I)error,validate func(*I)error,optFns []func(*Options))(*O,alicloud.Metadata,error){
+func invoke[I,O any](ctx context.Context,c *Client,input *I,op alicloud.Operation,method string,hasRegion bool,prepare func(context.Context,*I)error,validate func(*I)error,optFns []func(*Options))(*O,alicloud.Metadata,error){
  fail:=func(err error)(*O,alicloud.Metadata,error){if ctx.Err()!=nil{err=ctx.Err()};return nil,alicloud.Metadata{},&alicloud.OperationError{Service:op.Service,Operation:op.Name,Err:err}}
  if err:=ctx.Err();err!=nil{return fail(err)}
  if c==nil||c.runtime==nil{return fail(errors.New("uninitialized service client"))}
@@ -612,9 +665,10 @@ func invoke[I,O any](ctx context.Context,c *Client,input *I,op alicloud.Operatio
  codec:=alicloud.Codec{
  Encode:func(ctx context.Context,value any)(alicloud.Request,error){
   if validate!=nil{if err:=validate(value.(*I));err!=nil{return alicloud.Request{},err}}
-  q,err:=rpcmodel.Query(ctx,value);if err!=nil{return alicloud.Request{},err}
+  q,form,err:=rpcmodel.Parameters(ctx,value);if err!=nil{return alicloud.Request{},err}
   requestRegion:=q.Get("RegionId");if hasRegion&&requestRegion==""{requestRegion=c.runtime.Region();q.Set("RegionId",requestRegion)}
-  return alicloud.Request{Method:"POST",Path:"/",Region:requestRegion,Query:q,Header:map[string][]string{"Content-Type":{"application/x-www-form-urlencoded"}}},nil
+  if err:=ctx.Err();err!=nil{return alicloud.Request{},err}
+  return alicloud.Request{Method:method,Path:"/",Region:requestRegion,Query:q,Body:[]byte(form.Encode()),Header:map[string][]string{"Content-Type":{"application/x-www-form-urlencoded"}}},nil
  },Decode:func(ctx context.Context,data []byte,value any)error{if err:=ctx.Err();err!=nil{return err};return json.Unmarshal(data,value)}}
  out:=new(O);meta,err:=c.runtime.InvokeModel(ctx,op,in,alicloud.Request{Region:region},out,codec,callOptions...);if err!=nil{return nil,meta,err};return out,meta,nil
 }
