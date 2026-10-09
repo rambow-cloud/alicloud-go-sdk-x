@@ -12,4 +12,22 @@
 
 ## 验证
 
-- 实现和最终提交 CI 尚未完成。
+- Node 22 前端/IR/说明检查通过。Go 1.27.1/Windows 下，文档检查、完整 vet 和根模块测试通过（codegen 耗时 118.271 秒）。
+- 三组参数完整的原生向量，以及文档中的规范请求摘要/给定密钥 MAC 通过。正文所有权、STS 替换、中文与斜线、空值子资源、额外请求头及安全拒绝均有离线夹具。
+- 最后评审核对了原生路径规范化，并收紧逐跳请求头校验，相应签名测试覆盖这些修正。Go 创建的中文 URL 路径提示会规范化；解码后不匹配的原始路径报错。最终提交的 Linux race/Windows CI 尚未完成，没有增加运行时依赖或调用云 API。
+
+## 来源决策
+
+- [固定向量记录](../metadata/oss4-signature-evidence.json)注明 GatewayOSS 压缩包/源码哈希，以及原生 SDK 的提交和文件。仅复用合成向量参数与预期签名。
+- 文档中的规范请求摘要，以及使用其给定派生密钥计算的 MAC 均吻合；但从页面显示的 `yourAccessKeySecret` 派生出的密钥不同。该显示值不能证明端到端向量通过；保留差异，使用原生 SDK 中参数完整的基础、STS 和额外请求头向量验证密钥派生。
+- 规范化签名时，请求头名称统一小写。Authorization 的逗号空格采用 Gateway 格式；签名值与原生测试单独对齐，不依赖格式空格。
+- 拒绝重复的标量请求头/query 键、预签名认证 query 和尚未展开的 `x-oss-meta-*`；这些转换由 Gateway/正文准备阶段在签名前处理。额外请求头必须实际存在、唯一且不属于必选集合，不自动推断登记。
+- `UNSIGNED-PAYLOAD` 认证的是审核过的 OSS V4 请求结构，不提供正文完整性验证。XML MD5、流式 CRC 和重放另行实现。
+
+## 内部契约
+
+- `SignOSS4(ctx, request, credentials, options)` 接收调用者独占的 HTTPS 虚拟主机/服务级请求。准确指定 bucket、region 和非零时间，不自动发现；URL 路径不含虚拟主机 bucket。
+- 成功时发布 URL 和请求头副本，其他请求字段、Body 和 GetBody 不变。失败或取消不修改请求；过期错误仍可用 `errors.Is` 识别。
+- 审核过的协议范围只接受标量请求头/query。原生 content-type/content-md5/x-oss 请求头自动签入；额外名称须显式登记，逐跳头不支持。Host 使用实际的 Request.Host/URL.Host；签入 content-length 需正文长度已知且为正，并且没有 transfer encoding。
+- 不支持 V1/V2、预签名 URL、CloudBox、端点构造或校验和计算。内部 helper 没有共享可变状态，调用者签名期间须独占请求。
+- 使用 `go test ./internal/signing` 运行合成向量和确定输出的外部 Example。测试不发送 HTTP 请求，也不输出授权头或凭据值。
