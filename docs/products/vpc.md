@@ -44,6 +44,12 @@
 | CreateNatGateway | `CreateNatGatewayInput.AccessMode` | `AccessMode` |
 | ModifyNatGatewayAttribute | `ModifyNatGatewayAttributeInput.LogDelivery` | `LogDelivery` |
 
+## Endpoints
+
+- Public endpoints use the official regional rule and 36 exact mappings. A constructed regional address does not prove deployment or availability.
+- Reviewed private combinations: 1. Set Config.Network to vpc; unreviewed combinations fail.
+- BaseEndpoint takes precedence. See [endpoint rules](../endpoint-rules.md) for behavior and limits.
+
 ## HTTP methods and parameter locations
 
 - Preserve GET or POST from the official DSL. Encode URL query and form body separately; sign the exact payload bytes.

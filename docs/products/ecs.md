@@ -58,6 +58,12 @@
 | RunCommand | `RunCommandInput.Parameters` | `Parameters` |
 | StartTerminalSession | `StartTerminalSessionInput.EncryptionOptions` | `EncryptionOptions` |
 
+## Endpoints
+
+- Public endpoints use the official regional rule and 35 exact mappings. A constructed regional address does not prove deployment or availability.
+- Reviewed private combinations: 11. Set Config.Network to vpc; unreviewed combinations fail.
+- BaseEndpoint takes precedence. See [endpoint rules](../endpoint-rules.md) for behavior and limits.
+
 ## Capability policy
 
 - Policies are optional, pinned to sources and reviewed separately. Unlisted actions are unreviewed and cannot use Standard retry. Retry requires opt-in.

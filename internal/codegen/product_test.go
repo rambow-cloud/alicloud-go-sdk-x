@@ -271,6 +271,9 @@ func TestProductSchemaVersionsFailBeforeWrites(t *testing.T) {
 	writePins()
 	checkRejected("unsupported IR manifest")
 	pins.SchemaVersion = 3
+	writePins()
+	checkRejected("unsupported IR manifest")
+	pins.SchemaVersion = 4
 	p := readProductIR(t, "ecs")
 	p.SchemaVersion = 2
 	encoded, err := json.Marshal(p)

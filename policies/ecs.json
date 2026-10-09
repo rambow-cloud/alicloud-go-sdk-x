@@ -402,5 +402,95 @@
         }
       ]
     }
-  }
+  },
+  "endpoints": [
+    {
+      "region": "cn-beijing",
+      "network": "vpc",
+      "url": "https://ecs-vpc.cn-beijing.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "cn-fuzhou",
+      "network": "vpc",
+      "url": "https://ecs-vpc.cn-fuzhou.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "cn-hangzhou",
+      "network": "vpc",
+      "url": "https://ecs-vpc.cn-hangzhou.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "cn-nanjing",
+      "network": "vpc",
+      "url": "https://ecs-vpc.cn-nanjing.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "cn-qingdao",
+      "network": "vpc",
+      "url": "https://ecs-vpc.cn-qingdao.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "cn-shanghai",
+      "network": "vpc",
+      "url": "https://ecs-vpc.cn-shanghai.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "cn-zhangjiakou",
+      "network": "vpc",
+      "url": "https://ecs-vpc.cn-zhangjiakou.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "eu-west-1",
+      "network": "vpc",
+      "url": "https://ecs-vpc.eu-west-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "me-east-1",
+      "network": "vpc",
+      "url": "https://ecs-vpc.me-east-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "us-east-1",
+      "network": "vpc",
+      "url": "https://ecs-vpc.us-east-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    },
+    {
+      "region": "us-west-1",
+      "network": "vpc",
+      "url": "https://ecs-vpc.us-west-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ecs/developer-reference/call-api-operations-over-the-internal-network"
+      ]
+    }
+  ]
 }

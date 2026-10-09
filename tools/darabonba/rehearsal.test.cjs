@@ -4,7 +4,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const os = require("node:os");
-const { revisions, prepare } = require("./rehearse-sts.cjs");
+const { revisions, prepare, prepareRuntime } = require("./rehearse-sts.cjs");
 const { run } = require("./discovery.cjs");
 const { lowerOperation } = require("./frontend.cjs");
 const parser = require("@darabonba/parser");
@@ -55,6 +55,16 @@ test("real source revision exposes initializer and handoff drift without promoti
     /DSL_PRODUCT_AUTH_INITIALIZER/,
   );
   assert.throws(() => prepare(destination), /already exists/);
+});
+
+test("runtime preparation preserves candidate-owned generated endpoint tables",(t)=>{
+  const candidate=path.join(temporary(t),"candidate");fs.mkdirSync(path.join(candidate,"service/sts"),{recursive:true});fs.mkdirSync(path.join(candidate,"endpoint"));
+  fs.writeFileSync(path.join(candidate,"service/sts/operations.gen.go"),"// candidate operations sentinel\n");
+  const table="// candidate endpoint table sentinel\n";fs.writeFileSync(path.join(candidate,"endpoint/rules.gen.go"),table);
+  prepareRuntime(candidate);
+  assert.equal(fs.readFileSync(path.join(candidate,"endpoint/rules.gen.go"),"utf8"),table);
+  assert.ok(fs.existsSync(path.join(candidate,"endpoint/endpoint.go")));
+  assert.throws(()=>prepareRuntime(candidate),/candidate compilation fixture already exists/);
 });
 
 test("signed initializer rejects dynamic and unsupported overrides while explicit ACS3 remains supported", () => {

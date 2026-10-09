@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "profile": "rpc-query-json-v1",
   "product": "vpc",
   "identifier": "vpc-20160428",
@@ -14,6 +14,423 @@
     "apiInfoSHA256": "914ff757e4bc54683eccd9f82261fb0305a9c0ce4603b0e35fc35dd09ec1083d"
   },
   "sourceFile": "products/vpc/main.tea",
+  "endpoints": {
+    "profile": "map-before-regional-v1",
+    "productCode": "vpc",
+    "rule": "regional",
+    "source": {
+      "file": "products/vpc/main.tea",
+      "line": 14,
+      "column": 3,
+      "endLine": 14,
+      "endColumn": 16
+    },
+    "resolverSource": {
+      "file": "products/vpc/main.tea",
+      "line": 58,
+      "column": 10,
+      "endLine": 58,
+      "endColumn": 21
+    },
+    "overrides": [
+      {
+        "region": "ap-northeast-2-pop",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 20,
+          "column": 6,
+          "endLine": 20,
+          "endColumn": 24
+        }
+      },
+      {
+        "region": "cn-beijing-finance-pop",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 21,
+          "column": 6,
+          "endLine": 21,
+          "endColumn": 28
+        }
+      },
+      {
+        "region": "cn-beijing-gov-1",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 22,
+          "column": 6,
+          "endLine": 22,
+          "endColumn": 22
+        }
+      },
+      {
+        "region": "cn-beijing-nu16-b01",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 23,
+          "column": 6,
+          "endLine": 23,
+          "endColumn": 25
+        }
+      },
+      {
+        "region": "cn-edge-1",
+        "url": "https://vpc-nebula.cn-qingdao-nebula.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 24,
+          "column": 6,
+          "endLine": 24,
+          "endColumn": 15
+        }
+      },
+      {
+        "region": "cn-fujian",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 25,
+          "column": 6,
+          "endLine": 25,
+          "endColumn": 15
+        }
+      },
+      {
+        "region": "cn-haidian-cm12-c01",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 26,
+          "column": 6,
+          "endLine": 26,
+          "endColumn": 25
+        }
+      },
+      {
+        "region": "cn-hangzhou",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 16,
+          "column": 6,
+          "endLine": 16,
+          "endColumn": 17
+        }
+      },
+      {
+        "region": "cn-hangzhou-bj-b01",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 27,
+          "column": 6,
+          "endLine": 27,
+          "endColumn": 24
+        }
+      },
+      {
+        "region": "cn-hangzhou-finance",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 28,
+          "column": 6,
+          "endLine": 28,
+          "endColumn": 25
+        }
+      },
+      {
+        "region": "cn-hangzhou-internal-prod-1",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 29,
+          "column": 6,
+          "endLine": 29,
+          "endColumn": 33
+        }
+      },
+      {
+        "region": "cn-hangzhou-internal-test-1",
+        "url": "https://vpc-pre.cn-hangzhou.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 30,
+          "column": 6,
+          "endLine": 30,
+          "endColumn": 33
+        }
+      },
+      {
+        "region": "cn-hangzhou-internal-test-2",
+        "url": "https://vpc-inner-pre.cn-hangzhou.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 31,
+          "column": 6,
+          "endLine": 31,
+          "endColumn": 33
+        }
+      },
+      {
+        "region": "cn-hangzhou-internal-test-3",
+        "url": "https://vpc-pre.cn-hangzhou.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 32,
+          "column": 6,
+          "endLine": 32,
+          "endColumn": 33
+        }
+      },
+      {
+        "region": "cn-hangzhou-test-306",
+        "url": "https://vpc-pre.cn-hangzhou.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 33,
+          "column": 6,
+          "endLine": 33,
+          "endColumn": 26
+        }
+      },
+      {
+        "region": "cn-hongkong-finance-pop",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 34,
+          "column": 6,
+          "endLine": 34,
+          "endColumn": 29
+        }
+      },
+      {
+        "region": "cn-huhehaote-nebula-1",
+        "url": "https://vpc-nebula.cn-qingdao-nebula.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 35,
+          "column": 6,
+          "endLine": 35,
+          "endColumn": 27
+        }
+      },
+      {
+        "region": "cn-north-2-gov-1",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 19,
+          "column": 6,
+          "endLine": 19,
+          "endColumn": 22
+        }
+      },
+      {
+        "region": "cn-qingdao-nebula",
+        "url": "https://vpc-nebula.cn-qingdao-nebula.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 36,
+          "column": 6,
+          "endLine": 36,
+          "endColumn": 23
+        }
+      },
+      {
+        "region": "cn-shanghai-et15-b01",
+        "url": "https://vpc-pre.cn-hangzhou.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 37,
+          "column": 6,
+          "endLine": 37,
+          "endColumn": 26
+        }
+      },
+      {
+        "region": "cn-shanghai-et2-b01",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 38,
+          "column": 6,
+          "endLine": 38,
+          "endColumn": 25
+        }
+      },
+      {
+        "region": "cn-shanghai-finance-1",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 17,
+          "column": 6,
+          "endLine": 17,
+          "endColumn": 27
+        }
+      },
+      {
+        "region": "cn-shanghai-inner",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 39,
+          "column": 6,
+          "endLine": 39,
+          "endColumn": 23
+        }
+      },
+      {
+        "region": "cn-shanghai-internal-test-1",
+        "url": "https://vpc-pre.cn-hangzhou.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 40,
+          "column": 6,
+          "endLine": 40,
+          "endColumn": 33
+        }
+      },
+      {
+        "region": "cn-shenzhen-finance-1",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 18,
+          "column": 6,
+          "endLine": 18,
+          "endColumn": 27
+        }
+      },
+      {
+        "region": "cn-shenzhen-inner",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 41,
+          "column": 6,
+          "endLine": 41,
+          "endColumn": 23
+        }
+      },
+      {
+        "region": "cn-shenzhen-st4-d01",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 42,
+          "column": 6,
+          "endLine": 42,
+          "endColumn": 25
+        }
+      },
+      {
+        "region": "cn-shenzhen-su18-b01",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 43,
+          "column": 6,
+          "endLine": 43,
+          "endColumn": 26
+        }
+      },
+      {
+        "region": "cn-wuhan",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 44,
+          "column": 6,
+          "endLine": 44,
+          "endColumn": 14
+        }
+      },
+      {
+        "region": "cn-yushanfang",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 45,
+          "column": 6,
+          "endLine": 45,
+          "endColumn": 19
+        }
+      },
+      {
+        "region": "cn-zhangbei",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 46,
+          "column": 6,
+          "endLine": 46,
+          "endColumn": 17
+        }
+      },
+      {
+        "region": "cn-zhangbei-na61-b01",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 47,
+          "column": 6,
+          "endLine": 47,
+          "endColumn": 26
+        }
+      },
+      {
+        "region": "cn-zhangjiakou-na62-a01",
+        "url": "https://vpc.cn-zhangjiakou.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 48,
+          "column": 6,
+          "endLine": 48,
+          "endColumn": 29
+        }
+      },
+      {
+        "region": "cn-zhengzhou-nebula-1",
+        "url": "https://vpc-nebula.cn-qingdao-nebula.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 49,
+          "column": 6,
+          "endLine": 49,
+          "endColumn": 27
+        }
+      },
+      {
+        "region": "eu-west-1-oxs",
+        "url": "https://vpc-nebula.cn-shenzhen-cloudstone.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 50,
+          "column": 6,
+          "endLine": 50,
+          "endColumn": 19
+        }
+      },
+      {
+        "region": "rus-west-1-pop",
+        "url": "https://vpc.aliyuncs.com",
+        "source": {
+          "file": "products/vpc/main.tea",
+          "line": 51,
+          "column": 6,
+          "endLine": 51,
+          "endColumn": 20
+        }
+      }
+    ]
+  },
   "unusedModels": [
     "CreateNatGatewayShrinkRequest",
     "GrantInstanceToVbrShrinkRequest",

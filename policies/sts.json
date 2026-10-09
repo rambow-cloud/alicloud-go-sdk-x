@@ -47,5 +47,287 @@
         "AssumeRoleWithSAMLResponseBody.SAMLAssertionInfo"
       ]
     }
-  }
+  },
+  "endpoints": [
+    {
+      "region": "ap-northeast-1",
+      "network": "vpc",
+      "url": "https://sts-vpc.ap-northeast-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "ap-northeast-2",
+      "network": "vpc",
+      "url": "https://sts-vpc.ap-northeast-2.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "ap-southeast-1",
+      "network": "vpc",
+      "url": "https://sts-vpc.ap-southeast-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "ap-southeast-3",
+      "network": "vpc",
+      "url": "https://sts-vpc.ap-southeast-3.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "ap-southeast-5",
+      "network": "vpc",
+      "url": "https://sts-vpc.ap-southeast-5.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "ap-southeast-7",
+      "network": "vpc",
+      "url": "https://sts-vpc.ap-southeast-7.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "ap-southeast-8",
+      "network": "vpc",
+      "url": "https://sts-vpc.ap-southeast-8.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-beijing",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-beijing.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-beijing-finance-1",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-beijing-finance-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-chengdu",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-chengdu.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-fuzhou",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-fuzhou.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-guangzhou",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-guangzhou.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-hangzhou",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-hangzhou.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-heyuan",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-heyuan.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-hongkong",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-hongkong.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-huhehaote",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-huhehaote.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-nanjing",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-nanjing.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-qingdao",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-qingdao.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-shanghai",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-shanghai.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-shanghai-finance-1",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-shanghai-finance-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-shenzhen",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-shenzhen.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-shenzhen-finance-1",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-shenzhen-finance-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-wuhan-lr",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-wuhan-lr.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-wulanchabu",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-wulanchabu.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-zhangjiakou",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-zhangjiakou.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "cn-zhongwei",
+      "network": "vpc",
+      "url": "https://sts-vpc.cn-zhongwei.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "eu-central-1",
+      "network": "vpc",
+      "url": "https://sts-vpc.eu-central-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "eu-west-1",
+      "network": "vpc",
+      "url": "https://sts-vpc.eu-west-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "eu-west-2",
+      "network": "vpc",
+      "url": "https://sts-vpc.eu-west-2.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "me-central-1",
+      "network": "vpc",
+      "url": "https://sts-vpc.me-central-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "me-east-1",
+      "network": "vpc",
+      "url": "https://sts-vpc.me-east-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "na-south-1",
+      "network": "vpc",
+      "url": "https://sts-vpc.na-south-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "sa-east-1",
+      "network": "vpc",
+      "url": "https://sts-vpc.sa-east-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "us-east-1",
+      "network": "vpc",
+      "url": "https://sts-vpc.us-east-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    },
+    {
+      "region": "us-west-1",
+      "network": "vpc",
+      "url": "https://sts-vpc.us-west-1.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/ram/developer-reference/api-sts-2015-04-01-endpoint"
+      ]
+    }
+  ]
 }

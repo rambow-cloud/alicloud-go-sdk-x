@@ -58,6 +58,12 @@
 | RunCommand | `RunCommandInput.Parameters` | `Parameters` |
 | StartTerminalSession | `StartTerminalSessionInput.EncryptionOptions` | `EncryptionOptions` |
 
+## 端点
+
+- 公开端点使用官方 regional 规则和 35 个准确映射；构造出的区域地址不代表服务已部署或可访问。
+- 已审核私网组合：11 个；设置 Config.Network 为 vpc，不支持的组合直接报错。
+- BaseEndpoint 优先级最高；明确差异与限制见[端点规则](../endpoint-rules.zh-CN.md)。
+
 ## 能力策略
 
 - 策略是可选配置，绑定固定来源并单独审核。未列出的操作不视为已审核，也不允许 Standard 重试；重试必须显式启用。

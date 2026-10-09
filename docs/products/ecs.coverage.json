@@ -11,7 +11,7 @@
   "compilation": "not-assessed",
   "live": "not-assessed",
   "capabilityPolicy": "sparse-reviewed",
-  "policySHA256": "4bc67741d59d21ddc284571140428c3f39c141e4a587fce71861dd55baa6a8fe",
+  "policySHA256": "83a906f8e2c4f8d69e9494d3a34703878a40376b9f14ad99b59655a37cb3c186",
   "operations": [
     {
       "name": "AcceptInquiredSystemEvent",

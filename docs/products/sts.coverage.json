@@ -11,7 +11,7 @@
   "compilation": "not-assessed",
   "live": "not-assessed",
   "capabilityPolicy": "sparse-reviewed",
-  "policySHA256": "0738861136f8d17fc87c4d77480092bac24c970a22ed31f8d83cd073c29231fd",
+  "policySHA256": "ab4c9b13242f6e4af915d2da3b2154953b5072e0b50f2f8c732a8249284c5b7e",
   "operations": [
     {
       "name": "AssumeRole",

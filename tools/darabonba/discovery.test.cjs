@@ -83,7 +83,7 @@ test("complete real corpus is deterministic and accounts for every SDK operation
     );
   for (const [pkg, product] of Object.entries(first.products)) {
     const { ir, coverage } = product;
-    assert.equal(ir.schemaVersion, 3);
+    assert.equal(ir.schemaVersion, 4);
     const sourceFile = path.join(
       root,
       "sources/darabonba/products",
@@ -125,7 +125,7 @@ test("complete real corpus is deterministic and accounts for every SDK operation
     }
   }
   const lock = JSON.parse(first.files["models/manifest.json"]);
-  assert.equal(lock.schemaVersion, 3);
+  assert.equal(lock.schemaVersion, 4);
   for (const artifact of lock.files)
     assert.equal(
       crypto

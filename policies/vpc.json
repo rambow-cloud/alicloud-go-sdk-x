@@ -367,5 +367,15 @@
         }
       ]
     }
-  }
+  },
+  "endpoints": [
+    {
+      "region": "cn-beijing",
+      "network": "vpc",
+      "url": "https://vpc-vpc.cn-beijing.aliyuncs.com",
+      "evidence": [
+        "https://www.alibabacloud.com/help/en/vpc/use-privatelink-to-access-vpc-openapi-over-private-network"
+      ]
+    }
+  ]
 }

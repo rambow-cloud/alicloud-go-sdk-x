@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "profile": "rpc-query-json-v1",
   "product": "sts",
   "identifier": "sts-20150401",
@@ -14,6 +14,379 @@
     "apiInfoSHA256": "9fe5ac3ce2f5fb81f033ef33a2e8205fbe7895907b8ea8d521414fb281f9a2f3"
   },
   "sourceFile": "products/sts/main.tea",
+  "endpoints": {
+    "profile": "map-before-regional-v1",
+    "productCode": "sts",
+    "rule": "regional",
+    "source": {
+      "file": "products/sts/main.tea",
+      "line": 14,
+      "column": 3,
+      "endLine": 14,
+      "endColumn": 16
+    },
+    "resolverSource": {
+      "file": "products/sts/main.tea",
+      "line": 54,
+      "column": 10,
+      "endLine": 54,
+      "endColumn": 21
+    },
+    "overrides": [
+      {
+        "region": "ap-northeast-2-pop",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 16,
+          "column": 6,
+          "endLine": 16,
+          "endColumn": 24
+        }
+      },
+      {
+        "region": "ap-south-1",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 17,
+          "column": 6,
+          "endLine": 17,
+          "endColumn": 16
+        }
+      },
+      {
+        "region": "ap-southeast-2",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 18,
+          "column": 6,
+          "endLine": 18,
+          "endColumn": 20
+        }
+      },
+      {
+        "region": "cn-beijing-finance-pop",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 19,
+          "column": 6,
+          "endLine": 19,
+          "endColumn": 28
+        }
+      },
+      {
+        "region": "cn-beijing-gov-1",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 20,
+          "column": 6,
+          "endLine": 20,
+          "endColumn": 22
+        }
+      },
+      {
+        "region": "cn-beijing-nu16-b01",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 21,
+          "column": 6,
+          "endLine": 21,
+          "endColumn": 25
+        }
+      },
+      {
+        "region": "cn-edge-1",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 22,
+          "column": 6,
+          "endLine": 22,
+          "endColumn": 15
+        }
+      },
+      {
+        "region": "cn-fujian",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 23,
+          "column": 6,
+          "endLine": 23,
+          "endColumn": 15
+        }
+      },
+      {
+        "region": "cn-haidian-cm12-c01",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 24,
+          "column": 6,
+          "endLine": 24,
+          "endColumn": 25
+        }
+      },
+      {
+        "region": "cn-hangzhou-bj-b01",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 25,
+          "column": 6,
+          "endLine": 25,
+          "endColumn": 24
+        }
+      },
+      {
+        "region": "cn-hangzhou-internal-prod-1",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 26,
+          "column": 6,
+          "endLine": 26,
+          "endColumn": 33
+        }
+      },
+      {
+        "region": "cn-hangzhou-internal-test-1",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 27,
+          "column": 6,
+          "endLine": 27,
+          "endColumn": 33
+        }
+      },
+      {
+        "region": "cn-hangzhou-internal-test-2",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 28,
+          "column": 6,
+          "endLine": 28,
+          "endColumn": 33
+        }
+      },
+      {
+        "region": "cn-hangzhou-internal-test-3",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 29,
+          "column": 6,
+          "endLine": 29,
+          "endColumn": 33
+        }
+      },
+      {
+        "region": "cn-hangzhou-test-306",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 30,
+          "column": 6,
+          "endLine": 30,
+          "endColumn": 26
+        }
+      },
+      {
+        "region": "cn-hongkong-finance-pop",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 31,
+          "column": 6,
+          "endLine": 31,
+          "endColumn": 29
+        }
+      },
+      {
+        "region": "cn-huhehaote-nebula-1",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 32,
+          "column": 6,
+          "endLine": 32,
+          "endColumn": 27
+        }
+      },
+      {
+        "region": "cn-shanghai-et15-b01",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 33,
+          "column": 6,
+          "endLine": 33,
+          "endColumn": 26
+        }
+      },
+      {
+        "region": "cn-shanghai-et2-b01",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 34,
+          "column": 6,
+          "endLine": 34,
+          "endColumn": 25
+        }
+      },
+      {
+        "region": "cn-shanghai-inner",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 35,
+          "column": 6,
+          "endLine": 35,
+          "endColumn": 23
+        }
+      },
+      {
+        "region": "cn-shanghai-internal-test-1",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 36,
+          "column": 6,
+          "endLine": 36,
+          "endColumn": 33
+        }
+      },
+      {
+        "region": "cn-shenzhen-inner",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 37,
+          "column": 6,
+          "endLine": 37,
+          "endColumn": 23
+        }
+      },
+      {
+        "region": "cn-shenzhen-st4-d01",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 38,
+          "column": 6,
+          "endLine": 38,
+          "endColumn": 25
+        }
+      },
+      {
+        "region": "cn-shenzhen-su18-b01",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 39,
+          "column": 6,
+          "endLine": 39,
+          "endColumn": 26
+        }
+      },
+      {
+        "region": "cn-wuhan",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 40,
+          "column": 6,
+          "endLine": 40,
+          "endColumn": 14
+        }
+      },
+      {
+        "region": "cn-yushanfang",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 41,
+          "column": 6,
+          "endLine": 41,
+          "endColumn": 19
+        }
+      },
+      {
+        "region": "cn-zhangbei",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 42,
+          "column": 6,
+          "endLine": 42,
+          "endColumn": 17
+        }
+      },
+      {
+        "region": "cn-zhangbei-na61-b01",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 43,
+          "column": 6,
+          "endLine": 43,
+          "endColumn": 26
+        }
+      },
+      {
+        "region": "cn-zhangjiakou-na62-a01",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 44,
+          "column": 6,
+          "endLine": 44,
+          "endColumn": 29
+        }
+      },
+      {
+        "region": "cn-zhengzhou-nebula-1",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 45,
+          "column": 6,
+          "endLine": 45,
+          "endColumn": 27
+        }
+      },
+      {
+        "region": "eu-west-1-oxs",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 46,
+          "column": 6,
+          "endLine": 46,
+          "endColumn": 19
+        }
+      },
+      {
+        "region": "rus-west-1-pop",
+        "url": "https://sts.aliyuncs.com",
+        "source": {
+          "file": "products/sts/main.tea",
+          "line": 47,
+          "column": 6,
+          "endLine": 47,
+          "endColumn": 20
+        }
+      }
+    ]
+  },
   "unusedModels": [],
   "operations": [
     {"name":"AssumeRole","source":{"file":"products/sts/main.tea","line":147,"column":16,"endLine":147,"endColumn":37},"origin":"dsl-and-catalog","declarations":[{"sdkName":"assumeRoleWithOptions","source":{"file":"products/sts/main.tea","line":147,"column":16,"endLine":147,"endColumn":37},"protocolEvidence":[{"source":{"file":"products/sts/main.tea","line":171,"column":20,"endLine":171,"endColumn":27},"fields":[{"name":"action","source":{"file":"products/sts/main.tea","line":172,"column":5,"endLine":172,"endColumn":11},"expressionKind":"string","value":"AssumeRole"},{"name":"version","source":{"file":"products/sts/main.tea","line":173,"column":5,"endLine":173,"endColumn":12},"expressionKind":"string","value":"2015-04-01"},{"name":"protocol","source":{"file":"products/sts/main.tea","line":174,"column":5,"endLine":174,"endColumn":13},"expressionKind":"string","value":"HTTPS"},{"name":"pathname","source":{"file":"products/sts/main.tea","line":175,"column":5,"endLine":175,"endColumn":13},"expressionKind":"string","value":"/"},{"name":"method","source":{"file":"products/sts/main.tea","line":176,"column":5,"endLine":176,"endColumn":11},"expressionKind":"string","value":"POST"},{"name":"authType","source":{"file":"products/sts/main.tea","line":177,"column":5,"endLine":177,"endColumn":13},"expressionKind":"string","value":"AK"},{"name":"style","source":{"file":"products/sts/main.tea","line":178,"column":5,"endLine":178,"endColumn":10},"expressionKind":"string","value":"RPC"},{"name":"reqBodyType","source":{"file":"products/sts/main.tea","line":179,"column":5,"endLine":179,"endColumn":16},"expressionKind":"string","value":"formData"},{"name":"bodyType","source":{"file":"products/sts/main.tea","line":180,"column":5,"endLine":180,"endColumn":13},"expressionKind":"string","value":"json"}]}],"bindingEvidence":[{"target":"query","source":{"file":"products/sts/main.tea","line":151,"column":5,"endLine":151,"endColumn":10},"wire":"DurationSeconds","expressionKind":"property_access","requestPath":["durationSeconds"]},{"target":"query","source":{"file":"products/sts/main.tea","line":154,"column":5,"endLine":154,"endColumn":10},"wire":"ExternalId","expressionKind":"property_access","requestPath":["externalId"]},{"target":"query","source":{"file":"products/sts/main.tea","line":157,"column":5,"endLine":157,"endColumn":10},"wire":"Policy","expressionKind":"property_access","requestPath":["policy"]},{"target":"query","source":{"file":"products/sts/main.tea","line":160,"column":5,"endLine":160,"endColumn":10},"wire":"RoleArn","expressionKind":"property_access","requestPath":["roleArn"]},{"target":"query","source":{"file":"products/sts/main.tea","line":163,"column":5,"endLine":163,"endColumn":10},"wire":"RoleSessionName","expressionKind":"property_access","requestPath":["roleSessionName"]},{"target":"query","source":{"file":"products/sts/main.tea","line":166,"column":5,"endLine":166,"endColumn":10},"wire":"SourceIdentity","expressionKind":"property_access","requestPath":["sourceIdentity"]}]}],"documentation":[{"attribute":"summary","text":"Obtains a Security Token Service (STS) token to assume a Resource Access Management (RAM) role.","source":{"file":"products/sts/main.tea","line":129,"column":1,"endLine":146,"endColumn":4}},{"attribute":"description","text":"### Prerequisites\nYou cannot use an Alibaba Cloud account to call this operation. The requester of this operation can only be a RAM user or RAM role. Make sure that the AliyunSTSAssumeRoleAccess policy is attached to the requester. After this policy is attached to the requester, the requester has the management permissions on STS.\nIf you do not attach the AliyunSTSAssumeRoleAccess policy to the requester, the following error message is returned:\n`You are not authorized to do this action. You should be authorized by RAM.`\nYou can refer to the following information to troubleshoot the error:\n*   Cause of the error: The policy that is required to assume a RAM role is not attached to the requester. To resolve this issue, attach the AliyunSTSAssumeRoleAccess policy or a custom policy to the requester. For more information, see [Can I specify the RAM role that a RAM user can assume?](https://help.aliyun.com/document_detail/39744.html) and [Grant permissions to a RAM user](https://help.aliyun.com/document_detail/116146.html).\n*   Cause of the error: The requester is not authorized to assume the RAM role. To resolve this issue, add the requester to the Principal element in the trust policy of the RAM role For more information, see [Edit the trust policy of a RAM role](https://help.aliyun.com/document_detail/116819.html).\n### Best practices\nAn STS token is valid for a period of time after it is issued, and the number of STS tokens that can be issued within an interval is also limited. Therefore, we recommend that you configure a proper validity period for an STS token and repeatedly use the token within this period. This prevents frequent issuing of STS tokens from adversely affecting your services if a large number of requests are sent. For more information about the limit, see [Is the number of STS API requests limited?](https://help.aliyun.com/document_detail/39744.html) You can configure the `DurationSeconds` parameter to specify a validity period for an STS token.\nWhen you upload or download Object Storage Service (OSS) objects on mobile devices, a large number of STS API requests are sent. In this case, repeated use of an STS token may not meet your business requirements. To avoid the limit on STS API requests from affecting access to OSS, you can **add a signature to the URL of an OSS object**. For more information, see [Add signatures to URLs](https://help.aliyun.com/document_detail/31952.html) and [Obtain signature information from the server and upload data to OSS](https://help.aliyun.com/document_detail/31926.html).","source":{"file":"products/sts/main.tea","line":129,"column":1,"endLine":146,"endColumn":4}}],"status":"lowered","reasons":[],"parameters":[{"name":"request","source":{"file":"products/sts/main.tea","line":147,"column":38,"endLine":147,"endColumn":45},"type":{"kind":"model","ref":"AssumeRoleRequest"}},{"name":"runtime","source":{"file":"products/sts/main.tea","line":147,"column":66,"endLine":147,"endColumn":73},"type":{"kind":"external","dslType":"Util.RuntimeOptions","source":{"file":"products/sts/main.tea","line":147,"column":75,"endLine":147,"endColumn":94}}}],"roots":{"request":{"kind":"model","ref":"AssumeRoleRequest"},"response":{"kind":"model","ref":"AssumeRoleResponse"},"body":{"kind":"model","ref":"AssumeRoleResponseBody"}},"reachableModels":["AssumeRoleRequest","AssumeRoleResponse","AssumeRoleResponseBody","AssumeRoleResponseBody.assumedRoleUser","AssumeRoleResponseBody.credentials"],"protocol":{"action":"AssumeRole","version":"2015-04-01","protocol":"HTTPS","pathname":"/","method":"POST","authType":"AK","style":"RPC","reqBodyType":"formData","bodyType":"json"},"bindings":[{"wire":"DurationSeconds","location":"query","guard":"isUnset","field":"durationSeconds","source":{"file":"products/sts/main.tea","line":66,"column":3,"endLine":66,"endColumn":18}},{"wire":"ExternalId","location":"query","guard":"isUnset","field":"externalId","source":{"file":"products/sts/main.tea","line":71,"column":3,"endLine":71,"endColumn":13}},{"wire":"Policy","location":"query","guard":"isUnset","field":"policy","source":{"file":"products/sts/main.tea","line":76,"column":3,"endLine":76,"endColumn":9}},{"wire":"RoleArn","location":"query","guard":"isUnset","field":"roleArn","source":{"file":"products/sts/main.tea","line":84,"column":3,"endLine":84,"endColumn":10}},{"wire":"RoleSessionName","location":"query","guard":"isUnset","field":"roleSessionName","source":{"file":"products/sts/main.tea","line":96,"column":3,"endLine":96,"endColumn":18}},{"wire":"SourceIdentity","location":"query","guard":"isUnset","field":"sourceIdentity","source":{"file":"products/sts/main.tea","line":103,"column":3,"endLine":103,"endColumn":17}}]},

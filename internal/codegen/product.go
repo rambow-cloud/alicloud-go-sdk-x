@@ -90,6 +90,7 @@ type productOperation struct {
 	} `json:"bindings"`
 }
 type productIR struct {
+	Endpoints     productEndpoints  `json:"endpoints"`
 	Policy        *capabilityPolicy `json:"-"`
 	PolicySHA256  string            `json:"-"`
 	SchemaVersion int               `json:"schemaVersion"`
@@ -138,7 +139,7 @@ func GenerateProducts(ctx context.Context, root string, check bool, selected []s
 	if err := json.Unmarshal(data, &pins); err != nil {
 		return err
 	}
-	if pins.SchemaVersion != 3 || pins.Profile != "rpc-query-json-v1" || len(pins.Files) == 0 {
+	if pins.SchemaVersion != 4 || pins.Profile != "rpc-query-json-v1" || len(pins.Files) == 0 {
 		return errors.New("product: unsupported IR manifest")
 	}
 	if err := verifyDSLSource(root, map[string]bool{pins.SourceManifestSHA256: true}); err != nil {
@@ -172,7 +173,7 @@ func GenerateProducts(ctx context.Context, root string, check bool, selected []s
 		if err := json.Unmarshal(content, &p); err != nil {
 			return err
 		}
-		if p.SchemaVersion != 3 || p.Profile != pins.Profile || p.Product != parts[1] || p.Version == "" || p.Provenance.SourceManifestSHA256 != pins.SourceManifestSHA256 || p.Provenance.Repository != "https://github.com/aliyun/alibabacloud-sdk" || p.Provenance.License != "Apache-2.0" || p.Provenance.ParserVersion != "2.2.1" || len(p.Provenance.Revision) != 40 {
+		if p.SchemaVersion != 4 || p.Profile != pins.Profile || p.Product != parts[1] || p.Version == "" || p.Provenance.SourceManifestSHA256 != pins.SourceManifestSHA256 || p.Provenance.Repository != "https://github.com/aliyun/alibabacloud-sdk" || p.Provenance.License != "Apache-2.0" || p.Provenance.ParserVersion != "2.2.1" || len(p.Provenance.Revision) != 40 {
 			return errors.New("product: IR provenance mismatch")
 		}
 		products = append(products, p)
@@ -219,7 +220,14 @@ func GenerateProducts(ctx context.Context, root string, check bool, selected []s
 			files[name] = data
 		}
 	}
-	return reconcileOwned(ctx, root, files, check, []string{"service", "docs/products"}, func(data []byte) bool {
+	endpointFiles, err := renderEndpoints(products)
+	if err != nil {
+		return err
+	}
+	for name, data := range endpointFiles {
+		files[name] = data
+	}
+	return reconcileOwned(ctx, root, files, check, []string{"service", "docs/products", "endpoint"}, func(data []byte) bool {
 		return bytes.HasPrefix(data, []byte(productGenerated)) || bytes.HasPrefix(data, []byte(productMarkdown)) || bytes.HasPrefix(data, []byte(productJSON))
 	})
 }
