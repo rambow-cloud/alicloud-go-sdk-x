@@ -10,3 +10,10 @@
 - Before code: commit paired route/acceptance, pin complete original source/helper/imports, extract exact helper/root/host/signing evidence into IR, then implement shared protocol helpers and generic Go emission. Keep unknown modes/selected unsupported operations rejected before writes.
 - Establish stream transfer/close, context lifetime, request hashing/replay and response checksum semantics explicitly. Use independent signature/XML/stream ownership fixtures, synthetic external Examples and normal frontend/Go/CI gates. No OSS provisioning or live mutations.
 - FC InvokeFunction needs its own readable-body/header transformation/lowercase error coverage; do not pretend buffered JSON/none closes binary streaming.
+
+## First verification
+
+- Add an isolated, pinned official-helper/model comparison under tools/ossxml. Use synthetic ACL, CORS and location XML; make no HTTP or credential calls.
+- Assert structured-root and scalar-root representations separately. Compare unchanged helper conversion with explicit fixture normalization; do not introduce per-action production overlays.
+- Record malformed XML handling. New runtime decoding must return an error rather than copy a helper's silent empty result.
+- This comparison supplies source/representation evidence only. Production source pinning, semantic projection, signing, XML emission and streaming remain pending.
