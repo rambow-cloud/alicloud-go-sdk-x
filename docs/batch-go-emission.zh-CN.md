@@ -52,3 +52,5 @@ go run ./internal/cmd/sdkgen product-generate
 go run ./internal/cmd/sdkgen product-check
 go run ./internal/cmd/sdkgen product-check -operations ecs/DescribeImages,sts/AssumeRole
 ```
+
+- #85 将输出器扩展为明确的 query/表单位置、simple 字符串数组及原生 GET；VPC 生成 403 个操作、1,728 个模型。见 [补齐契约](vpc-rpc-completion.zh-CN.md)，此前仅 query 的 POST 限制在此次审核范围内已被替代。

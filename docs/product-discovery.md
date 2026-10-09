@@ -53,3 +53,5 @@ node tools/darabonba/discovery.cjs check --operations ecs/DescribeImages,sts/Ass
 - CI runs Linux race and Windows Go 1.27.
 - Public Go packages continue direct JSON v2 and existing offline Examples.
 - Browser/live calls are not part of this stage; full product Go emission is #36, capability policies #37 and documentation automation #38.
+
+- Current scope after #85: product IR/lock schema v3, ECS 380/380, VPC 403/403 and STS 4/4. See [VPC RPC completion](vpc-rpc-completion.md); earlier counts and reasons below are historical.

@@ -30,4 +30,6 @@
 - Node 22 frontend/IR checks and 84 tests PASS. Product-check, doccheck (15 packages), vet and root tests/Examples PASS. Additional schema/location rejection tests PASS after their final test edits.
 - Existing public model field types are preserved: 2,053 ECS, 19 STS and 1,671 VPC models. Upstream source and capability policies are unchanged.
 - Formatting, 25 automation tests and paired language/local-link checks PASS. Historical live scope is unchanged.
-- Consumer workload and final PR CI evidence will be recorded after the clean implementation commit.
+- Shared consumer workload: `0fa3989f5df2e809082126eb9f177a8cc5ec218c`. Both isolated modules pass vet, tests and account-free programs. STS has 11 existing cases plus two official helper comparisons; ECS has 10 cases/14 subtests; VPC has eight cases/10 subtests.
+- Official simple-array and form-flattening comparisons PASS for nil/empty arrays, nested fields, explicit zero/false and special characters. This compares helpers, not all official VPC operations.
+- Machine records use the same workload pin and retain historical live pins. Final PR Linux race, Windows and automation checks are required before merge.

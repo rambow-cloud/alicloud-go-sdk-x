@@ -5,11 +5,11 @@
   "issue": 75,
   "reviewKind": "implementation-agent",
   "independentHuman": false,
-  "sdkCommit": "01f25a9a571c3b59024dfbef7e2e96f7605f4a55",
+  "sdkCommit": "0fa3989f5df2e809082126eb9f177a8cc5ec218c",
   "goVersion": "go1.27.1",
   "os": "windows/amd64",
-  "startedAt": "2026-10-09T09:45:26.717Z",
-  "endedAt": "2026-10-09T09:45:28.812Z",
+  "startedAt": "2026-10-09T11:18:40.845Z",
+  "endedAt": "2026-10-09T11:18:43.223Z",
   "command": "go -C examples/productacceptance test -json -count=1 ./...",
   "timingKind": "automated-test-execution",
   "evidence": "docs/vpc-product-acceptance.md",
@@ -19,11 +19,11 @@
   "policySHA256": "d5c1511fe4ba20ccb76975c995c45e891838fe89f1dea318879dc2ce7dd54db1",
   "coverage": {
     "discovered": 403,
-    "lowered": 396,
-    "emitted": 396,
-    "models": 1671,
-    "compiled": 396,
-    "unsupported": 7,
+    "lowered": 403,
+    "emitted": 403,
+    "models": 1728,
+    "compiled": 403,
+    "unsupported": 0,
     "live": "selected-fields-only"
   },
   "requiredCases": [
@@ -109,8 +109,8 @@
   },
   "verification": {
     "frontendCheck": "PASS",
-    "frontendTests": 73,
-    "automationTests": "pending-final-PR-CI",
+    "frontendTests": 84,
+    "automationTests": 25,
     "generatorCheck": "PASS",
     "productCheck": "PASS",
     "doccheckPackages": 15,
@@ -121,7 +121,7 @@
     "formatAndLanguage": "PASS",
     "finalHeadCI": "see-linked-PR-checks",
     "generatorReviewTests": "PASS",
-    "irSchemaVersion": 2
+    "irSchemaVersion": 3
   },
-  "regressionIssue": 83
+  "regressionIssue": 85
 }
