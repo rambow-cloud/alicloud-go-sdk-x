@@ -2,7 +2,7 @@
 
 [English](vpc-product-acceptance.md)
 
-- 当前生成范围见 [RPC 扩展 #83](dsl-rpc-expansion.zh-CN.md)：ECS 380/380、VPC 396/403。下方原有数量及消费者记录对应当时验收的提交。
+- 当前生成范围见 [RPC 扩展 #85](vpc-rpc-completion.zh-CN.md)：ECS 380/380、VPC 403/403。下方原有数量及消费者记录对应当时验收的提交。
 
 ## 执行前确定的范围
 

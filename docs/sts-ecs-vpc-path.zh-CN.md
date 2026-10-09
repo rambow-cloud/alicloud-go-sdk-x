@@ -5,7 +5,7 @@
 ## ECS、VPC 的明确范围验收
 
 - #74/#75 按执行前确定的 [ECS 验收](ecs-product-acceptance.zh-CN.md)和 [VPC 验收](vpc-product-acceptance.zh-CN.md)矩阵完成。
-- 支持的 RPC 清单为 ECS 283 个、VPC 296 个操作。离线消费者契约与真实调用的选定字段证据分别记录，不支持的 DSL 操作继续说明原因。
+- 支持的 RPC 清单为 ECS 380 个、VPC 403 个操作。离线消费者契约与真实调用的选定字段证据分别记录，不支持的 DSL 操作继续说明原因。
 - 真实实例 token、waiter 状态迁移及非空 VPC 续页仍为排除项，保留 NOT RUN 或 SKIP，由后续项 #79 跟踪；不宣称整体 Beta 或全云验收。
 - 消费者验收由实现代理执行，独立人工体验和自动化测试耗时继续区分。
 - STS、ECS、VPC 证据固定到共用消费者和 CI 的受测版本；发布及同版本 pkg.go.dev 索引仍由 #61 完成。产品收尾不创建版本标签。
@@ -27,7 +27,7 @@
 
 ## 产品范围
 
-- 当前固定基线生成四个 STS、283 个 ECS、296 个 VPC 操作。这是生成数量，不是真实调用覆盖。
+- 当前固定基线生成四个 STS、380 个 ECS、403 个 VPC 操作。这是生成数量，不是真实调用覆盖。
 - STS 包含四个操作、角色凭据与缓存、原生 Profile 组合，不添加分页器或 waiter。
 - ECS 先验收 DescribeRegions、DescribeImages、DescribeInstances、DescribeInstanceStatus 的消费者契约，保留原生页码、token 和 InstanceRunningWaiter 语义。
 - VPC 先验收 DescribeVpcs 及原生页码分页器，不凭空增加 token 接口或 waiter。

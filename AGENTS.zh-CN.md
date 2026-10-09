@@ -2,6 +2,11 @@
 
 [English](AGENTS.md)
 
+## SDK 缺口补齐路线（2026-10-09）
+
+- 用户要求补齐剩余能力，按[缺口补齐路线](docs/gap-completion.zh-CN.md)和父 issue #87 执行。
+- 本路线优先于旧下一步安排，保留已接受证据；未完成的实现、真实验证、人工体验与发布分别跟踪。
+
 ## 统一服务路径
 
 - 用户确认的 #81 [服务整合路线](docs/service-consolidation.zh-CN.md) 替代旧兼容桥保留要求。仅支持 `service/<product>`，移除 `services/` 包及输出器；历史证据和官方源码通知继续保留。
