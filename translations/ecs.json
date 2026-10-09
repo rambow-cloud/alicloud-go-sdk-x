@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "product": "ecs",
+  "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
+  "operations": {
+    "CreateSavingsPlan": {
+      "attribute": "summary",
+      "source": {
+        "file": "products/ecs/main.tea",
+        "line": 11640,
+        "column": 1,
+        "endLine": 11646,
+        "endColumn": 4
+      },
+      "sourceTextSHA256": "d4a8af1d02b563f0a9a682f19a257b1b58e870121072d949e9624cd0a0b5bd5d",
+      "english": "Purchases a savings plan and prepays for pay-as-you-go usage.",
+      "chinese": "购买节省计划并预付费换购按量付费"
+    },
+    "CreateStorageSet": {
+      "attribute": "summary",
+      "source": {
+        "file": "products/ecs/main.tea",
+        "line": 12360,
+        "column": 1,
+        "endLine": 12366,
+        "endColumn": 4
+      },
+      "sourceTextSHA256": "6c21c156b10e37caee0b373880f0cd144476c0725f3db3a9691c14b2cfcbcade",
+      "english": "Creates a storage set to distribute disks when they are created.",
+      "chinese": "创建一个存储集，用于在创建磁盘时打散磁盘的分布"
+    },
+    "DeleteStorageSet": {
+      "attribute": "summary",
+      "source": {
+        "file": "products/ecs/main.tea",
+        "line": 15922,
+        "column": 1,
+        "endLine": 15928,
+        "endColumn": 4
+      },
+      "sourceTextSHA256": "18016ed6014edc89b09374dd6b8f12573a7e164cdeca6329221183294fe34b3b",
+      "english": "Deletes the specified storage set.",
+      "chinese": "删除一个指定的存储集"
+    },
+    "DescribeInstanceTopology": {
+      "attribute": "summary",
+      "source": {
+        "file": "products/ecs/main.tea",
+        "line": 25243,
+        "column": 1,
+        "endLine": 25249,
+        "endColumn": 4
+      },
+      "sourceTextSHA256": "e8e7cd76aa6e4be6695c85b23b11658d6af1d1edcfc9b2e9d11de5738c07f4ae",
+      "english": "Queries instance topology.",
+      "chinese": "实例拓扑查询接口"
+    },
+    "DescribeSavingsPlanEstimation": {
+      "attribute": "summary",
+      "source": {
+        "file": "products/ecs/main.tea",
+        "line": 32002,
+        "column": 1,
+        "endLine": 32008,
+        "endColumn": 4
+      },
+      "sourceTextSHA256": "e5129b11da1a60d61b087f53c58ffe24c1a7303d8d6829511e4e604815e7bba7",
+      "english": "Estimates a savings plan.",
+      "chinese": "节省计划测算"
+    },
+    "DescribeSavingsPlanPrice": {
+      "attribute": "summary",
+      "source": {
+        "file": "products/ecs/main.tea",
+        "line": 32100,
+        "column": 1,
+        "endLine": 32106,
+        "endColumn": 4
+      },
+      "sourceTextSHA256": "fcbe3fef2221473ca7e29ecb90609e0b2cb255a7944208f2cde063c1dd02f30d",
+      "english": "Queries the price of a savings plan with upfront payment for pay-as-you-go usage.",
+      "chinese": "询价购买节省计划并预付费换购按量付费"
+    },
+    "DescribeStorageSetDetails": {
+      "attribute": "summary",
+      "source": {
+        "file": "products/ecs/main.tea",
+        "line": 34288,
+        "column": 1,
+        "endLine": 34294,
+        "endColumn": 4
+      },
+      "sourceTextSHA256": "07c7d5a153c8c9cb89f7488de699bd95a60e5cbc48dae2f62f6b75bc51036071",
+      "english": "Queries details of the specified storage set.",
+      "chinese": "查询指定存储集的详情"
+    },
+    "DescribeStorageSets": {
+      "attribute": "summary",
+      "source": {
+        "file": "products/ecs/main.tea",
+        "line": 34414,
+        "column": 1,
+        "endLine": 34420,
+        "endColumn": 4
+      },
+      "sourceTextSHA256": "30c4361d5c244d7cdff4eaf075ec904b26e8844ba5c06ec193ffc344159abaac",
+      "english": "Queries storage sets in the current region.",
+      "chinese": "查询当前地域下的存储集信息"
+    },
+    "ModifyStorageSetAttribute": {
+      "attribute": "summary",
+      "source": {
+        "file": "products/ecs/main.tea",
+        "line": 48128,
+        "column": 1,
+        "endLine": 48134,
+        "endColumn": 4
+      },
+      "sourceTextSHA256": "a4396d8a3dd89a2354d148e1b6cce5aa25e81a2a59f665c2878ff384cd022c72",
+      "english": "Modifies the specified storage set.",
+      "chinese": "修改指定的存储集信息"
+    }
+  }
+}

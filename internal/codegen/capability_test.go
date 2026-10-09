@@ -18,6 +18,9 @@ func readPolicyProduct(t *testing.T, pkg string) productIR {
 	if err := loadCapabilityPolicies(filepath.Join("..", ".."), products); err != nil {
 		t.Fatal(err)
 	}
+	if err := loadProductTranslations(filepath.Join("..", ".."), products); err != nil {
+		t.Fatal(err)
+	}
 	for _, p := range products {
 		if p.Product == pkg {
 			return p

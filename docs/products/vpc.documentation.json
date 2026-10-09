@@ -1,5 +1,8 @@
 {
   "generator": "sdkgen product",
+  "reviewedEnglishTranslations": 0,
+  "goOperationContractComments": 403,
+  "goFieldContractComments": 9017,
   "schemaVersion": 1,
   "product": "vpc",
   "license": "Apache-2.0",

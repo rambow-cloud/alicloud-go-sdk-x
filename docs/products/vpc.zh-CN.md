@@ -91,6 +91,8 @@
 | ListPrefixLists | tokens | — | true |  | true | false |
 | ListVpcGatewayEndpoints | tokens | — | true |  | true | false |
 
+- 已审核英文译文：0 个操作；Go 行为注释覆盖 403 个操作和 9017 个来源字段，单独统计，不冒充上游业务说明。缺少英文说明的字段保留准确 DSL 来源链接。
+
 ## 文档来源
 
 - 英文 Go 注释复用已授权的官方说明和摘要：403/403 个操作、5036/9017 个字段有说明。

@@ -34,6 +34,6 @@
 - Sources: https://pkg.go.dev/about#adding-a-package and https://pkg.go.dev/license-policy.
 
 - Use the prepared [paired release notes](releases/v0.1.0.md) and [exact release/indexing checklist](sts-v010-release-checklist.md).
-- Required independent acceptance remains NOT RUN; no tag or indexing is claimed.
+- Optional independent human UX remains NOT RUN; no tag or indexing is claimed.
 - The read-only release guard and same-version browser URLs are recorded there.
 - Existing authorization covers completion after gates pass; missing human evidence is not an invitation to reconfirm publication permission.

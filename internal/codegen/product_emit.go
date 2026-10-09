@@ -40,6 +40,9 @@ type productRenderer struct {
 }
 
 func newProductRenderer(p productIR) (*productRenderer, error) {
+	if err := validateProductTranslations(p); err != nil {
+		return nil, err
+	}
 	if !packageName.MatchString(p.Product) || token.Lookup(p.Product).IsKeyword() {
 		return nil, errors.New("invalid package name")
 	}
@@ -354,6 +357,9 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 				types.WriteString("// Nil omits this member; non-nil scalar pointers preserve explicit zero values.\n")
 			}
 			r.appendProse(&types, f.Documentation)
+			if documentCoverage(f.Documentation).Status != "emitted" {
+				fmt.Fprintf(&types, "// Upstream prose is unavailable in English; native field contract is documented above.\n// Source: %s\n", r.sourceURL(f.Source))
+			}
 			if f.Attributes.Deprecated {
 				types.WriteString("//\n// Deprecated: The upstream DSL marks this field as deprecated. It remains available for compatibility.\n")
 			}
@@ -408,7 +414,7 @@ func renderProduct(p productIR) (map[string][]byte, error) {
 		if op.Protocol.AuthType == "Anonymous" {
 			methods.WriteString("// This anonymous RPC action never retrieves source credentials or signs the request.\n")
 		}
-		r.appendProse(&methods, op.Documentation)
+		r.appendOperationProse(&methods, op)
 		fmt.Fprintf(&methods, "func(c *Client)%s(ctx context.Context,input *%sInput,optFns ...func(*Options))(*%sOutput,error){\n", op.Name, op.Name, op.Name)
 		hasRegion := false
 		for _, f := range r.models[op.Roots.Request.Ref].Fields {
@@ -553,9 +559,9 @@ func (r *productRenderer) guide(chinese bool) []byte {
 		}
 		if r.p.Product == "sts" {
 			if chinese {
-				b.WriteString("- 联邦身份 token 和断言由调用者提供，不自动发现联邦身份。凭据签发操作不重试。\n- 真实联邦调用尚未运行（NOT RUN），不属于 v0.1.0 的必需真实验收范围。见 [匿名协议](../sts-anonymous-rpc.zh-CN.md)。\n\n")
+				b.WriteString("- 直接调用时显式提供 token 或断言；也可使用 feature/stscreds 的可续期 OIDC/SAML provider 和 token 文件来源。\n- config.LoadDefaultConfig 支持 OIDC 环境来源及原生 OIDC Profile；SAML provider 由调用者显式注册。AK/SK 仍需显式选择 provider 或允许长期凭据。\n- 凭据签发操作不重试。真实联邦续期由 #94 跟踪，尚未执行。见 [联邦身份指南](../federation-credentials.zh-CN.md)和[默认配置](../default-configuration.zh-CN.md)。\n\n")
 			} else {
-				b.WriteString("- Supply federation tokens/assertions explicitly; there is no federation discovery. Issuance actions do not retry.\n- Live federation: NOT RUN, outside the required v0.1.0 live scope. See [anonymous protocol](../sts-anonymous-rpc.md).\n\n")
+				b.WriteString("- Direct calls take explicit tokens/assertions. feature/stscreds also provides renewable OIDC/SAML providers and token-file sources.\n- config.LoadDefaultConfig discovers OIDC environment and native OIDC Profile sources. Register SAML providers explicitly. AK/SK still require explicit providers or long-lived opt-in.\n- Issuance actions do not retry. Live federation renewal remains NOT RUN under #94. See [federation guide](../federation-credentials.md) and [default configuration](../default-configuration.md).\n\n")
 			}
 		}
 	}

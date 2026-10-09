@@ -94,6 +94,8 @@ type AssumeRoleInput struct {
 	RoleSessionName *string `json:"RoleSessionName,omitzero"`
 	// SourceIdentity maps to the exact wire member SourceIdentity.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L103
 	SourceIdentity *string `json:"SourceIdentity,omitzero"`
 }
 
@@ -101,12 +103,18 @@ type AssumeRoleInput struct {
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type AssumeRoleResponse struct {
 	// Headers maps to the exact wire member headers.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L124
 	Headers map[string]string `json:"headers,omitzero"`
 	// StatusCode maps to the exact wire member statusCode.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L125
 	StatusCode *int32 `json:"statusCode,omitzero"`
 	// Body maps to the exact wire member body.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L126
 	Body *AssumeRoleOutput `json:"body,omitzero"`
 }
 
@@ -142,6 +150,8 @@ type AssumeRoleOutput struct {
 	RequestID *string `json:"RequestId,omitzero"`
 	// SourceIdentity maps to the exact wire member SourceIdentity.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L120
 	SourceIdentity *string `json:"SourceIdentity,omitzero"`
 	// Metadata contains request identity, HTTP status and attempt count.
 	Metadata alicloud.Metadata `json:"-"`
@@ -305,12 +315,18 @@ type AssumeRoleWithOIDCInput struct {
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type AssumeRoleWithOIDCResponse struct {
 	// Headers maps to the exact wire member headers.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L277
 	Headers map[string]string `json:"headers,omitzero"`
 	// StatusCode maps to the exact wire member statusCode.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L278
 	StatusCode *int32 `json:"statusCode,omitzero"`
 	// Body maps to the exact wire member body.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L279
 	Body *AssumeRoleWithOIDCOutput `json:"body,omitzero"`
 }
 
@@ -355,6 +371,8 @@ type AssumeRoleWithOIDCOutput struct {
 	RequestID *string `json:"RequestId,omitzero"`
 	// SourceIdentity maps to the exact wire member SourceIdentity.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L273
 	SourceIdentity *string `json:"SourceIdentity,omitzero"`
 	// Metadata contains request identity, HTTP status and attempt count.
 	Metadata alicloud.Metadata `json:"-"`
@@ -574,12 +592,18 @@ type AssumeRoleWithSAMLInput struct {
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type AssumeRoleWithSAMLResponse struct {
 	// Headers maps to the exact wire member headers.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L409
 	Headers map[string]string `json:"headers,omitzero"`
 	// StatusCode maps to the exact wire member statusCode.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L410
 	StatusCode *int32 `json:"statusCode,omitzero"`
 	// Body maps to the exact wire member body.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L411
 	Body *AssumeRoleWithSAMLOutput `json:"body,omitzero"`
 }
 
@@ -624,6 +648,8 @@ type AssumeRoleWithSAMLOutput struct {
 	SAMLAssertionInfo *AssumeRoleWithSAMLOutputSAMLAssertionInfo `json:"SAMLAssertionInfo,omitzero"`
 	// SourceIdentity maps to the exact wire member SourceIdentity.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L405
 	SourceIdentity *string `json:"SourceIdentity,omitzero"`
 	// Metadata contains request identity, HTTP status and attempt count.
 	Metadata alicloud.Metadata `json:"-"`
@@ -740,12 +766,18 @@ type AssumeRoleWithSAMLOutputCredentials struct {
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type GetCallerIdentityResponse struct {
 	// Headers maps to the exact wire member headers.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L488
 	Headers map[string]string `json:"headers,omitzero"`
 	// StatusCode maps to the exact wire member statusCode.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L489
 	StatusCode *int32 `json:"statusCode,omitzero"`
 	// Body maps to the exact wire member body.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L490
 	Body *GetCallerIdentityOutput `json:"body,omitzero"`
 }
 
@@ -754,24 +786,38 @@ type GetCallerIdentityResponse struct {
 type GetCallerIdentityOutput struct {
 	// AccountID maps to the exact wire member AccountId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L478
 	AccountID *string `json:"AccountId,omitzero"`
 	// ARN maps to the exact wire member Arn.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L479
 	ARN *string `json:"Arn,omitzero"`
 	// IdentityType maps to the exact wire member IdentityType.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L480
 	IdentityType *string `json:"IdentityType,omitzero"`
 	// PrincipalID maps to the exact wire member PrincipalId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L481
 	PrincipalID *string `json:"PrincipalId,omitzero"`
 	// RequestID maps to the exact wire member RequestId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L482
 	RequestID *string `json:"RequestId,omitzero"`
 	// RoleID maps to the exact wire member RoleId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L483
 	RoleID *string `json:"RoleId,omitzero"`
 	// UserID maps to the exact wire member UserId.
 	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	// Upstream prose is unavailable in English; native field contract is documented above.
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/sts-20150401/main.tea#L484
 	UserID *string `json:"UserId,omitzero"`
 	// Metadata contains request identity, HTTP status and attempt count.
 	Metadata alicloud.Metadata `json:"-"`
