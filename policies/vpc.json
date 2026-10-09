@@ -366,6 +366,61 @@
           "maximum": 100
         }
       ]
+    },
+    "DescribeEcGrantRelation": {
+      "idempotent": true,
+      "evidence": [
+        "https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L22219",
+        "docs/native-page-widths.md"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "EcGrantRelations",
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount",
+        "defaultSize": 10,
+        "maximumSize": 50,
+        "outputPage": "Page"
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 50
+        }
+      ]
+    },
+    "DescribeGrantRulesToEcr": {
+      "idempotent": true,
+      "evidence": [
+        "https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L24469",
+        "docs/native-page-widths.md"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "EcrGrantRules",
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount",
+        "defaultSize": 10,
+        "maximumSize": 50
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 50
+        }
+      ]
     }
   },
   "endpoints": [

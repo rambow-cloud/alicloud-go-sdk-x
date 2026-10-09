@@ -11,7 +11,7 @@
   "compilation": "not-assessed",
   "live": "not-assessed",
   "capabilityPolicy": "sparse-reviewed",
-  "policySHA256": "d77bb1136fd08285b5f8e1b46122185de7ec1948632ab600ad8fbe37a0612f00",
+  "policySHA256": "dcc8378733db492f50b831fac9262509102c1c6b1ea53bdf129af67d5e8b74f8",
   "operations": [
     {
       "name": "ActivateRouterInterface",
@@ -3161,9 +3161,10 @@
       },
       "reasons": [],
       "capabilities": {
-        "status": "not-reviewed",
-        "idempotent": false,
-        "validator": false,
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "pages",
+        "validator": true,
         "sensitiveFormatting": false,
         "namingException": false
       }
@@ -3428,9 +3429,10 @@
       },
       "reasons": [],
       "capabilities": {
-        "status": "not-reviewed",
-        "idempotent": false,
-        "validator": false,
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "pages",
+        "validator": true,
         "sensitiveFormatting": false,
         "namingException": false
       }

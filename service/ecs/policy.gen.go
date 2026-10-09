@@ -139,6 +139,28 @@ func ValidateDescribeImagesInput(in *DescribeImagesInput) error {
 	return nil
 }
 
+// ValidateDescribeInstanceMaintenanceAttributesInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeInstanceMaintenanceAttributesInput(in *DescribeInstanceMaintenanceAttributesInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.PageNumber != nil {
+		if *in.PageNumber < 1 {
+			return errors.New("invalid PageNumber: below minimum")
+		}
+	}
+	if in.PageSize != nil {
+		if *in.PageSize < 1 {
+			return errors.New("invalid PageSize: below minimum")
+		}
+		if *in.PageSize > 100 {
+			return errors.New("invalid PageSize: above maximum")
+		}
+	}
+	return nil
+}
+
 // ValidateDescribeInstanceStatusInput checks only the reviewed sparse constraints without changing input.
 // Nil is an empty request; diagnostics identify rules without including values.
 func ValidateDescribeInstanceStatusInput(in *DescribeInstanceStatusInput) error {

@@ -80,6 +80,8 @@
 | DescribeDeploymentSets | pages | — | true |  | true | false |
 | DescribeDisks | tokens | — | true |  | true | false |
 | DescribeImages | pages | — | true |  | true | false |
+| DescribeInstanceAutoRenewAttribute | pages | — | true |  | false | false |
+| DescribeInstanceMaintenanceAttributes | pages | — | true |  | true | false |
 | DescribeInstanceStatus | pages | InstanceRunningWaiter, InstanceStoppedWaiter | true |  | true | false |
 | DescribeInstances | dual | — | true |  | true | false |
 | DescribeInvocations | tokens | — | true |  | true | false |

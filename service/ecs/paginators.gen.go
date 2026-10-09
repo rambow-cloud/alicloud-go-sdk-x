@@ -6,6 +6,7 @@ import (
 	"errors"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/internal/rpcmodel"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/pagination"
+	"strconv"
 )
 
 // DescribeAutoSnapshotPolicyExPaginatorOptions controls native pagination and copied operation options.
@@ -67,10 +68,15 @@ func NewDescribeAutoSnapshotPolicyExPaginator(api DescribeAutoSnapshotPolicyExAP
 		if options.Limit > 0 {
 			in.PageSize = rpcmodel.Pointer(int32(options.Limit))
 		}
-		if *in.PageNumber < 1 || *in.PageSize < 1 || *in.PageSize > 100 {
-			return nil, errors.New("invalid native page fields")
+		nativePage, cause := rpcmodel.PaginationInteger(*in.PageNumber)
+		if cause != nil || nativePage < 1 || nativePage > int64(2147483647) {
+			return nil, errors.New("invalid native page number")
 		}
-		initial.PageNumber = int(*in.PageNumber)
+		nativeSize, cause := rpcmodel.PaginationInteger(*in.PageSize)
+		if cause != nil || nativeSize < 1 || nativeSize > 100 {
+			return nil, errors.New("invalid native page size")
+		}
+		initial.PageNumber = int(nativePage)
 	}
 
 	p := &DescribeAutoSnapshotPolicyExPaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
@@ -93,24 +99,34 @@ func NewDescribeAutoSnapshotPolicyExPaginator(api DescribeAutoSnapshotPolicyExAP
 		page := pagination.Page[*DescribeAutoSnapshotPolicyExOutput]{Value: out}
 
 		if pageMode {
-			if !(out.TotalCount != nil) || *out.TotalCount < 0 {
-				return pagination.Page[*DescribeAutoSnapshotPolicyExOutput]{}, errors.New("missing or negative page total")
+			if !(out.TotalCount != nil) {
+				return pagination.Page[*DescribeAutoSnapshotPolicyExOutput]{}, errors.New("missing page total")
 			}
-			if out.PageNumber != nil && int(*out.PageNumber) != cursor.PageNumber {
-				return pagination.Page[*DescribeAutoSnapshotPolicyExOutput]{}, errors.New("inconsistent page number")
+			total, cause := rpcmodel.PaginationInteger(*out.TotalCount)
+			if cause != nil || total < 0 {
+				return pagination.Page[*DescribeAutoSnapshotPolicyExOutput]{}, errors.New("invalid page total")
 			}
-			size := int(*in.PageSize)
+			if out.PageNumber != nil {
+				number, cause := rpcmodel.PaginationInteger(*out.PageNumber)
+				if cause != nil || number != int64(cursor.PageNumber) {
+					return pagination.Page[*DescribeAutoSnapshotPolicyExOutput]{}, errors.New("inconsistent page number")
+				}
+			}
+			size, cause := rpcmodel.PaginationInteger(*in.PageSize)
+			if cause != nil {
+				return pagination.Page[*DescribeAutoSnapshotPolicyExOutput]{}, errors.New("invalid request page size")
+			}
 			if out.PageSize != nil {
-				size = int(*out.PageSize)
+				size, cause = rpcmodel.PaginationInteger(*out.PageSize)
 			}
-			if size < 1 || size > 100 {
+			if cause != nil || size < 1 || size > 100 {
 				return pagination.Page[*DescribeAutoSnapshotPolicyExOutput]{}, errors.New("invalid response page size")
 			}
 			count := 0
 			if out.AutoSnapshotPolicies != nil {
 				count = len(out.AutoSnapshotPolicies.AutoSnapshotPolicy)
 			}
-			page.HasMore = count > 0 && *out.TotalCount > 0 && cursor.PageNumber < 2147483647 && cursor.PageNumber <= int((*out.TotalCount-1)/int32(size))
+			page.HasMore = count > 0 && total > 0 && int64(cursor.PageNumber) < int64(2147483647) && int64(cursor.PageNumber) <= (total-1)/size
 			if page.HasMore {
 				page.Next.PageNumber = cursor.PageNumber + 1
 			}
@@ -317,10 +333,15 @@ func NewDescribeDeploymentSetsPaginator(api DescribeDeploymentSetsAPI, input *De
 		if options.Limit > 0 {
 			in.PageSize = rpcmodel.Pointer(int32(options.Limit))
 		}
-		if *in.PageNumber < 1 || *in.PageSize < 1 || *in.PageSize > 50 {
-			return nil, errors.New("invalid native page fields")
+		nativePage, cause := rpcmodel.PaginationInteger(*in.PageNumber)
+		if cause != nil || nativePage < 1 || nativePage > int64(2147483647) {
+			return nil, errors.New("invalid native page number")
 		}
-		initial.PageNumber = int(*in.PageNumber)
+		nativeSize, cause := rpcmodel.PaginationInteger(*in.PageSize)
+		if cause != nil || nativeSize < 1 || nativeSize > 50 {
+			return nil, errors.New("invalid native page size")
+		}
+		initial.PageNumber = int(nativePage)
 	}
 
 	p := &DescribeDeploymentSetsPaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
@@ -343,24 +364,34 @@ func NewDescribeDeploymentSetsPaginator(api DescribeDeploymentSetsAPI, input *De
 		page := pagination.Page[*DescribeDeploymentSetsOutput]{Value: out}
 
 		if pageMode {
-			if !(out.TotalCount != nil) || *out.TotalCount < 0 {
-				return pagination.Page[*DescribeDeploymentSetsOutput]{}, errors.New("missing or negative page total")
+			if !(out.TotalCount != nil) {
+				return pagination.Page[*DescribeDeploymentSetsOutput]{}, errors.New("missing page total")
 			}
-			if out.PageNumber != nil && int(*out.PageNumber) != cursor.PageNumber {
-				return pagination.Page[*DescribeDeploymentSetsOutput]{}, errors.New("inconsistent page number")
+			total, cause := rpcmodel.PaginationInteger(*out.TotalCount)
+			if cause != nil || total < 0 {
+				return pagination.Page[*DescribeDeploymentSetsOutput]{}, errors.New("invalid page total")
 			}
-			size := int(*in.PageSize)
+			if out.PageNumber != nil {
+				number, cause := rpcmodel.PaginationInteger(*out.PageNumber)
+				if cause != nil || number != int64(cursor.PageNumber) {
+					return pagination.Page[*DescribeDeploymentSetsOutput]{}, errors.New("inconsistent page number")
+				}
+			}
+			size, cause := rpcmodel.PaginationInteger(*in.PageSize)
+			if cause != nil {
+				return pagination.Page[*DescribeDeploymentSetsOutput]{}, errors.New("invalid request page size")
+			}
 			if out.PageSize != nil {
-				size = int(*out.PageSize)
+				size, cause = rpcmodel.PaginationInteger(*out.PageSize)
 			}
-			if size < 1 || size > 50 {
+			if cause != nil || size < 1 || size > 50 {
 				return pagination.Page[*DescribeDeploymentSetsOutput]{}, errors.New("invalid response page size")
 			}
 			count := 0
 			if out.DeploymentSets != nil {
 				count = len(out.DeploymentSets.DeploymentSet)
 			}
-			page.HasMore = count > 0 && *out.TotalCount > 0 && cursor.PageNumber < 2147483647 && cursor.PageNumber <= int((*out.TotalCount-1)/int32(size))
+			page.HasMore = count > 0 && total > 0 && int64(cursor.PageNumber) < int64(2147483647) && int64(cursor.PageNumber) <= (total-1)/size
 			if page.HasMore {
 				page.Next.PageNumber = cursor.PageNumber + 1
 			}
@@ -567,10 +598,15 @@ func NewDescribeImagesPaginator(api DescribeImagesAPI, input *DescribeImagesInpu
 		if options.Limit > 0 {
 			in.PageSize = rpcmodel.Pointer(int32(options.Limit))
 		}
-		if *in.PageNumber < 1 || *in.PageSize < 1 || *in.PageSize > 100 {
-			return nil, errors.New("invalid native page fields")
+		nativePage, cause := rpcmodel.PaginationInteger(*in.PageNumber)
+		if cause != nil || nativePage < 1 || nativePage > int64(2147483647) {
+			return nil, errors.New("invalid native page number")
 		}
-		initial.PageNumber = int(*in.PageNumber)
+		nativeSize, cause := rpcmodel.PaginationInteger(*in.PageSize)
+		if cause != nil || nativeSize < 1 || nativeSize > 100 {
+			return nil, errors.New("invalid native page size")
+		}
+		initial.PageNumber = int(nativePage)
 	}
 
 	p := &DescribeImagesPaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
@@ -593,24 +629,34 @@ func NewDescribeImagesPaginator(api DescribeImagesAPI, input *DescribeImagesInpu
 		page := pagination.Page[*DescribeImagesOutput]{Value: out}
 
 		if pageMode {
-			if !(out.TotalCount != nil) || *out.TotalCount < 0 {
-				return pagination.Page[*DescribeImagesOutput]{}, errors.New("missing or negative page total")
+			if !(out.TotalCount != nil) {
+				return pagination.Page[*DescribeImagesOutput]{}, errors.New("missing page total")
 			}
-			if out.PageNumber != nil && int(*out.PageNumber) != cursor.PageNumber {
-				return pagination.Page[*DescribeImagesOutput]{}, errors.New("inconsistent page number")
+			total, cause := rpcmodel.PaginationInteger(*out.TotalCount)
+			if cause != nil || total < 0 {
+				return pagination.Page[*DescribeImagesOutput]{}, errors.New("invalid page total")
 			}
-			size := int(*in.PageSize)
+			if out.PageNumber != nil {
+				number, cause := rpcmodel.PaginationInteger(*out.PageNumber)
+				if cause != nil || number != int64(cursor.PageNumber) {
+					return pagination.Page[*DescribeImagesOutput]{}, errors.New("inconsistent page number")
+				}
+			}
+			size, cause := rpcmodel.PaginationInteger(*in.PageSize)
+			if cause != nil {
+				return pagination.Page[*DescribeImagesOutput]{}, errors.New("invalid request page size")
+			}
 			if out.PageSize != nil {
-				size = int(*out.PageSize)
+				size, cause = rpcmodel.PaginationInteger(*out.PageSize)
 			}
-			if size < 1 || size > 100 {
+			if cause != nil || size < 1 || size > 100 {
 				return pagination.Page[*DescribeImagesOutput]{}, errors.New("invalid response page size")
 			}
 			count := 0
 			if out.Images != nil {
 				count = len(out.Images.Image)
 			}
-			page.HasMore = count > 0 && *out.TotalCount > 0 && cursor.PageNumber < 2147483647 && cursor.PageNumber <= int((*out.TotalCount-1)/int32(size))
+			page.HasMore = count > 0 && total > 0 && int64(cursor.PageNumber) < int64(2147483647) && int64(cursor.PageNumber) <= (total-1)/size
 			if page.HasMore {
 				page.Next.PageNumber = cursor.PageNumber + 1
 			}
@@ -629,6 +675,299 @@ func (p *DescribeImagesPaginator) HasMorePages() bool { return p.engine.HasMoreP
 
 // NextPage fetches a page with isolated options. Failed/canceled fetches preserve state.
 func (p *DescribeImagesPaginator) NextPage(ctx context.Context, optFns ...func(*Options)) (*DescribeImagesOutput, error) {
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil page option")
+		}
+	}
+	p.pendingOptions = append(append([]func(*Options){}, p.clientOptions...), optFns...)
+	defer func() { p.pendingOptions = nil }()
+	return p.engine.NextPage(ctx)
+}
+
+// DescribeInstanceAutoRenewAttributePaginatorOptions controls native pagination and copied operation options.
+type DescribeInstanceAutoRenewAttributePaginatorOptions struct {
+	// Limit overrides native page size; zero preserves input or the reviewed default.
+	Limit int
+	// StopOnDuplicateToken defaults true and returns the fetched page before stopping.
+	// Explicit false can permit cyclic traversal.
+	StopOnDuplicateToken bool
+	// ClientOptions applies to every page; NextPage overrides run last for that page only.
+	ClientOptions []func(*Options)
+}
+
+// DescribeInstanceAutoRenewAttributePaginator is a single-consumer iterator; do not copy or share it.
+type DescribeInstanceAutoRenewAttributePaginator struct {
+	engine         *pagination.Paginator[*DescribeInstanceAutoRenewAttributeOutput]
+	clientOptions  []func(*Options)
+	pendingOptions []func(*Options)
+}
+
+// NewDescribeInstanceAutoRenewAttributePaginator snapshots input and applies reviewed native pagination.
+// Invalid API/options/fields return errors; constructor errors are an intentional v0 convention.
+func NewDescribeInstanceAutoRenewAttributePaginator(api DescribeInstanceAutoRenewAttributeAPI, input *DescribeInstanceAutoRenewAttributeInput, optFns ...func(*DescribeInstanceAutoRenewAttributePaginatorOptions)) (*DescribeInstanceAutoRenewAttributePaginator, error) {
+	if rpcmodel.IsNil(api) {
+		return nil, errors.New("nil paginator API")
+	}
+	options := DescribeInstanceAutoRenewAttributePaginatorOptions{StopOnDuplicateToken: true}
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil paginator option")
+		}
+		f(&options)
+	}
+	if options.Limit < 0 || options.Limit > 100 {
+		return nil, errors.New("invalid paginator limit")
+	}
+	for _, f := range options.ClientOptions {
+		if f == nil {
+			return nil, errors.New("nil paginator client option")
+		}
+	}
+	in, err := rpcmodel.Snapshot(context.Background(), input)
+	if err != nil {
+		return nil, err
+	}
+
+	pageMode := true
+	initial := pagination.Cursor{}
+	if pageMode {
+		if !(in.PageNumber != nil) {
+			in.PageNumber = rpcmodel.Pointer(strconv.FormatInt(int64(1), 10))
+		}
+		if !(in.PageSize != nil) {
+			in.PageSize = rpcmodel.Pointer(strconv.FormatInt(int64(10), 10))
+		}
+		if options.Limit > 0 {
+			in.PageSize = rpcmodel.Pointer(strconv.FormatInt(int64(options.Limit), 10))
+		}
+		nativePage, cause := rpcmodel.PaginationInteger(*in.PageNumber)
+		if cause != nil || nativePage < 1 || nativePage > int64(^uint(0)>>1) {
+			return nil, errors.New("invalid native page number")
+		}
+		nativeSize, cause := rpcmodel.PaginationInteger(*in.PageSize)
+		if cause != nil || nativeSize < 1 || nativeSize > 100 {
+			return nil, errors.New("invalid native page size")
+		}
+		initial.PageNumber = int(nativePage)
+	}
+
+	p := &DescribeInstanceAutoRenewAttributePaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
+	engine, err := pagination.New(initial, func(ctx context.Context, cursor pagination.Cursor) (pagination.Page[*DescribeInstanceAutoRenewAttributeOutput], error) {
+		request, err := rpcmodel.Snapshot(ctx, in)
+		if err != nil {
+			return pagination.Page[*DescribeInstanceAutoRenewAttributeOutput]{}, err
+		}
+		if pageMode {
+			request.PageNumber = rpcmodel.Pointer(strconv.FormatInt(int64(cursor.PageNumber), 10))
+		}
+
+		out, err := api.DescribeInstanceAutoRenewAttribute(ctx, request, append([]func(*Options){}, p.pendingOptions...)...)
+		if err != nil {
+			return pagination.Page[*DescribeInstanceAutoRenewAttributeOutput]{}, err
+		}
+		if out == nil {
+			return pagination.Page[*DescribeInstanceAutoRenewAttributeOutput]{}, errors.New("nil paginator response")
+		}
+		page := pagination.Page[*DescribeInstanceAutoRenewAttributeOutput]{Value: out}
+
+		if pageMode {
+			if !(out.TotalCount != nil) {
+				return pagination.Page[*DescribeInstanceAutoRenewAttributeOutput]{}, errors.New("missing page total")
+			}
+			total, cause := rpcmodel.PaginationInteger(*out.TotalCount)
+			if cause != nil || total < 0 {
+				return pagination.Page[*DescribeInstanceAutoRenewAttributeOutput]{}, errors.New("invalid page total")
+			}
+			if out.PageNumber != nil {
+				number, cause := rpcmodel.PaginationInteger(*out.PageNumber)
+				if cause != nil || number != int64(cursor.PageNumber) {
+					return pagination.Page[*DescribeInstanceAutoRenewAttributeOutput]{}, errors.New("inconsistent page number")
+				}
+			}
+			size, cause := rpcmodel.PaginationInteger(*in.PageSize)
+			if cause != nil {
+				return pagination.Page[*DescribeInstanceAutoRenewAttributeOutput]{}, errors.New("invalid request page size")
+			}
+			if out.PageSize != nil {
+				size, cause = rpcmodel.PaginationInteger(*out.PageSize)
+			}
+			if cause != nil || size < 1 || size > 100 {
+				return pagination.Page[*DescribeInstanceAutoRenewAttributeOutput]{}, errors.New("invalid response page size")
+			}
+			count := 0
+			if out.InstanceRenewAttributes != nil {
+				count = len(out.InstanceRenewAttributes.InstanceRenewAttribute)
+			}
+			page.HasMore = count > 0 && total > 0 && int64(cursor.PageNumber) < int64(^uint(0)>>1) && int64(cursor.PageNumber) <= (total-1)/size
+			if page.HasMore {
+				page.Next.PageNumber = cursor.PageNumber + 1
+			}
+		}
+		return page, nil
+	}, func(o *pagination.Options) { o.StopOnDuplicateCursor = options.StopOnDuplicateToken })
+	if err != nil {
+		return nil, err
+	}
+	p.engine = engine
+	return p, nil
+}
+
+// HasMorePages reports whether another native page is available; initially true.
+func (p *DescribeInstanceAutoRenewAttributePaginator) HasMorePages() bool {
+	return p.engine.HasMorePages()
+}
+
+// NextPage fetches a page with isolated options. Failed/canceled fetches preserve state.
+func (p *DescribeInstanceAutoRenewAttributePaginator) NextPage(ctx context.Context, optFns ...func(*Options)) (*DescribeInstanceAutoRenewAttributeOutput, error) {
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil page option")
+		}
+	}
+	p.pendingOptions = append(append([]func(*Options){}, p.clientOptions...), optFns...)
+	defer func() { p.pendingOptions = nil }()
+	return p.engine.NextPage(ctx)
+}
+
+// DescribeInstanceMaintenanceAttributesPaginatorOptions controls native pagination and copied operation options.
+type DescribeInstanceMaintenanceAttributesPaginatorOptions struct {
+	// Limit overrides native page size; zero preserves input or the reviewed default.
+	Limit int
+	// StopOnDuplicateToken defaults true and returns the fetched page before stopping.
+	// Explicit false can permit cyclic traversal.
+	StopOnDuplicateToken bool
+	// ClientOptions applies to every page; NextPage overrides run last for that page only.
+	ClientOptions []func(*Options)
+}
+
+// DescribeInstanceMaintenanceAttributesPaginator is a single-consumer iterator; do not copy or share it.
+type DescribeInstanceMaintenanceAttributesPaginator struct {
+	engine         *pagination.Paginator[*DescribeInstanceMaintenanceAttributesOutput]
+	clientOptions  []func(*Options)
+	pendingOptions []func(*Options)
+}
+
+// NewDescribeInstanceMaintenanceAttributesPaginator snapshots input and applies reviewed native pagination.
+// Invalid API/options/fields return errors; constructor errors are an intentional v0 convention.
+func NewDescribeInstanceMaintenanceAttributesPaginator(api DescribeInstanceMaintenanceAttributesAPI, input *DescribeInstanceMaintenanceAttributesInput, optFns ...func(*DescribeInstanceMaintenanceAttributesPaginatorOptions)) (*DescribeInstanceMaintenanceAttributesPaginator, error) {
+	if rpcmodel.IsNil(api) {
+		return nil, errors.New("nil paginator API")
+	}
+	options := DescribeInstanceMaintenanceAttributesPaginatorOptions{StopOnDuplicateToken: true}
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil paginator option")
+		}
+		f(&options)
+	}
+	if options.Limit < 0 || options.Limit > 100 {
+		return nil, errors.New("invalid paginator limit")
+	}
+	for _, f := range options.ClientOptions {
+		if f == nil {
+			return nil, errors.New("nil paginator client option")
+		}
+	}
+	in, err := rpcmodel.Snapshot(context.Background(), input)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := ValidateDescribeInstanceMaintenanceAttributesInput(in); err != nil {
+		return nil, err
+	}
+	pageMode := true
+	initial := pagination.Cursor{}
+	if pageMode {
+		if !(in.PageNumber != nil) {
+			in.PageNumber = rpcmodel.Pointer(int64(1))
+		}
+		if !(in.PageSize != nil) {
+			in.PageSize = rpcmodel.Pointer(int64(10))
+		}
+		if options.Limit > 0 {
+			in.PageSize = rpcmodel.Pointer(int64(options.Limit))
+		}
+		nativePage, cause := rpcmodel.PaginationInteger(*in.PageNumber)
+		if cause != nil || nativePage < 1 || nativePage > int64(^uint(0)>>1) {
+			return nil, errors.New("invalid native page number")
+		}
+		nativeSize, cause := rpcmodel.PaginationInteger(*in.PageSize)
+		if cause != nil || nativeSize < 1 || nativeSize > 100 {
+			return nil, errors.New("invalid native page size")
+		}
+		initial.PageNumber = int(nativePage)
+	}
+
+	p := &DescribeInstanceMaintenanceAttributesPaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
+	engine, err := pagination.New(initial, func(ctx context.Context, cursor pagination.Cursor) (pagination.Page[*DescribeInstanceMaintenanceAttributesOutput], error) {
+		request, err := rpcmodel.Snapshot(ctx, in)
+		if err != nil {
+			return pagination.Page[*DescribeInstanceMaintenanceAttributesOutput]{}, err
+		}
+		if pageMode {
+			request.PageNumber = rpcmodel.Pointer(int64(cursor.PageNumber))
+		}
+
+		out, err := api.DescribeInstanceMaintenanceAttributes(ctx, request, append([]func(*Options){}, p.pendingOptions...)...)
+		if err != nil {
+			return pagination.Page[*DescribeInstanceMaintenanceAttributesOutput]{}, err
+		}
+		if out == nil {
+			return pagination.Page[*DescribeInstanceMaintenanceAttributesOutput]{}, errors.New("nil paginator response")
+		}
+		page := pagination.Page[*DescribeInstanceMaintenanceAttributesOutput]{Value: out}
+
+		if pageMode {
+			if !(out.TotalCount != nil) {
+				return pagination.Page[*DescribeInstanceMaintenanceAttributesOutput]{}, errors.New("missing page total")
+			}
+			total, cause := rpcmodel.PaginationInteger(*out.TotalCount)
+			if cause != nil || total < 0 {
+				return pagination.Page[*DescribeInstanceMaintenanceAttributesOutput]{}, errors.New("invalid page total")
+			}
+			if out.PageNumber != nil {
+				number, cause := rpcmodel.PaginationInteger(*out.PageNumber)
+				if cause != nil || number != int64(cursor.PageNumber) {
+					return pagination.Page[*DescribeInstanceMaintenanceAttributesOutput]{}, errors.New("inconsistent page number")
+				}
+			}
+			size, cause := rpcmodel.PaginationInteger(*in.PageSize)
+			if cause != nil {
+				return pagination.Page[*DescribeInstanceMaintenanceAttributesOutput]{}, errors.New("invalid request page size")
+			}
+			if out.PageSize != nil {
+				size, cause = rpcmodel.PaginationInteger(*out.PageSize)
+			}
+			if cause != nil || size < 1 || size > 100 {
+				return pagination.Page[*DescribeInstanceMaintenanceAttributesOutput]{}, errors.New("invalid response page size")
+			}
+			count := 0
+			if out.MaintenanceAttributes != nil {
+				count = len(out.MaintenanceAttributes.MaintenanceAttribute)
+			}
+			page.HasMore = count > 0 && total > 0 && int64(cursor.PageNumber) < int64(^uint(0)>>1) && int64(cursor.PageNumber) <= (total-1)/size
+			if page.HasMore {
+				page.Next.PageNumber = cursor.PageNumber + 1
+			}
+		}
+		return page, nil
+	}, func(o *pagination.Options) { o.StopOnDuplicateCursor = options.StopOnDuplicateToken })
+	if err != nil {
+		return nil, err
+	}
+	p.engine = engine
+	return p, nil
+}
+
+// HasMorePages reports whether another native page is available; initially true.
+func (p *DescribeInstanceMaintenanceAttributesPaginator) HasMorePages() bool {
+	return p.engine.HasMorePages()
+}
+
+// NextPage fetches a page with isolated options. Failed/canceled fetches preserve state.
+func (p *DescribeInstanceMaintenanceAttributesPaginator) NextPage(ctx context.Context, optFns ...func(*Options)) (*DescribeInstanceMaintenanceAttributesOutput, error) {
 	for _, f := range optFns {
 		if f == nil {
 			return nil, errors.New("nil page option")
@@ -698,10 +1037,15 @@ func NewDescribeInstanceStatusPaginator(api DescribeInstanceStatusAPI, input *De
 		if options.Limit > 0 {
 			in.PageSize = rpcmodel.Pointer(int32(options.Limit))
 		}
-		if *in.PageNumber < 1 || *in.PageSize < 1 || *in.PageSize > 50 {
-			return nil, errors.New("invalid native page fields")
+		nativePage, cause := rpcmodel.PaginationInteger(*in.PageNumber)
+		if cause != nil || nativePage < 1 || nativePage > int64(2147483647) {
+			return nil, errors.New("invalid native page number")
 		}
-		initial.PageNumber = int(*in.PageNumber)
+		nativeSize, cause := rpcmodel.PaginationInteger(*in.PageSize)
+		if cause != nil || nativeSize < 1 || nativeSize > 50 {
+			return nil, errors.New("invalid native page size")
+		}
+		initial.PageNumber = int(nativePage)
 	}
 
 	p := &DescribeInstanceStatusPaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
@@ -724,24 +1068,34 @@ func NewDescribeInstanceStatusPaginator(api DescribeInstanceStatusAPI, input *De
 		page := pagination.Page[*DescribeInstanceStatusOutput]{Value: out}
 
 		if pageMode {
-			if !(out.TotalCount != nil) || *out.TotalCount < 0 {
-				return pagination.Page[*DescribeInstanceStatusOutput]{}, errors.New("missing or negative page total")
+			if !(out.TotalCount != nil) {
+				return pagination.Page[*DescribeInstanceStatusOutput]{}, errors.New("missing page total")
 			}
-			if out.PageNumber != nil && int(*out.PageNumber) != cursor.PageNumber {
-				return pagination.Page[*DescribeInstanceStatusOutput]{}, errors.New("inconsistent page number")
+			total, cause := rpcmodel.PaginationInteger(*out.TotalCount)
+			if cause != nil || total < 0 {
+				return pagination.Page[*DescribeInstanceStatusOutput]{}, errors.New("invalid page total")
 			}
-			size := int(*in.PageSize)
+			if out.PageNumber != nil {
+				number, cause := rpcmodel.PaginationInteger(*out.PageNumber)
+				if cause != nil || number != int64(cursor.PageNumber) {
+					return pagination.Page[*DescribeInstanceStatusOutput]{}, errors.New("inconsistent page number")
+				}
+			}
+			size, cause := rpcmodel.PaginationInteger(*in.PageSize)
+			if cause != nil {
+				return pagination.Page[*DescribeInstanceStatusOutput]{}, errors.New("invalid request page size")
+			}
 			if out.PageSize != nil {
-				size = int(*out.PageSize)
+				size, cause = rpcmodel.PaginationInteger(*out.PageSize)
 			}
-			if size < 1 || size > 50 {
+			if cause != nil || size < 1 || size > 50 {
 				return pagination.Page[*DescribeInstanceStatusOutput]{}, errors.New("invalid response page size")
 			}
 			count := 0
 			if out.InstanceStatuses != nil {
 				count = len(out.InstanceStatuses.InstanceStatus)
 			}
-			page.HasMore = count > 0 && *out.TotalCount > 0 && cursor.PageNumber < 2147483647 && cursor.PageNumber <= int((*out.TotalCount-1)/int32(size))
+			page.HasMore = count > 0 && total > 0 && int64(cursor.PageNumber) < int64(2147483647) && int64(cursor.PageNumber) <= (total-1)/size
 			if page.HasMore {
 				page.Next.PageNumber = cursor.PageNumber + 1
 			}
@@ -829,10 +1183,15 @@ func NewDescribeInstancesPaginator(api DescribeInstancesAPI, input *DescribeInst
 		if options.Limit > 0 {
 			in.PageSize = rpcmodel.Pointer(int32(options.Limit))
 		}
-		if *in.PageNumber < 1 || *in.PageSize < 1 || *in.PageSize > 100 {
-			return nil, errors.New("invalid native page fields")
+		nativePage, cause := rpcmodel.PaginationInteger(*in.PageNumber)
+		if cause != nil || nativePage < 1 || nativePage > int64(2147483647) {
+			return nil, errors.New("invalid native page number")
 		}
-		initial.PageNumber = int(*in.PageNumber)
+		nativeSize, cause := rpcmodel.PaginationInteger(*in.PageSize)
+		if cause != nil || nativeSize < 1 || nativeSize > 100 {
+			return nil, errors.New("invalid native page size")
+		}
+		initial.PageNumber = int(nativePage)
 	}
 	if !pageMode {
 		if !(in.MaxResults != nil) {
@@ -876,24 +1235,34 @@ func NewDescribeInstancesPaginator(api DescribeInstancesAPI, input *DescribeInst
 			page.HasMore = page.Next.Token != ""
 		}
 		if pageMode {
-			if !(out.TotalCount != nil) || *out.TotalCount < 0 {
-				return pagination.Page[*DescribeInstancesOutput]{}, errors.New("missing or negative page total")
+			if !(out.TotalCount != nil) {
+				return pagination.Page[*DescribeInstancesOutput]{}, errors.New("missing page total")
 			}
-			if out.PageNumber != nil && int(*out.PageNumber) != cursor.PageNumber {
-				return pagination.Page[*DescribeInstancesOutput]{}, errors.New("inconsistent page number")
+			total, cause := rpcmodel.PaginationInteger(*out.TotalCount)
+			if cause != nil || total < 0 {
+				return pagination.Page[*DescribeInstancesOutput]{}, errors.New("invalid page total")
 			}
-			size := int(*in.PageSize)
+			if out.PageNumber != nil {
+				number, cause := rpcmodel.PaginationInteger(*out.PageNumber)
+				if cause != nil || number != int64(cursor.PageNumber) {
+					return pagination.Page[*DescribeInstancesOutput]{}, errors.New("inconsistent page number")
+				}
+			}
+			size, cause := rpcmodel.PaginationInteger(*in.PageSize)
+			if cause != nil {
+				return pagination.Page[*DescribeInstancesOutput]{}, errors.New("invalid request page size")
+			}
 			if out.PageSize != nil {
-				size = int(*out.PageSize)
+				size, cause = rpcmodel.PaginationInteger(*out.PageSize)
 			}
-			if size < 1 || size > 100 {
+			if cause != nil || size < 1 || size > 100 {
 				return pagination.Page[*DescribeInstancesOutput]{}, errors.New("invalid response page size")
 			}
 			count := 0
 			if out.Instances != nil {
 				count = len(out.Instances.Instance)
 			}
-			page.HasMore = count > 0 && *out.TotalCount > 0 && cursor.PageNumber < 2147483647 && cursor.PageNumber <= int((*out.TotalCount-1)/int32(size))
+			page.HasMore = count > 0 && total > 0 && int64(cursor.PageNumber) < int64(2147483647) && int64(cursor.PageNumber) <= (total-1)/size
 			if page.HasMore {
 				page.Next.PageNumber = cursor.PageNumber + 1
 			}
@@ -1100,10 +1469,15 @@ func NewDescribeKeyPairsPaginator(api DescribeKeyPairsAPI, input *DescribeKeyPai
 		if options.Limit > 0 {
 			in.PageSize = rpcmodel.Pointer(int32(options.Limit))
 		}
-		if *in.PageNumber < 1 || *in.PageSize < 1 || *in.PageSize > 50 {
-			return nil, errors.New("invalid native page fields")
+		nativePage, cause := rpcmodel.PaginationInteger(*in.PageNumber)
+		if cause != nil || nativePage < 1 || nativePage > int64(2147483647) {
+			return nil, errors.New("invalid native page number")
 		}
-		initial.PageNumber = int(*in.PageNumber)
+		nativeSize, cause := rpcmodel.PaginationInteger(*in.PageSize)
+		if cause != nil || nativeSize < 1 || nativeSize > 50 {
+			return nil, errors.New("invalid native page size")
+		}
+		initial.PageNumber = int(nativePage)
 	}
 
 	p := &DescribeKeyPairsPaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
@@ -1126,24 +1500,34 @@ func NewDescribeKeyPairsPaginator(api DescribeKeyPairsAPI, input *DescribeKeyPai
 		page := pagination.Page[*DescribeKeyPairsOutput]{Value: out}
 
 		if pageMode {
-			if !(out.TotalCount != nil) || *out.TotalCount < 0 {
-				return pagination.Page[*DescribeKeyPairsOutput]{}, errors.New("missing or negative page total")
+			if !(out.TotalCount != nil) {
+				return pagination.Page[*DescribeKeyPairsOutput]{}, errors.New("missing page total")
 			}
-			if out.PageNumber != nil && int(*out.PageNumber) != cursor.PageNumber {
-				return pagination.Page[*DescribeKeyPairsOutput]{}, errors.New("inconsistent page number")
+			total, cause := rpcmodel.PaginationInteger(*out.TotalCount)
+			if cause != nil || total < 0 {
+				return pagination.Page[*DescribeKeyPairsOutput]{}, errors.New("invalid page total")
 			}
-			size := int(*in.PageSize)
+			if out.PageNumber != nil {
+				number, cause := rpcmodel.PaginationInteger(*out.PageNumber)
+				if cause != nil || number != int64(cursor.PageNumber) {
+					return pagination.Page[*DescribeKeyPairsOutput]{}, errors.New("inconsistent page number")
+				}
+			}
+			size, cause := rpcmodel.PaginationInteger(*in.PageSize)
+			if cause != nil {
+				return pagination.Page[*DescribeKeyPairsOutput]{}, errors.New("invalid request page size")
+			}
 			if out.PageSize != nil {
-				size = int(*out.PageSize)
+				size, cause = rpcmodel.PaginationInteger(*out.PageSize)
 			}
-			if size < 1 || size > 50 {
+			if cause != nil || size < 1 || size > 50 {
 				return pagination.Page[*DescribeKeyPairsOutput]{}, errors.New("invalid response page size")
 			}
 			count := 0
 			if out.KeyPairs != nil {
 				count = len(out.KeyPairs.KeyPair)
 			}
-			page.HasMore = count > 0 && *out.TotalCount > 0 && cursor.PageNumber < 2147483647 && cursor.PageNumber <= int((*out.TotalCount-1)/int32(size))
+			page.HasMore = count > 0 && total > 0 && int64(cursor.PageNumber) < int64(2147483647) && int64(cursor.PageNumber) <= (total-1)/size
 			if page.HasMore {
 				page.Next.PageNumber = cursor.PageNumber + 1
 			}

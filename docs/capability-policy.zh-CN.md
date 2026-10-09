@@ -2,6 +2,8 @@
 
 [English](capability-policy.md)
 
+- [原生页码类型](native-page-widths.zh-CN.md)补充 int64 和字符串页码输入。可选的 `outputPage` 指定名称不同的响应页码字段；未指定时使用输入页码名称。写入前校验路径、类型和响应字段职责不能重叠。先解析数字，再校验平台及原生游标范围，避免截断和溢出。
+
 - 当前 #88 扩展支持原生 int64/字符串 token 分页限制、明确排除的废弃分页输入、同一操作的多个生命周期 waiter 及原生单 ID waiter。具体范围见[能力扩展](product-capability-expansion.zh-CN.md)；未列出的行为仍为未审核。
 
 - [评审修复 #44](capability-role-review.zh-CN.md) 拒绝同一模型内的分页请求页码/页大小/limit、 响应页码/页大小/总数、状态等待器请求页码/页大小及成员 ID/状态重叠；不同请求/响应模型或独立适配器之间的同名路径仍有效。

@@ -93,12 +93,13 @@ func (r *productRenderer) emitCapabilityExamples() ([]byte, error) {
 				items := r.path(op.Roots.Body.Ref, p.Items, "out")
 				first = exampleWire(p.Items, []any{exampleItem(*items.Type.Items)})
 				second = exampleWire(p.Items, []any{exampleItem(*items.Type.Items)})
-				first[p.Page] = 1
-				first[p.Size] = 1
-				first[p.Total] = 2
-				second[p.Page] = 2
-				second[p.Size] = 1
-				second[p.Total] = 2
+				page := r.path(op.Roots.Body.Ref, p.outputPage(), "out")
+				first[p.outputPage()] = examplePageInteger(page, 1)
+				second[p.outputPage()] = examplePageInteger(page, 2)
+				size := examplePageInteger(r.path(op.Roots.Body.Ref, p.Size, "out"), 1)
+				total := examplePageInteger(r.path(op.Roots.Body.Ref, p.Total, "out"), 2)
+				first[p.Size], second[p.Size] = size, size
+				first[p.Total], second[p.Total] = total, total
 			}
 			fmt.Fprintf(&b, "func Example%sPaginator(){transport:=sdktest.NewTransport(sdktest.Step{Body:%q},sdktest.Step{Body:%q});client,err:=%s.NewFromConfig(capabilityExampleConfig(transport));if err!=nil{panic(err)};p,err:=%s.New%sPaginator(client,nil,func(o *%s.%sPaginatorOptions){o.Limit=1});if err!=nil{panic(err)};pages:=0;for p.HasMorePages(){if _,err:=p.NextPage(context.Background());err!=nil{panic(err)};pages++};fmt.Println(pages)\n// Output: 2\n}\n", op.Name, exampleJSON(first), exampleJSON(second), pkg, pkg, op.Name, pkg, op.Name)
 		}
@@ -133,4 +134,11 @@ func (r *productRenderer) emitCapabilityExamples() ([]byte, error) {
 		fmt.Fprintf(&b, "func Example%s(){fmt.Printf(\"%%v\\n%%#v\\n\",%s.%s{},%s.%s{})\n// Output:\n// %s (sensitive fields redacted)\n// %s (sensitive fields redacted)\n}\n", name, r.p.Product, name, r.p.Product, name, name, name)
 	}
 	return format.Source(b.Bytes())
+}
+
+func examplePageInteger(field capabilityPath, value int) any {
+	if field.Type.DSLType == "string" {
+		return fmt.Sprint(value)
+	}
+	return value
 }

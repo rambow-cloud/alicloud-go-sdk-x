@@ -78,7 +78,9 @@
 | Action | Pagination | Waiter | Retry-safe read | Token field | Validation | Sensitive formatting |
 | --- | --- | --- | --- | --- | --- | --- |
 | DescribeCustomerGateways | pages | — | true |  | true | false |
+| DescribeEcGrantRelation | pages | — | true |  | true | false |
 | DescribeEipAddresses | pages | — | true |  | true | false |
+| DescribeGrantRulesToEcr | pages | — | true |  | true | false |
 | DescribeNatGateways | pages | NatGatewayAvailableWaiter | true |  | true | false |
 | DescribeRouteEntryList | tokens | — | true |  | true | false |
 | DescribeRouteTables | pages | — | true |  | true | false |

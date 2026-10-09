@@ -401,6 +401,49 @@
           "maximum": 50
         }
       ]
+    },
+    "DescribeInstanceAutoRenewAttribute": {
+      "idempotent": true,
+      "evidence": [
+        "https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24076",
+        "docs/native-page-widths.md"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "InstanceRenewAttributes.InstanceRenewAttribute",
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount",
+        "defaultSize": 10,
+        "maximumSize": 100
+      }
+    },
+    "DescribeInstanceMaintenanceAttributes": {
+      "idempotent": true,
+      "evidence": [
+        "https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24493",
+        "docs/native-page-widths.md"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "MaintenanceAttributes.MaintenanceAttribute",
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount",
+        "defaultSize": 10,
+        "maximumSize": 100
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 100
+        }
+      ]
     }
   },
   "endpoints": [

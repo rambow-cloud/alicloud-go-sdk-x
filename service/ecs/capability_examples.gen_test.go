@@ -262,6 +262,90 @@ func ExampleClient_DescribeImages_retry() {
 	fmt.Println(out.Metadata.Attempts)
 	// Output: 2
 }
+func ExampleDescribeInstanceAutoRenewAttributePaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"InstanceRenewAttributes\":{\"InstanceRenewAttribute\":[{}]},\"PageNumber\":1,\"PageSize\":1,\"TotalCount\":2}"}, sdktest.Step{Body: "{\"InstanceRenewAttributes\":{\"InstanceRenewAttribute\":[{}]},\"PageNumber\":2,\"PageSize\":1,\"TotalCount\":2}"})
+	client, err := ecs.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := ecs.NewDescribeInstanceAutoRenewAttributePaginator(client, nil, func(o *ecs.DescribeInstanceAutoRenewAttributePaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleClient_DescribeInstanceAutoRenewAttribute_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := ecs.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeInstanceAutoRenewAttribute(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleDescribeInstanceMaintenanceAttributesPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"MaintenanceAttributes\":{\"MaintenanceAttribute\":[{}]},\"PageNumber\":1,\"PageSize\":1,\"TotalCount\":2}"}, sdktest.Step{Body: "{\"MaintenanceAttributes\":{\"MaintenanceAttribute\":[{}]},\"PageNumber\":2,\"PageSize\":1,\"TotalCount\":2}"})
+	client, err := ecs.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := ecs.NewDescribeInstanceMaintenanceAttributesPaginator(client, nil, func(o *ecs.DescribeInstanceMaintenanceAttributesPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeInstanceMaintenanceAttributesInput() {
+	fmt.Println(ecs.ValidateDescribeInstanceMaintenanceAttributesInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeInstanceMaintenanceAttributes_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := ecs.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeInstanceMaintenanceAttributes(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
 func ExampleDescribeInstanceStatusPaginator() {
 	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"InstanceStatuses\":{\"InstanceStatus\":[{}]},\"PageNumber\":1,\"PageSize\":1,\"TotalCount\":2}"}, sdktest.Step{Body: "{\"InstanceStatuses\":{\"InstanceStatus\":[{}]},\"PageNumber\":2,\"PageSize\":1,\"TotalCount\":2}"})
 	client, err := ecs.NewFromConfig(capabilityExampleConfig(transport))

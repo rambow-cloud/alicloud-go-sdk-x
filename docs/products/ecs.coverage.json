@@ -11,7 +11,7 @@
   "compilation": "not-assessed",
   "live": "not-assessed",
   "capabilityPolicy": "sparse-reviewed",
-  "policySHA256": "83a906f8e2c4f8d69e9494d3a34703878a40376b9f14ad99b59655a37cb3c186",
+  "policySHA256": "915b58bd8c8af077dcae8eb29648f3b9933090c814712c3da1e0ede0fa1b78f2",
   "operations": [
     {
       "name": "AcceptInquiredSystemEvent",
@@ -3090,8 +3090,9 @@
       },
       "reasons": [],
       "capabilities": {
-        "status": "not-reviewed",
-        "idempotent": false,
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "pages",
         "validator": false,
         "sensitiveFormatting": false,
         "namingException": false
@@ -3128,9 +3129,10 @@
       },
       "reasons": [],
       "capabilities": {
-        "status": "not-reviewed",
-        "idempotent": false,
-        "validator": false,
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "pages",
+        "validator": true,
         "sensitiveFormatting": false,
         "namingException": false
       }
