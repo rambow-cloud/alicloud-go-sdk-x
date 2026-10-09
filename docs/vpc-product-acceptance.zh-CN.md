@@ -26,6 +26,7 @@
 - DescribeVpcs 遍历不需要 waiter，不根据 Status 字段推断或添加等待器。
 - 后来生成的无请求模型操作 ListGeographicSubRegions 不属于 #47 真实覆盖；补充独立离线用例，不扩大历史真实调用结果。
 - 整体 Beta 的真实续页要求和 Explorer 网页证据仍单独跟踪；本次不执行新云调用、资源写入、来源更新或发布。
+- [后续项 #79](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/79)在有合适且获授权的现有资源时验证真实实例 token、waiter 状态迁移及非空 VPC 续页，不属于本次 v0.1.0 门禁。
 
 ## 验证与结果
 

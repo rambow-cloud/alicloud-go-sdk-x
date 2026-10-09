@@ -26,6 +26,7 @@
 - A waiter does not apply to the scoped DescribeVpcs traversal. Do not infer one from a Status field.
 - The later requestless ListGeographicSubRegions action is not covered by #47. Add its independent offline smoke case; do not extend historical live coverage.
 - Broader Beta live-continuation requirements and Explorer browser evidence remain separate. No new cloud calls, resource writes, source update or release.
+- [Follow-up #79](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/79) tracks live instance tokens/waiter transitions and nonempty VPC continuation when suitable authorized existing resources are available. It is outside the scoped v0.1.0 gate.
 
 ## Verification and result
 
