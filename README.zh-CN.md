@@ -26,13 +26,13 @@
 
 - 默认使用 HTTPS，禁用重定向，不重试；操作超时为 30 秒，单个响应最多 8 MiB。核心只依赖标准库，OpenTelemetry 可按需启用。
 
-- 默认端点规则覆盖五个已核实的 ECS/STS/VPC 公网地域，详见[支持范围](docs/support.zh-CN.md)。
+- 端点遵循固定的官方端点表、地域规则及已审核私网组合。显式 BaseEndpoint 优先；能构造 URL 不代表网络可达。详见[端点规则](docs/endpoint-rules.zh-CN.md)和[支持范围](docs/support.zh-CN.md)。
 
 ## 支持范围
 
-- 完整 DSL 生成器已在 `service/ecs`、`service/vpc`、`service/sts` 生成 583 个操作，以及完整模型、小型测试替身接口和离线 Example。
+- 完整官方 DSL 生成 STS 4、ECS 380、VPC 403 个操作，提供类型化模型、小型测试替身接口和离线 Example。FC 另提供 [ROA 离线预览](docs/fc-roa-product.zh-CN.md)：73 个操作中生成 72 个，二进制 InvokeFunction 暂不支持。生成、编译、消费者验收及真实调用分别记录。
 
-- 已审核策略提供四个分页器、一个 ECS 状态等待器和九项操作策略。生成数量不代表真实调用已经验收。
+- 已审核策略提供 ECS 14/VPC 15 个分页器、ECS 2/VPC 3 个 waiter。ECS 16/380、VPC 15/403 个操作有已审核策略；其余操作仍未审核。生成数量不代表真实调用已经验收。
 
 - 客户端统一使用 `service/`，旧 `services/` 兼容桥已移除，见[迁移说明](docs/service-consolidation.zh-CN.md)。
 

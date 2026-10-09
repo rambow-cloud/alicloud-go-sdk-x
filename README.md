@@ -32,14 +32,14 @@
 - Defaults: HTTPS, redirects disabled, no retry, 30-second operation timeout, 8 MiB response limit.
 - The core uses only the standard library; OpenTelemetry is optional.
 
-- Default endpoint rules cover five reviewed public ECS/STS/VPC regions.
+- Endpoints follow pinned official maps/regional rules and reviewed private combinations. Explicit BaseEndpoint wins; constructing a URL does not prove connectivity. See [endpoint rules](docs/endpoint-rules.md).
 - See [support](docs/support.md).
 
 ## Coverage
 
-- The full-DSL generator emits 583 actions in `service/ecs`, `service/vpc` and `service/sts`, with complete models, small mock interfaces and offline Examples.
+- Complete official DSL emits STS 4, ECS 380 and VPC 403 actions with typed models, small mock interfaces and offline Examples. FC adds an [offline ROA preview](docs/fc-roa-product.md): 72 of 73 actions; binary InvokeFunction is excluded. Generation, compilation, consumer acceptance and live behavior stay separate.
 
-- Reviewed policies add four paginators, one ECS waiter and nine operation policies.
+- Reviewed policies provide ECS 14/VPC 15 paginators and ECS 2/VPC 3 waiters. ECS 16/380 and VPC 15/403 actions have reviewed policy; unlisted actions remain unreviewed.
 - Generation counts do not prove live acceptance.
 
 - Use only `service/`; the older `services/` bridge is removed. See [migration](docs/service-consolidation.md).
