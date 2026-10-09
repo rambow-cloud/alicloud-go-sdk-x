@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "scope": "Internal byte checksum arithmetic only; no operation, stream, multipart or live acceptance",
+  "nativeSource": {
+    "repository": "https://github.com/aliyun/alibabacloud-oss-go-sdk-v2",
+    "revision": "2614e2cfdc3618f204cee8bb247f9359e8e509aa",
+    "files": [
+      {
+        "file": "oss/utils_crc.go",
+        "sha256": "c8aac3215f7567149fb4b26d8f55a9517615e20c7e1158e76c165fa35e7aabac"
+      },
+      {
+        "file": "oss/utils_crc_test.go",
+        "sha256": "fa50f29b35bc06bc423405084253ff5d3371fd71fa0b23ebd07dba419fcc5bd3"
+      }
+    ],
+    "test": "TestCRC64",
+    "algorithm": "Go hash/crc64.ECMA with finalized seed",
+    "vectors": [
+      {
+        "input": "123456789",
+        "seed": "0",
+        "expectedHex": "995dc9bbdf1939fa",
+        "expectedDecimal": "11051210869376104954"
+      },
+      {
+        "input": "This is a test of the emergency broadcast system.",
+        "seed": "0",
+        "expectedHex": "27db187fc15bbc72"
+      }
+    ]
+  },
+  "gateway": {
+    "module": "alibabacloud:GatewayOSS:0.0.42",
+    "mainSHA256": "71caf417a396688b8a4a38b0e0f431d5adfb7ae043d98fa504f07ac1b319f44c",
+    "xmlContentMD5": {
+      "line": 97,
+      "expression": "base64EncodeToString(MD5Sign(xmlStr))"
+    },
+    "crcComparison": {
+      "line": 187,
+      "condition": "Context CRC and response x-oss-hash-crc64ecma both present",
+      "semantics": "string equality"
+    },
+    "integrationDecision": "Pending. Internal numeric CRC verification rejects missing values; it does not establish Gateway string comparison/header-absence policy."
+  },
+  "md5Vectors": [
+    {
+      "input": "",
+      "expectedBase64": "1B2M2Y8AsgTpgAmY7PhCfg=="
+    },
+    {
+      "input": "abc",
+      "expectedBase64": "kAFQmDzST7DWlj99KOF/cg=="
+    }
+  ],
+  "notRun": [
+    "Live OSS upload/download",
+    "Stream EOF or early-close checksum validation",
+    "Independent multipart CRC combination",
+    "Range or encrypted-object checksum policy"
+  ]
+}
