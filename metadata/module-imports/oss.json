@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "sourceManifestSHA256": "fda7bc19fbbeb45b230c5dc9c4e69452a1dfe57331452f62dc653261b6d13254",
+  "modules": [
+    {
+      "spec": "alibabacloud:GatewayOSS_Util:*",
+      "directory": "modules/alibabacloud_GatewayOSS_Util_0.0.8",
+      "scope": "alibabacloud",
+      "name": "GatewayOSS_Util",
+      "version": "0.0.8",
+      "archiveSHA1": "ee70def81274425f3d3e5965faccfcd15e00d6f7",
+      "archiveSHA256": "70a67d20feaaf421dcfb254aba2b01e7f986dc4e7564b3908b625c5b7092fbbb",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/GatewayOSS_Util-0.0.8.tar.gz",
+      "license": {
+        "repository": "https://github.com/aliyun/alibabacloud-gateway",
+        "spdx": "Apache-2.0",
+        "file": "licenses/alibabacloud-gateway.NOTICE",
+        "gitBlobSHA": "0c44dcefe3df7e146aeb9717c5f96c4f5b2afbc0",
+        "evidence": "module-source-repository"
+      }
+    },
+    {
+      "spec": "alibabacloud:GatewayOSS:*",
+      "directory": "modules/alibabacloud_GatewayOSS_0.0.42",
+      "scope": "alibabacloud",
+      "name": "GatewayOSS",
+      "version": "0.0.42",
+      "archiveSHA1": "0b31bfdd4c86a28a6c93d74c0622e3167558435f",
+      "archiveSHA256": "5bf16e8d5283b8174c34d17fd4cb085422c7ef64a8d129beb93dd404216b7cab",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/GatewayOSS-0.0.42.tar.gz",
+      "license": {
+        "repository": "https://github.com/aliyun/alibabacloud-gateway",
+        "spdx": "Apache-2.0",
+        "file": "licenses/alibabacloud-gateway.NOTICE",
+        "gitBlobSHA": "0c44dcefe3df7e146aeb9717c5f96c4f5b2afbc0",
+        "evidence": "module-source-repository"
+      }
+    },
+    {
+      "spec": "alibabacloud:OSSUtil:*",
+      "directory": "modules/alibabacloud_OSSUtil_0.1.10",
+      "scope": "alibabacloud",
+      "name": "OSSUtil",
+      "version": "0.1.10",
+      "archiveSHA1": "45004fa2ae292e5f11e89bed263a8a1a80ec5ad5",
+      "archiveSHA256": "1e8e14d74dca96a8570c8abc73e162d4ad2f34266a8c4548d761e9e2a80c6271",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/OSSUtil-0.1.10.tar.gz",
+      "license": {
+        "spdx": "Apache-2.0",
+        "file": "modules/alibabacloud_OSSUtil_0.1.10/README.md",
+        "evidence": "archive-declaration"
+      }
+    },
+    {
+      "spec": "darabonba:Time:*",
+      "directory": "modules/darabonba_Time_0.0.2",
+      "scope": "darabonba",
+      "name": "Time",
+      "version": "0.0.2",
+      "archiveSHA1": "28aa4ecece3819e59a10a7bc4e84e48ad7875007",
+      "archiveSHA256": "06521f035f680de8396d88219fcec1530ad42cee241c13e029e826c9d695a529",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/darabonba/Time-0.0.2.tar.gz",
+      "license": {
+        "spdx": "Apache-2.0",
+        "file": "modules/darabonba_Time_0.0.2/README.md",
+        "evidence": "archive-declaration"
+      }
+    }
+  ]
+}

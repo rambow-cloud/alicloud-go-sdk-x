@@ -1,28 +1,28 @@
 {
   "schemaVersion": 1,
-  "product": "ecs",
+  "product": "vpc",
   "status": "PASS",
-  "issue": 74,
+  "issue": 75,
   "reviewKind": "implementation-agent",
   "independentHuman": false,
-  "sdkCommit": "426108073437898ab93bc24fc3bc61311530d03e",
+  "sdkCommit": "0bd42d8a933bae452d88a99f3274b8e98ebc35ba",
   "goVersion": "go1.27.1",
   "os": "windows/amd64",
-  "startedAt": "2026-10-09T21:19:19.144Z",
-  "endedAt": "2026-10-09T21:19:21.751Z",
+  "startedAt": "2026-10-09T20:39:15.493Z",
+  "endedAt": "2026-10-09T20:39:18.212Z",
   "command": "go -C examples/productacceptance test -json -count=1 ./...",
   "timingKind": "automated-test-execution",
-  "evidence": "docs/ecs-product-acceptance.md",
+  "evidence": "docs/vpc-product-acceptance.md",
   "sourceRevision": "ec489e5c3deae95496daae2b41503ac58b221adb",
   "parserVersion": "2.2.1",
   "sourceManifestSHA256": "fda7bc19fbbeb45b230c5dc9c4e69452a1dfe57331452f62dc653261b6d13254",
-  "policySHA256": "85f75ecdfa644a832d965cc6324e203c95fa8e472f194c96cfda05d0bb3541d6",
+  "policySHA256": "79cfd7bb5575a38bf55e3c1e67e15430ba1852e163e08ba9c6aa9a10fa2f9031",
   "coverage": {
-    "discovered": 380,
-    "lowered": 380,
-    "emitted": 380,
-    "models": 2053,
-    "compiled": 380,
+    "discovered": 403,
+    "lowered": 403,
+    "emitted": 403,
+    "models": 1728,
+    "compiled": 403,
     "unsupported": 0,
     "live": "historical-selected-fields-and-separate-current-followup"
   },
@@ -50,79 +50,60 @@
     {
       "id": "docs",
       "status": "PASS"
-    },
-    {
-      "id": "waiter",
-      "status": "PASS"
     }
   ],
   "consumerTests": [
     {
-      "name": "TestECSPaginatorOptionAndModelOwnership",
+      "name": "TestVPCRetryErrorsAndSecretSafeTracing",
       "status": "PASS",
       "elapsedSeconds": 0
     },
     {
-      "name": "TestECSInFlightDeadlineAndWaiterCancellation",
+      "name": "TestVPCNativeProfileAndSharedGeneratedRole",
       "status": "PASS",
       "elapsedSeconds": 0.01
     },
     {
-      "name": "TestECSConsumerTraversal",
+      "name": "TestVPCRequestlessContract",
       "status": "PASS",
       "elapsedSeconds": 0
     },
     {
-      "name": "TestECSTokenFailureStabilityAndOwnership",
+      "name": "TestVPCInFlightDeadlineAndPreCancellation",
+      "status": "PASS",
+      "elapsedSeconds": 0.1
+    },
+    {
+      "name": "TestVPCConsumerTraversal",
       "status": "PASS",
       "elapsedSeconds": 0
     },
     {
-      "name": "TestECSPageBoundariesAndStableFailures",
+      "name": "TestVPCPageFailureStabilityAndOwnership",
       "status": "PASS",
       "elapsedSeconds": 0
     },
     {
-      "name": "TestECSWaiterTransitionsAndConcurrentReuse",
+      "name": "TestVPCPageBoundsAndEmptyShortResults",
       "status": "PASS",
       "elapsedSeconds": 0
     },
     {
-      "name": "TestECSWaiterFailuresDeadlinesAndCancellation",
+      "name": "TestVPCWirePresenceMalformedBodiesAndOptions",
       "status": "PASS",
       "elapsedSeconds": 0
-    },
-    {
-      "name": "TestECSWirePresenceMalformedBodiesAndOptions",
-      "status": "PASS",
-      "elapsedSeconds": 0
-    },
-    {
-      "name": "TestECSRetryErrorsAndSecretSafeTracing",
-      "status": "PASS",
-      "elapsedSeconds": 0
-    },
-    {
-      "name": "TestECSNativeProfileAndCachedGeneratedRole",
-      "status": "PASS",
-      "elapsedSeconds": 0.01
     }
   ],
-  "subtests": 14,
+  "subtests": 10,
   "live": {
     "evidence": "docs/product-live-validation.md",
     "sdkCommit": "dde481ce4da680f964ee3bbd1458048e6ed981bc",
     "executedOn": "2026-10-08",
     "requiredChecks": [
-      "ecs-regions",
-      "ecs-images",
-      "ecs-instances-token",
-      "ecs-instances-pages",
-      "ecs-status"
+      "vpc-pages"
     ],
     "limits": {
-      "instanceTokenContinuation": "NOT RUN",
-      "waiterTransitions": "SKIP",
+      "nonemptyContinuation": "NOT RUN",
       "explorerBrowser": "NOT RUN"
     }
   },

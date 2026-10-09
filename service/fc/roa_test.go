@@ -76,7 +76,7 @@ func TestROAPathAndNativeResponse(t *testing.T) {
 
 func TestROAJSONBodyAndMiddlewareOwnership(t *testing.T) {
 	input := &fc.CreateAliasInput{FunctionName: "function", Headers: map[string]string{"X-Custom": "caller"}, Body: &fc.CreateAliasInputModel{AliasName: pointer("prod"), VersionID: pointer("1"), Description: pointer(""), AdditionalVersionWeight: map[string]float32{}}}
-	before, err := json.Marshal(input)
+	before, err := json.Marshal(input, json.Deterministic(true))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -103,7 +103,7 @@ func TestROAJSONBodyAndMiddlewareOwnership(t *testing.T) {
 	if _, err := fixture(t, transport, hook).CreateAlias(context.Background(), input); err != nil {
 		t.Fatal(err)
 	}
-	after, err := json.Marshal(input)
+	after, err := json.Marshal(input, json.Deterministic(true))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -116,14 +116,18 @@ func TestROABodyMembersAndQueryPresence(t *testing.T) {
 	for _, explicit := range []bool{false, true} {
 		t.Run(map[bool]string{false: "absent", true: "explicit-zero"}[explicit], func(t *testing.T) {
 			input := &fc.DisableFunctionInvocationInput{FunctionName: "fixture"}
-			want := `{}`
+			want := map[string]any{}
 			if explicit {
 				input.AbortOngoingRequest = pointer(false)
 				input.Reason = pointer("")
-				want = `{"abortOngoingRequest":false,"reason":""}`
+				want = map[string]any{"abortOngoingRequest": false, "reason": ""}
 			}
 			transport := sdktest.NewTransport(sdktest.Step{Body: `{}`, Check: func(r *http.Request) error {
-				if string(payload(t, r)) != want || r.URL.RawQuery != "" {
+				var got map[string]any
+				if err := json.Unmarshal(payload(t, r), &got); err != nil {
+					t.Fatal(err)
+				}
+				if !reflect.DeepEqual(got, want) || r.URL.RawQuery != "" {
 					t.Fatal("body-member presence lost")
 				}
 				return nil

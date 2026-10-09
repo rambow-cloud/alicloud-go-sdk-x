@@ -23,3 +23,17 @@
 - [Pinned comparison](../tools/ossxml/README.md): three tests, two structured-root subtests and one external Example passed with Go 1.27.1 on Windows/amd64. Isolated vet passed.
 - The unchanged helper/model conversion loses ACL/CORS nested fields; explicit fixture unwrapping preserves them. Location requires retaining its scalar-root field. The helper suppresses malformed XML errors; the standard decoder reports them.
 - These are offline representation results for the explicitly documented version combination. They are not an OSS client, an all-release defect claim, or live cloud evidence. CI remains pending until the linked PR checks pass.
+
+## Source extension gate
+
+- Add a reusable explicit module importer before registering OSS in the production product corpus.
+- Accept reviewed exact archive versions, SHA1/SHA256 and existing source-license evidence or preserved archive license declarations. Never resolve an existing wildcard again or replace a pinned module.
+- Preflight archive paths/types/checksums, module identities, the complete import closure and license evidence before writes. Refresh every product's transitive import map deterministically; publish the manifest last.
+- Test wrong checksums, unsafe archives, unknown imports/licenses and replacement attempts without writes. Filesystem errors during the final write phase can leave a partial import; generation must fail source verification until repaired.
+- New module pins do not themselves establish OSS lowering, signing or XML/streaming support. Review source hash bindings and regenerate the current products before any production corpus extension is merged.
+
+## Source research result
+
+- [Explicit module tool](module-source-extension.md) preflighted all four real archive pins: 18 total modules and 14 staged files, without production writes.
+- In a separate local candidate corpus, the official parser 2.2.1 discovered 90 OSS operations, 303 declared models and 295 operation-referenced models. AST protocol counts match the source counts above. See [recorded discovery facts](research/oss-source-discovery.json).
+- This private-corpus experiment does not change production discovery or establish IR lowering/Go emission/compilation/live acceptance. Exact XML traits and the SPI/gateway initializer still need supported production projection.
