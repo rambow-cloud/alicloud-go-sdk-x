@@ -332,6 +332,7 @@ function prepareRuntime(candidate, root = repository) {
       if (
         entry.isFile() &&
         entry.name.endsWith(".go") &&
+        !entry.name.endsWith(".gen.go") &&
         !entry.name.endsWith("_test.go")
       )
         files.set(
