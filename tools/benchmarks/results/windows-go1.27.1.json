@@ -1,0 +1,2418 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-09T14:54:41.174Z",
+  "sdkRevision": "863001133b5d7135c3ef48a38decc11505ed26bf",
+  "environment": {
+    "CGO_ENABLED": "0",
+    "GOAMD64": "v1",
+    "GOARCH": "amd64",
+    "GOOS": "windows",
+    "GOVERSION": "go1.27.1"
+  },
+  "cpu": "12th Gen Intel(R) Core(TM) i5-12500H",
+  "officialVersions": {
+    "sts": "v2.1.0",
+    "openapi": "v2.1.13",
+    "tea": "v1.3.13",
+    "credentials": "v1.4.5"
+  },
+  "method": {
+    "workload": "one account-free signed GetCallerIdentity, same response and transport",
+    "build": "go build -trimpath; no linker stripping",
+    "cold": "unique empty GOCACHE per SDK; includes standard-library compilation; module download excluded",
+    "warm": "same command, source and cache, after cold build; output binary removed first",
+    "order": [
+      "ours",
+      "official"
+    ],
+    "runtime": "serial identity calls; client constructed outside timed loop; 3 x 1s benchmem; no network",
+    "limits": "single Windows host; not a network/service benchmark; no statistical generalization"
+  },
+  "results": {
+    "ours": {
+      "dependencies": {
+        "totalPackages": 208,
+        "standardPackages": 198,
+        "projectPackages": 10,
+        "externalPackages": 0,
+        "externalModules": [],
+        "packages": [
+          {
+            "stdlib": true,
+            "importPath": "internal/goarch",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "unsafe",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/abi",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/unsafeheader",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/cpu",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/bytealg",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/byteorder",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/chacha8rand",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/coverage/rtcov",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/godebugs",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/goexperiment",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/goos",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/profilerecord",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/atomic",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/exithook",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/gc",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/sys",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/gc/scan",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/asan",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/msan",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/race",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/math",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "math/bits",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/maps",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/pprof/label",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/syscall/windows",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/strconv",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/stringslite",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/trace/tracev2",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "runtime",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/reflectlite",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "errors",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "sync/atomic",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/sync",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/synctest",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "sync",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/syscall/windows/sysdll",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/oserror",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "cmp",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "iter",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "slices",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "unicode/utf16",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "unicode/utf8",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "syscall",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/syscall/windows/registry",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "time",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "context",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "math",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "strconv",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "unicode",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "reflect",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/fmtsort",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "io",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "structs",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/syscall/windows",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "path",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "io/fs",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/filepathlite",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/bisect",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/godebug",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/poll",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/syscall/execenv",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/testlog",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "os",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "fmt",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "bytes",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "hash",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140deps/godebug",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "strings",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/alias",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140deps/byteorder",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140deps/cpu",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/impl",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/sha256",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/constanttime",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/subtle",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/sha3",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/sha512",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/hmac",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/check",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/aes",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140deps/time",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/entropy/v1.0.0",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/sysrand",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/drbg",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/aes/gcm",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/fips140",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140only",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/subtle",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/cipher",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/boring/sig",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/boring",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "math/rand/v2",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/randutil",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/rand",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "math/rand",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "math/big",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/rand",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/hex",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/base32",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/base64",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/binary",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/json/internal",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/json/internal/jsonflags",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/json/internal/jsonopts",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/json/internal/jsonwire",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/json/jsontext",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/json/v2",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/rambow-cloud/alicloud-go-sdk-x/credentials",
+            "module": "github.com/rambow-cloud/alicloud-go-sdk-x",
+            "version": "v0.0.0",
+            "project": true
+          },
+          {
+            "stdlib": true,
+            "importPath": "maps",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "weak",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "unique",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/netip",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/url",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/rambow-cloud/alicloud-go-sdk-x/endpoint",
+            "module": "github.com/rambow-cloud/alicloud-go-sdk-x",
+            "version": "v0.0.0",
+            "project": true
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/sha3",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140hash",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/hmac",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/sha256",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "bufio",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "compress/flate",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "hash/crc32",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "compress/gzip",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "container/list",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/aes",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/des",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/nistec/fiat",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/nistec",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/ecdh",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/edwards25519/field",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/ecdh",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/elliptic",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/boring/bbig",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/bigmod",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/ecdsa",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140cache",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/sha512",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/saferio",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/asn1",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/crypto/cryptobyte/asn1",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/crypto/cryptobyte",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/ecdsa",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/edwards25519",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/ed25519",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/ed25519",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/hkdf",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/hkdf",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/mlkem",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/mlkem",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/crypto/internal/alias",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/crypto/chacha20",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/crypto/internal/poly1305",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/sys/cpu",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/crypto/chacha20poly1305",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/hpke",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/tls12",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/tls13",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/md5",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/mldsa",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/mldsa",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/rc4",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/rsa",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/rsa",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/sha1",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/tls/internal/fips140tls",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/dsa",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/x509/pkix",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/pem",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/net/dns/dnsmessage",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/nettrace",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/singleflight",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "path/filepath",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/x509",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "sort",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/tls",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/text/transform",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "log/internal",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "log",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/text/unicode/bidi",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/text/secure/bidirule",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/text/unicode/norm",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/net/idna",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/textproto",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/net/http/httpguts",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/net/http/httpproxy",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "mime",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "mime/quotedprintable",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "mime/multipart",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/http/httptrace",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/http/internal",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/http/internal/ascii",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/net/http2/hpack",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/http/internal/httpcommon",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/http/internal/httpsfv",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/http/internal/http2",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/http",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/rambow-cloud/alicloud-go-sdk-x/internal/signing",
+            "module": "github.com/rambow-cloud/alicloud-go-sdk-x",
+            "version": "v0.0.0",
+            "project": true
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/rambow-cloud/alicloud-go-sdk-x/middleware",
+            "module": "github.com/rambow-cloud/alicloud-go-sdk-x",
+            "version": "v0.0.0",
+            "project": true
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/rambow-cloud/alicloud-go-sdk-x/retry",
+            "module": "github.com/rambow-cloud/alicloud-go-sdk-x",
+            "version": "v0.0.0",
+            "project": true
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/rambow-cloud/alicloud-go-sdk-x",
+            "module": "github.com/rambow-cloud/alicloud-go-sdk-x",
+            "version": "v0.0.0",
+            "project": true
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/rambow-cloud/alicloud-go-sdk-x/internal/rpcmodel",
+            "module": "github.com/rambow-cloud/alicloud-go-sdk-x",
+            "version": "v0.0.0",
+            "project": true
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/rambow-cloud/alicloud-go-sdk-x/service/sts",
+            "module": "github.com/rambow-cloud/alicloud-go-sdk-x",
+            "version": "v0.0.0",
+            "project": true
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/rambow-cloud/alicloud-go-sdk-x/tools/benchmarks/internal/fixture",
+            "module": "github.com/rambow-cloud/alicloud-go-sdk-x/tools/benchmarks",
+            "version": "",
+            "project": true
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/rambow-cloud/alicloud-go-sdk-x/tools/benchmarks/cmd/ours",
+            "module": "github.com/rambow-cloud/alicloud-go-sdk-x/tools/benchmarks",
+            "version": "",
+            "project": true
+          }
+        ]
+      },
+      "build": {
+        "coldMilliseconds": 10524.418,
+        "binaryBytes": 10176512,
+        "warmMilliseconds": 1770.1014
+      },
+      "runtime": {
+        "samples": [
+          {
+            "iterations": 87092,
+            "nanosecondsPerOperation": 14739,
+            "bytesPerOperation": 15342,
+            "allocationsPerOperation": 145
+          },
+          {
+            "iterations": 84129,
+            "nanosecondsPerOperation": 14512,
+            "bytesPerOperation": 15345,
+            "allocationsPerOperation": 145
+          },
+          {
+            "iterations": 87849,
+            "nanosecondsPerOperation": 13805,
+            "bytesPerOperation": 15344,
+            "allocationsPerOperation": 145
+          }
+        ]
+      }
+    },
+    "official": {
+      "dependencies": {
+        "totalPackages": 236,
+        "standardPackages": 209,
+        "projectPackages": 2,
+        "externalPackages": 25,
+        "externalModules": [
+          "github.com/alibabacloud-go/alibabacloud-gateway-spi@v0.0.5",
+          "github.com/alibabacloud-go/darabonba-openapi/v2@v2.1.13",
+          "github.com/alibabacloud-go/debug@v1.0.1",
+          "github.com/alibabacloud-go/sts-20150401/v2@v2.1.0",
+          "github.com/alibabacloud-go/tea-utils/v2@v2.0.7",
+          "github.com/alibabacloud-go/tea@v1.3.13",
+          "github.com/aliyun/credentials-go@v1.4.5",
+          "github.com/clbanning/mxj/v2@v2.7.0",
+          "github.com/json-iterator/go@v1.1.12",
+          "github.com/modern-go/concurrent@v0.0.0-20180306012644-bacd9c7ef1dd",
+          "github.com/modern-go/reflect2@v1.0.2",
+          "github.com/tjfoc/gmsm@v1.4.1",
+          "golang.org/x/net@v0.26.0",
+          "gopkg.in/ini.v1@v1.67.0"
+        ],
+        "packages": [
+          {
+            "stdlib": true,
+            "importPath": "internal/goarch",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "unsafe",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/abi",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/unsafeheader",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/cpu",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/bytealg",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/byteorder",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/chacha8rand",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/coverage/rtcov",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/godebugs",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/goexperiment",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/goos",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/profilerecord",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/atomic",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/exithook",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/gc",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/sys",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/gc/scan",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/asan",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/msan",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/race",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/math",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "math/bits",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/maps",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/pprof/label",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/runtime/syscall/windows",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/strconv",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/stringslite",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/trace/tracev2",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "runtime",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/reflectlite",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "errors",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "cmp",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "iter",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "math",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "unicode/utf8",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "strconv",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "sync/atomic",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/sync",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/synctest",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "sync",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "unicode",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "reflect",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "slices",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/fmtsort",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "io",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/oserror",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/syscall/windows/sysdll",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "structs",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "unicode/utf16",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "syscall",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/syscall/windows",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "path",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/syscall/windows/registry",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "time",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "io/fs",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/filepathlite",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/bisect",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/godebug",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/poll",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/syscall/execenv",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/testlog",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "os",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "fmt",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "context",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "strings",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/hex",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "bytes",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "container/list",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "hash",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140deps/godebug",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/alias",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140deps/byteorder",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140deps/cpu",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/impl",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/sha256",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/constanttime",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/subtle",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/sha3",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/sha512",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/hmac",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/check",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/aes",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140deps/time",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/entropy/v1.0.0",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/sysrand",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/drbg",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/aes/gcm",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/fips140",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140only",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/subtle",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/cipher",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/boring/sig",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/boring",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/aes",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/des",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/nistec/fiat",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/nistec",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/ecdh",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/edwards25519/field",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "math/rand/v2",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/randutil",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/rand",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/ecdh",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "math/rand",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "math/big",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/elliptic",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/boring/bbig",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/bigmod",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/ecdsa",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "weak",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140cache",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/sha3",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140hash",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/sha512",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/saferio",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/asn1",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/crypto/cryptobyte/asn1",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/crypto/cryptobyte",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/ecdsa",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/edwards25519",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/ed25519",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/rand",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/ed25519",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/hkdf",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/hkdf",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/hmac",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/mlkem",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/mlkem",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/sha256",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/binary",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/crypto/internal/alias",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/crypto/chacha20",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/crypto/internal/poly1305",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/sys/cpu",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/crypto/chacha20poly1305",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/hpke",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/tls12",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/tls13",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/md5",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/mldsa",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/mldsa",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/rc4",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/internal/fips140/rsa",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/rsa",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/sha1",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/tls/internal/fips140tls",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/dsa",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/x509/pkix",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/base64",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/pem",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "maps",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/net/dns/dnsmessage",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/nettrace",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/singleflight",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "unique",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/netip",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/url",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "path/filepath",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/x509",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "sort",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "crypto/tls",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/json/internal",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/json/internal/jsonflags",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/json/internal/jsonopts",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/json/internal/jsonwire",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/json/jsontext",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/base32",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/json/v2",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/json",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/alibabacloud-go/debug/debug",
+            "module": "github.com/alibabacloud-go/debug",
+            "version": "v1.0.1",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "log/internal",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "log",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "flag",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "internal/sysinfo",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "runtime/debug",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "runtime/trace",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "testing",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/alibabacloud-go/tea/utils",
+            "module": "github.com/alibabacloud-go/tea",
+            "version": "v1.3.13",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "io/ioutil",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/modern-go/concurrent",
+            "module": "github.com/modern-go/concurrent",
+            "version": "v0.0.0-20180306012644-bacd9c7ef1dd",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/modern-go/reflect2",
+            "module": "github.com/modern-go/reflect2",
+            "version": "v1.0.2",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/json-iterator/go",
+            "module": "github.com/json-iterator/go",
+            "version": "v1.1.12",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "golang.org/x/net/internal/socks",
+            "module": "golang.org/x/net",
+            "version": "v0.26.0",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "golang.org/x/net/proxy",
+            "module": "golang.org/x/net",
+            "version": "v0.26.0",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "bufio",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "compress/flate",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "hash/crc32",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "compress/gzip",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/text/transform",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/text/unicode/bidi",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/text/secure/bidirule",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/text/unicode/norm",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/net/idna",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/textproto",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/net/http/httpguts",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/net/http/httpproxy",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "mime",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "mime/quotedprintable",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "mime/multipart",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/http/httptrace",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/http/internal",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/http/internal/ascii",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "vendor/golang.org/x/net/http2/hpack",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/http/internal/httpcommon",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/http/internal/httpsfv",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/http/internal/http2",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "net/http",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "regexp/syntax",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "regexp",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/alibabacloud-go/tea/tea",
+            "module": "github.com/alibabacloud-go/tea",
+            "version": "v1.3.13",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/aliyun/credentials-go/credentials/internal/utils",
+            "module": "github.com/aliyun/credentials-go",
+            "version": "v1.4.5",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/aliyun/credentials-go/credentials/internal/http",
+            "module": "github.com/aliyun/credentials-go",
+            "version": "v1.4.5",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "gopkg.in/ini.v1",
+            "module": "gopkg.in/ini.v1",
+            "version": "v1.67.0",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/aliyun/credentials-go/credentials/providers",
+            "module": "github.com/aliyun/credentials-go",
+            "version": "v1.4.5",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/aliyun/credentials-go/credentials/utils",
+            "module": "github.com/aliyun/credentials-go",
+            "version": "v1.4.5",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/aliyun/credentials-go/credentials/request",
+            "module": "github.com/aliyun/credentials-go",
+            "version": "v1.4.5",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/aliyun/credentials-go/credentials/response",
+            "module": "github.com/aliyun/credentials-go",
+            "version": "v1.4.5",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/aliyun/credentials-go/credentials",
+            "module": "github.com/aliyun/credentials-go",
+            "version": "v1.4.5",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/alibabacloud-go/alibabacloud-gateway-spi/client",
+            "module": "github.com/alibabacloud-go/alibabacloud-gateway-spi",
+            "version": "v0.0.5",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/xml",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/alibabacloud-go/tea-utils/v2/service",
+            "module": "github.com/alibabacloud-go/tea-utils/v2",
+            "version": "v2.0.7",
+            "project": false
+          },
+          {
+            "stdlib": true,
+            "importPath": "encoding/gob",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/clbanning/mxj/v2",
+            "module": "github.com/clbanning/mxj/v2",
+            "version": "v2.7.0",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/alibabacloud-go/tea/dara",
+            "module": "github.com/alibabacloud-go/tea",
+            "version": "v1.3.13",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/alibabacloud-go/darabonba-openapi/v2/models",
+            "module": "github.com/alibabacloud-go/darabonba-openapi/v2",
+            "version": "v2.1.13",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/tjfoc/gmsm/sm3",
+            "module": "github.com/tjfoc/gmsm",
+            "version": "v1.4.1",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/alibabacloud-go/darabonba-openapi/v2/utils",
+            "module": "github.com/alibabacloud-go/darabonba-openapi/v2",
+            "version": "v2.1.13",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/alibabacloud-go/darabonba-openapi/v2/client",
+            "module": "github.com/alibabacloud-go/darabonba-openapi/v2",
+            "version": "v2.1.13",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/alibabacloud-go/sts-20150401/v2/client",
+            "module": "github.com/alibabacloud-go/sts-20150401/v2",
+            "version": "v2.1.0",
+            "project": false
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/rambow-cloud/alicloud-go-sdk-x/tools/benchmarks/internal/fixture",
+            "module": "github.com/rambow-cloud/alicloud-go-sdk-x/tools/benchmarks",
+            "version": "",
+            "project": true
+          },
+          {
+            "stdlib": false,
+            "importPath": "github.com/rambow-cloud/alicloud-go-sdk-x/tools/benchmarks/cmd/official",
+            "module": "github.com/rambow-cloud/alicloud-go-sdk-x/tools/benchmarks",
+            "version": "",
+            "project": true
+          }
+        ]
+      },
+      "build": {
+        "coldMilliseconds": 13543.5031,
+        "binaryBytes": 12431872,
+        "warmMilliseconds": 2206.2465
+      },
+      "runtime": {
+        "samples": [
+          {
+            "iterations": 18577,
+            "nanosecondsPerOperation": 62462,
+            "bytesPerOperation": 28211,
+            "allocationsPerOperation": 387
+          },
+          {
+            "iterations": 20319,
+            "nanosecondsPerOperation": 60006,
+            "bytesPerOperation": 28208,
+            "allocationsPerOperation": 387
+          },
+          {
+            "iterations": 20079,
+            "nanosecondsPerOperation": 62135,
+            "bytesPerOperation": 28216,
+            "allocationsPerOperation": 387
+          }
+        ]
+      }
+    }
+  }
+}
