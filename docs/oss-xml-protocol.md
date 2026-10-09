@@ -17,3 +17,9 @@
 - Assert structured-root and scalar-root representations separately. Compare unchanged helper conversion with explicit fixture normalization; do not introduce per-action production overlays.
 - Record malformed XML handling. New runtime decoding must return an error rather than copy a helper's silent empty result.
 - This comparison supplies source/representation evidence only. Production source pinning, semantic projection, signing, XML emission and streaming remain pending.
+
+## Recorded result (2026-10-09)
+
+- [Pinned comparison](../tools/ossxml/README.md): three tests, two structured-root subtests and one external Example passed with Go 1.27.1 on Windows/amd64. Isolated vet passed.
+- The unchanged helper/model conversion loses ACL/CORS nested fields; explicit fixture unwrapping preserves them. Location requires retaining its scalar-root field. The helper suppresses malformed XML errors; the standard decoder reports them.
+- These are offline representation results for the explicitly documented version combination. They are not an OSS client, an all-release defect claim, or live cloud evidence. CI remains pending until the linked PR checks pass.
