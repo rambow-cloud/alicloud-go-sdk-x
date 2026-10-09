@@ -10,6 +10,7 @@ import (
 
 	alicloud "github.com/rambow-cloud/alicloud-go-sdk-x"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/credentials"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/feature/externalcreds"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/feature/stscreds"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/internal/rpcmodel"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/internal/sharedconfig"
@@ -27,9 +28,9 @@ var ErrLongLivedCredentialsDisabled = errors.New("profilecreds: long-lived crede
 // ErrUnsupportedMode identifies a CLI mode outside this provider's documented scope.
 var ErrUnsupportedMode = errors.New("profilecreds: unsupported profile mode")
 
-// ErrLoginRequired indicates revoked, absent or expired OAuth login credentials.
-// Reauthenticate using aliyun configure --mode OAuth for the selected profile.
-var ErrLoginRequired = errors.New("profilecreds: OAuth login required; run aliyun configure --mode OAuth for the selected profile")
+// ErrLoginRequired indicates revoked, absent or expired OAuth/CloudSSO login credentials.
+// Run aliyun configure with the selected profile's original login mode.
+var ErrLoginRequired = errors.New("profilecreds: login required; run aliyun configure with the selected profile and login mode")
 
 // ErrSessionPersistence indicates inability to atomically save rotated OAuth state.
 // A writable native profile directory is required for OAuth renewal.
@@ -130,7 +131,7 @@ func (p *Provider) Retrieve(ctx context.Context) (credentials.Credentials, error
 	return p.cache.Retrieve(ctx)
 }
 
-// Invalidate discards cached credentials; the next retrieval renews OAuth/role
+// Invalidate discards cached credentials; the next retrieval renews dynamic
 // credentials. It does not reload configuration settings or refresh a static
 // StsToken/AK snapshot; OAuth session fields reload under the renewal lock.
 // Calls may run concurrently with Retrieve; a zero or nil provider is a no-op.
@@ -203,6 +204,69 @@ func build(file sharedconfig.File, selected sharedconfig.Profile, o Options, vis
 			return nil, ErrInvalidConfiguration
 		}
 		source = &oauthSource{profile: selected, filename: o.Filename, client: o.HTTPClient, now: o.CacheOptions.Now, window: refreshWindow(o.CacheOptions)}
+	case "credentialsuri":
+		if externalDisabled() {
+			return nil, ErrInvalidConfiguration
+		}
+		var err error
+		source, err = externalcreds.NewURIProvider(selected.CredentialsURI, externalcreds.Options{HTTPClient: o.HTTPClient})
+		if err != nil {
+			return nil, ErrInvalidConfiguration
+		}
+	case "external":
+		if externalDisabled() {
+			return nil, ErrInvalidConfiguration
+		}
+		argv, err := externalcreds.ParseCommand(selected.ProcessCommand)
+		if err != nil {
+			return nil, ErrInvalidConfiguration
+		}
+		source, err = externalcreds.NewProcessProvider(argv, externalcreds.ProcessOptions{AllowLongLived: o.AllowLongLived})
+		if err != nil {
+			return nil, ErrInvalidConfiguration
+		}
+	case "ecsramrole":
+		if metadataDisabled() {
+			return nil, ErrInvalidConfiguration
+		}
+		var err error
+		source, err = externalcreds.NewECSMetadataProvider(selected.MetadataRole, externalcreds.Options{HTTPClient: o.HTTPClient})
+		if err != nil {
+			return nil, ErrInvalidConfiguration
+		}
+	case "oidc":
+		token, err := stscreds.NewFileTokenProvider(selected.OIDCTokenFile)
+		if err != nil {
+			return nil, ErrInvalidConfiguration
+		}
+		origin := selected.STSEndpoint
+		if origin == "" {
+			origin = "https://sts.aliyuncs.com"
+		} else if !strings.Contains(origin, "://") {
+			origin = "https://" + origin
+		}
+		api, err := sts.NewFromConfig(alicloud.Config{BaseEndpoint: origin, CredentialsProvider: credentials.AnonymousProvider{}, HTTPClient: o.HTTPClient})
+		if err != nil {
+			return nil, ErrInvalidConfiguration
+		}
+		session := selected.Session
+		if session == "" {
+			session = "alicloud-go-sdk-x"
+		}
+		input := sts.AssumeRoleWithOIDCInput{RoleARN: &selected.RoleARN, OIDCProviderARN: &selected.OIDCProviderARN, RoleSessionName: &session}
+		if selected.Duration != 0 {
+			input.DurationSeconds = &selected.Duration
+		}
+		source, err = stscreds.NewAssumeRoleWithOIDCProvider(api, input, token)
+		if err != nil {
+			return nil, ErrInvalidConfiguration
+		}
+	case "cloudsso":
+		var err error
+		source, err = cloudSSOSource(selected, o)
+		if err != nil {
+			return nil, err
+		}
 	case "ramrolearn", "chainableramrolearn":
 		var base credentials.Provider
 		var err error

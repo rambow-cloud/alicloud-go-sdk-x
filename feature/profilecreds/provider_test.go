@@ -298,7 +298,7 @@ func TestProfilesValidateAKCyclesAndJSON(t *testing.T) {
 	if _, err = p.Retrieve(context.Background()); err != nil {
 		t.Fatal(err)
 	}
-	for _, mode := range []string{"CloudSSO", "External", "CredentialsURI", "EcsRamRole", "OIDC", "Anonymous"} {
+	for _, mode := range []string{"Anonymous", "Unrecognized"} {
 		pfile := oauth()
 		pfile["mode"] = mode
 		if _, err := profilecreds.NewProvider(context.Background(), profilecreds.Options{Filename: file(t, pfile), Profile: "test"}); !errors.Is(err, profilecreds.ErrUnsupportedMode) {

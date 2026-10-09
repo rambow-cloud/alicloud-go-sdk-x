@@ -3,6 +3,9 @@
 // native Alibaba CLI JSON profiles and temporary environment credentials.
 // Explicit providers take precedence; explicit profile selection precedes environment
 // credentials. OAuth providers renew temporary credentials without CLI subprocesses.
+// Complete OIDC environment configuration and credential URIs precede automatic
+// profiles. Missing default files permit lazy ECS IMDSv2; explicit missing sources
+// do not. External profiles may launch their configured process during retrieval.
 // Long-lived default sources require explicit provider opt-in. Direct service
 // constructors continue requiring providers and do not discover configuration.
 //
