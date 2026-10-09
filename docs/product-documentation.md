@@ -2,6 +2,8 @@
 
 [中文](product-documentation.zh-CN.md)
 
+- #93 [optional canonical prose](canonical-prose-enrichment.md) fills source-missing English fields after representation/type normalization. Keep DSL, metadata enrichment, Go contracts and remaining gaps separately counted; preserve exact source pointers and Apache attribution.
+
 - Stage #38 follows #37 / PR #42 on `issue/38-licensed-product-docs`, stacked on `issue/37-capability-policies`.
 - The original dependency stack is now [integrated into main](generator-integration.md).
 - This specification preceded implementation.

@@ -2,6 +2,8 @@
 
 [English](README.md)
 
+- #93 [可选 canonical 说明](../../docs/canonical-prose-enrichment.zh-CN.md)在准确的表示和类型规范化后补充缺失的字段描述。`npm run discover` 更新这些投影，`npm run check` 核对；来源整体缺失时不要求逐操作元数据。运行模型和策略仍由 DSL 驱动。
+
 - [产品路线](../../docs/product-generator-roadmap.zh-CN.md) 优先于冲突旧逐操作前置要求。
 - 遵循[服务整合 #81](../../docs/service-consolidation.zh-CN.md)。#31 仅保留五操作历史证据；#34 增加[来源规范化](../../docs/source-normalization.zh-CN.md)，#35 已提供无需逐操作快照/补充配置的完整产品发现；离线命令与覆盖/IR 契约见[产品发现](../../docs/product-discovery.zh-CN.md)。
 - #36 [批量 Go 后端](../../docs/batch-go-emission.zh-CN.md) 无旧补充配置地消费完整 IR。

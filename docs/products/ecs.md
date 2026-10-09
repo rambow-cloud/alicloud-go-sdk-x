@@ -91,6 +91,8 @@
 | DescribeSecurityGroups | tokens | — | true |  | true | false |
 | DescribeSnapshots | tokens | — | true |  | true | false |
 
+- Optional official CLI metadata adds English prose for 253 fields, without replacing DSL text or changing models/runtime. Source pins, JSON pointers and excluded mappings are recorded in [the enrichment route](../canonical-prose-enrichment.md) and documentation JSON; counted separately from original DSL prose below.
+
 - Reviewed English translations: 9 actions. Go contract comments cover 380 actions and 9626 source fields, counted separately from upstream business prose. Fields without English prose keep exact DSL links.
 
 ## Documentation sources

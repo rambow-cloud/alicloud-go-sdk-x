@@ -170,6 +170,7 @@
   infer runtime policy or promote upstream account/resource examples into Go tests.
 
 - Follow [documentation-style.md](docs/documentation-style.md).
+- #93 optional canonical field prose follows docs/canonical-prose-enrichment.md. Normalize indexed/itemName representations before exact DSL field/type matching; preserve source bytes, hashes, JSON pointers and exclusion reasons. It must not change runtime models/policy or become a per-operation prerequisite. Regenerate prose after IR changes and run its offline check/tests before Go gates.
 - Keep English in name.md and Chinese in name.zh-CN.md, with reciprocal links.
 - Update both together.
 - Write natural Chinese.

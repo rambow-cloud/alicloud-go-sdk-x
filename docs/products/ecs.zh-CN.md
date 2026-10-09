@@ -91,6 +91,8 @@
 | DescribeSecurityGroups | tokens | — | true |  | true | false |
 | DescribeSnapshots | tokens | — | true |  | true | false |
 
+- 可选官方 CLI 元数据补充了 253 个字段的英文说明，不覆盖 DSL 原文，不改变模型或运行时。准确来源、JSON 指针及未映射原因见 [补充流程](../canonical-prose-enrichment.zh-CN.md)和文档覆盖 JSON；与下方原始 DSL 说明数量分开统计。
+
 - 已审核英文译文：9 个操作；Go 行为注释覆盖 380 个操作和 9626 个来源字段，单独统计，不冒充上游业务说明。缺少英文说明的字段保留准确 DSL 来源链接。
 
 ## 文档来源
