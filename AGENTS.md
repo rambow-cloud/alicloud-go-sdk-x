@@ -1,12 +1,14 @@
 # Project working agreements
 
+- The next #92 internal XML codec follows [XML model codec](docs/xml-model-codec.md). Preserve explicit structured/scalar roots and typed DSL wire fields; no inferred roots, public OSS operations or signing fallback.
+
 [中文](AGENTS.zh-CN.md)
 
 ## SDK gap completion (2026-10-09)
 
 - The next #92 scope follows [OSS XML/streaming](docs/oss-xml-protocol.md). Pin complete official product and gateway/helper source first; project exact host, XML root and signing behavior into IR. No ACS3 fallback for OSS, inferred XML roots or claimed streaming without ownership/replay/checksum contracts.
 
-- #92 follows [FC ROA generation](docs/fc-roa-product.md). Current complete IR/lock uses schema v5 (`openapi-json-v1`) with exact path/query/header/body bindings and operation facades. Older v3/v4 text is stage history. FC is an offline fixture: 73 discovered, 72 emitted; binary InvokeFunction is unsupported. No inferred policy or live acceptance.
+- #92 follows [FC binary generation](docs/fc-binary-generation.md). Current complete IR/lock uses schema v6 (`openapi-http-v1`) with exact path/query/header/body bindings and operation facades. Earlier schemas and the 72-action JSON/none baseline are historical. All 73 pinned FC actions are emitted and verified offline, including binary InvokeFunction. No inferred policy or live acceptance.
 - Add pinned products with tools/darabonba/import-product.cjs, reusing all locked transitive imports. Source-bound endpoint exceptions live in metadata/endpoint-source-decisions.json; preserve official bytes and reject unapproved source/coordinate/value drift before writes.
 
 - #91 projects official endpoint initialization into IR schema v4 and generates the shared catalog. Follow [endpoint rules](docs/endpoint-rules.md); private rules need exact reviewed evidence and never fall back to public origins.
