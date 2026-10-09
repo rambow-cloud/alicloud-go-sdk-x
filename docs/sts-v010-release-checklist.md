@@ -9,6 +9,8 @@
 
 ## Required gates
 
+- [Fresh consumer evidence](release-consumer-refresh.md) records the integrated SDK pin and preserves historical records.
+
 1. Record actual agent consumer results in acceptance/sts-agent-result.json with the tested SDK/workload revision. Preserve scoped live/source/Profile evidence and declare limits.
 2. Complete #74 and #75 and their product-result records. Generation counts, empty terminal pages and skipped waiter cases do not satisfy unexecuted required cases. Review #47/PR #48 independently.
 3. Require final-main Linux Go 1.27 race, Windows Go 1.27, automation and linked-issue checks. Review module/JSON v2, source/policy locks, MIT runtime and Apache generated LICENSE/NOTICE. Update paired release notes to the actual accepted scope.

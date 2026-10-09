@@ -1,12 +1,11 @@
 {
-  "sdkCommit": "0365dd8733ffa6aa86061b226d5e8f79d83e70d0",
+  "sdkCommit": "72d92d11b5066eb8b6b38a90cf2734c91ef4a1ea",
   "sourceBaseline": "f72bbdbc4ac0733f899e8a54d8c9bb1e1ac25266",
   "goVersion": "go1.27.1",
   "os": "windows/amd64",
-  "startedAt": "2026-10-09T16:04:20.054Z",
-  "endedAt": "2026-10-09T16:04:22.931Z",
+  "startedAt": "2026-10-09T11:25:51.947Z",
+  "endedAt": "2026-10-09T11:25:54.138Z",
   "command": "go -C examples/stsacceptance test -json -count=1 ./...",
-  "releaseIssue": 61,
   "schemaVersion": 1,
   "status": "PASS",
   "reviewKind": "implementation-agent",
@@ -18,17 +17,17 @@
     {
       "id": "identity",
       "status": "PASS",
-      "elapsedSeconds": 0.1,
+      "elapsedSeconds": 0.060000000000000005,
       "tests": [
         {
           "name": "TestExternalDefaultProfileWorkload",
           "status": "PASS",
-          "elapsedSeconds": 0.02
+          "elapsedSeconds": 0
         },
         {
           "name": "TestExternalOAuthRefreshPersistenceAndReuse",
           "status": "PASS",
-          "elapsedSeconds": 0.07
+          "elapsedSeconds": 0.05
         },
         {
           "name": "TestExternalLongLivedProfileRequiresOptIn",
@@ -106,6 +105,7 @@
       ]
     }
   ],
+  "regressionIssue": 85,
   "additionalTests": [
     {
       "name": "TestOfficialRPCShrinkJSONHelperParity",
