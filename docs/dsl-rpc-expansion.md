@@ -35,5 +35,7 @@
 - VPC: 403 discovered, 396 lowered/emitted, 1,671 models. Seven actions remain unsupported: four unbound input flows, one query initialization flow, and two non-JSON shrink flows.
 - STS: unchanged, four actions and 19 models.
 - Node 22 frontend check and 73 tests, product-check, doccheck (15 packages), vet, root tests/Examples: PASS. Original source, sparse policies and STS Go output are unchanged.
-- Isolated consumer regression, pinned official JSON-helper comparison, formatting and final PR CI: pending.
+- Shared consumer workload: `358013c7b9f0466cacb36ac7f43ac9d30839286f`.
+- Isolated modules: both vet and account-free programs PASS. STS: 11 existing cases plus one pinned official JSON-helper comparison; ECS: 10 cases/14 subtests; VPC: 8 cases/10 subtests. Updated records share the workload pin and preserve historical live evidence.
+- Tracked Go formatting PASS. Final PR CI (Linux race, Windows and automation): pending.
 - These counts describe pinned generation, not complete live ECS/VPC acceptance.

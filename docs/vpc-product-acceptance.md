@@ -53,3 +53,5 @@
 - #81 service consolidation refresh: the eight consumer tests and ten subtests PASS at e33e5f93d856027569969056e9d4c25e92e51212. Machine evidence is updated; historical live samples do not establish nonempty continuation.
 
 - #81 guide correction: discovery now precedes Go emission in the tool commands. All 29 consumer cases and 24 product subtests PASS at 29d468ad5f8999e92b4e60e4140cb8432efb8a13; machine records use this pin. Go/runtime/source/policy behavior is unchanged from the locally checked e33e5f93d856027569969056e9d4c25e92e51212 workload, so its unaffected gates are reused. Final-head CI remains required on PR #82.
+
+- #83 shared lowering regression: 396 VPC actions compile; the existing 8 consumer cases and 10 subtests PASS at 358013c7b9f0466cacb36ac7f43ac9d30839286f. Seven unsupported actions retain explicit reasons. Historical live limits remain unchanged.

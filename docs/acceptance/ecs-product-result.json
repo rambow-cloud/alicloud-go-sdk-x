@@ -5,12 +5,12 @@
   "issue": 74,
   "reviewKind": "implementation-agent",
   "independentHuman": false,
-  "sdkCommit": "29d468ad5f8999e92b4e60e4140cb8432efb8a13",
+  "sdkCommit": "358013c7b9f0466cacb36ac7f43ac9d30839286f",
   "goVersion": "go1.27.1",
   "os": "windows/amd64",
-  "startedAt": "2026-10-09T08:08:22.791Z",
-  "endedAt": "2026-10-09T08:08:24.819Z",
-  "command": "go -C examples/productacceptance test -json -count=1 -run ^TestECS ./...",
+  "startedAt": "2026-10-09T09:15:22.647Z",
+  "endedAt": "2026-10-09T09:15:25.271Z",
+  "command": "go -C examples/productacceptance test -json -count=1 ./...",
   "timingKind": "automated-test-execution",
   "evidence": "docs/ecs-product-acceptance.md",
   "sourceRevision": "ec489e5c3deae95496daae2b41503ac58b221adb",
@@ -19,11 +19,11 @@
   "policySHA256": "fae0ff0fe206eae652af2a902b4434d95b11b43ca89cecd68962e04519ff46b5",
   "coverage": {
     "discovered": 380,
-    "lowered": 283,
-    "emitted": 283,
-    "models": 1453,
-    "compiled": 283,
-    "unsupported": 97,
+    "lowered": 380,
+    "emitted": 380,
+    "models": 2053,
+    "compiled": 380,
+    "unsupported": 0,
     "live": "selected-fields-only"
   },
   "requiredCases": [
@@ -105,7 +105,7 @@
     {
       "name": "TestECSNativeProfileAndCachedGeneratedRole",
       "status": "PASS",
-      "elapsedSeconds": 0
+      "elapsedSeconds": 0.01
     }
   ],
   "subtests": 14,
@@ -128,8 +128,8 @@
   },
   "verification": {
     "frontendCheck": "PASS",
-    "frontendTests": 57,
-    "automationTests": 25,
+    "frontendTests": 73,
+    "automationTests": "pending-final-PR-CI",
     "generatorCheck": "PASS",
     "productCheck": "PASS",
     "doccheckPackages": 15,
@@ -138,7 +138,7 @@
     "consumerVet": "PASS",
     "consumerRun": "PASS",
     "formatAndLanguage": "PASS",
-    "finalHeadCI": "see-linked-PR-checks",
-    "unchangedGoChecksWorkload": "e33e5f93d856027569969056e9d4c25e92e51212"
-  }
+    "finalHeadCI": "see-linked-PR-checks"
+  },
+  "regressionIssue": 83
 }

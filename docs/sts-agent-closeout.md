@@ -64,3 +64,5 @@ go test ./...
 - #81 service consolidation: all 11 cases PASS at e33e5f93d856027569969056e9d4c25e92e51212, using generated service/sts and the shared adapter. The updated machine record contains actual timings; earlier closeout/live evidence stays historical.
 
 - #81 guide correction: discovery now precedes Go emission in the tool commands. All 29 consumer cases and 24 product subtests PASS at 29d468ad5f8999e92b4e60e4140cb8432efb8a13; machine records use this pin. Go/runtime/source/policy behavior is unchanged from the locally checked e33e5f93d856027569969056e9d4c25e92e51212 workload, so its unaffected gates are reused. Final-head CI remains required on PR #82.
+
+- #83 shared RPC/runtime regression: 11 existing STS cases plus the pinned official JSON-helper comparison PASS at 358013c7b9f0466cacb36ac7f43ac9d30839286f. This is automated agent evidence; earlier live pins and independent UX limitations remain unchanged.

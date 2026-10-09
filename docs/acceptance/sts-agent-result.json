@@ -1,10 +1,10 @@
 {
-  "sdkCommit": "29d468ad5f8999e92b4e60e4140cb8432efb8a13",
+  "sdkCommit": "358013c7b9f0466cacb36ac7f43ac9d30839286f",
   "sourceBaseline": "f72bbdbc4ac0733f899e8a54d8c9bb1e1ac25266",
   "goVersion": "go1.27.1",
   "os": "windows/amd64",
-  "startedAt": "2026-10-09T08:08:20.252Z",
-  "endedAt": "2026-10-09T08:08:22.543Z",
+  "startedAt": "2026-10-09T09:15:20.208Z",
+  "endedAt": "2026-10-09T09:15:22.643Z",
   "command": "go -C examples/stsacceptance test -json -count=1 ./...",
   "schemaVersion": 1,
   "status": "PASS",
@@ -17,12 +17,12 @@
     {
       "id": "identity",
       "status": "PASS",
-      "elapsedSeconds": 0.06,
+      "elapsedSeconds": 0.07999999999999999,
       "tests": [
         {
           "name": "TestExternalDefaultProfileWorkload",
           "status": "PASS",
-          "elapsedSeconds": 0
+          "elapsedSeconds": 0.01
         },
         {
           "name": "TestExternalOAuthRefreshPersistenceAndReuse",
@@ -32,7 +32,7 @@
         {
           "name": "TestExternalLongLivedProfileRequiresOptIn",
           "status": "PASS",
-          "elapsedSeconds": 0
+          "elapsedSeconds": 0.01
         },
         {
           "name": "TestConsumerReviewIdentityOptionsAndInflightCancellation",
@@ -103,6 +103,14 @@
           "elapsedSeconds": 0.01
         }
       ]
+    }
+  ],
+  "regressionIssue": 83,
+  "additionalTests": [
+    {
+      "name": "TestOfficialRPCShrinkJSONHelperParity",
+      "status": "PASS",
+      "elapsedSeconds": 0
     }
   ]
 }
