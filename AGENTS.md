@@ -2,6 +2,11 @@
 
 [中文](AGENTS.zh-CN.md)
 
+## SDK gap completion (2026-10-09)
+
+- The user requested completion of remaining gaps. Follow [gap completion](docs/gap-completion.md) and parent #87.
+- This route replaces stale next-step scheduling. Preserve accepted evidence; track implementation, live behavior, human usability and publication separately.
+
 ## One service path
 
 - The user-approved #81 route in [service consolidation](docs/service-consolidation.md) overrides requirements to preserve the old bridge. Only `service/<product>` is supported; no `services/` package or emitter. Keep historical evidence and official source notices.

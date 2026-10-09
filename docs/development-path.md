@@ -2,7 +2,7 @@
 
 [中文](development-path.zh-CN.md)
 
-- Next: [VPC RPC completion](vpc-rpc-completion.md) adds split query/form bindings, whole-model GET queries and explicit simple arrays. [RPC expansion #83](dsl-rpc-expansion.md) is merged.
+- Current: #85 is merged. Follow [gap completion #87](gap-completion.md) for the next implementation stages.
 
 ## One service path
 
@@ -32,7 +32,7 @@
 - The generator supports all four scoped STS actions.
 - #68: merged.
 - Default configuration and native CLI Profile/OAuth have scoped live evidence.
-- #60: independent developer acceptance is still NOT RUN.
+- #60: implementation-agent acceptance is delivered; independent human usability remains #76 / NOT RUN.
 - #61: release and pkg.go.dev indexing are still NOT RUN.
 - #70: split language files, improve Chinese, and use English-only issues.
 - This language policy changes documentation format, not SDK or release acceptance.

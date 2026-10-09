@@ -2,7 +2,7 @@
 
 [English](development-path.md)
 
-- 下一步：[补齐 VPC RPC 生成支持](vpc-rpc-completion.zh-CN.md)，增加 query/表单分别绑定、整模型 GET query 及显式 simple 数组。[RPC 扩展 #83](dsl-rpc-expansion.zh-CN.md)已合并。
+- 当前：#85 已合并，后续按[缺口补齐路线 #87](gap-completion.zh-CN.md)执行。
 
 ## 统一服务路径
 
@@ -30,7 +30,7 @@
 
 - #58、#59 已合并：生成器支持本次范围内的四个 STS 操作。
 - #68 已合并：默认配置与原生 CLI Profile/OAuth 已有明确范围的真实验证记录。
-- #60 的独立开发者验收仍为 NOT RUN。
+- #60 已完成代理消费者验收；独立人工体验由 #76 跟踪，仍为 NOT RUN。
 - #61 的发布与 pkg.go.dev 索引仍为 NOT RUN。
 - #70 调整文档格式：中英文分文件、改善中文、issue 仅用英文。
 - 文档格式调整不改变 SDK 功能和发布验收要求。

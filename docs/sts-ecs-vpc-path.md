@@ -5,7 +5,7 @@
 ## Scoped ECS and VPC acceptance
 
 - #74/#75 use the pre-execution matrices in [ECS acceptance](ecs-product-acceptance.md) and [VPC acceptance](vpc-product-acceptance.md).
-- Supported RPC inventory is 283 ECS and 296 VPC actions. Offline consumer contracts and selected-field live reads are separate; unsupported DSL actions retain reasons.
+- Supported RPC inventory is 380 ECS and 403 VPC actions. Offline consumer contracts and selected-field live reads are separate; unsupported DSL actions retain reasons.
 - Instance token/waiter live transitions and nonempty VPC live continuation remain excluded/NOT RUN or SKIP under follow-up #79. No broader Beta or full-cloud acceptance is claimed.
 - Consumer acceptance is implementation-agent execution. Independent human UX and automated test timings remain distinct.
 - Preserve STS/ECS/VPC evidence pins against the shared consumer/CI revision. Publication and same-version pkg.go.dev indexing remain #61. No tag is created during product closeout.
@@ -27,7 +27,7 @@
 
 ## Product boundaries
 
-- The current pinned baseline emits four STS, 283 ECS and 296 VPC actions. These are generation counts, not live coverage.
+- The current pinned baseline emits four STS, 380 ECS and 403 VPC actions. These are generation counts, not live coverage.
 - STS includes all four actions, the provider/cache and native Profile composition. STS has no pagination or waiter.
 - ECS starts with DescribeRegions, DescribeImages, DescribeInstances and DescribeInstanceStatus consumer contracts; retain native page/token modes and InstanceRunningWaiter semantics.
 - VPC starts with DescribeVpcs and its native page-number paginator. Do not invent a token API or waiter.

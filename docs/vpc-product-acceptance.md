@@ -2,7 +2,7 @@
 
 [中文](vpc-product-acceptance.zh-CN.md)
 
-- Current generation follows [RPC expansion #83](dsl-rpc-expansion.md): ECS 380/380; VPC 396/403. Earlier counts and consumer records below describe their accepted revisions.
+- Current generation follows [RPC expansion #85](vpc-rpc-completion.md): ECS 380/380; VPC 403/403. Earlier counts and consumer records below describe their accepted revisions.
 
 ## Scope established before execution
 
