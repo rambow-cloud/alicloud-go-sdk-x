@@ -22,6 +22,7 @@
 - 完整 DSL 生成一致性、包文档、格式、vet 和 Go 测试。
 - 独立模块的 STS、ECS/VPC 消费者测试及可运行示例；CI 验证 Linux race 和 Windows。
 - 生产代码不再导入 `services/`，任何生成命令都不能恢复旧包。支持清单保持 STS 4 个、ECS 283 个、VPC 296 个操作。
+- 运行一次 `sdkgen product-check`；`sdkgen check` 调用同一后端，不重复执行等价生成门禁。
 
 ## 迁移方式
 

@@ -18,7 +18,7 @@ func TestGuidesUseSeparateLanguagesWithSharedEvidence(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	bridge, err := Load(filepath.Join("..", "..", "metadata", "ecs"))
+	ecs, err := renderProduct(readPolicyProduct(t, "ecs"))
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -28,7 +28,7 @@ func TestGuidesUseSeparateLanguagesWithSharedEvidence(t *testing.T) {
 		zh   []byte
 	}{
 		{"sts", product["docs/products/sts.md"], product["docs/products/sts.zh-CN.md"]},
-		{"ecs", emitGuide(bridge, false), emitGuide(bridge, true)},
+		{"ecs", ecs["docs/products/ecs.md"], ecs["docs/products/ecs.zh-CN.md"]},
 	} {
 		en, zh := string(guides.en), string(guides.zh)
 		englishLink := "[中文](" + guides.name + ".zh-CN.md)"

@@ -22,6 +22,7 @@
 - Full-DSL generation consistency, package docs, formatting, vet and Go tests.
 - Isolated STS and ECS/VPC consumer tests and runnable examples; Linux race and Windows checks in CI.
 - No production import of `services/`; no generator command recreates it. Product inventory remains STS 4, ECS 283 and VPC 296 supported operations.
+- Run `sdkgen product-check` once: `sdkgen check` invokes the same backend. Do not duplicate equivalent regeneration gates.
 
 ## Migration
 
