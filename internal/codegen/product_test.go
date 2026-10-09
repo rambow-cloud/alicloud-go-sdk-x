@@ -75,7 +75,7 @@ func TestRenamedProductUsesSharedEmitterAndGuide(t *testing.T) {
 }
 
 func TestCompleteProductsDeterministicModelsMethodsAndExamples(t *testing.T) {
-	for pkg, want := range map[string]int{"ecs": 283, "sts": 4, "vpc": 296} {
+	for pkg, want := range map[string]int{"ecs": 380, "sts": 4, "vpc": 396} {
 		t.Run(pkg, func(t *testing.T) {
 			p := readProductIR(t, pkg)
 			r, err := newProductRenderer(p)
@@ -151,6 +151,36 @@ func TestCompleteProductsDeterministicModelsMethodsAndExamples(t *testing.T) {
 	}
 }
 
+func TestShrinkBindingsRejectUnknownEncodingAndDynamicQueryValues(t *testing.T) {
+	for _, encoding := range []string{"base64", ""} {
+		t.Run(encoding, func(t *testing.T) {
+			p := readProductIR(t, "ecs")
+			for i := range p.Operations {
+				if p.Operations[i].Name != "InvokeCommand" {
+					continue
+				}
+				for j := range p.Operations[i].Bindings {
+					if p.Operations[i].Bindings[j].Wire == "Parameters" {
+						p.Operations[i].Bindings[j].Encoding = encoding
+					}
+				}
+			}
+			if _, err := renderProduct(p); err == nil {
+				t.Fatal("unsafe encoding reached emission")
+			}
+		})
+	}
+	p := readProductIR(t, "ecs")
+	files, err := renderProduct(p)
+	if err != nil {
+		t.Fatal(err)
+	}
+	types := string(files["service/ecs/types.gen.go"])
+	if !strings.Contains(types, "rpc:\"json\"") || !strings.Contains(types, "// Deprecated: The upstream DSL") {
+		t.Fatal("encoding or deprecation contract missing")
+	}
+}
+
 func fullProductFixture(t *testing.T) string {
 	t.Helper()
 	root := t.TempDir()
@@ -182,7 +212,7 @@ func fullProductFixture(t *testing.T) string {
 
 func TestProductSupportAndCorruptionFailBeforeWrites(t *testing.T) {
 	root := fullProductFixture(t)
-	for _, selected := range [][]string{{"ecs/Unknown"}, {"ecs/RunInstances"}, {"DescribeImages"}, {"ecs/DescribeImages", "ecs/RunInstances"}} {
+	for _, selected := range [][]string{{"ecs/Unknown"}, {"vpc/GrantInstanceToVbr"}, {"DescribeImages"}, {"ecs/DescribeImages", "vpc/GrantInstanceToVbr"}} {
 		if err := GenerateProducts(context.Background(), root, false, selected); err == nil {
 			t.Fatal("invalid selection accepted", selected)
 		}
@@ -204,6 +234,54 @@ func TestProductSupportAndCorruptionFailBeforeWrites(t *testing.T) {
 	if _, err := os.Stat(filepath.Join(root, "service")); !errors.Is(err, os.ErrNotExist) {
 		t.Fatal("corruption wrote output")
 	}
+}
+
+func TestProductSchemaVersionsFailBeforeWrites(t *testing.T) {
+	root := fullProductFixture(t)
+	path := filepath.Join(root, "models", "manifest.json")
+	data, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var pins productPins
+	if err := json.Unmarshal(data, &pins); err != nil {
+		t.Fatal(err)
+	}
+	writePins := func() {
+		t.Helper()
+		encoded, err := json.Marshal(pins)
+		if err != nil {
+			t.Fatal(err)
+		}
+		writeTestFile(t, root, "models/manifest.json", encoded)
+	}
+	checkRejected := func(want string) {
+		t.Helper()
+		if err := GenerateProducts(context.Background(), root, false, nil); err == nil || !strings.Contains(err.Error(), want) {
+			t.Fatal("incompatible IR accepted", err)
+		}
+		if _, err := os.Stat(filepath.Join(root, "service")); !errors.Is(err, os.ErrNotExist) {
+			t.Fatal("version rejection wrote output")
+		}
+	}
+	pins.SchemaVersion = 1
+	writePins()
+	checkRejected("unsupported IR manifest")
+	pins.SchemaVersion = 2
+	p := readProductIR(t, "ecs")
+	p.SchemaVersion = 1
+	encoded, err := json.Marshal(p)
+	if err != nil {
+		t.Fatal(err)
+	}
+	writeTestFile(t, root, "models/ecs/ir.json", encoded)
+	for i := range pins.Files {
+		if pins.Files[i].File == "models/ecs/ir.json" {
+			pins.Files[i].SHA256 = digest(encoded)
+		}
+	}
+	writePins()
+	checkRejected("IR provenance mismatch")
 }
 
 func TestProductSourceIntegrityFailsBeforeWrites(t *testing.T) {

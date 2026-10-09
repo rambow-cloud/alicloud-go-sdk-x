@@ -83,6 +83,7 @@ test("complete real corpus is deterministic and accounts for every SDK operation
     );
   for (const [pkg, product] of Object.entries(first.products)) {
     const { ir, coverage } = product;
+    assert.equal(ir.schemaVersion, 2);
     const sourceFile = path.join(
       root,
       "sources/darabonba/products",
@@ -124,6 +125,7 @@ test("complete real corpus is deterministic and accounts for every SDK operation
     }
   }
   const lock = JSON.parse(first.files["models/manifest.json"]);
+  assert.equal(lock.schemaVersion, 2);
   for (const artifact of lock.files)
     assert.equal(
       crypto
@@ -412,7 +414,7 @@ test("strict unknown/unsupported selections fail before creating outputs", (t) =
   const temporary = sourceFixture(t);
   for (const target of [
     "ecs/DoesNotExist",
-    "ecs/RunInstances",
+    "vpc/GrantInstanceToVbr",
     "../AssumeRole",
   ]) {
     assert.throws(
@@ -461,7 +463,14 @@ test("report distinguishes lowering from Go/live acceptance and prints reason lo
   const text = run("report", { product: "sts" });
   assert.match(text, /^sts: 4 discovered, 4 lowered, 0 unsupported/);
   assert.match(text, /Go emission\/compilation\/live: not assessed/);
-  assert.match(run("report", { product: "ecs" }), /RunInstances: DSL_/);
+  assert.match(
+    run("report", { product: "ecs" }),
+    /^ecs: 380 discovered, 380 lowered, 0 unsupported/,
+  );
+  assert.match(
+    run("report", { product: "vpc" }),
+    /GrantInstanceToVbr: DSL_SHRINK_TRANSFORM/,
+  );
 });
 
 test("requestless discovery retains absent source model without a synthetic DSL declaration", () => {

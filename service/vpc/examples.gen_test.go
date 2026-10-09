@@ -227,6 +227,78 @@ func ExampleClient_AllocateEipSegmentAddress() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_AllocateIpv6Address() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.AllocateIpv6AddressAPI = client
+	out, err := api.AllocateIpv6Address(context.Background(), &vpc.AllocateIpv6AddressInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_AllocateIpv6InternetBandwidth() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.AllocateIpv6InternetBandwidthAPI = client
+	out, err := api.AllocateIpv6InternetBandwidth(context.Background(), &vpc.AllocateIpv6InternetBandwidthInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_AllocateVpcIpv6Cidr() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.AllocateVpcIpv6CidrAPI = client
+	out, err := api.AllocateVpcIpv6Cidr(context.Background(), &vpc.AllocateVpcIpv6CidrInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ApplyPhysicalConnectionLOA() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ApplyPhysicalConnectionLOAAPI = client
+	out, err := api.ApplyPhysicalConnectionLOA(context.Background(), &vpc.ApplyPhysicalConnectionLOAInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_AssociateEipAddress() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -239,6 +311,24 @@ func ExampleClient_AssociateEipAddress() {
 	}
 	var api vpc.AssociateEipAddressAPI = client
 	out, err := api.AssociateEipAddress(context.Background(), &vpc.AssociateEipAddressInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_AssociateEipAddressBatch() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.AssociateEipAddressBatchAPI = client
+	out, err := api.AssociateEipAddressBatch(context.Background(), &vpc.AssociateEipAddressBatchInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -281,6 +371,24 @@ func ExampleClient_AssociateMacSecKey() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_AssociateNetworkAcl() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.AssociateNetworkAclAPI = client
+	out, err := api.AssociateNetworkAcl(context.Background(), &vpc.AssociateNetworkAclInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_AssociatePhysicalConnectionToVirtualBorderRouter() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -299,6 +407,42 @@ func ExampleClient_AssociatePhysicalConnectionToVirtualBorderRouter() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_AssociateRouteTable() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.AssociateRouteTableAPI = client
+	out, err := api.AssociateRouteTable(context.Background(), &vpc.AssociateRouteTableInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_AssociateRouteTableWithGateway() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.AssociateRouteTableWithGatewayAPI = client
+	out, err := api.AssociateRouteTableWithGateway(context.Background(), &vpc.AssociateRouteTableWithGatewayInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_AssociateRouteTablesWithVpcGatewayEndpoint() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -311,6 +455,24 @@ func ExampleClient_AssociateRouteTablesWithVpcGatewayEndpoint() {
 	}
 	var api vpc.AssociateRouteTablesWithVpcGatewayEndpointAPI = client
 	out, err := api.AssociateRouteTablesWithVpcGatewayEndpoint(context.Background(), &vpc.AssociateRouteTablesWithVpcGatewayEndpointInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_AssociateVpcCidrBlock() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.AssociateVpcCidrBlockAPI = client
+	out, err := api.AssociateVpcCidrBlock(context.Background(), &vpc.AssociateVpcCidrBlockInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -461,6 +623,24 @@ func ExampleClient_CheckVpnBgpEnabled() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_CompletePhysicalConnectionLOA() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CompletePhysicalConnectionLOAAPI = client
+	out, err := api.CompletePhysicalConnectionLOA(context.Background(), &vpc.CompletePhysicalConnectionLOAInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_ConfirmPhysicalConnection() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -491,6 +671,24 @@ func ExampleClient_ConnectRouterInterface() {
 	}
 	var api vpc.ConnectRouterInterfaceAPI = client
 	out, err := api.ConnectRouterInterface(context.Background(), &vpc.ConnectRouterInterfaceInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CopyNetworkAclEntries() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CopyNetworkAclEntriesAPI = client
+	out, err := api.CopyNetworkAclEntries(context.Background(), &vpc.CopyNetworkAclEntriesInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -659,6 +857,78 @@ func ExampleClient_CreateExpressCloudConnection() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_CreateExpressConnectTrafficQos() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CreateExpressConnectTrafficQosAPI = client
+	out, err := api.CreateExpressConnectTrafficQos(context.Background(), &vpc.CreateExpressConnectTrafficQosInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateExpressConnectTrafficQosQueue() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CreateExpressConnectTrafficQosQueueAPI = client
+	out, err := api.CreateExpressConnectTrafficQosQueue(context.Background(), &vpc.CreateExpressConnectTrafficQosQueueInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateExpressConnectTrafficQosRule() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CreateExpressConnectTrafficQosRuleAPI = client
+	out, err := api.CreateExpressConnectTrafficQosRule(context.Background(), &vpc.CreateExpressConnectTrafficQosRuleInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateFailoverTestJob() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CreateFailoverTestJobAPI = client
+	out, err := api.CreateFailoverTestJob(context.Background(), &vpc.CreateFailoverTestJobInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_CreateFlowLog() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -749,6 +1019,24 @@ func ExampleClient_CreateHaVip() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_CreateHighReliablePhysicalConnection() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CreateHighReliablePhysicalConnectionAPI = client
+	out, err := api.CreateHighReliablePhysicalConnection(context.Background(), &vpc.CreateHighReliablePhysicalConnectionInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_CreateIPv6Translator() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -821,6 +1109,114 @@ func ExampleClient_CreateIpsecServer() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_CreateIpv4Gateway() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CreateIpv4GatewayAPI = client
+	out, err := api.CreateIpv4Gateway(context.Background(), &vpc.CreateIpv4GatewayInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateIpv6EgressOnlyRule() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CreateIpv6EgressOnlyRuleAPI = client
+	out, err := api.CreateIpv6EgressOnlyRule(context.Background(), &vpc.CreateIpv6EgressOnlyRuleInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateIpv6Gateway() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CreateIpv6GatewayAPI = client
+	out, err := api.CreateIpv6Gateway(context.Background(), &vpc.CreateIpv6GatewayInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateNatGateway() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CreateNatGatewayAPI = client
+	out, err := api.CreateNatGateway(context.Background(), &vpc.CreateNatGatewayInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateNatIp() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CreateNatIpAPI = client
+	out, err := api.CreateNatIp(context.Background(), &vpc.CreateNatIpInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateNatIpCidr() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CreateNatIpCidrAPI = client
+	out, err := api.CreateNatIpCidr(context.Background(), &vpc.CreateNatIpCidrInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_CreateNetworkAcl() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -833,6 +1229,24 @@ func ExampleClient_CreateNetworkAcl() {
 	}
 	var api vpc.CreateNetworkAclAPI = client
 	out, err := api.CreateNetworkAcl(context.Background(), &vpc.CreateNetworkAclInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreatePhysicalConnection() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CreatePhysicalConnectionAPI = client
+	out, err := api.CreatePhysicalConnection(context.Background(), &vpc.CreatePhysicalConnectionInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -857,6 +1271,60 @@ func ExampleClient_CreatePhysicalConnectionOccupancyOrder() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_CreatePhysicalConnectionSetupOrder() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CreatePhysicalConnectionSetupOrderAPI = client
+	out, err := api.CreatePhysicalConnectionSetupOrder(context.Background(), &vpc.CreatePhysicalConnectionSetupOrderInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreatePublicIpAddressPool() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CreatePublicIpAddressPoolAPI = client
+	out, err := api.CreatePublicIpAddressPool(context.Background(), &vpc.CreatePublicIpAddressPoolInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateRouteEntries() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CreateRouteEntriesAPI = client
+	out, err := api.CreateRouteEntries(context.Background(), &vpc.CreateRouteEntriesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_CreateRouteEntry() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -875,6 +1343,24 @@ func ExampleClient_CreateRouteEntry() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_CreateRouteTable() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CreateRouteTableAPI = client
+	out, err := api.CreateRouteTable(context.Background(), &vpc.CreateRouteTableInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_CreateRouteTargetGroup() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -887,6 +1373,24 @@ func ExampleClient_CreateRouteTargetGroup() {
 	}
 	var api vpc.CreateRouteTargetGroupAPI = client
 	out, err := api.CreateRouteTargetGroup(context.Background(), &vpc.CreateRouteTargetGroupInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateRouterInterface() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.CreateRouterInterfaceAPI = client
+	out, err := api.CreateRouterInterface(context.Background(), &vpc.CreateRouterInterfaceInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -1415,6 +1919,78 @@ func ExampleClient_DeleteExpressConnect() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DeleteExpressConnectTrafficQos() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DeleteExpressConnectTrafficQosAPI = client
+	out, err := api.DeleteExpressConnectTrafficQos(context.Background(), &vpc.DeleteExpressConnectTrafficQosInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DeleteExpressConnectTrafficQosQueue() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DeleteExpressConnectTrafficQosQueueAPI = client
+	out, err := api.DeleteExpressConnectTrafficQosQueue(context.Background(), &vpc.DeleteExpressConnectTrafficQosQueueInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DeleteExpressConnectTrafficQosRule() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DeleteExpressConnectTrafficQosRuleAPI = client
+	out, err := api.DeleteExpressConnectTrafficQosRule(context.Background(), &vpc.DeleteExpressConnectTrafficQosRuleInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DeleteFailoverTestJob() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DeleteFailoverTestJobAPI = client
+	out, err := api.DeleteFailoverTestJob(context.Background(), &vpc.DeleteFailoverTestJobInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DeleteFlowLog() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -1577,6 +2153,78 @@ func ExampleClient_DeleteIpsecServer() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DeleteIpv4Gateway() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DeleteIpv4GatewayAPI = client
+	out, err := api.DeleteIpv4Gateway(context.Background(), &vpc.DeleteIpv4GatewayInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DeleteIpv6EgressOnlyRule() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DeleteIpv6EgressOnlyRuleAPI = client
+	out, err := api.DeleteIpv6EgressOnlyRule(context.Background(), &vpc.DeleteIpv6EgressOnlyRuleInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DeleteIpv6Gateway() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DeleteIpv6GatewayAPI = client
+	out, err := api.DeleteIpv6Gateway(context.Background(), &vpc.DeleteIpv6GatewayInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DeleteIpv6InternetBandwidth() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DeleteIpv6InternetBandwidthAPI = client
+	out, err := api.DeleteIpv6InternetBandwidth(context.Background(), &vpc.DeleteIpv6InternetBandwidthInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DeleteNatGateway() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -1589,6 +2237,60 @@ func ExampleClient_DeleteNatGateway() {
 	}
 	var api vpc.DeleteNatGatewayAPI = client
 	out, err := api.DeleteNatGateway(context.Background(), &vpc.DeleteNatGatewayInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DeleteNatIp() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DeleteNatIpAPI = client
+	out, err := api.DeleteNatIp(context.Background(), &vpc.DeleteNatIpInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DeleteNatIpCidr() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DeleteNatIpCidrAPI = client
+	out, err := api.DeleteNatIpCidr(context.Background(), &vpc.DeleteNatIpCidrInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DeleteNetworkAcl() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DeleteNetworkAclAPI = client
+	out, err := api.DeleteNetworkAcl(context.Background(), &vpc.DeleteNetworkAclInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -1649,6 +2351,24 @@ func ExampleClient_DeletePublicIpAddressPoolCidrBlock() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DeleteRouteEntries() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DeleteRouteEntriesAPI = client
+	out, err := api.DeleteRouteEntries(context.Background(), &vpc.DeleteRouteEntriesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DeleteRouteEntry() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -1661,6 +2381,24 @@ func ExampleClient_DeleteRouteEntry() {
 	}
 	var api vpc.DeleteRouteEntryAPI = client
 	out, err := api.DeleteRouteEntry(context.Background(), &vpc.DeleteRouteEntryInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DeleteRouteTable() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DeleteRouteTableAPI = client
+	out, err := api.DeleteRouteTable(context.Background(), &vpc.DeleteRouteTableInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -2045,6 +2783,24 @@ func ExampleClient_DeleteVpnRouteEntry() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DeletionProtection() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DeletionProtectionAPI = client
+	out, err := api.DeletionProtection(context.Background(), &vpc.DeletionProtectionInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_Describe95Traffic() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -2225,6 +2981,24 @@ func ExampleClient_DescribeEipAddresses() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DescribeEipGatewayInfo() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DescribeEipGatewayInfoAPI = client
+	out, err := api.DescribeEipGatewayInfo(context.Background(), &vpc.DescribeEipGatewayInfoInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DescribeEipMonitorData() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -2255,6 +3029,96 @@ func ExampleClient_DescribeEipSegment() {
 	}
 	var api vpc.DescribeEipSegmentAPI = client
 	out, err := api.DescribeEipSegment(context.Background(), &vpc.DescribeEipSegmentInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeExpressConnectTrafficQos() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DescribeExpressConnectTrafficQosAPI = client
+	out, err := api.DescribeExpressConnectTrafficQos(context.Background(), &vpc.DescribeExpressConnectTrafficQosInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeExpressConnectTrafficQosQueue() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DescribeExpressConnectTrafficQosQueueAPI = client
+	out, err := api.DescribeExpressConnectTrafficQosQueue(context.Background(), &vpc.DescribeExpressConnectTrafficQosQueueInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeExpressConnectTrafficQosRule() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DescribeExpressConnectTrafficQosRuleAPI = client
+	out, err := api.DescribeExpressConnectTrafficQosRule(context.Background(), &vpc.DescribeExpressConnectTrafficQosRuleInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeFailoverTestJob() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DescribeFailoverTestJobAPI = client
+	out, err := api.DescribeFailoverTestJob(context.Background(), &vpc.DescribeFailoverTestJobInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeFailoverTestJobs() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DescribeFailoverTestJobsAPI = client
+	out, err := api.DescribeFailoverTestJobs(context.Background(), &vpc.DescribeFailoverTestJobsInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -2459,6 +3323,96 @@ func ExampleClient_DescribeIPv6Translators() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DescribeIpv6Addresses() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DescribeIpv6AddressesAPI = client
+	out, err := api.DescribeIpv6Addresses(context.Background(), &vpc.DescribeIpv6AddressesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeIpv6EgressOnlyRules() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DescribeIpv6EgressOnlyRulesAPI = client
+	out, err := api.DescribeIpv6EgressOnlyRules(context.Background(), &vpc.DescribeIpv6EgressOnlyRulesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeIpv6GatewayAttribute() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DescribeIpv6GatewayAttributeAPI = client
+	out, err := api.DescribeIpv6GatewayAttribute(context.Background(), &vpc.DescribeIpv6GatewayAttributeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeIpv6Gateways() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DescribeIpv6GatewaysAPI = client
+	out, err := api.DescribeIpv6Gateways(context.Background(), &vpc.DescribeIpv6GatewaysInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeNatGatewayAssociateNetworkInterfaces() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DescribeNatGatewayAssociateNetworkInterfacesAPI = client
+	out, err := api.DescribeNatGatewayAssociateNetworkInterfaces(context.Background(), &vpc.DescribeNatGatewayAssociateNetworkInterfacesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DescribeNatGateways() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -2471,6 +3425,42 @@ func ExampleClient_DescribeNatGateways() {
 	}
 	var api vpc.DescribeNatGatewaysAPI = client
 	out, err := api.DescribeNatGateways(context.Background(), &vpc.DescribeNatGatewaysInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeNetworkAclAttributes() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DescribeNetworkAclAttributesAPI = client
+	out, err := api.DescribeNetworkAclAttributes(context.Background(), &vpc.DescribeNetworkAclAttributesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeNetworkAcls() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DescribeNetworkAclsAPI = client
+	out, err := api.DescribeNetworkAcls(context.Background(), &vpc.DescribeNetworkAclsInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -2513,6 +3503,24 @@ func ExampleClient_DescribePhysicalConnections() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DescribePublicIpAddress() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DescribePublicIpAddressAPI = client
+	out, err := api.DescribePublicIpAddress(context.Background(), &vpc.DescribePublicIpAddressInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DescribeRegions() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -2525,6 +3533,24 @@ func ExampleClient_DescribeRegions() {
 	}
 	var api vpc.DescribeRegionsAPI = client
 	out, err := api.DescribeRegions(context.Background(), &vpc.DescribeRegionsInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeRouteEntryList() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DescribeRouteEntryListAPI = client
+	out, err := api.DescribeRouteEntryList(context.Background(), &vpc.DescribeRouteEntryListInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -2891,6 +3917,24 @@ func ExampleClient_DescribeVirtualBorderRoutersForPhysicalConnection() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DescribeVpcAttribute() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DescribeVpcAttributeAPI = client
+	out, err := api.DescribeVpcAttribute(context.Background(), &vpc.DescribeVpcAttributeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DescribeVpcGrantRulesToEcr() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -3215,6 +4259,24 @@ func ExampleClient_DisassociateMacSecKey() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DissociateRouteTableFromGateway() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.DissociateRouteTableFromGatewayAPI = client
+	out, err := api.DissociateRouteTableFromGateway(context.Background(), &vpc.DissociateRouteTableFromGatewayInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DissociateRouteTablesFromVpcGatewayEndpoint() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -3305,6 +4367,24 @@ func ExampleClient_EnableVpcClassicLink() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_EnableVpcIpv4Gateway() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.EnableVpcIpv4GatewayAPI = client
+	out, err := api.EnableVpcIpv4Gateway(context.Background(), &vpc.EnableVpcIpv4GatewayInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_GetDhcpOptionsSet() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -3317,6 +4397,60 @@ func ExampleClient_GetDhcpOptionsSet() {
 	}
 	var api vpc.GetDhcpOptionsSetAPI = client
 	out, err := api.GetDhcpOptionsSet(context.Background(), &vpc.GetDhcpOptionsSetInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_GetFlowLogServiceStatus() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.GetFlowLogServiceStatusAPI = client
+	out, err := api.GetFlowLogServiceStatus(context.Background(), &vpc.GetFlowLogServiceStatusInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_GetIpv4GatewayAttribute() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.GetIpv4GatewayAttributeAPI = client
+	out, err := api.GetIpv4GatewayAttribute(context.Background(), &vpc.GetIpv4GatewayAttributeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_GetNatGatewayAttribute() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.GetNatGatewayAttributeAPI = client
+	out, err := api.GetNatGatewayAttribute(context.Background(), &vpc.GetNatGatewayAttributeInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -3341,6 +4475,24 @@ func ExampleClient_GetPhysicalConnectionServiceStatus() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_GetPublicIpAddressPoolServiceStatus() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.GetPublicIpAddressPoolServiceStatusAPI = client
+	out, err := api.GetPublicIpAddressPoolServiceStatus(context.Background(), &vpc.GetPublicIpAddressPoolServiceStatusInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_GetRouteTargetGroup() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -3353,6 +4505,24 @@ func ExampleClient_GetRouteTargetGroup() {
 	}
 	var api vpc.GetRouteTargetGroupAPI = client
 	out, err := api.GetRouteTargetGroup(context.Background(), &vpc.GetRouteTargetGroupInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_GetTrafficMirrorServiceStatus() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.GetTrafficMirrorServiceStatusAPI = client
+	out, err := api.GetTrafficMirrorServiceStatus(context.Background(), &vpc.GetTrafficMirrorServiceStatusInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -3485,6 +4655,24 @@ func ExampleClient_GrantInstanceToCen() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_ListBusinessAccessPoints() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ListBusinessAccessPointsAPI = client
+	out, err := api.ListBusinessAccessPoints(context.Background(), &vpc.ListBusinessAccessPointsInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_ListBusinessRegions() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -3521,6 +4709,24 @@ func ExampleClient_ListDhcpOptionsSets() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_ListEnhanhcedNatGatewayAvailableZones() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ListEnhanhcedNatGatewayAvailableZonesAPI = client
+	out, err := api.ListEnhanhcedNatGatewayAvailableZones(context.Background(), &vpc.ListEnhanhcedNatGatewayAvailableZonesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_ListFullNatEntries() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -3533,6 +4739,24 @@ func ExampleClient_ListFullNatEntries() {
 	}
 	var api vpc.ListFullNatEntriesAPI = client
 	out, err := api.ListFullNatEntries(context.Background(), &vpc.ListFullNatEntriesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ListGatewayRouteTableEntries() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ListGatewayRouteTableEntriesAPI = client
+	out, err := api.ListGatewayRouteTableEntries(context.Background(), &vpc.ListGatewayRouteTableEntriesInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -3587,6 +4811,60 @@ func ExampleClient_ListIpsecServers() {
 	}
 	var api vpc.ListIpsecServersAPI = client
 	out, err := api.ListIpsecServers(context.Background(), &vpc.ListIpsecServersInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ListIpv4Gateways() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ListIpv4GatewaysAPI = client
+	out, err := api.ListIpv4Gateways(context.Background(), &vpc.ListIpv4GatewaysInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ListNatIpCidrs() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ListNatIpCidrsAPI = client
+	out, err := api.ListNatIpCidrs(context.Background(), &vpc.ListNatIpCidrsInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ListNatIps() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ListNatIpsAPI = client
+	out, err := api.ListNatIps(context.Background(), &vpc.ListNatIpsInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -3827,6 +5105,24 @@ func ExampleClient_ListVpcGatewayEndpoints() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_ListVpcPublishedRouteEntries() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ListVpcPublishedRouteEntriesAPI = client
+	out, err := api.ListVpcPublishedRouteEntries(context.Background(), &vpc.ListVpcPublishedRouteEntriesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_ListVpnCertificateAssociations() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -3971,6 +5267,24 @@ func ExampleClient_ModifyEipAddressAttribute() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_ModifyEipForwardMode() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ModifyEipForwardModeAPI = client
+	out, err := api.ModifyEipForwardMode(context.Background(), &vpc.ModifyEipForwardModeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_ModifyExpressCloudConnectionAttribute() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -4001,6 +5315,60 @@ func ExampleClient_ModifyExpressCloudConnectionBandwidth() {
 	}
 	var api vpc.ModifyExpressCloudConnectionBandwidthAPI = client
 	out, err := api.ModifyExpressCloudConnectionBandwidth(context.Background(), &vpc.ModifyExpressCloudConnectionBandwidthInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyExpressConnectTrafficQos() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ModifyExpressConnectTrafficQosAPI = client
+	out, err := api.ModifyExpressConnectTrafficQos(context.Background(), &vpc.ModifyExpressConnectTrafficQosInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyExpressConnectTrafficQosQueue() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ModifyExpressConnectTrafficQosQueueAPI = client
+	out, err := api.ModifyExpressConnectTrafficQosQueue(context.Background(), &vpc.ModifyExpressConnectTrafficQosQueueInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyExpressConnectTrafficQosRule() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ModifyExpressConnectTrafficQosRuleAPI = client
+	out, err := api.ModifyExpressConnectTrafficQosRule(context.Background(), &vpc.ModifyExpressConnectTrafficQosRuleInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -4205,6 +5573,78 @@ func ExampleClient_ModifyIPv6TranslatorEntry() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_ModifyIpv6AddressAttribute() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ModifyIpv6AddressAttributeAPI = client
+	out, err := api.ModifyIpv6AddressAttribute(context.Background(), &vpc.ModifyIpv6AddressAttributeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyIpv6GatewayAttribute() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ModifyIpv6GatewayAttributeAPI = client
+	out, err := api.ModifyIpv6GatewayAttribute(context.Background(), &vpc.ModifyIpv6GatewayAttributeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyIpv6InternetBandwidth() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ModifyIpv6InternetBandwidthAPI = client
+	out, err := api.ModifyIpv6InternetBandwidth(context.Background(), &vpc.ModifyIpv6InternetBandwidthInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyNatGatewayAttribute() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ModifyNatGatewayAttributeAPI = client
+	out, err := api.ModifyNatGatewayAttribute(context.Background(), &vpc.ModifyNatGatewayAttributeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_ModifyNatGatewaySpec() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -4217,6 +5657,78 @@ func ExampleClient_ModifyNatGatewaySpec() {
 	}
 	var api vpc.ModifyNatGatewaySpecAPI = client
 	out, err := api.ModifyNatGatewaySpec(context.Background(), &vpc.ModifyNatGatewaySpecInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyNatIpAttribute() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ModifyNatIpAttributeAPI = client
+	out, err := api.ModifyNatIpAttribute(context.Background(), &vpc.ModifyNatIpAttributeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyNatIpCidrAttribute() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ModifyNatIpCidrAttributeAPI = client
+	out, err := api.ModifyNatIpCidrAttribute(context.Background(), &vpc.ModifyNatIpCidrAttributeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyNetworkAclAttributes() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ModifyNetworkAclAttributesAPI = client
+	out, err := api.ModifyNetworkAclAttributes(context.Background(), &vpc.ModifyNetworkAclAttributesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyPhysicalConnectionAttribute() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ModifyPhysicalConnectionAttributeAPI = client
+	out, err := api.ModifyPhysicalConnectionAttribute(context.Background(), &vpc.ModifyPhysicalConnectionAttributeInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -4637,6 +6149,24 @@ func ExampleClient_MoveVpnResourceGroup() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_OpenFlowLogService() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.OpenFlowLogServiceAPI = client
+	out, err := api.OpenFlowLogService(context.Background(), &vpc.OpenFlowLogServiceInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_OpenPhysicalConnectionService() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -4649,6 +6179,60 @@ func ExampleClient_OpenPhysicalConnectionService() {
 	}
 	var api vpc.OpenPhysicalConnectionServiceAPI = client
 	out, err := api.OpenPhysicalConnectionService(context.Background(), &vpc.OpenPhysicalConnectionServiceInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_OpenPublicIpAddressPoolService() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.OpenPublicIpAddressPoolServiceAPI = client
+	out, err := api.OpenPublicIpAddressPoolService(context.Background(), &vpc.OpenPublicIpAddressPoolServiceInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_OpenTrafficMirrorService() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.OpenTrafficMirrorServiceAPI = client
+	out, err := api.OpenTrafficMirrorService(context.Background(), &vpc.OpenTrafficMirrorServiceInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_PublishVpcRouteEntries() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.PublishVpcRouteEntriesAPI = client
+	out, err := api.PublishVpcRouteEntries(context.Background(), &vpc.PublishVpcRouteEntriesInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -4739,6 +6323,24 @@ func ExampleClient_ReleaseEipSegmentAddress() {
 	}
 	var api vpc.ReleaseEipSegmentAddressAPI = client
 	out, err := api.ReleaseEipSegmentAddress(context.Background(), &vpc.ReleaseEipSegmentAddressInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ReleaseIpv6Address() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.ReleaseIpv6AddressAPI = client
+	out, err := api.ReleaseIpv6Address(context.Background(), &vpc.ReleaseIpv6AddressInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -4901,6 +6503,42 @@ func ExampleClient_SetHighDefinitionMonitorLogStatus() {
 	}
 	var api vpc.SetHighDefinitionMonitorLogStatusAPI = client
 	out, err := api.SetHighDefinitionMonitorLogStatus(context.Background(), &vpc.SetHighDefinitionMonitorLogStatusInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_StartFailoverTestJob() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.StartFailoverTestJobAPI = client
+	out, err := api.StartFailoverTestJob(context.Background(), &vpc.StartFailoverTestJobInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_StopFailoverTestJob() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.StopFailoverTestJobAPI = client
+	out, err := api.StopFailoverTestJob(context.Background(), &vpc.StopFailoverTestJobInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -5087,6 +6725,24 @@ func ExampleClient_UnassociateHaVip() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_UnassociateNetworkAcl() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.UnassociateNetworkAclAPI = client
+	out, err := api.UnassociateNetworkAcl(context.Background(), &vpc.UnassociateNetworkAclInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_UnassociatePhysicalConnectionFromVirtualBorderRouter() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -5099,6 +6755,42 @@ func ExampleClient_UnassociatePhysicalConnectionFromVirtualBorderRouter() {
 	}
 	var api vpc.UnassociatePhysicalConnectionFromVirtualBorderRouterAPI = client
 	out, err := api.UnassociatePhysicalConnectionFromVirtualBorderRouter(context.Background(), &vpc.UnassociatePhysicalConnectionFromVirtualBorderRouterInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_UnassociateRouteTable() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.UnassociateRouteTableAPI = client
+	out, err := api.UnassociateRouteTable(context.Background(), &vpc.UnassociateRouteTableInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_UnassociateVpcCidrBlock() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.UnassociateVpcCidrBlockAPI = client
+	out, err := api.UnassociateVpcCidrBlock(context.Background(), &vpc.UnassociateVpcCidrBlockInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -5159,6 +6851,42 @@ func ExampleClient_UpdateEnhancedVpnGateway() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_UpdateFailoverTestJob() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.UpdateFailoverTestJobAPI = client
+	out, err := api.UpdateFailoverTestJob(context.Background(), &vpc.UpdateFailoverTestJobInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_UpdateGatewayRouteTableEntryAttribute() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.UpdateGatewayRouteTableEntryAttributeAPI = client
+	out, err := api.UpdateGatewayRouteTableEntryAttribute(context.Background(), &vpc.UpdateGatewayRouteTableEntryAttributeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_UpdateIpsecServer() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -5171,6 +6899,60 @@ func ExampleClient_UpdateIpsecServer() {
 	}
 	var api vpc.UpdateIpsecServerAPI = client
 	out, err := api.UpdateIpsecServer(context.Background(), &vpc.UpdateIpsecServerInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_UpdateIpv4GatewayAttribute() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.UpdateIpv4GatewayAttributeAPI = client
+	out, err := api.UpdateIpv4GatewayAttribute(context.Background(), &vpc.UpdateIpv4GatewayAttributeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_UpdateNatGatewayNatType() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.UpdateNatGatewayNatTypeAPI = client
+	out, err := api.UpdateNatGatewayNatType(context.Background(), &vpc.UpdateNatGatewayNatTypeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_UpdateNetworkAclEntries() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.UpdateNetworkAclEntriesAPI = client
+	out, err := api.UpdateNetworkAclEntries(context.Background(), &vpc.UpdateNetworkAclEntriesInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -5333,6 +7115,24 @@ func ExampleClient_VpcDescribeVpcNatGatewayNetworkInterfaceQuota() {
 	}
 	var api vpc.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaAPI = client
 	out, err := api.VpcDescribeVpcNatGatewayNetworkInterfaceQuota(context.Background(), &vpc.VpcDescribeVpcNatGatewayNetworkInterfaceQuotaInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_WithdrawVpcPublishedRouteEntries() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := vpc.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api vpc.WithdrawVpcPublishedRouteEntriesAPI = client
+	out, err := api.WithdrawVpcPublishedRouteEntries(context.Background(), &vpc.WithdrawVpcPublishedRouteEntriesInput{})
 	if err != nil {
 		panic(err)
 	}

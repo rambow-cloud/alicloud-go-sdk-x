@@ -38,6 +38,34 @@ func TestPolicyHelpersTypedNilTokensAndCancellation(t *testing.T) {
 
 func ptr[T any](v T) *T { return &v }
 
+func TestJSONQueryUnsetGuardAndExplicitEmptyValues(t *testing.T) {
+	var missing *string
+	for _, value := range []any{nil, missing, map[string]any(nil), []any(nil)} {
+		input := struct {
+			Payload any `json:"Payload" rpc:"json"`
+		}{value}
+		q, err := Query(context.Background(), input)
+		if err != nil || len(q) != 0 {
+			t.Fatal("isUnset guard lost typed nil", q, err)
+		}
+	}
+	for _, tc := range []struct {
+		value any
+		want  string
+	}{
+		{map[string]any{}, "{}"}, {[]any{}, "[]"},
+		{map[string]any{"null": missing}, `{"null":null}`},
+	} {
+		input := struct {
+			Payload any `json:"Payload" rpc:"json"`
+		}{tc.value}
+		q, err := Query(context.Background(), input)
+		if err != nil || q.Get("Payload") != tc.want {
+			t.Fatal("explicit JSON container changed", q, err)
+		}
+	}
+}
+
 func TestQueryPresenceWidthsCaseAndRepeatedContainers(t *testing.T) {
 	type member struct {
 		Key   *string `json:"Key"`

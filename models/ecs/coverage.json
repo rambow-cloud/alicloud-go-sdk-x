@@ -13,8 +13,8 @@
   },
   "counts": {
     "discovered": 380,
-    "lowered": 283,
-    "unsupported": 97,
+    "lowered": 380,
+    "unsupported": 0,
     "dslOperations": 380,
     "catalogOnlyOperations": 0,
     "dslOnlyOperations": 0,
@@ -29,15 +29,11 @@
     "compilation": "not-assessed",
     "live": "not-assessed"
   },
-  "reasonCounts": {
-    "DSL_INPUT_ATTRIBUTE": 7,
-    "DSL_OPERATION_SIGNATURE": 10,
-    "DSL_QUERY_BINDING": 80
-  },
+  "reasonCounts": {},
   "operations": [
     {
       "name": "AcceptInquiredSystemEvent",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -46,19 +42,7 @@
         "endLine": 99,
         "endColumn": 52
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 99,
-            "column": 16,
-            "endLine": 99,
-            "endColumn": 52
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ActivateRouterInterface",
@@ -153,7 +137,7 @@
     },
     {
       "name": "AssignIpv6Addresses",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -162,23 +146,11 @@
         "endLine": 1071,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 1071,
-            "column": 16,
-            "endLine": 1071,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "AssignPrivateIpAddresses",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -187,19 +159,7 @@
         "endLine": 1207,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 1207,
-            "column": 16,
-            "endLine": 1207,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "AssociateEipAddress",
@@ -281,7 +241,7 @@
     },
     {
       "name": "AttachNetworkInterface",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -290,23 +250,11 @@
         "endLine": 2007,
         "endColumn": 49
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 2007,
-            "column": 16,
-            "endLine": 2007,
-            "endColumn": 49
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "AuthorizeSecurityGroup",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -315,23 +263,11 @@
         "endLine": 2274,
         "endColumn": 49
       },
-      "reasons": [
-        {
-          "code": "DSL_INPUT_ATTRIBUTE",
-          "message": "unreviewed input attribute",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 2274,
-            "column": 16,
-            "endLine": 2274,
-            "endColumn": 49
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "AuthorizeSecurityGroupEgress",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -340,19 +276,7 @@
         "endLine": 2613,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_INPUT_ATTRIBUTE",
-          "message": "unreviewed input attribute",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 2613,
-            "column": 16,
-            "endLine": 2613,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CancelAutoSnapshotPolicy",
@@ -382,7 +306,7 @@
     },
     {
       "name": "CancelImagePipelineExecution",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -391,19 +315,7 @@
         "endLine": 2978,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 2978,
-            "column": 16,
-            "endLine": 2978,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CancelPhysicalConnection",
@@ -420,7 +332,7 @@
     },
     {
       "name": "CancelSimulatedSystemEvents",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -429,19 +341,7 @@
         "endLine": 3154,
         "endColumn": 54
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 3154,
-            "column": 16,
-            "endLine": 3154,
-            "endColumn": 54
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CancelTask",
@@ -523,7 +423,7 @@
     },
     {
       "name": "CreateActivation",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -532,23 +432,11 @@
         "endLine": 4071,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 4071,
-            "column": 16,
-            "endLine": 4071,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateAutoProvisioningGroup",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -557,19 +445,7 @@
         "endLine": 5287,
         "endColumn": 54
       },
-      "reasons": [
-        {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 5287,
-            "column": 16,
-            "endLine": 5287,
-            "endColumn": 54
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateAutoSnapshotPolicy",
@@ -599,7 +475,7 @@
     },
     {
       "name": "CreateCommand",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -608,19 +484,7 @@
         "endLine": 5941,
         "endColumn": 40
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 5941,
-            "column": 16,
-            "endLine": 5941,
-            "endColumn": 40
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateDedicatedHostCluster",
@@ -663,7 +527,7 @@
     },
     {
       "name": "CreateDiagnosticReport",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -672,19 +536,7 @@
         "endLine": 6414,
         "endColumn": 49
       },
-      "reasons": [
-        {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 6414,
-            "column": 16,
-            "endLine": 6414,
-            "endColumn": 49
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateDisk",
@@ -740,7 +592,7 @@
     },
     {
       "name": "CreateHpcCluster",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -749,19 +601,7 @@
         "endLine": 7214,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 7214,
-            "column": 16,
-            "endLine": 7214,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateImage",
@@ -778,7 +618,7 @@
     },
     {
       "name": "CreateImageComponent",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -787,23 +627,11 @@
         "endLine": 7606,
         "endColumn": 47
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 7606,
-            "column": 16,
-            "endLine": 7606,
-            "endColumn": 47
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateImagePipeline",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -812,19 +640,7 @@
         "endLine": 8006,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_INPUT_ATTRIBUTE",
-          "message": "unreviewed input attribute",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 8006,
-            "column": 16,
-            "endLine": 8006,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateInstance",
@@ -854,7 +670,7 @@
     },
     {
       "name": "CreateLaunchTemplate",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -863,23 +679,11 @@
         "endLine": 9289,
         "endColumn": 47
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 9289,
-            "column": 16,
-            "endLine": 9289,
-            "endColumn": 47
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateLaunchTemplateVersion",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -888,19 +692,7 @@
         "endLine": 9879,
         "endColumn": 54
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 9879,
-            "column": 16,
-            "endLine": 9879,
-            "endColumn": 54
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateNatGateway",
@@ -917,7 +709,7 @@
     },
     {
       "name": "CreateNetworkInterface",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -926,23 +718,11 @@
         "endLine": 10484,
         "endColumn": 49
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 10484,
-            "column": 16,
-            "endLine": 10484,
-            "endColumn": 49
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateNetworkInterfacePermission",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -951,23 +731,11 @@
         "endLine": 10704,
         "endColumn": 59
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 10704,
-            "column": 16,
-            "endLine": 10704,
-            "endColumn": 59
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreatePhysicalConnection",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -976,23 +744,11 @@
         "endLine": 10803,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 10803,
-            "column": 16,
-            "endLine": 10803,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreatePlanMaintenanceWindow",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -1001,23 +757,11 @@
         "endLine": 10989,
         "endColumn": 54
       },
-      "reasons": [
-        {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 10989,
-            "column": 16,
-            "endLine": 10989,
-            "endColumn": 54
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreatePortRangeList",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -1026,23 +770,11 @@
         "endLine": 11108,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 11108,
-            "column": 16,
-            "endLine": 11108,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreatePrefixList",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -1051,19 +783,7 @@
         "endLine": 11261,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 11261,
-            "column": 16,
-            "endLine": 11261,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateRouteEntry",
@@ -1080,7 +800,7 @@
     },
     {
       "name": "CreateRouterInterface",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -1089,19 +809,7 @@
         "endLine": 11500,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 11500,
-            "column": 16,
-            "endLine": 11500,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateSavingsPlan",
@@ -1131,7 +839,7 @@
     },
     {
       "name": "CreateSimulatedSystemEvents",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -1140,19 +848,7 @@
         "endLine": 11903,
         "endColumn": 54
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 11903,
-            "column": 16,
-            "endLine": 11903,
-            "endColumn": 54
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateSnapshot",
@@ -1208,7 +904,7 @@
     },
     {
       "name": "CreateVirtualBorderRouter",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -1217,19 +913,7 @@
         "endLine": 12576,
         "endColumn": 52
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 12576,
-            "column": 16,
-            "endLine": 12576,
-            "endColumn": 52
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateVpc",
@@ -1272,7 +956,7 @@
     },
     {
       "name": "DeleteActivation",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -1281,19 +965,7 @@
         "endLine": 13005,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 13005,
-            "column": 16,
-            "endLine": 13005,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteAutoProvisioningGroup",
@@ -1336,7 +1008,7 @@
     },
     {
       "name": "DeleteCommand",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -1345,19 +1017,7 @@
         "endLine": 13328,
         "endColumn": 40
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 13328,
-            "column": 16,
-            "endLine": 13328,
-            "endColumn": 40
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteDedicatedHostCluster",
@@ -1452,7 +1112,7 @@
     },
     {
       "name": "DeleteHpcCluster",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -1461,19 +1121,7 @@
         "endLine": 13958,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 13958,
-            "column": 16,
-            "endLine": 13958,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteImage",
@@ -1490,7 +1138,7 @@
     },
     {
       "name": "DeleteImageComponent",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -1499,23 +1147,11 @@
         "endLine": 14142,
         "endColumn": 47
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 14142,
-            "column": 16,
-            "endLine": 14142,
-            "endColumn": 47
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteImagePipeline",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -1524,19 +1160,7 @@
         "endLine": 14229,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 14229,
-            "column": 16,
-            "endLine": 14229,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteInstance",
@@ -1618,7 +1242,7 @@
     },
     {
       "name": "DeleteNetworkInterface",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -1627,23 +1251,11 @@
         "endLine": 14962,
         "endColumn": 49
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 14962,
-            "column": 16,
-            "endLine": 14962,
-            "endColumn": 49
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteNetworkInterfacePermission",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -1652,19 +1264,7 @@
         "endLine": 15057,
         "endColumn": 59
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 15057,
-            "column": 16,
-            "endLine": 15057,
-            "endColumn": 59
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeletePhysicalConnection",
@@ -1694,7 +1294,7 @@
     },
     {
       "name": "DeletePortRangeList",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -1703,23 +1303,11 @@
         "endLine": 15295,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 15295,
-            "column": 16,
-            "endLine": 15295,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeletePrefixList",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -1728,19 +1316,7 @@
         "endLine": 15379,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 15379,
-            "column": 16,
-            "endLine": 15379,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DeleteRouteEntry",
@@ -1874,7 +1450,7 @@
     },
     {
       "name": "DeregisterManagedInstance",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -1883,19 +1459,7 @@
         "endLine": 16378,
         "endColumn": 52
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 16378,
-            "column": 16,
-            "endLine": 16378,
-            "endColumn": 52
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeAccessPoints",
@@ -1925,7 +1489,7 @@
     },
     {
       "name": "DescribeActivations",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -1934,19 +1498,7 @@
         "endLine": 16759,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 16759,
-            "column": 16,
-            "endLine": 16759,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeAutoProvisioningGroupHistory",
@@ -2106,7 +1658,7 @@
     },
     {
       "name": "DescribeCloudAssistantStatus",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -2115,19 +1667,7 @@
         "endLine": 18736,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 18736,
-            "column": 16,
-            "endLine": 18736,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeClusters",
@@ -2144,7 +1684,7 @@
     },
     {
       "name": "DescribeCommands",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -2153,19 +1693,7 @@
         "endLine": 19029,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 19029,
-            "column": 16,
-            "endLine": 19029,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeDedicatedHostAutoRenew",
@@ -2351,7 +1879,7 @@
     },
     {
       "name": "DescribeDisksFullStatus",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -2360,19 +1888,7 @@
         "endLine": 21266,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 21266,
-            "column": 16,
-            "endLine": 21266,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeEipAddresses",
@@ -2480,7 +1996,7 @@
     },
     {
       "name": "DescribeHpcClusters",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -2489,23 +2005,11 @@
         "endLine": 22426,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 22426,
-            "column": 16,
-            "endLine": 22426,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeImageComponents",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -2514,19 +2018,7 @@
         "endLine": 22583,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 22583,
-            "column": 16,
-            "endLine": 22583,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeImageFromFamily",
@@ -2543,7 +2035,7 @@
     },
     {
       "name": "DescribeImagePipelineExecutions",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -2552,23 +2044,11 @@
         "endLine": 22899,
         "endColumn": 58
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 22899,
-            "column": 16,
-            "endLine": 22899,
-            "endColumn": 58
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeImagePipelines",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -2577,19 +2057,7 @@
         "endLine": 23113,
         "endColumn": 49
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 23113,
-            "column": 16,
-            "endLine": 23113,
-            "endColumn": 49
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeImageSharePermission",
@@ -2671,7 +2139,7 @@
     },
     {
       "name": "DescribeInstanceHistoryEvents",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -2680,19 +2148,7 @@
         "endLine": 24389,
         "endColumn": 56
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 24389,
-            "column": 16,
-            "endLine": 24389,
-            "endColumn": 56
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeInstanceMaintenanceAttributes",
@@ -2826,7 +2282,7 @@
     },
     {
       "name": "DescribeInstancesFullStatus",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -2835,23 +2291,11 @@
         "endLine": 26569,
         "endColumn": 54
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 26569,
-            "column": 16,
-            "endLine": 26569,
-            "endColumn": 54
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeInvocationResults",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -2860,23 +2304,11 @@
         "endLine": 26791,
         "endColumn": 52
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 26791,
-            "column": 16,
-            "endLine": 26791,
-            "endColumn": 52
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeInvocations",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -2885,19 +2317,7 @@
         "endLine": 27070,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 27070,
-            "column": 16,
-            "endLine": 27070,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeKeyPairs",
@@ -2966,7 +2386,7 @@
     },
     {
       "name": "DescribeManagedInstances",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -2975,19 +2395,7 @@
         "endLine": 28032,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 28032,
-            "column": 16,
-            "endLine": 28032,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeNatGateways",
@@ -3004,7 +2412,7 @@
     },
     {
       "name": "DescribeNetworkInterfaceAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -3013,23 +2421,11 @@
         "endLine": 28450,
         "endColumn": 60
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 28450,
-            "column": 16,
-            "endLine": 28450,
-            "endColumn": 60
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeNetworkInterfacePermissions",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -3038,23 +2434,11 @@
         "endLine": 28562,
         "endColumn": 62
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 28562,
-            "column": 16,
-            "endLine": 28562,
-            "endColumn": 62
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeNetworkInterfaces",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -3063,19 +2447,7 @@
         "endLine": 28797,
         "endColumn": 52
       },
-      "reasons": [
-        {
-          "code": "DSL_INPUT_ATTRIBUTE",
-          "message": "unreviewed input attribute",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 28797,
-            "column": 16,
-            "endLine": 28797,
-            "endColumn": 52
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeNewProjectEipMonitorData",
@@ -3105,7 +2477,7 @@
     },
     {
       "name": "DescribePlanMaintenanceWindows",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -3114,23 +2486,11 @@
         "endLine": 29231,
         "endColumn": 57
       },
-      "reasons": [
-        {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 29231,
-            "column": 16,
-            "endLine": 29231,
-            "endColumn": 57
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribePortRangeListAssociations",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -3139,23 +2499,11 @@
         "endLine": 29338,
         "endColumn": 60
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 29338,
-            "column": 16,
-            "endLine": 29338,
-            "endColumn": 60
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribePortRangeListEntries",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -3164,23 +2512,11 @@
         "endLine": 29432,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 29432,
-            "column": 16,
-            "endLine": 29432,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribePortRangeLists",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -3189,23 +2525,11 @@
         "endLine": 29548,
         "endColumn": 49
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 29548,
-            "column": 16,
-            "endLine": 29548,
-            "endColumn": 49
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribePrefixListAssociations",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -3214,23 +2538,11 @@
         "endLine": 29660,
         "endColumn": 57
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 29660,
-            "column": 16,
-            "endLine": 29660,
-            "endColumn": 57
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribePrefixListAttributes",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -3239,23 +2551,11 @@
         "endLine": 29765,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 29765,
-            "column": 16,
-            "endLine": 29765,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribePrefixLists",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -3264,19 +2564,7 @@
         "endLine": 29892,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 29892,
-            "column": 16,
-            "endLine": 29892,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribePrice",
@@ -3345,7 +2633,7 @@
     },
     {
       "name": "DescribeReservedInstances",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -3354,19 +2642,7 @@
         "endLine": 31195,
         "endColumn": 52
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 31195,
-            "column": 16,
-            "endLine": 31195,
-            "endColumn": 52
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeResourceByTags",
@@ -3487,7 +2763,7 @@
     },
     {
       "name": "DescribeSendFileResults",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -3496,19 +2772,7 @@
         "endLine": 32754,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 32754,
-            "column": 16,
-            "endLine": 32754,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeSnapshotGroups",
@@ -3603,7 +2867,7 @@
     },
     {
       "name": "DescribeSpotPriceHistory",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -3612,19 +2876,7 @@
         "endLine": 34018,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 34018,
-            "column": 16,
-            "endLine": 34018,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeStorageCapacityUnits",
@@ -3888,7 +3140,7 @@
     },
     {
       "name": "DetachNetworkInterface",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -3897,23 +3149,11 @@
         "endLine": 36522,
         "endColumn": 49
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 36522,
-            "column": 16,
-            "endLine": 36522,
-            "endColumn": 49
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DisableActivation",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -3922,19 +3162,7 @@
         "endLine": 36638,
         "endColumn": 44
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 36638,
-            "column": 16,
-            "endLine": 36638,
-            "endColumn": 44
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DisableDiskEncryptionByDefault",
@@ -3951,7 +3179,7 @@
     },
     {
       "name": "DisableNetworkInterfaceQoS",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -3960,19 +3188,7 @@
         "endLine": 36800,
         "endColumn": 53
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 36800,
-            "column": 16,
-            "endLine": 36800,
-            "endColumn": 53
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "EnableDiskEncryptionByDefault",
@@ -3989,7 +3205,7 @@
     },
     {
       "name": "EnableNetworkInterfaceQoS",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -3998,19 +3214,7 @@
         "endLine": 37004,
         "endColumn": 52
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 37004,
-            "column": 16,
-            "endLine": 37004,
-            "endColumn": 52
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "EnablePhysicalConnection",
@@ -4066,7 +3270,7 @@
     },
     {
       "name": "GetInstanceConsoleOutput",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -4075,23 +3279,11 @@
         "endLine": 37558,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 37558,
-            "column": 16,
-            "endLine": 37558,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "GetInstanceScreenshot",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -4100,19 +3292,7 @@
         "endLine": 37657,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 37657,
-            "column": 16,
-            "endLine": 37657,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ImportImage",
@@ -4142,7 +3322,7 @@
     },
     {
       "name": "InstallCloudAssistant",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -4151,23 +3331,11 @@
         "endLine": 38307,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 38307,
-            "column": 16,
-            "endLine": 38307,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "InvokeCommand",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -4176,19 +3344,7 @@
         "endLine": 38724,
         "endColumn": 40
       },
-      "reasons": [
-        {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 38724,
-            "column": 16,
-            "endLine": 38724,
-            "endColumn": 40
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "JoinResourceGroup",
@@ -4231,7 +3387,7 @@
     },
     {
       "name": "ListPluginStatus",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -4240,23 +3396,11 @@
         "endLine": 39254,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 39254,
-            "column": 16,
-            "endLine": 39254,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ListTagResources",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -4265,19 +3409,7 @@
         "endLine": 39443,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 39443,
-            "column": 16,
-            "endLine": 39443,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "LockSnapshot",
@@ -4346,7 +3478,7 @@
     },
     {
       "name": "ModifyCloudAssistantSettings",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -4355,23 +3487,11 @@
         "endLine": 40344,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 40344,
-            "column": 16,
-            "endLine": 40344,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyCommand",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -4380,19 +3500,7 @@
         "endLine": 40461,
         "endColumn": 40
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 40461,
-            "column": 16,
-            "endLine": 40461,
-            "endColumn": 40
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyDedicatedHostAttribute",
@@ -4617,7 +3725,7 @@
     },
     {
       "name": "ModifyHpcClusterAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -4626,19 +3734,7 @@
         "endLine": 42522,
         "endColumn": 52
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 42522,
-            "column": 16,
-            "endLine": 42522,
-            "endColumn": 52
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyImageAttribute",
@@ -4876,7 +3972,7 @@
     },
     {
       "name": "ModifyInvocationAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -4885,19 +3981,7 @@
         "endLine": 45244,
         "endColumn": 52
       },
-      "reasons": [
-        {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 45244,
-            "column": 16,
-            "endLine": 45244,
-            "endColumn": 52
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyLaunchTemplateDefaultVersion",
@@ -4914,7 +3998,7 @@
     },
     {
       "name": "ModifyManagedInstance",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -4923,23 +4007,11 @@
         "endLine": 45468,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 45468,
-            "column": 16,
-            "endLine": 45468,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyNetworkInterfaceAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -4948,23 +4020,11 @@
         "endLine": 45669,
         "endColumn": 58
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 45669,
-            "column": 16,
-            "endLine": 45669,
-            "endColumn": 58
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyPhysicalConnectionAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -4973,23 +4033,11 @@
         "endLine": 45796,
         "endColumn": 60
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 45796,
-            "column": 16,
-            "endLine": 45796,
-            "endColumn": 60
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyPlanMaintenanceWindow",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -4998,23 +4046,11 @@
         "endLine": 45955,
         "endColumn": 54
       },
-      "reasons": [
-        {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 45955,
-            "column": 16,
-            "endLine": 45955,
-            "endColumn": 54
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyPortRangeList",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -5023,23 +4059,11 @@
         "endLine": 46074,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 46074,
-            "column": 16,
-            "endLine": 46074,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyPrefixList",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -5048,19 +4072,7 @@
         "endLine": 46205,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 46205,
-            "column": 16,
-            "endLine": 46205,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyPrepayInstanceSpec",
@@ -5155,7 +4167,7 @@
     },
     {
       "name": "ModifySecurityGroupEgressRule",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -5164,19 +4176,7 @@
         "endLine": 47292,
         "endColumn": 56
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 47292,
-            "column": 16,
-            "endLine": 47292,
-            "endColumn": 56
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifySecurityGroupPolicy",
@@ -5193,7 +4193,7 @@
     },
     {
       "name": "ModifySecurityGroupRule",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -5202,19 +4202,7 @@
         "endLine": 47620,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 47620,
-            "column": 16,
-            "endLine": 47620,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifySnapshotAttribute",
@@ -5634,7 +4622,7 @@
     },
     {
       "name": "ReportInstancesStatus",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -5643,19 +4631,7 @@
         "endLine": 51362,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 51362,
-            "column": 16,
-            "endLine": 51362,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ResetDisk",
@@ -5711,7 +4687,7 @@
     },
     {
       "name": "RevokeSecurityGroup",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -5720,23 +4696,11 @@
         "endLine": 52057,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_INPUT_ATTRIBUTE",
-          "message": "unreviewed input attribute",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 52057,
-            "column": 16,
-            "endLine": 52057,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "RevokeSecurityGroupEgress",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -5745,23 +4709,11 @@
         "endLine": 52411,
         "endColumn": 52
       },
-      "reasons": [
-        {
-          "code": "DSL_INPUT_ATTRIBUTE",
-          "message": "unreviewed input attribute",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 52411,
-            "column": 16,
-            "endLine": 52411,
-            "endColumn": 52
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "RunCommand",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -5770,23 +4722,11 @@
         "endLine": 53002,
         "endColumn": 37
       },
-      "reasons": [
-        {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 53002,
-            "column": 16,
-            "endLine": 53002,
-            "endColumn": 37
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "RunInstances",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -5795,19 +4735,7 @@
         "endLine": 54122,
         "endColumn": 39
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 54122,
-            "column": 16,
-            "endLine": 54122,
-            "endColumn": 39
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "SendDiagnosticInterrupt",
@@ -5824,7 +4752,7 @@
     },
     {
       "name": "SendFile",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -5833,23 +4761,11 @@
         "endLine": 54668,
         "endColumn": 35
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 54668,
-            "column": 16,
-            "endLine": 54668,
-            "endColumn": 35
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "StartImagePipelineExecution",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -5858,19 +4774,7 @@
         "endLine": 54816,
         "endColumn": 54
       },
-      "reasons": [
-        {
-          "code": "DSL_INPUT_ATTRIBUTE",
-          "message": "unreviewed input attribute",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 54816,
-            "column": 16,
-            "endLine": 54816,
-            "endColumn": 54
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "StartInstance",
@@ -5900,7 +4804,7 @@
     },
     {
       "name": "StartTerminalSession",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -5909,19 +4813,7 @@
         "endLine": 55216,
         "endColumn": 47
       },
-      "reasons": [
-        {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 55216,
-            "column": 16,
-            "endLine": 55216,
-            "endColumn": 47
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "StopInstance",
@@ -5951,7 +4843,7 @@
     },
     {
       "name": "StopInvocation",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -5960,23 +4852,11 @@
         "endLine": 55623,
         "endColumn": 41
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 55623,
-            "column": 16,
-            "endLine": 55623,
-            "endColumn": 41
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "TagResources",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -5985,19 +4865,7 @@
         "endLine": 55749,
         "endColumn": 39
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 55749,
-            "column": 16,
-            "endLine": 55749,
-            "endColumn": 39
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "TerminatePhysicalConnection",
@@ -6027,7 +4895,7 @@
     },
     {
       "name": "UnassignIpv6Addresses",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -6036,23 +4904,11 @@
         "endLine": 56022,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 56022,
-            "column": 16,
-            "endLine": 56022,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "UnassignPrivateIpAddresses",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -6061,19 +4917,7 @@
         "endLine": 56121,
         "endColumn": 53
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 56121,
-            "column": 16,
-            "endLine": 56121,
-            "endColumn": 53
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "UnassociateEipAddress",
@@ -6116,7 +4960,7 @@
     },
     {
       "name": "UntagResources",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/ecs/main.tea",
@@ -6125,19 +4969,7 @@
         "endLine": 56511,
         "endColumn": 41
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/ecs/main.tea",
-            "line": 56511,
-            "column": 16,
-            "endLine": 56511,
-            "endColumn": 41
-          }
-        }
-      ]
+      "reasons": []
     }
   ]
 }

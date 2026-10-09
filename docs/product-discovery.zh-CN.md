@@ -2,6 +2,8 @@
 
 [English](product-discovery.md)
 
+- 当前生成范围见 [RPC 扩展 #83](dsl-rpc-expansion.zh-CN.md)：ECS 380/380、VPC 396/403。下方原有数量及消费者记录对应当时验收的提交。
+
 - 阶段 [#35](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/35) 按 [权威路线](product-generator-roadmap.zh-CN.md) 继 #34 规范化执行。
 - issue/35-product-discovery 分支叠加在 issue/34-source-normalization / PR #39，后者原先依赖 #32。
 - 本规格在实现前提交，完整依赖链现已[集成 main](generator-integration.zh-CN.md)。

@@ -11,6 +11,24 @@ import (
 	"net/http"
 )
 
+func ExampleClient_AcceptInquiredSystemEvent() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.AcceptInquiredSystemEventAPI = client
+	out, err := api.AcceptInquiredSystemEvent(context.Background(), &ecs.AcceptInquiredSystemEventInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_ActivateRouterInterface() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -137,6 +155,42 @@ func ExampleClient_ApplyAutoSnapshotPolicy() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_AssignIpv6Addresses() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.AssignIpv6AddressesAPI = client
+	out, err := api.AssignIpv6Addresses(context.Background(), &ecs.AssignIpv6AddressesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_AssignPrivateIpAddresses() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.AssignPrivateIpAddressesAPI = client
+	out, err := api.AssignPrivateIpAddresses(context.Background(), &ecs.AssignPrivateIpAddressesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_AssociateEipAddress() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -245,6 +299,60 @@ func ExampleClient_AttachKeyPair() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_AttachNetworkInterface() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.AttachNetworkInterfaceAPI = client
+	out, err := api.AttachNetworkInterface(context.Background(), &ecs.AttachNetworkInterfaceInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_AuthorizeSecurityGroup() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.AuthorizeSecurityGroupAPI = client
+	out, err := api.AuthorizeSecurityGroup(context.Background(), &ecs.AuthorizeSecurityGroupInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_AuthorizeSecurityGroupEgress() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.AuthorizeSecurityGroupEgressAPI = client
+	out, err := api.AuthorizeSecurityGroupEgress(context.Background(), &ecs.AuthorizeSecurityGroupEgressInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_CancelAutoSnapshotPolicy() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -281,6 +389,24 @@ func ExampleClient_CancelCopyImage() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_CancelImagePipelineExecution() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CancelImagePipelineExecutionAPI = client
+	out, err := api.CancelImagePipelineExecution(context.Background(), &ecs.CancelImagePipelineExecutionInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_CancelPhysicalConnection() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -293,6 +419,24 @@ func ExampleClient_CancelPhysicalConnection() {
 	}
 	var api ecs.CancelPhysicalConnectionAPI = client
 	out, err := api.CancelPhysicalConnection(context.Background(), &ecs.CancelPhysicalConnectionInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CancelSimulatedSystemEvents() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CancelSimulatedSystemEventsAPI = client
+	out, err := api.CancelSimulatedSystemEvents(context.Background(), &ecs.CancelSimulatedSystemEventsInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -407,6 +551,42 @@ func ExampleClient_CopySnapshot() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_CreateActivation() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreateActivationAPI = client
+	out, err := api.CreateActivation(context.Background(), &ecs.CreateActivationInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateAutoProvisioningGroup() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreateAutoProvisioningGroupAPI = client
+	out, err := api.CreateAutoProvisioningGroup(context.Background(), &ecs.CreateAutoProvisioningGroupInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_CreateAutoSnapshotPolicy() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -437,6 +617,24 @@ func ExampleClient_CreateCapacityReservation() {
 	}
 	var api ecs.CreateCapacityReservationAPI = client
 	out, err := api.CreateCapacityReservation(context.Background(), &ecs.CreateCapacityReservationInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateCommand() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreateCommandAPI = client
+	out, err := api.CreateCommand(context.Background(), &ecs.CreateCommandInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -491,6 +689,24 @@ func ExampleClient_CreateDiagnosticMetricSet() {
 	}
 	var api ecs.CreateDiagnosticMetricSetAPI = client
 	out, err := api.CreateDiagnosticMetricSet(context.Background(), &ecs.CreateDiagnosticMetricSetInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateDiagnosticReport() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreateDiagnosticReportAPI = client
+	out, err := api.CreateDiagnosticReport(context.Background(), &ecs.CreateDiagnosticReportInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -569,6 +785,24 @@ func ExampleClient_CreateHaVip() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_CreateHpcCluster() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreateHpcClusterAPI = client
+	out, err := api.CreateHpcCluster(context.Background(), &ecs.CreateHpcClusterInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_CreateImage() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -581,6 +815,42 @@ func ExampleClient_CreateImage() {
 	}
 	var api ecs.CreateImageAPI = client
 	out, err := api.CreateImage(context.Background(), &ecs.CreateImageInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateImageComponent() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreateImageComponentAPI = client
+	out, err := api.CreateImageComponent(context.Background(), &ecs.CreateImageComponentInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateImagePipeline() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreateImagePipelineAPI = client
+	out, err := api.CreateImagePipeline(context.Background(), &ecs.CreateImagePipelineInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -623,6 +893,42 @@ func ExampleClient_CreateKeyPair() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_CreateLaunchTemplate() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreateLaunchTemplateAPI = client
+	out, err := api.CreateLaunchTemplate(context.Background(), &ecs.CreateLaunchTemplateInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateLaunchTemplateVersion() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreateLaunchTemplateVersionAPI = client
+	out, err := api.CreateLaunchTemplateVersion(context.Background(), &ecs.CreateLaunchTemplateVersionInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_CreateNatGateway() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -641,6 +947,114 @@ func ExampleClient_CreateNatGateway() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_CreateNetworkInterface() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreateNetworkInterfaceAPI = client
+	out, err := api.CreateNetworkInterface(context.Background(), &ecs.CreateNetworkInterfaceInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateNetworkInterfacePermission() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreateNetworkInterfacePermissionAPI = client
+	out, err := api.CreateNetworkInterfacePermission(context.Background(), &ecs.CreateNetworkInterfacePermissionInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreatePhysicalConnection() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreatePhysicalConnectionAPI = client
+	out, err := api.CreatePhysicalConnection(context.Background(), &ecs.CreatePhysicalConnectionInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreatePlanMaintenanceWindow() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreatePlanMaintenanceWindowAPI = client
+	out, err := api.CreatePlanMaintenanceWindow(context.Background(), &ecs.CreatePlanMaintenanceWindowInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreatePortRangeList() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreatePortRangeListAPI = client
+	out, err := api.CreatePortRangeList(context.Background(), &ecs.CreatePortRangeListInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreatePrefixList() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreatePrefixListAPI = client
+	out, err := api.CreatePrefixList(context.Background(), &ecs.CreatePrefixListInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_CreateRouteEntry() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -653,6 +1067,24 @@ func ExampleClient_CreateRouteEntry() {
 	}
 	var api ecs.CreateRouteEntryAPI = client
 	out, err := api.CreateRouteEntry(context.Background(), &ecs.CreateRouteEntryInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateRouterInterface() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreateRouterInterfaceAPI = client
+	out, err := api.CreateRouterInterface(context.Background(), &ecs.CreateRouterInterfaceInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -689,6 +1121,24 @@ func ExampleClient_CreateSecurityGroup() {
 	}
 	var api ecs.CreateSecurityGroupAPI = client
 	out, err := api.CreateSecurityGroup(context.Background(), &ecs.CreateSecurityGroupInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_CreateSimulatedSystemEvents() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreateSimulatedSystemEventsAPI = client
+	out, err := api.CreateSimulatedSystemEvents(context.Background(), &ecs.CreateSimulatedSystemEventsInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -767,6 +1217,24 @@ func ExampleClient_CreateVSwitch() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_CreateVirtualBorderRouter() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.CreateVirtualBorderRouterAPI = client
+	out, err := api.CreateVirtualBorderRouter(context.Background(), &ecs.CreateVirtualBorderRouterInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_CreateVpc() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -821,6 +1289,24 @@ func ExampleClient_DeactivateRouterInterface() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DeleteActivation() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DeleteActivationAPI = client
+	out, err := api.DeleteActivation(context.Background(), &ecs.DeleteActivationInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DeleteAutoProvisioningGroup() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -869,6 +1355,24 @@ func ExampleClient_DeleteBandwidthPackage() {
 	}
 	var api ecs.DeleteBandwidthPackageAPI = client
 	out, err := api.DeleteBandwidthPackage(context.Background(), &ecs.DeleteBandwidthPackageInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DeleteCommand() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DeleteCommandAPI = client
+	out, err := api.DeleteCommand(context.Background(), &ecs.DeleteCommandInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -1001,6 +1505,24 @@ func ExampleClient_DeleteHaVip() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DeleteHpcCluster() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DeleteHpcClusterAPI = client
+	out, err := api.DeleteHpcCluster(context.Background(), &ecs.DeleteHpcClusterInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DeleteImage() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -1013,6 +1535,42 @@ func ExampleClient_DeleteImage() {
 	}
 	var api ecs.DeleteImageAPI = client
 	out, err := api.DeleteImage(context.Background(), &ecs.DeleteImageInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DeleteImageComponent() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DeleteImageComponentAPI = client
+	out, err := api.DeleteImageComponent(context.Background(), &ecs.DeleteImageComponentInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DeleteImagePipeline() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DeleteImagePipelineAPI = client
+	out, err := api.DeleteImagePipeline(context.Background(), &ecs.DeleteImagePipelineInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -1127,6 +1685,42 @@ func ExampleClient_DeleteNatGateway() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DeleteNetworkInterface() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DeleteNetworkInterfaceAPI = client
+	out, err := api.DeleteNetworkInterface(context.Background(), &ecs.DeleteNetworkInterfaceInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DeleteNetworkInterfacePermission() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DeleteNetworkInterfacePermissionAPI = client
+	out, err := api.DeleteNetworkInterfacePermission(context.Background(), &ecs.DeleteNetworkInterfacePermissionInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DeletePhysicalConnection() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -1157,6 +1751,42 @@ func ExampleClient_DeletePlanMaintenanceWindow() {
 	}
 	var api ecs.DeletePlanMaintenanceWindowAPI = client
 	out, err := api.DeletePlanMaintenanceWindow(context.Background(), &ecs.DeletePlanMaintenanceWindowInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DeletePortRangeList() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DeletePortRangeListAPI = client
+	out, err := api.DeletePortRangeList(context.Background(), &ecs.DeletePortRangeListInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DeletePrefixList() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DeletePrefixListAPI = client
+	out, err := api.DeletePrefixList(context.Background(), &ecs.DeletePrefixListInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -1343,6 +1973,24 @@ func ExampleClient_DeleteVsc() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DeregisterManagedInstance() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DeregisterManagedInstanceAPI = client
+	out, err := api.DeregisterManagedInstance(context.Background(), &ecs.DeregisterManagedInstanceInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DescribeAccessPoints() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -1373,6 +2021,24 @@ func ExampleClient_DescribeAccountAttributes() {
 	}
 	var api ecs.DescribeAccountAttributesAPI = client
 	out, err := api.DescribeAccountAttributes(context.Background(), &ecs.DescribeAccountAttributesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeActivations() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeActivationsAPI = client
+	out, err := api.DescribeActivations(context.Background(), &ecs.DescribeActivationsInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -1595,6 +2261,24 @@ func ExampleClient_DescribeCloudAssistantSettings() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DescribeCloudAssistantStatus() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeCloudAssistantStatusAPI = client
+	out, err := api.DescribeCloudAssistantStatus(context.Background(), &ecs.DescribeCloudAssistantStatusInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DescribeClusters() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -1607,6 +2291,24 @@ func ExampleClient_DescribeClusters() {
 	}
 	var api ecs.DescribeClustersAPI = client
 	out, err := api.DescribeClusters(context.Background(), &ecs.DescribeClustersInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeCommands() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeCommandsAPI = client
+	out, err := api.DescribeCommands(context.Background(), &ecs.DescribeCommandsInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -1865,6 +2567,24 @@ func ExampleClient_DescribeDisks() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DescribeDisksFullStatus() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeDisksFullStatusAPI = client
+	out, err := api.DescribeDisksFullStatus(context.Background(), &ecs.DescribeDisksFullStatusInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DescribeEipAddresses() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -2009,6 +2729,42 @@ func ExampleClient_DescribeHaVips() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DescribeHpcClusters() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeHpcClustersAPI = client
+	out, err := api.DescribeHpcClusters(context.Background(), &ecs.DescribeHpcClustersInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeImageComponents() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeImageComponentsAPI = client
+	out, err := api.DescribeImageComponents(context.Background(), &ecs.DescribeImageComponentsInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DescribeImageFromFamily() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -2021,6 +2777,42 @@ func ExampleClient_DescribeImageFromFamily() {
 	}
 	var api ecs.DescribeImageFromFamilyAPI = client
 	out, err := api.DescribeImageFromFamily(context.Background(), &ecs.DescribeImageFromFamilyInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeImagePipelineExecutions() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeImagePipelineExecutionsAPI = client
+	out, err := api.DescribeImagePipelineExecutions(context.Background(), &ecs.DescribeImagePipelineExecutionsInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeImagePipelines() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeImagePipelinesAPI = client
+	out, err := api.DescribeImagePipelines(context.Background(), &ecs.DescribeImagePipelinesInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -2129,6 +2921,24 @@ func ExampleClient_DescribeInstanceAutoRenewAttribute() {
 	}
 	var api ecs.DescribeInstanceAutoRenewAttributeAPI = client
 	out, err := api.DescribeInstanceAutoRenewAttribute(context.Background(), &ecs.DescribeInstanceAutoRenewAttributeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeInstanceHistoryEvents() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeInstanceHistoryEventsAPI = client
+	out, err := api.DescribeInstanceHistoryEvents(context.Background(), &ecs.DescribeInstanceHistoryEventsInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -2315,6 +3125,60 @@ func ExampleClient_DescribeInstances() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DescribeInstancesFullStatus() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeInstancesFullStatusAPI = client
+	out, err := api.DescribeInstancesFullStatus(context.Background(), &ecs.DescribeInstancesFullStatusInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeInvocationResults() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeInvocationResultsAPI = client
+	out, err := api.DescribeInvocationResults(context.Background(), &ecs.DescribeInvocationResultsInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeInvocations() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeInvocationsAPI = client
+	out, err := api.DescribeInvocations(context.Background(), &ecs.DescribeInvocationsInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DescribeKeyPairs() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -2405,6 +3269,24 @@ func ExampleClient_DescribeLockedSnapshots() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DescribeManagedInstances() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeManagedInstancesAPI = client
+	out, err := api.DescribeManagedInstances(context.Background(), &ecs.DescribeManagedInstancesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DescribeNatGateways() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -2417,6 +3299,60 @@ func ExampleClient_DescribeNatGateways() {
 	}
 	var api ecs.DescribeNatGatewaysAPI = client
 	out, err := api.DescribeNatGateways(context.Background(), &ecs.DescribeNatGatewaysInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeNetworkInterfaceAttribute() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeNetworkInterfaceAttributeAPI = client
+	out, err := api.DescribeNetworkInterfaceAttribute(context.Background(), &ecs.DescribeNetworkInterfaceAttributeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeNetworkInterfacePermissions() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeNetworkInterfacePermissionsAPI = client
+	out, err := api.DescribeNetworkInterfacePermissions(context.Background(), &ecs.DescribeNetworkInterfacePermissionsInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeNetworkInterfaces() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeNetworkInterfacesAPI = client
+	out, err := api.DescribeNetworkInterfaces(context.Background(), &ecs.DescribeNetworkInterfacesInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -2453,6 +3389,132 @@ func ExampleClient_DescribePhysicalConnections() {
 	}
 	var api ecs.DescribePhysicalConnectionsAPI = client
 	out, err := api.DescribePhysicalConnections(context.Background(), &ecs.DescribePhysicalConnectionsInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribePlanMaintenanceWindows() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribePlanMaintenanceWindowsAPI = client
+	out, err := api.DescribePlanMaintenanceWindows(context.Background(), &ecs.DescribePlanMaintenanceWindowsInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribePortRangeListAssociations() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribePortRangeListAssociationsAPI = client
+	out, err := api.DescribePortRangeListAssociations(context.Background(), &ecs.DescribePortRangeListAssociationsInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribePortRangeListEntries() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribePortRangeListEntriesAPI = client
+	out, err := api.DescribePortRangeListEntries(context.Background(), &ecs.DescribePortRangeListEntriesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribePortRangeLists() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribePortRangeListsAPI = client
+	out, err := api.DescribePortRangeLists(context.Background(), &ecs.DescribePortRangeListsInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribePrefixListAssociations() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribePrefixListAssociationsAPI = client
+	out, err := api.DescribePrefixListAssociations(context.Background(), &ecs.DescribePrefixListAssociationsInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribePrefixListAttributes() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribePrefixListAttributesAPI = client
+	out, err := api.DescribePrefixListAttributes(context.Background(), &ecs.DescribePrefixListAttributesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribePrefixLists() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribePrefixListsAPI = client
+	out, err := api.DescribePrefixLists(context.Background(), &ecs.DescribePrefixListsInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -2543,6 +3605,24 @@ func ExampleClient_DescribeReservedInstanceAutoRenewAttribute() {
 	}
 	var api ecs.DescribeReservedInstanceAutoRenewAttributeAPI = client
 	out, err := api.DescribeReservedInstanceAutoRenewAttribute(context.Background(), &ecs.DescribeReservedInstanceAutoRenewAttributeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeReservedInstances() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeReservedInstancesAPI = client
+	out, err := api.DescribeReservedInstances(context.Background(), &ecs.DescribeReservedInstancesInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -2711,6 +3791,24 @@ func ExampleClient_DescribeSecurityGroups() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DescribeSendFileResults() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeSendFileResultsAPI = client
+	out, err := api.DescribeSendFileResults(context.Background(), &ecs.DescribeSendFileResultsInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DescribeSnapshotGroups() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -2831,6 +3929,24 @@ func ExampleClient_DescribeSpotAdvice() {
 	}
 	var api ecs.DescribeSpotAdviceAPI = client
 	out, err := api.DescribeSpotAdvice(context.Background(), &ecs.DescribeSpotAdviceInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DescribeSpotPriceHistory() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DescribeSpotPriceHistoryAPI = client
+	out, err := api.DescribeSpotPriceHistory(context.Background(), &ecs.DescribeSpotPriceHistoryInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -3197,6 +4313,42 @@ func ExampleClient_DetachKeyPair() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DetachNetworkInterface() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DetachNetworkInterfaceAPI = client
+	out, err := api.DetachNetworkInterface(context.Background(), &ecs.DetachNetworkInterfaceInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_DisableActivation() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DisableActivationAPI = client
+	out, err := api.DisableActivation(context.Background(), &ecs.DisableActivationInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_DisableDiskEncryptionByDefault() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -3215,6 +4367,24 @@ func ExampleClient_DisableDiskEncryptionByDefault() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_DisableNetworkInterfaceQoS() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.DisableNetworkInterfaceQoSAPI = client
+	out, err := api.DisableNetworkInterfaceQoS(context.Background(), &ecs.DisableNetworkInterfaceQoSInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_EnableDiskEncryptionByDefault() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -3227,6 +4397,24 @@ func ExampleClient_EnableDiskEncryptionByDefault() {
 	}
 	var api ecs.EnableDiskEncryptionByDefaultAPI = client
 	out, err := api.EnableDiskEncryptionByDefault(context.Background(), &ecs.EnableDiskEncryptionByDefaultInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_EnableNetworkInterfaceQoS() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.EnableNetworkInterfaceQoSAPI = client
+	out, err := api.EnableNetworkInterfaceQoS(context.Background(), &ecs.EnableNetworkInterfaceQoSInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -3305,6 +4493,42 @@ func ExampleClient_ExportSnapshot() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_GetInstanceConsoleOutput() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.GetInstanceConsoleOutputAPI = client
+	out, err := api.GetInstanceConsoleOutput(context.Background(), &ecs.GetInstanceConsoleOutputInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_GetInstanceScreenshot() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.GetInstanceScreenshotAPI = client
+	out, err := api.GetInstanceScreenshot(context.Background(), &ecs.GetInstanceScreenshotInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_ImportImage() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -3335,6 +4559,42 @@ func ExampleClient_ImportKeyPair() {
 	}
 	var api ecs.ImportKeyPairAPI = client
 	out, err := api.ImportKeyPair(context.Background(), &ecs.ImportKeyPairInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_InstallCloudAssistant() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.InstallCloudAssistantAPI = client
+	out, err := api.InstallCloudAssistant(context.Background(), &ecs.InstallCloudAssistantInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_InvokeCommand() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.InvokeCommandAPI = client
+	out, err := api.InvokeCommand(context.Background(), &ecs.InvokeCommandInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -3389,6 +4649,42 @@ func ExampleClient_LeaveSecurityGroup() {
 	}
 	var api ecs.LeaveSecurityGroupAPI = client
 	out, err := api.LeaveSecurityGroup(context.Background(), &ecs.LeaveSecurityGroupInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ListPluginStatus() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.ListPluginStatusAPI = client
+	out, err := api.ListPluginStatus(context.Background(), &ecs.ListPluginStatusInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ListTagResources() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.ListTagResourcesAPI = client
+	out, err := api.ListTagResources(context.Background(), &ecs.ListTagResourcesInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -3479,6 +4775,42 @@ func ExampleClient_ModifyCapacityReservation() {
 	}
 	var api ecs.ModifyCapacityReservationAPI = client
 	out, err := api.ModifyCapacityReservation(context.Background(), &ecs.ModifyCapacityReservationInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyCloudAssistantSettings() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.ModifyCloudAssistantSettingsAPI = client
+	out, err := api.ModifyCloudAssistantSettings(context.Background(), &ecs.ModifyCloudAssistantSettingsInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyCommand() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.ModifyCommandAPI = client
+	out, err := api.ModifyCommand(context.Background(), &ecs.ModifyCommandInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -3785,6 +5117,24 @@ func ExampleClient_ModifyHaVipAttribute() {
 	}
 	var api ecs.ModifyHaVipAttributeAPI = client
 	out, err := api.ModifyHaVipAttribute(context.Background(), &ecs.ModifyHaVipAttributeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyHpcClusterAttribute() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.ModifyHpcClusterAttributeAPI = client
+	out, err := api.ModifyHpcClusterAttribute(context.Background(), &ecs.ModifyHpcClusterAttributeInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -4115,6 +5465,24 @@ func ExampleClient_ModifyInstanceVpcAttribute() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_ModifyInvocationAttribute() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.ModifyInvocationAttributeAPI = client
+	out, err := api.ModifyInvocationAttribute(context.Background(), &ecs.ModifyInvocationAttributeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_ModifyLaunchTemplateDefaultVersion() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -4127,6 +5495,114 @@ func ExampleClient_ModifyLaunchTemplateDefaultVersion() {
 	}
 	var api ecs.ModifyLaunchTemplateDefaultVersionAPI = client
 	out, err := api.ModifyLaunchTemplateDefaultVersion(context.Background(), &ecs.ModifyLaunchTemplateDefaultVersionInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyManagedInstance() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.ModifyManagedInstanceAPI = client
+	out, err := api.ModifyManagedInstance(context.Background(), &ecs.ModifyManagedInstanceInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyNetworkInterfaceAttribute() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.ModifyNetworkInterfaceAttributeAPI = client
+	out, err := api.ModifyNetworkInterfaceAttribute(context.Background(), &ecs.ModifyNetworkInterfaceAttributeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyPhysicalConnectionAttribute() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.ModifyPhysicalConnectionAttributeAPI = client
+	out, err := api.ModifyPhysicalConnectionAttribute(context.Background(), &ecs.ModifyPhysicalConnectionAttributeInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyPlanMaintenanceWindow() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.ModifyPlanMaintenanceWindowAPI = client
+	out, err := api.ModifyPlanMaintenanceWindow(context.Background(), &ecs.ModifyPlanMaintenanceWindowInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyPortRangeList() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.ModifyPortRangeListAPI = client
+	out, err := api.ModifyPortRangeList(context.Background(), &ecs.ModifyPortRangeListInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifyPrefixList() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.ModifyPrefixListAPI = client
+	out, err := api.ModifyPrefixList(context.Background(), &ecs.ModifyPrefixListInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -4259,6 +5735,24 @@ func ExampleClient_ModifySecurityGroupAttribute() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_ModifySecurityGroupEgressRule() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.ModifySecurityGroupEgressRuleAPI = client
+	out, err := api.ModifySecurityGroupEgressRule(context.Background(), &ecs.ModifySecurityGroupEgressRuleInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_ModifySecurityGroupPolicy() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -4271,6 +5765,24 @@ func ExampleClient_ModifySecurityGroupPolicy() {
 	}
 	var api ecs.ModifySecurityGroupPolicyAPI = client
 	out, err := api.ModifySecurityGroupPolicy(context.Background(), &ecs.ModifySecurityGroupPolicyInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_ModifySecurityGroupRule() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.ModifySecurityGroupRuleAPI = client
+	out, err := api.ModifySecurityGroupRule(context.Background(), &ecs.ModifySecurityGroupRuleInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -4853,6 +6365,24 @@ func ExampleClient_ReplaceSystemDisk() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_ReportInstancesStatus() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.ReportInstancesStatusAPI = client
+	out, err := api.ReportInstancesStatus(context.Background(), &ecs.ReportInstancesStatusInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_ResetDisk() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -4925,6 +6455,78 @@ func ExampleClient_ResizeDisk() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_RevokeSecurityGroup() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.RevokeSecurityGroupAPI = client
+	out, err := api.RevokeSecurityGroup(context.Background(), &ecs.RevokeSecurityGroupInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_RevokeSecurityGroupEgress() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.RevokeSecurityGroupEgressAPI = client
+	out, err := api.RevokeSecurityGroupEgress(context.Background(), &ecs.RevokeSecurityGroupEgressInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_RunCommand() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.RunCommandAPI = client
+	out, err := api.RunCommand(context.Background(), &ecs.RunCommandInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_RunInstances() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.RunInstancesAPI = client
+	out, err := api.RunInstances(context.Background(), &ecs.RunInstancesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_SendDiagnosticInterrupt() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -4937,6 +6539,42 @@ func ExampleClient_SendDiagnosticInterrupt() {
 	}
 	var api ecs.SendDiagnosticInterruptAPI = client
 	out, err := api.SendDiagnosticInterrupt(context.Background(), &ecs.SendDiagnosticInterruptInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_SendFile() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.SendFileAPI = client
+	out, err := api.SendFile(context.Background(), &ecs.SendFileInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_StartImagePipelineExecution() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.StartImagePipelineExecutionAPI = client
+	out, err := api.StartImagePipelineExecution(context.Background(), &ecs.StartImagePipelineExecutionInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -4979,6 +6617,24 @@ func ExampleClient_StartInstances() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_StartTerminalSession() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.StartTerminalSessionAPI = client
+	out, err := api.StartTerminalSession(context.Background(), &ecs.StartTerminalSessionInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_StopInstance() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -5015,6 +6671,42 @@ func ExampleClient_StopInstances() {
 	fmt.Println(out.Metadata.HTTPStatusCode)
 	// Output: 200
 }
+func ExampleClient_StopInvocation() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.StopInvocationAPI = client
+	out, err := api.StopInvocation(context.Background(), &ecs.StopInvocationInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_TagResources() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.TagResourcesAPI = client
+	out, err := api.TagResources(context.Background(), &ecs.TagResourcesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
 func ExampleClient_TerminatePhysicalConnection() {
 	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	if err != nil {
@@ -5045,6 +6737,42 @@ func ExampleClient_TerminateVirtualBorderRouter() {
 	}
 	var api ecs.TerminateVirtualBorderRouterAPI = client
 	out, err := api.TerminateVirtualBorderRouter(context.Background(), &ecs.TerminateVirtualBorderRouterInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_UnassignIpv6Addresses() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.UnassignIpv6AddressesAPI = client
+	out, err := api.UnassignIpv6Addresses(context.Background(), &ecs.UnassignIpv6AddressesInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_UnassignPrivateIpAddresses() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.UnassignPrivateIpAddressesAPI = client
+	out, err := api.UnassignPrivateIpAddresses(context.Background(), &ecs.UnassignPrivateIpAddressesInput{})
 	if err != nil {
 		panic(err)
 	}
@@ -5099,6 +6827,24 @@ func ExampleClient_UnlockSnapshot() {
 	}
 	var api ecs.UnlockSnapshotAPI = client
 	out, err := api.UnlockSnapshot(context.Background(), &ecs.UnlockSnapshotInput{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.HTTPStatusCode)
+	// Output: 200
+}
+func ExampleClient_UntagResources() {
+	provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
+	if err != nil {
+		panic(err)
+	}
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{}"})
+	client, err := ecs.NewFromConfig(alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}})
+	if err != nil {
+		panic(err)
+	}
+	var api ecs.UntagResourcesAPI = client
+	out, err := api.UntagResources(context.Background(), &ecs.UntagResourcesInput{})
 	if err != nil {
 		panic(err)
 	}

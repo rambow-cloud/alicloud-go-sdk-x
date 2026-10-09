@@ -17,3 +17,5 @@
 
 - 新增 TestExternalDefaultProfileWorkload 覆盖 LoadDefaultConfig→原生临时 CLI Profile→ 生成 STS 消费者。
 - 独立身份任务现包含[默认配置](../../docs/default-configuration.zh-CN.md)与临时虚构 Profile，本离线验收包不要求交互登录。
+
+- #83 新增 `TestOfficialRPCShrinkJSONHelperParity`，将生成的 ECS JSON 参数与已有固定版本 OpenAPI v2.1.13 helper 对比，覆盖 nil 与空值、嵌套、非 ASCII 文本及 int64 精度。此为无需账号的 helper 对比，不代表所有 ECS 操作兼容；未新增依赖。

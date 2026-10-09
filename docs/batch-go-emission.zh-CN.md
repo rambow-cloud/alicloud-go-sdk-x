@@ -2,6 +2,8 @@
 
 [English](batch-go-emission.md)
 
+- 当前生成范围见 [RPC 扩展 #83](dsl-rpc-expansion.zh-CN.md)：ECS 380/380、VPC 396/403。下方原有数量及消费者记录对应当时验收的提交。
+
 - 阶段 [#36](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/36) 在 #35 / PR #40 之后读取完整且哈希固定的 `models/*/ir.json`；本规格先于实现。
 - 官方 DSL/语义 IR 即可生成，不依赖旧元数据、逐操作字段/模型选择或手写文档补充配置。
 

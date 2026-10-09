@@ -10,6 +10,31 @@ import (
 	alicloud "github.com/rambow-cloud/alicloud-go-sdk-x"
 )
 
+// AcceptInquiredSystemEventAPI is the minimal interface for AcceptInquiredSystemEvent mocks and capability adapters.
+type AcceptInquiredSystemEventAPI interface {
+	// AcceptInquiredSystemEvent invokes the native action with owned inputs and per-call options.
+	AcceptInquiredSystemEvent(context.Context, *AcceptInquiredSystemEventInput, ...func(*Options)) (*AcceptInquiredSystemEventOutput, error)
+}
+
+// AcceptInquiredSystemEvent calls the native AcceptInquiredSystemEvent action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Accepts and authorizes the execution of a system event operation. For a system event in the Inquiring state, this operation accepts the default action of the system event and authorizes the system to execute the default action.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L92
+func (c *Client) AcceptInquiredSystemEvent(ctx context.Context, input *AcceptInquiredSystemEventInput, optFns ...func(*Options)) (*AcceptInquiredSystemEventOutput, error) {
+	out, meta, err := invoke[AcceptInquiredSystemEventInput, AcceptInquiredSystemEventOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AcceptInquiredSystemEvent", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // ActivateRouterInterfaceAPI is the minimal interface for ActivateRouterInterface mocks and capability adapters.
 type ActivateRouterInterfaceAPI interface {
 	// ActivateRouterInterface invokes the native action with owned inputs and per-call options.
@@ -234,6 +259,80 @@ func (c *Client) ApplyAutoSnapshotPolicy(ctx context.Context, input *ApplyAutoSn
 	return out, nil
 }
 
+// AssignIpv6AddressesAPI is the minimal interface for AssignIpv6Addresses mocks and capability adapters.
+type AssignIpv6AddressesAPI interface {
+	// AssignIpv6Addresses invokes the native action with owned inputs and per-call options.
+	AssignIpv6Addresses(context.Context, *AssignIpv6AddressesInput, ...func(*Options)) (*AssignIpv6AddressesOutput, error)
+}
+
+// AssignIpv6Addresses calls the native AssignIpv6Addresses action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Allocates one or more IPv6 addresses to an elastic network interface (ENI).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1054
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// You can specify IPv6 addresses within the CIDR block of the vSwitch to which the elastic network interface (ENI) belongs, or specify the number of IPv6 addresses for automatic creation of IPv6 addresses. Note the following items:
+// - The vSwitch to which the ENI belongs must have IPv6 enabled. For more information, see Enable an IPv6 CIDR block for an existing vSwitch (https://help.aliyun.com/document_detail/98923.html).
+// - The ENI must be in the Active or InUse state.
+// - When you operate on a primary network interface controller (NIC), the instance to which the NIC is attached must be in the Running or Stopped state.
+// - The number of IPv6 addresses that can be allocated to a single NIC depends on the instance type of the instance to which the NIC is attached.
+// - If the ENI is in the Active state, you can allocate up to 10 IPv6 addresses to the ENI.
+// - If the ENI is attached to an instance, the number of IPv6 addresses that can be allocated is limited by the instance type. For more information, see Instance families (https://help.aliyun.com/document_detail/25378.html).
+// - After you call this operation, you can obtain the allocated IPv6 address information from the response.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1054
+func (c *Client) AssignIpv6Addresses(ctx context.Context, input *AssignIpv6AddressesInput, optFns ...func(*Options)) (*AssignIpv6AddressesOutput, error) {
+	out, meta, err := invoke[AssignIpv6AddressesInput, AssignIpv6AddressesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AssignIpv6Addresses", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// AssignPrivateIpAddressesAPI is the minimal interface for AssignPrivateIpAddresses mocks and capability adapters.
+type AssignPrivateIpAddressesAPI interface {
+	// AssignPrivateIpAddresses invokes the native action with owned inputs and per-call options.
+	AssignPrivateIpAddresses(context.Context, *AssignPrivateIpAddressesInput, ...func(*Options)) (*AssignPrivateIpAddressesOutput, error)
+}
+
+// AssignPrivateIpAddresses calls the native AssignPrivateIpAddresses action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Assigns one or more secondary private IP addresses to an elastic network interfaces (ENIs). You can specify idle private IP addresses from the vSwitch to which the elastic network interfaces (ENIs) belongs, or specify the number of private IP addresses to automatically allocate.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1194
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// - Only elastic network interfaces (ENIs) in the Available or InUse state are supported.
+// - When you operate the primary network interface controller (NIC), the instance to which the network interface controller (NIC) is attached must be in the Running or Stopped state.
+// - When an elastic network interfaces (ENIs) is in the Available state, you can allocate up to 49 secondary private IP addresses to the ENI. After the ENI is attached to an instance, the number of secondary private IP addresses that can be allocated to the ENI is subject to the instance type. For more information, see Instance families (https://help.aliyun.com/document_detail/25378.html).
+// - After you call this operation, you can obtain the allocated secondary private IP address information from the response.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1194
+func (c *Client) AssignPrivateIpAddresses(ctx context.Context, input *AssignPrivateIpAddressesInput, optFns ...func(*Options)) (*AssignPrivateIpAddressesOutput, error) {
+	out, meta, err := invoke[AssignPrivateIpAddressesInput, AssignPrivateIpAddressesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AssignPrivateIpAddresses", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // AssociateEipAddressAPI is the minimal interface for AssociateEipAddress mocks and capability adapters.
 type AssociateEipAddressAPI interface {
 	// AssociateEipAddress invokes the native action with owned inputs and per-call options.
@@ -438,6 +537,197 @@ func (c *Client) AttachKeyPair(ctx context.Context, input *AttachKeyPairInput, o
 	return out, nil
 }
 
+// AttachNetworkInterfaceAPI is the minimal interface for AttachNetworkInterface mocks and capability adapters.
+type AttachNetworkInterfaceAPI interface {
+	// AttachNetworkInterface invokes the native action with owned inputs and per-call options.
+	AttachNetworkInterface(context.Context, *AttachNetworkInterfaceInput, ...func(*Options)) (*AttachNetworkInterfaceOutput, error)
+}
+
+// AttachNetworkInterface calls the native AttachNetworkInterface action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Attaches an Elastic Network Interface (ENI) to a VPC-type ECS instance by calling the AttachNetworkInterface operation with parameters such as NetworkInterfaceId, InstanceId, and NetworkCardIndex.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1986
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// When you call this operation, take note of the following items:
+// - The Elastic Network Interface (ENI) must be in the Active (Available) state. An ENI can be attached to only one instance that resides in the same zone and VPC as the ENI.
+// - The instance must be in the Running or Stopped state. Some instance types require the instance to be in the Stopped state when you attach an Elastic Network Interface (ENI). For more information, see the ECS instance types that require instance stop section in Attach an ENI (https://help.aliyun.com/document_detail/58503.html).
+// > If the instance was last started before April 1, 2018 (including but not limited to starting a newly purchased instance, restarting, or powering on), you must invoke RebootInstance to restart the instance that has been in the Running state. Otherwise, the Elastic Network Interface (ENI) cannot be attached.
+// - Multiple Elastic Network Interfaces (ENIs) can be attached to a single instance at the same time. For more information, see ENI overview (https://help.aliyun.com/document_detail/58496.html).
+//
+// - The vSwitch to which the ENI belongs must be in the same zone and VPC as the instance.
+// - This is an asynchronous operation. After you send a successful request, you can check the Elastic Network Interface (ENI) status or listen for network interface controller (NIC) operation events to obtain the operation result. The ENI state machine is shown in the following figure:
+// (https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/zh-CN/20221124/esgu/AttachNetworkInterface.jpg)
+// - Attaching indicates that the attach ENI request has been sent and the ENI is being attached to the ECS instance.
+// - InUse indicates that the ENI is attached to the ECS instance.
+// - Available indicates that the ENI failed to be attached to the ECS instance.
+// For details about sample code, see Attach an Elastic Network Interface (ENI) (https://help.aliyun.com/document_detail/471550.html).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L1986
+func (c *Client) AttachNetworkInterface(ctx context.Context, input *AttachNetworkInterfaceInput, optFns ...func(*Options)) (*AttachNetworkInterfaceOutput, error) {
+	out, meta, err := invoke[AttachNetworkInterfaceInput, AttachNetworkInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AttachNetworkInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// AuthorizeSecurityGroupAPI is the minimal interface for AuthorizeSecurityGroup mocks and capability adapters.
+type AuthorizeSecurityGroupAPI interface {
+	// AuthorizeSecurityGroup invokes the native action with owned inputs and per-call options.
+	AuthorizeSecurityGroup(context.Context, *AuthorizeSecurityGroupInput, ...func(*Options)) (*AuthorizeSecurityGroupOutput, error)
+}
+
+// AuthorizeSecurityGroup calls the native AuthorizeSecurityGroup action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Adds one or more inbound rules to a security group. You can use this operation to specify inbound access permissions for a security group, allowing or denying other devices from sending inbound traffic to instances in the security group, which enables fine-grained network access control.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L2221
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Before you begin
+// - Quantity limit: The total number of rules (including both inbound rules and outbound rules) across all security groups associated with a single network interface controller (NIC) cannot exceed 1,000. For more information, see Security group limits (link omitted).
+// - Priority settings: The priority (Priority) of inbound security group rules ranges from 1 to 100. A smaller number indicates a higher priority. If two security group rules have the same priority, the deny (drop) rule takes precedence. Access is denied for rules with the same priority.
+// Usage notes
+// If the specified security group rule already exists, the call succeeds but no rule is added.
+// How to determine a rule
+// The following parameters are required to determine an inbound rule:
+// - Source settings: Specify one of the following: SourceCidrIp (IPv4 address), Ipv6SourceCidrIp (IPv6 address), SourcePrefixListId (prefix list ID), or SourceGroupId (source security group).
+// - Destination port range: PortRange.
+// - Protocol type: IpProtocol.
+// - Access policy: Policy.
+// > Advanced security groups do not support authorization for access from other security groups. Basic security groups support a maximum of 20 authorized security groups.
+// Request examples
+// The following examples show how to add inbound rules with different sources to a specified security group in the China (Hangzhou) region:
+// - Add access permissions for a specified IP address range.
+//
+// "RegionId":"ap-southeast-1", //Set the region
+// "SecurityGroupId":"sg-bp67acfmxazb4p****", //Set the security group
+// "Permissions":[
+// {
+// "SourceCidrIp":"10.0.0.0/8", //Set the source IPv4 address
+// "PortRange":"22/22", //Set the port range
+// "IpProtocol":"TCP", //Set the protocol type
+// "Policy":"Accept" //Set the access policy
+// }
+// ]
+//
+// - Add access permissions for another security group and a prefix list.
+//
+// "RegionId":"ap-southeast-1",
+// "SecurityGroupId":"sg-bp67acfmxazb4p****",
+// "Permissions":[
+// {
+// "SourceGroupId":"sg-bp17vs63txqxbd****", //Set the source security group
+// "PortRange":"22/22",
+// "IpProtocol":"TCP",
+// "Policy":"Drop"
+// },{
+// "SourcePrefixListId":"pl-x1j1k5ykzqlixdcy****", //Set the source prefix list
+// "PortRange":"22/22",
+// "IpProtocol":"TCP",
+// "Policy":"Drop"
+// }
+// ]
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L2221
+func (c *Client) AuthorizeSecurityGroup(ctx context.Context, input *AuthorizeSecurityGroupInput, optFns ...func(*Options)) (*AuthorizeSecurityGroupOutput, error) {
+	out, meta, err := invoke[AuthorizeSecurityGroupInput, AuthorizeSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AuthorizeSecurityGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// AuthorizeSecurityGroupEgressAPI is the minimal interface for AuthorizeSecurityGroupEgress mocks and capability adapters.
+type AuthorizeSecurityGroupEgressAPI interface {
+	// AuthorizeSecurityGroupEgress invokes the native action with owned inputs and per-call options.
+	AuthorizeSecurityGroupEgress(context.Context, *AuthorizeSecurityGroupEgressInput, ...func(*Options)) (*AuthorizeSecurityGroupEgressOutput, error)
+}
+
+// AuthorizeSecurityGroupEgress calls the native AuthorizeSecurityGroupEgress action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Adds one or more outbound rules to a security group. This operation allows you to specify outbound access permissions for a security group to allow or deny instances in the security group from sending outbound traffic to other devices, enabling fine-grained control over network access.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L2560
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Before you begin
+// - Quantity limit: The total number of rules (including both inbound rules and outbound rules) across all security groups associated with a single network interface controller (NIC) cannot exceed 1,000. For more information, refer to Security group limits (link omitted).
+// - Priority settings: The priority (Priority) of outbound rule ranges from 1 to 100. A smaller number indicates a higher priority. When two rules have the same priority, the deny (drop) rule takes precedence.
+// Before you begin
+// If the specified security group rule already exists, the call succeeds but no rule is added.
+// How rules are determined
+// The following parameters are required to define an outbound rule:
+// - Destination settings: Specify one of the following: DestCidrIp (IPv4 address), Ipv6DestCidrIp (IPv6 address), DestPrefixListId (prefix list ID), or DestGroupId (destination security group).
+// - Destination port range: PortRange.
+// - Protocol type: IpProtocol.
+// - Authorization policy: Policy.
+// > Advanced security groups do not support authorization to other security groups. Custom security groups support a maximum of 20 authorized security groups.
+// Request examples
+// The following examples show how to add outbound rules with different destinations to a security group in the China (Hangzhou) region:
+// - Add access permissions for a specified IP address range.
+//
+// "RegionId":"ap-southeast-1",  // Specify the region.
+// "SecurityGroupId":"sg-bp17vs63txqxbds9***", // Specify the security group.
+// "Permissions":[
+// {
+// "DestCidrIp":"10.0.0.0/8", // Specify the destination IPv4 address.
+// "PortRange":"-1/-1", // Specify the port range.
+// "IpProtocol":"ICMP", // Specify the protocol type.
+// "Policy":"Accept" // Specify the access policy.
+// }
+// ]
+//
+// - Add access permissions for another security group and a prefix list.
+//
+// "RegionId":"ap-southeast-1",
+// "SecurityGroupId":"sg-bp17vs63txqxbds9***",
+// "Permissions":[
+// {
+// "DestGroupId":"sg-bp67acfmxazb4pi***", // Specify the destination security group.
+// "PortRange":"22/22",
+// "IpProtocol":"TCP",
+// "Policy":"Drop"
+// },{
+// "DestPrefixListId":"pl-x1j1k5ykzqlixdcy****", // Specify the destination prefix list.
+// "PortRange":"22/22",
+// "IpProtocol":"TCP",
+// "Policy":"Drop"
+// }
+// ]
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L2560
+func (c *Client) AuthorizeSecurityGroupEgress(ctx context.Context, input *AuthorizeSecurityGroupEgressInput, optFns ...func(*Options)) (*AuthorizeSecurityGroupEgressOutput, error) {
+	out, meta, err := invoke[AuthorizeSecurityGroupEgressInput, AuthorizeSecurityGroupEgressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "AuthorizeSecurityGroupEgress", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // CancelAutoSnapshotPolicyAPI is the minimal interface for CancelAutoSnapshotPolicy mocks and capability adapters.
 type CancelAutoSnapshotPolicyAPI interface {
 	// CancelAutoSnapshotPolicy invokes the native action with owned inputs and per-call options.
@@ -496,6 +786,37 @@ func (c *Client) CancelCopyImage(ctx context.Context, input *CancelCopyImageInpu
 	return out, nil
 }
 
+// CancelImagePipelineExecutionAPI is the minimal interface for CancelImagePipelineExecution mocks and capability adapters.
+type CancelImagePipelineExecutionAPI interface {
+	// CancelImagePipelineExecution invokes the native action with owned inputs and per-call options.
+	CancelImagePipelineExecution(context.Context, *CancelImagePipelineExecutionInput, ...func(*Options)) (*CancelImagePipelineExecutionOutput, error)
+}
+
+// CancelImagePipelineExecution calls the native CancelImagePipelineExecution action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Cancels an image building task.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L2969
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Before you call this operation, make sure that the image building task you want to cancel is in the PREPARING, REPAIRING, or BUILDING state.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L2969
+func (c *Client) CancelImagePipelineExecution(ctx context.Context, input *CancelImagePipelineExecutionInput, optFns ...func(*Options)) (*CancelImagePipelineExecutionOutput, error) {
+	out, meta, err := invoke[CancelImagePipelineExecutionInput, CancelImagePipelineExecutionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelImagePipelineExecution", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // CancelPhysicalConnectionAPI is the minimal interface for CancelPhysicalConnection mocks and capability adapters.
 type CancelPhysicalConnectionAPI interface {
 	// CancelPhysicalConnection invokes the native action with owned inputs and per-call options.
@@ -514,6 +835,31 @@ type CancelPhysicalConnectionAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3056
 func (c *Client) CancelPhysicalConnection(ctx context.Context, input *CancelPhysicalConnectionInput, optFns ...func(*Options)) (*CancelPhysicalConnectionOutput, error) {
 	out, meta, err := invoke[CancelPhysicalConnectionInput, CancelPhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelPhysicalConnection", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CancelSimulatedSystemEventsAPI is the minimal interface for CancelSimulatedSystemEvents mocks and capability adapters.
+type CancelSimulatedSystemEventsAPI interface {
+	// CancelSimulatedSystemEvents invokes the native action with owned inputs and per-call options.
+	CancelSimulatedSystemEvents(context.Context, *CancelSimulatedSystemEventsInput, ...func(*Options)) (*CancelSimulatedSystemEventsOutput, error)
+}
+
+// CancelSimulatedSystemEvents calls the native CancelSimulatedSystemEvents action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Cancels one or more simulated system events that are in the Scheduled or Executing state. After a system event is canceled, the simulated event enters the Canceled state.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L3147
+func (c *Client) CancelSimulatedSystemEvents(ctx context.Context, input *CancelSimulatedSystemEventsInput, optFns ...func(*Options)) (*CancelSimulatedSystemEventsOutput, error) {
+	out, meta, err := invoke[CancelSimulatedSystemEventsInput, CancelSimulatedSystemEventsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CancelSimulatedSystemEvents", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -731,6 +1077,84 @@ func (c *Client) CopySnapshot(ctx context.Context, input *CopySnapshotInput, opt
 	return out, nil
 }
 
+// CreateActivationAPI is the minimal interface for CreateActivation mocks and capability adapters.
+type CreateActivationAPI interface {
+	// CreateActivation invokes the native action with owned inputs and per-call options.
+	CreateActivation(context.Context, *CreateActivationInput, ...func(*Options)) (*CreateActivationOutput, error)
+}
+
+// CreateActivation calls the native CreateActivation action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates an activation code that is used to register non-Alibaba Cloud servers as Alibaba Cloud managed instances.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L4049
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// After you use an activation code to register a non-Alibaba Cloud server as an Alibaba Cloud managed instance, you can use various online services provided by Alibaba Cloud in the managed instance, such as Cloud Assistant, operations management, and Alibaba Cloud DevOps.
+// The operating system of the non-Elastic Compute Service server must meet the following version requirements, and the server must have Internet access before it can be registered as an Alibaba Cloud managed instance.
+// - Alibaba Cloud Linux 2/3 and later
+// - CentOS 6/7/8 and later
+// - Debian 8/9/10 and later
+// - Ubuntu 12/14/16/18 and later
+// - CoreOS
+// - OpenSUSE
+// - RedHat 5/6/7 and later
+// - SUSE Linux Enterprise Server 11/12/15 and later
+// - Window Server 2012/2016/2019 and later
+// In a single Alibaba Cloud region, you can have up to 10 managed instance activation codes. Each activation code can be used to activate up to 10 instances. The maximum validity period of a single activation code is 4 hours.
+// > On the ECS Cloud Assistant page, click the Managed Instances tab, and then click Register New Instance to view the usage data of activation codes.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L4049
+func (c *Client) CreateActivation(ctx context.Context, input *CreateActivationInput, optFns ...func(*Options)) (*CreateActivationOutput, error) {
+	out, meta, err := invoke[CreateActivationInput, CreateActivationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateActivation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateAutoProvisioningGroupAPI is the minimal interface for CreateAutoProvisioningGroup mocks and capability adapters.
+type CreateAutoProvisioningGroupAPI interface {
+	// CreateAutoProvisioningGroup invokes the native action with owned inputs and per-call options.
+	CreateAutoProvisioningGroup(context.Context, *CreateAutoProvisioningGroupInput, ...func(*Options)) (*CreateAutoProvisioningGroupOutput, error)
+}
+
+// CreateAutoProvisioningGroup calls the native CreateAutoProvisioningGroup action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates an auto provisioning group.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L5275
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - Auto provisioning is a solution that uses spot instances and pay-as-you-go instances to quickly deploy instance clusters. It supports one-click deployment of instance clusters across billing methods, zones, and instance families. For more information, see Use the auto provisioning group API to create ECS instances in batches (https://help.aliyun.com/document_detail/200772.html).
+// - Auto provisioning uses provisioning groups to schedule and maintain compute resources. You can use auto provisioning groups to provide stable computing power and mitigate the instability caused by the revoke mechanism of spot instances.
+// - Auto provisioning is a free feature, but you are charged for the instance resources created by auto provisioning groups. For more information, see Spot instance billing (https://help.aliyun.com/document_detail/52088.html) and Pay-as-you-go (https://help.aliyun.com/document_detail/40653.html).
+// - If you specify both a launch template (LaunchTemplateId) and launch configuration information (LaunchConfiguration.*), the launch template takes precedence.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L5275
+func (c *Client) CreateAutoProvisioningGroup(ctx context.Context, input *CreateAutoProvisioningGroupInput, optFns ...func(*Options)) (*CreateAutoProvisioningGroupOutput, error) {
+	out, meta, err := invoke[CreateAutoProvisioningGroupInput, CreateAutoProvisioningGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateAutoProvisioningGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // CreateAutoSnapshotPolicyAPI is the minimal interface for CreateAutoSnapshotPolicy mocks and capability adapters.
 type CreateAutoSnapshotPolicyAPI interface {
 	// CreateAutoSnapshotPolicy invokes the native action with owned inputs and per-call options.
@@ -797,6 +1221,50 @@ type CreateCapacityReservationAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L5714
 func (c *Client) CreateCapacityReservation(ctx context.Context, input *CreateCapacityReservationInput, optFns ...func(*Options)) (*CreateCapacityReservationOutput, error) {
 	out, meta, err := invoke[CreateCapacityReservationInput, CreateCapacityReservationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateCapacityReservation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateCommandAPI is the minimal interface for CreateCommand mocks and capability adapters.
+type CreateCommandAPI interface {
+	// CreateCommand invokes the native action with owned inputs and per-call options.
+	CreateCommand(context.Context, *CreateCommandInput, ...func(*Options)) (*CreateCommandOutput, error)
+}
+
+// CreateCommand calls the native CreateCommand action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates a Cloud Assistant command of the Shell, PowerShell, or Bat script type.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L5919
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// - You can create the following types of commands:
+// - Bat scripts for Windows instances (RunBatScript).
+// - PowerShell scripts for Windows instances (RunPowerShellScript).
+// - Shell scripts for Linux instances (RunShellScript).
+// - You can specify the Timeout parameter to set the maximum timeout period for command execution on ECS instances. If the command times out, Cloud Assistant Agent (https://help.aliyun.com/document_detail/64921.html) forcefully terminates the command process by canceling the PID of the command.
+// - For a one-time execution, after the command times out, the execution status (InvokeRecordStatus (https://help.aliyun.com/document_detail/64845.html)) of the command on the specified ECS instance changes to Failed.
+// - For a scheduled execution:
+// - The timeout period takes effect for each execution record.
+// - After a specific execution times out, the status (InvokeRecordStatus (https://help.aliyun.com/document_detail/64845.html)) of the execution record changes to Failed.
+// - The timeout of a previous execution does not affect the next execution.
+// - You can retain up to 500 to 50,000 Cloud Assistant commands in a region. You can also request a quota increase. For information about how to query and increase quotas, see Quota management (https://help.aliyun.com/document_detail/184116.html).
+// - You can specify the WorkingDir parameter to set the execution path of the command. For Linux instances, the default path is the home directory of the root user, which is /root. For Windows instances, the default path is the directory where the Cloud Assistant Agent process is located, such as C:\\Windows\\System32.
+// - You can specify EnableParameter=true to enable the custom parameter feature. When you set CommandContent, you can define custom parameters in the {{parameter}} format and pass in custom parameter key-value pairs when you run the command by calling InvokeCommand (https://help.aliyun.com/document_detail/64841.html). For example, if you create the command echo {{name}} and pass in the key-value pair <name, Jack> by using the Parameters parameter when you call InvokeCommand, the custom parameter is automatically replaced. A new command echo Jack is generated and run on the instance.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L5919
+func (c *Client) CreateCommand(ctx context.Context, input *CreateCommandInput, optFns ...func(*Options)) (*CreateCommandOutput, error) {
+	out, meta, err := invoke[CreateCommandInput, CreateCommandOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateCommand", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -872,6 +1340,31 @@ type CreateDiagnosticMetricSetAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L6317
 func (c *Client) CreateDiagnosticMetricSet(ctx context.Context, input *CreateDiagnosticMetricSetInput, optFns ...func(*Options)) (*CreateDiagnosticMetricSetOutput, error) {
 	out, meta, err := invoke[CreateDiagnosticMetricSetInput, CreateDiagnosticMetricSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDiagnosticMetricSet", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateDiagnosticReportAPI is the minimal interface for CreateDiagnosticReport mocks and capability adapters.
+type CreateDiagnosticReportAPI interface {
+	// CreateDiagnosticReport invokes the native action with owned inputs and per-call options.
+	CreateDiagnosticReport(context.Context, *CreateDiagnosticReportInput, ...func(*Options)) (*CreateDiagnosticReportOutput, error)
+}
+
+// CreateDiagnosticReport calls the native CreateDiagnosticReport action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates a resource diagnostic report. Based on the diagnostic metric set ID that you specify, a diagnostic report is generated for multiple diagnostic metrics. You can call DescribeDiagnosticReportAttributes with the returned diagnostic report ID to query the details of the resource diagnostic report.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L6407
+func (c *Client) CreateDiagnosticReport(ctx context.Context, input *CreateDiagnosticReportInput, optFns ...func(*Options)) (*CreateDiagnosticReportOutput, error) {
+	out, meta, err := invoke[CreateDiagnosticReportInput, CreateDiagnosticReportOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateDiagnosticReport", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1001,6 +1494,31 @@ func (c *Client) CreateHaVip(ctx context.Context, input *CreateHaVipInput, optFn
 	return out, nil
 }
 
+// CreateHpcClusterAPI is the minimal interface for CreateHpcCluster mocks and capability adapters.
+type CreateHpcClusterAPI interface {
+	// CreateHpcCluster invokes the native action with owned inputs and per-call options.
+	CreateHpcCluster(context.Context, *CreateHpcClusterInput, ...func(*Options)) (*CreateHpcClusterOutput, error)
+}
+
+// CreateHpcCluster calls the native CreateHpcCluster action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates an HPC cluster.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7207
+func (c *Client) CreateHpcCluster(ctx context.Context, input *CreateHpcClusterInput, optFns ...func(*Options)) (*CreateHpcClusterOutput, error) {
+	out, meta, err := invoke[CreateHpcClusterInput, CreateHpcClusterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateHpcCluster", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // CreateImageAPI is the minimal interface for CreateImage mocks and capability adapters.
 type CreateImageAPI interface {
 	// CreateImage invokes the native action with owned inputs and per-call options.
@@ -1040,6 +1558,81 @@ type CreateImageAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7398
 func (c *Client) CreateImage(ctx context.Context, input *CreateImageInput, optFns ...func(*Options)) (*CreateImageOutput, error) {
 	out, meta, err := invoke[CreateImageInput, CreateImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateImage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateImageComponentAPI is the minimal interface for CreateImageComponent mocks and capability adapters.
+type CreateImageComponentAPI interface {
+	// CreateImageComponent invokes the native action with owned inputs and per-call options.
+	CreateImageComponent(context.Context, *CreateImageComponentInput, ...func(*Options)) (*CreateImageComponentOutput, error)
+}
+
+// CreateImageComponent calls the native CreateImageComponent action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates an image component. Image components are used to store commonly used build template commands for image building.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7592
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// Before you create an image component, take note of the following items:
+// - You can create only custom image components.
+// - Component version numbers must be unique for components with the same name. When you use a component in a template, you can reference it by name and version number.
+// - The content size of an image component cannot exceed 16 KB. For details about supported commands, see Commands supported by Image Builder (https://help.aliyun.com/document_detail/200206.html).
+// For more information, see Image Builder overview (https://help.aliyun.com/document_detail/197410.html).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7592
+func (c *Client) CreateImageComponent(ctx context.Context, input *CreateImageComponentInput, optFns ...func(*Options)) (*CreateImageComponentOutput, error) {
+	out, meta, err := invoke[CreateImageComponentInput, CreateImageComponentOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateImageComponent", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateImagePipelineAPI is the minimal interface for CreateImagePipeline mocks and capability adapters.
+type CreateImagePipelineAPI interface {
+	// CreateImagePipeline invokes the native action with owned inputs and per-call options.
+	CreateImagePipeline(context.Context, *CreateImagePipelineInput, ...func(*Options)) (*CreateImagePipelineOutput, error)
+}
+
+// CreateImagePipeline calls the native CreateImagePipeline action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates an image template. Image templates can be used to build images.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7989
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// You can use image templates to customize image content and build images cross-region and cross-account. Before you create an image template, take note of the following items:
+// - You can create only custom image templates.
+// - Only public images, custom images, shared images, or image families can be used as source images for building.
+// - When you build an image by using an image template, multiple intermediate instances are created to assist in the image building process. Intermediate instances are ECS instances that use the pay-as-you-go billing method, and fees are incurred. For more information, see Pay-as-you-go (https://help.aliyun.com/document_detail/40653.html).
+// Take note of the following items about the build template content BuildContent:
+// - The FROM command is deprecated. Regardless of whether the FROM command is set in the BuildContent parameter, the system selects the source image based on the source image type BaseImageType and source image BaseImage.
+// - The content size of an image template cannot exceed 16 KB. For details about supported commands, see Commands supported by Image Builder (https://help.aliyun.com/document_detail/200206.html).
+// For more information, see Overview of Image Builder (https://help.aliyun.com/document_detail/197410.html).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L7989
+func (c *Client) CreateImagePipeline(ctx context.Context, input *CreateImagePipelineInput, optFns ...func(*Options)) (*CreateImagePipelineOutput, error) {
+	out, meta, err := invoke[CreateImagePipelineInput, CreateImagePipelineOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateImagePipeline", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1132,6 +1725,74 @@ func (c *Client) CreateKeyPair(ctx context.Context, input *CreateKeyPairInput, o
 	return out, nil
 }
 
+// CreateLaunchTemplateAPI is the minimal interface for CreateLaunchTemplate mocks and capability adapters.
+type CreateLaunchTemplateAPI interface {
+	// CreateLaunchTemplate invokes the native action with owned inputs and per-call options.
+	CreateLaunchTemplate(context.Context, *CreateLaunchTemplateInput, ...func(*Options)) (*CreateLaunchTemplateOutput, error)
+}
+
+// CreateLaunchTemplate calls the native CreateLaunchTemplate action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates an ECS instance launch template. A launch template eliminates the need to configure a large number of parameters every time you create an instance.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L9275
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// After you call CreateLaunchTemplate to create a template, a default version with version number 1 is automatically generated. You can then create multiple versions based on this template (CreateLaunchTemplateVersion), with version numbers incrementing sequentially from 1. If you do not specify a template version when creating instances (RunInstances (https://help.aliyun.com/document_detail/63440.html)), the default version is used.
+// A launch template version contains the configurations used to create instances, such as the region, image ID, instance type, security group ID, and public bandwidth. If a specific instance configuration is not specified in the version, you must specify it when creating instances.
+// When you call this operation, take note of the following items:
+// -   Each account can create up to 30 launch templates per region, and each template can have up to 30 versions.
+// -   Most parameters in a launch template are optional. When you create a template, Alibaba Cloud does not verify the existence or validity of the parameter values. The validity of parameter values is verified only when you actually create instances.
+// -   If a specific configuration is set in the launch template, it cannot be filtered out when you create instances (RunInstances (https://help.aliyun.com/document_detail/63440.html)). For example, if the template sets HostName=LocalHost and the HostName value is left empty in RunInstances, the hostname of the instance is still LocalHost. To override the HostName=LocalHost configuration, set HostName=MyHost or another value in RunInstances.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L9275
+func (c *Client) CreateLaunchTemplate(ctx context.Context, input *CreateLaunchTemplateInput, optFns ...func(*Options)) (*CreateLaunchTemplateOutput, error) {
+	out, meta, err := invoke[CreateLaunchTemplateInput, CreateLaunchTemplateOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateLaunchTemplate", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateLaunchTemplateVersionAPI is the minimal interface for CreateLaunchTemplateVersion mocks and capability adapters.
+type CreateLaunchTemplateVersionAPI interface {
+	// CreateLaunchTemplateVersion invokes the native action with owned inputs and per-call options.
+	CreateLaunchTemplateVersion(context.Context, *CreateLaunchTemplateVersionInput, ...func(*Options)) (*CreateLaunchTemplateVersionOutput, error)
+}
+
+// CreateLaunchTemplateVersion calls the native CreateLaunchTemplateVersion action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates a new version of a specified ECS launch template for subsequent creation of ECS instances, elastic scaling groups, or auto provisioning groups.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L9869
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// To modify the parameters of a specific version, create a new template version. Each instance launch template supports a maximum of 30 versions.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L9869
+func (c *Client) CreateLaunchTemplateVersion(ctx context.Context, input *CreateLaunchTemplateVersionInput, optFns ...func(*Options)) (*CreateLaunchTemplateVersionOutput, error) {
+	out, meta, err := invoke[CreateLaunchTemplateVersionInput, CreateLaunchTemplateVersionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateLaunchTemplateVersion", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // CreateNatGatewayAPI is the minimal interface for CreateNatGateway mocks and capability adapters.
 type CreateNatGatewayAPI interface {
 	// CreateNatGateway invokes the native action with owned inputs and per-call options.
@@ -1157,6 +1818,196 @@ func (c *Client) CreateNatGateway(ctx context.Context, input *CreateNatGatewayIn
 	return out, nil
 }
 
+// CreateNetworkInterfaceAPI is the minimal interface for CreateNetworkInterface mocks and capability adapters.
+type CreateNetworkInterfaceAPI interface {
+	// CreateNetworkInterface invokes the native action with owned inputs and per-call options.
+	CreateNetworkInterface(context.Context, *CreateNetworkInterfaceInput, ...func(*Options)) (*CreateNetworkInterfaceOutput, error)
+}
+
+// CreateNetworkInterface calls the native CreateNetworkInterface action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates an Elastic Network Interface (ENI) with support for specifying a primary private IP address.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10450
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Take note of the following items when you invoke this operation:
+// - This is a synchronous operation. The newly created Elastic Network Interface (ENI) is in the active (Available) state and can be attached immediately.
+// - If NetworkInterfaceId is empty in the response, try to create the ENI again.
+// - An ENI can be attached only to a single instance in a virtual private cloud (VPC).
+// - When an ENI is reattached to another instance, its properties remain unchanged and network traffic is redirected to the new instance.
+// - When you create an ENI, you can allocate up to 49 secondary private IP addresses by invoking this operation.
+// - When you create an ENI, if you want to configure IPv6 addresses, make sure that IPv6 is enabled for the specified vSwitch. For more information, see What is IPv6 Gateway? (https://help.aliyun.com/document_detail/98896.html).
+// - The number of ENIs that can be created per account in a region is limited. You can view resource quotas in the ECS console. For more information, see View and increase resource quotas (https://help.aliyun.com/document_detail/184115.html).
+// Request examples
+//
+// Create an Elastic Network Interface (ENI)
+//
+// RegionId:  cn-hangzhou,   //Set the China (Hangzhou) region.
+// SecurityGroupId:  sg-bp10jztp6b0sdsyl****,   //Set the security group ID.
+// VSwitchId:  vsw-bp19wo63nleroq22g****,   //Set the vSwitch ID.
+//
+// # Create an Elastic Network Interface (ENI) and specify a primary private IP address
+//
+// RegionId:  cn-hangzhou,   //China (Hangzhou) region.
+// SecurityGroupId:  sg-bp10jztp6b0sdsyl****,   //Security group ID.
+// VSwitchId:  vsw-bp19wo63nleroq22g****,   //vSwitch ID.
+// PrimaryIpAddress:  192.168.0.*,   //Primary private IP address.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10450
+func (c *Client) CreateNetworkInterface(ctx context.Context, input *CreateNetworkInterfaceInput, optFns ...func(*Options)) (*CreateNetworkInterfaceOutput, error) {
+	out, meta, err := invoke[CreateNetworkInterfaceInput, CreateNetworkInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateNetworkInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateNetworkInterfacePermissionAPI is the minimal interface for CreateNetworkInterfacePermission mocks and capability adapters.
+type CreateNetworkInterfacePermissionAPI interface {
+	// CreateNetworkInterfacePermission invokes the native action with owned inputs and per-call options.
+	CreateNetworkInterfacePermission(context.Context, *CreateNetworkInterfacePermissionInput, ...func(*Options)) (*CreateNetworkInterfacePermissionOutput, error)
+}
+
+// CreateNetworkInterfacePermission calls the native CreateNetworkInterfacePermission action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Grants Elastic Network Interface (ENI) permissions to an Alibaba Cloud partner (certified ISV) or an individual user.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10697
+func (c *Client) CreateNetworkInterfacePermission(ctx context.Context, input *CreateNetworkInterfacePermissionInput, optFns ...func(*Options)) (*CreateNetworkInterfacePermissionOutput, error) {
+	out, meta, err := invoke[CreateNetworkInterfacePermissionInput, CreateNetworkInterfacePermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateNetworkInterfacePermission", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreatePhysicalConnectionAPI is the minimal interface for CreatePhysicalConnection mocks and capability adapters.
+type CreatePhysicalConnectionAPI interface {
+	// CreatePhysicalConnection invokes the native action with owned inputs and per-call options.
+	CreatePhysicalConnection(context.Context, *CreatePhysicalConnectionInput, ...func(*Options)) (*CreatePhysicalConnectionOutput, error)
+}
+
+// CreatePhysicalConnection calls the native CreatePhysicalConnection action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// CreatePhysicalConnection.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10793
+func (c *Client) CreatePhysicalConnection(ctx context.Context, input *CreatePhysicalConnectionInput, optFns ...func(*Options)) (*CreatePhysicalConnectionOutput, error) {
+	out, meta, err := invoke[CreatePhysicalConnectionInput, CreatePhysicalConnectionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreatePhysicalConnection", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreatePlanMaintenanceWindowAPI is the minimal interface for CreatePlanMaintenanceWindow mocks and capability adapters.
+type CreatePlanMaintenanceWindowAPI interface {
+	// CreatePlanMaintenanceWindow invokes the native action with owned inputs and per-call options.
+	CreatePlanMaintenanceWindow(context.Context, *CreatePlanMaintenanceWindowInput, ...func(*Options)) (*CreatePlanMaintenanceWindowOutput, error)
+}
+
+// CreatePlanMaintenanceWindow calls the native CreatePlanMaintenanceWindow action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates an O&M window. When the TargetResource parameter of the O&M window is set to associate with ECS instances and a hardware risk is detected at the underlying layer that requires scheduled O&M to mitigate, the execution time of the scheduled O&M is determined based on the time range specified by the TimePeriod parameter. When the execution time of the O&M event is reached, the platform automatically performs the corresponding O&M operation based on the event type.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L10982
+func (c *Client) CreatePlanMaintenanceWindow(ctx context.Context, input *CreatePlanMaintenanceWindowInput, optFns ...func(*Options)) (*CreatePlanMaintenanceWindowOutput, error) {
+	out, meta, err := invoke[CreatePlanMaintenanceWindowInput, CreatePlanMaintenanceWindowOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreatePlanMaintenanceWindow", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreatePortRangeListAPI is the minimal interface for CreatePortRangeList mocks and capability adapters.
+type CreatePortRangeListAPI interface {
+	// CreatePortRangeList invokes the native action with owned inputs and per-call options.
+	CreatePortRangeList(context.Context, *CreatePortRangeListInput, ...func(*Options)) (*CreatePortRangeListOutput, error)
+}
+
+// CreatePortRangeList calls the native CreatePortRangeList action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates a port list that can be associated with resources such as security groups.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11101
+func (c *Client) CreatePortRangeList(ctx context.Context, input *CreatePortRangeListInput, optFns ...func(*Options)) (*CreatePortRangeListOutput, error) {
+	out, meta, err := invoke[CreatePortRangeListInput, CreatePortRangeListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreatePortRangeList", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreatePrefixListAPI is the minimal interface for CreatePrefixList mocks and capability adapters.
+type CreatePrefixListAPI interface {
+	// CreatePrefixList invokes the native action with owned inputs and per-call options.
+	CreatePrefixList(context.Context, *CreatePrefixListInput, ...func(*Options)) (*CreatePrefixListOutput, error)
+}
+
+// CreatePrefixList calls the native CreatePrefixList action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates a prefix list.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11245
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// (link omitted)Usage notes
+// - A prefix list is a collection of network prefixes (CIDR blocks) and can be referenced to configure network rules for other resources. For more information, see Overview (https://help.aliyun.com/document_detail/206223.html).
+// - When you create a prefix list, take note of the following items:
+// - You must specify an IP address family (IPv4 or IPv6) for the prefix list, and cannot change the IP address family after the prefix list is created. You cannot combine IPv4 and IPv6 CIDR blocks in a single prefix list.
+// - You must specify the maximum number of entries that the prefix list can contain. You cannot modify the maximum number of entries after the prefix list is created.
+// - You can specify entries for the prefix list. Each entry consists of a CIDR block and the description for the CIDR block. The total number of entries cannot exceed the maximum number of entries that you specified.
+// - For more information about the limits on prefix lists and other resources, see Limits (https://help.aliyun.com/document_detail/25412.html).
+// - You can create Resource Access Management (RAM) users and grant them minimum permissions. This eliminates the need to share the AccessKey pair of your Alibaba Cloud account with other users and reduces security risks for your enterprises. For information about how to grant permissions on prefix lists to RAM users, see Grant a RAM user permissions on prefix lists (https://help.aliyun.com/document_detail/206175.html)
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11245
+func (c *Client) CreatePrefixList(ctx context.Context, input *CreatePrefixListInput, optFns ...func(*Options)) (*CreatePrefixListOutput, error) {
+	out, meta, err := invoke[CreatePrefixListInput, CreatePrefixListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreatePrefixList", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // CreateRouteEntryAPI is the minimal interface for CreateRouteEntry mocks and capability adapters.
 type CreateRouteEntryAPI interface {
 	// CreateRouteEntry invokes the native action with owned inputs and per-call options.
@@ -1175,6 +2026,31 @@ type CreateRouteEntryAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11372
 func (c *Client) CreateRouteEntry(ctx context.Context, input *CreateRouteEntryInput, optFns ...func(*Options)) (*CreateRouteEntryOutput, error) {
 	out, meta, err := invoke[CreateRouteEntryInput, CreateRouteEntryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateRouteEntry", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateRouterInterfaceAPI is the minimal interface for CreateRouterInterface mocks and capability adapters.
+type CreateRouterInterfaceAPI interface {
+	// CreateRouterInterface invokes the native action with owned inputs and per-call options.
+	CreateRouterInterface(context.Context, *CreateRouterInterfaceInput, ...func(*Options)) (*CreateRouterInterfaceOutput, error)
+}
+
+// CreateRouterInterface calls the native CreateRouterInterface action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// CreateRouterInterface.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11490
+func (c *Client) CreateRouterInterface(ctx context.Context, input *CreateRouterInterfaceInput, optFns ...func(*Options)) (*CreateRouterInterfaceOutput, error) {
+	out, meta, err := invoke[CreateRouterInterfaceInput, CreateRouterInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateRouterInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1228,6 +2104,47 @@ type CreateSecurityGroupAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11753
 func (c *Client) CreateSecurityGroup(ctx context.Context, input *CreateSecurityGroupInput, optFns ...func(*Options)) (*CreateSecurityGroupOutput, error) {
 	out, meta, err := invoke[CreateSecurityGroupInput, CreateSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSecurityGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// CreateSimulatedSystemEventsAPI is the minimal interface for CreateSimulatedSystemEvents mocks and capability adapters.
+type CreateSimulatedSystemEventsAPI interface {
+	// CreateSimulatedSystemEvents invokes the native action with owned inputs and per-call options.
+	CreateSimulatedSystemEvents(context.Context, *CreateSimulatedSystemEventsInput, ...func(*Options)) (*CreateSimulatedSystemEventsOutput, error)
+}
+
+// CreateSimulatedSystemEvents calls the native CreateSimulatedSystemEvents action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Schedules simulated system events for one or more ECS instances. Simulated system events serve as event drills and do not actually execute events or affect ECS instances.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11884
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// After you schedule a simulated event, you can view the scheduled simulated system events in the ECS console, by invoking ECS API (https://help.aliyun.com/document_detail/63962.html) operations, or by using CloudMonitor monitoring.
+// The following table describes the lifecycle of a simulated system event:
+// - Scheduled: After you schedule a simulated system event, the event automatic switchover to the Scheduled state.
+// - Executed: Without manual intervention, the simulated system event automatically enters the Executed state at the specified time (NotBefore).
+// - Canceled: After you invoke CancelSimulatedSystemEvents (https://help.aliyun.com/document_detail/88808.html) to cancel the simulated system event, the event enters the Canceled state.
+// - Avoided: For a simulated system event of the SystemMaintenance.Reboot type, you can restart the instance (https://help.aliyun.com/document_detail/25502.html) before the specified time to change the event to the Avoided state.
+// Take note of the following items when you set TriggerRealOps to true:
+// - >Warning: The system will actually stop or release the instance, which may cause data loss. Test with caution or use instances that do not run workloads.
+// - EventType supports only SystemMaintenance.Reboot, SystemMaintenance.Redeploy, SystemMaintenance.Stop, InstanceFailure.Reboot, SystemFailure.Reboot, and Instance:PreemptibleInstanceInterruption.
+// - When EventType is set to SystemMaintenance.Redeploy, the NotBefore parameter is invalid. The execution time of the event is automatically generated by the system.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11884
+func (c *Client) CreateSimulatedSystemEvents(ctx context.Context, input *CreateSimulatedSystemEventsInput, optFns ...func(*Options)) (*CreateSimulatedSystemEventsOutput, error) {
+	out, meta, err := invoke[CreateSimulatedSystemEventsInput, CreateSimulatedSystemEventsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSimulatedSystemEvents", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1371,6 +2288,31 @@ func (c *Client) CreateVSwitch(ctx context.Context, input *CreateVSwitchInput, o
 	return out, nil
 }
 
+// CreateVirtualBorderRouterAPI is the minimal interface for CreateVirtualBorderRouter mocks and capability adapters.
+type CreateVirtualBorderRouterAPI interface {
+	// CreateVirtualBorderRouter invokes the native action with owned inputs and per-call options.
+	CreateVirtualBorderRouter(context.Context, *CreateVirtualBorderRouterInput, ...func(*Options)) (*CreateVirtualBorderRouterOutput, error)
+}
+
+// CreateVirtualBorderRouter calls the native CreateVirtualBorderRouter action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates a virtual border router (VBR).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12566
+func (c *Client) CreateVirtualBorderRouter(ctx context.Context, input *CreateVirtualBorderRouterInput, optFns ...func(*Options)) (*CreateVirtualBorderRouterOutput, error) {
+	out, meta, err := invoke[CreateVirtualBorderRouterInput, CreateVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateVirtualBorderRouter", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // CreateVpcAPI is the minimal interface for CreateVpc mocks and capability adapters.
 type CreateVpcAPI interface {
 	// CreateVpc invokes the native action with owned inputs and per-call options.
@@ -1453,6 +2395,38 @@ func (c *Client) DeactivateRouterInterface(ctx context.Context, input *Deactivat
 	return out, nil
 }
 
+// DeleteActivationAPI is the minimal interface for DeleteActivation mocks and capability adapters.
+type DeleteActivationAPI interface {
+	// DeleteActivation invokes the native action with owned inputs and per-call options.
+	DeleteActivation(context.Context, *DeleteActivationInput, ...func(*Options)) (*DeleteActivationOutput, error)
+}
+
+// DeleteActivation calls the native DeleteActivation action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes an unused activation code.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12995
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// The activation code must be unused, meaning that the number of managed instances registered with the activation code is 0.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12995
+func (c *Client) DeleteActivation(ctx context.Context, input *DeleteActivationInput, optFns ...func(*Options)) (*DeleteActivationOutput, error) {
+	out, meta, err := invoke[DeleteActivationInput, DeleteActivationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteActivation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DeleteAutoProvisioningGroupAPI is the minimal interface for DeleteAutoProvisioningGroup mocks and capability adapters.
 type DeleteAutoProvisioningGroupAPI interface {
 	// DeleteAutoProvisioningGroup invokes the native action with owned inputs and per-call options.
@@ -1521,6 +2495,31 @@ type DeleteBandwidthPackageAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13242
 func (c *Client) DeleteBandwidthPackage(ctx context.Context, input *DeleteBandwidthPackageInput, optFns ...func(*Options)) (*DeleteBandwidthPackageOutput, error) {
 	out, meta, err := invoke[DeleteBandwidthPackageInput, DeleteBandwidthPackageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteBandwidthPackage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DeleteCommandAPI is the minimal interface for DeleteCommand mocks and capability adapters.
+type DeleteCommandAPI interface {
+	// DeleteCommand invokes the native action with owned inputs and per-call options.
+	DeleteCommand(context.Context, *DeleteCommandInput, ...func(*Options)) (*DeleteCommandOutput, error)
+}
+
+// DeleteCommand calls the native DeleteCommand action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes a Cloud Assistant command by specifying the RegionId and CommandId parameters. A command that is being executed cannot be deleted.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13321
+func (c *Client) DeleteCommand(ctx context.Context, input *DeleteCommandInput, optFns ...func(*Options)) (*DeleteCommandOutput, error) {
+	out, meta, err := invoke[DeleteCommandInput, DeleteCommandOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteCommand", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1725,6 +2724,31 @@ func (c *Client) DeleteHaVip(ctx context.Context, input *DeleteHaVipInput, optFn
 	return out, nil
 }
 
+// DeleteHpcClusterAPI is the minimal interface for DeleteHpcCluster mocks and capability adapters.
+type DeleteHpcClusterAPI interface {
+	// DeleteHpcCluster invokes the native action with owned inputs and per-call options.
+	DeleteHpcCluster(context.Context, *DeleteHpcClusterInput, ...func(*Options)) (*DeleteHpcClusterOutput, error)
+}
+
+// DeleteHpcCluster calls the native DeleteHpcCluster action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes an HPC cluster.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L13951
+func (c *Client) DeleteHpcCluster(ctx context.Context, input *DeleteHpcClusterInput, optFns ...func(*Options)) (*DeleteHpcClusterOutput, error) {
+	out, meta, err := invoke[DeleteHpcClusterInput, DeleteHpcClusterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteHpcCluster", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DeleteImageAPI is the minimal interface for DeleteImage mocks and capability adapters.
 type DeleteImageAPI interface {
 	// DeleteImage invokes the native action with owned inputs and per-call options.
@@ -1749,6 +2773,69 @@ type DeleteImageAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14043
 func (c *Client) DeleteImage(ctx context.Context, input *DeleteImageInput, optFns ...func(*Options)) (*DeleteImageOutput, error) {
 	out, meta, err := invoke[DeleteImageInput, DeleteImageOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteImage", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DeleteImageComponentAPI is the minimal interface for DeleteImageComponent mocks and capability adapters.
+type DeleteImageComponentAPI interface {
+	// DeleteImageComponent invokes the native action with owned inputs and per-call options.
+	DeleteImageComponent(context.Context, *DeleteImageComponentInput, ...func(*Options)) (*DeleteImageComponentOutput, error)
+}
+
+// DeleteImageComponent calls the native DeleteImageComponent action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes an image component by specifying the RegionId and ImageComponentId parameters.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14132
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - Only custom image components that you have created can be deleted.
+// - Before deleting a component, make sure that the component is not used in any template. Otherwise, the deletion fails.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14132
+func (c *Client) DeleteImageComponent(ctx context.Context, input *DeleteImageComponentInput, optFns ...func(*Options)) (*DeleteImageComponentOutput, error) {
+	out, meta, err := invoke[DeleteImageComponentInput, DeleteImageComponentOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteImageComponent", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DeleteImagePipelineAPI is the minimal interface for DeleteImagePipeline mocks and capability adapters.
+type DeleteImagePipelineAPI interface {
+	// DeleteImagePipeline invokes the native action with owned inputs and per-call options.
+	DeleteImagePipeline(context.Context, *DeleteImagePipelineInput, ...func(*Options)) (*DeleteImagePipelineOutput, error)
+}
+
+// DeleteImagePipeline calls the native DeleteImagePipeline action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes an image template.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14220
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// If a build task is running, you cannot directly delete the template. Wait until the build task reaches a desired state: SUCCESS, FAILED, TEST_FAILED, PARTITION_SUCCESS, or CANCELLED. You can call DescribeImagePipelineExecutions (link omitted) to query the details of build tasks.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14220
+func (c *Client) DeleteImagePipeline(ctx context.Context, input *DeleteImagePipelineInput, optFns ...func(*Options)) (*DeleteImagePipelineOutput, error) {
+	out, meta, err := invoke[DeleteImagePipelineInput, DeleteImagePipelineOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteImagePipeline", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -1957,6 +3044,73 @@ func (c *Client) DeleteNatGateway(ctx context.Context, input *DeleteNatGatewayIn
 	return out, nil
 }
 
+// DeleteNetworkInterfaceAPI is the minimal interface for DeleteNetworkInterface mocks and capability adapters.
+type DeleteNetworkInterfaceAPI interface {
+	// DeleteNetworkInterface invokes the native action with owned inputs and per-call options.
+	DeleteNetworkInterface(context.Context, *DeleteNetworkInterfaceInput, ...func(*Options)) (*DeleteNetworkInterfaceOutput, error)
+}
+
+// DeleteNetworkInterface calls the native DeleteNetworkInterface action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Asynchronously deletes an Elastic Network Interface (ENI).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14942
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// When you call this operation, take note of the following items:
+// -  The ENI must be in the Available state.
+// -  If the ENI is attached to an ECS instance, you must first detach it from the instance (DetachNetworkInterface (https://help.aliyun.com/document_detail/58514.html)) before you can delete the ENI.
+// -  After the ENI is deleted:
+// - All private addresses (including the primary private IP address and secondary private IP addresses) of the ENI are automatically released.
+// - The deleted ENI is removed from all associated security groups.
+// -  This is an asynchronous operation. After a successful call, you can check the ENI status or listen for network interface controller (NIC) operation events to determine the result. The ENI state machine is shown in the following figure:
+// (https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/zh-CN/20221208/xual/DeleteNetworkInterface.jpg)
+// - The Deleting state indicates that the delete request was sent successfully and the ENI is being deleted.
+// - If the ENI cannot be found, the ENI is deleted.
+// - If the ENI remains in the Deleting state for an extended period of time, the deletion failed. In this case, you can send a new delete request for the ENI.
+// For details about sample code, see Delete an ENI (https://help.aliyun.com/document_detail/471553.html).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L14942
+func (c *Client) DeleteNetworkInterface(ctx context.Context, input *DeleteNetworkInterfaceInput, optFns ...func(*Options)) (*DeleteNetworkInterfaceOutput, error) {
+	out, meta, err := invoke[DeleteNetworkInterfaceInput, DeleteNetworkInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteNetworkInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DeleteNetworkInterfacePermissionAPI is the minimal interface for DeleteNetworkInterfacePermission mocks and capability adapters.
+type DeleteNetworkInterfacePermissionAPI interface {
+	// DeleteNetworkInterfacePermission invokes the native action with owned inputs and per-call options.
+	DeleteNetworkInterfacePermission(context.Context, *DeleteNetworkInterfacePermissionInput, ...func(*Options)) (*DeleteNetworkInterfacePermissionOutput, error)
+}
+
+// DeleteNetworkInterfacePermission calls the native DeleteNetworkInterfacePermission action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes the permission to operate an Elastic Network Interface (ENI).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15047
+func (c *Client) DeleteNetworkInterfacePermission(ctx context.Context, input *DeleteNetworkInterfacePermissionInput, optFns ...func(*Options)) (*DeleteNetworkInterfacePermissionOutput, error) {
+	out, meta, err := invoke[DeleteNetworkInterfacePermissionInput, DeleteNetworkInterfacePermissionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteNetworkInterfacePermission", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DeletePhysicalConnectionAPI is the minimal interface for DeletePhysicalConnection mocks and capability adapters.
 type DeletePhysicalConnectionAPI interface {
 	// DeletePhysicalConnection invokes the native action with owned inputs and per-call options.
@@ -2000,6 +3154,62 @@ type DeletePlanMaintenanceWindowAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15219
 func (c *Client) DeletePlanMaintenanceWindow(ctx context.Context, input *DeletePlanMaintenanceWindowInput, optFns ...func(*Options)) (*DeletePlanMaintenanceWindowOutput, error) {
 	out, meta, err := invoke[DeletePlanMaintenanceWindowInput, DeletePlanMaintenanceWindowOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeletePlanMaintenanceWindow", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DeletePortRangeListAPI is the minimal interface for DeletePortRangeList mocks and capability adapters.
+type DeletePortRangeListAPI interface {
+	// DeletePortRangeList invokes the native action with owned inputs and per-call options.
+	DeletePortRangeList(context.Context, *DeletePortRangeListInput, ...func(*Options)) (*DeletePortRangeListOutput, error)
+}
+
+// DeletePortRangeList calls the native DeletePortRangeList action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes a specified port list. All port list entries in the port list are also deleted.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15288
+func (c *Client) DeletePortRangeList(ctx context.Context, input *DeletePortRangeListInput, optFns ...func(*Options)) (*DeletePortRangeListOutput, error) {
+	out, meta, err := invoke[DeletePortRangeListInput, DeletePortRangeListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeletePortRangeList", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DeletePrefixListAPI is the minimal interface for DeletePrefixList mocks and capability adapters.
+type DeletePrefixListAPI interface {
+	// DeletePrefixList invokes the native action with owned inputs and per-call options.
+	DeletePrefixList(context.Context, *DeletePrefixListInput, ...func(*Options)) (*DeletePrefixListOutput, error)
+}
+
+// DeletePrefixList calls the native DeletePrefixList action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes a specified prefix list and all entries in the prefix list.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15370
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// If a prefix list is associated with other resources, you cannot directly delete it. Dissociate the prefix list from the resources first, and then delete it. You can call DescribePrefixListAssociations (https://help.aliyun.com/document_detail/204724.html) to query the resources that are associated with a specified prefix list.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15370
+func (c *Client) DeletePrefixList(ctx context.Context, input *DeletePrefixListInput, optFns ...func(*Options)) (*DeletePrefixListOutput, error) {
+	out, meta, err := invoke[DeletePrefixListInput, DeletePrefixListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeletePrefixList", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2284,6 +3494,31 @@ func (c *Client) DeleteVsc(ctx context.Context, input *DeleteVscInput, optFns ..
 	return out, nil
 }
 
+// DeregisterManagedInstanceAPI is the minimal interface for DeregisterManagedInstance mocks and capability adapters.
+type DeregisterManagedInstanceAPI interface {
+	// DeregisterManagedInstance invokes the native action with owned inputs and per-call options.
+	DeregisterManagedInstance(context.Context, *DeregisterManagedInstanceInput, ...func(*Options)) (*DeregisterManagedInstanceOutput, error)
+}
+
+// DeregisterManagedInstance calls the native DeregisterManagedInstance action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Unregisters a managed instance by calling DeregisterManagedInstance. After the instance is unregistered, you can no longer use Cloud Assistant to send commands or files to the instance.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16371
+func (c *Client) DeregisterManagedInstance(ctx context.Context, input *DeregisterManagedInstanceInput, optFns ...func(*Options)) (*DeregisterManagedInstanceOutput, error) {
+	out, meta, err := invoke[DeregisterManagedInstanceInput, DeregisterManagedInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeregisterManagedInstance", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DescribeAccessPointsAPI is the minimal interface for DescribeAccessPoints mocks and capability adapters.
 type DescribeAccessPointsAPI interface {
 	// DescribeAccessPoints invokes the native action with owned inputs and per-call options.
@@ -2335,6 +3570,40 @@ type DescribeAccountAttributesAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16605
 func (c *Client) DescribeAccountAttributes(ctx context.Context, input *DescribeAccountAttributesInput, optFns ...func(*Options)) (*DescribeAccountAttributesOutput, error) {
 	out, meta, err := invoke[DescribeAccountAttributesInput, DescribeAccountAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAccountAttributes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeActivationsAPI is the minimal interface for DescribeActivations mocks and capability adapters.
+type DescribeActivationsAPI interface {
+	// DescribeActivations invokes the native action with owned inputs and per-call options.
+	DescribeActivations(context.Context, *DescribeActivationsInput, ...func(*Options)) (*DescribeActivationsOutput, error)
+}
+
+// DescribeActivations calls the native DescribeActivations action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the activation codes that have been created and their usage.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16747
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// You can use one of the following methods to view the response:
+// - Method 1: When paged query the first page, set only MaxResults to limit the number of entries to return. The NextToken value in the response can be used to query subsequent pages. When paged query subsequent pages, set NextToken to the value obtained from the previous response and set MaxResults to limit the number of entries to return.
+// - Method 2: Use PageSize to specify the number of entries per page and PageNumber to specify the page number. You can use only one of the two methods. If you set MaxResults or NextToken, the PageSize and PageNumber request parameters do not take effect, and TotalCount in the response is invalid.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16747
+func (c *Client) DescribeActivations(ctx context.Context, input *DescribeActivationsInput, optFns ...func(*Options)) (*DescribeActivationsOutput, error) {
+	out, meta, err := invoke[DescribeActivationsInput, DescribeActivationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeActivations", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -2694,6 +3963,39 @@ func (c *Client) DescribeCloudAssistantSettings(ctx context.Context, input *Desc
 	return out, nil
 }
 
+// DescribeCloudAssistantStatusAPI is the minimal interface for DescribeCloudAssistantStatus mocks and capability adapters.
+type DescribeCloudAssistantStatusAPI interface {
+	// DescribeCloudAssistantStatus invokes the native action with owned inputs and per-call options.
+	DescribeCloudAssistantStatus(context.Context, *DescribeCloudAssistantStatusInput, ...func(*Options)) (*DescribeCloudAssistantStatusOutput, error)
+}
+
+// DescribeCloudAssistantStatus calls the native DescribeCloudAssistantStatus action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Calls DescribeCloudAssistantStatus to query whether Cloud Assistant Agent is installed on one or more instances. If Cloud Assistant is installed, the operation also returns the total number of Cloud Assistant command executions, the number of ongoing executions, and the time of the most recent command execution.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18725
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// - Call this operation to query the Cloud Assistant status of an instance. When CloudAssistantStatus is true, run commands or send files. This is especially important for newly created instances.
+// - When paged query the first page, set only MaxResults to limit the number of entries returned. The NextToken value in the response is used as the credential to query subsequent pages. When paged query subsequent pages, set NextToken to the value obtained from the previous response and set MaxResults to limit the number of entries returned.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18725
+func (c *Client) DescribeCloudAssistantStatus(ctx context.Context, input *DescribeCloudAssistantStatusInput, optFns ...func(*Options)) (*DescribeCloudAssistantStatusOutput, error) {
+	out, meta, err := invoke[DescribeCloudAssistantStatusInput, DescribeCloudAssistantStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCloudAssistantStatus", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DescribeClustersAPI is the minimal interface for DescribeClusters mocks and capability adapters.
 type DescribeClustersAPI interface {
 	// DescribeClusters invokes the native action with owned inputs and per-call options.
@@ -2712,6 +4014,39 @@ type DescribeClustersAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L18832
 func (c *Client) DescribeClusters(ctx context.Context, input *DescribeClustersInput, optFns ...func(*Options)) (*DescribeClustersOutput, error) {
 	out, meta, err := invoke[DescribeClustersInput, DescribeClustersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeClusters", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeCommandsAPI is the minimal interface for DescribeCommands mocks and capability adapters.
+type DescribeCommandsAPI interface {
+	// DescribeCommands invokes the native action with owned inputs and per-call options.
+	DescribeCommands(context.Context, *DescribeCommandsInput, ...func(*Options)) (*DescribeCommandsOutput, error)
+}
+
+// DescribeCommands calls the native DescribeCommands action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries Cloud Assistant commands that you manually created or public commands provided by Alibaba Cloud.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L19018
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// - If you specify only the Action and RegionId parameters without other request parameters, all available commands (CommandId) that you manually created are queried by default.
+// - When paged query the first page of results, set only MaxResults to limit the number of entries to return. The NextToken value returned in the response serves as the token for querying subsequent pages. When paged query subsequent pages, set NextToken to the value obtained from the previous response and set MaxResults to limit the number of entries to return.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L19018
+func (c *Client) DescribeCommands(ctx context.Context, input *DescribeCommandsInput, optFns ...func(*Options)) (*DescribeCommandsOutput, error) {
+	out, meta, err := invoke[DescribeCommandsInput, DescribeCommandsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCommands", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3120,6 +4455,38 @@ func (c *Client) DescribeDisks(ctx context.Context, input *DescribeDisksInput, o
 	return out, nil
 }
 
+// DescribeDisksFullStatusAPI is the minimal interface for DescribeDisksFullStatus mocks and capability adapters.
+type DescribeDisksFullStatusAPI interface {
+	// DescribeDisksFullStatus invokes the native action with owned inputs and per-call options.
+	DescribeDisksFullStatus(context.Context, *DescribeDisksFullStatusInput, ...func(*Options)) (*DescribeDisksFullStatusOutput, error)
+}
+
+// DescribeDisksFullStatus calls the native DescribeDisksFullStatus action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the full status information of one or more block storage devices.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21256
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// -  The full status information of a block storage device includes the block storage lifecycle status (Status), block storage health status (HealthStatus), and block storage event type (EventType).
+// -  Because the publish time, scheduled execution time, and actual execution time of block storage-related events are the same, you can specify a time period (EventTime.Start to EventTime.End) to query all historical events that occurred during that period. You can query historical events from the last seven days at most.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21256
+func (c *Client) DescribeDisksFullStatus(ctx context.Context, input *DescribeDisksFullStatusInput, optFns ...func(*Options)) (*DescribeDisksFullStatusOutput, error) {
+	out, meta, err := invoke[DescribeDisksFullStatusInput, DescribeDisksFullStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDisksFullStatus", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DescribeEipAddressesAPI is the minimal interface for DescribeEipAddresses mocks and capability adapters.
 type DescribeEipAddressesAPI interface {
 	// DescribeEipAddresses invokes the native action with owned inputs and per-call options.
@@ -3335,6 +4702,62 @@ func (c *Client) DescribeHaVips(ctx context.Context, input *DescribeHaVipsInput,
 	return out, nil
 }
 
+// DescribeHpcClustersAPI is the minimal interface for DescribeHpcClusters mocks and capability adapters.
+type DescribeHpcClustersAPI interface {
+	// DescribeHpcClusters invokes the native action with owned inputs and per-call options.
+	DescribeHpcClusters(context.Context, *DescribeHpcClustersInput, ...func(*Options)) (*DescribeHpcClustersOutput, error)
+}
+
+// DescribeHpcClusters calls the native DescribeHpcClusters action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries available HPC clusters. The request parameters are used as filters. The filters are evaluated by using a logical AND. The parameters are independent of each other.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22419
+func (c *Client) DescribeHpcClusters(ctx context.Context, input *DescribeHpcClustersInput, optFns ...func(*Options)) (*DescribeHpcClustersOutput, error) {
+	out, meta, err := invoke[DescribeHpcClustersInput, DescribeHpcClustersOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeHpcClusters", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeImageComponentsAPI is the minimal interface for DescribeImageComponents mocks and capability adapters.
+type DescribeImageComponentsAPI interface {
+	// DescribeImageComponents invokes the native action with owned inputs and per-call options.
+	DescribeImageComponents(context.Context, *DescribeImageComponentsInput, ...func(*Options)) (*DescribeImageComponentsOutput, error)
+}
+
+// DescribeImageComponents calls the native DescribeImageComponents action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the details of one or more image components.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22574
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// You can set NextToken to the value of NextToken returned in the previous call to DescribeImageComponents, and set MaxResults to specify the maximum number of entries per page for a paged query.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22574
+func (c *Client) DescribeImageComponents(ctx context.Context, input *DescribeImageComponentsInput, optFns ...func(*Options)) (*DescribeImageComponentsOutput, error) {
+	out, meta, err := invoke[DescribeImageComponentsInput, DescribeImageComponentsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImageComponents", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DescribeImageFromFamilyAPI is the minimal interface for DescribeImageFromFamily mocks and capability adapters.
 type DescribeImageFromFamilyAPI interface {
 	// DescribeImageFromFamily invokes the native action with owned inputs and per-call options.
@@ -3360,6 +4783,71 @@ type DescribeImageFromFamilyAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22750
 func (c *Client) DescribeImageFromFamily(ctx context.Context, input *DescribeImageFromFamilyInput, optFns ...func(*Options)) (*DescribeImageFromFamilyOutput, error) {
 	out, meta, err := invoke[DescribeImageFromFamilyInput, DescribeImageFromFamilyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImageFromFamily", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeImagePipelineExecutionsAPI is the minimal interface for DescribeImagePipelineExecutions mocks and capability adapters.
+type DescribeImagePipelineExecutionsAPI interface {
+	// DescribeImagePipelineExecutions invokes the native action with owned inputs and per-call options.
+	DescribeImagePipelineExecutions(context.Context, *DescribeImagePipelineExecutionsInput, ...func(*Options)) (*DescribeImagePipelineExecutionsOutput, error)
+}
+
+// DescribeImagePipelineExecutions calls the native DescribeImagePipelineExecutions action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the details of an image build task.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22887
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// - The specified image template ID ImagePipelineId cannot be a deleted image template. Deleted image templates also delete the corresponding build tasks.
+// - The image template ID ImagePipelineId and the build task ID ExecutionId cannot both be empty.
+// - You can set the NextToken query token, whose value is the NextToken parameter value returned by the previous call to DescribeImagePipelineExecutions. Then, set MaxResults to specify the maximum number of entries per page for the query.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L22887
+func (c *Client) DescribeImagePipelineExecutions(ctx context.Context, input *DescribeImagePipelineExecutionsInput, optFns ...func(*Options)) (*DescribeImagePipelineExecutionsOutput, error) {
+	out, meta, err := invoke[DescribeImagePipelineExecutionsInput, DescribeImagePipelineExecutionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImagePipelineExecutions", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeImagePipelinesAPI is the minimal interface for DescribeImagePipelines mocks and capability adapters.
+type DescribeImagePipelinesAPI interface {
+	// DescribeImagePipelines invokes the native action with owned inputs and per-call options.
+	DescribeImagePipelines(context.Context, *DescribeImagePipelinesInput, ...func(*Options)) (*DescribeImagePipelinesOutput, error)
+}
+
+// DescribeImagePipelines calls the native DescribeImagePipelines action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the details of one or more image templates.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L23104
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// You can set NextToken to a pagination token. Set the value to the NextToken value returned in the previous call to DescribeImagePipelines. Then, use MaxResults to specify the maximum number of entries per page.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L23104
+func (c *Client) DescribeImagePipelines(ctx context.Context, input *DescribeImagePipelinesInput, optFns ...func(*Options)) (*DescribeImagePipelinesOutput, error) {
+	out, meta, err := invoke[DescribeImagePipelinesInput, DescribeImagePipelinesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeImagePipelines", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3534,6 +5022,39 @@ type DescribeInstanceAutoRenewAttributeAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24131
 func (c *Client) DescribeInstanceAutoRenewAttribute(ctx context.Context, input *DescribeInstanceAutoRenewAttributeInput, optFns ...func(*Options)) (*DescribeInstanceAutoRenewAttributeOutput, error) {
 	out, meta, err := invoke[DescribeInstanceAutoRenewAttributeInput, DescribeInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeInstanceHistoryEventsAPI is the minimal interface for DescribeInstanceHistoryEvents mocks and capability adapters.
+type DescribeInstanceHistoryEventsAPI interface {
+	// DescribeInstanceHistoryEvents invokes the native action with owned inputs and per-call options.
+	DescribeInstanceHistoryEvents(context.Context, *DescribeInstanceHistoryEventsInput, ...func(*Options)) (*DescribeInstanceHistoryEventsOutput, error)
+}
+
+// DescribeInstanceHistoryEvents calls the native DescribeInstanceHistoryEvents action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the system event information of a specified instance by calling the DescribeInstanceHistoryEvents operation. You can specify parameters such as InstanceId and EventType. By default, this operation queries historical system events in inactive states.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24378
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - You can query completed historical system events from the last 30 days. There is no time limit for querying uncompleted system events.
+// - If neither EventCycleStatus nor InstanceEventCycleStatus is specified, the query results include only system events in the Avoided, Executed, Canceled, and Failed states by default.
+// - By specifying the InstanceEventCycleStatus parameter, you can also query system events in the Scheduled, Executing, and Inquiring states.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24378
+func (c *Client) DescribeInstanceHistoryEvents(ctx context.Context, input *DescribeInstanceHistoryEventsInput, optFns ...func(*Options)) (*DescribeInstanceHistoryEventsOutput, error) {
+	out, meta, err := invoke[DescribeInstanceHistoryEventsInput, DescribeInstanceHistoryEventsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceHistoryEvents", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -3879,6 +5400,124 @@ func (c *Client) DescribeInstances(ctx context.Context, input *DescribeInstances
 	return out, nil
 }
 
+// DescribeInstancesFullStatusAPI is the minimal interface for DescribeInstancesFullStatus mocks and capability adapters.
+type DescribeInstancesFullStatusAPI interface {
+	// DescribeInstancesFullStatus invokes the native action with owned inputs and per-call options.
+	DescribeInstancesFullStatus(context.Context, *DescribeInstancesFullStatusInput, ...func(*Options)) (*DescribeInstancesFullStatusOutput, error)
+}
+
+// DescribeInstancesFullStatus calls the native DescribeInstancesFullStatus action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the full status information of one or more ECS instances. The full status information includes the instance status and instance system event status. The instance status refers to the lifecycle status of the instance, and the instance system event refers to the health status of maintenance events.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L26558
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// The response includes the instance status and instance system events in the Scheduled state.
+// If you specify a time range, events are filtered based on the time range.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L26558
+func (c *Client) DescribeInstancesFullStatus(ctx context.Context, input *DescribeInstancesFullStatusInput, optFns ...func(*Options)) (*DescribeInstancesFullStatusOutput, error) {
+	out, meta, err := invoke[DescribeInstancesFullStatusInput, DescribeInstancesFullStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstancesFullStatus", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeInvocationResultsAPI is the minimal interface for DescribeInvocationResults mocks and capability adapters.
+type DescribeInvocationResultsAPI interface {
+	// DescribeInvocationResults invokes the native action with owned inputs and per-call options.
+	DescribeInvocationResults(context.Context, *DescribeInvocationResultsInput, ...func(*Options)) (*DescribeInvocationResultsOutput, error)
+}
+
+// DescribeInvocationResults calls the native DescribeInvocationResults action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the execution results of one or more Cloud Assistant commands, which are the actual execution results on ECS instances.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L26770
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// - After you run a command, the command is not guaranteed to succeed or produce the expected results. Call this operation to view the actual execution results based on the actual output.
+// - You can query execution information from the last 30 days. A maximum of 10,000 entries of execution information can be retained.
+// - You can use Cloud Assistant task status event subscription (https://help.aliyun.com/document_detail/2669130.html) to obtain task results through events, which avoids frequent polling and improves efficiency.
+// - When paged query the first page, set only MaxResults to limit the number of entries to return. The NextToken value in the response is used as the credential to query subsequent pages. When paged query subsequent pages, set NextToken to the NextToken value obtained from the previous response and set MaxResults to limit the number of entries to return.
+// - Differences between DescribeInvocations and DescribeInvocationResults:
+// - When a single RunCommand/InvokeCommand call specifies multiple instances:
+// - DescribeInvocations returns the execution status on each instance and the aggregated status across multiple instances.
+// - DescribeInvocationResults returns only the individual execution status on each instance, without the aggregated status across multiple instances.
+// - When a single RunCommand/InvokeCommand call specifies one instance:
+// - DescribeInvocations and DescribeInvocationResults are largely interchangeable.
+// - When you need to view the execution history of scheduled (periodic) tasks or tasks that run on each system startup (RepeatMode=Period, EveryReboot), only DescribeInvocationResults can return the historical execution records (you must specify IncludeHistory=true). DescribeInvocations returns only the latest task status.
+// - When you need to view the command content or parameters, only DescribeInvocations returns CommandContent.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L26770
+func (c *Client) DescribeInvocationResults(ctx context.Context, input *DescribeInvocationResultsInput, optFns ...func(*Options)) (*DescribeInvocationResultsOutput, error) {
+	out, meta, err := invoke[DescribeInvocationResultsInput, DescribeInvocationResultsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInvocationResults", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeInvocationsAPI is the minimal interface for DescribeInvocations mocks and capability adapters.
+type DescribeInvocationsAPI interface {
+	// DescribeInvocations invokes the native action with owned inputs and per-call options.
+	DescribeInvocations(context.Context, *DescribeInvocationsInput, ...func(*Options)) (*DescribeInvocationsOutput, error)
+}
+
+// DescribeInvocations calls the native DescribeInvocations action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the execution list and status of Cloud Assistant commands.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27050
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - After you run a command, it does not necessarily run successfully or produce the expected results. Check the actual execution results based on the return values of this operation. The actual output takes precedence.
+// - You can query execution information from the last 30 days. A maximum of 10,000 execution records are retained.
+// - You can subscribe to Cloud Assistant task status events (https://help.aliyun.com/document_detail/2669130.html) to obtain task results through events, avoiding frequent polling and improving efficiency.
+// - When querying the first page of a paging query, set only MaxResults to limit the number of entries returned. The NextToken value in the response serves as the credential for querying subsequent pages. When querying subsequent pages, set the NextToken parameter to the NextToken value obtained from the previous response, and set MaxResults to limit the number of entries returned.
+// - Differences between DescribeInvocations and DescribeInvocationResults:
+// - When a single RunCommand/InvokeCommand call specifies multiple instances:
+// - DescribeInvocations returns the execution status on each instance and the aggregation status across all instances.
+// - DescribeInvocationResults returns only the individual execution status on each instance, without the aggregation status across multiple instances.
+// - When a single RunCommand/InvokeCommand call specifies one instance:
+// - DescribeInvocations and DescribeInvocationResults are largely interchangeable and can replace each other.
+// - To view the execution history of scheduled (periodic) tasks or tasks that execute automatically on instance startup (RepeatMode=Period, EveryReboot), only DescribeInvocationResults can retrieve past execution records (by specifying IncludeHistory=true). DescribeInvocations returns only the latest task status.
+// - To view command content and parameters, only DescribeInvocations returns CommandContent.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27050
+func (c *Client) DescribeInvocations(ctx context.Context, input *DescribeInvocationsInput, optFns ...func(*Options)) (*DescribeInvocationsOutput, error) {
+	out, meta, err := invoke[DescribeInvocationsInput, DescribeInvocationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInvocations", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DescribeKeyPairsAPI is the minimal interface for DescribeKeyPairs mocks and capability adapters.
 type DescribeKeyPairsAPI interface {
 	// DescribeKeyPairs invokes the native action with owned inputs and per-call options.
@@ -4004,6 +5643,37 @@ func (c *Client) DescribeLockedSnapshots(ctx context.Context, input *DescribeLoc
 	return out, nil
 }
 
+// DescribeManagedInstancesAPI is the minimal interface for DescribeManagedInstances mocks and capability adapters.
+type DescribeManagedInstancesAPI interface {
+	// DescribeManagedInstances invokes the native action with owned inputs and per-call options.
+	DescribeManagedInstances(context.Context, *DescribeManagedInstancesInput, ...func(*Options)) (*DescribeManagedInstancesOutput, error)
+}
+
+// DescribeManagedInstances calls the native DescribeManagedInstances action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries a list of managed instances.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28023
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// When querying the first page of a paging query, set only MaxResults to limit the number of entries returned. The NextToken value in the response serves as the token for querying subsequent pages. When querying subsequent pages, set the NextToken parameter to the NextToken value obtained from the previous response as the query token, and set MaxResults to limit the number of entries returned.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28023
+func (c *Client) DescribeManagedInstances(ctx context.Context, input *DescribeManagedInstancesInput, optFns ...func(*Options)) (*DescribeManagedInstancesOutput, error) {
+	out, meta, err := invoke[DescribeManagedInstancesInput, DescribeManagedInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeManagedInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DescribeNatGatewaysAPI is the minimal interface for DescribeNatGateways mocks and capability adapters.
 type DescribeNatGatewaysAPI interface {
 	// DescribeNatGateways invokes the native action with owned inputs and per-call options.
@@ -4022,6 +5692,90 @@ type DescribeNatGatewaysAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28169
 func (c *Client) DescribeNatGateways(ctx context.Context, input *DescribeNatGatewaysInput, optFns ...func(*Options)) (*DescribeNatGatewaysOutput, error) {
 	out, meta, err := invoke[DescribeNatGatewaysInput, DescribeNatGatewaysOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNatGateways", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeNetworkInterfaceAttributeAPI is the minimal interface for DescribeNetworkInterfaceAttribute mocks and capability adapters.
+type DescribeNetworkInterfaceAttributeAPI interface {
+	// DescribeNetworkInterfaceAttribute invokes the native action with owned inputs and per-call options.
+	DescribeNetworkInterfaceAttribute(context.Context, *DescribeNetworkInterfaceAttributeInput, ...func(*Options)) (*DescribeNetworkInterfaceAttributeOutput, error)
+}
+
+// DescribeNetworkInterfaceAttribute calls the native DescribeNetworkInterfaceAttribute action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the details of an Elastic Network Interface (ENI) by ENI ID.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28443
+func (c *Client) DescribeNetworkInterfaceAttribute(ctx context.Context, input *DescribeNetworkInterfaceAttributeInput, optFns ...func(*Options)) (*DescribeNetworkInterfaceAttributeOutput, error) {
+	out, meta, err := invoke[DescribeNetworkInterfaceAttributeInput, DescribeNetworkInterfaceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNetworkInterfaceAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeNetworkInterfacePermissionsAPI is the minimal interface for DescribeNetworkInterfacePermissions mocks and capability adapters.
+type DescribeNetworkInterfacePermissionsAPI interface {
+	// DescribeNetworkInterfacePermissions invokes the native action with owned inputs and per-call options.
+	DescribeNetworkInterfacePermissions(context.Context, *DescribeNetworkInterfacePermissionsInput, ...func(*Options)) (*DescribeNetworkInterfacePermissionsOutput, error)
+}
+
+// DescribeNetworkInterfacePermissions calls the native DescribeNetworkInterfacePermissions action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the list of Elastic Network Interface (ENI) permissions that you have granted to an Alibaba Cloud partner (certified ISV) or an individual user.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28555
+func (c *Client) DescribeNetworkInterfacePermissions(ctx context.Context, input *DescribeNetworkInterfacePermissionsInput, optFns ...func(*Options)) (*DescribeNetworkInterfacePermissionsOutput, error) {
+	out, meta, err := invoke[DescribeNetworkInterfacePermissionsInput, DescribeNetworkInterfacePermissionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNetworkInterfacePermissions", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeNetworkInterfacesAPI is the minimal interface for DescribeNetworkInterfaces mocks and capability adapters.
+type DescribeNetworkInterfacesAPI interface {
+	// DescribeNetworkInterfaces invokes the native action with owned inputs and per-call options.
+	DescribeNetworkInterfaces(context.Context, *DescribeNetworkInterfacesInput, ...func(*Options)) (*DescribeNetworkInterfacesOutput, error)
+}
+
+// DescribeNetworkInterfaces calls the native DescribeNetworkInterfaces action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the details of one or more Elastic Network Interfaces (ENIs).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28785
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// The DescribeNetworkInterfaces operation supports pagination by specifying the MaxResults or NextToken parameter. Usage notes:
+// - When paged query the first page, set only MaxResults to limit the number of entries returned. The NextToken value in the response is used as the credential to query subsequent pages.
+// - When paged query subsequent pages, set NextToken to the NextToken value obtained from the previous response, and set MaxResults to limit the number of entries returned.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28785
+func (c *Client) DescribeNetworkInterfaces(ctx context.Context, input *DescribeNetworkInterfacesInput, optFns ...func(*Options)) (*DescribeNetworkInterfacesOutput, error) {
+	out, meta, err := invoke[DescribeNetworkInterfacesInput, DescribeNetworkInterfacesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNetworkInterfaces", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4072,6 +5826,195 @@ type DescribePhysicalConnectionsAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29068
 func (c *Client) DescribePhysicalConnections(ctx context.Context, input *DescribePhysicalConnectionsInput, optFns ...func(*Options)) (*DescribePhysicalConnectionsOutput, error) {
 	out, meta, err := invoke[DescribePhysicalConnectionsInput, DescribePhysicalConnectionsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePhysicalConnections", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribePlanMaintenanceWindowsAPI is the minimal interface for DescribePlanMaintenanceWindows mocks and capability adapters.
+type DescribePlanMaintenanceWindowsAPI interface {
+	// DescribePlanMaintenanceWindows invokes the native action with owned inputs and per-call options.
+	DescribePlanMaintenanceWindows(context.Context, *DescribePlanMaintenanceWindowsInput, ...func(*Options)) (*DescribePlanMaintenanceWindowsOutput, error)
+}
+
+// DescribePlanMaintenanceWindows calls the native DescribePlanMaintenanceWindows action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries O&M windows.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29220
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the configured maintenance policies. Each policy contains two maintenance attributes:
+// - Maintenance time window: A time period you specify during which O&M operations are performed.
+// - Maintenance action: The instance down handling policy you specify.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29220
+func (c *Client) DescribePlanMaintenanceWindows(ctx context.Context, input *DescribePlanMaintenanceWindowsInput, optFns ...func(*Options)) (*DescribePlanMaintenanceWindowsOutput, error) {
+	out, meta, err := invoke[DescribePlanMaintenanceWindowsInput, DescribePlanMaintenanceWindowsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePlanMaintenanceWindows", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribePortRangeListAssociationsAPI is the minimal interface for DescribePortRangeListAssociations mocks and capability adapters.
+type DescribePortRangeListAssociationsAPI interface {
+	// DescribePortRangeListAssociations invokes the native action with owned inputs and per-call options.
+	DescribePortRangeListAssociations(context.Context, *DescribePortRangeListAssociationsInput, ...func(*Options)) (*DescribePortRangeListAssociationsOutput, error)
+}
+
+// DescribePortRangeListAssociations calls the native DescribePortRangeListAssociations action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the resources associated with a specified port range list, such as security groups.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29331
+func (c *Client) DescribePortRangeListAssociations(ctx context.Context, input *DescribePortRangeListAssociationsInput, optFns ...func(*Options)) (*DescribePortRangeListAssociationsOutput, error) {
+	out, meta, err := invoke[DescribePortRangeListAssociationsInput, DescribePortRangeListAssociationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePortRangeListAssociations", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribePortRangeListEntriesAPI is the minimal interface for DescribePortRangeListEntries mocks and capability adapters.
+type DescribePortRangeListEntriesAPI interface {
+	// DescribePortRangeListEntries invokes the native action with owned inputs and per-call options.
+	DescribePortRangeListEntries(context.Context, *DescribePortRangeListEntriesInput, ...func(*Options)) (*DescribePortRangeListEntriesOutput, error)
+}
+
+// DescribePortRangeListEntries calls the native DescribePortRangeListEntries action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the entries of a specified port range list.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29425
+func (c *Client) DescribePortRangeListEntries(ctx context.Context, input *DescribePortRangeListEntriesInput, optFns ...func(*Options)) (*DescribePortRangeListEntriesOutput, error) {
+	out, meta, err := invoke[DescribePortRangeListEntriesInput, DescribePortRangeListEntriesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePortRangeListEntries", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribePortRangeListsAPI is the minimal interface for DescribePortRangeLists mocks and capability adapters.
+type DescribePortRangeListsAPI interface {
+	// DescribePortRangeLists invokes the native action with owned inputs and per-call options.
+	DescribePortRangeLists(context.Context, *DescribePortRangeListsInput, ...func(*Options)) (*DescribePortRangeListsOutput, error)
+}
+
+// DescribePortRangeLists calls the native DescribePortRangeLists action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries a list of port range lists.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29541
+func (c *Client) DescribePortRangeLists(ctx context.Context, input *DescribePortRangeListsInput, optFns ...func(*Options)) (*DescribePortRangeListsOutput, error) {
+	out, meta, err := invoke[DescribePortRangeListsInput, DescribePortRangeListsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePortRangeLists", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribePrefixListAssociationsAPI is the minimal interface for DescribePrefixListAssociations mocks and capability adapters.
+type DescribePrefixListAssociationsAPI interface {
+	// DescribePrefixListAssociations invokes the native action with owned inputs and per-call options.
+	DescribePrefixListAssociations(context.Context, *DescribePrefixListAssociationsInput, ...func(*Options)) (*DescribePrefixListAssociationsOutput, error)
+}
+
+// DescribePrefixListAssociations calls the native DescribePrefixListAssociations action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the information about resources associated with a specified prefix list, such as resource IDs and resource types.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29653
+func (c *Client) DescribePrefixListAssociations(ctx context.Context, input *DescribePrefixListAssociationsInput, optFns ...func(*Options)) (*DescribePrefixListAssociationsOutput, error) {
+	out, meta, err := invoke[DescribePrefixListAssociationsInput, DescribePrefixListAssociationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePrefixListAssociations", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribePrefixListAttributesAPI is the minimal interface for DescribePrefixListAttributes mocks and capability adapters.
+type DescribePrefixListAttributesAPI interface {
+	// DescribePrefixListAttributes invokes the native action with owned inputs and per-call options.
+	DescribePrefixListAttributes(context.Context, *DescribePrefixListAttributesInput, ...func(*Options)) (*DescribePrefixListAttributesOutput, error)
+}
+
+// DescribePrefixListAttributes calls the native DescribePrefixListAttributes action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the details of a specified prefix list, including the name, address family, maximum number of entries, and entry details.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29758
+func (c *Client) DescribePrefixListAttributes(ctx context.Context, input *DescribePrefixListAttributesInput, optFns ...func(*Options)) (*DescribePrefixListAttributesOutput, error) {
+	out, meta, err := invoke[DescribePrefixListAttributesInput, DescribePrefixListAttributesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePrefixListAttributes", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribePrefixListsAPI is the minimal interface for DescribePrefixLists mocks and capability adapters.
+type DescribePrefixListsAPI interface {
+	// DescribePrefixLists invokes the native action with owned inputs and per-call options.
+	DescribePrefixLists(context.Context, *DescribePrefixListsInput, ...func(*Options)) (*DescribePrefixListsOutput, error)
+}
+
+// DescribePrefixLists calls the native DescribePrefixLists action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries information about one or more prefix lists.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29883
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// The request parameters AddressFamily, PrefixListId.N, and PrefixListName act as filters and have a logical AND relationship. If a parameter is empty, the corresponding filter does not take effect.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L29883
+func (c *Client) DescribePrefixLists(ctx context.Context, input *DescribePrefixListsInput, optFns ...func(*Options)) (*DescribePrefixListsOutput, error) {
+	out, meta, err := invoke[DescribePrefixListsInput, DescribePrefixListsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribePrefixLists", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4220,6 +6163,62 @@ type DescribeReservedInstanceAutoRenewAttributeAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L30994
 func (c *Client) DescribeReservedInstanceAutoRenewAttribute(ctx context.Context, input *DescribeReservedInstanceAutoRenewAttributeInput, optFns ...func(*Options)) (*DescribeReservedInstanceAutoRenewAttributeOutput, error) {
 	out, meta, err := invoke[DescribeReservedInstanceAutoRenewAttributeInput, DescribeReservedInstanceAutoRenewAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeReservedInstanceAutoRenewAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeReservedInstancesAPI is the minimal interface for DescribeReservedInstances mocks and capability adapters.
+type DescribeReservedInstancesAPI interface {
+	// DescribeReservedInstances invokes the native action with owned inputs and per-call options.
+	DescribeReservedInstances(context.Context, *DescribeReservedInstancesInput, ...func(*Options)) (*DescribeReservedInstancesOutput, error)
+}
+
+// DescribeReservedInstances calls the native DescribeReservedInstances action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the list of reserved instances that you have purchased in a specified region. You can filter reserved instances by tags, reserved instance attributes, and other parameters.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31153
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Scenarios
+// - Query all reserved instances in a specified region.
+// - Query the details of a reserved instance by its ID or name.
+// - Filter purchased reserved instances by instance type or instance family.
+// - Filter purchased reserved instances by scope or status.
+// Request examples
+//
+// Example: Query all purchased reserved instances in the Singapore region
+//
+// "Region":"ap-southeast-1" //Set the region to Singapore
+//
+// Example: Query the details of the reserved instance with the ID ecsri-bp129enntoynwwj5**** in the Singapore region
+//
+// "Region":"ap-southeast-1", //Set the region to Singapore
+// "ReservedInstanceId":"ecsri-bp129enntoynwwj5****" //Set the reserved instance ID
+//
+// Example: Query reserved instances that can be applied to the ecs.c5.2xlarge instance type in the Singapore region
+//
+// "Region":"ap-southeast-1", //Set the region to Singapore
+// "InstanceType":"ecs.c5.2xlarge" //Set the instance type
+//
+// Example: Query active region-level reserved instances in the Singapore region
+//
+// "Region":"ap-southeast-1", //Set the region to Singapore
+// "Scope":"Region", //Set the reserved instance scope
+// "Status":["Active"] //Set the status to Active
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31153
+func (c *Client) DescribeReservedInstances(ctx context.Context, input *DescribeReservedInstancesInput, optFns ...func(*Options)) (*DescribeReservedInstancesOutput, error) {
+	out, meta, err := invoke[DescribeReservedInstancesInput, DescribeReservedInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeReservedInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4495,6 +6494,40 @@ func (c *Client) DescribeSecurityGroups(ctx context.Context, input *DescribeSecu
 	return out, nil
 }
 
+// DescribeSendFileResultsAPI is the minimal interface for DescribeSendFileResults mocks and capability adapters.
+type DescribeSendFileResultsAPI interface {
+	// DescribeSendFileResults invokes the native action with owned inputs and per-call options.
+	DescribeSendFileResults(context.Context, *DescribeSendFileResultsInput, ...func(*Options)) (*DescribeSendFileResultsOutput, error)
+}
+
+// DescribeSendFileResults calls the native DescribeSendFileResults action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the list and status of files sent by Cloud Assistant.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32742
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description:
+// - After you send a file, the file is not necessarily sent. You must check the actual sending result based on the return value of this operation. The actual output prevails.
+// - You can query the execution information from the last day. A maximum of 1,000 entries of execution information can be retained.
+// - When paged query the first page of results, set only MaxResults to limit the number of entries to return. The NextToken value returned in the result serves as the token for querying subsequent pages. When paged query subsequent pages, set NextToken to the NextToken value obtained from the previous response as the query token, and set MaxResults to limit the number of entries to return.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32742
+func (c *Client) DescribeSendFileResults(ctx context.Context, input *DescribeSendFileResultsInput, optFns ...func(*Options)) (*DescribeSendFileResultsOutput, error) {
+	out, meta, err := invoke[DescribeSendFileResultsInput, DescribeSendFileResultsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSendFileResults", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DescribeSnapshotGroupsAPI is the minimal interface for DescribeSnapshotGroups mocks and capability adapters.
 type DescribeSnapshotGroupsAPI interface {
 	// DescribeSnapshotGroups invokes the native action with owned inputs and per-call options.
@@ -4734,6 +6767,38 @@ type DescribeSpotAdviceAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L33833
 func (c *Client) DescribeSpotAdvice(ctx context.Context, input *DescribeSpotAdviceInput, optFns ...func(*Options)) (*DescribeSpotAdviceOutput, error) {
 	out, meta, err := invoke[DescribeSpotAdviceInput, DescribeSpotAdviceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSpotAdvice", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DescribeSpotPriceHistoryAPI is the minimal interface for DescribeSpotPriceHistory mocks and capability adapters.
+type DescribeSpotPriceHistoryAPI interface {
+	// DescribeSpotPriceHistory invokes the native action with owned inputs and per-call options.
+	DescribeSpotPriceHistory(context.Context, *DescribeSpotPriceHistoryInput, ...func(*Options)) (*DescribeSpotPriceHistoryOutput, error)
+}
+
+// DescribeSpotPriceHistory calls the native DescribeSpotPriceHistory action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the historical prices of spot instances. You can query price data for up to the last 30 days. The historical price data helps you set a reasonable maximum price for a spot instance.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34008
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - Only I/O optimized spot instances are supported.
+// - The returned data may be paginated. If the returned data contains the NextOffset parameter, set the Offset request parameter to the NextOffset value to query subsequent data.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34008
+func (c *Client) DescribeSpotPriceHistory(ctx context.Context, input *DescribeSpotPriceHistoryInput, optFns ...func(*Options)) (*DescribeSpotPriceHistoryOutput, error) {
+	out, meta, err := invoke[DescribeSpotPriceHistoryInput, DescribeSpotPriceHistoryOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSpotPriceHistory", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5270,6 +7335,78 @@ func (c *Client) DetachKeyPair(ctx context.Context, input *DetachKeyPairInput, o
 	return out, nil
 }
 
+// DetachNetworkInterfaceAPI is the minimal interface for DetachNetworkInterface mocks and capability adapters.
+type DetachNetworkInterfaceAPI interface {
+	// DetachNetworkInterface invokes the native action with owned inputs and per-call options.
+	DetachNetworkInterface(context.Context, *DetachNetworkInterfaceInput, ...func(*Options)) (*DetachNetworkInterfaceOutput, error)
+}
+
+// DetachNetworkInterface calls the native DetachNetworkInterface action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Detaches an Elastic Network Interface (ENI) from an ECS instance.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36504
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// When you call this operation, take note of the following items:
+// -  You cannot detach the primary ENI of an instance.
+// -  The network interface controller (NIC) must be in the Detaching or InUse state.
+// -  The instance must be in the Running or Stopped state.
+// -  This is an asynchronous operation. After you invoke the operation, you can check the Elastic Network Interface (ENI) status or listen for network interface controller (NIC) operation events to obtain the result. The following figure shows the ENI state machine:
+// (https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/file-manage-files/zh-CN/20221124/mvga/DetachNetworkInterface.jpg)
+// - The Detaching state indicates that the detach Elastic Network Interface (ENI) request has been sent successfully and the network interface controller (NIC) is being detached from the ECS instance.
+// - The Available state indicates that the network interface controller (NIC) has been detached from the ECS instance.
+// - If the Elastic Network Interface (ENI) remains in the Detaching state for an extended period, the detachment may have failed because the operating system inside the instance did not respond to the network interface controller (NIC) detach request. In this case, initiate a new detach request for the ENI. If the issue persists, restart the instance and retry.
+// For details, see Detach an Elastic Network Interface (ENI) (https://help.aliyun.com/document_detail/471551.html). To invoke this operation, refer to the sample code.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36504
+func (c *Client) DetachNetworkInterface(ctx context.Context, input *DetachNetworkInterfaceInput, optFns ...func(*Options)) (*DetachNetworkInterfaceOutput, error) {
+	out, meta, err := invoke[DetachNetworkInterfaceInput, DetachNetworkInterfaceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DetachNetworkInterface", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DisableActivationAPI is the minimal interface for DisableActivation mocks and capability adapters.
+type DisableActivationAPI interface {
+	// DisableActivation invokes the native action with owned inputs and per-call options.
+	DisableActivation(context.Context, *DisableActivationInput, ...func(*Options)) (*DisableActivationOutput, error)
+}
+
+// DisableActivation calls the native DisableActivation action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Disables a specified activation code.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36628
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// If you are concerned that a created activation code may be leaked, you can call this operation to disable the activation code. After the activation code is disabled, it can no longer be used to register new managed instances. However, managed instances that are already registered are not affected.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36628
+func (c *Client) DisableActivation(ctx context.Context, input *DisableActivationInput, optFns ...func(*Options)) (*DisableActivationOutput, error) {
+	out, meta, err := invoke[DisableActivationInput, DisableActivationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DisableActivation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // DisableDiskEncryptionByDefaultAPI is the minimal interface for DisableDiskEncryptionByDefault mocks and capability adapters.
 type DisableDiskEncryptionByDefaultAPI interface {
 	// DisableDiskEncryptionByDefault invokes the native action with owned inputs and per-call options.
@@ -5298,6 +7435,31 @@ type DisableDiskEncryptionByDefaultAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36711
 func (c *Client) DisableDiskEncryptionByDefault(ctx context.Context, input *DisableDiskEncryptionByDefaultInput, optFns ...func(*Options)) (*DisableDiskEncryptionByDefaultOutput, error) {
 	out, meta, err := invoke[DisableDiskEncryptionByDefaultInput, DisableDiskEncryptionByDefaultOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DisableDiskEncryptionByDefault", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// DisableNetworkInterfaceQoSAPI is the minimal interface for DisableNetworkInterfaceQoS mocks and capability adapters.
+type DisableNetworkInterfaceQoSAPI interface {
+	// DisableNetworkInterfaceQoS invokes the native action with owned inputs and per-call options.
+	DisableNetworkInterfaceQoS(context.Context, *DisableNetworkInterfaceQoSInput, ...func(*Options)) (*DisableNetworkInterfaceQoSOutput, error)
+}
+
+// DisableNetworkInterfaceQoS calls the native DisableNetworkInterfaceQoS action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Disables the QoS rate limiting settings for an Elastic Network Interface (ENI).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36793
+func (c *Client) DisableNetworkInterfaceQoS(ctx context.Context, input *DisableNetworkInterfaceQoSInput, optFns ...func(*Options)) (*DisableNetworkInterfaceQoSOutput, error) {
+	out, meta, err := invoke[DisableNetworkInterfaceQoSInput, DisableNetworkInterfaceQoSOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DisableNetworkInterfaceQoS", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5343,6 +7505,31 @@ type EnableDiskEncryptionByDefaultAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36872
 func (c *Client) EnableDiskEncryptionByDefault(ctx context.Context, input *EnableDiskEncryptionByDefaultInput, optFns ...func(*Options)) (*EnableDiskEncryptionByDefaultOutput, error) {
 	out, meta, err := invoke[EnableDiskEncryptionByDefaultInput, EnableDiskEncryptionByDefaultOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "EnableDiskEncryptionByDefault", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// EnableNetworkInterfaceQoSAPI is the minimal interface for EnableNetworkInterfaceQoS mocks and capability adapters.
+type EnableNetworkInterfaceQoSAPI interface {
+	// EnableNetworkInterfaceQoS invokes the native action with owned inputs and per-call options.
+	EnableNetworkInterfaceQoS(context.Context, *EnableNetworkInterfaceQoSInput, ...func(*Options)) (*EnableNetworkInterfaceQoSOutput, error)
+}
+
+// EnableNetworkInterfaceQoS calls the native EnableNetworkInterfaceQoS action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Enables or modifies the QoS rate limiting settings of an Elastic Network Interface (ENI).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L36997
+func (c *Client) EnableNetworkInterfaceQoS(ctx context.Context, input *EnableNetworkInterfaceQoSInput, optFns ...func(*Options)) (*EnableNetworkInterfaceQoSOutput, error) {
+	out, meta, err := invoke[EnableNetworkInterfaceQoSInput, EnableNetworkInterfaceQoSOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "EnableNetworkInterfaceQoS", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5499,6 +7686,73 @@ type ExportSnapshotAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37450
 func (c *Client) ExportSnapshot(ctx context.Context, input *ExportSnapshotInput, optFns ...func(*Options)) (*ExportSnapshotOutput, error) {
 	out, meta, err := invoke[ExportSnapshotInput, ExportSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ExportSnapshot", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// GetInstanceConsoleOutputAPI is the minimal interface for GetInstanceConsoleOutput mocks and capability adapters.
+type GetInstanceConsoleOutputAPI interface {
+	// GetInstanceConsoleOutput invokes the native action with owned inputs and per-call options.
+	GetInstanceConsoleOutput(context.Context, *GetInstanceConsoleOutputInput, ...func(*Options)) (*GetInstanceConsoleOutputOutput, error)
+}
+
+// GetInstanceConsoleOutput calls the native GetInstanceConsoleOutput action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Retrieves the system command line output of an instance. The data is returned in Base64-encoded format.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37547
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - Elastic Compute Service (ECS) is a virtualization-based cloud server that cannot be connected to display devices or manually screenshotted. However, Alibaba Cloud caches the system command line output from the last time an instance was started, restarted, or shut down. You can invoke GetInstanceConsoleOutput to retrieve this output.
+// - You cannot retrieve the system command line output of retired instance types (https://help.aliyun.com/document_detail/55263.html).
+// - Windows instances do not support retrieving system command line output.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37547
+func (c *Client) GetInstanceConsoleOutput(ctx context.Context, input *GetInstanceConsoleOutputInput, optFns ...func(*Options)) (*GetInstanceConsoleOutputOutput, error) {
+	out, meta, err := invoke[GetInstanceConsoleOutputInput, GetInstanceConsoleOutputOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "GetInstanceConsoleOutput", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// GetInstanceScreenshotAPI is the minimal interface for GetInstanceScreenshot mocks and capability adapters.
+type GetInstanceScreenshotAPI interface {
+	// GetInstanceScreenshot invokes the native action with owned inputs and per-call options.
+	GetInstanceScreenshot(context.Context, *GetInstanceScreenshotInput, ...func(*Options)) (*GetInstanceScreenshotOutput, error)
+}
+
+// GetInstanceScreenshot calls the native GetInstanceScreenshot action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Retrieves the screenshot information of an instance.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37645
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Elastic Compute Service (ECS) returns the instance screenshot as a Base64-encoded JPG image. You must decode the image on your own. You can call this operation to troubleshoot faults. Note the following items:
+// - The instance must be in the Running state.
+// - You cannot retrieve screenshot information for retired instance types (https://help.aliyun.com/document_detail/55263.html).
+// - If you call this operation multiple times on the same instance, wait at least 10 seconds between calls. Otherwise, the Throttling error code is returned.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L37645
+func (c *Client) GetInstanceScreenshot(ctx context.Context, input *GetInstanceScreenshotInput, optFns ...func(*Options)) (*GetInstanceScreenshotOutput, error) {
+	out, meta, err := invoke[GetInstanceScreenshotInput, GetInstanceScreenshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "GetInstanceScreenshot", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5665,6 +7919,99 @@ func (c *Client) ImportKeyPair(ctx context.Context, input *ImportKeyPairInput, o
 	return out, nil
 }
 
+// InstallCloudAssistantAPI is the minimal interface for InstallCloudAssistant mocks and capability adapters.
+type InstallCloudAssistantAPI interface {
+	// InstallCloudAssistant invokes the native action with owned inputs and per-call options.
+	InstallCloudAssistant(context.Context, *InstallCloudAssistantInput, ...func(*Options)) (*InstallCloudAssistantOutput, error)
+}
+
+// InstallCloudAssistant calls the native InstallCloudAssistant action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Installs Cloud Assistant Agent on one or more ECS instances. You must restart the instances to complete the installation of Cloud Assistant Agent.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L38297
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// After you call the InstallCloudAssistant operation, call RebootInstance (https://help.aliyun.com/document_detail/25502.html) to make the Cloud Assistant Agent installation take effect.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L38297
+func (c *Client) InstallCloudAssistant(ctx context.Context, input *InstallCloudAssistantInput, optFns ...func(*Options)) (*InstallCloudAssistantOutput, error) {
+	out, meta, err := invoke[InstallCloudAssistantInput, InstallCloudAssistantOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "InstallCloudAssistant", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// InvokeCommandAPI is the minimal interface for InvokeCommand mocks and capability adapters.
+type InvokeCommandAPI interface {
+	// InvokeCommand invokes the native action with owned inputs and per-call options.
+	InvokeCommand(context.Context, *InvokeCommandInput, ...func(*Options)) (*InvokeCommandOutput, error)
+}
+
+// InvokeCommand calls the native InvokeCommand action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Triggers a Cloud Assistant command on one or more ECS instances by specifying parameters such as CommandId, InstanceId, and ResourceGroupId.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L38685
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// <props="china">
+// - The following limits apply to the target ECS instances. If you select multiple ECS instances and one of them does not meet the execution conditions, you must call the operation again.
+// - Target instance must be in the Running state. You can call DescribeInstances (https://help.aliyun.com/document_detail/25506.html) to query target instance status.
+// - Cloud Assistant Agent (https://help.aliyun.com/document_detail/64921.html) must be installed on target instance in advance.
+// - To run a PowerShell command, target instance must have the PowerShell module configured.
+// - One-time execution: The command is executed only once.
+// - Scheduled execution:
+// - The command is executed at the frequency specified by the Frequency parameter. The result of the previous execution does not affect the next execution.
+// - If you specify a time zone when you run a scheduled task based on a Cron expression, the scheduled execution time is based on the specified time zone. If you do not specify a time zone, the scheduled execution time is based on the system time zone of the ECS instance. Make sure that the time or time zone of the ECS instance is consistent with your expected time. For more information about time zones, see Manage time synchronization services (https://help.aliyun.com/document_detail/92704.html).
+// The Cloud Assistant Agent version must be at least the following versions to support the new features of scheduled tasks (execution at fixed intervals, one-time execution at a specified time, and specifying a year or time zone for Cron expression-based scheduled execution). If the ClientNeedUpgrade error code is returned, see Upgrade or disable upgrades for Cloud Assistant Agent (https://help.aliyun.com/document_detail/134383.html) to update the agent to the latest version.
+// - Linux: 2.2.3.282
+// - Windows: 2.1.3.282
+// - A command may fail to be executed because of abnormal instance status, network exceptions, or Cloud Assistant Agent exceptions. No execution information is generated when a command fails to be executed. For more information, see Common errors and solutions for execution failures (https://help.aliyun.com/document_detail/87029.html).
+// - If you enabled the custom parameter feature when you created the command, you must pass in custom parameters (Parameters) when you execute the command.
+// - Call DescribeCloudAssistantStatus (https://help.aliyun.com/document_detail/87346.html) to query the Cloud Assistant status of target instance first. Execute the command only when CloudAssistantStatus is true, especially for newly purchased instances.
+// <props="intl">
+// - The following limits apply to the target ECS instances. If you select multiple ECS instances and one of them does not meet the execution conditions, you must call the operation again.
+// - Target instance must be in the Running state. You can call DescribeInstances (https://help.aliyun.com/document_detail/25506.html) to query target instance status.
+// - Cloud Assistant Agent (https://help.aliyun.com/document_detail/64921.html) must be installed on target instance in advance.
+// - To run a PowerShell command, target instance must have the PowerShell module configured.
+// - One-time execution: The command is executed only once.
+// - Scheduled execution:
+// - The command is executed at the frequency specified by the Frequency parameter. The result of the previous execution does not affect the next execution.
+// - If you specify a time zone when you run a scheduled task based on a Cron expression, the scheduled execution time is based on the specified time zone. If you do not specify a time zone, the scheduled execution time is based on the system time zone of the ECS instance. Make sure that the time or time zone of the ECS instance is consistent with your expected time. For more information about time zones, see Manage time synchronization services (https://help.aliyun.com/document_detail/92704.html).
+// The Cloud Assistant Agent version must be at least the following versions to support the new features of scheduled tasks (execution at fixed intervals, one-time execution at a specified time, and specifying a year or time zone for Cron expression-based scheduled execution). If the ClientNeedUpgrade error code is returned, see Upgrade or disable upgrades for Cloud Assistant Agent (https://help.aliyun.com/document_detail/134383.html) to update the agent to the latest version.
+// - Linux: 2.2.3.282
+// - Windows: 2.1.3.282
+// - A command may fail to be executed because of abnormal instance status, network exceptions, or Cloud Assistant Agent exceptions. No execution information is generated when a command fails to be executed. For more information, see Common errors and solutions for execution failures (https://help.aliyun.com/document_detail/87029.html).
+// - If you enabled the custom parameter feature when you created the command, you must pass in custom parameters (Parameters) when you execute the command.
+// - Call DescribeCloudAssistantStatus (https://help.aliyun.com/document_detail/87346.html) to query the Cloud Assistant status of target instance first. Execute the command only when CloudAssistantStatus is true, especially for newly purchased instances.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L38685
+func (c *Client) InvokeCommand(ctx context.Context, input *InvokeCommandInput, optFns ...func(*Options)) (*InvokeCommandOutput, error) {
+	out, meta, err := invoke[InvokeCommandInput, InvokeCommandOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "InvokeCommand", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // JoinResourceGroupAPI is the minimal interface for JoinResourceGroup mocks and capability adapters.
 type JoinResourceGroupAPI interface {
 	// JoinResourceGroup invokes the native action with owned inputs and per-call options.
@@ -5762,6 +8109,78 @@ type LeaveSecurityGroupAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39108
 func (c *Client) LeaveSecurityGroup(ctx context.Context, input *LeaveSecurityGroupInput, optFns ...func(*Options)) (*LeaveSecurityGroupOutput, error) {
 	out, meta, err := invoke[LeaveSecurityGroupInput, LeaveSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "LeaveSecurityGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ListPluginStatusAPI is the minimal interface for ListPluginStatus mocks and capability adapters.
+type ListPluginStatusAPI interface {
+	// ListPluginStatus invokes the native action with owned inputs and per-call options.
+	ListPluginStatus(context.Context, *ListPluginStatusInput, ...func(*Options)) (*ListPluginStatusOutput, error)
+}
+
+// ListPluginStatus calls the native ListPluginStatus action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the status of Cloud Assistant plugins on instances.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39242
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - The Cloud Assistant Agent version on the instance must be at least the following version for the Cloud Assistant plugin status to be queried:
+// - Linux: 2.2.3.344
+// - Windows: 2.1.3.344
+// - When performing a paged query for the first page, set only MaxResults to limit the number of entries returned. The NextToken value in the response serves as the credential for querying subsequent pages. When querying subsequent pages, set the NextToken parameter to the NextToken value obtained from the previous response, and set MaxResults to limit the number of entries returned. Settings for paging are handled through these two parameters.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39242
+func (c *Client) ListPluginStatus(ctx context.Context, input *ListPluginStatusInput, optFns ...func(*Options)) (*ListPluginStatusOutput, error) {
+	out, meta, err := invoke[ListPluginStatusInput, ListPluginStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ListPluginStatus", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ListTagResourcesAPI is the minimal interface for ListTagResources mocks and capability adapters.
+type ListTagResourcesAPI interface {
+	// ListTagResources invokes the native action with owned inputs and per-call options.
+	ListTagResources(context.Context, *ListTagResourcesInput, ...func(*Options)) (*ListTagResourcesOutput, error)
+}
+
+// ListTagResources calls the native ListTagResources action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Queries the tags that are bound to one or more ECS resources.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39427
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// Specify at least one of the following parameters in the request to determine the query object.
+// - ResourceId.N
+// - Tag.N (Tag.N.Key and Tag.N.Value)
+// - TagFilter.N
+// If you specify the following parameters at the same time, the response contains only ECS resources that meet both conditions.
+// - Tag.N and ResourceId.N
+// - TagFilter.N and ResourceId.N
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L39427
+func (c *Client) ListTagResources(ctx context.Context, input *ListTagResourcesInput, optFns ...func(*Options)) (*ListTagResourcesOutput, error) {
+	out, meta, err := invoke[ListTagResourcesInput, ListTagResourcesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ListTagResources", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5913,6 +8332,56 @@ type ModifyCapacityReservationAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40115
 func (c *Client) ModifyCapacityReservation(ctx context.Context, input *ModifyCapacityReservationInput, optFns ...func(*Options)) (*ModifyCapacityReservationOutput, error) {
 	out, meta, err := invoke[ModifyCapacityReservationInput, ModifyCapacityReservationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyCapacityReservation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyCloudAssistantSettingsAPI is the minimal interface for ModifyCloudAssistantSettings mocks and capability adapters.
+type ModifyCloudAssistantSettingsAPI interface {
+	// ModifyCloudAssistantSettings invokes the native action with owned inputs and per-call options.
+	ModifyCloudAssistantSettings(context.Context, *ModifyCloudAssistantSettingsInput, ...func(*Options)) (*ModifyCloudAssistantSettingsOutput, error)
+}
+
+// ModifyCloudAssistantSettings calls the native ModifyCloudAssistantSettings action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies Cloud Assistant service configurations.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40337
+func (c *Client) ModifyCloudAssistantSettings(ctx context.Context, input *ModifyCloudAssistantSettingsInput, optFns ...func(*Options)) (*ModifyCloudAssistantSettingsOutput, error) {
+	out, meta, err := invoke[ModifyCloudAssistantSettingsInput, ModifyCloudAssistantSettingsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyCloudAssistantSettings", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyCommandAPI is the minimal interface for ModifyCommand mocks and capability adapters.
+type ModifyCommandAPI interface {
+	// ModifyCommand invokes the native action with owned inputs and per-call options.
+	ModifyCommand(context.Context, *ModifyCommandInput, ...func(*Options)) (*ModifyCommandOutput, error)
+}
+
+// ModifyCommand calls the native ModifyCommand action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the parameters of a Cloud Assistant command.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L40454
+func (c *Client) ModifyCommand(ctx context.Context, input *ModifyCommandInput, optFns ...func(*Options)) (*ModifyCommandOutput, error) {
+	out, meta, err := invoke[ModifyCommandInput, ModifyCommandOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyCommand", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6425,6 +8894,31 @@ type ModifyHaVipAttributeAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42417
 func (c *Client) ModifyHaVipAttribute(ctx context.Context, input *ModifyHaVipAttributeInput, optFns ...func(*Options)) (*ModifyHaVipAttributeOutput, error) {
 	out, meta, err := invoke[ModifyHaVipAttributeInput, ModifyHaVipAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyHaVipAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyHpcClusterAttributeAPI is the minimal interface for ModifyHpcClusterAttribute mocks and capability adapters.
+type ModifyHpcClusterAttributeAPI interface {
+	// ModifyHpcClusterAttribute invokes the native action with owned inputs and per-call options.
+	ModifyHpcClusterAttribute(context.Context, *ModifyHpcClusterAttributeInput, ...func(*Options)) (*ModifyHpcClusterAttributeOutput, error)
+}
+
+// ModifyHpcClusterAttribute calls the native ModifyHpcClusterAttribute action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the description of an HPC cluster.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L42515
+func (c *Client) ModifyHpcClusterAttribute(ctx context.Context, input *ModifyHpcClusterAttributeInput, optFns ...func(*Options)) (*ModifyHpcClusterAttributeOutput, error) {
+	out, meta, err := invoke[ModifyHpcClusterAttributeInput, ModifyHpcClusterAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyHpcClusterAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7051,6 +9545,51 @@ func (c *Client) ModifyInstanceVpcAttribute(ctx context.Context, input *ModifyIn
 	return out, nil
 }
 
+// ModifyInvocationAttributeAPI is the minimal interface for ModifyInvocationAttribute mocks and capability adapters.
+type ModifyInvocationAttributeAPI interface {
+	// ModifyInvocationAttribute invokes the native action with owned inputs and per-call options.
+	ModifyInvocationAttribute(context.Context, *ModifyInvocationAttributeInput, ...func(*Options)) (*ModifyInvocationAttributeOutput, error)
+}
+
+// ModifyInvocationAttribute calls the native ModifyInvocationAttribute action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the execution information of a Cloud Assistant scheduled task, including the command content, scheduled execution method, and adding ECS instances or managed instances to the task.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45221
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - You can modify scheduled tasks with the following execution modes (see the RepeatMode value returned by DescribeInvocations (https://help.aliyun.com/document_detail/2679916.html)):
+// - Period: periodic execution.
+// - NextRebootOnly: automatically executes the command the next time the instance starts.
+// - EveryReboot: automatically executes the command each time the instance starts.
+// - You can modify scheduled tasks in the following states (see the InvocationStatus value returned by DescribeInvocations (https://help.aliyun.com/document_detail/2679916.html)):
+// - Pending: The system is verifying or sending the command. If the command execution state on at least one instance is Pending, the overall execution state is Pending.
+// - Running: The command is running on the instance. If the command execution state on at least one instance is Running, the overall execution state is Running.
+// - Scheduled: The scheduled command has been sent and is waiting to run. If the command execution state on at least one instance is Scheduled, the overall execution state is Scheduled.
+// - Stopping: The scheduled task is being stopped. If the command execution state on at least one instance is Stopping, the overall execution state is Stopping.
+// - Before modifying scheduled task execution information (including command content, custom parameters, and execution frequency), the Cloud Assistant Agent version on the ECS instances or managed instances that have already executed the scheduled task must be later than the following versions:
+// - Linux: 2.2.3.541
+// - Windows: 2.1.3.541
+// - If the call result returns the InvalidOperation.CloudAssistantVersionUnsupported error code, update the Cloud Assistant Agent to the latest version.
+// - When you execute a Cloud Assistant common command, you cannot modify the command content CommandContent.
+// - When you modify the command content CommandContent, and the scheduled task was created by calling InvokeCommand (https://help.aliyun.com/document_detail/64841.html) or RunCommand (https://help.aliyun.com/document_detail/141751.html) with KeepCommand set to true, a new command is created and retained permanently, which counts toward your Cloud Assistant command quota. You can retain up to 500 to 50,000 Cloud Assistant commands per region. You can also request a quota increase. For information about how to query and increase quotas, see Quota management (https://help.aliyun.com/document_detail/184116.html).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45221
+func (c *Client) ModifyInvocationAttribute(ctx context.Context, input *ModifyInvocationAttributeInput, optFns ...func(*Options)) (*ModifyInvocationAttributeOutput, error) {
+	out, meta, err := invoke[ModifyInvocationAttributeInput, ModifyInvocationAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyInvocationAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // ModifyLaunchTemplateDefaultVersionAPI is the minimal interface for ModifyLaunchTemplateDefaultVersion mocks and capability adapters.
 type ModifyLaunchTemplateDefaultVersionAPI interface {
 	// ModifyLaunchTemplateDefaultVersion invokes the native action with owned inputs and per-call options.
@@ -7069,6 +9608,181 @@ type ModifyLaunchTemplateDefaultVersionAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45364
 func (c *Client) ModifyLaunchTemplateDefaultVersion(ctx context.Context, input *ModifyLaunchTemplateDefaultVersionInput, optFns ...func(*Options)) (*ModifyLaunchTemplateDefaultVersionOutput, error) {
 	out, meta, err := invoke[ModifyLaunchTemplateDefaultVersionInput, ModifyLaunchTemplateDefaultVersionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyLaunchTemplateDefaultVersion", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyManagedInstanceAPI is the minimal interface for ModifyManagedInstance mocks and capability adapters.
+type ModifyManagedInstanceAPI interface {
+	// ModifyManagedInstance invokes the native action with owned inputs and per-call options.
+	ModifyManagedInstance(context.Context, *ModifyManagedInstanceInput, ...func(*Options)) (*ModifyManagedInstanceOutput, error)
+}
+
+// ModifyManagedInstance calls the native ModifyManagedInstance action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the information of a managed instance.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45458
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// Currently, you can call the ModifyManagedInstance operation only to modify the name of a managed instance.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45458
+func (c *Client) ModifyManagedInstance(ctx context.Context, input *ModifyManagedInstanceInput, optFns ...func(*Options)) (*ModifyManagedInstanceOutput, error) {
+	out, meta, err := invoke[ModifyManagedInstanceInput, ModifyManagedInstanceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyManagedInstance", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyNetworkInterfaceAttributeAPI is the minimal interface for ModifyNetworkInterfaceAttribute mocks and capability adapters.
+type ModifyNetworkInterfaceAttributeAPI interface {
+	// ModifyNetworkInterfaceAttribute invokes the native action with owned inputs and per-call options.
+	ModifyNetworkInterfaceAttribute(context.Context, *ModifyNetworkInterfaceAttributeInput, ...func(*Options)) (*ModifyNetworkInterfaceAttributeOutput, error)
+}
+
+// ModifyNetworkInterfaceAttribute calls the native ModifyNetworkInterfaceAttribute action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the attributes of an Elastic Network Interface (ENI), such as the queue number, associated security groups, queue depth, communication mode, and whether to retain the ENI when the associated instance is released.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45662
+func (c *Client) ModifyNetworkInterfaceAttribute(ctx context.Context, input *ModifyNetworkInterfaceAttributeInput, optFns ...func(*Options)) (*ModifyNetworkInterfaceAttributeOutput, error) {
+	out, meta, err := invoke[ModifyNetworkInterfaceAttributeInput, ModifyNetworkInterfaceAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyNetworkInterfaceAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyPhysicalConnectionAttributeAPI is the minimal interface for ModifyPhysicalConnectionAttribute mocks and capability adapters.
+type ModifyPhysicalConnectionAttributeAPI interface {
+	// ModifyPhysicalConnectionAttribute invokes the native action with owned inputs and per-call options.
+	ModifyPhysicalConnectionAttribute(context.Context, *ModifyPhysicalConnectionAttributeInput, ...func(*Options)) (*ModifyPhysicalConnectionAttributeOutput, error)
+}
+
+// ModifyPhysicalConnectionAttribute calls the native ModifyPhysicalConnectionAttribute action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the attributes of a physical connection.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45786
+func (c *Client) ModifyPhysicalConnectionAttribute(ctx context.Context, input *ModifyPhysicalConnectionAttributeInput, optFns ...func(*Options)) (*ModifyPhysicalConnectionAttributeOutput, error) {
+	out, meta, err := invoke[ModifyPhysicalConnectionAttributeInput, ModifyPhysicalConnectionAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyPhysicalConnectionAttribute", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyPlanMaintenanceWindowAPI is the minimal interface for ModifyPlanMaintenanceWindow mocks and capability adapters.
+type ModifyPlanMaintenanceWindowAPI interface {
+	// ModifyPlanMaintenanceWindow invokes the native action with owned inputs and per-call options.
+	ModifyPlanMaintenanceWindow(context.Context, *ModifyPlanMaintenanceWindowInput, ...func(*Options)) (*ModifyPlanMaintenanceWindowOutput, error)
+}
+
+// ModifyPlanMaintenanceWindow calls the native ModifyPlanMaintenanceWindow action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Updates an O&M window.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45946
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the attributes of an O&M window. When the TargetResource parameter of an O&M window is set to associate ECS instances and an underlying hardware risk is detected that requires scheduled O&M to mitigate, the execution time of the scheduled O&M is determined based on the time range specified by the TimePeriod parameter of the O&M window. When the execution time of an O&M event is reached, the platform automatically performs the corresponding O&M operation based on the type of the O&M event.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L45946
+func (c *Client) ModifyPlanMaintenanceWindow(ctx context.Context, input *ModifyPlanMaintenanceWindowInput, optFns ...func(*Options)) (*ModifyPlanMaintenanceWindowOutput, error) {
+	out, meta, err := invoke[ModifyPlanMaintenanceWindowInput, ModifyPlanMaintenanceWindowOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyPlanMaintenanceWindow", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyPortRangeListAPI is the minimal interface for ModifyPortRangeList mocks and capability adapters.
+type ModifyPortRangeListAPI interface {
+	// ModifyPortRangeList invokes the native action with owned inputs and per-call options.
+	ModifyPortRangeList(context.Context, *ModifyPortRangeListInput, ...func(*Options)) (*ModifyPortRangeListOutput, error)
+}
+
+// ModifyPortRangeList calls the native ModifyPortRangeList action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the name and entries of a specified port range list. You can add, modify, and delete entries.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46067
+func (c *Client) ModifyPortRangeList(ctx context.Context, input *ModifyPortRangeListInput, optFns ...func(*Options)) (*ModifyPortRangeListOutput, error) {
+	out, meta, err := invoke[ModifyPortRangeListInput, ModifyPortRangeListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyPortRangeList", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifyPrefixListAPI is the minimal interface for ModifyPrefixList mocks and capability adapters.
+type ModifyPrefixListAPI interface {
+	// ModifyPrefixList invokes the native action with owned inputs and per-call options.
+	ModifyPrefixList(context.Context, *ModifyPrefixListInput, ...func(*Options)) (*ModifyPrefixListOutput, error)
+}
+
+// ModifyPrefixList calls the native ModifyPrefixList action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies the name, description, and other attributes of a specified prefix list, and supports adding, modifying, and deleting entries.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46190
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// - The specified Classless Inter-Domain Routing (CIDR) blocks must be in standard form. For example, 10.0.0.0/8 is a valid CIDR block, whereas 10.0.0.1/8 is a fault form. For more information, see What is CIDR? (link omitted).
+// - When you add or delete entries, you cannot specify duplicate CIDR blocks. Examples:
+// - For IPv4 CIDR blocks: You cannot specify two entries that both have the CIDR block 10.0.0.0/8. You cannot specify two entries whose CIDR blocks are 10.0.0.1/32 and 10.0.0.1 respectively because these two CIDR blocks are duplicates.
+// - For IPv6 CIDR blocks: You cannot specify two entries whose CIDR blocks are 2001:fd01:0:0:0:0:0:0/32 and 2001:fd01::/32 respectively because these two CIDR blocks are duplicates.
+// - The CIDR blocks of entries to be added cannot be the same as those of entries to be deleted. For example, when you add an entry whose CIDR block is 10.0.0.0/8, the entries to be deleted cannot contain the CIDR block 10.0.0.0/8.
+// - To modify the description of an entry, specify the CIDR block of the entry (AddEntry.N.Cidr) and the new description (AddEntry.N.Description).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L46190
+func (c *Client) ModifyPrefixList(ctx context.Context, input *ModifyPrefixListInput, optFns ...func(*Options)) (*ModifyPrefixListOutput, error) {
+	out, meta, err := invoke[ModifyPrefixListInput, ModifyPrefixListOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyPrefixList", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -7327,6 +10041,39 @@ func (c *Client) ModifySecurityGroupAttribute(ctx context.Context, input *Modify
 	return out, nil
 }
 
+// ModifySecurityGroupEgressRuleAPI is the minimal interface for ModifySecurityGroupEgressRule mocks and capability adapters.
+type ModifySecurityGroupEgressRuleAPI interface {
+	// ModifySecurityGroupEgressRule invokes the native action with owned inputs and per-call options.
+	ModifySecurityGroupEgressRule(context.Context, *ModifySecurityGroupEgressRuleInput, ...func(*Options)) (*ModifySecurityGroupEgressRuleOutput, error)
+}
+
+// ModifySecurityGroupEgressRule calls the native ModifySecurityGroupEgressRule action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies an outbound security group rule.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47281
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// When you modify a security group rule by specifying the security group rule ID, take note of the following limits:
+// - The authorization object of a security group rule can be an IPv4 Classless Inter-Domain Routing (CIDR) block (or IP address), an IPv6 CIDR block (or IP address), a security group, or a prefix list. You cannot use this operation to change the type of the authorization object of an existing security group rule. For example, if the original authorization object type is an IPv4 CIDR block, you can change it to another IPv4 CIDR block (or IP address), but you cannot change it to an IPv6 CIDR block (or IP address), a security group, or a prefix list.
+// - You cannot change a field value from a non-empty value to an empty value. To modify security group rules in this case, increase a new rule and then delete the current rule.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47281
+func (c *Client) ModifySecurityGroupEgressRule(ctx context.Context, input *ModifySecurityGroupEgressRuleInput, optFns ...func(*Options)) (*ModifySecurityGroupEgressRuleOutput, error) {
+	out, meta, err := invoke[ModifySecurityGroupEgressRuleInput, ModifySecurityGroupEgressRuleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySecurityGroupEgressRule", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // ModifySecurityGroupPolicyAPI is the minimal interface for ModifySecurityGroupPolicy mocks and capability adapters.
 type ModifySecurityGroupPolicyAPI interface {
 	// ModifySecurityGroupPolicy invokes the native action with owned inputs and per-call options.
@@ -7354,6 +10101,39 @@ type ModifySecurityGroupPolicyAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47434
 func (c *Client) ModifySecurityGroupPolicy(ctx context.Context, input *ModifySecurityGroupPolicyInput, optFns ...func(*Options)) (*ModifySecurityGroupPolicyOutput, error) {
 	out, meta, err := invoke[ModifySecurityGroupPolicyInput, ModifySecurityGroupPolicyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySecurityGroupPolicy", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// ModifySecurityGroupRuleAPI is the minimal interface for ModifySecurityGroupRule mocks and capability adapters.
+type ModifySecurityGroupRuleAPI interface {
+	// ModifySecurityGroupRule invokes the native action with owned inputs and per-call options.
+	ModifySecurityGroupRule(context.Context, *ModifySecurityGroupRuleInput, ...func(*Options)) (*ModifySecurityGroupRuleOutput, error)
+}
+
+// ModifySecurityGroupRule calls the native ModifySecurityGroupRule action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Modifies an inbound security group rule of a specified security group.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47609
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// When you modify a security group rule by specifying the security group rule ID, note the following limits:
+// - The authorization object of a security group rule can be an IPv4 Classless Inter-Domain Routing (CIDR) block (or IP address), an IPv6 CIDR block (or IP address), a security group, or a prefix list. You cannot use this operation to change the type of the authorization object of an existing security group rule. For example, if the original authorization object type is an IPv4 CIDR block, you can change it to another IPv4 CIDR block (or IP address), but you cannot change it to an IPv6 CIDR block (or IP address), a security group, or a prefix list.
+// - You cannot change a field from a non-empty value to an empty value. To modify security group rules in this case, increase a new rule and then delete the current rule.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47609
+func (c *Client) ModifySecurityGroupRule(ctx context.Context, input *ModifySecurityGroupRuleInput, optFns ...func(*Options)) (*ModifySecurityGroupRuleOutput, error) {
+	out, meta, err := invoke[ModifySecurityGroupRuleInput, ModifySecurityGroupRuleOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifySecurityGroupRule", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8348,6 +11128,31 @@ func (c *Client) ReplaceSystemDisk(ctx context.Context, input *ReplaceSystemDisk
 	return out, nil
 }
 
+// ReportInstancesStatusAPI is the minimal interface for ReportInstancesStatus mocks and capability adapters.
+type ReportInstancesStatusAPI interface {
+	// ReportInstancesStatus invokes the native action with owned inputs and per-call options.
+	ReportInstancesStatus(context.Context, *ReportInstancesStatusInput, ...func(*Options)) (*ReportInstancesStatusOutput, error)
+}
+
+// ReportInstancesStatus calls the native ReportInstancesStatus action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Reports anomalous issues for one or more ECS instances. You can report the same issue that occurs on multiple ECS instances or the same issue that occurs on multiple disks attached to a single ECS instance.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51355
+func (c *Client) ReportInstancesStatus(ctx context.Context, input *ReportInstancesStatusInput, optFns ...func(*Options)) (*ReportInstancesStatusOutput, error) {
+	out, meta, err := invoke[ReportInstancesStatusInput, ReportInstancesStatusOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ReportInstancesStatus", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // ResetDiskAPI is the minimal interface for ResetDisk mocks and capability adapters.
 type ResetDiskAPI interface {
 	// ResetDisk invokes the native action with owned inputs and per-call options.
@@ -8488,6 +11293,337 @@ func (c *Client) ResizeDisk(ctx context.Context, input *ResizeDiskInput, optFns 
 	return out, nil
 }
 
+// RevokeSecurityGroupAPI is the minimal interface for RevokeSecurityGroup mocks and capability adapters.
+type RevokeSecurityGroupAPI interface {
+	// RevokeSecurityGroup invokes the native action with owned inputs and per-call options.
+	RevokeSecurityGroup(context.Context, *RevokeSecurityGroupInput, ...func(*Options)) (*RevokeSecurityGroupOutput, error)
+}
+
+// RevokeSecurityGroup calls the native RevokeSecurityGroup action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes one or more inbound security group rules from a specified security group.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51995
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// >Notice: On July 8, 2024, Alibaba Cloud adjusted the validation rules for this operation. When you attempt to delete a security group rule that does not exist, the operation now returns the error code "InvalidParam.SecurityGroupRuleId" instead of a success response. Update your error code handling to be compatible with this change promptly to avoid impacts on your online services.
+// This operation supports two methods to pass parameters for deleting rules:
+// - Delete rules by specifying security group rule IDs (recommended).
+// - If a specified security group rule ID does not exist, the invocation is failed.
+// - Delete rules by specifying Permissions.
+// - If no matching security group rule exists, the invocation succeeds but no rule is deleted.
+// - The following parameters are required to identify an inbound rule:
+// - Source Settings: specify one of SourceCidrIp (IPv4 address), Ipv6SourceCidrIp (IPv6 address), SourcePrefixListId (prefix list ID), or SourceGroupId (source security group).
+// - Destination port range: PortRange.
+// - Protocol type: IpProtocol.
+// - Access policy: Policy.
+// > You cannot specify both security group rule IDs and Permissions at the same time.
+// Request examples
+// - Delete by specifying security group rule IDs.
+//
+// "SecurityGroupId":"sg-bp67acfmxazb4p****", // Specify the security group ID.
+// "SecurityGroupRuleId":["sgr-bpdfmk**","sgr-bpdfmg**"] // Specify the security group rule IDs.
+//
+// - Delete by specifying an IP address range.
+//
+// "SecurityGroupId":"sg-bp67acfmxazb4p****",
+// "Permissions":[
+// {
+// "SourceCidrIp":"10.0.0.0/8", // Specify the source IP address range.
+// "IpProtocol":"TCP", // Specify the protocol type.
+// "PortRange":"80/80", // Specify the destination port range.
+// "Policy":"accept" // Specify the access policy.
+// }
+// ]
+//
+// - Delete by specifying another security group.
+//
+// "SecurityGroupId":"sg-bp67acfmxazb4p****",
+// "Permissions":[
+// {
+// "SourceGroupId":"sg-bp67acfmxa123b****", // Specify the source security group ID.
+// "IpProtocol":"TCP,"
+// "PortRange":"80/80",
+// "Policy":"accept"
+// ]
+// }
+//
+// - Delete by specifying a prefix list.
+//
+// "SecurityGroupId":"sg-bp67acfmxazb4p****",
+// "Permissions":[
+// {
+// "SourcePrefixListId":pl-x1j1k5ykzqlixdcy****", // Specify the source prefix list ID.
+// "IpProtocol":"TCP",
+// "PortRange":"80/80",
+// "Policy":"accept"
+// }
+// ]
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L51995
+func (c *Client) RevokeSecurityGroup(ctx context.Context, input *RevokeSecurityGroupInput, optFns ...func(*Options)) (*RevokeSecurityGroupOutput, error) {
+	out, meta, err := invoke[RevokeSecurityGroupInput, RevokeSecurityGroupOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RevokeSecurityGroup", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// RevokeSecurityGroupEgressAPI is the minimal interface for RevokeSecurityGroupEgress mocks and capability adapters.
+type RevokeSecurityGroupEgressAPI interface {
+	// RevokeSecurityGroupEgress invokes the native action with owned inputs and per-call options.
+	RevokeSecurityGroupEgress(context.Context, *RevokeSecurityGroupEgressInput, ...func(*Options)) (*RevokeSecurityGroupEgressOutput, error)
+}
+
+// RevokeSecurityGroupEgress calls the native RevokeSecurityGroupEgress action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Deletes one or more outbound security group rules from a specified security group.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L52348
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// >Notice: On July 8, 2024, Alibaba Cloud adjusted the validation rules for this operation. When you attempt to delete a security group rule that does not exist, the operation now returns the error code "InvalidSecurityGroupRule.RuleNotExist" instead of a success response. Make sure that your application is compatible with this fault code to avoid impacts on your workloads.
+// You can use one of the following methods to pass parameters to delete security group rules:
+// - Delete rules by specifying security group rule IDs (recommended).
+// - If a specified security group rule ID does not exist, an error is returned.
+// - Delete rules by specifying the Permissions parameter.
+// - If no matching security group rule exists, the invocation succeeds but no rule is deleted.
+// - The following parameters are required to delete a security group rule:
+// - Destination: Set one of DestCidrIp (IPv4 address), Ipv6DestCidrIp (IPv6 address), DestPrefixListId (prefix list ID), or DestGroupId (destination security group).
+// - Destination port range: PortRange.
+// - Protocol type: IpProtocol.
+// - Access policy: Policy.
+// > You cannot specify both security group rule IDs and the Permissions parameter at the same time.
+// Request examples
+// - Delete by security group rule ID.
+//
+// "SecurityGroupId":"sg-bp67acfmxazb4p****", // Specify the security group ID.
+// "SecurityGroupRuleId":["sgr-bpdfmk**","sgr-bpdfmg**"] // Specify the security group rule IDs.
+//
+// - Delete by IP CIDR block.
+//
+// "SecurityGroupId":"sg-bp67acfmxazb4ph***",
+// "Permissions":[
+// {
+// "IpProtocol":"TCP", // Specify the protocol type.
+// "DestCidrIp":"10.0.0.0/8", // Specify the destination IP CIDR block.
+// "PortRange":"22/22", // Specify the destination port range.
+// "Policy":"accept" // Specify the access policy.
+// }
+// ]
+//
+// - Delete by destination security group.
+//
+// "SecurityGroupId":"sg-bp67acfmxazb4ph***",
+// "Permissions":[
+// {
+// "DestGroupId":"sg-bp67acfmxa123b****", // Specify the destination security group ID.
+// "IpProtocol":"TCP",
+// "PortRange":"22/22",
+// "Policy":"accept"
+// }
+// ]
+//
+// - Delete by prefix list.
+//
+// "SecurityGroupId":"sg-bp67acfmxazb4ph***",
+// "Permissions":[
+// {
+// "IpProtocol":"TCP",
+// "DestPrefixListId":"pl-x1j1k5ykzqlixdcy****", // Specify the destination prefix list ID.
+// "PortRange":"22/22",
+// "Policy":"accept",
+// }
+// ]
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L52348
+func (c *Client) RevokeSecurityGroupEgress(ctx context.Context, input *RevokeSecurityGroupEgressInput, optFns ...func(*Options)) (*RevokeSecurityGroupEgressOutput, error) {
+	out, meta, err := invoke[RevokeSecurityGroupEgressInput, RevokeSecurityGroupEgressOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RevokeSecurityGroupEgress", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// RunCommandAPI is the minimal interface for RunCommand mocks and capability adapters.
+type RunCommandAPI interface {
+	// RunCommand invokes the native action with owned inputs and per-call options.
+	RunCommand(context.Context, *RunCommandInput, ...func(*Options)) (*RunCommandOutput, error)
+}
+
+// RunCommand calls the native RunCommand action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates and executes a Cloud Assistant command on one or more ECS instances. This operation supports Shell, PowerShell, and Bat scripts, and provides features such as scheduled execution, custom parameters, and command execution in containers on instances.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L52982
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// This is an asynchronous operation. After the request is sent, you can call DescribeInvocations (https://help.aliyun.com/document_detail/2679916.html) or DescribeInvocationResults (https://help.aliyun.com/document_detail/2679916.html) with the returned command ID or invocation ID to query the execution results.
+// Before you begin
+// - The target instance must be in the running state (Running). You can call DescribeInstances (https://help.aliyun.com/document_detail/25506.html) to query the instance status.
+// - The target instance must have Cloud Assistant Agent (https://help.aliyun.com/document_detail/64921.html) installed. You can install it by calling InstallCloudAssistant (https://help.aliyun.com/document_detail/2679925.html) and query the installation status by calling DescribeCloudAssistantStatus (https://help.aliyun.com/document_detail/2679924.html).
+// > ECS instances created from public images after December 1, 2017 have Cloud Assistant Agent pre-installed by default.
+// - To run PowerShell commands, make sure the PowerShell module is configured on the Windows operating system of the target ECS instance.
+// Precautions
+// - In a single region, you can retain 500 to 50,000 Cloud Assistant commands. You can also request a quota increase. For more information, see Quota management (https://help.aliyun.com/document_detail/184116.html).
+// - Cloud Assistant Agent must be at or above the following versions to support new features for scheduled tasks (execution at fixed intervals, one-time execution at a specified time, and specifying a year or time zone for Cron-based scheduled execution). If the ClientNeedUpgrade error code is returned, see Upgrade or disable upgrades for Cloud Assistant Agent (https://help.aliyun.com/document_detail/134383.html) to update the agent to the latest version.
+// - Linux: 2.2.3.282
+// - Windows: 2.1.3.282
+// - When you run a Cron-based scheduled task with a specified time zone, the scheduled execution time is based on the specified time zone. When you do not specify a time zone, the scheduled execution time is based on the system time zone of the ECS instance, and the execution time is determined by the system time of the instance. Make sure the time or time zone of the ECS instance matches your expectations. For more information about time zones, see Configure the time zone and NTP service for a Linux instance (https://help.aliyun.com/document_detail/92803.html) or Configure the NTP service for a Windows instance (https://help.aliyun.com/document_detail/51890.html).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L52982
+func (c *Client) RunCommand(ctx context.Context, input *RunCommandInput, optFns ...func(*Options)) (*RunCommandOutput, error) {
+	out, meta, err := invoke[RunCommandInput, RunCommandOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RunCommand", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// RunInstancesAPI is the minimal interface for RunInstances mocks and capability adapters.
+type RunInstancesAPI interface {
+	// RunInstances invokes the native action with owned inputs and per-call options.
+	RunInstances(context.Context, *RunInstancesInput, ...func(*Options)) (*RunInstancesOutput, error)
+}
+
+// RunInstances calls the native RunInstances action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates multiple ECS instances in a batch, with support for automatic startup, public IP address assignment, and automatic release time configuration.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L54013
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// <props="china">
+// Creating instances incurs charges. Billable items include instance types (https://help.aliyun.com/document_detail/25398.html), images (https://help.aliyun.com/document_detail/179021.html), block storage (https://help.aliyun.com/document_detail/179022.html), and public bandwidth (https://help.aliyun.com/document_detail/25411.html). Before using this operation, make sure you understand the billing methods and pricing (https://www.aliyun.com/price/product#/ecs/detail) of ECS.
+// <props="intl">Before using this operation, make sure you understand the billing methods and pricing (https://www.alibabacloud.com/zh/pricing-calculator#/commodity/vm_intl) of ECS.
+// This operation is asynchronous. After a successful request, the instance IDs are returned. The instances are not created and started immediately. You can call DescribeInstanceStatus (https://help.aliyun.com/document_detail/2679688.html) to query the instance status. When the status returned is Running, the instances are created and started successfully.
+// Before you begin
+// <props="china">
+// - Make sure your account has completed real-name registration. For more information, see Real-name registration documentation (https://help.aliyun.com/document_detail/48263.html).
+// - If resources are insufficient to complete the instance creation, Alibaba Cloud immediately sends an instance creation failure event (SystemFailure.Delete). You can call DescribeInstanceHistoryEvents (https://help.aliyun.com/document_detail/2679897.html) to check for instance creation failure events. For more information, see Instance creation failure events (https://help.aliyun.com/document_detail/2545990.html).
+// - Make sure the total number of instances you create or the total number of vCPUs across all instance types does not exceed your quota. For more information, see Quota Center (https://quotas.console.aliyun.com/products/ecs/quotas).
+// - Before creating a VPC-type ECS instance, create a VPC (https://help.aliyun.com/document_detail/65430.html) in the corresponding Alibaba Cloud region.
+// Precautions
+// - If the billing method is subscription (PrePaid), available coupons are applied by default during payment.
+// - A single request can create up to 100 instances. If you need to create more than 100 instances, submit multiple requests in batches or concurrently.
+// - If the value of InternetMaxBandwidthOut is greater than 0, a public IP address is automatically allocated to the instance.
+// > The total peak outbound public bandwidth for pay-by-bandwidth instances under a single Alibaba Cloud account in a single region is subject to limits. For more information, see Public bandwidth limits (link omitted).
+// Recommendations
+// - Test scenarios: Send a dry run request by setting DryRun=true.
+// - Release instances: Set the automatic release time using the AutoReleaseTime parameter, or invoke DeleteInstances (https://help.aliyun.com/document_detail/2679710.html) for manual release.
+// - Management and retrieval: Assign tags (Tag.N.Key and Tag.N.Value) to each batch of instances, and add sequential suffixes (UniqueSuffix) to hostnames (HostName) and instance names (InstanceName). For more information, see Set sequential instance names or hostnames in batch (https://help.aliyun.com/document_detail/196048.html).
+// - Launch templates: Use a launch template to avoid specifying a large number of configuration parameters each time you create an instance. Invoke CreateLaunchTemplate (https://help.aliyun.com/document_detail/2679729.html) to create a launch template, then specify LaunchTemplateId and LaunchTemplateVersion in the RunInstances request to use the template.
+// - Disable hyper-threading: In memory-intensive workloads, set CpuOptions.ThreadsPerCore=1 to disable hyper-threading and improve the memory-to-CPU ratio.
+// - Enable jumbo frames: Set NetworkOptions.EnableJumboFrame=true to enable the Jumbo frame attribute at instance creation. For more information, see ECS instance MTU (https://help.aliyun.com/document_detail/200512.html).
+// Request examples
+// Suppose you want to create ECS instances in the China (Hangzhou) region using a specific image, instance type, security group, and vSwitch, with a configured system disk and data disk, a public IP address, and a specified instance name and password. The relevant request parameters are as follows:
+//
+// RegionId:"cn-hangzhou", // China (Hangzhou) region
+// ImageId:"aliyun_3_x64_20G_alibase_20221102.vhd", // image ID
+// InstanceType:"ecs.g7.large", // instance type
+// SecurityGroupId:"sg-bp150uqocpf9jj70****", // security group ID
+// VSwitchId:"vsw-bp1qo7s91cbch5i4l****", // vSwitch ID
+// SystemDisk:{
+// Category:"cloud_essd", // system disk type: enterprise SSD
+// Size:40, // system disk size: 40 GiB
+// },
+// DataDisk:[
+// {
+// Category:"cloud_essd", // data disk type: enterprise SSD
+// Size:100, // data disk size: 100 GiB
+// }
+// ],
+// HostName:"ECS-test", // instance hostname
+// Password:"ECS@test1234", // instance logon password
+// InternetMaxBandwidthOut:10 // outbound public bandwidth: 10 Mbit/s
+//
+// Based on the above configuration, create different types of instances:
+//
+// Example: Create 5 subscription instances with auto-renewal
+//
+// Amount:5, // number of instances: 5
+// InstanceChargeType:"PrePaid", // subscription billing method
+// PeriodUnit:"Month", // billing unit: month
+// Period:1, // billing period: 1 month
+// AutoRenew:true, // enable auto-renewal
+// AutoRenewPeriod:1 // renewal period: 1 month
+//
+// Example: Create 10 pay-as-you-go instances
+//
+// Amount:10, // number of instances: 10
+// InstanceChargeType:"PostPaid", // pay-as-you-go billing method
+// SpotStrategy:"NoSpot" // default value: normal pay-as-you-go
+//
+// Example: Create 20 spot instances with a bidding policy and retention period
+//
+// Amount:20, // number of instances: 20
+// InstanceChargeType:"PostPaid",
+// SpotStrategy:"SpotAsPriceGo", // bidding policy: automatically bid at the current marketplace price
+// SpotDuration:1 // spot instance retention period: 1 hour
+//
+// Suppose you have already created a launch template using CreateLaunchTemplate (https://help.aliyun.com/document_detail/2679729.html) and want to use it to create ECS instances in the China (Hangzhou) region. The example is as follows:
+//
+// Example: Create 10 ECS instances from a launch template
+//
+// RegionId:"cn-hangzhou", // China (Hangzhou) region
+// Amount:10, // number of instances: 10
+// LaunchTemplateId:"lt-bp14xczpoxvb6rre****" // launch template ID
+//
+// >Notice: If both instance parameters and template parameters are specified, the instance parameters take precedence. For example, if the template uses subscription billing but InstanceChargeType is set to PostPaid, the created instances use the pay-as-you-go billing method.
+//
+// Example: Create 1 instance using a full image (an ECS instance backup that includes both the system disk and data disks)
+//
+// RegionId:"cn-hangzhou", // China (Hangzhou) region
+// ImageId = m-bp13ohd32cvzpq9e****,// custom image ID
+// InstanceType = ecs.u1-c1m1.large,// instance type
+// SecurityGroupId = sg-bp10jztp6b0sdsyl****,// security group ID
+// VSwitchId = vsw-bp19wo63nleroq22g****,// vSwitch ID
+// SystemDisk.Size = 50,// system disk size included in the full image
+// SystemDisk.Category = cloud_auto,// disk type of the system disk included in the full image
+// DataDisk.1.Device = /dev/xvdb,// attach point of the data disk included in the full image
+// DataDisk.1.Size = 50,// size of the data disk included in the full image
+// DataDisk.1.Category = cloud_essd,// disk type of the data disk included in the full image
+// DataDisk.2.Device = /dev/xvdc,// attach point of the additional data disk. To replace the data disk included in the full image with the additional data disk, set DataDisk.1.Device = /dev/xvdb (the default attach point of the data disk in the full image).
+// DataDisk.2.Size = 70,// size of the additional data disk
+// DataDisk.2.Category = cloud_auto,// disk type of the additional data disk
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L54013
+func (c *Client) RunInstances(ctx context.Context, input *RunInstancesInput, optFns ...func(*Options)) (*RunInstancesOutput, error) {
+	out, meta, err := invoke[RunInstancesInput, RunInstancesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "RunInstances", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // SendDiagnosticInterruptAPI is the minimal interface for SendDiagnosticInterrupt mocks and capability adapters.
 type SendDiagnosticInterruptAPI interface {
 	// SendDiagnosticInterrupt invokes the native action with owned inputs and per-call options.
@@ -8518,6 +11654,77 @@ type SendDiagnosticInterruptAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L54512
 func (c *Client) SendDiagnosticInterrupt(ctx context.Context, input *SendDiagnosticInterruptInput, optFns ...func(*Options)) (*SendDiagnosticInterruptOutput, error) {
 	out, meta, err := invoke[SendDiagnosticInterruptInput, SendDiagnosticInterruptOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "SendDiagnosticInterrupt", Version: "2014-05-26", Idempotent: false}, false, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// SendFileAPI is the minimal interface for SendFile mocks and capability adapters.
+type SendFileAPI interface {
+	// SendFile invokes the native action with owned inputs and per-call options.
+	SendFile(context.Context, *SendFileInput, ...func(*Options)) (*SendFileOutput, error)
+}
+
+// SendFile calls the native SendFile action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Sends remote files to one or more ECS instances.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L54652
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// - The target ECS instances must be in the running (Running) state.
+// - The Cloud Assistant Agent (https://help.aliyun.com/document_detail/64921.html) must be installed on the target ECS instances in advance.
+// - The Cloud Assistant Agent version must be later than the following versions to support file sending. If the ClientNeedUpgrade error code is returned, update the agent to the latest version.
+// - Linux: 1.0.2.569
+// - Windows: 1.0.0.149
+// - After Base64 encoding, the file content cannot exceed 32 KB in size.
+// - File sending may fail due to exceptions in the target ECS instance status, network issues, or Cloud Assistant Agent exceptions. Call DescribeSendFileResults (https://help.aliyun.com/document_detail/184117.html) or refer to Common errors and solutions for execution failures (https://help.aliyun.com/document_detail/87029.html) to troubleshoot issues.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L54652
+func (c *Client) SendFile(ctx context.Context, input *SendFileInput, optFns ...func(*Options)) (*SendFileOutput, error) {
+	out, meta, err := invoke[SendFileInput, SendFileOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "SendFile", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// StartImagePipelineExecutionAPI is the minimal interface for StartImagePipelineExecution mocks and capability adapters.
+type StartImagePipelineExecutionAPI interface {
+	// StartImagePipelineExecution invokes the native action with owned inputs and per-call options.
+	StartImagePipelineExecution(context.Context, *StartImagePipelineExecutionInput, ...func(*Options)) (*StartImagePipelineExecutionOutput, error)
+}
+
+// StartImagePipelineExecution calls the native StartImagePipelineExecution action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Executes an image building task by using an image template.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L54805
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// - After an image template is created, call this operation to execute an image building task. The system builds, distributes, and creates shared images based on the parameters configured in the image template settings.
+// - For the same image template, only one image building task can be executed at a time. You can call CancelImagePipelineExecution multiple times simultaneously. Canceling an image building task does not interfere with other image building tasks.
+// - When you execute an image building template, multiple intermediate instances are created to help build images. The intermediate instances are ECS instances that use the pay-as-you-go billing method, and billing fees are incurred. For more information, see Pay-as-you-go (https://help.aliyun.com/document_detail/40653.html).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L54805
+func (c *Client) StartImagePipelineExecution(ctx context.Context, input *StartImagePipelineExecutionInput, optFns ...func(*Options)) (*StartImagePipelineExecutionOutput, error) {
+	out, meta, err := invoke[StartImagePipelineExecutionInput, StartImagePipelineExecutionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StartImagePipelineExecution", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8595,6 +11802,49 @@ func (c *Client) StartInstances(ctx context.Context, input *StartInstancesInput,
 	return out, nil
 }
 
+// StartTerminalSessionAPI is the minimal interface for StartTerminalSession mocks and capability adapters.
+type StartTerminalSessionAPI interface {
+	// StartTerminalSession invokes the native action with owned inputs and per-call options.
+	StartTerminalSession(context.Context, *StartTerminalSessionInput, ...func(*Options)) (*StartTerminalSessionOutput, error)
+}
+
+// StartTerminalSession calls the native StartTerminalSession action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Invokes StartTerminalSession to create a session based on the session management feature. You can establish a WebSocket session with an ECS instance by specifying the instance ID. The WebSocketUrl returned by this operation allows you to establish a remote connection to the ECS instance.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55195
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// When you customize a remote connection client by using code, you can invoke this operation to obtain the WebSocketUrl for establishing a remote connection to an ECS instance. Take note of the following items:
+// - The specified ECS instance must be in the Running state.
+// - The specified ECS instance must have Cloud Assistant Agent installed. You can invoke DescribeCloudAssistantStatus (https://help.aliyun.com/document_detail/87346.html) to check whether Cloud Assistant Agent is installed on the ECS instance and query the version number of Cloud Assistant Agent.
+// - If Cloud Assistant Agent is not installed on the ECS instance, invoke InstallCloudAssistant (https://help.aliyun.com/document_detail/85916.html) to install it.
+// - Cloud Assistant Agent must be later than the following versions to support the session management feature. To upgrade Cloud Assistant Agent, see Upgrade or disable upgrades for Cloud Assistant Agent (https://help.aliyun.com/document_detail/134383.html).
+// - Linux operating system: 2.2.3.256
+// - Windows operating system: 2.1.3.256
+// - After this operation is invoked, the WebSocketUrl is valid for 10 minutes.
+// - After a session is established, Cloud Assistant performs a shutdown of the connection if no data is transmitted for 3 minutes.
+// - In a single region, a maximum of 100 sessions can be created and active. A maximum of 20 sessions can be in the connected state for a single ECS instance. The bandwidth limit for a single session connection is 200 KB/s.
+// - The port forwarding feature supports only TCP port forwarding. UDP is not supported.
+// - To permanently close a session and invalidate the WebSocketUrl, invoke the EndTerminalSession operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55195
+func (c *Client) StartTerminalSession(ctx context.Context, input *StartTerminalSessionInput, optFns ...func(*Options)) (*StartTerminalSessionOutput, error) {
+	out, meta, err := invoke[StartTerminalSessionInput, StartTerminalSessionOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StartTerminalSession", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // StopInstanceAPI is the minimal interface for StopInstance mocks and capability adapters.
 type StopInstanceAPI interface {
 	// StopInstance invokes the native action with owned inputs and per-call options.
@@ -8663,6 +11913,71 @@ func (c *Client) StopInstances(ctx context.Context, input *StopInstancesInput, o
 	return out, nil
 }
 
+// StopInvocationAPI is the minimal interface for StopInvocation mocks and capability adapters.
+type StopInvocationAPI interface {
+	// StopInvocation invokes the native action with owned inputs and per-call options.
+	StopInvocation(context.Context, *StopInvocationInput, ...func(*Options)) (*StopInvocationOutput, error)
+}
+
+// StopInvocation calls the native StopInvocation action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Stops a Cloud Assistant command that is in the Running state on one or more ECS instances.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55612
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// - After you stop a one-time command, instances that have started to run the command continue to run the command, and instances that have not started to run the command do not run the command.
+// - After you stop a periodic command, instances that have started to run the command continue to run the command, but the command is not run in the next cycle.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55612
+func (c *Client) StopInvocation(ctx context.Context, input *StopInvocationInput, optFns ...func(*Options)) (*StopInvocationOutput, error) {
+	out, meta, err := invoke[StopInvocationInput, StopInvocationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "StopInvocation", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// TagResourcesAPI is the minimal interface for TagResources mocks and capability adapters.
+type TagResourcesAPI interface {
+	// TagResources invokes the native action with owned inputs and per-call options.
+	TagResources(context.Context, *TagResourcesInput, ...func(*Options)) (*TagResourcesOutput, error)
+}
+
+// TagResources calls the native TagResources action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Creates and binds tags to specified ECS resources in a single operation.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55739
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// Before you attach tags, Alibaba Cloud checks the number of existing tags on the resources. If the number exceeds the limit, an error message is returned. For more information, see Limits (https://help.aliyun.com/document_detail/25412.html).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55739
+func (c *Client) TagResources(ctx context.Context, input *TagResourcesInput, optFns ...func(*Options)) (*TagResourcesOutput, error) {
+	out, meta, err := invoke[TagResourcesInput, TagResourcesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "TagResources", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
 // TerminatePhysicalConnectionAPI is the minimal interface for TerminatePhysicalConnection mocks and capability adapters.
 type TerminatePhysicalConnectionAPI interface {
 	// TerminatePhysicalConnection invokes the native action with owned inputs and per-call options.
@@ -8706,6 +12021,73 @@ type TerminateVirtualBorderRouterAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L55917
 func (c *Client) TerminateVirtualBorderRouter(ctx context.Context, input *TerminateVirtualBorderRouterInput, optFns ...func(*Options)) (*TerminateVirtualBorderRouterOutput, error) {
 	out, meta, err := invoke[TerminateVirtualBorderRouterInput, TerminateVirtualBorderRouterOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "TerminateVirtualBorderRouter", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// UnassignIpv6AddressesAPI is the minimal interface for UnassignIpv6Addresses mocks and capability adapters.
+type UnassignIpv6AddressesAPI interface {
+	// UnassignIpv6Addresses invokes the native action with owned inputs and per-call options.
+	UnassignIpv6Addresses(context.Context, *UnassignIpv6AddressesInput, ...func(*Options)) (*UnassignIpv6AddressesOutput, error)
+}
+
+// UnassignIpv6Addresses calls the native UnassignIpv6Addresses action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Revokes one or more IPv6 addresses from a network interface controller (NIC).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56010
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// When you invoke this operation, take note of the following items:
+// - The network interface controller (NIC) must be in the active (Available) or InUse state.
+// - If you are operating on a primary network interface controller (NIC), the ECS instance to which the NIC is attached must be in the Running or Stopped state.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56010
+func (c *Client) UnassignIpv6Addresses(ctx context.Context, input *UnassignIpv6AddressesInput, optFns ...func(*Options)) (*UnassignIpv6AddressesOutput, error) {
+	out, meta, err := invoke[UnassignIpv6AddressesInput, UnassignIpv6AddressesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnassignIpv6Addresses", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// UnassignPrivateIpAddressesAPI is the minimal interface for UnassignPrivateIpAddresses mocks and capability adapters.
+type UnassignPrivateIpAddressesAPI interface {
+	// UnassignPrivateIpAddresses invokes the native action with owned inputs and per-call options.
+	UnassignPrivateIpAddresses(context.Context, *UnassignPrivateIpAddressesInput, ...func(*Options)) (*UnassignPrivateIpAddressesOutput, error)
+}
+
+// UnassignPrivateIpAddresses calls the native UnassignPrivateIpAddresses action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Removes one or more secondary private IP addresses from an Elastic Network Interface (ENI).
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56110
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Operation description
+// - Only Elastic Network Interfaces (ENIs) in the Active (Available) or InUse (InUse) state are supported.
+// - When you operate on a primary ENI, the instance to which the network interface controller (NIC) is attached must be in the Running (Running) or Stopped (Stopped) state.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56110
+func (c *Client) UnassignPrivateIpAddresses(ctx context.Context, input *UnassignPrivateIpAddressesInput, optFns ...func(*Options)) (*UnassignPrivateIpAddressesOutput, error) {
+	out, meta, err := invoke[UnassignPrivateIpAddressesInput, UnassignPrivateIpAddressesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnassignPrivateIpAddresses", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -8781,6 +12163,31 @@ type UnlockSnapshotAPI interface {
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56392
 func (c *Client) UnlockSnapshot(ctx context.Context, input *UnlockSnapshotInput, optFns ...func(*Options)) (*UnlockSnapshotOutput, error) {
 	out, meta, err := invoke[UnlockSnapshotInput, UnlockSnapshotOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UnlockSnapshot", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
+	if err != nil {
+		return nil, err
+	}
+	out.Metadata = meta
+	return out, nil
+}
+
+// UntagResourcesAPI is the minimal interface for UntagResources mocks and capability adapters.
+type UntagResourcesAPI interface {
+	// UntagResources invokes the native action with owned inputs and per-call options.
+	UntagResources(context.Context, *UntagResourcesInput, ...func(*Options)) (*UntagResourcesOutput, error)
+}
+
+// UntagResources calls the native UntagResources action (API version 2014-05-26).
+// Nil input is an empty request. Errors preserve cancellation and structured service causes.
+// Inputs are deeply copied before hooks; callbacks must not retain options or models.
+// Standard never retries this operation under the current conservative policy.
+//
+// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+//
+// Unbinds tags from specified ECS resources. After a tag is unbound, the tag is automatically deleted if it is not bound to any other resources.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L56504
+func (c *Client) UntagResources(ctx context.Context, input *UntagResourcesInput, optFns ...func(*Options)) (*UntagResourcesOutput, error) {
+	out, meta, err := invoke[UntagResourcesInput, UntagResourcesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "UntagResources", Version: "2014-05-26", Idempotent: false}, true, nil, nil, optFns)
 	if err != nil {
 		return nil, err
 	}

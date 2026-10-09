@@ -5,9 +5,9 @@
   "version": "2016-04-28",
   "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
   "discovered": 403,
-  "lowered": 296,
-  "emitted": 296,
-  "models": 1242,
+  "lowered": 396,
+  "emitted": 396,
+  "models": 1671,
   "compilation": "not-assessed",
   "live": "not-assessed",
   "capabilityPolicy": "sparse-reviewed",
@@ -243,7 +243,7 @@
     },
     {
       "name": "AllocateIpv6Address",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 1716,
@@ -251,23 +251,18 @@
         "endLine": 1716,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 1716,
-            "column": 16,
-            "endLine": 1716,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AllocateIpv6InternetBandwidth",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 1878,
@@ -275,23 +270,18 @@
         "endLine": 1878,
         "endColumn": 56
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 1878,
-            "column": 16,
-            "endLine": 1878,
-            "endColumn": 56
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AllocateVpcIpv6Cidr",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 2014,
@@ -299,23 +289,18 @@
         "endLine": 2014,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 2014,
-            "column": 16,
-            "endLine": 2014,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ApplyPhysicalConnectionLOA",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 2153,
@@ -323,19 +308,14 @@
         "endLine": 2153,
         "endColumn": 53
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 2153,
-            "column": 16,
-            "endLine": 2153,
-            "endColumn": 53
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AssociateEipAddress",
@@ -358,7 +338,7 @@
     },
     {
       "name": "AssociateEipAddressBatch",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 2444,
@@ -366,19 +346,14 @@
         "endLine": 2444,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 2444,
-            "column": 16,
-            "endLine": 2444,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AssociateHaVip",
@@ -420,7 +395,7 @@
     },
     {
       "name": "AssociateNetworkAcl",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 2796,
@@ -428,19 +403,14 @@
         "endLine": 2796,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 2796,
-            "column": 16,
-            "endLine": 2796,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AssociatePhysicalConnectionToVirtualBorderRouter",
@@ -463,7 +433,7 @@
     },
     {
       "name": "AssociateRouteTable",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 3057,
@@ -471,23 +441,18 @@
         "endLine": 3057,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 3057,
-            "column": 16,
-            "endLine": 3057,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AssociateRouteTableWithGateway",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 3165,
@@ -495,19 +460,14 @@
         "endLine": 3165,
         "endColumn": 57
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 3165,
-            "column": 16,
-            "endLine": 3165,
-            "endColumn": 57
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AssociateRouteTablesWithVpcGatewayEndpoint",
@@ -530,7 +490,7 @@
     },
     {
       "name": "AssociateVpcCidrBlock",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 3424,
@@ -538,19 +498,14 @@
         "endLine": 3424,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 3424,
-            "column": 16,
-            "endLine": 3424,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "AssociateVpnGatewayWithCertificate",
@@ -706,7 +661,7 @@
     },
     {
       "name": "CompletePhysicalConnectionLOA",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 4332,
@@ -714,19 +669,14 @@
         "endLine": 4332,
         "endColumn": 56
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 4332,
-            "column": 16,
-            "endLine": 4332,
-            "endColumn": 56
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ConfirmPhysicalConnection",
@@ -768,7 +718,7 @@
     },
     {
       "name": "CopyNetworkAclEntries",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 4630,
@@ -776,19 +726,14 @@
         "endLine": 4630,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 4630,
-            "column": 16,
-            "endLine": 4630,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateBgpGroup",
@@ -963,7 +908,7 @@
     },
     {
       "name": "CreateExpressConnectTrafficQos",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 6078,
@@ -971,23 +916,18 @@
         "endLine": 6078,
         "endColumn": 57
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 6078,
-            "column": 16,
-            "endLine": 6078,
-            "endColumn": 57
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateExpressConnectTrafficQosQueue",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 6206,
@@ -995,23 +935,18 @@
         "endLine": 6206,
         "endColumn": 62
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 6206,
-            "column": 16,
-            "endLine": 6206,
-            "endColumn": 62
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateExpressConnectTrafficQosRule",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 6412,
@@ -1019,23 +954,18 @@
         "endLine": 6412,
         "endColumn": 61
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 6412,
-            "column": 16,
-            "endLine": 6412,
-            "endColumn": 61
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateFailoverTestJob",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 6584,
@@ -1043,19 +973,14 @@
         "endLine": 6584,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 6584,
-            "column": 16,
-            "endLine": 6584,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateFlowLog",
@@ -1154,7 +1079,7 @@
     },
     {
       "name": "CreateHighReliablePhysicalConnection",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 7634,
@@ -1162,19 +1087,14 @@
         "endLine": 7634,
         "endColumn": 63
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 7634,
-            "column": 16,
-            "endLine": 7634,
-            "endColumn": 63
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateIPv6Translator",
@@ -1254,7 +1174,7 @@
     },
     {
       "name": "CreateIpv4Gateway",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 8325,
@@ -1262,23 +1182,18 @@
         "endLine": 8325,
         "endColumn": 44
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 8325,
-            "column": 16,
-            "endLine": 8325,
-            "endColumn": 44
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateIpv6EgressOnlyRule",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 8456,
@@ -1286,23 +1201,18 @@
         "endLine": 8456,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 8456,
-            "column": 16,
-            "endLine": 8456,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateIpv6Gateway",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 8595,
@@ -1310,23 +1220,18 @@
         "endLine": 8595,
         "endColumn": 44
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 8595,
-            "column": 16,
-            "endLine": 8595,
-            "endColumn": 44
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateNatGateway",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 8881,
@@ -1334,23 +1239,18 @@
         "endLine": 8881,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 8881,
-            "column": 16,
-            "endLine": 8881,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateNatIp",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 9082,
@@ -1358,23 +1258,18 @@
         "endLine": 9082,
         "endColumn": 38
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 9082,
-            "column": 16,
-            "endLine": 9082,
-            "endColumn": 38
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateNatIpCidr",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 9222,
@@ -1382,19 +1277,14 @@
         "endLine": 9222,
         "endColumn": 42
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 9222,
-            "column": 16,
-            "endLine": 9222,
-            "endColumn": 42
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateNetworkAcl",
@@ -1417,7 +1307,7 @@
     },
     {
       "name": "CreatePhysicalConnection",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 9581,
@@ -1425,19 +1315,14 @@
         "endLine": 9581,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 9581,
-            "column": 16,
-            "endLine": 9581,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreatePhysicalConnectionOccupancyOrder",
@@ -1460,7 +1345,7 @@
     },
     {
       "name": "CreatePhysicalConnectionSetupOrder",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 9892,
@@ -1468,23 +1353,18 @@
         "endLine": 9892,
         "endColumn": 61
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 9892,
-            "column": 16,
-            "endLine": 9892,
-            "endColumn": 61
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreatePublicIpAddressPool",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 10042,
@@ -1492,23 +1372,18 @@
         "endLine": 10042,
         "endColumn": 52
       },
-      "reasons": [
-        {
-          "code": "DSL_MODEL_ATTRIBUTE",
-          "message": "unreviewed model attribute",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 10042,
-            "column": 16,
-            "endLine": 10042,
-            "endColumn": 52
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateRouteEntries",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 10235,
@@ -1516,19 +1391,14 @@
         "endLine": 10235,
         "endColumn": 45
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 10235,
-            "column": 16,
-            "endLine": 10235,
-            "endColumn": 45
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateRouteEntry",
@@ -1551,7 +1421,7 @@
     },
     {
       "name": "CreateRouteTable",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 10603,
@@ -1559,19 +1429,14 @@
         "endLine": 10603,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 10603,
-            "column": 16,
-            "endLine": 10603,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateRouteTargetGroup",
@@ -1594,7 +1459,7 @@
     },
     {
       "name": "CreateRouterInterface",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 11000,
@@ -1602,19 +1467,14 @@
         "endLine": 11000,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 11000,
-            "column": 16,
-            "endLine": 11000,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "CreateSnatEntry",
@@ -2217,7 +2077,7 @@
     },
     {
       "name": "DeleteExpressConnectTrafficQos",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 16150,
@@ -2225,23 +2085,18 @@
         "endLine": 16150,
         "endColumn": 57
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 16150,
-            "column": 16,
-            "endLine": 16150,
-            "endColumn": 57
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteExpressConnectTrafficQosQueue",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 16243,
@@ -2249,23 +2104,18 @@
         "endLine": 16243,
         "endColumn": 62
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 16243,
-            "column": 16,
-            "endLine": 16243,
-            "endColumn": 62
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteExpressConnectTrafficQosRule",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 16340,
@@ -2273,23 +2123,18 @@
         "endLine": 16340,
         "endColumn": 61
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 16340,
-            "column": 16,
-            "endLine": 16340,
-            "endColumn": 61
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteFailoverTestJob",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 16434,
@@ -2297,19 +2142,14 @@
         "endLine": 16434,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 16434,
-            "column": 16,
-            "endLine": 16434,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteFlowLog",
@@ -2484,7 +2324,7 @@
     },
     {
       "name": "DeleteIpv4Gateway",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 17404,
@@ -2492,23 +2332,18 @@
         "endLine": 17404,
         "endColumn": 44
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 17404,
-            "column": 16,
-            "endLine": 17404,
-            "endColumn": 44
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteIpv6EgressOnlyRule",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 17512,
@@ -2516,23 +2351,18 @@
         "endLine": 17512,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 17512,
-            "column": 16,
-            "endLine": 17512,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteIpv6Gateway",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 17621,
@@ -2540,23 +2370,18 @@
         "endLine": 17621,
         "endColumn": 44
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 17621,
-            "column": 16,
-            "endLine": 17621,
-            "endColumn": 44
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteIpv6InternetBandwidth",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 17728,
@@ -2564,19 +2389,14 @@
         "endLine": 17728,
         "endColumn": 54
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 17728,
-            "column": 16,
-            "endLine": 17728,
-            "endColumn": 54
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteNatGateway",
@@ -2599,7 +2419,7 @@
     },
     {
       "name": "DeleteNatIp",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 17956,
@@ -2607,23 +2427,18 @@
         "endLine": 17956,
         "endColumn": 38
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 17956,
-            "column": 16,
-            "endLine": 17956,
-            "endColumn": 38
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteNatIpCidr",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 18072,
@@ -2631,23 +2446,18 @@
         "endLine": 18072,
         "endColumn": 42
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 18072,
-            "column": 16,
-            "endLine": 18072,
-            "endColumn": 42
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteNetworkAcl",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 18175,
@@ -2655,19 +2465,14 @@
         "endLine": 18175,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 18175,
-            "column": 16,
-            "endLine": 18175,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeletePhysicalConnection",
@@ -2728,7 +2533,7 @@
     },
     {
       "name": "DeleteRouteEntries",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 18611,
@@ -2736,19 +2541,14 @@
         "endLine": 18611,
         "endColumn": 45
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 18611,
-            "column": 16,
-            "endLine": 18611,
-            "endColumn": 45
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteRouteEntry",
@@ -2771,7 +2571,7 @@
     },
     {
       "name": "DeleteRouteTable",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 18841,
@@ -2779,19 +2579,14 @@
         "endLine": 18841,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 18841,
-            "column": 16,
-            "endLine": 18841,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DeleteRouteTargetGroup",
@@ -3194,7 +2989,7 @@
     },
     {
       "name": "DeletionProtection",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 21153,
@@ -3202,19 +2997,14 @@
         "endLine": 21153,
         "endColumn": 45
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 21153,
-            "column": 16,
-            "endLine": 21153,
-            "endColumn": 45
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "Describe95Traffic",
@@ -3408,7 +3198,7 @@
     },
     {
       "name": "DescribeEipGatewayInfo",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 22606,
@@ -3416,19 +3206,14 @@
         "endLine": 22606,
         "endColumn": 49
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 22606,
-            "column": 16,
-            "endLine": 22606,
-            "endColumn": 49
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeEipMonitorData",
@@ -3470,7 +3255,7 @@
     },
     {
       "name": "DescribeExpressConnectTrafficQos",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 23022,
@@ -3478,23 +3263,18 @@
         "endLine": 23022,
         "endColumn": 59
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 23022,
-            "column": 16,
-            "endLine": 23022,
-            "endColumn": 59
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeExpressConnectTrafficQosQueue",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 23264,
@@ -3502,23 +3282,18 @@
         "endLine": 23264,
         "endColumn": 64
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 23264,
-            "column": 16,
-            "endLine": 23264,
-            "endColumn": 64
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeExpressConnectTrafficQosRule",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 23467,
@@ -3526,23 +3301,18 @@
         "endLine": 23467,
         "endColumn": 63
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 23467,
-            "column": 16,
-            "endLine": 23467,
-            "endColumn": 63
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeFailoverTestJob",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 23592,
@@ -3550,23 +3320,18 @@
         "endLine": 23592,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 23592,
-            "column": 16,
-            "endLine": 23592,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeFailoverTestJobs",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 23743,
@@ -3574,19 +3339,14 @@
         "endLine": 23743,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 23743,
-            "column": 16,
-            "endLine": 23743,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeFlowLogs",
@@ -3799,7 +3559,7 @@
     },
     {
       "name": "DescribeIpv6Addresses",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 25483,
@@ -3807,23 +3567,18 @@
         "endLine": 25483,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 25483,
-            "column": 16,
-            "endLine": 25483,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeIpv6EgressOnlyRules",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 25634,
@@ -3831,23 +3586,18 @@
         "endLine": 25634,
         "endColumn": 54
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 25634,
-            "column": 16,
-            "endLine": 25634,
-            "endColumn": 54
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeIpv6GatewayAttribute",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 25770,
@@ -3855,23 +3605,18 @@
         "endLine": 25770,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 25770,
-            "column": 16,
-            "endLine": 25770,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeIpv6Gateways",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 25896,
@@ -3879,23 +3624,18 @@
         "endLine": 25896,
         "endColumn": 47
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 25896,
-            "column": 16,
-            "endLine": 25896,
-            "endColumn": 47
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeNatGatewayAssociateNetworkInterfaces",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 26062,
@@ -3903,19 +3643,14 @@
         "endLine": 26062,
         "endColumn": 71
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 26062,
-            "column": 16,
-            "endLine": 26062,
-            "endColumn": 71
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeNatGateways",
@@ -3938,7 +3673,7 @@
     },
     {
       "name": "DescribeNetworkAclAttributes",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 26497,
@@ -3946,23 +3681,18 @@
         "endLine": 26497,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 26497,
-            "column": 16,
-            "endLine": 26497,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeNetworkAcls",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 26671,
@@ -3970,19 +3700,14 @@
         "endLine": 26671,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 26671,
-            "column": 16,
-            "endLine": 26671,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribePhysicalConnectionLOA",
@@ -4024,7 +3749,7 @@
     },
     {
       "name": "DescribePublicIpAddress",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 27169,
@@ -4032,19 +3757,14 @@
         "endLine": 27169,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 27169,
-            "column": 16,
-            "endLine": 27169,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeRegions",
@@ -4067,7 +3787,7 @@
     },
     {
       "name": "DescribeRouteEntryList",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 27434,
@@ -4075,19 +3795,14 @@
         "endLine": 27434,
         "endColumn": 49
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 27434,
-            "column": 16,
-            "endLine": 27434,
-            "endColumn": 49
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeRouteTableList",
@@ -4471,7 +4186,7 @@
     },
     {
       "name": "DescribeVpcAttribute",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 30557,
@@ -4479,19 +4194,14 @@
         "endLine": 30557,
         "endColumn": 47
       },
-      "reasons": [
-        {
-          "code": "DSL_MODEL_ATTRIBUTE",
-          "message": "unreviewed model attribute",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 30557,
-            "column": 16,
-            "endLine": 30557,
-            "endColumn": 47
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DescribeVpcGrantRulesToEcr",
@@ -4862,7 +4572,7 @@
     },
     {
       "name": "DissociateRouteTableFromGateway",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 33295,
@@ -4870,19 +4580,14 @@
         "endLine": 33295,
         "endColumn": 58
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 33295,
-            "column": 16,
-            "endLine": 33295,
-            "endColumn": 58
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "DissociateRouteTablesFromVpcGatewayEndpoint",
@@ -4981,7 +4686,7 @@
     },
     {
       "name": "EnableVpcIpv4Gateway",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 33962,
@@ -4989,19 +4694,14 @@
         "endLine": 33962,
         "endColumn": 47
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 33962,
-            "column": 16,
-            "endLine": 33962,
-            "endColumn": 47
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "GetDhcpOptionsSet",
@@ -5024,7 +4724,7 @@
     },
     {
       "name": "GetFlowLogServiceStatus",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 34193,
@@ -5032,23 +4732,18 @@
         "endLine": 34193,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 34193,
-            "column": 16,
-            "endLine": 34193,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "GetIpv4GatewayAttribute",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 34308,
@@ -5056,23 +4751,18 @@
         "endLine": 34308,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 34308,
-            "column": 16,
-            "endLine": 34308,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "GetNatGatewayAttribute",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 34515,
@@ -5080,19 +4770,14 @@
         "endLine": 34515,
         "endColumn": 49
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 34515,
-            "column": 16,
-            "endLine": 34515,
-            "endColumn": 49
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "GetPhysicalConnectionServiceStatus",
@@ -5115,7 +4800,7 @@
     },
     {
       "name": "GetPublicIpAddressPoolServiceStatus",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 34693,
@@ -5123,19 +4808,14 @@
         "endLine": 34693,
         "endColumn": 62
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 34693,
-            "column": 16,
-            "endLine": 34693,
-            "endColumn": 62
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "GetRouteTargetGroup",
@@ -5158,7 +4838,7 @@
     },
     {
       "name": "GetTrafficMirrorServiceStatus",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 34922,
@@ -5166,19 +4846,14 @@
         "endLine": 34922,
         "endColumn": 56
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 34922,
-            "column": 16,
-            "endLine": 34922,
-            "endColumn": 56
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "GetVSwitchCidrReservationUsage",
@@ -5325,8 +5000,8 @@
       },
       "reasons": [
         {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
+          "code": "DSL_SHRINK_TRANSFORM",
+          "message": "shrink JSON transform",
           "source": {
             "file": "products/vpc/main.tea",
             "line": 35878,
@@ -5339,7 +5014,7 @@
     },
     {
       "name": "ListBusinessAccessPoints",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 36024,
@@ -5347,19 +5022,14 @@
         "endLine": 36024,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 36024,
-            "column": 16,
-            "endLine": 36024,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListBusinessRegions",
@@ -5401,7 +5071,7 @@
     },
     {
       "name": "ListEnhanhcedNatGatewayAvailableZones",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 36339,
@@ -5409,19 +5079,14 @@
         "endLine": 36339,
         "endColumn": 64
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 36339,
-            "column": 16,
-            "endLine": 36339,
-            "endColumn": 64
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListFullNatEntries",
@@ -5444,7 +5109,7 @@
     },
     {
       "name": "ListGatewayRouteTableEntries",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 36651,
@@ -5452,19 +5117,14 @@
         "endLine": 36651,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 36651,
-            "column": 16,
-            "endLine": 36651,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListGeographicSubRegions",
@@ -5525,7 +5185,7 @@
     },
     {
       "name": "ListIpv4Gateways",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 37085,
@@ -5533,23 +5193,18 @@
         "endLine": 37085,
         "endColumn": 43
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 37085,
-            "column": 16,
-            "endLine": 37085,
-            "endColumn": 43
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListNatIpCidrs",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 37224,
@@ -5557,23 +5212,18 @@
         "endLine": 37224,
         "endColumn": 41
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 37224,
-            "column": 16,
-            "endLine": 37224,
-            "endColumn": 41
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListNatIps",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 37387,
@@ -5581,19 +5231,14 @@
         "endLine": 37387,
         "endColumn": 37
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 37387,
-            "column": 16,
-            "endLine": 37387,
-            "endColumn": 37
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListPhysicalConnectionFeatures",
@@ -5844,7 +5489,7 @@
     },
     {
       "name": "ListVpcPublishedRouteEntries",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 39634,
@@ -5852,19 +5497,14 @@
         "endLine": 39634,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 39634,
-            "column": 16,
-            "endLine": 39634,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ListVpnCertificateAssociations",
@@ -6020,7 +5660,7 @@
     },
     {
       "name": "ModifyEipForwardMode",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 40653,
@@ -6028,19 +5668,14 @@
         "endLine": 40653,
         "endColumn": 47
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 40653,
-            "column": 16,
-            "endLine": 40653,
-            "endColumn": 47
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyExpressCloudConnectionAttribute",
@@ -6082,7 +5717,7 @@
     },
     {
       "name": "ModifyExpressConnectTrafficQos",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 40950,
@@ -6090,23 +5725,18 @@
         "endLine": 40950,
         "endColumn": 57
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 40950,
-            "column": 16,
-            "endLine": 40950,
-            "endColumn": 57
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyExpressConnectTrafficQosQueue",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 41068,
@@ -6114,23 +5744,18 @@
         "endLine": 41068,
         "endColumn": 62
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 41068,
-            "column": 16,
-            "endLine": 41068,
-            "endColumn": 62
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyExpressConnectTrafficQosRule",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 41262,
@@ -6138,19 +5763,14 @@
         "endLine": 41262,
         "endColumn": 61
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 41262,
-            "column": 16,
-            "endLine": 41262,
-            "endColumn": 61
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyFlowLogAttribute",
@@ -6363,7 +5983,7 @@
     },
     {
       "name": "ModifyIpv6AddressAttribute",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 42650,
@@ -6371,23 +5991,18 @@
         "endLine": 42650,
         "endColumn": 53
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 42650,
-            "column": 16,
-            "endLine": 42650,
-            "endColumn": 53
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyIpv6GatewayAttribute",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 42760,
@@ -6395,23 +6010,18 @@
         "endLine": 42760,
         "endColumn": 53
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 42760,
-            "column": 16,
-            "endLine": 42760,
-            "endColumn": 53
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyIpv6InternetBandwidth",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 42881,
@@ -6419,23 +6029,18 @@
         "endLine": 42881,
         "endColumn": 54
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 42881,
-            "column": 16,
-            "endLine": 42881,
-            "endColumn": 54
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyNatGatewayAttribute",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 43046,
@@ -6443,19 +6048,14 @@
         "endLine": 43046,
         "endColumn": 52
       },
-      "reasons": [
-        {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 43046,
-            "column": 16,
-            "endLine": 43046,
-            "endColumn": 52
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyNatGatewaySpec",
@@ -6478,7 +6078,7 @@
     },
     {
       "name": "ModifyNatIpAttribute",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 43303,
@@ -6486,23 +6086,18 @@
         "endLine": 43303,
         "endColumn": 47
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 43303,
-            "column": 16,
-            "endLine": 43303,
-            "endColumn": 47
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyNatIpCidrAttribute",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 43420,
@@ -6510,23 +6105,18 @@
         "endLine": 43420,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 43420,
-            "column": 16,
-            "endLine": 43420,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyNetworkAclAttributes",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 43533,
@@ -6534,23 +6124,18 @@
         "endLine": 43533,
         "endColumn": 53
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 43533,
-            "column": 16,
-            "endLine": 43533,
-            "endColumn": 53
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyPhysicalConnectionAttribute",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 43669,
@@ -6558,19 +6143,14 @@
         "endLine": 43669,
         "endColumn": 60
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 43669,
-            "column": 16,
-            "endLine": 43669,
-            "endColumn": 60
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "ModifyRouteEntry",
@@ -7059,7 +6639,7 @@
     },
     {
       "name": "OpenFlowLogService",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 48015,
@@ -7067,19 +6647,14 @@
         "endLine": 48015,
         "endColumn": 45
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 48015,
-            "column": 16,
-            "endLine": 48015,
-            "endColumn": 45
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "OpenPhysicalConnectionService",
@@ -7102,7 +6677,7 @@
     },
     {
       "name": "OpenPublicIpAddressPoolService",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 48184,
@@ -7110,23 +6685,18 @@
         "endLine": 48184,
         "endColumn": 57
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 48184,
-            "column": 16,
-            "endLine": 48184,
-            "endColumn": 57
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "OpenTrafficMirrorService",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 48275,
@@ -7134,23 +6704,18 @@
         "endLine": 48275,
         "endColumn": 51
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 48275,
-            "column": 16,
-            "endLine": 48275,
-            "endColumn": 51
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "PublishVpcRouteEntries",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 48375,
@@ -7158,19 +6723,14 @@
         "endLine": 48375,
         "endColumn": 49
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 48375,
-            "column": 16,
-            "endLine": 48375,
-            "endColumn": 49
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "PublishVpnRouteEntry",
@@ -7269,7 +6829,7 @@
     },
     {
       "name": "ReleaseIpv6Address",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 48985,
@@ -7277,19 +6837,14 @@
         "endLine": 48985,
         "endColumn": 45
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 48985,
-            "column": 16,
-            "endLine": 48985,
-            "endColumn": 45
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "RemoveCommonBandwidthPackageIp",
@@ -7436,8 +6991,8 @@
       },
       "reasons": [
         {
-          "code": "DSL_OPERATION_SIGNATURE",
-          "message": "operation signature",
+          "code": "DSL_SHRINK_TRANSFORM",
+          "message": "shrink JSON transform",
           "source": {
             "file": "products/vpc/main.tea",
             "line": 49858,
@@ -7488,7 +7043,7 @@
     },
     {
       "name": "StartFailoverTestJob",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 50204,
@@ -7496,23 +7051,18 @@
         "endLine": 50204,
         "endColumn": 47
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 50204,
-            "column": 16,
-            "endLine": 50204,
-            "endColumn": 47
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "StopFailoverTestJob",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 50294,
@@ -7520,19 +7070,14 @@
         "endLine": 50294,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 50294,
-            "column": 16,
-            "endLine": 50294,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "SwitchActiveRouteTarget",
@@ -7726,7 +7271,7 @@
     },
     {
       "name": "UnassociateNetworkAcl",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 51502,
@@ -7734,19 +7279,14 @@
         "endLine": 51502,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 51502,
-            "column": 16,
-            "endLine": 51502,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UnassociatePhysicalConnectionFromVirtualBorderRouter",
@@ -7769,7 +7309,7 @@
     },
     {
       "name": "UnassociateRouteTable",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 51708,
@@ -7777,23 +7317,18 @@
         "endLine": 51708,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 51708,
-            "column": 16,
-            "endLine": 51708,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UnassociateVpcCidrBlock",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 51812,
@@ -7801,19 +7336,14 @@
         "endLine": 51812,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 51812,
-            "column": 16,
-            "endLine": 51812,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UntagResourcesForExpressConnect",
@@ -7874,7 +7404,7 @@
     },
     {
       "name": "UpdateFailoverTestJob",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 52325,
@@ -7882,23 +7412,18 @@
         "endLine": 52325,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 52325,
-            "column": 16,
-            "endLine": 52325,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UpdateGatewayRouteTableEntryAttribute",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 52457,
@@ -7906,19 +7431,14 @@
         "endLine": 52457,
         "endColumn": 64
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 52457,
-            "column": 16,
-            "endLine": 52457,
-            "endColumn": 64
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UpdateIpsecServer",
@@ -7941,7 +7461,7 @@
     },
     {
       "name": "UpdateIpv4GatewayAttribute",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 52742,
@@ -7949,23 +7469,18 @@
         "endLine": 52742,
         "endColumn": 53
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 52742,
-            "column": 16,
-            "endLine": 52742,
-            "endColumn": 53
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UpdateNatGatewayNatType",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 52872,
@@ -7973,23 +7488,18 @@
         "endLine": 52872,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 52872,
-            "column": 16,
-            "endLine": 52872,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UpdateNetworkAclEntries",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 53093,
@@ -7997,19 +7507,14 @@
         "endLine": 53093,
         "endColumn": 50
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 53093,
-            "column": 16,
-            "endLine": 53093,
-            "endColumn": 50
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     },
     {
       "name": "UpdatePublicIpAddressPoolAttribute",
@@ -8184,7 +7689,7 @@
     },
     {
       "name": "WithdrawVpcPublishedRouteEntries",
-      "status": "unsupported",
+      "status": "emitted",
       "source": {
         "file": "products/vpc/main.tea",
         "line": 54284,
@@ -8192,19 +7697,14 @@
         "endLine": 54284,
         "endColumn": 59
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_BINDING",
-          "message": "query alias/duplicate",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 54284,
-            "column": 16,
-            "endLine": 54284,
-            "endColumn": 59
-          }
-        }
-      ]
+      "reasons": [],
+      "capabilities": {
+        "status": "not-reviewed",
+        "idempotent": false,
+        "validator": false,
+        "sensitiveFormatting": false,
+        "namingException": false
+      }
     }
   ]
 }

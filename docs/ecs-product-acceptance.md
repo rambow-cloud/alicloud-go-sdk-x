@@ -2,6 +2,8 @@
 
 [中文](ecs-product-acceptance.zh-CN.md)
 
+- Current generation follows [RPC expansion #83](dsl-rpc-expansion.md): ECS 380/380; VPC 396/403. Earlier counts and consumer records below describe their accepted revisions.
+
 ## Scope established before execution
 
 - Issue #74; prerequisite STS #60 is complete. Integrate historical live evidence #47 separately.
@@ -53,3 +55,5 @@
 - #81 service consolidation refresh: the ten consumer tests and 14 subtests PASS at e33e5f93d856027569969056e9d4c25e92e51212; root cross-capability contracts now use generated clients. Machine evidence is updated; live limitations remain unchanged.
 
 - #81 guide correction: discovery now precedes Go emission in the tool commands. All 29 consumer cases and 24 product subtests PASS at 29d468ad5f8999e92b4e60e4140cb8432efb8a13; machine records use this pin. Go/runtime/source/policy behavior is unchanged from the locally checked e33e5f93d856027569969056e9d4c25e92e51212 workload, so its unaffected gates are reused. Final-head CI remains required on PR #82.
+
+- #83 expansion/regression: 380 ECS actions compile; the existing 10 consumer cases and 14 subtests PASS at 01f25a9a571c3b59024dfbef7e2e96f7605f4a55. Additional root JSON/ownership/cancellation tests and Example PASS. Earlier live evidence stays pinned to its original revision; no all-action live claim.

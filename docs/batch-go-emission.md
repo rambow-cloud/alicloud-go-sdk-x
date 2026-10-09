@@ -2,6 +2,8 @@
 
 [中文](batch-go-emission.zh-CN.md)
 
+- Current generation follows [RPC expansion #83](dsl-rpc-expansion.md): ECS 380/380; VPC 396/403. Earlier counts and consumer records below describe their accepted revisions.
+
 - Stage [#36](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/36) consumes the complete hash-pinned `models/*/ir.json`, following #35 / PR #40.
 - This specification precedes implementation.
 - Official DSL and its semantic IR are sufficient; no legacy metadata, per-operation field/model selection or documentation overlay is required.

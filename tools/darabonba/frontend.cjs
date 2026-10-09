@@ -5,6 +5,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
 const parser = require("@darabonba/parser");
+const { Tag } = require("@darabonba/parser/lib/tag");
 const {
   bindInputs,
   verifyCanonical,
@@ -120,9 +121,9 @@ function verifySources(root = sourceRoot) {
 function variable(expr, name) {
   return expr?.type === "variable" && lex(expr.id) === name;
 }
-function requestProperty(expr) {
+function requestProperty(expr, owner = "request") {
   return expr?.type === "property_access" &&
-    lex(expr.id) === "request" &&
+    lex(expr.id) === owner &&
     expr.propertyPath.length === 1
     ? lex(expr.propertyPath[0])
     : undefined;
@@ -147,6 +148,20 @@ function construct(expr, model) {
   );
 }
 
+function reviewedAttributes(field, message) {
+  requireProfile(
+    field.attrs.every(
+      (a) =>
+        ["name", "description", "example", "nullable", "deprecated"].includes(
+          lex(a.attrName),
+        ) &&
+        (lex(a.attrName) !== "deprecated" ||
+          (a.attrValue.tag === Tag.BOOL &&
+            ["true", "false"].includes(lex(a.attrValue)))),
+    ),
+    message,
+  );
+}
 function shape(value, models, stack = []) {
   if (value.type === "modelBody") {
     requireProfile(!value.extendFileds?.length, "inherited model fields");
@@ -156,14 +171,7 @@ function shape(value, models, stack = []) {
         field.type === "modelField" && !properties[wire(field)],
         "model member",
       );
-      requireProfile(
-        field.attrs.every((a) =>
-          ["name", "description", "example", "nullable"].includes(
-            lex(a.attrName),
-          ),
-        ),
-        "unreviewed model attribute",
-      );
+      reviewedAttributes(field, "unreviewed model attribute");
       properties[wire(field)] = {
         ...shape(field.fieldValue, models, stack),
         required: field.required,
@@ -175,6 +183,11 @@ function shape(value, models, stack = []) {
   if (kind && typeof kind === "object") kind = lex(kind);
   if (kind === "array")
     return { type: "array", items: shape(value.fieldItemType, models, stack) };
+  if (kind === "map") {
+    requireProfile(lex(value.keyType) === "string", "map key type");
+    return { type: "map", values: shape(value.valueType, models, stack) };
+  }
+  if (kind === "any") return { type: "json" };
   if (kind === "string") return { type: "string" };
   if (kind === "boolean") return { type: "boolean" };
   if (
@@ -225,7 +238,7 @@ function lowerOperation(ast, operation) {
   requireProfile(
     requestless ||
       (params.length === 2 &&
-        lex(params[0].paramName) === "request" &&
+        ["request", "tmpReq"].includes(lex(params[0].paramName)) &&
         lex(params[1].paramName) === "runtime"),
     "operation signature",
   );
@@ -250,25 +263,119 @@ function lowerOperation(ast, operation) {
   const inputFields = new Map(
     (requestModel?.modelBody.nodes || []).map((f) => [lex(f.fieldName), f]),
   );
-  requireProfile(
-    (requestModel?.modelBody.nodes || []).every((f) =>
-      f.attrs.every((a) =>
-        ["name", "description", "example", "nullable"].includes(
-          lex(a.attrName),
-        ),
-      ),
-    ),
-    "unreviewed input attribute",
-  );
+  for (const field of inputFields.values())
+    reviewedAttributes(field, "unreviewed input attribute");
   const statements = fn.functionBody.stmts.stmts;
+  const inputName = requestless ? null : lex(params[0].paramName);
+  const transforms = new Map();
+  let queryFields = inputFields;
   let index = 0;
   if (!requestless) {
     requireProfile(
       staticCall(statements[index++], "Util", "validateModel", (e) =>
-        variable(e, "request"),
+        variable(e, inputName),
       ),
       "model validation",
     );
+    if (inputName === "tmpReq") {
+      const declaration = statements[index++];
+      requireProfile(
+        declaration?.type === "declare" &&
+          lex(declaration.id) === "request" &&
+          declaration.expr.type === "construct_model" &&
+          lex(declaration.expr.aliasId) ===
+            lex(params[0].paramType).replace(/Request$/, "ShrinkRequest") &&
+          declaration.expr.propertyPath.length === 0 &&
+          declaration.expr.object.fields.length === 0,
+        "shrink request construction",
+      );
+      const shrinkModel = models.get(lex(declaration.expr.aliasId));
+      requireProfile(
+        shrinkModel && !shrinkModel.extendOn,
+        "shrink request model",
+      );
+      queryFields = new Map(
+        shrinkModel.modelBody.nodes.map((f) => [lex(f.fieldName), f]),
+      );
+      for (const field of queryFields.values())
+        reviewedAttributes(field, "unreviewed input attribute");
+      const convert = statements[index++];
+      requireProfile(
+        convert?.type === "call" &&
+          convert.left.type === "static_call" &&
+          lex(convert.left.id) === "OpenApiUtil" &&
+          convert.left.propertyPath.length === 1 &&
+          lex(convert.left.propertyPath[0]) === "convert" &&
+          convert.args.length === 2 &&
+          variable(convert.args[0], "tmpReq") &&
+          variable(convert.args[1], "request"),
+        "shrink conversion",
+      );
+      while (statements[index]?.type === "if") {
+        const guard = statements[index++];
+        requireProfile(
+          guard.condition.type === "not" &&
+            staticCall(
+              guard.condition.expr,
+              "Util",
+              "isUnset",
+              (e) => !!requestProperty(e, "tmpReq"),
+            ) &&
+            !guard.elseIfs.length &&
+            !guard.elseStmts &&
+            guard.stmts.stmts.length === 1,
+          "shrink transform guard",
+        );
+        const original = requestProperty(
+          guard.condition.expr.args[0],
+          "tmpReq",
+        );
+        const assignment = guard.stmts.stmts[0],
+          target =
+            assignment.left?.type === "property"
+              ? requestProperty({ ...assignment.left, type: "property_access" })
+              : undefined,
+          call = assignment.expr;
+        const field = inputFields.get(original),
+          shrink = queryFields.get(target);
+        requireProfile(
+          assignment.type === "assign" &&
+            field &&
+            shrink &&
+            target === original + "Shrink" &&
+            shrink.fieldValue.fieldType === "string" &&
+            wire(shrink) === wire(field) &&
+            !transforms.has(target) &&
+            call?.type === "call" &&
+            call.left.type === "static_call" &&
+            lex(call.left.id) === "OpenApiUtil" &&
+            call.left.propertyPath.length === 1 &&
+            lex(call.left.propertyPath[0]) ===
+              "arrayToStringWithSpecifiedStyle" &&
+            call.args.length === 3 &&
+            requestProperty(call.args[0], "tmpReq") === original &&
+            call.args[1].type === "string" &&
+            call.args[1].value.string === wire(field) &&
+            call.args[2].type === "string" &&
+            call.args[2].value.string === "json",
+          "shrink JSON transform",
+        );
+        transforms.set(target, original);
+      }
+      requireProfile(
+        [...queryFields].every(([name, field]) => {
+          const original = inputFields.get(transforms.get(name) || name);
+          return (
+            original &&
+            wire(original) === wire(field) &&
+            (transforms.has(name) ||
+              JSON.stringify(shape(original.fieldValue, models)) ===
+                JSON.stringify(shape(field.fieldValue, models)))
+          );
+        }) && queryFields.size === inputFields.size,
+        "shrink model correspondence",
+      );
+    }
     const query = statements[index++];
     requireProfile(
       query?.type === "declare" &&
@@ -279,6 +386,7 @@ function lowerOperation(ast, operation) {
     );
   }
   const bindings = [];
+  const boundSources = new Map();
   while (!requestless && statements[index]?.type === "if") {
     const guard = statements[index++];
     requireProfile(
@@ -305,19 +413,30 @@ function lowerOperation(ast, operation) {
         requestProperty(assign.expr) === fieldName,
       "direct query assignment",
     );
-    const field = inputFields.get(fieldName);
+    const field = queryFields.get(fieldName);
     const fieldWire = assign.left.accessKey.value.string;
     requireProfile(
       field &&
         wire(field) === fieldWire &&
-        !bindings.some((b) => b.wire === fieldWire),
+        (!bindings.some((b) => b.wire === fieldWire) ||
+          boundSources.get(fieldWire) ===
+            (transforms.get(fieldName) || fieldName)),
       "query alias/duplicate",
     );
+    if (bindings.some((b) => b.wire === fieldWire)) continue;
+    const originalName = transforms.get(fieldName) || fieldName;
+    const originalField = inputFields.get(originalName);
+    boundSources.set(fieldWire, originalName);
     bindings.push({
+      ...(inputName === "tmpReq" ? { field: originalName } : {}),
+      ...(transforms.has(fieldName) ? { encoding: "json" } : {}),
       wire: fieldWire,
       location: "query",
       guard: "isUnset",
-      schema: { ...shape(field.fieldValue, models), required: field.required },
+      schema: {
+        ...shape(originalField.fieldValue, models),
+        required: originalField.required,
+      },
     });
   }
   requireProfile(bindings.length === inputFields.size, "unbound model input");

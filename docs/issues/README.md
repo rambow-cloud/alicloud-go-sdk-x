@@ -54,3 +54,4 @@
 | #51   | Full-DSL STS client -> provider/cache -> generated consumer composition                      | #49; accepted foundation and generator                              |
 | #53   | STS-first application guidance and explicit credential-provider configuration                | #49, #51                                                            |
 | #55   | Dedicated-role live STS issuance, cache reuse, forced refresh and real expiry renewal        | #49, #51, #53                                                       |
+| #83 | Duplicate query bindings, deprecated fields and RPC shrink JSON transforms | Accepted full-DSL baseline; blocks #61 |
