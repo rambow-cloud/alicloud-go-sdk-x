@@ -1,5 +1,8 @@
 {
   "generator": "sdkgen product",
+  "reviewedEnglishTranslations": 9,
+  "goOperationContractComments": 380,
+  "goFieldContractComments": 9626,
   "schemaVersion": 1,
   "product": "ecs",
   "license": "Apache-2.0",
@@ -985,7 +988,7 @@
       ]
     },
     "CreateSavingsPlan": {
-      "status": "no-english-prose",
+      "status": "reviewed-english-translation",
       "sources": [
         {
           "file": "products/ecs/main.tea",
@@ -1073,7 +1076,7 @@
       ]
     },
     "CreateStorageSet": {
-      "status": "no-english-prose",
+      "status": "reviewed-english-translation",
       "sources": [
         {
           "file": "products/ecs/main.tea",
@@ -1667,7 +1670,7 @@
       ]
     },
     "DeleteStorageSet": {
-      "status": "no-english-prose",
+      "status": "reviewed-english-translation",
       "sources": [
         {
           "file": "products/ecs/main.tea",
@@ -2631,7 +2634,7 @@
       ]
     },
     "DescribeInstanceTopology": {
-      "status": "no-english-prose",
+      "status": "reviewed-english-translation",
       "sources": [
         {
           "file": "products/ecs/main.tea",
@@ -3173,7 +3176,7 @@
       ]
     },
     "DescribeSavingsPlanEstimation": {
-      "status": "no-english-prose",
+      "status": "reviewed-english-translation",
       "sources": [
         {
           "file": "products/ecs/main.tea",
@@ -3185,7 +3188,7 @@
       ]
     },
     "DescribeSavingsPlanPrice": {
-      "status": "no-english-prose",
+      "status": "reviewed-english-translation",
       "sources": [
         {
           "file": "products/ecs/main.tea",
@@ -3423,7 +3426,7 @@
       ]
     },
     "DescribeStorageSetDetails": {
-      "status": "no-english-prose",
+      "status": "reviewed-english-translation",
       "sources": [
         {
           "file": "products/ecs/main.tea",
@@ -3435,7 +3438,7 @@
       ]
     },
     "DescribeStorageSets": {
-      "status": "no-english-prose",
+      "status": "reviewed-english-translation",
       "sources": [
         {
           "file": "products/ecs/main.tea",
@@ -5082,7 +5085,7 @@
       ]
     },
     "ModifyStorageSetAttribute": {
-      "status": "no-english-prose",
+      "status": "reviewed-english-translation",
       "sources": [
         {
           "file": "products/ecs/main.tea",

@@ -2068,6 +2068,12 @@ type CreateSavingsPlanAPI interface {
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
+//
+// Reviewed English translation of upstream documentation (Apache-2.0):
+//
+// Purchases a savings plan and prepays for pay-as-you-go usage.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11640
 func (c *Client) CreateSavingsPlan(ctx context.Context, input *CreateSavingsPlanInput, optFns ...func(*Options)) (*CreateSavingsPlanOutput, error) {
 	out, meta, err := invoke[CreateSavingsPlanInput, CreateSavingsPlanOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateSavingsPlan", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
@@ -2254,6 +2260,12 @@ type CreateStorageSetAPI interface {
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
+//
+// Reviewed English translation of upstream documentation (Apache-2.0):
+//
+// Creates a storage set to distribute disks when they are created.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12360
 func (c *Client) CreateStorageSet(ctx context.Context, input *CreateStorageSetInput, optFns ...func(*Options)) (*CreateStorageSetOutput, error) {
 	out, meta, err := invoke[CreateStorageSetInput, CreateStorageSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "CreateStorageSet", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
@@ -3376,6 +3388,12 @@ type DeleteStorageSetAPI interface {
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
+//
+// Reviewed English translation of upstream documentation (Apache-2.0):
+//
+// Deletes the specified storage set.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15922
 func (c *Client) DeleteStorageSet(ctx context.Context, input *DeleteStorageSetInput, optFns ...func(*Options)) (*DeleteStorageSetOutput, error) {
 	out, meta, err := invoke[DeleteStorageSetInput, DeleteStorageSetOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DeleteStorageSet", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
@@ -5251,6 +5269,12 @@ type DescribeInstanceTopologyAPI interface {
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
+//
+// Reviewed English translation of upstream documentation (Apache-2.0):
+//
+// Queries instance topology.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L25243
 func (c *Client) DescribeInstanceTopology(ctx context.Context, input *DescribeInstanceTopologyInput, optFns ...func(*Options)) (*DescribeInstanceTopologyOutput, error) {
 	out, meta, err := invoke[DescribeInstanceTopologyInput, DescribeInstanceTopologyOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInstanceTopology", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
@@ -6374,6 +6398,12 @@ type DescribeSavingsPlanEstimationAPI interface {
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
+//
+// Reviewed English translation of upstream documentation (Apache-2.0):
+//
+// Estimates a savings plan.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32002
 func (c *Client) DescribeSavingsPlanEstimation(ctx context.Context, input *DescribeSavingsPlanEstimationInput, optFns ...func(*Options)) (*DescribeSavingsPlanEstimationOutput, error) {
 	out, meta, err := invoke[DescribeSavingsPlanEstimationInput, DescribeSavingsPlanEstimationOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSavingsPlanEstimation", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
@@ -6393,6 +6423,12 @@ type DescribeSavingsPlanPriceAPI interface {
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
+//
+// Reviewed English translation of upstream documentation (Apache-2.0):
+//
+// Queries the price of a savings plan with upfront payment for pay-as-you-go usage.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32100
 func (c *Client) DescribeSavingsPlanPrice(ctx context.Context, input *DescribeSavingsPlanPriceInput, optFns ...func(*Options)) (*DescribeSavingsPlanPriceOutput, error) {
 	out, meta, err := invoke[DescribeSavingsPlanPriceInput, DescribeSavingsPlanPriceOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSavingsPlanPrice", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
@@ -6841,6 +6877,12 @@ type DescribeStorageSetDetailsAPI interface {
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
+//
+// Reviewed English translation of upstream documentation (Apache-2.0):
+//
+// Queries details of the specified storage set.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34288
 func (c *Client) DescribeStorageSetDetails(ctx context.Context, input *DescribeStorageSetDetailsInput, optFns ...func(*Options)) (*DescribeStorageSetDetailsOutput, error) {
 	out, meta, err := invoke[DescribeStorageSetDetailsInput, DescribeStorageSetDetailsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeStorageSetDetails", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
@@ -6860,6 +6902,12 @@ type DescribeStorageSetsAPI interface {
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
+//
+// Reviewed English translation of upstream documentation (Apache-2.0):
+//
+// Queries storage sets in the current region.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34414
 func (c *Client) DescribeStorageSets(ctx context.Context, input *DescribeStorageSetsInput, optFns ...func(*Options)) (*DescribeStorageSetsOutput, error) {
 	out, meta, err := invoke[DescribeStorageSetsInput, DescribeStorageSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeStorageSets", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {
@@ -10261,6 +10309,12 @@ type ModifyStorageSetAttributeAPI interface {
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
 // Standard never retries this operation under the current conservative policy.
+//
+// Reviewed English translation of upstream documentation (Apache-2.0):
+//
+// Modifies the specified storage set.
+//
+// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48128
 func (c *Client) ModifyStorageSetAttribute(ctx context.Context, input *ModifyStorageSetAttributeInput, optFns ...func(*Options)) (*ModifyStorageSetAttributeOutput, error) {
 	out, meta, err := invoke[ModifyStorageSetAttributeInput, ModifyStorageSetAttributeOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "ModifyStorageSetAttribute", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
 	if err != nil {

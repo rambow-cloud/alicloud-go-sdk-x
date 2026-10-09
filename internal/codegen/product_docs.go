@@ -162,6 +162,9 @@ func documentCoverage(docs []productDocument) descriptionCoverage {
 
 type productDocCoverage struct {
 	Generator                  string                         `json:"generator"`
+	EnglishTranslations        int                            `json:"reviewedEnglishTranslations"`
+	GoOperationComments        int                            `json:"goOperationContractComments"`
+	GoFieldComments            int                            `json:"goFieldContractComments"`
 	SchemaVersion              int                            `json:"schemaVersion"`
 	Product                    string                         `json:"product"`
 	License                    string                         `json:"license"`
@@ -186,12 +189,19 @@ func (r *productRenderer) documentationCoverage() productDocCoverage {
 		if coverage.Status == "emitted" {
 			report.EnglishOperations++
 		}
+		if _, ok := r.p.Translations[op.Name]; ok {
+			report.EnglishTranslations++
+			coverage.Status = "reviewed-english-translation"
+			report.Operations[op.Name] = coverage
+		}
+		report.GoOperationComments++
 	}
 	for id, m := range r.models {
 		for _, f := range m.Fields {
 			coverage := documentCoverage(f.Documentation)
 			report.Fields[id+"#"+f.DSLName] = coverage
 			report.TotalFields++
+			report.GoFieldComments++
 			if coverage.Status == "emitted" {
 				report.EnglishFields++
 			}
@@ -202,9 +212,11 @@ func (r *productRenderer) documentationCoverage() productDocCoverage {
 func (r *productRenderer) appendDocumentationGuide(b *bytes.Buffer, chinese bool) {
 	report := r.documentationCoverage()
 	if chinese {
+		fmt.Fprintf(b, "- 已审核英文译文：%d 个操作；Go 行为注释覆盖 %d 个操作和 %d 个来源字段，单独统计，不冒充上游业务说明。缺少英文说明的字段保留准确 DSL 来源链接。\n\n", report.EnglishTranslations, report.GoOperationComments, report.GoFieldComments)
 		fmt.Fprintf(b, "## 文档来源\n\n- 英文 Go 注释复用已授权的官方说明和摘要：%d/%d 个操作、%d/%d 个字段有说明。\n- 缺失、空白或没有英文内容的说明记录在 \x60%s.documentation.json\x60 中。说明不会自动变成校验规则或必填要求。\n- 两份指南分别提供相同的用法、行为约定和来源索引。固定的上游输入不含中文语义翻译，因此不伪造官方译文。\n- 可执行 Example 使用离线模拟响应，不使用上游示例中的账号或资源值。\n- 详见 [文档规则](../product-documentation.zh-CN.md)，许可证和来源通知见包内 LICENSE、NOTICE。\n\n", report.EnglishOperations, report.TotalOperations, report.EnglishFields, report.TotalFields, r.p.Product)
 		b.WriteString("| 操作 | 英文说明状态 | 固定版本来源 |\n| --- | --- | --- |\n")
 	} else {
+		fmt.Fprintf(b, "- Reviewed English translations: %d actions. Go contract comments cover %d actions and %d source fields, counted separately from upstream business prose. Fields without English prose keep exact DSL links.\n\n", report.EnglishTranslations, report.GoOperationComments, report.GoFieldComments)
 		fmt.Fprintf(b, "## Documentation sources\n\n- English Go comments reuse licensed descriptions: %d/%d actions and %d/%d fields have prose.\n- Missing, empty or non-English descriptions are recorded in \x60%s.documentation.json\x60. Prose does not add validation or required fields.\n- Both guides include the same usage, contracts and source index. Pinned inputs have no Chinese semantic translations; none are invented.\n- Runnable Examples use offline responses, not upstream account/resource values.\n- See [documentation rules](../product-documentation.md), package LICENSE and NOTICE.\n\n", report.EnglishOperations, report.TotalOperations, report.EnglishFields, report.TotalFields, r.p.Product)
 		b.WriteString("| Action | English prose status | Pinned source |\n| --- | --- | --- |\n")
 	}

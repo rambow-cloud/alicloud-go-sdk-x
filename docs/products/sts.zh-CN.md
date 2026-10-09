@@ -40,8 +40,9 @@
 - 显式传入操作参数，不记录敏感字段或原始 JSON。
 - 只有配置 Retryer 且策略明确允许幂等重试时，才会重试。
 
-- 联邦身份 token 和断言由调用者提供，不自动发现联邦身份。凭据签发操作不重试。
-- 真实联邦调用尚未运行（NOT RUN），不属于 v0.1.0 的必需真实验收范围。见 [匿名协议](../sts-anonymous-rpc.zh-CN.md)。
+- 直接调用时显式提供 token 或断言；也可使用 feature/stscreds 的可续期 OIDC/SAML provider 和 token 文件来源。
+- config.LoadDefaultConfig 支持 OIDC 环境来源及原生 OIDC Profile；SAML provider 由调用者显式注册。AK/SK 仍需显式选择 provider 或允许长期凭据。
+- 凭据签发操作不重试。真实联邦续期由 #94 跟踪，尚未执行。见 [联邦身份指南](../federation-credentials.zh-CN.md)和[默认配置](../default-configuration.zh-CN.md)。
 
 ## 端点
 
@@ -62,6 +63,8 @@
 | AssumeRole | — | — | false |  | false | true |
 | AssumeRoleWithOIDC | — | — | false |  | false | true |
 | AssumeRoleWithSAML | — | — | false |  | false | true |
+
+- 已审核英文译文：0 个操作；Go 行为注释覆盖 4 个操作和 78 个来源字段，单独统计，不冒充上游业务说明。缺少英文说明的字段保留准确 DSL 来源链接。
 
 ## 文档来源
 

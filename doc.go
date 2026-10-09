@@ -1,15 +1,17 @@
 // Package alicloud provides a shared HTTP runtime with ACS3 signing and structured errors for
 // an independent Alibaba Cloud SDK for Go. Construct NewClient with explicit
 // credential providers and use generated service clients in service/ecs and service/sts.
-// Prefer renewable STS role credentials wrapped in credentials.Cache. Long-lived
-// access keys require an explicit StaticProvider; environment credentials require
-// an explicit EnvProvider. Custom providers remain supported. Config never accepts
-// bare keys or discovers an implicit credential source. Construction rejects nil
-// and typed-nil providers without retrieving credentials.
+// Prefer renewable STS credentials wrapped in credentials.Cache. config.LoadDefaultConfig
+// discovers temporary environment, OIDC, URI and native CLI Profile/OAuth sources.
+// Long-lived credentials require an explicit provider or loader opt-in. Custom
+// providers remain supported. Config never accepts bare keys. Direct constructors
+// require providers, perform no discovery and reject nil or typed-nil providers
+// without retrieving credentials.
 //
 // Reviewed anonymous STS OIDC/SAML operations use explicit AnonymousProvider and
 // never retrieve source credentials or sign. Nil providers remain invalid; signed
-// operations require signing credentials. Federation tokens are supplied explicitly.
+// operations require signing credentials. feature/stscreds provides renewable
+// federation providers and token-file sources; the loader supports OIDC discovery.
 //
 // # Project status
 //

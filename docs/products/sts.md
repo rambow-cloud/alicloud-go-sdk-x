@@ -40,8 +40,9 @@
 - Supply operation fields explicitly. Do not log sensitive fields or raw JSON.
 - Retry requires an explicit Retryer and reviewed idempotency policy.
 
-- Supply federation tokens/assertions explicitly; there is no federation discovery. Issuance actions do not retry.
-- Live federation: NOT RUN, outside the required v0.1.0 live scope. See [anonymous protocol](../sts-anonymous-rpc.md).
+- Direct calls take explicit tokens/assertions. feature/stscreds also provides renewable OIDC/SAML providers and token-file sources.
+- config.LoadDefaultConfig discovers OIDC environment and native OIDC Profile sources. Register SAML providers explicitly. AK/SK still require explicit providers or long-lived opt-in.
+- Issuance actions do not retry. Live federation renewal remains NOT RUN under #94. See [federation guide](../federation-credentials.md) and [default configuration](../default-configuration.md).
 
 ## Endpoints
 
@@ -62,6 +63,8 @@
 | AssumeRole | — | — | false |  | false | true |
 | AssumeRoleWithOIDC | — | — | false |  | false | true |
 | AssumeRoleWithSAML | — | — | false |  | false | true |
+
+- Reviewed English translations: 0 actions. Go contract comments cover 4 actions and 78 source fields, counted separately from upstream business prose. Fields without English prose keep exact DSL links.
 
 ## Documentation sources
 

@@ -91,6 +91,8 @@
 | ListPrefixLists | tokens | — | true |  | true | false |
 | ListVpcGatewayEndpoints | tokens | — | true |  | true | false |
 
+- Reviewed English translations: 0 actions. Go contract comments cover 403 actions and 9017 source fields, counted separately from upstream business prose. Fields without English prose keep exact DSL links.
+
 ## Documentation sources
 
 - English Go comments reuse licensed descriptions: 403/403 actions and 5036/9017 fields have prose.

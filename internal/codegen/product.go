@@ -90,13 +90,14 @@ type productOperation struct {
 	} `json:"bindings"`
 }
 type productIR struct {
-	Endpoints     productEndpoints  `json:"endpoints"`
-	Policy        *capabilityPolicy `json:"-"`
-	PolicySHA256  string            `json:"-"`
-	SchemaVersion int               `json:"schemaVersion"`
-	Profile       string            `json:"profile"`
-	Product       string            `json:"product"`
-	Version       string            `json:"version"`
+	Translations  map[string]productTranslation `json:"-"`
+	Endpoints     productEndpoints              `json:"endpoints"`
+	Policy        *capabilityPolicy             `json:"-"`
+	PolicySHA256  string                        `json:"-"`
+	SchemaVersion int                           `json:"schemaVersion"`
+	Profile       string                        `json:"profile"`
+	Product       string                        `json:"product"`
+	Version       string                        `json:"version"`
 	Provenance    struct {
 		Repository           string `json:"repository"`
 		Revision             string `json:"revision"`
@@ -182,6 +183,9 @@ func GenerateProducts(ctx context.Context, root string, check bool, selected []s
 		return errors.New("product: no product IR")
 	}
 	if err := loadCapabilityPolicies(root, products); err != nil {
+		return err
+	}
+	if err := loadProductTranslations(root, products); err != nil {
 		return err
 	}
 	slices.SortFunc(products, func(a, b productIR) int { return strings.Compare(a.Product, b.Product) })

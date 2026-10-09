@@ -89,6 +89,8 @@
 | DescribeSecurityGroups | tokens | — | true |  | true | false |
 | DescribeSnapshots | tokens | — | true |  | true | false |
 
+- Reviewed English translations: 9 actions. Go contract comments cover 380 actions and 9626 source fields, counted separately from upstream business prose. Fields without English prose keep exact DSL links.
+
 ## Documentation sources
 
 - English Go comments reuse licensed descriptions: 371/380 actions and 4234/9626 fields have prose.
@@ -159,12 +161,12 @@
 | CreatePrefixList | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11261) |
 | CreateRouteEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11382) |
 | CreateRouterInterface | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11500) |
-| CreateSavingsPlan | no-english-prose | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11647) |
+| CreateSavingsPlan | reviewed-english-translation | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11647) |
 | CreateSecurityGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11765) |
 | CreateSimulatedSystemEvents | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L11903) |
 | CreateSnapshot | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12062) |
 | CreateSnapshotGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12238) |
-| CreateStorageSet | no-english-prose | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12367) |
+| CreateStorageSet | reviewed-english-translation | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12367) |
 | CreateVSwitch | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12469) |
 | CreateVirtualBorderRouter | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12576) |
 | CreateVpc | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L12697) |
@@ -203,7 +205,7 @@
 | DeleteSecurityGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15655) |
 | DeleteSnapshot | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15748) |
 | DeleteSnapshotGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15851) |
-| DeleteStorageSet | no-english-prose | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15929) |
+| DeleteStorageSet | reviewed-english-translation | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L15929) |
 | DeleteVSwitch | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16010) |
 | DeleteVirtualBorderRouter | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16093) |
 | DeleteVpc | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L16180) |
@@ -267,7 +269,7 @@
 | DescribeInstanceMonitorData | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L24893) |
 | DescribeInstanceRamRole | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L25008) |
 | DescribeInstanceStatus | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L25136) |
-| DescribeInstanceTopology | no-english-prose | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L25250) |
+| DescribeInstanceTopology | reviewed-english-translation | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L25250) |
 | DescribeInstanceTypeFamilies | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L25344) |
 | DescribeInstanceTypes | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L25655) |
 | DescribeInstanceVncUrl | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L25886) |
@@ -304,8 +306,8 @@
 | DescribeResourcesModification | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31599) |
 | DescribeRouteTables | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31778) |
 | DescribeRouterInterfaces | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L31917) |
-| DescribeSavingsPlanEstimation | no-english-prose | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32009) |
-| DescribeSavingsPlanPrice | no-english-prose | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32107) |
+| DescribeSavingsPlanEstimation | reviewed-english-translation | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32009) |
+| DescribeSavingsPlanPrice | reviewed-english-translation | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32107) |
 | DescribeSecurityGroupAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32268) |
 | DescribeSecurityGroupReferences | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32379) |
 | DescribeSecurityGroups | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32545) |
@@ -319,8 +321,8 @@
 | DescribeSpotAdvice | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L33847) |
 | DescribeSpotPriceHistory | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34018) |
 | DescribeStorageCapacityUnits | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34177) |
-| DescribeStorageSetDetails | no-english-prose | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34295) |
-| DescribeStorageSets | no-english-prose | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34421) |
+| DescribeStorageSetDetails | reviewed-english-translation | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34295) |
+| DescribeStorageSets | reviewed-english-translation | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34421) |
 | DescribeTags | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34578) |
 | DescribeTaskAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34704) |
 | DescribeTasks | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L34827) |
@@ -424,7 +426,7 @@
 | ModifySnapshotCategory | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47874) |
 | ModifySnapshotGroup | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L47964) |
 | ModifyStorageCapacityUnitAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48051) |
-| ModifyStorageSetAttribute | no-english-prose | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48135) |
+| ModifyStorageSetAttribute | reviewed-english-translation | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48135) |
 | ModifySystemEventAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48230) |
 | ModifyUserBusinessBehavior | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48308) |
 | ModifyVRouterAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L48394) |
