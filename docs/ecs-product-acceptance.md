@@ -1,0 +1,45 @@
+# ECS product acceptance
+
+[中文](ecs-product-acceptance.zh-CN.md)
+
+## Scope established before execution
+
+- Issue #74; prerequisite STS #60 is complete. Integrate historical live evidence #47 separately.
+- Keep official pinned Darabonba/parser -> complete IR -> shared backend/runtime. No source or policy update is planned.
+- Inventory: 380 discovered, 283 lowered/emitted RPC actions, 1,453 models. Unsupported actions keep explicit reasons. Compilation is not all-action behavioral coverage.
+- Consumer module: examples/productacceptance; Go 1.27, JSON v2, public imports only, synthetic fixtures and no network.
+- Reviewer: implementation agent. No human task-time, benchmark, broader Beta or SDK compatibility claim.
+
+## Required matrix
+
+| Case         | Required proof                                                                                                                                        |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| generation   | Official frontend check/tests; deterministic bridge/product checks; all generated packages compile; unsupported selected behavior fails before writes |
+| consumer     | DescribeRegions, image traversal, instance token/page traversal, small mocks, native Profile and cached generated STS composition                     |
+| pagination   | Empty/short/full pages, totals, repeated tokens, mixed modes, ownership, optional presence, malformed responses and stable retry/cancel cursors       |
+| waiter       | Wait and WaitForOutput, all IDs, missing/partial/duplicate/unknown observations, transitions, errors, deadlines and concurrent reuse                  |
+| retry-errors | Reviewed read retries, non-retrying writes, options/endpoints, structured errors/Metadata, cancellation and secret-safe injected OTel                 |
+| live         | Existing #47 SDK/CLI selected-field reads and actual image page continuation; check sampled contracts are unchanged                                   |
+| docs         | Runnable consumer/Examples, paired guidance, doccheck, provenance/licenses and explicit limits                                                        |
+
+- Required live cases reuse the successful read-only DescribeRegions, DescribeImages two-page continuation, DescribeInstances token/page terminal reads and DescribeInstanceStatus terminal read from 2026-10-08.
+- Live instance token continuation and waiter transitions are optional/excluded for this scoped v0.1.0 acceptance: the authorized account sample contained no instances. They remain NOT RUN/SKIP, not PASS.
+- Token continuation and waiter transition/error contracts are mandatory offline cases. No instance is created or modified to obtain live coverage.
+- This scope does not satisfy the broader Beta requirement for live token/waiter transitions in product-acceptance.md. Explorer browser verification remains NOT RUN.
+- Reuse unchanged STS/Profile/source-update evidence. Publication and same-version pkg.go.dev indexing belong to #61.
+
+## Verification and result
+
+- Run Node 22 frontend check/tests before Go gates.
+- Run both sdkgen checks, doccheck, vet, root tests/Examples, isolated consumer tests and formatting once for this change.
+- CI runs Linux race, Windows and automation on the final PR head.
+- Record actual revision, versions, test names and status in acceptance/ecs-product-result.json. Evidence-only follow-up does not change the tested workload.
+- Current result: NOT RUN. No completion is inferred from this plan.
+
+## Criterion mapping
+
+- AC-01/02/07/08: public construction/options, owned models, exact RPC fields, nested presence, endpoints and structured errors.
+- AC-03/04/10: consumer traversal and independent page/token/waiter fixtures; broader live transition requirements remain excluded above.
+- AC-05/06/09: native temporary Profile, cached generated STS provider, reviewed retry and injected secret-safe OTel.
+- AC-11/12: generated package docs/Examples/licenses, paired consumer guide, complete inventory and deterministic/safe generation checks.
+- UX-01/02/03/04/05: agent-executed consumer tasks only; no independent human usability or performance result.
