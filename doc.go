@@ -28,4 +28,7 @@
 // Defaults are HTTPS, no redirects, no retries, a thirty-second total deadline
 // and an eight-MiB response limit. Shared extension implementations must be safe
 // for concurrent use. JSON uses encoding/json/v2 directly; Go 1.27 is required.
+// Request.RawPath preserves encoded parameter segments for reviewed ROA paths.
+// It must decode to the effective Request.Path; signing and transport use the same
+// escaped path. This path contract does not imply complete ROA/XML/stream generation.
 package alicloud
