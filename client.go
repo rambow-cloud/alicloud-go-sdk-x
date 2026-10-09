@@ -112,6 +112,10 @@ type Request struct {
 	Method string
 	// Path is the decoded absolute resource path; empty defaults to /.
 	Path string
+	// RawPath optionally preserves escaped parameter segments. It must be absolute,
+	// contain valid escapes and decode exactly to Path. Empty derives escapes from Path.
+	// Signing and transport preserve encoded slashes within a segment.
+	RawPath string
 	// Region overrides Config.Region before CallOptions.Region is applied.
 	Region string
 	// Query contains already-flattened service parameters.
@@ -383,7 +387,13 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 			return errors.New("alicloud: path must be absolute")
 		}
 		u.Path = path
-		u.RawPath = ""
+		u.RawPath = input.RawPath
+		if input.RawPath != "" {
+			decoded, err := url.PathUnescape(input.RawPath)
+			if err != nil || !strings.HasPrefix(input.RawPath, "/") || decoded != path || u.EscapedPath() != input.RawPath {
+				return errors.New("alicloud: invalid escaped path")
+			}
+		}
 		u.RawQuery = signing.CanonicalQuery(query)
 		method := input.Method
 		if method == "" {
