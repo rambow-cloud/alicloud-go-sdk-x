@@ -2,6 +2,8 @@
 
 [English](development-path.md)
 
+- [现有资源验证补充](live-resource-followup.zh-CN.md)新增了 VPC 非空响应和当前状态 waiter 的真实证据；跨页续取和状态转换仍未执行。
+
 - 当前：#85 已合并，后续按[缺口补齐路线 #87](gap-completion.zh-CN.md)执行。
 
 ## 统一服务路径
