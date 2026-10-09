@@ -4,6 +4,8 @@
 
 ## SDK 缺口补齐路线（2026-10-09）
 
+- #92 后续范围遵循 [OSS XML/流式路线](docs/oss-xml-protocol.zh-CN.md)。先固定完整官方产品及网关、辅助模块来源，再将准确的主机、XML 根节点和签名行为投影到 IR。OSS 不回退到 ACS3；不猜测 XML 根节点，不在流所有权、重放和校验和契约完成前宣称支持流式处理。
+
 - #92 遵循 [FC ROA 生成路线](docs/fc-roa-product.zh-CN.md)。当前完整 IR 和锁文件使用 schema v5（`openapi-json-v1`），明确记录路径、query、请求头、正文及操作外观类型；旧 v3/v4 说明保留为阶段历史。FC 用于离线验证：发现 73 个操作，生成 72 个；二进制 InvokeFunction 暂不支持。不得推断能力策略或宣称真实云验收。
 - 使用 tools/darabonba/import-product.cjs 增加固定产品，复用全部已锁定的直接和间接导入。端点例外写入 metadata/endpoint-source-decisions.json；保留官方原始字节，未经批准的源码、坐标或原值变化在写入前失败。
 

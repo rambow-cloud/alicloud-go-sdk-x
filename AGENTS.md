@@ -4,6 +4,8 @@
 
 ## SDK gap completion (2026-10-09)
 
+- The next #92 scope follows [OSS XML/streaming](docs/oss-xml-protocol.md). Pin complete official product and gateway/helper source first; project exact host, XML root and signing behavior into IR. No ACS3 fallback for OSS, inferred XML roots or claimed streaming without ownership/replay/checksum contracts.
+
 - #92 follows [FC ROA generation](docs/fc-roa-product.md). Current complete IR/lock uses schema v5 (`openapi-json-v1`) with exact path/query/header/body bindings and operation facades. Older v3/v4 text is stage history. FC is an offline fixture: 73 discovered, 72 emitted; binary InvokeFunction is unsupported. No inferred policy or live acceptance.
 - Add pinned products with tools/darabonba/import-product.cjs, reusing all locked transitive imports. Source-bound endpoint exceptions live in metadata/endpoint-source-decisions.json; preserve official bytes and reject unapproved source/coordinate/value drift before writes.
 
