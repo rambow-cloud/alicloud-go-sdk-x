@@ -8,6 +8,7 @@
 - Recognize exact path interpolation, header maps, guarded query fields, whole/body-field JSON conversion and callApi handoff. Do not accept arbitrary DSL statements or infer bindings from names.
 - Build operation input facades from actual path parameters, request-model fields and headers. Keep source coordinates and exact wire names. Shared body models need separate operation output facades with common model definitions preserved.
 - Empty/bodyless outputs retain operation metadata. Use explicit runtime none mode only from the source declaration. Binary remains unsupported until stream ownership and replay rules are implemented.
+- Field Go comments describe actual path/query/header/body roles. Body is not a JSON wrapper member and Headers is not a header named headers; JSON outputs and metadata-only none outputs are documented separately.
 - The pinned `ap-southeast-5` endpoint contains a trailing tab. Record the exact source hash, original value and reviewed trim decision; keep the source bytes unchanged and reject unapproved drift before writes.
 - This stage is offline. No FC resources or live mutations are authorized by this plan.
 

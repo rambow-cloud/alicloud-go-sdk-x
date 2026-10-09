@@ -20,7 +20,7 @@
 - 官方 JSON shrink 字段保留结构化输入，自动编码为一个 JSON 字符串参数。nil 省略，显式空容器保留；不输出 Shrink 字段或嵌套 query 索引。动态 JSON 值使用标量、字符串键 map 和 slice，拒绝循环或不支持的值。
 - 弃用字段保留编码行为，并在 Go 文档中标记 Deprecated。
 - 区域端点使用配置地域；不额外添加 DSL 未声明的 RegionId query 参数。
-- 输出保留完整的响应体结构，并增加 Metadata；DSL 的响应封装类型另外保留。
+- JSON 输出保留原生正文结构并增加 Metadata；none 输出仅含 Metadata。DSL 响应封装类型另外保留。
 - 客户端支持并发调用。小型 OperationAPI 接口用于替换真实客户端，方便测试。
 - 使用 errors.Is 检查取消，使用 errors.As 提取 APIError 或 OperationError。
 - 重试必须显式配置 Retryer，且仅允许已审核的幂等操作。
@@ -59,7 +59,7 @@
 
 - 输入由真实路径参数、请求模型字段和 Headers map 组成；公共模型保留，操作输出独立增加 Metadata。
 - 路径参数为必填的非空字符串，各值编码为一个 RFC3986 路径段。Example 使用虚构的 example 值。
-- Body 保留官方 JSON 正文形状；不增加包装层。nil 省略正文，非 nil 的空容器保留。body-member 字段按准确线名称组成 JSON 对象。
+- Body 保留官方 JSON 正文形状；不增加包装层。nil 省略正文，非 nil 的空容器保留。body-member 字段按准确线名称组成 JSON 对象。编码后的 JSON 正文上限为 8 MiB，超限在读取凭据前失败。
 - Headers 支持自定义服务头。认证、Host、正文类型/长度/传输方式及签名管理字段由 SDK 管理；非法字符、同名大小写冲突和这些保留字段在读取凭据前失败。
 - none 成功响应受大小限制，读取后丢弃，仅返回零值字段和 Metadata；错误响应仍提取结构化 JSON 服务错误。
 - 生成器不推断重试、分页或 waiter；未列策略仍未审核。XML 和二进制流仍不支持。
