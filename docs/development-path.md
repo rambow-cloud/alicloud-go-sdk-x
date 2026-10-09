@@ -3,6 +3,7 @@
 [中文](development-path.zh-CN.md)
 
 - #92 follows [FC ROA generation](fc-roa-product.md): schema v5, complete official source, reviewed JSON/none bindings, 72 offline generated actions and one binary exclusion. XML/streaming and live acceptance remain separate.
+- Before binary emission, implement [bounded response streaming](response-streaming.md) in the shared runtime. Its reader lifetime and publication gates do not establish generated binary coverage.
 
 - Current: #85 is merged. Follow [gap completion #87](gap-completion.md) for the next implementation stages.
 

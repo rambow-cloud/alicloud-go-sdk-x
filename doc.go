@@ -37,4 +37,9 @@
 // bounded success body and returns a fresh zero-valued output; structured JSON
 // errors still accept native uppercase and lowercase member spellings. This
 // runtime contract does not establish generated ROA product coverage.
+// ResponseBodyStream returns an owned io.ReadCloser through StreamingOutput or
+// Codec.DecodeStream. Close it after use. Timeout and context remain active
+// through reads; EOF, errors and overflow close the underlying body. Read has
+// one owner; Close may run concurrently. Late read failures never retry. This
+// contract does not add XML decoding or unbounded request streams.
 package alicloud

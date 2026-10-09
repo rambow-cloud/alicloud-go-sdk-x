@@ -14,6 +14,19 @@
 - 使用无需账号的测试验证生命周期、准确字节上限、取消、错误脱敏、重试以及编解码器和中间件的流归属；同步提供确定性外部 Example、公共 Go 文档和常规 Go 检查。
 - FC 二进制操作和 OSS XML、签名、校验和仍需各自完成解析器、IR 和输出器验收。基础运行时通过不代表已支持生成的二进制操作或真实云调用。
 
-## 当前状态
+## 使用方式
 
-- 已制定方案。实现后记录验证结果。
+- 为已审核操作设置 `ResponseBody: alicloud.ResponseBodyStream`。
+- `Invoke` 接收 `*alicloud.StreamingOutput`。先检查调用错误，成功后再读取或关闭 `Body`。
+- 流只读取一次；读取错误和调用错误分别处理。成功后使用 `defer output.Body.Close()` 确保关闭。
+- `Headers` 是独立复制的 map。`StatusCode` 和返回的 `Metadata` 描述初始成功响应，不代表正文已经读完。
+- `InvokeModel` 需提供 `Encode` 和 `DecodeStream`；流模式不要求 `Decode`。输出中的流字段可以使用任意名称。
+- 复用输出变量不会关闭调用者之前持有的流；必须先关闭旧流。
+- 使用 `go test . -run ExampleStreamingOutput` 运行 [ExampleStreamingOutput](../stream_test.go)，其传输为本地注入，不需要云账号。
+
+## 验证结果
+
+- 本地 Windows、Go 1.27.1：全量包测试、17 个公共包的文档检查、vet、格式和语言文件及本地链接检查均通过。
+- 测试覆盖：不预读二进制正文、准确上限和超限、EOF、未读取时取消、阻塞读取、超时、并发关闭、读取及关闭错误脱敏、结构化服务错误、发布前重试，以及编解码器和中间件违反流归属规则时的处理。
+- 完整生成及隔离编译测试耗时 112.468 秒并通过。随后补充关闭错误测试、增加截止时间测试余量，受影响测试也通过。
+- 最终提交的 Linux race 和 Windows CI 尚未完成；没有执行真实二进制云 API 调用。
