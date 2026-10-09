@@ -71,7 +71,19 @@
 
 | 操作 | 分页方式 | Waiter | 可安全重试的读取 | Token 字段 | 参数校验 | 敏感格式化 |
 | --- | --- | --- | --- | --- | --- | --- |
-| DescribeVpcs | pages | — | true |  | true | false |
+| DescribeCustomerGateways | pages | — | true |  | true | false |
+| DescribeEipAddresses | pages | — | true |  | true | false |
+| DescribeNatGateways | pages | NatGatewayAvailableWaiter | true |  | true | false |
+| DescribeRouteEntryList | tokens | — | true |  | true | false |
+| DescribeRouteTables | pages | — | true |  | true | false |
+| DescribeVSwitches | pages | VSwitchAvailableWaiter | true |  | true | false |
+| DescribeVpcs | pages | VpcAvailableWaiter | true |  | true | false |
+| DescribeVpnConnections | pages | — | true |  | true | false |
+| DescribeVpnGateways | pages | — | true |  | true | false |
+| ListNatIpCidrs | tokens | — | true |  | false | false |
+| ListNatIps | tokens | — | true |  | false | false |
+| ListPrefixLists | tokens | — | true |  | true | false |
+| ListVpcGatewayEndpoints | tokens | — | true |  | true | false |
 
 ## 文档来源
 

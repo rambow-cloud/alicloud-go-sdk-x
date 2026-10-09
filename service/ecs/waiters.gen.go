@@ -88,7 +88,8 @@ func (w *InstanceRunningWaiter) WaitForOutput(ctx context.Context, input *Descri
 	if err != nil {
 		return nil, err
 	}
-	if len(in.InstanceIDs) < 1 || len(in.InstanceIDs) > 50 {
+	requestedIDs := in.InstanceIDs
+	if len(requestedIDs) < 1 || len(requestedIDs) > 50 {
 		return nil, errors.New("waiter requires bounded ID list")
 	}
 	if err := ValidateDescribeInstanceStatusInput(in); err != nil {
@@ -100,7 +101,7 @@ func (w *InstanceRunningWaiter) WaitForOutput(ctx context.Context, input *Descri
 	in.PageNumber = rpcmodel.Pointer(int32(1))
 	in.PageSize = rpcmodel.Pointer(int32(50))
 	required := map[string]bool{}
-	for _, id := range in.InstanceIDs {
+	for _, id := range requestedIDs {
 		if id == "" || required[id] {
 			return nil, errors.New("waiter requires distinct nonempty IDs")
 		}
@@ -176,6 +177,194 @@ func (w *InstanceRunningWaiter) WaitForOutput(ctx context.Context, input *Descri
 				case "Running":
 					running++
 				case "Pending", "Starting", "Stopping", "Stopped":
+				default:
+					return waiter.Failure
+				}
+			}
+		}
+		if running == len(required) {
+			return waiter.Success
+		}
+		return waiter.Retry
+	}, waiter.Options{MinDelay: options.MinDelay, MaxDelay: options.MaxDelay, Now: options.Now, Sleep: options.Sleep})
+	if err != nil {
+		return nil, err
+	}
+	out, err := engine.Wait(ctx, maxWait)
+	if decisionError != nil && errors.Is(err, waiter.ErrFailure) {
+		return nil, &waiter.FailureError{Err: decisionError}
+	}
+	return out, err
+}
+
+// InstanceStoppedWaiterOptions configures bounded polling and an optional acceptor override.
+// Shared callbacks must be concurrency safe and must not retain options or models.
+type InstanceStoppedWaiterOptions struct {
+	// MinDelay defaults to one second.
+	MinDelay time.Duration
+	// MaxDelay caps exponential delay and defaults to five seconds.
+	MaxDelay time.Duration
+	// Now is a concurrency-safe clock; nil uses time.Now.
+	Now func() time.Time
+	// Sleep honors cancellation; nil uses the shared sleep helper.
+	Sleep func(context.Context, time.Duration) error
+	// ClientOptions applies to every poll and is copied per invocation.
+	ClientOptions []func(*Options)
+	// Retryable overrides state acceptance: true retries, false succeeds, error fails.
+	// It receives a fresh input and bounded context; failed fetches cannot become success.
+	Retryable func(context.Context, *DescribeInstanceStatusInput, *DescribeInstanceStatusOutput, error) (bool, error)
+}
+
+// InstanceStoppedWaiter is reusable for independent concurrent waits; do not mutate inputs during calls.
+type InstanceStoppedWaiter struct {
+	api     DescribeInstanceStatusAPI
+	options InstanceStoppedWaiterOptions
+}
+
+// NewInstanceStoppedWaiter binds an API and copies defaults without binding a request.
+// Invalid APIs/options return errors, an intentional v0 constructor convention.
+func NewInstanceStoppedWaiter(api DescribeInstanceStatusAPI, optFns ...func(*InstanceStoppedWaiterOptions)) (*InstanceStoppedWaiter, error) {
+	if rpcmodel.IsNil(api) {
+		return nil, errors.New("nil waiter API")
+	}
+	options := InstanceStoppedWaiterOptions{}
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil waiter option")
+		}
+		f(&options)
+	}
+	minimum, maximum := options.MinDelay, options.MaxDelay
+	if minimum == 0 {
+		minimum = time.Second
+	}
+	if maximum == 0 {
+		maximum = 5 * time.Second
+	}
+	if minimum < 0 || maximum < 0 || minimum > maximum {
+		return nil, errors.New("invalid waiter delays")
+	}
+	for _, f := range options.ClientOptions {
+		if f == nil {
+			return nil, errors.New("nil waiter client option")
+		}
+	}
+	options.ClientOptions = append([]func(*Options){}, options.ClientOptions...)
+	return &InstanceStoppedWaiter{api: api, options: options}, nil
+}
+
+// Wait waits for all requested IDs to reach the reviewed success state and discards output.
+// Positive maxWait includes operation retries and sleeps; input/options are isolated.
+func (w *InstanceStoppedWaiter) Wait(ctx context.Context, input *DescribeInstanceStatusInput, maxWait time.Duration, optFns ...func(*InstanceStoppedWaiterOptions)) error {
+	_, err := w.WaitForOutput(ctx, input, maxWait, optFns...)
+	return err
+}
+
+// WaitForOutput returns success or nil/error; missing IDs retry, unknown/duplicate states fail.
+// Caller cancellation passes through; own expiry is inspectable as waiter.ErrTimeout.
+func (w *InstanceStoppedWaiter) WaitForOutput(ctx context.Context, input *DescribeInstanceStatusInput, maxWait time.Duration, optFns ...func(*InstanceStoppedWaiterOptions)) (*DescribeInstanceStatusOutput, error) {
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	if maxWait <= 0 {
+		return nil, errors.New("positive waiter duration required")
+	}
+	if w == nil || rpcmodel.IsNil(w.api) {
+		return nil, errors.New("uninitialized waiter")
+	}
+	in, err := rpcmodel.Snapshot(ctx, input)
+	if err != nil {
+		return nil, err
+	}
+	requestedIDs := in.InstanceIDs
+	if len(requestedIDs) < 1 || len(requestedIDs) > 50 {
+		return nil, errors.New("waiter requires bounded ID list")
+	}
+	if err := ValidateDescribeInstanceStatusInput(in); err != nil {
+		return nil, err
+	}
+	if in.PageNumber != nil && *in.PageNumber != 1 {
+		return nil, errors.New("waiter requires first page")
+	}
+	in.PageNumber = rpcmodel.Pointer(int32(1))
+	in.PageSize = rpcmodel.Pointer(int32(50))
+	required := map[string]bool{}
+	for _, id := range requestedIDs {
+		if id == "" || required[id] {
+			return nil, errors.New("waiter requires distinct nonempty IDs")
+		}
+		required[id] = true
+	}
+	options := w.options
+	options.ClientOptions = append([]func(*Options){}, options.ClientOptions...)
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil waiter option")
+		}
+		f(&options)
+	}
+	for _, f := range options.ClientOptions {
+		if f == nil {
+			return nil, errors.New("nil waiter client option")
+		}
+	}
+	copiedOptions := append([]func(*Options){}, options.ClientOptions...)
+	var pollContext context.Context
+	var decisionError error
+	engine, err := waiter.New(func(ctx context.Context) (*DescribeInstanceStatusOutput, error) {
+		pollContext = ctx
+		request, err := rpcmodel.Snapshot(ctx, in)
+		if err != nil {
+			return nil, err
+		}
+		return w.api.DescribeInstanceStatus(ctx, request, append([]func(*Options){}, copiedOptions...)...)
+	}, func(out *DescribeInstanceStatusOutput, err error) waiter.Decision {
+		decisionError = nil
+		if out == nil && err == nil {
+			decisionError = errors.New("nil waiter response")
+			return waiter.Failure
+		}
+		if options.Retryable != nil {
+			owned, cause := rpcmodel.Snapshot(pollContext, in)
+			if cause != nil {
+				decisionError = cause
+				return waiter.Failure
+			}
+			again, cause := options.Retryable(pollContext, owned, out, err)
+			if cause != nil {
+				decisionError = cause
+				return waiter.Failure
+			}
+			if again {
+				return waiter.Retry
+			}
+			if err != nil {
+				return waiter.Failure
+			}
+			return waiter.Success
+		}
+		if err != nil || out == nil {
+			return waiter.Failure
+		}
+		seen := map[string]bool{}
+		running := 0
+		if out.InstanceStatuses != nil {
+			for _, item := range out.InstanceStatuses.InstanceStatus {
+				if !(item.InstanceID != nil) {
+					return waiter.Failure
+				}
+				id := *item.InstanceID
+				if !required[id] {
+					continue
+				}
+				if seen[id] || !(item.Status != nil) {
+					return waiter.Failure
+				}
+				seen[id] = true
+				switch *item.Status {
+				case "Stopped":
+					running++
+				case "Pending", "Starting", "Running", "Stopping":
 				default:
 					return waiter.Failure
 				}

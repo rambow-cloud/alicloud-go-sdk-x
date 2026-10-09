@@ -51,9 +51,9 @@ func (r *productRenderer) emitCapabilityExamples() ([]byte, error) {
 	for _, op := range r.operations {
 		cfg := r.opPolicy(op.Name)
 		hasRetry = hasRetry || (cfg.Idempotent != nil && *cfg.Idempotent)
-		hasWaiter = hasWaiter || cfg.Waiter != nil
+		hasWaiter = hasWaiter || len(cfg.waiters()) > 0
 		hasValidation = hasValidation || hasValidator(cfg)
-		hasCalls = hasCalls || cfg.Paginator != nil || cfg.Waiter != nil || cfg.ClientToken != ""
+		hasCalls = hasCalls || cfg.Paginator != nil || len(cfg.waiters()) > 0 || cfg.ClientToken != ""
 		for _, id := range cfg.SensitiveModels {
 			sensitive[id] = true
 		}
@@ -102,12 +102,19 @@ func (r *productRenderer) emitCapabilityExamples() ([]byte, error) {
 			}
 			fmt.Fprintf(&b, "func Example%sPaginator(){transport:=sdktest.NewTransport(sdktest.Step{Body:%q},sdktest.Step{Body:%q});client,err:=%s.NewFromConfig(capabilityExampleConfig(transport));if err!=nil{panic(err)};p,err:=%s.New%sPaginator(client,nil,func(o *%s.%sPaginatorOptions){o.Limit=1});if err!=nil{panic(err)};pages:=0;for p.HasMorePages(){if _,err:=p.NextPage(context.Background());err!=nil{panic(err)};pages++};fmt.Println(pages)\n// Output: 2\n}\n", op.Name, exampleJSON(first), exampleJSON(second), pkg, pkg, op.Name, pkg, op.Name)
 		}
-		if cfg.Waiter != nil {
-			w := cfg.Waiter
+		for _, w := range cfg.waiters() {
 			response := exampleWire(w.Items, []any{map[string]any{w.ID: "i-example", w.State: w.Success}})
 			ids := r.path(op.Roots.Request.Ref, w.IDs, "in")
 			field := strings.TrimPrefix(ids.Access, "in.")
-			fmt.Fprintf(&b, "func Example%s(){transport:=sdktest.NewTransport(sdktest.Step{Body:%q});client,err:=%s.NewFromConfig(capabilityExampleConfig(transport));if err!=nil{panic(err)};w,err:=%s.New%s(client);if err!=nil{panic(err)};err=w.Wait(context.Background(),&%s.%sInput{%s:[]string{\"i-example\"}},time.Second);fmt.Println(err==nil)\n// Output: true\n}\n", w.Name, exampleJSON(response), pkg, pkg, w.Name, pkg, op.Name, field)
+			idValue := "[]string{\"i-example\"}"
+			if ids.Type.Kind == "scalar" {
+				if ids.Optional {
+					idValue = "func()*string{v:=\"i-example\";return &v}()"
+				} else {
+					idValue = "\"i-example\""
+				}
+			}
+			fmt.Fprintf(&b, "func Example%s(){transport:=sdktest.NewTransport(sdktest.Step{Body:%q});client,err:=%s.NewFromConfig(capabilityExampleConfig(transport));if err!=nil{panic(err)};w,err:=%s.New%s(client);if err!=nil{panic(err)};err=w.Wait(context.Background(),&%s.%sInput{%s:%s},time.Second);fmt.Println(err==nil)\n// Output: true\n}\n", w.Name, exampleJSON(response), pkg, pkg, w.Name, pkg, op.Name, field, idValue)
 		}
 		if cfg.ClientToken != "" {
 			token := r.path(op.Roots.Request.Ref, cfg.ClientToken, "in")

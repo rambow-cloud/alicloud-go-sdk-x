@@ -11,7 +11,7 @@
   "compilation": "not-assessed",
   "live": "not-assessed",
   "capabilityPolicy": "sparse-reviewed",
-  "policySHA256": "d5c1511fe4ba20ccb76975c995c45e891838fe89f1dea318879dc2ce7dd54db1",
+  "policySHA256": "1d7692986c131e3156e6799f34768f2a09c95b538b06d25c0830351b2c97b6c1",
   "operations": [
     {
       "name": "ActivateRouterInterface",
@@ -3141,9 +3141,10 @@
       },
       "reasons": [],
       "capabilities": {
-        "status": "not-reviewed",
-        "idempotent": false,
-        "validator": false,
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "pages",
+        "validator": true,
         "sensitiveFormatting": false,
         "namingException": false
       }
@@ -3179,9 +3180,10 @@
       },
       "reasons": [],
       "capabilities": {
-        "status": "not-reviewed",
-        "idempotent": false,
-        "validator": false,
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "pages",
+        "validator": true,
         "sensitiveFormatting": false,
         "namingException": false
       }
@@ -3654,9 +3656,11 @@
       },
       "reasons": [],
       "capabilities": {
-        "status": "not-reviewed",
-        "idempotent": false,
-        "validator": false,
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "pages",
+        "waiter": "NatGatewayAvailableWaiter",
+        "validator": true,
         "sensitiveFormatting": false,
         "namingException": false
       }
@@ -3787,9 +3791,10 @@
       },
       "reasons": [],
       "capabilities": {
-        "status": "not-reviewed",
-        "idempotent": false,
-        "validator": false,
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "tokens",
+        "validator": true,
         "sensitiveFormatting": false,
         "namingException": false
       }
@@ -3825,9 +3830,10 @@
       },
       "reasons": [],
       "capabilities": {
-        "status": "not-reviewed",
-        "idempotent": false,
-        "validator": false,
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "pages",
+        "validator": true,
         "sensitiveFormatting": false,
         "namingException": false
       }
@@ -4091,9 +4097,11 @@
       },
       "reasons": [],
       "capabilities": {
-        "status": "not-reviewed",
-        "idempotent": false,
-        "validator": false,
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "pages",
+        "waiter": "VSwitchAvailableWaiter",
+        "validator": true,
         "sensitiveFormatting": false,
         "namingException": false
       }
@@ -4227,6 +4235,7 @@
         "status": "reviewed",
         "idempotent": true,
         "paginator": "pages",
+        "waiter": "VpcAvailableWaiter",
         "validator": true,
         "sensitiveFormatting": false,
         "namingException": false
@@ -4301,9 +4310,10 @@
       },
       "reasons": [],
       "capabilities": {
-        "status": "not-reviewed",
-        "idempotent": false,
-        "validator": false,
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "pages",
+        "validator": true,
         "sensitiveFormatting": false,
         "namingException": false
       }
@@ -4377,9 +4387,10 @@
       },
       "reasons": [],
       "capabilities": {
-        "status": "not-reviewed",
-        "idempotent": false,
-        "validator": false,
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "pages",
+        "validator": true,
         "sensitiveFormatting": false,
         "namingException": false
       }
@@ -5194,8 +5205,9 @@
       },
       "reasons": [],
       "capabilities": {
-        "status": "not-reviewed",
-        "idempotent": false,
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "tokens",
         "validator": false,
         "sensitiveFormatting": false,
         "namingException": false
@@ -5213,8 +5225,9 @@
       },
       "reasons": [],
       "capabilities": {
-        "status": "not-reviewed",
-        "idempotent": false,
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "tokens",
         "validator": false,
         "sensitiveFormatting": false,
         "namingException": false
@@ -5251,9 +5264,10 @@
       },
       "reasons": [],
       "capabilities": {
-        "status": "not-reviewed",
-        "idempotent": false,
-        "validator": false,
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "tokens",
+        "validator": true,
         "sensitiveFormatting": false,
         "namingException": false
       }
@@ -5460,9 +5474,10 @@
       },
       "reasons": [],
       "capabilities": {
-        "status": "not-reviewed",
-        "idempotent": false,
-        "validator": false,
+        "status": "reviewed",
+        "idempotent": true,
+        "paginator": "tokens",
+        "validator": true,
         "sensitiveFormatting": false,
         "namingException": false
       }

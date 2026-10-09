@@ -71,7 +71,19 @@
 
 | Action | Pagination | Waiter | Retry-safe read | Token field | Validation | Sensitive formatting |
 | --- | --- | --- | --- | --- | --- | --- |
-| DescribeVpcs | pages | — | true |  | true | false |
+| DescribeCustomerGateways | pages | — | true |  | true | false |
+| DescribeEipAddresses | pages | — | true |  | true | false |
+| DescribeNatGateways | pages | NatGatewayAvailableWaiter | true |  | true | false |
+| DescribeRouteEntryList | tokens | — | true |  | true | false |
+| DescribeRouteTables | pages | — | true |  | true | false |
+| DescribeVSwitches | pages | VSwitchAvailableWaiter | true |  | true | false |
+| DescribeVpcs | pages | VpcAvailableWaiter | true |  | true | false |
+| DescribeVpnConnections | pages | — | true |  | true | false |
+| DescribeVpnGateways | pages | — | true |  | true | false |
+| ListNatIpCidrs | tokens | — | true |  | false | false |
+| ListNatIps | tokens | — | true |  | false | false |
+| ListPrefixLists | tokens | — | true |  | true | false |
+| ListVpcGatewayEndpoints | tokens | — | true |  | true | false |
 
 ## Documentation sources
 

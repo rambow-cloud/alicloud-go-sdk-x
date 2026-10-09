@@ -42,8 +42,12 @@ func (r *productRenderer) appendCapabilityGuide(b *bytes.Buffer, chinese bool) {
 			if cfg.Paginator != nil {
 				mode = cfg.Paginator.Mode
 			}
-			if cfg.Waiter != nil {
-				waiterName = cfg.Waiter.Name
+			if len(cfg.waiters()) > 0 {
+				var names []string
+				for _, w := range cfg.waiters() {
+					names = append(names, w.Name)
+				}
+				waiterName = strings.Join(names, ", ")
 			}
 			fmt.Fprintf(b, "| %s | %s | %s | %t | %s | %t | %t |\n", name, mode, waiterName, *cfg.Idempotent, cfg.ClientToken, hasValidator(cfg), len(cfg.SensitiveModels) > 0)
 		}
@@ -144,6 +148,7 @@ func (r *productRenderer) emitPolicyFunctions() ([]byte, error) {
 }
 
 type nativeAdapterData struct {
+	Excluded    []capabilityPath
 	Operation   string
 	Name        string
 	Mode        string
@@ -179,6 +184,9 @@ func (r *productRenderer) emitNativeAdapters(waiters bool) ([]byte, error) {
 		}
 		if !waiters && cfg.Paginator != nil {
 			p := cfg.Paginator
+			for _, wire := range p.ExcludedInputs {
+				d.Excluded = append(d.Excluded, r.path(request, wire, "in"))
+			}
 			d.Mode = p.Mode
 			d.DefaultSize = p.DefaultSize
 			d.MaximumSize = p.MaximumSize
@@ -187,6 +195,9 @@ func (r *productRenderer) emitNativeAdapters(waiters bool) ([]byte, error) {
 				d.TokenIn = r.path(request, p.InputToken, "in")
 				d.TokenOut = r.path(body, p.OutputToken, "out")
 				d.Limit = r.path(request, p.Limit, "in")
+				if d.Limit.Type.DSLType == "string" {
+					imports["strconv"] = ""
+				}
 			}
 			if p.Mode != "tokens" {
 				d.Page = r.path(request, p.Page, "in")
@@ -197,19 +208,21 @@ func (r *productRenderer) emitNativeAdapters(waiters bool) ([]byte, error) {
 			}
 			entries = append(entries, d)
 		}
-		if waiters && cfg.Waiter != nil {
-			w := cfg.Waiter
-			d.Name = w.Name
-			d.MaxIDs = w.MaxIDs
-			d.Success = w.Success
-			d.Retry = w.Retry
-			d.IDs = r.path(request, w.IDs, "in")
-			d.Items = r.path(body, w.Items, "out")
-			d.Page = r.path(request, w.Page, "in")
-			d.Size = r.path(request, w.Size, "in")
-			d.ID = r.path(d.Items.Type.Items.Ref, w.ID, "item")
-			d.State = r.path(d.Items.Type.Items.Ref, w.State, "item")
-			entries = append(entries, d)
+		if waiters {
+			for _, w := range cfg.waiters() {
+				d := d
+				d.Name = w.Name
+				d.MaxIDs = w.MaxIDs
+				d.Success = w.Success
+				d.Retry = w.Retry
+				d.IDs = r.path(request, w.IDs, "in")
+				d.Items = r.path(body, w.Items, "out")
+				d.Page = r.path(request, w.Page, "in")
+				d.Size = r.path(request, w.Size, "in")
+				d.ID = r.path(d.Items.Type.Items.Ref, w.ID, "item")
+				d.State = r.path(d.Items.Type.Items.Ref, w.State, "item")
+				entries = append(entries, d)
+			}
 		}
 	}
 	if len(entries) == 0 {
@@ -225,7 +238,16 @@ func (r *productRenderer) emitNativeAdapters(waiters bool) ([]byte, error) {
 	}
 	var b bytes.Buffer
 	productPreamble(&b, r.p.Product, imports)
-	functions := template.FuncMap{"present": func(p capabilityPath) string { return p.condition() }, "value": func(p capabilityPath) string { return p.value() }, "set": pathSet, "on": func(p capabilityPath, root string) capabilityPath {
+	functions := template.FuncMap{"cast": func(p capabilityPath, raw string) string {
+		switch p.Type.DSLType {
+		case "long", "int64":
+			return "int64(" + raw + ")"
+		case "string":
+			return "strconv.FormatInt(int64(" + raw + "),10)"
+		default:
+			return "int32(" + raw + ")"
+		}
+	}, "present": func(p capabilityPath) string { return p.condition() }, "value": func(p capabilityPath) string { return p.value() }, "set": pathSet, "on": func(p capabilityPath, root string) capabilityPath {
 		p.Access = strings.Replace(p.Access, "in.", root+".", 1)
 		return p
 	}, "q": quote}
@@ -261,6 +283,7 @@ func New{{.Operation}}Paginator(api {{.Operation}}API,input *{{.Operation}}Input
  if options.Limit<0||options.Limit>{{.MaximumSize}}{return nil,errors.New("invalid paginator limit")}
  for _,f:=range options.ClientOptions{if f==nil{return nil,errors.New("nil paginator client option")}}
  in,err:=rpcmodel.Snapshot(context.Background(),input);if err!=nil{return nil,err}
+ {{range .Excluded}}if {{present .}}{return nil,errors.New("token paginator does not accept legacy page fields")};{{end}}
  {{if .Validator}}if err:={{.Validator}}(in);err!=nil{return nil,err}{{end}}
  {{if eq .Mode "pages"}}pageMode:=true{{else if eq .Mode "tokens"}}pageMode:=false{{else}}pageMode:=({{present .Page}})||({{present .Size}}){{end}}
  initial:=pagination.Cursor{}
@@ -272,9 +295,10 @@ func New{{.Operation}}Paginator(api {{.Operation}}API,input *{{.Operation}}Input
   initial.PageNumber=int({{value .Page}})
  }{{end}}
  {{if ne .Mode "pages"}}if !pageMode {
-  if !({{present .Limit}}){ {{set .Limit (printf "int32(%d)" .DefaultSize)}} }
-  if options.Limit>0{ {{set .Limit "int32(options.Limit)"}} }
-  if {{value .Limit}}<1||{{value .Limit}}>{{.MaximumSize}}{return nil,errors.New("invalid native token limit")}
+  if !({{present .Limit}}){ {{set .Limit (cast .Limit (printf "%d" .DefaultSize))}} }
+  if options.Limit>0{ {{set .Limit (cast .Limit "options.Limit")}} }
+  nativeLimit,cause:=rpcmodel.PaginationInteger({{value .Limit}})
+  if cause!=nil||nativeLimit<1||nativeLimit>{{.MaximumSize}}{return nil,errors.New("invalid native token limit")}
   if {{present .TokenIn}}{initial.Token={{value .TokenIn}}}
  }{{end}}
  p:=&{{.Operation}}Paginator{clientOptions:append([]func(*Options){},options.ClientOptions...)}
@@ -348,11 +372,12 @@ func(w *{{.Name}})WaitForOutput(ctx context.Context,input *{{.Operation}}Input,m
  if err:=ctx.Err();err!=nil{return nil,err};if maxWait<=0{return nil,errors.New("positive waiter duration required")}
  if w==nil||rpcmodel.IsNil(w.api){return nil,errors.New("uninitialized waiter")}
  in,err:=rpcmodel.Snapshot(ctx,input);if err!=nil{return nil,err}
- if len({{.IDs.Access}})<1||len({{.IDs.Access}})>{{.MaxIDs}}{return nil,errors.New("waiter requires bounded ID list")}
+ {{if eq .IDs.Type.Kind "scalar"}}if !({{present .IDs}}){return nil,errors.New("waiter requires resource ID")};requestedIDs:=[]string{ {{value .IDs}} }{{else}}requestedIDs:={{.IDs.Access}}{{end}}
+ if len(requestedIDs)<1||len(requestedIDs)>{{.MaxIDs}}{return nil,errors.New("waiter requires bounded ID list")}
  {{if .Validator}}if err:={{.Validator}}(in);err!=nil{return nil,err}{{end}}
  if {{present .Page}}&&{{value .Page}}!=1{return nil,errors.New("waiter requires first page")}
  {{set .Page "int32(1)"}};{{set .Size (printf "int32(%d)" .MaxIDs)}}
- required:=map[string]bool{};for _,id:=range {{.IDs.Access}}{if id==""||required[id]{return nil,errors.New("waiter requires distinct nonempty IDs")};required[id]=true}
+ required:=map[string]bool{};for _,id:=range requestedIDs{if id==""||required[id]{return nil,errors.New("waiter requires distinct nonempty IDs")};required[id]=true}
  options:=w.options;options.ClientOptions=append([]func(*Options){},options.ClientOptions...)
  for _,f:=range optFns{if f==nil{return nil,errors.New("nil waiter option")};f(&options)}
  for _,f:=range options.ClientOptions{if f==nil{return nil,errors.New("nil waiter client option")}}

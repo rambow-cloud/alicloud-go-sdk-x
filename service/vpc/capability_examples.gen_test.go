@@ -20,6 +20,298 @@ func capabilityExampleConfig(transport *sdktest.ScriptedTransport) alicloud.Conf
 	}
 	return alicloud.Config{Region: "cn-hangzhou", BaseEndpoint: "https://example.invalid", CredentialsProvider: provider, HTTPClient: &http.Client{Transport: transport}}
 }
+func ExampleDescribeCustomerGatewaysPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"CustomerGateways\":{\"CustomerGateway\":[{}]},\"PageNumber\":1,\"PageSize\":1,\"TotalCount\":2}"}, sdktest.Step{Body: "{\"CustomerGateways\":{\"CustomerGateway\":[{}]},\"PageNumber\":2,\"PageSize\":1,\"TotalCount\":2}"})
+	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := vpc.NewDescribeCustomerGatewaysPaginator(client, nil, func(o *vpc.DescribeCustomerGatewaysPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeCustomerGatewaysInput() {
+	fmt.Println(vpc.ValidateDescribeCustomerGatewaysInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeCustomerGateways_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := vpc.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeCustomerGateways(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleDescribeEipAddressesPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"EipAddresses\":{\"EipAddress\":[{}]},\"PageNumber\":1,\"PageSize\":1,\"TotalCount\":2}"}, sdktest.Step{Body: "{\"EipAddresses\":{\"EipAddress\":[{}]},\"PageNumber\":2,\"PageSize\":1,\"TotalCount\":2}"})
+	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := vpc.NewDescribeEipAddressesPaginator(client, nil, func(o *vpc.DescribeEipAddressesPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeEipAddressesInput() {
+	fmt.Println(vpc.ValidateDescribeEipAddressesInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeEipAddresses_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := vpc.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeEipAddresses(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleDescribeNatGatewaysPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"NatGateways\":{\"NatGateway\":[{}]},\"PageNumber\":1,\"PageSize\":1,\"TotalCount\":2}"}, sdktest.Step{Body: "{\"NatGateways\":{\"NatGateway\":[{}]},\"PageNumber\":2,\"PageSize\":1,\"TotalCount\":2}"})
+	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := vpc.NewDescribeNatGatewaysPaginator(client, nil, func(o *vpc.DescribeNatGatewaysPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleNatGatewayAvailableWaiter() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"NatGateways\":{\"NatGateway\":[{\"NatGatewayId\":\"i-example\",\"Status\":\"Available\"}]}}"})
+	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	w, err := vpc.NewNatGatewayAvailableWaiter(client)
+	if err != nil {
+		panic(err)
+	}
+	err = w.Wait(context.Background(), &vpc.DescribeNatGatewaysInput{NATGatewayID: func() *string { v := "i-example"; return &v }()}, time.Second)
+	fmt.Println(err == nil)
+	// Output: true
+}
+func ExampleValidateDescribeNatGatewaysInput() {
+	fmt.Println(vpc.ValidateDescribeNatGatewaysInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeNatGateways_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := vpc.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeNatGateways(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleDescribeRouteEntryListPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"NextToken\":\"next\"}"}, sdktest.Step{Body: "{\"NextToken\":\"\"}"})
+	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := vpc.NewDescribeRouteEntryListPaginator(client, nil, func(o *vpc.DescribeRouteEntryListPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeRouteEntryListInput() {
+	fmt.Println(vpc.ValidateDescribeRouteEntryListInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeRouteEntryList_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := vpc.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeRouteEntryList(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleDescribeRouteTablesPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"PageNumber\":1,\"PageSize\":1,\"RouteTables\":{\"RouteTable\":[{}]},\"TotalCount\":2}"}, sdktest.Step{Body: "{\"PageNumber\":2,\"PageSize\":1,\"RouteTables\":{\"RouteTable\":[{}]},\"TotalCount\":2}"})
+	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := vpc.NewDescribeRouteTablesPaginator(client, nil, func(o *vpc.DescribeRouteTablesPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeRouteTablesInput() {
+	fmt.Println(vpc.ValidateDescribeRouteTablesInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeRouteTables_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := vpc.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeRouteTables(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleDescribeVSwitchesPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"PageNumber\":1,\"PageSize\":1,\"TotalCount\":2,\"VSwitches\":{\"VSwitch\":[{}]}}"}, sdktest.Step{Body: "{\"PageNumber\":2,\"PageSize\":1,\"TotalCount\":2,\"VSwitches\":{\"VSwitch\":[{}]}}"})
+	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := vpc.NewDescribeVSwitchesPaginator(client, nil, func(o *vpc.DescribeVSwitchesPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleVSwitchAvailableWaiter() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"VSwitches\":{\"VSwitch\":[{\"Status\":\"Available\",\"VSwitchId\":\"i-example\"}]}}"})
+	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	w, err := vpc.NewVSwitchAvailableWaiter(client)
+	if err != nil {
+		panic(err)
+	}
+	err = w.Wait(context.Background(), &vpc.DescribeVSwitchesInput{VSwitchID: func() *string { v := "i-example"; return &v }()}, time.Second)
+	fmt.Println(err == nil)
+	// Output: true
+}
+func ExampleValidateDescribeVSwitchesInput() {
+	fmt.Println(vpc.ValidateDescribeVSwitchesInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeVSwitches_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := vpc.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeVSwitches(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
 func ExampleDescribeVpcsPaginator() {
 	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"PageNumber\":1,\"PageSize\":1,\"TotalCount\":2,\"Vpcs\":{\"Vpc\":[{}]}}"}, sdktest.Step{Body: "{\"PageNumber\":2,\"PageSize\":1,\"TotalCount\":2,\"Vpcs\":{\"Vpc\":[{}]}}"})
 	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
@@ -40,6 +332,20 @@ func ExampleDescribeVpcsPaginator() {
 	fmt.Println(pages)
 	// Output: 2
 }
+func ExampleVpcAvailableWaiter() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"Vpcs\":{\"Vpc\":[{\"Status\":\"Available\",\"VpcId\":\"i-example\"}]}}"})
+	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	w, err := vpc.NewVpcAvailableWaiter(client)
+	if err != nil {
+		panic(err)
+	}
+	err = w.Wait(context.Background(), &vpc.DescribeVpcsInput{VPCID: func() *string { v := "i-example"; return &v }()}, time.Second)
+	fmt.Println(err == nil)
+	// Output: true
+}
 func ExampleValidateDescribeVpcsInput() {
 	fmt.Println(vpc.ValidateDescribeVpcsInput(nil) == nil)
 	// Output: true
@@ -58,6 +364,262 @@ func ExampleClient_DescribeVpcs_retry() {
 		panic(err)
 	}
 	out, err := client.DescribeVpcs(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleDescribeVpnConnectionsPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"PageNumber\":1,\"PageSize\":1,\"TotalCount\":2,\"VpnConnections\":{\"VpnConnection\":[{}]}}"}, sdktest.Step{Body: "{\"PageNumber\":2,\"PageSize\":1,\"TotalCount\":2,\"VpnConnections\":{\"VpnConnection\":[{}]}}"})
+	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := vpc.NewDescribeVpnConnectionsPaginator(client, nil, func(o *vpc.DescribeVpnConnectionsPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeVpnConnectionsInput() {
+	fmt.Println(vpc.ValidateDescribeVpnConnectionsInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeVpnConnections_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := vpc.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeVpnConnections(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleDescribeVpnGatewaysPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"PageNumber\":1,\"PageSize\":1,\"TotalCount\":2,\"VpnGateways\":{\"VpnGateway\":[{}]}}"}, sdktest.Step{Body: "{\"PageNumber\":2,\"PageSize\":1,\"TotalCount\":2,\"VpnGateways\":{\"VpnGateway\":[{}]}}"})
+	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := vpc.NewDescribeVpnGatewaysPaginator(client, nil, func(o *vpc.DescribeVpnGatewaysPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeVpnGatewaysInput() {
+	fmt.Println(vpc.ValidateDescribeVpnGatewaysInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeVpnGateways_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := vpc.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeVpnGateways(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleListNatIpCidrsPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"NextToken\":\"next\"}"}, sdktest.Step{Body: "{\"NextToken\":\"\"}"})
+	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := vpc.NewListNatIpCidrsPaginator(client, nil, func(o *vpc.ListNatIpCidrsPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleClient_ListNatIpCidrs_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := vpc.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.ListNatIpCidrs(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleListNatIpsPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"NextToken\":\"next\"}"}, sdktest.Step{Body: "{\"NextToken\":\"\"}"})
+	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := vpc.NewListNatIpsPaginator(client, nil, func(o *vpc.ListNatIpsPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleClient_ListNatIps_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := vpc.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.ListNatIps(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleListPrefixListsPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"NextToken\":\"next\"}"}, sdktest.Step{Body: "{\"NextToken\":\"\"}"})
+	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := vpc.NewListPrefixListsPaginator(client, nil, func(o *vpc.ListPrefixListsPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateListPrefixListsInput() {
+	fmt.Println(vpc.ValidateListPrefixListsInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_ListPrefixLists_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := vpc.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.ListPrefixLists(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleListVpcGatewayEndpointsPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"NextToken\":\"next\"}"}, sdktest.Step{Body: "{\"NextToken\":\"\"}"})
+	client, err := vpc.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := vpc.NewListVpcGatewayEndpointsPaginator(client, nil, func(o *vpc.ListVpcGatewayEndpointsPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateListVpcGatewayEndpointsInput() {
+	fmt.Println(vpc.ValidateListVpcGatewayEndpointsInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_ListVpcGatewayEndpoints_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := vpc.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.ListVpcGatewayEndpoints(context.Background(), nil)
 	if err != nil {
 		panic(err)
 	}

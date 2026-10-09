@@ -3720,7 +3720,7 @@ type DescribeAutoSnapshotPolicyExAPI interface {
 // DescribeAutoSnapshotPolicyEx calls the native DescribeAutoSnapshotPolicyEx action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Standard never retries this operation under the current conservative policy.
+// Reviewed idempotency permits replay only when a configured retry policy allows it.
 //
 // Upstream service documentation (Apache-2.0; informational, not SDK validation):
 //
@@ -3728,7 +3728,7 @@ type DescribeAutoSnapshotPolicyExAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L17472
 func (c *Client) DescribeAutoSnapshotPolicyEx(ctx context.Context, input *DescribeAutoSnapshotPolicyExInput, optFns ...func(*Options)) (*DescribeAutoSnapshotPolicyExOutput, error) {
-	out, meta, err := invoke[DescribeAutoSnapshotPolicyExInput, DescribeAutoSnapshotPolicyExOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoSnapshotPolicyEx", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeAutoSnapshotPolicyExInput, DescribeAutoSnapshotPolicyExOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeAutoSnapshotPolicyEx", Version: "2014-05-26", Idempotent: true}, "POST", true, nil, ValidateDescribeAutoSnapshotPolicyExInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4030,7 +4030,7 @@ type DescribeCommandsAPI interface {
 // DescribeCommands calls the native DescribeCommands action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Standard never retries this operation under the current conservative policy.
+// Reviewed idempotency permits replay only when a configured retry policy allows it.
 //
 // Upstream service documentation (Apache-2.0; informational, not SDK validation):
 //
@@ -4046,7 +4046,7 @@ type DescribeCommandsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L19018
 func (c *Client) DescribeCommands(ctx context.Context, input *DescribeCommandsInput, optFns ...func(*Options)) (*DescribeCommandsOutput, error) {
-	out, meta, err := invoke[DescribeCommandsInput, DescribeCommandsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCommands", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeCommandsInput, DescribeCommandsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeCommands", Version: "2014-05-26", Idempotent: true}, "POST", true, nil, ValidateDescribeCommandsInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4211,7 +4211,7 @@ type DescribeDeploymentSetsAPI interface {
 // DescribeDeploymentSets calls the native DescribeDeploymentSets action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Standard never retries this operation under the current conservative policy.
+// Reviewed idempotency permits replay only when a configured retry policy allows it.
 //
 // Upstream service documentation (Apache-2.0; informational, not SDK validation):
 //
@@ -4219,7 +4219,7 @@ type DescribeDeploymentSetsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L19963
 func (c *Client) DescribeDeploymentSets(ctx context.Context, input *DescribeDeploymentSetsInput, optFns ...func(*Options)) (*DescribeDeploymentSetsOutput, error) {
-	out, meta, err := invoke[DescribeDeploymentSetsInput, DescribeDeploymentSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDeploymentSets", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeDeploymentSetsInput, DescribeDeploymentSetsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDeploymentSets", Version: "2014-05-26", Idempotent: true}, "POST", true, nil, ValidateDescribeDeploymentSetsInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -4429,7 +4429,7 @@ type DescribeDisksAPI interface {
 // DescribeDisks calls the native DescribeDisks action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Standard never retries this operation under the current conservative policy.
+// Reviewed idempotency permits replay only when a configured retry policy allows it.
 //
 // Upstream service documentation (Apache-2.0; informational, not SDK validation):
 //
@@ -4447,7 +4447,7 @@ type DescribeDisksAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L21004
 func (c *Client) DescribeDisks(ctx context.Context, input *DescribeDisksInput, optFns ...func(*Options)) (*DescribeDisksOutput, error) {
-	out, meta, err := invoke[DescribeDisksInput, DescribeDisksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDisks", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeDisksInput, DescribeDisksOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeDisks", Version: "2014-05-26", Idempotent: true}, "POST", true, nil, ValidateDescribeDisksInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5485,7 +5485,7 @@ type DescribeInvocationsAPI interface {
 // DescribeInvocations calls the native DescribeInvocations action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Standard never retries this operation under the current conservative policy.
+// Reviewed idempotency permits replay only when a configured retry policy allows it.
 //
 // Upstream service documentation (Apache-2.0; informational, not SDK validation):
 //
@@ -5510,7 +5510,7 @@ type DescribeInvocationsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27050
 func (c *Client) DescribeInvocations(ctx context.Context, input *DescribeInvocationsInput, optFns ...func(*Options)) (*DescribeInvocationsOutput, error) {
-	out, meta, err := invoke[DescribeInvocationsInput, DescribeInvocationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInvocations", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeInvocationsInput, DescribeInvocationsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeInvocations", Version: "2014-05-26", Idempotent: true}, "POST", true, nil, ValidateDescribeInvocationsInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5527,7 +5527,7 @@ type DescribeKeyPairsAPI interface {
 // DescribeKeyPairs calls the native DescribeKeyPairs action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Standard never retries this operation under the current conservative policy.
+// Reviewed idempotency permits replay only when a configured retry policy allows it.
 //
 // Upstream service documentation (Apache-2.0; informational, not SDK validation):
 //
@@ -5535,7 +5535,7 @@ type DescribeKeyPairsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L27247
 func (c *Client) DescribeKeyPairs(ctx context.Context, input *DescribeKeyPairsInput, optFns ...func(*Options)) (*DescribeKeyPairsOutput, error) {
-	out, meta, err := invoke[DescribeKeyPairsInput, DescribeKeyPairsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeKeyPairs", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeKeyPairsInput, DescribeKeyPairsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeKeyPairs", Version: "2014-05-26", Idempotent: true}, "POST", true, nil, ValidateDescribeKeyPairsInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -5758,7 +5758,7 @@ type DescribeNetworkInterfacesAPI interface {
 // DescribeNetworkInterfaces calls the native DescribeNetworkInterfaces action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Standard never retries this operation under the current conservative policy.
+// Reviewed idempotency permits replay only when a configured retry policy allows it.
 //
 // Upstream service documentation (Apache-2.0; informational, not SDK validation):
 //
@@ -5775,7 +5775,7 @@ type DescribeNetworkInterfacesAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L28785
 func (c *Client) DescribeNetworkInterfaces(ctx context.Context, input *DescribeNetworkInterfacesInput, optFns ...func(*Options)) (*DescribeNetworkInterfacesOutput, error) {
-	out, meta, err := invoke[DescribeNetworkInterfacesInput, DescribeNetworkInterfacesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNetworkInterfaces", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeNetworkInterfacesInput, DescribeNetworkInterfacesOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeNetworkInterfaces", Version: "2014-05-26", Idempotent: true}, "POST", true, nil, ValidateDescribeNetworkInterfacesInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6467,7 +6467,7 @@ type DescribeSecurityGroupsAPI interface {
 // DescribeSecurityGroups calls the native DescribeSecurityGroups action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Standard never retries this operation under the current conservative policy.
+// Reviewed idempotency permits replay only when a configured retry policy allows it.
 //
 // Upstream service documentation (Apache-2.0; informational, not SDK validation):
 //
@@ -6486,7 +6486,7 @@ type DescribeSecurityGroupsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L32531
 func (c *Client) DescribeSecurityGroups(ctx context.Context, input *DescribeSecurityGroupsInput, optFns ...func(*Options)) (*DescribeSecurityGroupsOutput, error) {
-	out, meta, err := invoke[DescribeSecurityGroupsInput, DescribeSecurityGroupsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSecurityGroups", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSecurityGroupsInput, DescribeSecurityGroupsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSecurityGroups", Version: "2014-05-26", Idempotent: true}, "POST", true, nil, ValidateDescribeSecurityGroupsInput, optFns)
 	if err != nil {
 		return nil, err
 	}
@@ -6661,7 +6661,7 @@ type DescribeSnapshotsAPI interface {
 // DescribeSnapshots calls the native DescribeSnapshots action (API version 2014-05-26).
 // Nil input is an empty request. Errors preserve cancellation and structured service causes.
 // Inputs are deeply copied before hooks; callbacks must not retain options or models.
-// Standard never retries this operation under the current conservative policy.
+// Reviewed idempotency permits replay only when a configured retry policy allows it.
 //
 // Upstream service documentation (Apache-2.0; informational, not SDK validation):
 //
@@ -6698,7 +6698,7 @@ type DescribeSnapshotsAPI interface {
 //
 // Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/ecs-20140526/main.tea#L33510
 func (c *Client) DescribeSnapshots(ctx context.Context, input *DescribeSnapshotsInput, optFns ...func(*Options)) (*DescribeSnapshotsOutput, error) {
-	out, meta, err := invoke[DescribeSnapshotsInput, DescribeSnapshotsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshots", Version: "2014-05-26", Idempotent: false}, "POST", true, nil, nil, optFns)
+	out, meta, err := invoke[DescribeSnapshotsInput, DescribeSnapshotsOutput](ctx, c, input, alicloud.Operation{Service: "ecs", Name: "DescribeSnapshots", Version: "2014-05-26", Idempotent: true}, "POST", true, nil, ValidateDescribeSnapshotsInput, optFns)
 	if err != nil {
 		return nil, err
 	}

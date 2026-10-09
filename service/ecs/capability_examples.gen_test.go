@@ -42,6 +42,182 @@ func ExampleValidateAllocateDedicatedHostsInput() {
 	fmt.Println(ecs.ValidateAllocateDedicatedHostsInput(nil) == nil)
 	// Output: true
 }
+func ExampleDescribeAutoSnapshotPolicyExPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"AutoSnapshotPolicies\":{\"AutoSnapshotPolicy\":[{}]},\"PageNumber\":1,\"PageSize\":1,\"TotalCount\":2}"}, sdktest.Step{Body: "{\"AutoSnapshotPolicies\":{\"AutoSnapshotPolicy\":[{}]},\"PageNumber\":2,\"PageSize\":1,\"TotalCount\":2}"})
+	client, err := ecs.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := ecs.NewDescribeAutoSnapshotPolicyExPaginator(client, nil, func(o *ecs.DescribeAutoSnapshotPolicyExPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeAutoSnapshotPolicyExInput() {
+	fmt.Println(ecs.ValidateDescribeAutoSnapshotPolicyExInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeAutoSnapshotPolicyEx_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := ecs.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeAutoSnapshotPolicyEx(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleDescribeCommandsPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"NextToken\":\"next\"}"}, sdktest.Step{Body: "{\"NextToken\":\"\"}"})
+	client, err := ecs.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := ecs.NewDescribeCommandsPaginator(client, nil, func(o *ecs.DescribeCommandsPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeCommandsInput() {
+	fmt.Println(ecs.ValidateDescribeCommandsInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeCommands_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := ecs.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeCommands(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleDescribeDeploymentSetsPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"DeploymentSets\":{\"DeploymentSet\":[{}]},\"PageNumber\":1,\"PageSize\":1,\"TotalCount\":2}"}, sdktest.Step{Body: "{\"DeploymentSets\":{\"DeploymentSet\":[{}]},\"PageNumber\":2,\"PageSize\":1,\"TotalCount\":2}"})
+	client, err := ecs.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := ecs.NewDescribeDeploymentSetsPaginator(client, nil, func(o *ecs.DescribeDeploymentSetsPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeDeploymentSetsInput() {
+	fmt.Println(ecs.ValidateDescribeDeploymentSetsInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeDeploymentSets_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := ecs.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeDeploymentSets(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleDescribeDisksPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"NextToken\":\"next\"}"}, sdktest.Step{Body: "{\"NextToken\":\"\"}"})
+	client, err := ecs.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := ecs.NewDescribeDisksPaginator(client, nil, func(o *ecs.DescribeDisksPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeDisksInput() {
+	fmt.Println(ecs.ValidateDescribeDisksInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeDisks_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := ecs.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeDisks(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
 func ExampleDescribeImagesPaginator() {
 	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"Images\":{\"Image\":[{}]},\"PageNumber\":1,\"PageSize\":1,\"TotalCount\":2}"}, sdktest.Step{Body: "{\"Images\":{\"Image\":[{}]},\"PageNumber\":2,\"PageSize\":1,\"TotalCount\":2}"})
 	client, err := ecs.NewFromConfig(capabilityExampleConfig(transport))
@@ -120,6 +296,20 @@ func ExampleInstanceRunningWaiter() {
 	fmt.Println(err == nil)
 	// Output: true
 }
+func ExampleInstanceStoppedWaiter() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"InstanceStatuses\":{\"InstanceStatus\":[{\"InstanceId\":\"i-example\",\"Status\":\"Stopped\"}]}}"})
+	client, err := ecs.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	w, err := ecs.NewInstanceStoppedWaiter(client)
+	if err != nil {
+		panic(err)
+	}
+	err = w.Wait(context.Background(), &ecs.DescribeInstanceStatusInput{InstanceIDs: []string{"i-example"}}, time.Second)
+	fmt.Println(err == nil)
+	// Output: true
+}
 func ExampleValidateDescribeInstanceStatusInput() {
 	fmt.Println(ecs.ValidateDescribeInstanceStatusInput(nil) == nil)
 	// Output: true
@@ -188,6 +378,138 @@ func ExampleClient_DescribeInstances_retry() {
 	fmt.Println(out.Metadata.Attempts)
 	// Output: 2
 }
+func ExampleDescribeInvocationsPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"NextToken\":\"next\"}"}, sdktest.Step{Body: "{\"NextToken\":\"\"}"})
+	client, err := ecs.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := ecs.NewDescribeInvocationsPaginator(client, nil, func(o *ecs.DescribeInvocationsPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeInvocationsInput() {
+	fmt.Println(ecs.ValidateDescribeInvocationsInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeInvocations_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := ecs.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeInvocations(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleDescribeKeyPairsPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"KeyPairs\":{\"KeyPair\":[{}]},\"PageNumber\":1,\"PageSize\":1,\"TotalCount\":2}"}, sdktest.Step{Body: "{\"KeyPairs\":{\"KeyPair\":[{}]},\"PageNumber\":2,\"PageSize\":1,\"TotalCount\":2}"})
+	client, err := ecs.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := ecs.NewDescribeKeyPairsPaginator(client, nil, func(o *ecs.DescribeKeyPairsPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeKeyPairsInput() {
+	fmt.Println(ecs.ValidateDescribeKeyPairsInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeKeyPairs_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := ecs.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeKeyPairs(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleDescribeNetworkInterfacesPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"NextToken\":\"next\"}"}, sdktest.Step{Body: "{\"NextToken\":\"\"}"})
+	client, err := ecs.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := ecs.NewDescribeNetworkInterfacesPaginator(client, nil, func(o *ecs.DescribeNetworkInterfacesPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeNetworkInterfacesInput() {
+	fmt.Println(ecs.ValidateDescribeNetworkInterfacesInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeNetworkInterfaces_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := ecs.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeNetworkInterfaces(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
 func ExampleClient_DescribeRegions_retry() {
 	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
 	config := capabilityExampleConfig(transport)
@@ -202,6 +524,94 @@ func ExampleClient_DescribeRegions_retry() {
 		panic(err)
 	}
 	out, err := client.DescribeRegions(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleDescribeSecurityGroupsPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"NextToken\":\"next\"}"}, sdktest.Step{Body: "{\"NextToken\":\"\"}"})
+	client, err := ecs.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := ecs.NewDescribeSecurityGroupsPaginator(client, nil, func(o *ecs.DescribeSecurityGroupsPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeSecurityGroupsInput() {
+	fmt.Println(ecs.ValidateDescribeSecurityGroupsInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeSecurityGroups_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := ecs.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeSecurityGroups(context.Background(), nil)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(out.Metadata.Attempts)
+	// Output: 2
+}
+func ExampleDescribeSnapshotsPaginator() {
+	transport := sdktest.NewTransport(sdktest.Step{Body: "{\"NextToken\":\"next\"}"}, sdktest.Step{Body: "{\"NextToken\":\"\"}"})
+	client, err := ecs.NewFromConfig(capabilityExampleConfig(transport))
+	if err != nil {
+		panic(err)
+	}
+	p, err := ecs.NewDescribeSnapshotsPaginator(client, nil, func(o *ecs.DescribeSnapshotsPaginatorOptions) { o.Limit = 1 })
+	if err != nil {
+		panic(err)
+	}
+	pages := 0
+	for p.HasMorePages() {
+		if _, err := p.NextPage(context.Background()); err != nil {
+			panic(err)
+		}
+		pages++
+	}
+	fmt.Println(pages)
+	// Output: 2
+}
+func ExampleValidateDescribeSnapshotsInput() {
+	fmt.Println(ecs.ValidateDescribeSnapshotsInput(nil) == nil)
+	// Output: true
+}
+func ExampleClient_DescribeSnapshots_retry() {
+	transport := sdktest.NewTransport(sdktest.Step{StatusCode: 503, Body: `{"Code":"ServiceUnavailable"}`}, sdktest.Step{Body: "{}"})
+	config := capabilityExampleConfig(transport)
+	standard, err := retry.NewStandard(retry.Options{})
+	if err != nil {
+		panic(err)
+	}
+	config.Retryer = standard
+	config.Sleep = func(ctx context.Context, _ time.Duration) error { return ctx.Err() }
+	client, err := ecs.NewFromConfig(config)
+	if err != nil {
+		panic(err)
+	}
+	out, err := client.DescribeSnapshots(context.Background(), nil)
 	if err != nil {
 		panic(err)
 	}

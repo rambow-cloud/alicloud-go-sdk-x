@@ -5,6 +5,133 @@ import (
 	"errors"
 )
 
+// ValidateDescribeCustomerGatewaysInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeCustomerGatewaysInput(in *DescribeCustomerGatewaysInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.PageNumber != nil {
+		if *in.PageNumber < 1 {
+			return errors.New("invalid PageNumber: below minimum")
+		}
+	}
+	if in.PageSize != nil {
+		if *in.PageSize < 1 {
+			return errors.New("invalid PageSize: below minimum")
+		}
+		if *in.PageSize > 50 {
+			return errors.New("invalid PageSize: above maximum")
+		}
+	}
+	return nil
+}
+
+// ValidateDescribeEipAddressesInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeEipAddressesInput(in *DescribeEipAddressesInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.PageNumber != nil {
+		if *in.PageNumber < 1 {
+			return errors.New("invalid PageNumber: below minimum")
+		}
+	}
+	if in.PageSize != nil {
+		if *in.PageSize < 1 {
+			return errors.New("invalid PageSize: below minimum")
+		}
+		if *in.PageSize > 100 {
+			return errors.New("invalid PageSize: above maximum")
+		}
+	}
+	return nil
+}
+
+// ValidateDescribeNatGatewaysInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeNatGatewaysInput(in *DescribeNatGatewaysInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.PageNumber != nil {
+		if *in.PageNumber < 1 {
+			return errors.New("invalid PageNumber: below minimum")
+		}
+	}
+	if in.PageSize != nil {
+		if *in.PageSize < 1 {
+			return errors.New("invalid PageSize: below minimum")
+		}
+		if *in.PageSize > 50 {
+			return errors.New("invalid PageSize: above maximum")
+		}
+	}
+	return nil
+}
+
+// ValidateDescribeRouteEntryListInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeRouteEntryListInput(in *DescribeRouteEntryListInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.MaxResult != nil {
+		if *in.MaxResult < 1 {
+			return errors.New("invalid MaxResult: below minimum")
+		}
+		if *in.MaxResult > 100 {
+			return errors.New("invalid MaxResult: above maximum")
+		}
+	}
+	return nil
+}
+
+// ValidateDescribeRouteTablesInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeRouteTablesInput(in *DescribeRouteTablesInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.PageNumber != nil {
+		if *in.PageNumber < 1 {
+			return errors.New("invalid PageNumber: below minimum")
+		}
+	}
+	if in.PageSize != nil {
+		if *in.PageSize < 1 {
+			return errors.New("invalid PageSize: below minimum")
+		}
+		if *in.PageSize > 50 {
+			return errors.New("invalid PageSize: above maximum")
+		}
+	}
+	return nil
+}
+
+// ValidateDescribeVSwitchesInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeVSwitchesInput(in *DescribeVSwitchesInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.PageNumber != nil {
+		if *in.PageNumber < 1 {
+			return errors.New("invalid PageNumber: below minimum")
+		}
+	}
+	if in.PageSize != nil {
+		if *in.PageSize < 1 {
+			return errors.New("invalid PageSize: below minimum")
+		}
+		if *in.PageSize > 50 {
+			return errors.New("invalid PageSize: above maximum")
+		}
+	}
+	return nil
+}
+
 // ValidateDescribeVpcsInput checks only the reviewed sparse constraints without changing input.
 // Nil is an empty request; diagnostics identify rules without including values.
 func ValidateDescribeVpcsInput(in *DescribeVpcsInput) error {
@@ -22,6 +149,84 @@ func ValidateDescribeVpcsInput(in *DescribeVpcsInput) error {
 		}
 		if *in.PageSize > 50 {
 			return errors.New("invalid PageSize: above maximum")
+		}
+	}
+	return nil
+}
+
+// ValidateDescribeVpnConnectionsInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeVpnConnectionsInput(in *DescribeVpnConnectionsInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.PageNumber != nil {
+		if *in.PageNumber < 1 {
+			return errors.New("invalid PageNumber: below minimum")
+		}
+	}
+	if in.PageSize != nil {
+		if *in.PageSize < 1 {
+			return errors.New("invalid PageSize: below minimum")
+		}
+		if *in.PageSize > 50 {
+			return errors.New("invalid PageSize: above maximum")
+		}
+	}
+	return nil
+}
+
+// ValidateDescribeVpnGatewaysInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeVpnGatewaysInput(in *DescribeVpnGatewaysInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.PageNumber != nil {
+		if *in.PageNumber < 1 {
+			return errors.New("invalid PageNumber: below minimum")
+		}
+	}
+	if in.PageSize != nil {
+		if *in.PageSize < 1 {
+			return errors.New("invalid PageSize: below minimum")
+		}
+		if *in.PageSize > 50 {
+			return errors.New("invalid PageSize: above maximum")
+		}
+	}
+	return nil
+}
+
+// ValidateListPrefixListsInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateListPrefixListsInput(in *ListPrefixListsInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.MaxResults != nil {
+		if *in.MaxResults < 1 {
+			return errors.New("invalid MaxResults: below minimum")
+		}
+		if *in.MaxResults > 100 {
+			return errors.New("invalid MaxResults: above maximum")
+		}
+	}
+	return nil
+}
+
+// ValidateListVpcGatewayEndpointsInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateListVpcGatewayEndpointsInput(in *ListVpcGatewayEndpointsInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.MaxResults != nil {
+		if *in.MaxResults < 1 {
+			return errors.New("invalid MaxResults: below minimum")
+		}
+		if *in.MaxResults > 100 {
+			return errors.New("invalid MaxResults: above maximum")
 		}
 	}
 	return nil
