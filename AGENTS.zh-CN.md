@@ -2,6 +2,10 @@
 
 [English](AGENTS.md)
 
+## 统一服务路径
+
+- 用户确认的 #81 [服务整合路线](docs/service-consolidation.zh-CN.md) 替代旧兼容桥保留要求。仅支持 `service/<product>`，移除 `services/` 包及输出器；历史证据和官方源码通知继续保留。
+
 ## ECS、VPC 的明确范围验收
 
 - #74/#75 按执行前确定的 [ECS 验收](docs/ecs-product-acceptance.zh-CN.md)和 [VPC 验收](docs/vpc-product-acceptance.zh-CN.md)矩阵完成。
@@ -81,7 +85,7 @@
 - 自动发现操作与可达模型，不要求逐 API 元数据、字段选择或手写文档。补充配置只提供审核策略和兼容例外；#31 是五操作兼容桥，不是全产品验收。
 - 分别报告发现、IR 转换、生成、编译和真实调用覆盖及不支持原因。选中不支持的行为时，在写文件前失败。
 - 判断来源冲突前，先规范化索引输入和 itemName 响应包装。
-- 完整 DSL 产品使用 service/<product>；services/<product> 保留兼容参考实现，迁移按[批量生成规则](docs/batch-go-emission.zh-CN.md)执行。新旧生成器不得覆盖彼此文件。
+- 产品统一使用 service/<product>，#81 已移除旧兼容桥及输出器，迁移按[服务整合规则](docs/service-consolidation.zh-CN.md)执行。产品变更运行 sdkgen product-check，sdkgen check 调用同一检查。
 - policies/ 中的可选策略绑定来源，按完整 IR 解析准确字段路径。无效策略写文件前失败，未列出的操作保持未审核。
 - 不根据操作名称或 token 形状猜测重试、分页和等待能力；按[能力规则](docs/capability-policy.zh-CN.md)审核。输入使用独立副本，重试显式启用。
 - 来源中的签名初始化也须审核；不支持或动态算法不能悄悄变成 ACS3，选中生成时须在写文件前失败。

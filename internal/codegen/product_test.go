@@ -206,7 +206,22 @@ func TestProductSupportAndCorruptionFailBeforeWrites(t *testing.T) {
 	}
 }
 
-func TestProductReconciliationAndIndependentOwnership(t *testing.T) {
+func TestProductSourceIntegrityFailsBeforeWrites(t *testing.T) {
+	for _, file := range []string{"products/sts/main.tea", "modules/shadow.tea", "manifest.json"} {
+		t.Run(file, func(t *testing.T) {
+			root := fullProductFixture(t)
+			writeTestFile(t, root, "sources/darabonba/"+file, []byte("tampered"))
+			if err := GenerateProducts(context.Background(), root, false, nil); err == nil {
+				t.Fatal("invalid source lock accepted")
+			}
+			if _, err := os.Stat(filepath.Join(root, "service")); !errors.Is(err, os.ErrNotExist) {
+				t.Fatal("source failure wrote output")
+			}
+		})
+	}
+}
+
+func TestProductReconciliationAndManualOwnership(t *testing.T) {
 	root := fullProductFixture(t)
 	ctx := context.Background()
 	if err := GenerateProducts(ctx, root, true, nil); err == nil {
@@ -215,13 +230,11 @@ func TestProductReconciliationAndIndependentOwnership(t *testing.T) {
 	if _, err := os.Stat(filepath.Join(root, "service")); !errors.Is(err, os.ErrNotExist) {
 		t.Fatal("check wrote")
 	}
-	writeTestFile(t, root, "services/ecs/sdk.gen.go", []byte(generated+"package ecs\n"))
 	if err := GenerateProducts(ctx, root, false, []string{"ecs/DescribeImages", "sts/AssumeRole"}); err != nil {
 		t.Fatal(err)
 	}
-	legacy, _ := os.ReadFile(filepath.Join(root, "services", "ecs", "sdk.gen.go"))
-	if string(legacy) != generated+"package ecs\n" {
-		t.Fatal("legacy output changed")
+	if _, err := os.Stat(filepath.Join(root, "services")); !errors.Is(err, os.ErrNotExist) {
+		t.Fatal("generation recreated removed bridge")
 	}
 	if _, err := os.Stat(filepath.Join(root, "service", "vpc", "operations.gen.go")); err != nil {
 		t.Fatal("selection silently narrowed products")

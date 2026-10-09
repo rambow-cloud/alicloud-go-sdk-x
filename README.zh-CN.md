@@ -32,7 +32,7 @@
 
 - 已审核策略提供四个分页器、一个 ECS 状态等待器和九项操作策略。生成数量不代表真实调用已经验收。
 
-- `services/` 保留旧的五操作参考实现；切换导入前阅读[迁移说明](docs/batch-go-emission.zh-CN.md)。
+- 客户端统一使用 `service/`，旧 `services/` 兼容桥已移除，见[迁移说明](docs/service-consolidation.zh-CN.md)。
 
 - 生产流程为：固定官方 Darabonba DSL → 官方语义解析器 → IR（中间表示）→ 本项目 Go 后端和公共运行时。元数据只作补充，策略用于添加已审核的行为。
 

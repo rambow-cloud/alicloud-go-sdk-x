@@ -2,7 +2,7 @@
 
 [English](waiters.md)
 
-- #37 基于审核稀疏策略为完整 DSL `service/ecs` 输出此契约，原 `services/ecs` 参考仍可用，明确导入所需包。
+- #37 基于审核稀疏策略为完整 DSL `service/ecs` 输出此契约，#81 已移除旧 services/ecs 参考包，统一导入 service/ecs。
 - 覆盖与来源绑定见[能力策略](capability-policy.zh-CN.md)。
 
 - 一次构造 `ecs.NewInstanceRunningWaiter(api, optFns...)`，再调用 `Wait(ctx, input, maxWait, optFns...) error` 或 `WaitForOutput(ctx, input, maxWait, optFns...) (*ecs.DescribeInstanceStatusOutput, error)`。

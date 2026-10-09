@@ -3,7 +3,7 @@
 [English](support.md)
 
 - 完整 DSL 后端在 `service/` 输出 ECS 283、VPC 296、STS 4 个操作、完整模型及操作小接口，见[批量输出](batch-go-emission.zh-CN.md)和[覆盖报告](products/ecs.coverage.json)。
-- 下表记录已验收公共基础及原 `services/` 参考适配器。
+- 下表记录已验收公共基础；#81 移除旧兼容桥后统一由生成的 service/ 客户端提供。
 - #37 在 `service/` 新增四个分页器 （含 DescribeImages）、InstanceRunningWaiter、五项安全读重试、AllocateDedicatedHosts token 辅助组件/validator 与现有十六个 STS 敏感模型（#59）。
 - 九项操作已审核，其余 574 个已输出操作仍未审核。
 - 见[策略](capability-policy.zh-CN.md)；已输出不等于真实验收。
@@ -22,7 +22,7 @@
 | retry/backoff       | retry.Standard                                                                                            | 显式启用，jitter、Retry-After、预算，仅幂等/可重放                                               |
 | 测试替身接口        | HTTPClient、Provider、Resolver、Retryer、ECS/STS/VPC 操作 API                                             | 小型手写 fake                                                                                    |
 | 凭据提供者          | credentials static/env/Chain/Cache；config.LoadDefaultConfig、feature/profilecreds                        | 显式覆盖、临时环境及原生 CLI Profile/OAuth，有刷新超时的续期/会话持久化，不自动发现进程/metadata |
-| STS 辅助组件        | services/sts；feature/stscreds                                                                            | AssumeRole、过期时间、独立来源身份、cache 组合                                                   |
+| STS 辅助组件        | service/sts；feature/stscreds                                                                            | AssumeRole、过期时间、独立来源身份、cache 组合                                                   |
 | endpoint 端点解析器 | endpoint.Resolver/Rules                                                                                   | ECS/STS/VPC 公网 cn-hangzhou、cn-shanghai、cn-beijing、cn-shenzhen、ap-southeast-1               |
 | 中间件              | 中间件.Stack                                                                                              | Initialize/Build 一次，Finalize/Deserialize 每尝试一次，有序 hook                                |
 | OpenTelemetry       | telemetry/otel                                                                                            | 注入 TracerProvider、操作与尝试 span、W3C 传播、无原始秘密                                       |

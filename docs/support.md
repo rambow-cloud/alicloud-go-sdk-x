@@ -3,7 +3,7 @@
 [中文](support.zh-CN.md)
 
 - The `service/` full-DSL backend emits 283 ECS, 296 VPC and four STS actions with complete models and small operation interfaces; see [batch emission](batch-go-emission.md) and [product coverage](products/ecs.coverage.json).
-- The matrix below records accepted shared foundation and the earlier `services/` reference adapters. #37 adds four `service/` paginators (including DescribeImages), InstanceRunningWaiter, five retry-safe reads, an AllocateDedicatedHosts token helper/validator and now sixteen sensitive STS models (#59).
+- The matrix below records accepted shared foundation on generated service/ clients after #81 removes the bridge. #37 adds four `service/` paginators (including DescribeImages), InstanceRunningWaiter, five retry-safe reads, an AllocateDedicatedHosts token helper/validator and now sixteen sensitive STS models (#59).
 - Nine actions have reviewed policy; the remaining 574 emitted actions remain unreviewed.
 - See [policy](capability-policy.md); emission does not imply live acceptance.
 
@@ -21,7 +21,7 @@
 | Retry/backoff       | retry.Standard                                                                                            | opt-in; jitter, Retry-After, budget; idempotent/replayable only                                                                                      |
 | Mock interfaces     | HTTPClient, Provider, Resolver, Retryer, ECS/STS/VPC operation APIs                                       | small handwritten fakes                                                                                                                              |
 | Credential provider | credentials static/env/Chain/Cache; config.LoadDefaultConfig and feature/profilecreds                     | explicit overrides, temporary environment and native CLI Profile/OAuth; bounded renewal/session persistence; no automatic process/metadata discovery |
-| STS helper          | services/sts; feature/stscreds                                                                            | AssumeRole, expiration, separate source identity, cache composition                                                                                  |
+| STS helper          | service/sts; feature/stscreds                                                                            | AssumeRole, expiration, separate source identity, cache composition                                                                                  |
 | Endpoint resolver   | endpoint.Resolver/Rules                                                                                   | ECS/STS/VPC public cn-hangzhou, cn-shanghai, cn-beijing, cn-shenzhen, ap-southeast-1                                                                 |
 | Middleware          | middleware.Stack                                                                                          | Initialize/Build once; Finalize/Deserialize per attempt; ordered hooks                                                                               |
 | OpenTelemetry       | telemetry/otel                                                                                            | injected provider; operation/attempt spans; W3C propagation; no raw secrets                                                                          |

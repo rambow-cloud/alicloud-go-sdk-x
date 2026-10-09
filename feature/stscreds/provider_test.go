@@ -8,10 +8,9 @@ import (
 	"github.com/rambow-cloud/alicloud-go-sdk-x/credentials"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/feature/stscreds"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/sdktest"
-	"github.com/rambow-cloud/alicloud-go-sdk-x/services/sts"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/service/sts"
 	"net/http"
 	"strings"
-	"sync"
 	"testing"
 	"time"
 )
@@ -22,48 +21,6 @@ func (f assumeFunc) AssumeRole(ctx context.Context, in *sts.AssumeRoleInput, opt
 	return f(ctx, in, opts...)
 }
 
-func TestReferenceProviderOwnsEveryCall(t *testing.T) {
-	api := assumeFunc(func(_ context.Context, in *sts.AssumeRoleInput, opts ...func(*sts.Options)) (*sts.AssumeRoleOutput, error) {
-		if in.RoleSessionName != "original" || len(opts) != 1 || opts[0] == nil {
-			return nil, errors.New("input or option mutation persisted")
-		}
-		var options sts.Options
-		opts[0](&options)
-		if options.Region != "cn-hangzhou" {
-			return nil, errors.New("caller option mutation persisted")
-		}
-		in.RoleSessionName = "changed by API"
-		opts[0] = nil
-		return &sts.AssumeRoleOutput{Credentials: sts.RoleCredentials{
-			AccessKeyID: "synthetic", AccessKeySecret: "synthetic", SecurityToken: "synthetic",
-			ExpiresAt: time.Now().Add(time.Hour),
-		}}, nil
-	})
-	input := sts.AssumeRoleInput{RoleARN: "acs:ram::123:role/example", RoleSessionName: "original"}
-	options := []func(*sts.Options){func(o *sts.Options) { o.Region = "cn-hangzhou" }}
-	provider, err := stscreds.NewAssumeRoleProvider(api, input, options...)
-	if err != nil {
-		t.Fatal(err)
-	}
-	input.RoleSessionName = "changed by caller"
-	options[0] = nil
-	for i := 0; i < 2; i++ {
-		if _, err := provider.Retrieve(context.Background()); err != nil {
-			t.Fatal(err)
-		}
-	}
-	var calls sync.WaitGroup
-	for i := 0; i < 8; i++ {
-		calls.Add(1)
-		go func() {
-			defer calls.Done()
-			if _, err := provider.Retrieve(context.Background()); err != nil {
-				t.Error(err)
-			}
-		}()
-	}
-	calls.Wait()
-}
 func TestProviderCacheRotationAndSourceSeparation(t *testing.T) {
 	source, _ := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "source", AccessKeySecret: "placeholder"})
 	clock := sdktest.NewClock(time.Now())
@@ -78,9 +35,9 @@ func TestProviderCacheRotationAndSourceSeparation(t *testing.T) {
 	}
 	tr := sdktest.NewTransport(step("first"), step("second"))
 	client, _ := sts.New(alicloud.Config{Region: "cn-hangzhou", CredentialsProvider: source, HTTPClient: &http.Client{Transport: tr}})
-	input := sts.AssumeRoleInput{RoleARN: "acs:ram::123456789012:role/example", RoleSessionName: "original"}
+	input := sts.AssumeRoleInput{RoleARN: productPointer("acs:ram::123456789012:role/example"), RoleSessionName: productPointer("original")}
 	provider, _ := stscreds.NewAssumeRoleProvider(client, input)
-	input.RoleSessionName = "changed"
+	*input.RoleSessionName = "changed"
 	cache, _ := credentials.NewCache(provider, credentials.CacheOptions{Now: clock.Now})
 	v, err := cache.Retrieve(context.Background())
 	if err != nil || v.AccessKeyID != "first" || v.Source != "sts.AssumeRole" {
@@ -97,10 +54,10 @@ func TestProviderCacheRotationAndSourceSeparation(t *testing.T) {
 	}
 }
 func TestProviderRejectsInvalidResponsesAndPreservesErrors(t *testing.T) {
-	input := sts.AssumeRoleInput{RoleARN: "acs:ram::123:role/example", RoleSessionName: "example"}
+	input := sts.AssumeRoleInput{RoleARN: productPointer("acs:ram::123:role/example"), RoleSessionName: productPointer("example")}
 	for _, expiry := range []time.Time{{}, time.Unix(0, 0)} {
 		api := assumeFunc(func(context.Context, *sts.AssumeRoleInput, ...func(*sts.Options)) (*sts.AssumeRoleOutput, error) {
-			return &sts.AssumeRoleOutput{Credentials: sts.RoleCredentials{AccessKeyID: "x", AccessKeySecret: "y", SecurityToken: "z", ExpiresAt: expiry}}, nil
+			return &sts.AssumeRoleOutput{Credentials: &sts.AssumeRoleOutputCredentials{AccessKeyID: productPointer("x"), AccessKeySecret: productPointer("y"), SecurityToken: productPointer("z"), Expiration: productPointer(expiry.UTC().Format(time.RFC3339))}}, nil
 		})
 		p, _ := stscreds.NewAssumeRoleProvider(api, input)
 		_, err := p.Retrieve(context.Background())
@@ -128,7 +85,7 @@ func ExampleNewAssumeRoleProvider() {
 	source, _ := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: "placeholder", AccessKeySecret: "placeholder"})
 	transport := sdktest.NewTransport(sdktest.Step{Body: `{"Credentials":{"AccessKeyId":"placeholder","AccessKeySecret":"placeholder","SecurityToken":"placeholder","Expiration":"2099-01-01T00:00:00Z"}}`})
 	api, _ := sts.New(alicloud.Config{Region: "cn-hangzhou", CredentialsProvider: source, HTTPClient: &http.Client{Transport: transport}})
-	p, _ := stscreds.NewAssumeRoleProvider(api, sts.AssumeRoleInput{RoleARN: "acs:ram::123:role/example", RoleSessionName: "example"})
+	p, _ := stscreds.NewAssumeRoleProvider(api, sts.AssumeRoleInput{RoleARN: productPointer("acs:ram::123:role/example"), RoleSessionName: productPointer("example")})
 	v, _ := p.Retrieve(context.Background())
 	fmt.Println(v.Source)
 	// Output: sts.AssumeRole

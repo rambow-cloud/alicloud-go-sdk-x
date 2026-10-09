@@ -2,6 +2,8 @@
 
 [中文](source-normalization.zh-CN.md)
 
+- Current client paths follow [service consolidation #81](service-consolidation.md): the old services/ packages and Go emitter are removed; generate/check use complete products. Earlier bridge workflows below retain historical evidence only.
+
 - Stage [#34](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/34) implements the first stage of the [authoritative roadmap](product-generator-roadmap.md), on top of the #31 five-operation compatibility bridge.
 - Complete official DSL and its semantic parser remain primary.
 - Optional pinned CLI metadata uses a versioned adapter and retains provenance, English/Chinese descriptions and CLI/backend attributes separately from wire properties.

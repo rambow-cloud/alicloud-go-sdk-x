@@ -2,6 +2,8 @@
 
 [English](source-normalization.md)
 
+- 当前客户端路径以[服务整合 #81](service-consolidation.zh-CN.md)为准：旧 services/ 包和 Go 输出器已移除，generate/check 均检查完整产品。下文旧流程仅保留历史证据。
+
 - 阶段 [#34](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/34) 在 #31 五操作兼容桥上实现[权威路线](product-generator-roadmap.zh-CN.md)第一阶段。
 - 完整官方 DSL 和语义语义解析器为主；可选固定 CLI 元数据经版本化适配，保留来源、中英文说明、CLI/backend 属性，和线属性分开。
 - 不增加运行时依赖或公共 API。

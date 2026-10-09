@@ -2,6 +2,10 @@
 
 [中文](AGENTS.zh-CN.md)
 
+## One service path
+
+- The user-approved #81 route in [service consolidation](docs/service-consolidation.md) overrides requirements to preserve the old bridge. Only `service/<product>` is supported; no `services/` package or emitter. Keep historical evidence and official source notices.
+
 ## Scoped ECS and VPC acceptance
 
 - #74/#75 use the pre-execution matrices in [ECS acceptance](docs/ecs-product-acceptance.md) and [VPC acceptance](docs/vpc-product-acceptance.md).
@@ -141,10 +145,10 @@
 - Publish deterministic coverage/reasons; discovered, lowered, emitted, compiled and live
   coverage are distinct. Selected unsupported behavior fails before writes. Normalize
   indexed inputs/itemName wrappers before source conflict decisions.
-- Full-DSL products use `service/<product>`; `services/<product>` retains the bounded
-  compatibility/reference bridge. Follow docs/batch-go-emission.md for explicit migration.
-  Product changes also run `sdkgen product-check`; old/new generators must preserve each
-  other's owned outputs. Product capabilities use optional source-bound policies under
+- Products use only `service/<product>`; #81 removes the legacy bridge and emitter.
+  Follow docs/service-consolidation.md for explicit migration.
+  Product changes run `sdkgen product-check` (also available as `sdkgen check`).
+  Product capabilities use optional source-bound policies under
   policies/ (#37); resolve exact wire paths against complete IR, fail invalid policy
   before writes, and report unlisted actions as unreviewed. Never infer retry safety or
   paginator/waiter behavior from operation names or token-shaped fields. Follow

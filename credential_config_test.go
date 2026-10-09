@@ -13,7 +13,6 @@ import (
 	"github.com/rambow-cloud/alicloud-go-sdk-x/service/ecs"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/service/sts"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/service/vpc"
-	bridgeecs "github.com/rambow-cloud/alicloud-go-sdk-x/services/ecs"
 )
 
 type uncalledProvider struct{}
@@ -35,7 +34,6 @@ func TestCredentialConfigurationRequiresExplicitProvider(t *testing.T) {
 		{"ecs", func(c alicloud.Config) error { _, err := ecs.NewFromConfig(c); return err }},
 		{"sts", func(c alicloud.Config) error { _, err := sts.NewFromConfig(c); return err }},
 		{"vpc", func(c alicloud.Config) error { _, err := vpc.NewFromConfig(c); return err }},
-		{"reference-ecs", func(c alicloud.Config) error { _, err := bridgeecs.NewFromConfig(c); return err }},
 	}
 	for _, constructor := range constructors {
 		t.Run(constructor.name, func(t *testing.T) {
@@ -58,7 +56,7 @@ func TestCredentialConfigurationRequiresExplicitProvider(t *testing.T) {
 		})
 	}
 	// Guard the published provider-only configuration rule across service Options.
-	for _, config := range []any{alicloud.Config{}, ecs.Options{}, sts.Options{}, vpc.Options{}, bridgeecs.Options{}} {
+	for _, config := range []any{alicloud.Config{}, ecs.Options{}, sts.Options{}, vpc.Options{}} {
 		typ := reflect.TypeOf(config)
 		for _, name := range []string{"AccessKey", "AccessKeyID", "AccessKeyId", "KeySecret", "AccessKeySecret", "SecretAccessKey", "SecurityToken"} {
 			if _, exists := typ.FieldByName(name); exists {

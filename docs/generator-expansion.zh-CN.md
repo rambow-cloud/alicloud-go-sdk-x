@@ -2,6 +2,8 @@
 
 [English](generator-expansion.md)
 
+- 当前客户端路径以[服务整合 #81](service-consolidation.zh-CN.md)为准：旧 services/ 包和 Go 输出器已移除，generate/check 均检查完整产品。下文旧流程仅保留历史证据。
+
 - 这是 #24/#25 历史计划；以[新产品路线](product-generator-roadmap.zh-CN.md)为准，后续 DSL 发现不以逐操作元数据为前提。
 
 - #8/#21–#23 验收后，下一门槛是 ECS/STS 之外的真实 RPC 产品。

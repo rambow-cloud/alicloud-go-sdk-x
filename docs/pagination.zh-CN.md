@@ -5,7 +5,7 @@
 - 历史实现直接提交 main：共享引擎 `61d2581`（issue #7），原生生成适配器 `89e1d07` （issue #28）；issue 编号不是 PR。
 - #36 的 `service/` 后端交付完整操作模型和接口。
 - #37 新增 ECS DescribeInstances、DescribeInstanceStatus、DescribeImages 及 VPC DescribeVpcs 的稀疏策略原生适配器，复用此引擎。
-- 原 `services/` 参考适配器仍可用。
+- #81 已移除旧 services/ 适配器，统一使用生成的 service/ 客户端。
 - 见[策略规格](capability-policy.zh-CN.md)。
 - 新输入使用可选指针：nil 选择默认值，显式 PageNumber: 0 违反正数下限而失败。
 - DescribeImages 默认页一/大小十，上限 100。

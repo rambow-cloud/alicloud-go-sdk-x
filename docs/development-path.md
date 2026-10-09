@@ -2,6 +2,10 @@
 
 [中文](development-path.zh-CN.md)
 
+## One service path
+
+- Follow [service consolidation #81](service-consolidation.md) before #61: remove the bridge, migrate foundation/provider contracts to full-DSL clients and refresh consumer evidence. This overrides earlier bridge preservation requirements.
+
 ## Scoped ECS and VPC acceptance
 
 - #74/#75 use the pre-execution matrices in [ECS acceptance](ecs-product-acceptance.md) and [VPC acceptance](vpc-product-acceptance.md).

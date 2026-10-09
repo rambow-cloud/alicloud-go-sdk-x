@@ -25,7 +25,7 @@
 
 ## Migration and examples
 
-- `services/vpc` is the older bridge for a few operations and its existing paginator/waiter adapters.
+- `services/vpc` has been removed; clients use the singular service/ path.
 - Changing imports also requires pointer-field and response-shape changes.
 - The tables below list reviewed adapters. Token-shaped fields do not imply support.
 - The generator extracts licensed descriptions and source indexes. Go comments keep source and ownership details.

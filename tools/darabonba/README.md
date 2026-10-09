@@ -6,7 +6,7 @@
 - Its offline command and coverage/IR contract are in [product discovery](../../docs/product-discovery.md).
 - The #36 [batch Go backend](../../docs/batch-go-emission.md) consumes this complete IR without legacy overlays.
 - Run `go run ./internal/cmd/sdkgen product-generate` and read-only `go run ./internal/cmd/sdkgen product-check` from the root.
-- Outputs use `service/`; the legacy bridge still uses `services/`. #37 reads optional source-bound `policies/<product>.json` for [reviewed capabilities](../../docs/capability-policy.md), without requiring per-operation entries for full emission.
+- Outputs use `service/`; the old `services/` bridge is removed. `sdkgen generate/check` are aliases for product generation/check. #37 reads optional source-bound `policies/<product>.json` for [reviewed capabilities](../../docs/capability-policy.md), without requiring per-operation entries for full emission.
 - Product reports include policy hashes and individual reviewed/unreviewed status.
 
 - #38 [documentation automation](../../docs/product-documentation.md) consumes official parser descriptions/annotations, generates English Go comments and paired usage/source indexes, and reports missing prose/Chinese translations.

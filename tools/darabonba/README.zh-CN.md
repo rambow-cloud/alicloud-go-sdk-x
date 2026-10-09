@@ -5,7 +5,7 @@
 - [产品路线](../../docs/product-generator-roadmap.zh-CN.md) 优先于冲突旧逐操作前置要求。
 - #31 仍为五操作兼容桥；#34 增加[来源规范化](../../docs/source-normalization.zh-CN.md)， #35 已提供无需逐操作快照/补充配置的完整产品发现；离线命令与覆盖/IR 契约见 [产品发现](../../docs/product-discovery.zh-CN.md)。
 - #36 [批量 Go 后端](../../docs/batch-go-emission.zh-CN.md) 无旧补充配置地消费完整 IR。
-- 在根目录执行 `go run ./internal/cmd/sdkgen product-generate` 和只读 `go run ./internal/cmd/sdkgen product-check`，输出到 `service/`；旧桥仍使用 `services/`。
+- 在根目录执行 `go run ./internal/cmd/sdkgen product-generate` 和只读 `go run ./internal/cmd/sdkgen product-check`，输出到 `service/`；旧 `services/` 兼容桥已移除；`sdkgen generate/check` 等同于完整产品生成/检查。
 - #37 从可选且绑定来源的 `policies/<product>.json` 读取 [审核能力](../../docs/capability-policy.zh-CN.md)，完整输出无需逐操作策略条目。
 - 产品报告记录策略哈希及逐操作已审核/未审核状态。
 

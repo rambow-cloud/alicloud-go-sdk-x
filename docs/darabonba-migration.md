@@ -2,6 +2,8 @@
 
 [中文](darabonba-migration.zh-CN.md)
 
+- Current client paths follow [service consolidation #81](service-consolidation.md): the old services/ packages and Go emitter are removed; generate/check use complete products. Earlier bridge workflows below retain historical evidence only.
+
 - This records #31's five-operation compatibility bridge.
 - The newer [product-generator-roadmap.md](product-generator-roadmap.md) governs subsequent work and supersedes conflicting snapshot/overlay prerequisites.
 - Product discovery uses complete DSL, optional normalized metadata and automatic reachable models; #31 is not full-product acceptance.

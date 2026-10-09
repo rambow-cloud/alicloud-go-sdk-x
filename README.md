@@ -40,7 +40,7 @@
 - Reviewed policies add four paginators, one ECS waiter and nine operation policies.
 - Generation counts do not prove live acceptance.
 
-- `services/` keeps the older five-operation reference bridge.
+- Use only `service/`; the older `services/` bridge is removed. See [migration](docs/service-consolidation.md).
 - See [migration](docs/batch-go-emission.md) before changing imports.
 
 - The production path is pinned official Darabonba DSL → official semantic parser → IR → our Go backend and shared runtime.

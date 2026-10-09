@@ -2,6 +2,8 @@
 
 [中文](generator-expansion.zh-CN.md)
 
+- Current client paths follow [service consolidation #81](service-consolidation.md): the old services/ packages and Go emitter are removed; generate/check use complete products. Earlier bridge workflows below retain historical evidence only.
+
 - Historical #24/#25 expansion plan.
 - The [new product route](product-generator-roadmap.md) takes precedence; per-operation metadata is not a future DSL discovery prerequisite.
 
