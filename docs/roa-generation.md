@@ -6,6 +6,7 @@
 - First implement and verify exact escaped resource paths in the shared runtime.
 - Then lower official ROA parameters, headers and JSON bodies into complete IR and emit typed calls.
 - Empty responses, XML, streaming ownership and additional signing profiles remain separate implementation stages within #92. Path support alone does not complete that issue.
+- Next shared-runtime stage: [explicit response modes](roa-response-modes.md). Full FC product lowering remains separate.
 
 ## Path contract
 

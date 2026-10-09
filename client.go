@@ -91,6 +91,19 @@ const (
 	AuthenticationAnonymousRPC
 )
 
+// ResponseBodyMode selects how a reviewed operation handles a successful body.
+// The zero value requires JSON. Error responses always use structured JSON decoding.
+type ResponseBodyMode uint8
+
+const (
+	// ResponseBodyJSON decodes a typed JSON output using the operation codec.
+	ResponseBodyJSON ResponseBodyMode = iota
+	// ResponseBodyNone reads and discards a bounded successful body and publishes
+	// a fresh zero-valued output. It skips JSON and custom model decoding on success.
+	// Select it only from reviewed protocol evidence; status codes do not select it.
+	ResponseBodyNone
+)
+
 // Operation describes a reviewed API operation; clients provide concrete models.
 type Operation struct {
 	// Service identifies the product, such as ecs or sts.
@@ -101,6 +114,10 @@ type Operation struct {
 	Version string
 	// Idempotent explicitly permits retry when the policy also permits it.
 	Idempotent bool
+	// ResponseBody selects successful body handling; zero requires JSON.
+	// Unsupported values fail before credential retrieval or transport. None mode
+	// preserves response limits, closure and metadata; error decoding remains JSON.
+	ResponseBody ResponseBodyMode
 	// Authentication selects the reviewed protocol; zero means signed ACS3.
 	// Generated clients set anonymous RPC only from approved official DSL evidence.
 	Authentication AuthenticationMode
@@ -127,7 +144,8 @@ type Request struct {
 }
 
 // Client is a concurrency-safe immutable runtime. Construct with NewClient;
-// the zero value must not be used. It supports ACS3 JSON OpenAPI operations only.
+// the zero value must not be used. It supports bounded JSON and explicitly reviewed
+// bodyless OpenAPI operations; complete XML and streaming profiles are not supported.
 type Client struct {
 	config Config
 	stack  *middleware.Stack
@@ -210,6 +228,7 @@ type Codec struct {
 	// Encode converts the owned typed input into a new request after Initialize.
 	Encode func(context.Context, any) (Request, error)
 	// Decode assigns a fresh typed output after successful response decoding.
+	// It is required but not invoked for ResponseBodyNone success responses.
 	// On error the temporary output is discarded before publication.
 	Decode func(context.Context, []byte, any) error
 }
@@ -250,6 +269,10 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 	}
 	if op.Authentication != AuthenticationACS3 && op.Authentication != AuthenticationAnonymousRPC {
 		err = errors.New("alicloud: unsupported authentication protocol")
+		return
+	}
+	if op.ResponseBody != ResponseBodyJSON && op.ResponseBody != ResponseBodyNone {
+		err = errors.New("alicloud: unsupported response body mode")
 		return
 	}
 	target := reflect.ValueOf(output)
@@ -502,18 +525,18 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 						if int64(len(data)) > config.MaxResponseBytes {
 							return ErrResponseTooLarge
 						}
-						envelope := struct {
-							Code      string `json:"Code"`
-							Message   string `json:"Message"`
-							RequestID string `json:"RequestId"`
-						}{}
-						decodeErr := json.Unmarshal(data, &envelope)
+						var envelope serviceEnvelope
+						var decodeErr error
+						success := response.StatusCode >= 200 && response.StatusCode < 300
+						if !success || op.ResponseBody == ResponseBodyJSON {
+							envelope, decodeErr = decodeServiceEnvelope(data, success)
+						}
 						meta.RequestID = response.Header.Get("X-Acs-Request-Id")
 						if envelope.RequestID != "" {
 							meta.RequestID = envelope.RequestID
 						}
 						e.RequestID = meta.RequestID
-						if response.StatusCode < 200 || response.StatusCode >= 300 {
+						if !success {
 							if decodeErr != nil {
 								envelope.Code = "InvalidErrorResponse"
 								envelope.Message = ""
@@ -524,7 +547,9 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 							return decodeErr
 						}
 						temporary := reflect.New(target.Elem().Type())
-						if binding == nil {
+						if op.ResponseBody == ResponseBodyNone {
+							// The fresh output deliberately has no success body to decode.
+						} else if binding == nil {
 							decodeErr = json.Unmarshal(data, temporary.Interface())
 						} else {
 							decodeErr = binding.codec.Decode(ctx, data, temporary.Interface())
