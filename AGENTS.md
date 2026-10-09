@@ -2,6 +2,14 @@
 
 [中文](AGENTS.zh-CN.md)
 
+## Scoped ECS and VPC acceptance
+
+- #74/#75 use the pre-execution matrices in [ECS acceptance](docs/ecs-product-acceptance.md) and [VPC acceptance](docs/vpc-product-acceptance.md).
+- Supported RPC inventory is 283 ECS and 296 VPC actions. Offline consumer contracts and selected-field live reads are separate; unsupported DSL actions retain reasons.
+- Instance token/waiter live transitions and nonempty VPC live continuation remain excluded/NOT RUN or SKIP under follow-up #79. No broader Beta or full-cloud acceptance is claimed.
+- Consumer acceptance is implementation-agent execution. Independent human UX and automated test timings remain distinct.
+- Preserve STS/ECS/VPC evidence pins against the shared consumer/CI revision. Publication and same-version pkg.go.dev indexing remain #61. No tag is created during product closeout.
+
 ## Current delivery and acceptance authority
 
 - The user-approved 2026-10-09 route in [docs/sts-ecs-vpc-path.md](docs/sts-ecs-vpc-path.md) overrides older STS-only release and required-human #60 rules.
