@@ -30,6 +30,8 @@ type Exchange struct {
 	// Output is the current attempt's typed result after decoding. A successful
 	// short circuit must supply the operation's exact non-nil output pointer type.
 	// Hooks may modify it after next; no result is published on pipeline failure.
+	// Stream outputs must preserve the runtime-owned io.ReadCloser in the final
+	// output. Do not consume, replace or retain response bodies in these hooks.
 	Output any
 	// Service is the service identifier.
 	Service string

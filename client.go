@@ -25,6 +25,8 @@ import (
 // honor request context, and never follow redirects with signed credentials.
 type HTTPClient interface {
 	// Do sends a request and returns a response whose body the SDK will close.
+	// Stream outputs transfer reading and explicit closure to the caller; the
+	// SDK also closes the underlying body on EOF, failure, cancellation or timeout.
 	Do(*http.Request) (*http.Response, error)
 }
 
@@ -54,7 +56,8 @@ type Config struct {
 	Retryer retry.Retryer
 	// Middleware registers shared interceptors in execution order.
 	Middleware []middleware.Registration
-	// Timeout bounds the whole operation; zero defaults to thirty seconds.
+	// Timeout bounds the whole operation, including stream reads after return;
+	// zero defaults to thirty seconds.
 	Timeout time.Duration
 	// MaxResponseBytes bounds each response; zero defaults to eight MiB.
 	MaxResponseBytes int64
@@ -102,6 +105,10 @@ const (
 	// a fresh zero-valued output. It skips JSON and custom model decoding on success.
 	// Select it only from reviewed protocol evidence; status codes do not select it.
 	ResponseBodyNone
+	// ResponseBodyStream publishes a bounded io.ReadCloser without eager reading.
+	// Callers must close the body; context and timeout remain active after return.
+	// Error responses retain bounded structured JSON decoding.
+	ResponseBodyStream
 )
 
 // Operation describes a reviewed API operation; clients provide concrete models.
@@ -117,6 +124,7 @@ type Operation struct {
 	// ResponseBody selects successful body handling; zero requires JSON.
 	// Unsupported values fail before credential retrieval or transport. None mode
 	// preserves response limits, closure and metadata; error decoding remains JSON.
+	// Stream mode transfers an owned reader with the same timeout and byte limit.
 	ResponseBody ResponseBodyMode
 	// Authentication selects the reviewed protocol; zero means signed ACS3.
 	// Generated clients set anonymous RPC only from approved official DSL evidence.
@@ -145,7 +153,8 @@ type Request struct {
 
 // Client is a concurrency-safe immutable runtime. Construct with NewClient;
 // the zero value must not be used. It supports bounded JSON and explicitly reviewed
-// bodyless OpenAPI operations; complete XML and streaming profiles are not supported.
+// bodyless and response-stream operations. Complete XML and request-stream
+// profiles are not supported.
 type Client struct {
 	config Config
 	stack  *middleware.Stack
@@ -228,9 +237,14 @@ type Codec struct {
 	// Encode converts the owned typed input into a new request after Initialize.
 	Encode func(context.Context, any) (Request, error)
 	// Decode assigns a fresh typed output after successful response decoding.
-	// It is required but not invoked for ResponseBodyNone success responses.
+	// It is required outside stream mode, but not invoked for ResponseBodyNone success responses.
 	// On error the temporary output is discarded before publication.
 	Decode func(context.Context, []byte, any) error
+	// DecodeStream attaches response.Body to an exported top-level io.ReadCloser
+	// output field for ResponseBodyStream. It must not read, close or replace the
+	// body or retain the response; clone any retained headers. It replaces Decode
+	// for stream success responses. The temporary output is discarded on error.
+	DecodeStream func(context.Context, *http.Response, any) error
 }
 
 type modelBinding struct {
@@ -247,9 +261,11 @@ func (c *Client) InvokeModel(ctx context.Context, op Operation, input any, reque
 }
 
 // Invoke sends copied wire data and decodes into a non-nil pointer. Output is
-// assigned only after successful JSON v2 decoding; unknown fields are ignored,
+// assigned only after successful completion. JSON v2 ignores unknown fields;
 // duplicate names and invalid UTF-8 fail. All operation failures wrap OperationError.
 // Callers must not concurrently mutate request inputs or share output pointers.
+// ResponseBodyStream requires *StreamingOutput; close its Body after use. The
+// operation timeout and context cover subsequent reads, which never retry.
 func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output any, optFns ...func(*CallOptions)) (meta Metadata, err error) {
 	return c.invoke(ctx, op, input, output, nil, optFns...)
 }
@@ -271,7 +287,7 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 		err = errors.New("alicloud: unsupported authentication protocol")
 		return
 	}
-	if op.ResponseBody != ResponseBodyJSON && op.ResponseBody != ResponseBodyNone {
+	if op.ResponseBody != ResponseBodyJSON && op.ResponseBody != ResponseBodyNone && op.ResponseBody != ResponseBodyStream {
 		err = errors.New("alicloud: unsupported response body mode")
 		return
 	}
@@ -281,12 +297,18 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 		return
 	}
 	var decoded reflect.Value
-	if binding != nil && (binding.codec.Encode == nil || binding.codec.Decode == nil || binding.input == nil) {
+	if binding != nil && (binding.codec.Encode == nil || binding.input == nil ||
+		(op.ResponseBody == ResponseBodyStream && binding.codec.DecodeStream == nil) ||
+		(op.ResponseBody != ResponseBodyStream && binding.codec.Decode == nil)) {
 		err = errors.New("alicloud: incomplete model codec")
 		return
 	}
 	if binding != nil && (reflect.ValueOf(binding.input).Kind() != reflect.Pointer || reflect.ValueOf(binding.input).IsNil()) {
 		err = errors.New("alicloud: model input must be a non-nil pointer")
+		return
+	}
+	if op.ResponseBody == ResponseBodyStream && (!hasStreamField(target.Elem().Type()) || (binding == nil && target.Type() != reflect.TypeFor[*StreamingOutput]())) {
+		err = errors.New("alicloud: stream output must provide an exported io.ReadCloser field; Invoke requires StreamingOutput")
 		return
 	}
 	config := c.config
@@ -327,7 +349,16 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 		return
 	}
 	callCtx, cancel := context.WithTimeout(ctx, options.Timeout)
-	defer cancel()
+	var stream *responseStream
+	transferred := false
+	defer func() {
+		if !transferred {
+			if stream != nil {
+				stream.Close()
+			}
+			cancel()
+		}
+	}()
 	stack := c.stack
 	if options.Config != nil {
 		stack, err = middleware.NewStack(config.Middleware)
@@ -503,8 +534,14 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 						return signErr
 					}
 					response, sendErr := config.HTTPClient.Do(e.Request)
+					streamOwnsBody := false
 					if response != nil && response.Body != nil {
-						defer response.Body.Close()
+						originalBody := response.Body
+						defer func() {
+							if !streamOwnsBody {
+								originalBody.Close()
+							}
+						}()
 					}
 					if sendErr != nil {
 						return sendErr
@@ -517,6 +554,24 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 					return stack.Run(ctx, middleware.Deserialize, e, func(ctx context.Context, e *middleware.Exchange) error {
 						if ctx.Err() != nil {
 							return ctx.Err()
+						}
+						if op.ResponseBody == ResponseBodyStream && response.StatusCode >= 200 && response.StatusCode < 300 {
+							meta.RequestID = response.Header.Get("X-Acs-Request-Id")
+							e.RequestID = meta.RequestID
+							stream = newResponseStream(callCtx, response.Body, config.MaxResponseBytes, op, meta)
+							streamOwnsBody = true
+							response.Body = stream
+							temporary := reflect.New(target.Elem().Type())
+							if binding == nil {
+								*temporary.Interface().(*StreamingOutput) = StreamingOutput{Body: stream, Headers: response.Header.Clone(), StatusCode: response.StatusCode}
+							} else if decodeErr := binding.codec.DecodeStream(ctx, response, temporary.Interface()); decodeErr != nil {
+								return decodeErr
+							}
+							if response.Body != stream || !ownsStream(temporary, stream) {
+								return ErrIncompleteOperation
+							}
+							e.Output = temporary.Interface()
+							return nil
 						}
 						data, readErr := io.ReadAll(io.LimitReader(response.Body, config.MaxResponseBytes+1))
 						if readErr != nil {
@@ -562,12 +617,19 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 						return nil
 					})
 				})
+				if attemptErr != nil && stream != nil {
+					stream.Close()
+					stream = nil
+				}
 				if ctx.Err() != nil {
 					return ctx.Err()
 				}
 				if attemptErr == nil {
 					result := reflect.ValueOf(e.Output)
 					if !result.IsValid() || result.Type() != target.Type() || result.IsNil() {
+						return ErrIncompleteOperation
+					}
+					if op.ResponseBody == ResponseBodyStream && !ownsStream(result, stream) {
 						return ErrIncompleteOperation
 					}
 					decoded = result.Elem()
@@ -604,12 +666,18 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 		result := reflect.ValueOf(e.Output)
 		if !result.IsValid() || result.Type() != target.Type() || result.IsNil() {
 			err = ErrIncompleteOperation
+		} else if op.ResponseBody == ResponseBodyStream && !ownsStream(result, stream) {
+			err = ErrIncompleteOperation
 		} else {
 			decoded = result.Elem()
 		}
 	}
 	if err == nil && decoded.IsValid() {
 		target.Elem().Set(decoded)
+		if stream != nil {
+			stream.adopt(cancel)
+			transferred = true
+		}
 	}
 	return
 }
