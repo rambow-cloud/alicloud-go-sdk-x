@@ -66,3 +66,5 @@ go test ./...
 - #81 guide correction: discovery now precedes Go emission in the tool commands. All 29 consumer cases and 24 product subtests PASS at 29d468ad5f8999e92b4e60e4140cb8432efb8a13; machine records use this pin. Go/runtime/source/policy behavior is unchanged from the locally checked e33e5f93d856027569969056e9d4c25e92e51212 workload, so its unaffected gates are reused. Final-head CI remains required on PR #82.
 
 - #83 shared RPC/runtime regression: 11 existing STS cases plus the pinned official JSON-helper comparison PASS at 01f25a9a571c3b59024dfbef7e2e96f7605f4a55. This is automated agent evidence; earlier live pins and independent UX limitations remain unchanged.
+
+- #85 refresh: 11 existing STS consumer cases plus pinned official JSON/simple/form helper comparisons PASS at 72d92d11b5066eb8b6b38a90cf2734c91ef4a1ea. Both consumer modules pass vet and account-free programs. Historical live and human evidence stays unchanged.

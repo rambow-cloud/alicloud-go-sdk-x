@@ -7,7 +7,7 @@
 
 - Import `github.com/rambow-cloud/alicloud-go-sdk-x/service/vpc`.
 - Official DSL commit: `ec489e5c3deae95496daae2b41503ac58b221adb`. License: Apache-2.0. Source files and licenses are in `sources/darabonba`.
-- 403 actions found; 396 generated; 7 unsupported; 1671 complete models.
+- 403 actions found; 403 generated; 0 unsupported; 1728 complete models.
 - Generation does not prove compilation or live behavior. See `vpc.coverage.json` and the PR checks.
 
 ## Calls and data
@@ -44,6 +44,23 @@
 | CreateNatGateway | `CreateNatGatewayInput.AccessMode` | `AccessMode` |
 | ModifyNatGatewayAttribute | `ModifyNatGatewayAttributeInput.LogDelivery` | `LogDelivery` |
 
+## HTTP methods and parameter locations
+
+- Preserve GET or POST from the official DSL. Encode URL query and form body separately; sign the exact payload bytes.
+- Form arrays use one-based indexes. Nil and empty arrays produce no indexed members.
+- Explicit simple arrays become one comma-separated value. Nil omits the field; a non-nil empty array sends an empty value. URL encoding then escapes special characters.
+- Copy inputs before middleware and preserve cancellation for errors.Is. Encoding does not establish retry safety.
+
+| Action | HTTP method | Form fields | Simple array fields |
+| --- | --- | --- | --- |
+| CreateVpnAttachment | POST | TunnelOptionsSpecification |  |
+| CreateVpnConnection | POST | TunnelOptionsSpecification |  |
+| DescribeVpnGatewayAvailableZones | GET |  |  |
+| GrantInstanceToVbr | POST |  | VbrInstanceIds |
+| ModifyVpnAttachmentAttribute | POST | TunnelOptionsSpecification |  |
+| ModifyVpnConnectionAttribute | POST | TunnelOptionsSpecification |  |
+| RevokeInstanceFromVbr | POST |  | VbrInstanceIds |
+
 ## Capability policy
 
 - Policies are optional, pinned to sources and reviewed separately. Unlisted actions are unreviewed and cannot use Standard retry. Retry requires opt-in.
@@ -58,7 +75,7 @@
 
 ## Documentation sources
 
-- English Go comments reuse licensed descriptions: 396/396 actions and 4702/8612 fields have prose.
+- English Go comments reuse licensed descriptions: 403/403 actions and 5036/9017 fields have prose.
 - Missing, empty or non-English descriptions are recorded in `vpc.documentation.json`. Prose does not add validation or required fields.
 - Both guides include the same usage, contracts and source index. Pinned inputs have no Chinese semantic translations; none are invented.
 - Runnable Examples use offline responses, not upstream account/resource values.
@@ -159,6 +176,8 @@
 | CreateVpcGatewayEndpoint | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13515) |
 | CreateVpcPrefixList | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13664) |
 | CreateVpconnFromVbr | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13786) |
+| CreateVpnAttachment | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14062) |
+| CreateVpnConnection | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14478) |
 | CreateVpnGateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14709) |
 | CreateVpnPbrRouteEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14916) |
 | CreateVpnRouteEntry | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L15108) |
@@ -292,6 +311,7 @@
 | DescribeVpnConnections | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L31601) |
 | DescribeVpnCrossAccountAuthorizations | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L31723) |
 | DescribeVpnGateway | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L31965) |
+| DescribeVpnGatewayAvailableZones | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32075) |
 | DescribeVpnGateways | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32230) |
 | DescribeVpnPbrRouteEntries | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32358) |
 | DescribeVpnRouteEntries | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32480) |
@@ -324,6 +344,7 @@
 | GetVpcRouteEntrySummary | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35478) |
 | GetVpnGatewayDiagnoseResult | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35636) |
 | GrantInstanceToCen | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35735) |
+| GrantInstanceToVbr | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35878) |
 | ListBusinessAccessPoints | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36024) |
 | ListBusinessRegions | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36093) |
 | ListDhcpOptionsSets | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L36222) |
@@ -400,6 +421,8 @@
 | ModifyVpcAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L45817) |
 | ModifyVpcCidrBlock | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L45933) |
 | ModifyVpcPrefixList | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46050) |
+| ModifyVpnAttachmentAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46440) |
+| ModifyVpnConnectionAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46892) |
 | ModifyVpnGatewayAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L47107) |
 | ModifyVpnPbrRouteEntryAttribute | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L47254) |
 | ModifyVpnPbrRouteEntryPriority | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L47399) |
@@ -425,6 +448,7 @@
 | ReplaceVpcDhcpOptionsSet | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49481) |
 | RetryVpcPrefixListAssociation | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49602) |
 | RevokeInstanceFromCen | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49727) |
+| RevokeInstanceFromVbr | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49858) |
 | SecondApplyPhysicalConnectionLOA | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49982) |
 | SetHighDefinitionMonitorLogStatus | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50105) |
 | StartFailoverTestJob | emitted | [DSL](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L50204) |

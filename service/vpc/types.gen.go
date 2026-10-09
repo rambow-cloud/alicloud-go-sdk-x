@@ -16887,6 +16887,1406 @@ type CreateVpconnFromVbrOutput struct {
 	Metadata alicloud.Metadata `json:"-"`
 }
 
+// CreateVpnAttachmentInput represents the complete DSL model CreateVpnAttachmentRequest.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type CreateVpnAttachmentInput struct {
+	// AutoConfigRoute maps to the exact wire member AutoConfigRoute.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether to automatically configure routes. Valid values:
+	//
+	// - true (default): Automatically configures routes.
+	//
+	// - false: Does not automatically configure routes.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13840
+	AutoConfigRoute *bool `json:"AutoConfigRoute,omitzero"`
+	// BGPConfig maps to the exact wire member BgpConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you create an IPsec-VPN connection in single-tunnel mode.
+	//
+	// BGP configuration:
+	//
+	// - BgpConfig.EnableBgp: specifies whether to enable BGP. Valid values: true or false (default).
+	//
+	// - BgpConfig.LocalAsn: the autonomous system number (ASN) on the Alibaba Cloud side. Valid values: 1 to 4294967295. Default value: 45104.
+	//
+	// You can enter the ASN in the two-segment format: the first 16 bits.the last 16 bits. Each segment is entered in decimal notation.
+	//
+	// For example, if you enter 123.456, the ASN is 123×65536+456=8061384.
+	//
+	// - BgpConfig.TunnelCidr: the CIDR block of the IPsec tunnel. The CIDR block must be a /30 subnet within 169.254.0.0/16 and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, or 169.254.169.252/30.
+	//
+	// - LocalBgpIp: the BGP IP address on the Alibaba Cloud side. This address must be an IP address within the IPsec tunnel CIDR block.
+	//
+	// > - Before you configure BGP, we recommend that you familiarize yourself with how BGP dynamic routing works and its limits. For more information, see Configure BGP dynamic routing (https://help.aliyun.com/document_detail/445767.html).
+	// > - Use a private ASN to establish a BGP connection with Alibaba Cloud. Refer to the relevant documentation for the private ASN range.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13845
+	BGPConfig *string `json:"BgpConfig,omitzero"`
+	// ClientToken maps to the exact wire member ClientToken.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId of each API request is different.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13863
+	ClientToken *string `json:"ClientToken,omitzero"`
+	// CustomerGatewayID maps to the exact wire member CustomerGatewayId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The customer gateway ID.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13868
+	CustomerGatewayID *string `json:"CustomerGatewayId,omitzero"`
+	// DryRun maps to the exact wire member DryRun.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether to perform a dry run. Valid values:
+	//
+	// - true: performs a dry run without creating the IPsec-VPN connection. The system checks the required parameters, request syntax, and business limits. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
+	// - false (default): performs the request. After the check passes, the IPsec-VPN connection is created.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13869
+	DryRun *bool `json:"DryRun,omitzero"`
+	// EffectImmediately maps to the exact wire member EffectImmediately.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether the IPsec-VPN connection configuration takes effect immediately. Valid values:
+	//
+	// - true: The system immediately initiates IPsec protocol negotiation after the configuration is complete.
+	// - false (default): The system initiates IPsec protocol negotiation only when inbound traffic is detected.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13873
+	EffectImmediately *bool `json:"EffectImmediately,omitzero"`
+	// EnableDpd maps to the exact wire member EnableDpd.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you create an IPsec-VPN connection in single-tunnel mode.
+	//
+	// Specifies whether to enable the Dead Peer Detection (DPD) feature. Valid values:
+	//
+	// - true (default): Enables the DPD feature. The IPsec initiator sends DPD packets to check whether the peer device is alive. If no correct response is received within the specified period of time, the peer is considered disconnected. The ISAKMP SA and the corresponding IPsec SA are deleted, and the security tunnel is also deleted.
+	//
+	// - false: Disables the DPD feature. The IPsec initiator does not send DPD probe packets.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13877
+	EnableDpd *bool `json:"EnableDpd,omitzero"`
+	// EnableNATTraversal maps to the exact wire member EnableNatTraversal.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you create an IPsec-VPN connection in single-tunnel mode.
+	//
+	// Specifies whether to enable NAT traversal. Valid values:
+	//
+	// - true (default): Enables NAT traversal. After NAT traversal is enabled, the IKE negotiation process skips UDP port number verification and can discover NAT gateway devices in the VPN tunnel.
+	//
+	// - false: Disables NAT traversal.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13884
+	EnableNATTraversal *bool `json:"EnableNatTraversal,omitzero"`
+	// EnableTunnelsBGP maps to the exact wire member EnableTunnelsBgp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you create an IPsec-VPN connection in dual-tunnel mode.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13891
+	EnableTunnelsBGP *bool `json:"EnableTunnelsBgp,omitzero"`
+	// HealthCheckConfig maps to the exact wire member HealthCheckConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you create an IPsec-VPN connection in single-tunnel mode.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13892
+	HealthCheckConfig *string `json:"HealthCheckConfig,omitzero"`
+	// IkeConfig maps to the exact wire member IkeConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you create an IPsec-VPN connection in single-tunnel mode.
+	//
+	// Phase 1 negotiation configuration:
+	//
+	// - IkeConfig.Psk: The pre-shared key, which is used for identity authentication between the VPN gateway and the on-premises data center.
+	//
+	// - The key must be 1 to 100 characters in length and can contain digits, uppercase letters, lowercase letters, and the following characters. It cannot contain spaces. ~!@#$%^&*()_-+={}[]|;:\\",.<>/?
+	// - If you do not specify a pre-shared key, the system randomly generates a string as the pre-shared key. You can call the DescribeVpnConnection (https://help.aliyun.com/document_detail/2526951.html) operation to query the pre-shared key automatically generated by the system.
+	//
+	// > The pre-shared key on the IPsec-VPN connection side must be the same as the authentication key on the on-premises data center side. Otherwise, a connection cannot be established between the on-premises data center and the VPN gateway.
+	//
+	// - IkeConfig.IkeVersion: The version of the IKE protocol. Valid values: ikev1 or ikev2. Default value: ikev1.
+	//
+	// - IkeConfig.IkeMode: The negotiation mode. Valid values: main or aggressive. Default value: main.
+	//
+	// - IkeConfig.IkeEncAlg: The encryption algorithm used in Phase 1 negotiation. Valid values: aes, aes192, aes256, des, or 3des. Default value: aes.
+	//
+	// - IkeConfig.IkeAuthAlg: The authentication algorithm used in Phase 1 negotiation. Valid values: md5, sha1, sha256, sha384, or sha512. Default value: md5.
+	//
+	// - IkeConfig.IkePfs: The Diffie-Hellman key exchange algorithm used in Phase 1 negotiation. Valid values: group1, group2, group5, or group14. Default value: group2.
+	//
+	// - IkeConfig.IkeLifetime: The lifetime of the SA generated in Phase 1 negotiation. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
+	//
+	// - IkeConfig.LocalId: The identifier on the Alibaba Cloud side of the IPsec-VPN connection. The identifier can be up to 100 characters in length and cannot contain spaces. Default value: empty.
+	//
+	// - IkeConfig.RemoteId: The identifier on the on-premises data center side of the IPsec-VPN connection. The identifier can be up to 100 characters in length and cannot contain spaces. Default value: the IP address of the customer gateway.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13893
+	IkeConfig *string `json:"IkeConfig,omitzero"`
+	// IpsecConfig maps to the exact wire member IpsecConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you create an IPsec-VPN connection in single-tunnel mode.
+	//
+	// The configuration of Phase 2 negotiation:
+	//
+	// - IpsecConfig.IpsecEncAlg: The encryption algorithm for Phase 2 negotiation. Valid values: aes, aes192, aes256, des, or 3des. Default value: aes.
+	//
+	// - IpsecConfig.IpsecAuthAlg: The authentication algorithm for Phase 2 negotiation. Valid values: md5, sha1, sha256, sha384, sha512. Default value: md5.
+	//
+	// - IpsecConfig.IpsecPfs: The Diffie-Hellman key exchange algorithm used in Phase 2 negotiation. Valid values: disabled, group1, group2, group5, or group14. Default value: group2.
+	//
+	// - IpsecConfig.IpsecLifetime: The lifetime of the SA negotiated in Phase 2. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13919
+	IpsecConfig *string `json:"IpsecConfig,omitzero"`
+	// LocalSubnet maps to the exact wire member LocalSubnet.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The CIDR block on the VPC side that needs to communicate with the on-premises data center. This is used for Phase 2 negotiation.
+	//
+	// Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
+	//
+	// Description of IPsec-VPN connection routing modes:
+	//
+	// - If both LocalSubnet and RemoteSubnet are set to 0.0.0.0/0, the destination routing mode is used.
+	// - If both LocalSubnet and RemoteSubnet are set to specific CIDR blocks, the protected data flow mode is used.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13930
+	LocalSubnet *string `json:"LocalSubnet,omitzero"`
+	// Name maps to the exact wire member Name.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The name of the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13940
+	Name *string `json:"Name,omitzero"`
+	// NetworkType maps to the exact wire member NetworkType.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The network type of the IPsec-VPN connection. Valid values:
+	// - public (default): public network. The IPsec-VPN connection establishes an encrypted communication channel over the Internet.
+	// - private: private network. The IPsec-VPN connection establishes an encrypted communication channel over a private network.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13941
+	NetworkType *string `json:"NetworkType,omitzero"`
+	// OwnerAccount maps to the exact wire member OwnerAccount.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	OwnerAccount *string `json:"OwnerAccount,omitzero"`
+	// RegionID maps to the exact wire member RegionId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The region ID of the IPsec-VPN connection.
+	//
+	// You can call the DescribeRegions (https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13945
+	RegionID *string `json:"RegionId,omitzero"`
+	// RemoteCaCert maps to the exact wire member RemoteCaCert.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The CA certificate of the peer.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13950
+	RemoteCaCert *string `json:"RemoteCaCert,omitzero"`
+	// RemoteSubnet maps to the exact wire member RemoteSubnet.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The CIDR block of the on-premises data center that needs to communicate with the VPC. This is used for Phase 2 negotiation.
+	//
+	// Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.
+	//
+	// Description of the routing mode for the IPsec-VPN connection:
+	//
+	// - If both LocalSubnet and RemoteSubnet are set to 0.0.0.0/0, the destination routing mode is used.
+	// - If both LocalSubnet and RemoteSubnet are set to specific CIDR blocks, the protected data flow mode is used.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13951
+	RemoteSubnet *string `json:"RemoteSubnet,omitzero"`
+	// ResourceGroupID maps to the exact wire member ResourceGroupId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the resource group to which the IPsec-VPN connection belongs.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13961
+	ResourceGroupID *string `json:"ResourceGroupId,omitzero"`
+	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitzero"`
+	// ResourceOwnerID maps to the exact wire member ResourceOwnerId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
+	// Tags maps to the exact wire member Tags.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The list of tags to add to the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13973
+	Tags []CreateVPNAttachmentInputTags `json:"Tags,omitzero"`
+	// TunnelBandwidth maps to the exact wire member TunnelBandwidth.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The bandwidth specification of a single VPN tunnel. Valid values:
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13974
+	TunnelBandwidth *string `json:"TunnelBandwidth,omitzero"`
+	// TunnelOptionsSpecification maps to the exact wire member TunnelOptionsSpecification.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Configures tunnels.
+	//
+	// - When you create a dual-tunnel IPsec-VPN connection, you can configure the parameters in the TunnelOptionsSpecification array.
+	// - When you create a dual-tunnel IPsec-VPN connection, you must add two tunnels to the IPsec-VPN connection to ensure link redundancy. Only two tunnels can be added to an IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14025
+	// Sent in the form body with one-based repeated indexes, rather than the URL query.
+	TunnelOptionsSpecification []CreateVPNAttachmentInputTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitzero" rpcLocation:"form"`
+}
+
+// CreateVPNAttachmentInputTags represents the complete DSL model CreateVpnAttachmentRequest.tags[].
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type CreateVPNAttachmentInputTags struct {
+	// Key maps to the exact wire member Key.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The tag key. This value cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length. It cannot start with aliyun or acs:, and cannot contain [link omitted] or [link omitted]
+	//
+	// You can specify up to 20 tag keys at a time.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13966
+	Key *string `json:"Key,omitzero"`
+	// Value maps to the exact wire member Value.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The tag value.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13971
+	Value *string `json:"Value,omitzero"`
+}
+
+// CreateVPNAttachmentInputTunnelOptionsSpecification represents the complete DSL model CreateVpnAttachmentRequest.tunnelOptionsSpecification[].
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type CreateVPNAttachmentInputTunnelOptionsSpecification struct {
+	// CustomerGatewayID maps to the exact wire member CustomerGatewayId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the customer gateway associated with the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13977
+	CustomerGatewayID *string `json:"CustomerGatewayId,omitzero"`
+	// EnableDpd maps to the exact wire member EnableDpd.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether to enable the Dead Peer Detection (DPD) feature for the tunnel. Valid values:
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13978
+	EnableDpd *bool `json:"EnableDpd,omitzero"`
+	// EnableNATTraversal maps to the exact wire member EnableNatTraversal.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether to enable NAT traversal for the tunnel. Valid values:
+	//
+	// - true (default): Enables NAT traversal. After NAT traversal is enabled, the IKE negotiation process skips UDP port number verification and can discover NAT gateway devices in the tunnel.
+	//
+	// - false: Disables NAT traversal.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13979
+	EnableNATTraversal *bool `json:"EnableNatTraversal,omitzero"`
+	// TunnelBGPConfig maps to the exact wire member TunnelBgpConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP configuration for the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13988
+	TunnelBGPConfig *CreateVPNAttachmentInputTunnelOptionsSpecificationTunnelBGPConfig `json:"TunnelBgpConfig,omitzero"`
+	// TunnelIkeConfig maps to the exact wire member TunnelIkeConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Phase 1 negotiation configuration.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14014
+	TunnelIkeConfig *CreateVPNAttachmentInputTunnelOptionsSpecificationTunnelIkeConfig `json:"TunnelIkeConfig,omitzero"`
+	// TunnelIndex maps to the exact wire member TunnelIndex.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The creation order of the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14015
+	TunnelIndex *int32 `json:"TunnelIndex,omitzero"`
+	// TunnelIpsecConfig maps to the exact wire member TunnelIpsecConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Phase 2 negotiation configuration.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14023
+	TunnelIpsecConfig *CreateVPNAttachmentInputTunnelOptionsSpecificationTunnelIpsecConfig `json:"TunnelIpsecConfig,omitzero"`
+}
+
+// CreateVPNAttachmentInputTunnelOptionsSpecificationTunnelBGPConfig represents the complete DSL model CreateVpnAttachmentRequest.tunnelOptionsSpecification[].tunnelBgpConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type CreateVPNAttachmentInputTunnelOptionsSpecificationTunnelBGPConfig struct {
+	// LocalAsn maps to the exact wire member LocalAsn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The autonomous system number (ASN) on the Alibaba Cloud side of the tunnel. Valid values: 1 to 4294967295. Default value: 45104.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13985
+	LocalAsn *int64 `json:"LocalAsn,omitzero"`
+	// LocalBGPIP maps to the exact wire member LocalBgpIp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP address on the Alibaba Cloud side of the tunnel. This address is an IP address within the BGP CIDR block.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13986
+	LocalBGPIP *string `json:"LocalBgpIp,omitzero"`
+	// TunnelCIDR maps to the exact wire member TunnelCidr.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP CIDR block of the tunnel. The CIDR block must fall within 169.254.0.0/16 and have a mask length of 30. The CIDR block cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, or 169.254.169.252/30.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13987
+	TunnelCIDR *string `json:"TunnelCidr,omitzero"`
+}
+
+// CreateVPNAttachmentInputTunnelOptionsSpecificationTunnelIkeConfig represents the complete DSL model CreateVpnAttachmentRequest.tunnelOptionsSpecification[].tunnelIkeConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type CreateVPNAttachmentInputTunnelOptionsSpecificationTunnelIkeConfig struct {
+	// IkeAuthAlg maps to the exact wire member IkeAuthAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The authentication algorithm for Phase 1 negotiation. Valid values: md5, sha1, sha256, sha384, and sha512. Default value: sha1.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13990
+	IkeAuthAlg *string `json:"IkeAuthAlg,omitzero"`
+	// IkeEncAlg maps to the exact wire member IkeEncAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The encryption algorithm for Phase 1 negotiation. Valid values: aes, aes192, aes256, des, or 3des. Default value: aes.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13991
+	IkeEncAlg *string `json:"IkeEncAlg,omitzero"`
+	// IkeLifetime maps to the exact wire member IkeLifetime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The lifetime of the security association (SA) negotiated during Phase 1. Unit: seconds.
+	//
+	// Valid values: 0 to 86400. Default value: 86400.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13992
+	IkeLifetime *int64 `json:"IkeLifetime,omitzero"`
+	// IkeMode maps to the exact wire member IkeMode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The negotiation mode of the IKE version. Valid values: main or aggressive. Default value: main.
+	//
+	// - main: Main mode. The negotiation process is highly secure.
+	// - aggressive: Aggressive mode. Negotiation is fast and has a high success rate.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13995
+	IkeMode *string `json:"IkeMode,omitzero"`
+	// IkePfs maps to the exact wire member IkePfs.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Diffie-Hellman key exchange algorithm used in the first-phase negotiation. Default value: group2.
+	//
+	// Valid values: group1, group2, group5, group14.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L13999
+	IkePfs *string `json:"IkePfs,omitzero"`
+	// IkeVersion maps to the exact wire member IkeVersion.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The version of the IKE protocol. Valid values: ikev1 or ikev2. Default value: ikev2.
+	//
+	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multi-CIDR-block scenarios.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14002
+	IkeVersion *string `json:"IkeVersion,omitzero"`
+	// LocalID maps to the exact wire member LocalId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The identifier on the Alibaba Cloud side of the tunnel, used for Phase 1 negotiation. The value can be up to 100 characters in length and cannot contain spaces. The default value is the IP address of the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14005
+	LocalID *string `json:"LocalId,omitzero"`
+	// Psk maps to the exact wire member Psk.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The pre-shared key, which is used for identity authentication between the tunnel and the tunnel peer.
+	//
+	// - The key must be 1 to 100 characters in length and can contain digits, uppercase letters, lowercase letters, and the following characters: ~!\\@#$%^&*()_-+={}[]|;:\\",.<>/? It cannot contain spaces.
+	//
+	// - If you do not specify a pre-shared key, the system randomly generates a 16-character string as the pre-shared key. You can call the DescribeVpnAttachments (https://help.aliyun.com/document_detail/2526939.html) operation to query the pre-shared key automatically generated by the system.
+	//
+	// > The pre-shared keys of the tunnel and the tunnel peer must be the same. Otherwise, the tunnel cannot be established.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14006
+	Psk *string `json:"Psk,omitzero"`
+	// RemoteID maps to the exact wire member RemoteId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The identifier of the tunnel peer, used for Phase 1 negotiation. The value can be up to 100 characters in length and cannot contain spaces. The default value is the IP address of the customer gateway associated with the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14013
+	RemoteID *string `json:"RemoteId,omitzero"`
+}
+
+// CreateVPNAttachmentInputTunnelOptionsSpecificationTunnelIpsecConfig represents the complete DSL model CreateVpnAttachmentRequest.tunnelOptionsSpecification[].tunnelIpsecConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type CreateVPNAttachmentInputTunnelOptionsSpecificationTunnelIpsecConfig struct {
+	// IpsecAuthAlg maps to the exact wire member IpsecAuthAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The authentication algorithm for Phase 2 negotiation.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14017
+	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitzero"`
+	// IpsecEncAlg maps to the exact wire member IpsecEncAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The encryption algorithm for Phase 2 negotiation. Valid values: aes, aes192, aes256, des, or 3des. Default value: aes.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14018
+	IpsecEncAlg *string `json:"IpsecEncAlg,omitzero"`
+	// IpsecLifetime maps to the exact wire member IpsecLifetime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The lifetime of the SA negotiated in Phase 2. Unit: seconds.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14019
+	IpsecLifetime *int64 `json:"IpsecLifetime,omitzero"`
+	// IpsecPfs maps to the exact wire member IpsecPfs.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Diffie-Hellman key exchange algorithm used in the second phase of negotiation. Default value: group2.
+	//
+	// Valid values: disabled, group1, group2, group5, group14.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14020
+	IpsecPfs *string `json:"IpsecPfs,omitzero"`
+}
+
+// CreateVpnAttachmentResponse represents the complete DSL model CreateVpnAttachmentResponse.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type CreateVpnAttachmentResponse struct {
+	// Headers maps to the exact wire member headers.
+	Headers map[string]string `json:"headers,omitzero"`
+	// StatusCode maps to the exact wire member statusCode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	StatusCode *int32 `json:"statusCode,omitzero"`
+	// Body maps to the exact wire member body.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	Body *CreateVpnAttachmentOutput `json:"body,omitzero"`
+}
+
+// CreateVpnAttachmentOutput represents the complete DSL model CreateVpnAttachmentResponseBody.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type CreateVpnAttachmentOutput struct {
+	// Code maps to the exact wire member Code.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The status code returned by the current task. A value of 200 indicates that the task is successful.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14032
+	Code *string `json:"Code,omitzero"`
+	// CreateTime maps to the exact wire member CreateTime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The timestamp when the IPsec-VPN connection was created. Unit: milliseconds.
+	//
+	// The timestamp is in the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 (UTC) to the time when the IPsec-VPN connection was created.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14033
+	CreateTime *int64 `json:"CreateTime,omitzero"`
+	// Message maps to the exact wire member Message.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The message returned by the current task.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14036
+	Message *string `json:"Message,omitzero"`
+	// Name maps to the exact wire member Name.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The name of the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14037
+	Name *string `json:"Name,omitzero"`
+	// RequestID maps to the exact wire member RequestId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The request ID.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14038
+	RequestID *string `json:"RequestId,omitzero"`
+	// Success maps to the exact wire member Success.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Indicates whether the current task is successfully executed.
+	//
+	// - true: Successfully executed.
+	// - false: Not successfully executed.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14039
+	Success *bool `json:"Success,omitzero"`
+	// VPNConnectionID maps to the exact wire member VpnConnectionId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The IPsec-VPN connection ID.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14043
+	VPNConnectionID *string `json:"VpnConnectionId,omitzero"`
+	// Metadata contains request identity, HTTP status and attempt count.
+	Metadata alicloud.Metadata `json:"-"`
+}
+
+// CreateVpnConnectionInput represents the complete DSL model CreateVpnConnectionRequest.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type CreateVpnConnectionInput struct {
+	// AutoConfigRoute maps to the exact wire member AutoConfigRoute.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether to automatically configure routes. Valid values:
+	//
+	// - true (default): Automatically configures routes.
+	//
+	// - false: Does not automatically configure routes.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14180
+	AutoConfigRoute *bool `json:"AutoConfigRoute,omitzero"`
+	// BGPConfig maps to the exact wire member BgpConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you create an IPsec-VPN connection in single-tunnel mode.
+	//
+	// The BGP configuration:
+	//
+	// - BgpConfig.EnableBgp: specifies whether to enable BGP. Valid values: true or false (default).
+	// - BgpConfig.LocalAsn: the autonomous system number (ASN) on the Alibaba Cloud side. Valid values: 1 to 4294967295. Default value: 45104.
+	//
+	// You can enter the ASN in the two-segment notation: the first 16 bits.the last 16 bits. Each segment is entered in decimal format.
+	//
+	// For example, if you enter 123.456, the ASN is 123 × 65536 + 456 = 8061384.
+	// - BgpConfig.TunnelCidr: the CIDR block of the IPsec tunnel. The CIDR block must be a /30 subnet within 169.254.0.0/16, and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, or 169.254.169.252/30.
+	// > The IPsec tunnel CIDR block of each IPsec-VPN connection under a VPN gateway instance must be unique.
+	// - LocalBgpIp: the BGP IP address on the Alibaba Cloud side. This address must be an IP address within the IPsec tunnel CIDR block.
+	//
+	// >- Before you configure BGP, we recommend that you familiarize yourself with how BGP dynamic routing works and its limits. For more information, see Configure BGP dynamic routing (https://help.aliyun.com/document_detail/2638220.html).
+	// >- We recommend that you use a private ASN to establish a BGP connection with Alibaba Cloud. Refer to the relevant documentation for the private ASN range.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14185
+	BGPConfig *string `json:"BgpConfig,omitzero"`
+	// ClientToken maps to the exact wire member ClientToken.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId of each API request is different.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14201
+	ClientToken *string `json:"ClientToken,omitzero"`
+	// CustomerGatewayID maps to the exact wire member CustomerGatewayId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported and required when you create an IPsec-VPN connection in single-tunnel mode.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14206
+	CustomerGatewayID *string `json:"CustomerGatewayId,omitzero"`
+	// DryRun maps to the exact wire member DryRun.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether to perform a dry run. Valid values:
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14207
+	DryRun *bool `json:"DryRun,omitzero"`
+	// EffectImmediately maps to the exact wire member EffectImmediately.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether the IPsec-VPN connection configuration takes effect immediately. Valid values:
+	//
+	// - true: The system immediately initiates IPsec protocol negotiation after the configuration is complete.
+	//
+	// - false (default): The system initiates IPsec protocol negotiation only when inbound traffic is detected.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14208
+	EffectImmediately *bool `json:"EffectImmediately,omitzero"`
+	// EnableDpd maps to the exact wire member EnableDpd.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you create an IPsec-VPN connection in single-tunnel mode.
+	//
+	// Specifies whether to enable the Dead Peer Detection (DPD) feature. Valid values:
+	//
+	// - true (default): DPD is enabled. The IPsec initiator sends DPD packets to check whether the peer device is alive. If no correct response is received within the specified period of time, the peer is considered disconnected. The ISAKMP SA and the corresponding IPsec SA are deleted, and the security tunnel is also deleted.
+	//
+	// - false: DPD is disabled. The IPsec initiator does not send DPD probe packets.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14213
+	EnableDpd *bool `json:"EnableDpd,omitzero"`
+	// EnableNATTraversal maps to the exact wire member EnableNatTraversal.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you create an IPsec-VPN connection in single-tunnel mode.
+	//
+	// Specifies whether to enable NAT traversal. Valid values:
+	//
+	// - true (default): Enables NAT traversal. After NAT traversal is enabled, the IKE negotiation process skips UDP port number verification and can discover NAT gateway devices in the VPN tunnel.
+	//
+	// - false: Disables NAT traversal.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14220
+	EnableNATTraversal *bool `json:"EnableNatTraversal,omitzero"`
+	// EnableTunnelsBGP maps to the exact wire member EnableTunnelsBgp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you create an IPsec-VPN connection in dual-tunnel mode.
+	//
+	// Specifies whether to enable BGP for the tunnel. Valid values: true or false (default).
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14227
+	EnableTunnelsBGP *bool `json:"EnableTunnelsBgp,omitzero"`
+	// HealthCheckConfig maps to the exact wire member HealthCheckConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you create an IPsec-VPN connection in single-tunnel mode.
+	//
+	// Health check configuration:
+	//
+	// - HealthCheckConfig.enable: Specifies whether to enable health checks. Valid values: true or false (default).
+	//
+	// - HealthCheckConfig.dip: The destination IP address of the health check.
+	//
+	// - HealthCheckConfig.sip: The source IP address of the health check.
+	//
+	// - HealthCheckConfig.interval: The retry interval of the health check. Unit: seconds. Default value: 3.
+	//
+	// - HealthCheckConfig.retry: The number of retry packets sent during the health check. Default value: 3.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14230
+	HealthCheckConfig *string `json:"HealthCheckConfig,omitzero"`
+	// IkeConfig maps to the exact wire member IkeConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you create an IPsec-VPN connection in single-tunnel mode.
+	//
+	// Phase 1 negotiation configuration:
+	//
+	// - IkeConfig.Psk: The pre-shared key used for identity authentication between the VPN gateway and the on-premises data center.
+	//
+	// - The key must be 1 to 100 characters in length and can contain digits, uppercase letters, lowercase letters, and the following characters. It cannot contain spaces. ~!\\@#$%^&*()_-+={}[]|;:\\",.<>/?
+	// - If you do not specify a pre-shared key, the system generates a random string as the pre-shared key. You can call the DescribeVpnConnection (https://help.aliyun.com/document_detail/2526951.html) operation to query the pre-shared key automatically generated by the system.
+	//
+	// > The pre-shared key on the IPsec-VPN connection side must be the same as the authentication key on the on-premises data center side. Otherwise, the connection between the on-premises data center and the VPN gateway cannot be established.
+	//
+	// - IkeConfig.IkeVersion: The version of the Internet Key Exchange protocol. Valid values: ikev1 and ikev2. Default value: ikev1.
+	//
+	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multi-CIDR-block scenarios.
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Chinese SM-based, only ikev1 is supported for the IKE version.</ph>
+	//
+	// - IkeConfig.IkeMode: The negotiation mode of the IKE version. Valid values: main and aggressive. Default value: main.
+	//
+	// - main: Main mode. This mode offers high negotiation security.
+	// - aggressive: Aggressive mode. This mode supports rapid negotiation and a higher success rate.
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Chinese SM-based, only main is supported for the negotiation mode.</ph>
+	//
+	// - IkeConfig.IkeEncAlg: The encryption algorithm used in Phase 1 negotiation.
+	//
+	// <props="intl"><ph>Valid values: aes, aes192, aes256, des, and 3des. Default value: aes. </ph>
+	//
+	// <props="china">If the VPN gateway instance type is normal, valid values are aes, aes192, aes256, des, and 3des. Default value: aes.
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Chinese SM-based, the value is sm4 (default).</ph>
+	//
+	// - IkeConfig.IkeAuthAlg: The authentication algorithm used in Phase 1 negotiation.
+	//
+	// <props="intl"><ph>Valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is normal, valid values are md5, sha1, sha256, sha384, and sha512. Default value: md5.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Chinese SM-based, the value is sm3 (default).</ph>
+	//
+	// - IkeConfig.IkePfs: The Diffie-Hellman key exchange algorithm used in Phase 1 negotiation. Valid values: group1, group2, group5, and group14. Default value: group2.
+	//
+	// - IkeConfig.IkeLifetime: The lifetime of the SA generated in Phase 1 negotiation. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
+	//
+	// - IkeConfig.LocalId: The identifier of the VPN gateway. The value is limited to 100 characters and cannot contain spaces. Default value: the IP address of the VPN gateway.
+	//
+	// - IkeConfig.RemoteId: The identifier of the customer gateway. The value is limited to 100 characters and cannot contain spaces. Default value: the IP address of the customer gateway.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14243
+	IkeConfig *string `json:"IkeConfig,omitzero"`
+	// IpsecConfig maps to the exact wire member IpsecConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you create a single-tunnel IPsec-VPN connection.
+	//
+	// The configuration of Phase 2 negotiation:
+	//
+	// - IpsecConfig.IpsecEncAlg: The encryption algorithm used in Phase 2 negotiation.
+	//
+	// <props="intl"><ph>Valid values: aes, aes192, aes256, des, or 3des. Default value: aes. </ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Standard, valid values are aes, aes192, aes256, des, or 3des. Default value: aes.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Chinese SM, the value is sm4 (default).</ph>
+	//
+	// - IpsecConfig.IpsecAuthAlg: The authentication algorithm used in Phase 2 negotiation.
+	//
+	// <props="intl"><ph>Valid values: md5, sha1, sha256, sha384, or sha512. Default value: md5.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Standard, valid values are md5, sha1, sha256, sha384, or sha512. Default value: md5.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Chinese SM, the value is sm3 (default).</ph>
+	//
+	// - IpsecConfig.IpsecPfs: The Diffie-Hellman key exchange algorithm used in Phase 2 negotiation. Valid values: disabled, group1, group2, group5, or group14. Default value: group2.
+	//
+	// - IpsecConfig.IpsecLifetime: The lifetime of the security association (SA) established in Phase 2 negotiation. Unit: seconds. Valid values: 0 to 86400. Default value: 86400.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14290
+	IpsecConfig *string `json:"IpsecConfig,omitzero"`
+	// LocalSubnet maps to the exact wire member LocalSubnet.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The CIDR block on the VPC side that needs to communicate with the on-premises data center. This is used for Phase 2 negotiation.
+	//
+	// Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
+	//
+	// Description of the routing mode for the IPsec-VPN connection:
+	//
+	// - If both LocalSubnet and RemoteSubnet are set to 0.0.0.0/0, the destination routing mode is used.
+	// - If both LocalSubnet and RemoteSubnet are set to specific CIDR blocks, the protected data flow mode is used.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14313
+	LocalSubnet *string `json:"LocalSubnet,omitzero"`
+	// Name maps to the exact wire member Name.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The name of the IPsec-VPN connection.
+	//
+	// The name must be 1 to 100 characters in length and cannot start with [link omitted] or [link omitted]
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14323
+	Name *string `json:"Name,omitzero"`
+	// OwnerAccount maps to the exact wire member OwnerAccount.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	OwnerAccount *string `json:"OwnerAccount,omitzero"`
+	// OwnerID maps to the exact wire member OwnerId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	OwnerID *int64 `json:"OwnerId,omitzero"`
+	// RegionID maps to the exact wire member RegionId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The region ID of the IPsec-VPN connection. You can call DescribeRegions (https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14328
+	RegionID *string `json:"RegionId,omitzero"`
+	// RemoteCaCertificate maps to the exact wire member RemoteCaCertificate.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you create an IPsec-VPN connection in single-tunnel mode.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14331
+	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitzero"`
+	// RemoteSubnet maps to the exact wire member RemoteSubnet.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The CIDR block of the on-premises data center that needs to communicate with the VPC. This is used for Phase 2 negotiation.
+	//
+	// Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.
+	//
+	// Description of the IPsec-VPN connection routing mode:
+	//
+	// - If both LocalSubnet and RemoteSubnet are set to 0.0.0.0/0, the destination routing mode is used.
+	// - If both LocalSubnet and RemoteSubnet are set to specific CIDR blocks, the protected data flow mode is used.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14332
+	RemoteSubnet *string `json:"RemoteSubnet,omitzero"`
+	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitzero"`
+	// ResourceOwnerID maps to the exact wire member ResourceOwnerId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
+	// Tags maps to the exact wire member Tags.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The list of tags to add to the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14353
+	Tags []CreateVPNConnectionInputTags `json:"Tags,omitzero"`
+	// TunnelOptionsSpecification maps to the exact wire member TunnelOptionsSpecification.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The tunnel configurations.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14443
+	// Sent in the form body with one-based repeated indexes, rather than the URL query.
+	TunnelOptionsSpecification []CreateVPNConnectionInputTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitzero" rpcLocation:"form"`
+	// VPNGatewayID maps to the exact wire member VpnGatewayId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The instance ID of the VPN gateway.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14444
+	VPNGatewayID *string `json:"VpnGatewayId,omitzero"`
+}
+
+// CreateVPNConnectionInputTags represents the complete DSL model CreateVpnConnectionRequest.tags[].
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type CreateVPNConnectionInputTags struct {
+	// Key maps to the exact wire member Key.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The tag key. This value cannot be an empty string.
+	//
+	// The tag key can be up to 64 characters in length and cannot start with aliyun or acs:. It cannot contain [link omitted] or [link omitted]
+	//
+	// You can specify up to 20 tag keys at a time.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14346
+	Key *string `json:"Key,omitzero"`
+	// Value maps to the exact wire member Value.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The tag value.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14351
+	Value *string `json:"Value,omitzero"`
+}
+
+// CreateVPNConnectionInputTunnelOptionsSpecification represents the complete DSL model CreateVpnConnectionRequest.tunnelOptionsSpecification[].
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type CreateVPNConnectionInputTunnelOptionsSpecification struct {
+	// CustomerGatewayID maps to the exact wire member CustomerGatewayId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the customer gateway associated with the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14356
+	CustomerGatewayID *string `json:"CustomerGatewayId,omitzero"`
+	// EnableDpd maps to the exact wire member EnableDpd.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether to enable the Dead Peer Detection (DPD) feature for the tunnel. Valid values:
+	//
+	// - true (default): Enables the DPD feature. The IPsec initiator sends DPD packets to check whether the peer device is alive. If no correct response is received within the specified period of time, the peer is considered disconnected. The ISAKMP SA and the corresponding IPsec SA are deleted, and the security tunnel is also deleted.
+	//
+	// - false: Disables the DPD feature. The IPsec initiator does not send DPD packets.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14357
+	EnableDpd *bool `json:"EnableDpd,omitzero"`
+	// EnableNATTraversal maps to the exact wire member EnableNatTraversal.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether to enable NAT traversal for the tunnel. Valid values:
+	//
+	// - true (default): Enables NAT traversal. After NAT traversal is enabled, the IKE negotiation process skips UDP port number verification and can discover NAT gateway devices in the tunnel.
+	//
+	// - false: Disables NAT traversal.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14362
+	EnableNATTraversal *bool `json:"EnableNatTraversal,omitzero"`
+	// RemoteCaCertificate maps to the exact wire member RemoteCaCertificate.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// If the current VPN gateway instance is a Chinese SM-based VPN gateway, you must configure the peer CA certificate for the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14367
+	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitzero"`
+	// Role maps to the exact wire member Role.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The role of the tunnel. Valid values:
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14368
+	Role *string `json:"Role,omitzero"`
+	// TunnelBGPConfig maps to the exact wire member TunnelBgpConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP configuration for the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14377
+	TunnelBGPConfig *CreateVPNConnectionInputTunnelOptionsSpecificationTunnelBGPConfig `json:"TunnelBgpConfig,omitzero"`
+	// TunnelIkeConfig maps to the exact wire member TunnelIkeConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Phase 1 negotiation configuration.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14419
+	TunnelIkeConfig *CreateVPNConnectionInputTunnelOptionsSpecificationTunnelIkeConfig `json:"TunnelIkeConfig,omitzero"`
+	// TunnelIpsecConfig maps to the exact wire member TunnelIpsecConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Phase 2 negotiation configuration.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14441
+	TunnelIpsecConfig *CreateVPNConnectionInputTunnelOptionsSpecificationTunnelIpsecConfig `json:"TunnelIpsecConfig,omitzero"`
+}
+
+// CreateVPNConnectionInputTunnelOptionsSpecificationTunnelBGPConfig represents the complete DSL model CreateVpnConnectionRequest.tunnelOptionsSpecification[].tunnelBgpConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type CreateVPNConnectionInputTunnelOptionsSpecificationTunnelBGPConfig struct {
+	// LocalAsn maps to the exact wire member LocalAsn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The autonomous system number (ASN) on the Alibaba Cloud side of the tunnel. Valid values: 1 to 4294967295. Default value: 45104.
+	//
+	// > - This parameter is required when BGP is enabled for the IPsec-VPN connection (the EnableTunnelsBgp parameter is set to true).
+	// >- Before you configure BGP, we recommend that you familiarize yourself with how BGP dynamic routing works and its limits. For more information, see Configure BGP dynamic routing (https://help.aliyun.com/document_detail/2638220.html).
+	// >- Use a private ASN to establish a BGP connection with Alibaba Cloud. Refer to the relevant documentation for the private ASN range.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14370
+	LocalAsn *int64 `json:"LocalAsn,omitzero"`
+	// LocalBGPIP maps to the exact wire member LocalBgpIp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP address of the tunnel on the Alibaba Cloud side. The address is an IP address within the BGP CIDR block.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14375
+	LocalBGPIP *string `json:"LocalBgpIp,omitzero"`
+	// TunnelCIDR maps to the exact wire member TunnelCidr.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP CIDR block of the tunnel. The CIDR block must be a CIDR block within 169.254.0.0/16 with a mask length of 30 and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, or 169.254.169.252/30.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14376
+	TunnelCIDR *string `json:"TunnelCidr,omitzero"`
+}
+
+// CreateVPNConnectionInputTunnelOptionsSpecificationTunnelIkeConfig represents the complete DSL model CreateVpnConnectionRequest.tunnelOptionsSpecification[].tunnelIkeConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type CreateVPNConnectionInputTunnelOptionsSpecificationTunnelIkeConfig struct {
+	// IkeAuthAlg maps to the exact wire member IkeAuthAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The authentication algorithm used in Phase 1 negotiations.
+	//
+	// <props="intl"><ph>Valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Normal, valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is ShangMi, the value is sm3 (default).</ph>
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14379
+	IkeAuthAlg *string `json:"IkeAuthAlg,omitzero"`
+	// IkeEncAlg maps to the exact wire member IkeEncAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The encryption algorithm used in Phase 1 negotiations.
+	//
+	// <props="intl"><ph>Valid values: aes, aes192, aes256, des, or 3des. Default value: aes. </ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Normal, valid values are aes, aes192, aes256, des, or 3des. Default value: aes.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is ShangMi (China Cryptographic Algorithm), the value is sm4 (default value).</ph>
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14386
+	IkeEncAlg *string `json:"IkeEncAlg,omitzero"`
+	// IkeLifetime maps to the exact wire member IkeLifetime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The lifetime of the Security Association (SA) negotiated in Phase 1. Unit: seconds.
+	//
+	// Valid values: 0 to 86400. Default value: 86400.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14393
+	IkeLifetime *int64 `json:"IkeLifetime,omitzero"`
+	// IkeMode maps to the exact wire member IkeMode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The negotiation mode of the IKE version. Valid values: main and aggressive. Default value: main.
+	//
+	// - main: Main mode. This mode offers high negotiation security.
+	// - aggressive: Aggressive mode. This mode offers fast negotiation and a high negotiation success rate.
+	//
+	// <props="china"><ph>If the VPN gateway instance type is China Encryption, only main is supported as the negotiation mode.</ph>
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14396
+	IkeMode *string `json:"IkeMode,omitzero"`
+	// IkePfs maps to the exact wire member IkePfs.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Diffie-Hellman key exchange algorithm used in the first-phase negotiation. Default value: group2.
+	//
+	// Valid values: group1, group2, group5, group14.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14402
+	IkePfs *string `json:"IkePfs,omitzero"`
+	// IkeVersion maps to the exact wire member IkeVersion.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The version of the IKE protocol. Valid values: ikev1 or ikev2. Default value: ikev1.
+	//
+	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multi-CIDR-block scenarios.
+	//
+	// <props="china"><ph>If the VPN gateway instance type is China Encryption, only ikev1 is supported for the IKE version.</ph>
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14405
+	IkeVersion *string `json:"IkeVersion,omitzero"`
+	// LocalID maps to the exact wire member LocalId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The identifier of the tunnel on the Alibaba Cloud side, which is used for Phase 1 negotiation. The value can be up to 100 characters in length and cannot contain spaces. The default value is the IP address of the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14410
+	LocalID *string `json:"LocalId,omitzero"`
+	// Psk maps to the exact wire member Psk.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The pre-shared key, which is used for identity authentication between the tunnel and the tunnel peer.
+	//
+	// - The key must be 1 to 100 characters in length and can contain digits, uppercase letters, lowercase letters, and the following characters. It cannot contain spaces. ~!\\@#$%^&*()_-+={}[]|;:\\",.<>/?
+	//
+	// - If you do not specify a pre-shared key, the system randomly generates a 16-character string as the pre-shared key. You can call the DescribeVpnConnection (https://help.aliyun.com/document_detail/2526951.html) operation to query the pre-shared key automatically generated by the system.
+	//
+	// > The pre-shared keys of the tunnel and the tunnel peer must be the same. Otherwise, the tunnel cannot be established.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14411
+	Psk *string `json:"Psk,omitzero"`
+	// RemoteID maps to the exact wire member RemoteId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The identifier of the tunnel peer, which is used for Phase 1 negotiation. The value can be up to 100 characters in length and cannot contain spaces. The default value is the IP address of the customer gateway associated with the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14418
+	RemoteID *string `json:"RemoteId,omitzero"`
+}
+
+// CreateVPNConnectionInputTunnelOptionsSpecificationTunnelIpsecConfig represents the complete DSL model CreateVpnConnectionRequest.tunnelOptionsSpecification[].tunnelIpsecConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type CreateVPNConnectionInputTunnelOptionsSpecificationTunnelIpsecConfig struct {
+	// IpsecAuthAlg maps to the exact wire member IpsecAuthAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The authentication algorithm used in Phase 2 negotiations.
+	//
+	// <props="intl"><ph>Valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Normal, valid values: md5, sha1, sha256, sha384, and sha512. Default value: md5.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is ShangMi, the value is sm3 (default).</ph>
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14421
+	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitzero"`
+	// IpsecEncAlg maps to the exact wire member IpsecEncAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The encryption algorithm used in Phase 2 negotiations.
+	//
+	// <props="intl"><ph>Valid values: aes, aes192, aes256, des, or 3des. Default value: aes. </ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Normal, valid values are aes, aes192, aes256, des, or 3des. Default value: aes.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is ShangMi, the value is sm4 (default value).</ph>
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14428
+	IpsecEncAlg *string `json:"IpsecEncAlg,omitzero"`
+	// IpsecLifetime maps to the exact wire member IpsecLifetime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The lifetime of the SA negotiated in Phase 2. Unit: seconds.
+	//
+	// Valid values: 0 to 86400. Default value: 86400.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14435
+	IpsecLifetime *int64 `json:"IpsecLifetime,omitzero"`
+	// IpsecPfs maps to the exact wire member IpsecPfs.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Diffie-Hellman key exchange algorithm used in the second phase of negotiation. Default value: group2.
+	//
+	// Valid values: disabled, group1, group2, group5, group14.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14438
+	IpsecPfs *string `json:"IpsecPfs,omitzero"`
+}
+
+// CreateVpnConnectionResponse represents the complete DSL model CreateVpnConnectionResponse.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type CreateVpnConnectionResponse struct {
+	// Headers maps to the exact wire member headers.
+	Headers map[string]string `json:"headers,omitzero"`
+	// StatusCode maps to the exact wire member statusCode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	StatusCode *int32 `json:"statusCode,omitzero"`
+	// Body maps to the exact wire member body.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	Body *CreateVpnConnectionOutput `json:"body,omitzero"`
+}
+
+// CreateVpnConnectionOutput represents the complete DSL model CreateVpnConnectionResponseBody.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type CreateVpnConnectionOutput struct {
+	// CreateTime maps to the exact wire member CreateTime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The timestamp when the IPsec-VPN connection was created. Unit: milliseconds.
+	//
+	// The timestamp is in the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 (UTC) to the time when the IPsec-VPN connection was created.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14450
+	CreateTime *int64 `json:"CreateTime,omitzero"`
+	// Name maps to the exact wire member Name.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The name of the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14453
+	Name *string `json:"Name,omitzero"`
+	// RequestID maps to the exact wire member RequestId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The request ID.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14454
+	RequestID *string `json:"RequestId,omitzero"`
+	// VPNConnectionID maps to the exact wire member VpnConnectionId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L14455
+	VPNConnectionID *string `json:"VpnConnectionId,omitzero"`
+	// Metadata contains request identity, HTTP status and attempt count.
+	Metadata alicloud.Metadata `json:"-"`
+}
+
 // CreateVpnGatewayInput represents the complete DSL model CreateVpnGatewayRequest.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type CreateVpnGatewayInput struct {
@@ -42349,6 +43749,151 @@ type DescribeVPNCrossAccountAuthorizationsOutputCrossAccountAuthorizations struc
 	VPNConnectionID *string `json:"VpnConnectionId,omitzero"`
 }
 
+// DescribeVpnGatewayAvailableZonesInput represents the complete DSL model DescribeVpnGatewayAvailableZonesRequest.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type DescribeVpnGatewayAvailableZonesInput struct {
+	// AcceptLanguage maps to the exact wire member AcceptLanguage.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The language of the response. Valid values:
+	//
+	// - zh-CN: Chinese.
+	// - en-US (default): English.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32018
+	AcceptLanguage *string `json:"AcceptLanguage,omitzero"`
+	// GatewayType maps to the exact wire member GatewayType.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The VPN gateway type. Valid values:
+	// - Traditional: Returns zone information for zones where traditional VPN gateways can be created.
+	// - Enhanced.SiteToSite: Returns zone information for zones where enhanced site-to-cloud VPN gateways can be created.
+	// - Default value: Returns zone information for zones where all types of VPN gateways can be created.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32022
+	GatewayType *string `json:"GatewayType,omitzero"`
+	// OwnerAccount maps to the exact wire member OwnerAccount.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	OwnerAccount *string `json:"OwnerAccount,omitzero"`
+	// OwnerID maps to the exact wire member OwnerId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	OwnerID *int64 `json:"OwnerId,omitzero"`
+	// RegionID maps to the exact wire member RegionId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32028
+	RegionID *string `json:"RegionId,omitzero"`
+	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitzero"`
+	// ResourceOwnerID maps to the exact wire member ResourceOwnerId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
+	// Spec maps to the exact wire member Spec.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The bandwidth specification.
+	// - If the IPsec-VPN connection is associated with a VPN gateway instance, this parameter specifies the bandwidth specification of the VPN gateway instance.
+	// - If the IPsec-VPN connection is associated with a transit router, this parameter specifies the expected bandwidth specification that the IPsec-VPN connection can support.
+	//
+	// Different bandwidth specifications may affect the returned zone information. Valid values:
+	//
+	// - 5M
+	// - 10M
+	// - 20M
+	// - 50M
+	// - 100M
+	// - 200M
+	// - 500M
+	// - 1000M
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32033
+	Spec *string `json:"Spec,omitzero"`
+}
+
+// DescribeVpnGatewayAvailableZonesResponse represents the complete DSL model DescribeVpnGatewayAvailableZonesResponse.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type DescribeVpnGatewayAvailableZonesResponse struct {
+	// Headers maps to the exact wire member headers.
+	Headers map[string]string `json:"headers,omitzero"`
+	// StatusCode maps to the exact wire member statusCode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	StatusCode *int32 `json:"statusCode,omitzero"`
+	// Body maps to the exact wire member body.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	Body *DescribeVpnGatewayAvailableZonesOutput `json:"body,omitzero"`
+}
+
+// DescribeVpnGatewayAvailableZonesOutput represents the complete DSL model DescribeVpnGatewayAvailableZonesResponseBody.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type DescribeVpnGatewayAvailableZonesOutput struct {
+	// AvailableZoneIDList maps to the exact wire member AvailableZoneIdList.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The list of zones.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32057
+	AvailableZoneIDList []DescribeVPNGatewayAvailableZonesOutputAvailableZoneIDList `json:"AvailableZoneIdList,omitzero"`
+	// RegionID maps to the exact wire member RegionId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The region ID.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32058
+	RegionID *string `json:"RegionId,omitzero"`
+	// RequestID maps to the exact wire member RequestId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The request ID.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32059
+	RequestID *string `json:"RequestId,omitzero"`
+	// Metadata contains request identity, HTTP status and attempt count.
+	Metadata alicloud.Metadata `json:"-"`
+}
+
+// DescribeVPNGatewayAvailableZonesOutputAvailableZoneIDList represents the complete DSL model DescribeVpnGatewayAvailableZonesResponseBody.availableZoneIdList[].
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type DescribeVPNGatewayAvailableZonesOutputAvailableZoneIDList struct {
+	// ZoneID maps to the exact wire member ZoneId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The zone ID.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32054
+	ZoneID *string `json:"ZoneId,omitzero"`
+	// ZoneName maps to the exact wire member ZoneName.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The zone name.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L32055
+	ZoneName *string `json:"ZoneName,omitzero"`
+}
+
 // DescribeVpnGatewayInput represents the complete DSL model DescribeVpnGatewayRequest.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type DescribeVpnGatewayInput struct {
@@ -48486,6 +50031,109 @@ type GrantInstanceToCenOutput struct {
 	// The request ID.
 	//
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35715
+	RequestID *string `json:"RequestId,omitzero"`
+	// Metadata contains request identity, HTTP status and attempt count.
+	Metadata alicloud.Metadata `json:"-"`
+}
+
+// GrantInstanceToVbrInput represents the complete DSL model GrantInstanceToVbrRequest.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type GrantInstanceToVbrInput struct {
+	// GrantType maps to the exact wire member GrantType.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The scope of the VBR instances to be authorized. Valid values:
+	//
+	// - All: Grants authorization of the VPC-connected instance to all VBR instances in the specified region under the specified Alibaba Cloud account. In this case, the VbrInstanceIds parameter can be left empty.
+	// - Specify: Grants authorization of the VPC-connected instance to the specified VBR instances. In this case, the VbrInstanceIds parameter is required.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35801
+	GrantType *string `json:"GrantType,omitzero"`
+	// InstanceID maps to the exact wire member InstanceId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the VPC-connected instance for which authorization is to be granted.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35807
+	InstanceID *string `json:"InstanceId,omitzero"`
+	// RegionID maps to the exact wire member RegionId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The region ID of the VPC-connected instance for which authorization is to be granted.
+	//
+	// You can invoke the DescribeRegions (https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35810
+	RegionID *string `json:"RegionId,omitzero"`
+	// VbrInstanceIDs maps to the exact wire member VbrInstanceIds.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The list of VBR instances to be authorized.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35815
+	// Encoded as one comma-separated value; nil is omitted and a non-nil empty slice sends an empty value.
+	VbrInstanceIDs []string `json:"VbrInstanceIds,omitzero" rpc:"simple"`
+	// VbrOwnerUid maps to the exact wire member VbrOwnerUid.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the Alibaba Cloud account that owns the VBR instance to be authorized. This account must be different from the caller\\"s account. You cannot specify the caller\\"s own account ID. This operation is used for cross-account authorization.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35816
+	VbrOwnerUid *int64 `json:"VbrOwnerUid,omitzero"`
+	// VbrRegionNo maps to the exact wire member VbrRegionNo.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The region ID of the VBR instance to be authorized.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35819
+	VbrRegionNo *string `json:"VbrRegionNo,omitzero"`
+}
+
+// GrantInstanceToVbrResponse represents the complete DSL model GrantInstanceToVbrResponse.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type GrantInstanceToVbrResponse struct {
+	// Headers maps to the exact wire member headers.
+	Headers map[string]string `json:"headers,omitzero"`
+	// StatusCode maps to the exact wire member statusCode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	StatusCode *int32 `json:"statusCode,omitzero"`
+	// Body maps to the exact wire member body.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	Body *GrantInstanceToVbrOutput `json:"body,omitzero"`
+}
+
+// GrantInstanceToVbrOutput represents the complete DSL model GrantInstanceToVbrResponseBody.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type GrantInstanceToVbrOutput struct {
+	// RequestID maps to the exact wire member RequestId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The request ID.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L35849
 	RequestID *string `json:"RequestId,omitzero"`
 	// Metadata contains request identity, HTTP status and attempt count.
 	Metadata alicloud.Metadata `json:"-"`
@@ -63625,6 +65273,2481 @@ type ModifyVpcPrefixListOutput struct {
 	Metadata alicloud.Metadata `json:"-"`
 }
 
+// ModifyVpnAttachmentAttributeInput represents the complete DSL model ModifyVpnAttachmentAttributeRequest.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVpnAttachmentAttributeInput struct {
+	// AutoConfigRoute maps to the exact wire member AutoConfigRoute.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether to automatically configure routes. Valid values:
+	//
+	// - true: automatically configures routes.
+	//
+	// - false: does not automatically configure routes.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46127
+	AutoConfigRoute *bool `json:"AutoConfigRoute,omitzero"`
+	// BGPConfig maps to the exact wire member BgpConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you modify an IPsec-VPN connection in single-tunnel mode.
+	//
+	// BGP configuration:
+	//
+	// - BgpConfig.EnableBgp: specifies whether to enable BGP. Valid values:
+	// - true: Enable BGP.
+	// - false: Disable BGP.
+	//
+	// - BgpConfig.LocalAsn: the autonomous system number (ASN) on the Alibaba Cloud side. Valid values: 1 to 4294967295.
+	//
+	// You can enter the ASN in the two-segment notation: the first 16 bits.the last 16 bits. Each segment is entered in decimal format.
+	//
+	// For example, if you enter 123.456, the ASN is 123 × 65536 + 456 = 8061384.
+	//
+	// - BgpConfig.TunnelCidr: the CIDR block of the IPsec tunnel. The CIDR block must be a /30 CIDR block within 169.254.0.0/16 and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, or 169.254.169.252/30.
+	//
+	// - LocalBgpIp: the BGP IP address on the Alibaba Cloud side. This address must be an IP address within the CIDR block of the IPsec tunnel.
+	//
+	// >- Before you configure BGP, we recommend that you learn about how BGP dynamic routing works and its limits. For more information, see Configure BGP dynamic routing (https://help.aliyun.com/document_detail/445767.html).
+	// >- We recommend that you use a private ASN to establish a BGP connection with Alibaba Cloud. For the range of private ASNs, refer to the relevant documentation.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46132
+	BGPConfig *string `json:"BgpConfig,omitzero"`
+	// ClientToken maps to the exact wire member ClientToken.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId of each API request is different.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46152
+	ClientToken *string `json:"ClientToken,omitzero"`
+	// CustomerGatewayID maps to the exact wire member CustomerGatewayId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The customer gateway instance associated with the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46157
+	CustomerGatewayID *string `json:"CustomerGatewayId,omitzero"`
+	// EffectImmediately maps to the exact wire member EffectImmediately.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether the configuration of the IPsec-VPN connection takes effect immediately. Valid values:
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46158
+	EffectImmediately *bool `json:"EffectImmediately,omitzero"`
+	// EnableDpd maps to the exact wire member EnableDpd.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you modify a single-tunnel IPsec-VPN connection.
+	//
+	// Specifies whether to enable the Dead Peer Detection (DPD) feature. Valid values:
+	//
+	// - true: Enables the DPD feature. The IPsec initiator sends DPD packets to check whether the peer device is alive. If no correct response is received within the specified period of time, the peer is considered disconnected. The ISAKMP SA and the corresponding IPsec SA are deleted, and the security tunnel is also deleted.
+	//
+	// - false: Disables the DPD feature. The IPsec initiator does not send DPD probe packets.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46159
+	EnableDpd *bool `json:"EnableDpd,omitzero"`
+	// EnableNATTraversal maps to the exact wire member EnableNatTraversal.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you modify an IPsec-VPN connection in single-tunnel mode.
+	//
+	// Specifies whether to enable NAT traversal. Valid values:
+	//
+	// - true: Enable NAT traversal. After NAT traversal is enabled, the IKE negotiation process skips UDP port number verification and can discover NAT gateway devices in the VPN tunnel.
+	//
+	// - false: Disable NAT traversal.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46166
+	EnableNATTraversal *bool `json:"EnableNatTraversal,omitzero"`
+	// EnableTunnelsBGP maps to the exact wire member EnableTunnelsBgp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you modify an IPsec-VPN connection in dual-tunnel mode.
+	//
+	// Specifies whether to enable BGP for the tunnel. Valid values: true or false.
+	//
+	// > Before you add BGP configurations, we recommend that you understand the working mechanism and limits of BGP dynamic routing. For more information, see Configure BGP dynamic routing (https://help.aliyun.com/document_detail/445767.html).
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46173
+	EnableTunnelsBGP *bool `json:"EnableTunnelsBgp,omitzero"`
+	// HealthCheckConfig maps to the exact wire member HealthCheckConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you modify a single-tunnel IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46178
+	HealthCheckConfig *string `json:"HealthCheckConfig,omitzero"`
+	// IkeConfig maps to the exact wire member IkeConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you modify a single-tunnel IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46179
+	IkeConfig *string `json:"IkeConfig,omitzero"`
+	// IpsecConfig maps to the exact wire member IpsecConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you modify an IPsec-VPN connection in single-tunnel mode.
+	//
+	// The configuration of Phase 2 negotiation:
+	//
+	// - IpsecConfig.IpsecEncAlg: The encryption algorithm used in Phase 2 negotiation. Valid values: aes, aes192, aes256, des, or 3des.
+	//
+	// - IpsecConfig.IpsecAuthAlg: The authentication algorithm used in Phase 2 negotiation. Valid values: md5, sha1, sha256, sha384, or sha512.
+	//
+	// - IpsecConfig.IpsecPfs: The Diffie-Hellman key exchange algorithm used in Phase 2 negotiation. Valid values: disabled, group1, group2, group5, or group14.
+	// - IpsecConfig.IpsecLifetime: The lifetime of the SA negotiated in Phase 2. Unit: seconds. Valid values: 0 to 86400.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46180
+	IpsecConfig *string `json:"IpsecConfig,omitzero"`
+	// LocalSubnet maps to the exact wire member LocalSubnet.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The CIDR block on the VPC side that needs to communicate with the on-premises data center. This is used for Phase 2 negotiation.
+	//
+	// Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
+	//
+	// Description of the IPsec-VPN connection routing mode:
+	//
+	// - If both LocalSubnet and RemoteSubnet are set to 0.0.0.0/0, the destination routing mode is used.
+	// - If both LocalSubnet and RemoteSubnet are set to specific CIDR blocks, the protected data flow mode is used.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46190
+	LocalSubnet *string `json:"LocalSubnet,omitzero"`
+	// Name maps to the exact wire member Name.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The name of the IPsec-VPN connection.
+	//
+	// The name must be 1 to 100 characters in length and cannot start with [link omitted] or [link omitted]
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46198
+	Name *string `json:"Name,omitzero"`
+	// NetworkType maps to the exact wire member NetworkType.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The network type of the IPsec-VPN connection. Valid values:
+	// - public: The IPsec-VPN connection establishes an encrypted communication channel over the Internet.
+	// - private: The IPsec-VPN connection establishes an encrypted communication channel over a private network.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46201
+	NetworkType *string `json:"NetworkType,omitzero"`
+	// OwnerAccount maps to the exact wire member OwnerAccount.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	OwnerAccount *string `json:"OwnerAccount,omitzero"`
+	// RegionID maps to the exact wire member RegionId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The region ID of the IPsec-VPN connection.
+	//
+	// You can call the DescribeRegions (https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46205
+	RegionID *string `json:"RegionId,omitzero"`
+	// RemoteCaCert maps to the exact wire member RemoteCaCert.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The CA certificate of the peer.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46210
+	RemoteCaCert *string `json:"RemoteCaCert,omitzero"`
+	// RemoteSubnet maps to the exact wire member RemoteSubnet.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The CIDR block on the on-premises data center side that needs to communicate with the VPC. This parameter is used for Phase 2 negotiation.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46211
+	RemoteSubnet *string `json:"RemoteSubnet,omitzero"`
+	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitzero"`
+	// ResourceOwnerID maps to the exact wire member ResourceOwnerId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
+	// TunnelOptionsSpecification maps to the exact wire member TunnelOptionsSpecification.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The tunnel configurations.
+	//
+	// The parameters in the TunnelOptionsSpecification array are supported only when you modify an IPsec-VPN connection in dual-tunnel mode. You can modify the configurations of both tunnels of the IPsec-VPN connection at the same time.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46267
+	// Sent in the form body with one-based repeated indexes, rather than the URL query.
+	TunnelOptionsSpecification []ModifyVPNAttachmentAttributeInputTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitzero" rpcLocation:"form"`
+	// VPNConnectionID maps to the exact wire member VpnConnectionId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the IPsec-VPN connection.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46270
+	VPNConnectionID *string `json:"VpnConnectionId,omitzero"`
+}
+
+// ModifyVPNAttachmentAttributeInputTunnelOptionsSpecification represents the complete DSL model ModifyVpnAttachmentAttributeRequest.tunnelOptionsSpecification[].
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNAttachmentAttributeInputTunnelOptionsSpecification struct {
+	// CustomerGatewayID maps to the exact wire member CustomerGatewayId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the customer gateway associated with the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46216
+	CustomerGatewayID *string `json:"CustomerGatewayId,omitzero"`
+	// EnableDpd maps to the exact wire member EnableDpd.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether to enable the Dead Peer Detection (DPD) feature for the tunnel. Valid values:
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46217
+	EnableDpd *bool `json:"EnableDpd,omitzero"`
+	// EnableNATTraversal maps to the exact wire member EnableNatTraversal.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether to enable NAT traversal for the tunnel. Valid values:
+	//
+	// - true: Enables NAT traversal. After NAT traversal is enabled, the IKE negotiation process skips UDP port number verification and can discover NAT gateway devices along the tunnel.
+	//
+	// - false: Disables NAT traversal.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46218
+	EnableNATTraversal *bool `json:"EnableNatTraversal,omitzero"`
+	// TunnelBGPConfig maps to the exact wire member TunnelBgpConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Adds BGP configurations for the tunnel.
+	//
+	// > Configure this parameter after you enable BGP for the IPsec-VPN connection (that is, set EnableTunnelsBgp to true).
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46229
+	TunnelBGPConfig *ModifyVPNAttachmentAttributeInputTunnelOptionsSpecificationTunnelBGPConfig `json:"TunnelBgpConfig,omitzero"`
+	// TunnelID maps to the exact wire member TunnelId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The tunnel ID.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46232
+	TunnelID *string `json:"TunnelId,omitzero"`
+	// TunnelIkeConfig maps to the exact wire member TunnelIkeConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Phase 1 negotiation configuration.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46254
+	TunnelIkeConfig *ModifyVPNAttachmentAttributeInputTunnelOptionsSpecificationTunnelIkeConfig `json:"TunnelIkeConfig,omitzero"`
+	// TunnelIndex maps to the exact wire member TunnelIndex.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The creation order of the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46255
+	TunnelIndex *int32 `json:"TunnelIndex,omitzero"`
+	// TunnelIpsecConfig maps to the exact wire member TunnelIpsecConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Phase 2 negotiation configuration.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46265
+	TunnelIpsecConfig *ModifyVPNAttachmentAttributeInputTunnelOptionsSpecificationTunnelIpsecConfig `json:"TunnelIpsecConfig,omitzero"`
+}
+
+// ModifyVPNAttachmentAttributeInputTunnelOptionsSpecificationTunnelBGPConfig represents the complete DSL model ModifyVpnAttachmentAttributeRequest.tunnelOptionsSpecification[].tunnelBgpConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNAttachmentAttributeInputTunnelOptionsSpecificationTunnelBGPConfig struct {
+	// LocalAsn maps to the exact wire member LocalAsn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The autonomous system number (ASN) on the Alibaba Cloud side of the tunnel. Valid values: 1 to 4294967295. Default value: 45104.
+	//
+	// > Use a private ASN to establish a BGP connection with Alibaba Cloud. For the range of private ASNs, refer to the relevant documentation.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46224
+	LocalAsn *int64 `json:"LocalAsn,omitzero"`
+	// LocalBGPIP maps to the exact wire member LocalBgpIp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP address on the Alibaba Cloud side. This address is an IP address within the BGP CIDR block.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46227
+	LocalBGPIP *string `json:"LocalBgpIp,omitzero"`
+	// TunnelCIDR maps to the exact wire member TunnelCidr.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP CIDR block of the tunnel. The CIDR block must be a CIDR block with a mask length of 30 within 169.254.0.0/16 and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, or 169.254.169.252/30.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46228
+	TunnelCIDR *string `json:"TunnelCidr,omitzero"`
+}
+
+// ModifyVPNAttachmentAttributeInputTunnelOptionsSpecificationTunnelIkeConfig represents the complete DSL model ModifyVpnAttachmentAttributeRequest.tunnelOptionsSpecification[].tunnelIkeConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNAttachmentAttributeInputTunnelOptionsSpecificationTunnelIkeConfig struct {
+	// IkeAuthAlg maps to the exact wire member IkeAuthAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The authentication algorithm for Phase 1 negotiation. Valid values: md5, sha1, sha256, sha384, and sha512.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46234
+	IkeAuthAlg *string `json:"IkeAuthAlg,omitzero"`
+	// IkeEncAlg maps to the exact wire member IkeEncAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The encryption algorithm for Phase 1 negotiation. Valid values: aes, aes192, aes256, des, and 3des.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46235
+	IkeEncAlg *string `json:"IkeEncAlg,omitzero"`
+	// IkeLifetime maps to the exact wire member IkeLifetime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The lifetime of the SA generated by Phase 1 negotiation. Unit: seconds.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46236
+	IkeLifetime *int64 `json:"IkeLifetime,omitzero"`
+	// IkeMode maps to the exact wire member IkeMode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The negotiation mode of the IKE version. Valid values: main and aggressive.
+	//
+	// - main: Main mode. The negotiation process is highly secure.
+	// - aggressive: Aggressive mode. The negotiation is fast and has a high success rate.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46237
+	IkeMode *string `json:"IkeMode,omitzero"`
+	// IkePfs maps to the exact wire member IkePfs.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Diffie-Hellman key exchange algorithm used in the first-phase negotiation.
+	//
+	// Valid values: group1, group2, group5, group14.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46241
+	IkePfs *string `json:"IkePfs,omitzero"`
+	// IkeVersion maps to the exact wire member IkeVersion.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The version of the IKE protocol. Valid values: ikev1 and ikev2.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46244
+	IkeVersion *string `json:"IkeVersion,omitzero"`
+	// LocalID maps to the exact wire member LocalId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The identifier on the Alibaba Cloud side for the tunnel, used for Phase 1 negotiation. The value can be up to 100 characters in length and cannot contain spaces.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46245
+	LocalID *string `json:"LocalId,omitzero"`
+	// Psk maps to the exact wire member Psk.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The pre-shared key, which is used for identity authentication between the tunnel and the tunnel peer.
+	//
+	// - The key must be 1 to 100 characters in length and can contain digits, uppercase letters, lowercase letters, and the following characters. It cannot contain spaces. ~!\\@#$%^&*()_-+={}[]|;:\\",.<>/?
+	//
+	// - If you do not specify a pre-shared key, the system randomly generates a 16-character string as the pre-shared key. You can call the DescribeVpnAttachments (https://help.aliyun.com/document_detail/2526939.html) operation to query the pre-shared key automatically generated by the system.
+	//
+	// > The pre-shared keys of the tunnel and the tunnel peer must be the same. Otherwise, the tunnel cannot be established.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46246
+	Psk *string `json:"Psk,omitzero"`
+	// RemoteID maps to the exact wire member RemoteId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The identifier of the tunnel peer, used for Phase 1 negotiation. The value can be up to 100 characters in length and cannot contain spaces.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46253
+	RemoteID *string `json:"RemoteId,omitzero"`
+}
+
+// ModifyVPNAttachmentAttributeInputTunnelOptionsSpecificationTunnelIpsecConfig represents the complete DSL model ModifyVpnAttachmentAttributeRequest.tunnelOptionsSpecification[].tunnelIpsecConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNAttachmentAttributeInputTunnelOptionsSpecificationTunnelIpsecConfig struct {
+	// IpsecAuthAlg maps to the exact wire member IpsecAuthAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The authentication algorithm used in Phase 2 negotiations.
+	//
+	// Valid values: md5, sha1, sha256, sha384, sha512.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46257
+	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitzero"`
+	// IpsecEncAlg maps to the exact wire member IpsecEncAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The encryption algorithm for Phase 2 negotiation. Valid values: aes, aes192, aes256, des, and 3des.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46260
+	IpsecEncAlg *string `json:"IpsecEncAlg,omitzero"`
+	// IpsecLifetime maps to the exact wire member IpsecLifetime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The lifetime of the SA generated by Phase 2 negotiation. Unit: seconds.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46261
+	IpsecLifetime *int32 `json:"IpsecLifetime,omitzero"`
+	// IpsecPfs maps to the exact wire member IpsecPfs.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Diffie-Hellman key exchange algorithm used in the second phase of negotiation.
+	//
+	// Valid values: disabled, group1, group2, group5, group14.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46262
+	IpsecPfs *string `json:"IpsecPfs,omitzero"`
+}
+
+// ModifyVpnAttachmentAttributeResponse represents the complete DSL model ModifyVpnAttachmentAttributeResponse.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVpnAttachmentAttributeResponse struct {
+	// Headers maps to the exact wire member headers.
+	Headers map[string]string `json:"headers,omitzero"`
+	// StatusCode maps to the exact wire member statusCode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	StatusCode *int32 `json:"statusCode,omitzero"`
+	// Body maps to the exact wire member body.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	Body *ModifyVpnAttachmentAttributeOutput `json:"body,omitzero"`
+}
+
+// ModifyVpnAttachmentAttributeOutput represents the complete DSL model ModifyVpnAttachmentAttributeResponseBody.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVpnAttachmentAttributeOutput struct {
+	// AttachInstanceID maps to the exact wire member AttachInstanceId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The instance ID of the Cloud Enterprise Network (CEN) instance to which the forward routing vRouter instance attached to the IPsec-VPN connection belongs.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46276
+	AttachInstanceID *string `json:"AttachInstanceId,omitzero"`
+	// AttachType maps to the exact wire member AttachType.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The type of resource associated with the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46277
+	AttachType *string `json:"AttachType,omitzero"`
+	// CreateTime maps to the exact wire member CreateTime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The timestamp when the IPsec-VPN connection was created. Unit: milliseconds.
+	//
+	// The timestamp is in the Unix timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 (UTC) to the time when the IPsec-VPN connection was created.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46278
+	CreateTime *int64 `json:"CreateTime,omitzero"`
+	// CustomerGatewayID maps to the exact wire member CustomerGatewayId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the customer gateway associated with the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46281
+	CustomerGatewayID *string `json:"CustomerGatewayId,omitzero"`
+	// Description maps to the exact wire member Description.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The description of the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46282
+	Description *string `json:"Description,omitzero"`
+	// EffectImmediately maps to the exact wire member EffectImmediately.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Indicates whether the IPsec-VPN connection configuration takes effect immediately.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46283
+	EffectImmediately *bool `json:"EffectImmediately,omitzero"`
+	// EnableDpd maps to the exact wire member EnableDpd.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Indicates whether the Dead Peer Detection (DPD) feature is enabled for the IPsec-VPN connection.
+	//
+	// - true: Enabled.
+	// - false: Not enabled.
+	//
+	// This parameter is returned only for IPsec-VPN connections in single-tunnel mode.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46284
+	EnableDpd *bool `json:"EnableDpd,omitzero"`
+	// EnableNATTraversal maps to the exact wire member EnableNatTraversal.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Indicates whether NAT traversal is enabled for the IPsec-VPN connection.
+	//
+	// - true: Enabled.
+	// - false: Not enabled.
+	//
+	// This parameter is returned only for IPsec-VPN connections in single-tunnel mode.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46290
+	EnableNATTraversal *bool `json:"EnableNatTraversal,omitzero"`
+	// EnableTunnelsBGP maps to the exact wire member EnableTunnelsBgp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP status of the tunnel.
+	//
+	// - true: enabled.
+	// - false: disabled.
+	//
+	// This parameter is returned only for IPsec-VPN connections in dual-tunnel mode.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46296
+	EnableTunnelsBGP *bool `json:"EnableTunnelsBgp,omitzero"`
+	// IkeConfig maps to the exact wire member IkeConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The configuration of Phase 1 negotiations.
+	//
+	// Parameters in the IkeConfig array are returned only for IPsec-VPN connections in single-tunnel mode.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46322
+	IkeConfig *ModifyVPNAttachmentAttributeOutputIkeConfig `json:"IkeConfig,omitzero"`
+	// IpsecConfig maps to the exact wire member IpsecConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The configuration of Phase 2 negotiations.
+	//
+	// Parameters in the IpsecConfig array are returned only for IPsec-VPN connections in single-tunnel mode.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46330
+	IpsecConfig *ModifyVPNAttachmentAttributeOutputIpsecConfig `json:"IpsecConfig,omitzero"`
+	// LocalSubnet maps to the exact wire member LocalSubnet.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The CIDR block on the Alibaba Cloud side that needs to communicate with the on-premises data center, such as the VPC CIDR block.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46333
+	LocalSubnet *string `json:"LocalSubnet,omitzero"`
+	// Name maps to the exact wire member Name.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The name of the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46334
+	Name *string `json:"Name,omitzero"`
+	// NetworkType maps to the exact wire member NetworkType.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The network type of the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46335
+	NetworkType *string `json:"NetworkType,omitzero"`
+	// RemoteSubnet maps to the exact wire member RemoteSubnet.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The CIDR block on the on-premises data center side that needs to communicate with Alibaba Cloud.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46336
+	RemoteSubnet *string `json:"RemoteSubnet,omitzero"`
+	// RequestID maps to the exact wire member RequestId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The request ID.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46337
+	RequestID *string `json:"RequestId,omitzero"`
+	// ResourceGroupID maps to the exact wire member ResourceGroupId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the resource group to which the IPsec-VPN connection belongs.
+	//
+	// You can call the ListResourceGroups (https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46338
+	ResourceGroupID *string `json:"ResourceGroupId,omitzero"`
+	// Spec maps to the exact wire member Spec.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The bandwidth specification of the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46341
+	Spec *string `json:"Spec,omitzero"`
+	// Status maps to the exact wire member Status.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The status of the IPsec-VPN connection.
+	//
+	// - ike_sa_not_established: Phase 1 negotiation failed.
+	//
+	// - ike_sa_established: Phase 1 negotiation succeeded.
+	//
+	// - ipsec_sa_not_established: Phase 2 negotiation failed.
+	//
+	// - ipsec_sa_established: Phase 2 negotiation succeeded.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46342
+	Status *string `json:"Status,omitzero"`
+	// TunnelOptionsSpecification maps to the exact wire member TunnelOptionsSpecification.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The tunnel configuration of the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46390
+	TunnelOptionsSpecification []ModifyVPNAttachmentAttributeOutputTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitzero"`
+	// VcoHealthCheck maps to the exact wire member VcoHealthCheck.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The health check configuration of the IPsec-VPN connection.
+	//
+	// The parameters in the VcoHealthCheck array are returned only for IPsec-VPN connections in single-tunnel mode.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46401
+	VcoHealthCheck *ModifyVPNAttachmentAttributeOutputVcoHealthCheck `json:"VcoHealthCheck,omitzero"`
+	// VPNBGPConfig maps to the exact wire member VpnBgpConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP configuration of the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46412
+	VPNBGPConfig *ModifyVPNAttachmentAttributeOutputVPNBGPConfig `json:"VpnBgpConfig,omitzero"`
+	// VPNConnectionID maps to the exact wire member VpnConnectionId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46413
+	VPNConnectionID *string `json:"VpnConnectionId,omitzero"`
+	// VPNGatewayID maps to the exact wire member VpnGatewayId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the VPN gateway instance associated with the IPsec-VPN connection.
+	//
+	// vpn-not-exist: The IPsec-VPN connection is not associated with a VPN gateway instance.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46414
+	VPNGatewayID *string `json:"VpnGatewayId,omitzero"`
+	// Metadata contains request identity, HTTP status and attempt count.
+	Metadata alicloud.Metadata `json:"-"`
+}
+
+// ModifyVPNAttachmentAttributeOutputIkeConfig represents the complete DSL model ModifyVpnAttachmentAttributeResponseBody.ikeConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNAttachmentAttributeOutputIkeConfig struct {
+	// IkeAuthAlg maps to the exact wire member IkeAuthAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The authentication algorithm for Phase 1 negotiation.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46303
+	IkeAuthAlg *string `json:"IkeAuthAlg,omitzero"`
+	// IkeEncAlg maps to the exact wire member IkeEncAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The encryption algorithm for Phase 1 negotiation.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46304
+	IkeEncAlg *string `json:"IkeEncAlg,omitzero"`
+	// IkeLifetime maps to the exact wire member IkeLifetime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The lifetime of the SA generated by Phase 1 negotiation. Unit: seconds.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46305
+	IkeLifetime *int64 `json:"IkeLifetime,omitzero"`
+	// IkeMode maps to the exact wire member IkeMode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The IKE negotiation mode.
+	//
+	// - main: Main mode. The negotiation process provides high security.
+	// - aggressive: Aggressive mode. Negotiations are fast and have a high success rate.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46306
+	IkeMode *string `json:"IkeMode,omitzero"`
+	// IkePfs maps to the exact wire member IkePfs.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Diffie-Hellman key exchange algorithm used in Phase 1 negotiation.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46310
+	IkePfs *string `json:"IkePfs,omitzero"`
+	// IkeVersion maps to the exact wire member IkeVersion.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The IKE protocol version.
+	//
+	// - ikev1
+	// - ikev2
+	//
+	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multi-CIDR-block scenarios.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46311
+	IkeVersion *string `json:"IkeVersion,omitzero"`
+	// LocalID maps to the exact wire member LocalId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The identifier on the Alibaba Cloud side of the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46317
+	LocalID *string `json:"LocalId,omitzero"`
+	// Psk maps to the exact wire member Psk.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The pre-shared key, which is used for identity authentication between the Alibaba Cloud IPsec-VPN connection and the on-premises data center.
+	//
+	// > The pre-shared key on the IPsec-VPN connection side must be the same as the authentication key on the on-premises data center side. Otherwise, a connection cannot be established between the on-premises data center and the VPN gateway.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46318
+	Psk *string `json:"Psk,omitzero"`
+	// RemoteID maps to the exact wire member RemoteId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The identifier on the on-premises data center side of the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46321
+	RemoteID *string `json:"RemoteId,omitzero"`
+}
+
+// ModifyVPNAttachmentAttributeOutputIpsecConfig represents the complete DSL model ModifyVpnAttachmentAttributeResponseBody.ipsecConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNAttachmentAttributeOutputIpsecConfig struct {
+	// IpsecAuthAlg maps to the exact wire member IpsecAuthAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The authentication algorithm for Phase 2 negotiation.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46326
+	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitzero"`
+	// IpsecEncAlg maps to the exact wire member IpsecEncAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The encryption algorithm for Phase 2 negotiation.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46327
+	IpsecEncAlg *string `json:"IpsecEncAlg,omitzero"`
+	// IpsecLifetime maps to the exact wire member IpsecLifetime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The lifetime of the SA generated by Phase 2 negotiation. Unit: seconds.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46328
+	IpsecLifetime *int64 `json:"IpsecLifetime,omitzero"`
+	// IpsecPfs maps to the exact wire member IpsecPfs.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Diffie-Hellman key exchange algorithm used in Phase 2 negotiation.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46329
+	IpsecPfs *string `json:"IpsecPfs,omitzero"`
+}
+
+// ModifyVPNAttachmentAttributeOutputTunnelOptionsSpecification represents the complete DSL model ModifyVpnAttachmentAttributeResponseBody.tunnelOptionsSpecification[].
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNAttachmentAttributeOutputTunnelOptionsSpecification struct {
+	// CustomerGatewayID maps to the exact wire member CustomerGatewayId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the customer gateway associated with the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46353
+	CustomerGatewayID *string `json:"CustomerGatewayId,omitzero"`
+	// EnableDpd maps to the exact wire member EnableDpd.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Indicates whether the DPD feature is enabled for the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46354
+	EnableDpd *bool `json:"EnableDpd,omitzero"`
+	// EnableNATTraversal maps to the exact wire member EnableNatTraversal.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Indicates whether the NAT traversal feature is enabled for the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46355
+	EnableNATTraversal *bool `json:"EnableNatTraversal,omitzero"`
+	// InternetIP maps to the exact wire member InternetIp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The gateway IP address on the Alibaba Cloud side of the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46356
+	InternetIP *string `json:"InternetIp,omitzero"`
+	// Role maps to the exact wire member Role.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The role of the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46357
+	Role *string `json:"Role,omitzero"`
+	// State maps to the exact wire member State.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The status of the tunnel.
+	//
+	// - active: Normal.
+	// - updating: Being updated.
+	// - deleting: Being deleted.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46358
+	State *string `json:"State,omitzero"`
+	// TunnelBGPConfig maps to the exact wire member TunnelBgpConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP configuration of the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46369
+	TunnelBGPConfig *ModifyVPNAttachmentAttributeOutputTunnelOptionsSpecificationTunnelBGPConfig `json:"TunnelBgpConfig,omitzero"`
+	// TunnelID maps to the exact wire member TunnelId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The tunnel ID.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46370
+	TunnelID *string `json:"TunnelId,omitzero"`
+	// TunnelIkeConfig maps to the exact wire member TunnelIkeConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Phase 1 negotiation configuration.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46381
+	TunnelIkeConfig *ModifyVPNAttachmentAttributeOutputTunnelOptionsSpecificationTunnelIkeConfig `json:"TunnelIkeConfig,omitzero"`
+	// TunnelIndex maps to the exact wire member TunnelIndex.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The creation order of the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46382
+	TunnelIndex *int32 `json:"TunnelIndex,omitzero"`
+	// TunnelIpsecConfig maps to the exact wire member TunnelIpsecConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Phase 2 negotiation configuration.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46388
+	TunnelIpsecConfig *ModifyVPNAttachmentAttributeOutputTunnelOptionsSpecificationTunnelIpsecConfig `json:"TunnelIpsecConfig,omitzero"`
+}
+
+// ModifyVPNAttachmentAttributeOutputTunnelOptionsSpecificationTunnelBGPConfig represents the complete DSL model ModifyVpnAttachmentAttributeResponseBody.tunnelOptionsSpecification[].tunnelBgpConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNAttachmentAttributeOutputTunnelOptionsSpecificationTunnelBGPConfig struct {
+	// LocalAsn maps to the exact wire member LocalAsn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The autonomous system number on the local end (Alibaba Cloud side) of the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46364
+	LocalAsn *int64 `json:"LocalAsn,omitzero"`
+	// LocalBGPIP maps to the exact wire member LocalBgpIp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP address on the local end (Alibaba Cloud side) of the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46365
+	LocalBGPIP *string `json:"LocalBgpIp,omitzero"`
+	// PeerAsn maps to the exact wire member PeerAsn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The autonomous system number on the peer end of the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46366
+	PeerAsn *int64 `json:"PeerAsn,omitzero"`
+	// PeerBGPIP maps to the exact wire member PeerBgpIp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP address on the peer end of the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46367
+	PeerBGPIP *string `json:"PeerBgpIp,omitzero"`
+	// TunnelCIDR maps to the exact wire member TunnelCidr.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP CIDR block of the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46368
+	TunnelCIDR *string `json:"TunnelCidr,omitzero"`
+}
+
+// ModifyVPNAttachmentAttributeOutputTunnelOptionsSpecificationTunnelIkeConfig represents the complete DSL model ModifyVpnAttachmentAttributeResponseBody.tunnelOptionsSpecification[].tunnelIkeConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNAttachmentAttributeOutputTunnelOptionsSpecificationTunnelIkeConfig struct {
+	// IkeAuthAlg maps to the exact wire member IkeAuthAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The authentication algorithm for the IKE phase.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46372
+	IkeAuthAlg *string `json:"IkeAuthAlg,omitzero"`
+	// IkeEncAlg maps to the exact wire member IkeEncAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The encryption algorithm for the IKE phase.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46373
+	IkeEncAlg *string `json:"IkeEncAlg,omitzero"`
+	// IkeLifetime maps to the exact wire member IkeLifetime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The lifetime for the IKE phase. Unit: seconds.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46374
+	IkeLifetime *int64 `json:"IkeLifetime,omitzero"`
+	// IkeMode maps to the exact wire member IkeMode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The negotiation mode of the IKE version. Valid values:
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46375
+	IkeMode *string `json:"IkeMode,omitzero"`
+	// IkePfs maps to the exact wire member IkePfs.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The DH group for the IKE phase.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46376
+	IkePfs *string `json:"IkePfs,omitzero"`
+	// IkeVersion maps to the exact wire member IkeVersion.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The IKE protocol version.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46377
+	IkeVersion *string `json:"IkeVersion,omitzero"`
+	// LocalID maps to the exact wire member LocalId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The identifier on the local end (Alibaba Cloud side) of the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46378
+	LocalID *string `json:"LocalId,omitzero"`
+	// Psk maps to the exact wire member Psk.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The pre-shared key.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46379
+	Psk *string `json:"Psk,omitzero"`
+	// RemoteID maps to the exact wire member RemoteId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The identifier on the peer end of the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46380
+	RemoteID *string `json:"RemoteId,omitzero"`
+}
+
+// ModifyVPNAttachmentAttributeOutputTunnelOptionsSpecificationTunnelIpsecConfig represents the complete DSL model ModifyVpnAttachmentAttributeResponseBody.tunnelOptionsSpecification[].tunnelIpsecConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNAttachmentAttributeOutputTunnelOptionsSpecificationTunnelIpsecConfig struct {
+	// IpsecAuthAlg maps to the exact wire member IpsecAuthAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The authentication algorithm for the IPsec phase.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46384
+	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitzero"`
+	// IpsecEncAlg maps to the exact wire member IpsecEncAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The encryption algorithm for the IPsec phase.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46385
+	IpsecEncAlg *string `json:"IpsecEncAlg,omitzero"`
+	// IpsecLifetime maps to the exact wire member IpsecLifetime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The lifetime for the IPsec phase. Unit: seconds.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46386
+	IpsecLifetime *int64 `json:"IpsecLifetime,omitzero"`
+	// IpsecPfs maps to the exact wire member IpsecPfs.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The DH group for the IPsec phase.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46387
+	IpsecPfs *string `json:"IpsecPfs,omitzero"`
+}
+
+// ModifyVPNAttachmentAttributeOutputVcoHealthCheck represents the complete DSL model ModifyVpnAttachmentAttributeResponseBody.vcoHealthCheck.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNAttachmentAttributeOutputVcoHealthCheck struct {
+	// Dip maps to the exact wire member Dip.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The destination IP address of the health check.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46392
+	Dip *string `json:"Dip,omitzero"`
+	// Enable maps to the exact wire member Enable.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Indicates whether the health check feature is enabled for the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46393
+	Enable *string `json:"Enable,omitzero"`
+	// Interval maps to the exact wire member Interval.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The retry interval of the health check. Unit: seconds.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46394
+	Interval *int32 `json:"Interval,omitzero"`
+	// Policy maps to the exact wire member Policy.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether to withdraw published routes when the health check fails.
+	//
+	// - revoke_route: Withdraws published routes.
+	// - reserve_route: Does not withdraw published routes.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46395
+	Policy *string `json:"Policy,omitzero"`
+	// Retry maps to the exact wire member Retry.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The number of retry packets sent for the health check.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46399
+	Retry *int32 `json:"Retry,omitzero"`
+	// Sip maps to the exact wire member Sip.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The source IP address of the health check.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46400
+	Sip *string `json:"Sip,omitzero"`
+}
+
+// ModifyVPNAttachmentAttributeOutputVPNBGPConfig represents the complete DSL model ModifyVpnAttachmentAttributeResponseBody.vpnBgpConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNAttachmentAttributeOutputVPNBGPConfig struct {
+	// EnableBGP maps to the exact wire member EnableBgp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Indicates whether the BGP feature is enabled for the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46405
+	EnableBGP *string `json:"EnableBgp,omitzero"`
+	// LocalAsn maps to the exact wire member LocalAsn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The autonomous system number on the Alibaba Cloud side.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46406
+	LocalAsn *int64 `json:"LocalAsn,omitzero"`
+	// LocalBGPIP maps to the exact wire member LocalBgpIp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP IP address on the Alibaba Cloud side.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46407
+	LocalBGPIP *string `json:"LocalBgpIp,omitzero"`
+	// PeerAsn maps to the exact wire member PeerAsn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The autonomous system number on the on-premises data center side.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46408
+	PeerAsn *int64 `json:"PeerAsn,omitzero"`
+	// PeerBGPIP maps to the exact wire member PeerBgpIp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP IP address on the on-premises data center side.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46409
+	PeerBGPIP *string `json:"PeerBgpIp,omitzero"`
+	// Status maps to the exact wire member Status.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP negotiation status.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46410
+	Status *string `json:"Status,omitzero"`
+	// TunnelCIDR maps to the exact wire member TunnelCidr.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The IPsec tunnel CIDR block.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46411
+	TunnelCIDR *string `json:"TunnelCidr,omitzero"`
+}
+
+// ModifyVpnConnectionAttributeInput represents the complete DSL model ModifyVpnConnectionAttributeRequest.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVpnConnectionAttributeInput struct {
+	// AutoConfigRoute maps to the exact wire member AutoConfigRoute.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether to automatically publish routes. Valid values:
+	//
+	// - true: automatically publishes routes.
+	//
+	// - false: does not automatically publish routes.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46554
+	AutoConfigRoute *bool `json:"AutoConfigRoute,omitzero"`
+	// BGPConfig maps to the exact wire member BgpConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you modify a single-tunnel mode IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46559
+	BGPConfig *string `json:"BgpConfig,omitzero"`
+	// ClientToken maps to the exact wire member ClientToken.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId of each API request is different.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46560
+	ClientToken *string `json:"ClientToken,omitzero"`
+	// EffectImmediately maps to the exact wire member EffectImmediately.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether the configuration of the IPsec-VPN connection takes effect immediately. Valid values:
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46565
+	EffectImmediately *bool `json:"EffectImmediately,omitzero"`
+	// EnableDpd maps to the exact wire member EnableDpd.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you modify a single-tunnel IPsec-VPN connection.
+	//
+	// Specifies whether to enable the Dead Peer Detection (DPD) feature. Valid values:
+	//
+	// - true: Enables the DPD feature. The IPsec initiator sends DPD packets to check whether the peer device is alive. If no correct response is received within the specified period of time, the peer is considered disconnected. The ISAKMP SA and the corresponding IPsec SA are deleted, and the security tunnel is also deleted.
+	//
+	// - false: Disables the DPD feature. The IPsec initiator does not send DPD probe packets.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46566
+	EnableDpd *bool `json:"EnableDpd,omitzero"`
+	// EnableNATTraversal maps to the exact wire member EnableNatTraversal.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you modify an IPsec-VPN connection in single-tunnel mode.
+	//
+	// Specifies whether to enable NAT traversal. Valid values:
+	//
+	// - true: enables NAT traversal. After NAT traversal is enabled, the IKE negotiation process skips UDP port number verification and can discover NAT gateway devices in the VPN tunnel.
+	//
+	// - false: disables NAT traversal.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46573
+	EnableNATTraversal *bool `json:"EnableNatTraversal,omitzero"`
+	// EnableTunnelsBGP maps to the exact wire member EnableTunnelsBgp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you modify a dual-tunnel IPsec-VPN connection.
+	//
+	// Specifies whether to enable BGP for the tunnel. Valid values: true or false.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46580
+	EnableTunnelsBGP *bool `json:"EnableTunnelsBgp,omitzero"`
+	// HealthCheckConfig maps to the exact wire member HealthCheckConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you modify a single-tunnel mode IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46583
+	HealthCheckConfig *string `json:"HealthCheckConfig,omitzero"`
+	// IkeConfig maps to the exact wire member IkeConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you modify an IPsec-VPN connection in single-tunnel mode.
+	//
+	// The configuration of Phase 1 negotiation:
+	//
+	// - IkeConfig.Psk: The pre-shared key, which is used for identity authentication between the VPN gateway and the on-premises data center.
+	//
+	// - The key must be 1 to 100 characters in length and can contain digits, uppercase letters, lowercase letters, and the following characters. It cannot contain spaces. ~!@#$%^&*()_-+={}[]|;:\\",.<>/?
+	// - If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the DescribeVpnConnection (https://help.aliyun.com/document_detail/2526951.html) operation to query the pre-shared key that is automatically generated by the system.
+	// > The pre-shared key on the IPsec-VPN connection side must be the same as the authentication key on the on-premises data center side. Otherwise, the connection between the on-premises data center and the VPN gateway cannot be established.
+	//
+	// - IkeConfig.IkeVersion: The version of the Internet Key Exchange protocol. Valid values: ikev1 and ikev2.
+	//
+	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multi-CIDR-block scenarios.
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Chinese SM-based, only ikev1 is supported for the IKE version.</ph>
+	//
+	// - IkeConfig.IkeMode: The negotiation mode of the IKE version. Valid values: main and aggressive.
+	// - main: Main mode. This mode offers high negotiation security.
+	// - aggressive: Aggressive mode. This mode offers fast negotiation and a high success rate.
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Chinese SM-based, only main is supported for the negotiation mode.</ph>
+	//
+	// - IkeConfig.IkeEncAlg: The encryption algorithm used in Phase 1 negotiation.
+	//
+	// <props="intl"><ph>Valid values: aes, aes192, aes256, des, or 3des.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is normal, valid values are aes, aes192, aes256, des, or 3des.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Chinese SM-based, the only valid value is sm4.</ph>
+	//
+	// - IkeConfig.IkeAuthAlg: The authentication algorithm used in Phase 1 negotiation.
+	//
+	// <props="intl"><ph>Valid values: md5, sha1, sha256, sha384, or sha512.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is normal, valid values are md5, sha1, sha256, sha384, or sha512.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Chinese SM-based, the only valid value is sm3.</ph>
+	//
+	// - IkeConfig.IkePfs: The Diffie-Hellman key exchange algorithm used in Phase 1 negotiation. Valid values: group1, group2, group5, or group14.
+	//
+	// - IkeConfig.IkeLifetime: The lifetime of the SA negotiated in Phase 1. Unit: seconds. Valid values: 0 to 86400.
+	//
+	// - IkeConfig.LocalId: The identifier of the VPN gateway. The identifier can be up to 100 characters in length and cannot contain spaces. The default value is the IP address of the VPN gateway.
+	//
+	// - IkeConfig.RemoteId: The identifier of the customer gateway. The identifier can be up to 100 characters in length and cannot contain spaces. The default value is the IP address of the customer gateway.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46584
+	IkeConfig *string `json:"IkeConfig,omitzero"`
+	// IpsecConfig maps to the exact wire member IpsecConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you modify a single-tunnel IPsec-VPN connection.
+	//
+	// The configuration of Phase 2 negotiation:
+	//
+	// - IpsecConfig.IpsecEncAlg: The encryption algorithm used in Phase 2 negotiation.
+	//
+	// <props="intl"><ph>Valid values: aes, aes192, aes256, des, or 3des.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Normal, valid values: aes, aes192, aes256, des, or 3des.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is ShangMi, the only valid value is sm4.</ph>
+	//
+	// - IpsecConfig.IpsecAuthAlg: The authentication algorithm used in Phase 2 negotiation.
+	//
+	// <props="intl"><ph>Valid values: md5, sha1, sha256, sha384, sha512.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Normal, valid values: md5, sha1, sha256, sha384, sha512.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is ShangMi, the only valid value is sm3.</ph>
+	//
+	// - IpsecConfig.IpsecPfs: The Diffie-Hellman key exchange algorithm used in Phase 1 negotiation for forwarding packets of all protocols. Valid values: disabled, group1, group2, group5, group14.
+	//
+	// - IpsecConfig.IpsecLifetime: The lifetime of the security association (SA) established in Phase 2 negotiation. Unit: seconds. Valid values: 0 to 86400.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46629
+	IpsecConfig *string `json:"IpsecConfig,omitzero"`
+	// LocalSubnet maps to the exact wire member LocalSubnet.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The CIDR block on the VPC side that needs to communicate with the on-premises data center. This parameter is used for Phase 2 negotiation.
+	//
+	// Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
+	//
+	// Description of the IPsec-VPN connection routing mode:
+	//
+	// - If both LocalSubnet and RemoteSubnet are set to 0.0.0.0/0, the destination routing mode is used.
+	// - If both LocalSubnet and RemoteSubnet are set to specific CIDR blocks, the protected data flow mode is used.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46652
+	LocalSubnet *string `json:"LocalSubnet,omitzero"`
+	// Name maps to the exact wire member Name.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The name of the IPsec-VPN connection.
+	//
+	// The name must be 1 to 100 characters in length and cannot start with [link omitted] or [link omitted]
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46660
+	Name *string `json:"Name,omitzero"`
+	// OwnerAccount maps to the exact wire member OwnerAccount.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	OwnerAccount *string `json:"OwnerAccount,omitzero"`
+	// OwnerID maps to the exact wire member OwnerId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	OwnerID *int64 `json:"OwnerId,omitzero"`
+	// RegionID maps to the exact wire member RegionId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The region ID of the IPsec-VPN connection.
+	//
+	// You can call the DescribeRegions (https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46665
+	RegionID *string `json:"RegionId,omitzero"`
+	// RemoteCaCertificate maps to the exact wire member RemoteCaCertificate.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// This parameter is supported when you modify a single-tunnel mode IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46670
+	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitzero"`
+	// RemoteSubnet maps to the exact wire member RemoteSubnet.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The CIDR block on the on-premises data center side, used for Phase 2 negotiation.
+	//
+	// Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.
+	//
+	// Description of the routing mode for the IPsec-VPN connection:
+	//
+	// - If both LocalSubnet and RemoteSubnet are set to 0.0.0.0/0, the destination routing mode is used.
+	// - If both LocalSubnet and RemoteSubnet are set to specific CIDR blocks, the protected data flow mode is used.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46671
+	RemoteSubnet *string `json:"RemoteSubnet,omitzero"`
+	// ResourceOwnerAccount maps to the exact wire member ResourceOwnerAccount.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitzero"`
+	// ResourceOwnerID maps to the exact wire member ResourceOwnerId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	ResourceOwnerID *int64 `json:"ResourceOwnerId,omitzero"`
+	// TunnelOptionsSpecification maps to the exact wire member TunnelOptionsSpecification.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The tunnel configurations to modify.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46749
+	// Sent in the form body with one-based repeated indexes, rather than the URL query.
+	TunnelOptionsSpecification []ModifyVPNConnectionAttributeInputTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitzero" rpcLocation:"form"`
+	// VPNConnectionID maps to the exact wire member VpnConnectionId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the IPsec-VPN connection.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46750
+	VPNConnectionID *string `json:"VpnConnectionId,omitzero"`
+}
+
+// ModifyVPNConnectionAttributeInputTunnelOptionsSpecification represents the complete DSL model ModifyVpnConnectionAttributeRequest.tunnelOptionsSpecification[].
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNConnectionAttributeInputTunnelOptionsSpecification struct {
+	// CustomerGatewayID maps to the exact wire member CustomerGatewayId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The instance ID of the customer gateway associated with the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46683
+	CustomerGatewayID *string `json:"CustomerGatewayId,omitzero"`
+	// EnableDpd maps to the exact wire member EnableDpd.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether to enable the Dead Peer Detection (DPD) feature for the tunnel. Valid values:
+	//
+	// - true: Enables the DPD feature. The IPsec initiator sends DPD packets to check whether the peer device is alive. If no correct response is received within the specified period of time, the peer is considered disconnected. The ISAKMP SA and the corresponding IPsec SA are deleted, and the security tunnel is also deleted.
+	//
+	// - false: Disables the DPD feature. The IPsec initiator does not send DPD packets.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46684
+	EnableDpd *bool `json:"EnableDpd,omitzero"`
+	// EnableNATTraversal maps to the exact wire member EnableNatTraversal.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Specifies whether to enable NAT traversal for the tunnel. Valid values:
+	//
+	// - true: Enables NAT traversal. After NAT traversal is enabled, the IKE negotiation process skips UDP port number verification and can discover NAT gateway devices in the VPN tunnel.
+	//
+	// - false: Disables NAT traversal.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46689
+	EnableNATTraversal *bool `json:"EnableNatTraversal,omitzero"`
+	// RemoteCaCertificate maps to the exact wire member RemoteCaCertificate.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// If the current VPN gateway instance is a Chinese SM-based VPN gateway, you can modify the peer CA certificate for the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46694
+	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitzero"`
+	// Role maps to the exact wire member Role.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The role of the tunnel.
+	//
+	// - master: The current tunnel is the primary tunnel.
+	// - slave: The current tunnel is the secondary tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46695
+	Role *string `json:"Role,omitzero"`
+	// TunnelBGPConfig maps to the exact wire member TunnelBgpConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP configuration of the tunnel to modify.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46707
+	TunnelBGPConfig *ModifyVPNConnectionAttributeInputTunnelOptionsSpecificationTunnelBGPConfig `json:"TunnelBgpConfig,omitzero"`
+	// TunnelID maps to the exact wire member TunnelId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The tunnel ID.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46708
+	TunnelID *string `json:"TunnelId,omitzero"`
+	// TunnelIkeConfig maps to the exact wire member TunnelIkeConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Phase 1 negotiation configuration.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46733
+	TunnelIkeConfig *ModifyVPNConnectionAttributeInputTunnelOptionsSpecificationTunnelIkeConfig `json:"TunnelIkeConfig,omitzero"`
+	// TunnelIpsecConfig maps to the exact wire member TunnelIpsecConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Phase 2 negotiation configuration.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46747
+	TunnelIpsecConfig *ModifyVPNConnectionAttributeInputTunnelOptionsSpecificationTunnelIpsecConfig `json:"TunnelIpsecConfig,omitzero"`
+}
+
+// ModifyVPNConnectionAttributeInputTunnelOptionsSpecificationTunnelBGPConfig represents the complete DSL model ModifyVpnConnectionAttributeRequest.tunnelOptionsSpecification[].tunnelBgpConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNConnectionAttributeInputTunnelOptionsSpecificationTunnelBGPConfig struct {
+	// LocalAsn maps to the exact wire member LocalAsn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The autonomous system number (ASN) on the Alibaba Cloud side. Valid values: 1 to 4294967295. Default value: 45104.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46700
+	LocalAsn *int64 `json:"LocalAsn,omitzero"`
+	// LocalBGPIP maps to the exact wire member LocalBgpIp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP IP address on the Alibaba Cloud side. This address is an IP address within the BGP CIDR block.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46701
+	LocalBGPIP *string `json:"LocalBgpIp,omitzero"`
+	// TunnelCIDR maps to the exact wire member TunnelCidr.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP CIDR block of the tunnel.
+	//
+	// The CIDR block must be a /30 CIDR block within 169.254.0.0/16, and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, or 169.254.169.252/30.
+	//
+	// >Within a VPN gateway instance, the BGP CIDR block of each tunnel must be unique.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46702
+	TunnelCIDR *string `json:"TunnelCidr,omitzero"`
+}
+
+// ModifyVPNConnectionAttributeInputTunnelOptionsSpecificationTunnelIkeConfig represents the complete DSL model ModifyVpnConnectionAttributeRequest.tunnelOptionsSpecification[].tunnelIkeConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNConnectionAttributeInputTunnelOptionsSpecificationTunnelIkeConfig struct {
+	// IkeAuthAlg maps to the exact wire member IkeAuthAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The authentication algorithm for Phase 1 negotiation.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46710
+	IkeAuthAlg *string `json:"IkeAuthAlg,omitzero"`
+	// IkeEncAlg maps to the exact wire member IkeEncAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The encryption algorithm used in Phase 1 negotiations.
+	//
+	// <props="intl"><ph>Valid values: aes, aes192, aes256, des, or 3des.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Normal, valid values are aes, aes192, aes256, des, or 3des.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Chinese SM, the only valid value is sm4.</ph>
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46711
+	IkeEncAlg *string `json:"IkeEncAlg,omitzero"`
+	// IkeLifetime maps to the exact wire member IkeLifetime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The lifetime of the security association (SA) generated by Phase 1 negotiation. Unit: seconds. Valid values: 0 to 86400.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46718
+	IkeLifetime *int64 `json:"IkeLifetime,omitzero"`
+	// IkeMode maps to the exact wire member IkeMode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The negotiation mode of the IKE version. Valid values:
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46719
+	IkeMode *string `json:"IkeMode,omitzero"`
+	// IkePfs maps to the exact wire member IkePfs.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Diffie-Hellman key exchange algorithm used in Phase 1 negotiation. Valid values: group1, group2, group5, and group14.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46720
+	IkePfs *string `json:"IkePfs,omitzero"`
+	// IkeVersion maps to the exact wire member IkeVersion.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The version of the IKE protocol. Valid values: ikev1 and ikev2.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46721
+	IkeVersion *string `json:"IkeVersion,omitzero"`
+	// LocalID maps to the exact wire member LocalId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The identifier on the Alibaba Cloud side, which is used for Phase 1 negotiation. The value can be up to 100 characters in length and cannot contain spaces. The default value is the IP address of the tunnel.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46722
+	LocalID *string `json:"LocalId,omitzero"`
+	// Psk maps to the exact wire member Psk.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The pre-shared key, which is used for identity authentication between the tunnel and the tunnel peer.
+	//
+	// - The key must be 1 to 100 characters in length and can contain digits, uppercase letters, lowercase letters, and the following characters. It cannot contain spaces. ~!\\@#$%^&*()_-+={}[]|;:\\",.<>/?
+	//
+	// - If you do not specify a pre-shared key, the system randomly generates a 16-character string as the pre-shared key. You can call the DescribeVpnConnection (https://help.aliyun.com/document_detail/2526951.html) operation to query the pre-shared key automatically generated by the system.
+	//
+	// > The pre-shared keys of the tunnel and the tunnel peer must be the same. Otherwise, the tunnel cannot be established.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46723
+	Psk *string `json:"Psk,omitzero"`
+	// RemoteID maps to the exact wire member RemoteId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The identifier of the tunnel peer, used for Phase 1 negotiation. The value can be up to 100 characters in length and cannot contain spaces. Default value: the IP address of the customer gateway associated with the tunnel.
+	//
+	// RemoteId supports the FQDN format. If you use the FQDN format, set the negotiation mode to aggressive.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46730
+	RemoteID *string `json:"RemoteId,omitzero"`
+}
+
+// ModifyVPNConnectionAttributeInputTunnelOptionsSpecificationTunnelIpsecConfig represents the complete DSL model ModifyVpnConnectionAttributeRequest.tunnelOptionsSpecification[].tunnelIpsecConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNConnectionAttributeInputTunnelOptionsSpecificationTunnelIpsecConfig struct {
+	// IpsecAuthAlg maps to the exact wire member IpsecAuthAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The authentication algorithm for Phase 2 negotiation.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46735
+	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitzero"`
+	// IpsecEncAlg maps to the exact wire member IpsecEncAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The encryption algorithm used in Phase 2 negotiations.
+	//
+	// <props="intl"><ph>Valid values: aes, aes192, aes256, des, or 3des.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Normal, valid values are aes, aes192, aes256, des, or 3des.</ph>
+	//
+	// <props="china"><ph>If the VPN gateway instance type is Chinese SM, the only valid value is sm4.</ph>
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46736
+	IpsecEncAlg *string `json:"IpsecEncAlg,omitzero"`
+	// IpsecLifetime maps to the exact wire member IpsecLifetime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The lifetime of the SA generated by Phase 2 negotiation. Unit: seconds. Valid values: 0 to 86400.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46743
+	IpsecLifetime *int32 `json:"IpsecLifetime,omitzero"`
+	// IpsecPfs maps to the exact wire member IpsecPfs.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Diffie-Hellman key exchange algorithm used in phase 2 negotiation.
+	//
+	// Valid values: disabled, group1, group2, group5, group14.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46744
+	IpsecPfs *string `json:"IpsecPfs,omitzero"`
+}
+
+// ModifyVpnConnectionAttributeResponse represents the complete DSL model ModifyVpnConnectionAttributeResponse.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVpnConnectionAttributeResponse struct {
+	// Headers maps to the exact wire member headers.
+	Headers map[string]string `json:"headers,omitzero"`
+	// StatusCode maps to the exact wire member statusCode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	StatusCode *int32 `json:"statusCode,omitzero"`
+	// Body maps to the exact wire member body.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	Body *ModifyVpnConnectionAttributeOutput `json:"body,omitzero"`
+}
+
+// ModifyVpnConnectionAttributeOutput represents the complete DSL model ModifyVpnConnectionAttributeResponseBody.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVpnConnectionAttributeOutput struct {
+	// CreateTime maps to the exact wire member CreateTime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The timestamp when the IPsec-VPN connection was created. Unit: milliseconds.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46756
+	CreateTime *int64 `json:"CreateTime,omitzero"`
+	// CustomerGatewayID maps to the exact wire member CustomerGatewayId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the customer gateway associated with the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46757
+	CustomerGatewayID *string `json:"CustomerGatewayId,omitzero"`
+	// Description maps to the exact wire member Description.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The description of the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46758
+	Description *string `json:"Description,omitzero"`
+	// EffectImmediately maps to the exact wire member EffectImmediately.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Indicates whether the IPsec-VPN connection configuration takes effect immediately.
+	//
+	// - true: The system immediately initiates IPsec protocol negotiation after the configuration is complete.
+	//
+	// - false: The system initiates IPsec protocol negotiation only when traffic enters.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46759
+	EffectImmediately *bool `json:"EffectImmediately,omitzero"`
+	// EnableDpd maps to the exact wire member EnableDpd.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Indicates whether Dead Peer Detection (DPD) is enabled for the IPsec-VPN connection.
+	//
+	// - false: Not enabled.
+	//
+	// - true: Enabled.
+	//
+	// This parameter is returned only for IPsec-VPN connections in single-tunnel mode.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46764
+	EnableDpd *bool `json:"EnableDpd,omitzero"`
+	// EnableNATTraversal maps to the exact wire member EnableNatTraversal.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Indicates whether NAT traversal is enabled for the IPsec-VPN connection. Valid values:
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46771
+	EnableNATTraversal *bool `json:"EnableNatTraversal,omitzero"`
+	// EnableTunnelsBGP maps to the exact wire member EnableTunnelsBgp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP status of the tunnel.
+	//
+	// - true: enabled.
+	// - false: disabled.
+	//
+	// This parameter is returned only for IPsec-VPN connections in dual-tunnel mode.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46772
+	EnableTunnelsBGP *bool `json:"EnableTunnelsBgp,omitzero"`
+	// IkeConfig maps to the exact wire member IkeConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The configuration of Phase 1 negotiation.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46796
+	IkeConfig *ModifyVPNConnectionAttributeOutputIkeConfig `json:"IkeConfig,omitzero"`
+	// IpsecConfig maps to the exact wire member IpsecConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The configuration of Phase 2 negotiation.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46802
+	IpsecConfig *ModifyVPNConnectionAttributeOutputIpsecConfig `json:"IpsecConfig,omitzero"`
+	// LocalSubnet maps to the exact wire member LocalSubnet.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The CIDR block on the VPC side.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46803
+	LocalSubnet *string `json:"LocalSubnet,omitzero"`
+	// Name maps to the exact wire member Name.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The name of the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46804
+	Name *string `json:"Name,omitzero"`
+	// RemoteSubnet maps to the exact wire member RemoteSubnet.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The CIDR block on the on-premises data center side.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46805
+	RemoteSubnet *string `json:"RemoteSubnet,omitzero"`
+	// RequestID maps to the exact wire member RequestId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The request ID.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46806
+	RequestID *string `json:"RequestId,omitzero"`
+	// ResourceGroupID maps to the exact wire member ResourceGroupId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the resource group to which the IPsec-VPN connection belongs.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46807
+	ResourceGroupID *string `json:"ResourceGroupId,omitzero"`
+	// TunnelOptionsSpecification maps to the exact wire member TunnelOptionsSpecification.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	TunnelOptionsSpecification *ModifyVPNConnectionAttributeOutputTunnelOptionsSpecification `json:"TunnelOptionsSpecification,omitzero"`
+	// VcoHealthCheck maps to the exact wire member VcoHealthCheck.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The health check configuration.
+	//
+	// Parameters in the VcoHealthCheck array are returned only for IPsec-VPN connections in single-tunnel mode.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46857
+	VcoHealthCheck *ModifyVPNConnectionAttributeOutputVcoHealthCheck `json:"VcoHealthCheck,omitzero"`
+	// VPNBGPConfig maps to the exact wire member VpnBgpConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP configuration.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46868
+	VPNBGPConfig *ModifyVPNConnectionAttributeOutputVPNBGPConfig `json:"VpnBgpConfig,omitzero"`
+	// VPNConnectionID maps to the exact wire member VpnConnectionId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46869
+	VPNConnectionID *string `json:"VpnConnectionId,omitzero"`
+	// VPNGatewayID maps to the exact wire member VpnGatewayId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The ID of the VPN gateway instance.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46870
+	VPNGatewayID *string `json:"VpnGatewayId,omitzero"`
+	// Metadata contains request identity, HTTP status and attempt count.
+	Metadata alicloud.Metadata `json:"-"`
+}
+
+// ModifyVPNConnectionAttributeOutputIkeConfig represents the complete DSL model ModifyVpnConnectionAttributeResponseBody.ikeConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNConnectionAttributeOutputIkeConfig struct {
+	// IkeAuthAlg maps to the exact wire member IkeAuthAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The authentication algorithm of the IKE phase.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46779
+	IkeAuthAlg *string `json:"IkeAuthAlg,omitzero"`
+	// IkeEncAlg maps to the exact wire member IkeEncAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The encryption algorithm of the IKE phase.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46780
+	IkeEncAlg *string `json:"IkeEncAlg,omitzero"`
+	// IkeLifetime maps to the exact wire member IkeLifetime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The lifetime of the IKE phase. Unit: seconds.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46781
+	IkeLifetime *int64 `json:"IkeLifetime,omitzero"`
+	// IkeMode maps to the exact wire member IkeMode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The IKE negotiation mode.
+	//
+	// - main: Main mode. The negotiation process is highly secure.
+	// - aggressive: Aggressive mode. Negotiation is fast and has a high success rate.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46782
+	IkeMode *string `json:"IkeMode,omitzero"`
+	// IkePfs maps to the exact wire member IkePfs.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The DH group of the IKE phase.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46786
+	IkePfs *string `json:"IkePfs,omitzero"`
+	// IkeVersion maps to the exact wire member IkeVersion.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The IKE protocol version.
+	//
+	// - ikev1
+	// - ikev2
+	//
+	// Compared with IKEv1, IKEv2 simplifies the SA negotiation process and provides better support for multi-CIDR-block scenarios.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46787
+	IkeVersion *string `json:"IkeVersion,omitzero"`
+	// LocalID maps to the exact wire member LocalId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The identifier on the VPC side. FQDN and IP formats are supported. The default value is the IP address of the selected VPN gateway.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46793
+	LocalID *string `json:"LocalId,omitzero"`
+	// Psk maps to the exact wire member Psk.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The pre-shared key.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46794
+	Psk *string `json:"Psk,omitzero"`
+	// RemoteID maps to the exact wire member RemoteId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The identifier on the on-premises data center side. FQDN and IP formats are supported. The default value is the IP address of the selected customer gateway.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46795
+	RemoteID *string `json:"RemoteId,omitzero"`
+}
+
+// ModifyVPNConnectionAttributeOutputIpsecConfig represents the complete DSL model ModifyVpnConnectionAttributeResponseBody.ipsecConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNConnectionAttributeOutputIpsecConfig struct {
+	// IpsecAuthAlg maps to the exact wire member IpsecAuthAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The authentication algorithm of the IPsec phase.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46798
+	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitzero"`
+	// IpsecEncAlg maps to the exact wire member IpsecEncAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The encryption algorithm of the IPsec phase.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46799
+	IpsecEncAlg *string `json:"IpsecEncAlg,omitzero"`
+	// IpsecLifetime maps to the exact wire member IpsecLifetime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The lifetime of the IPsec phase. Unit: seconds.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46800
+	IpsecLifetime *int64 `json:"IpsecLifetime,omitzero"`
+	// IpsecPfs maps to the exact wire member IpsecPfs.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The DH group of the IPsec phase.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46801
+	IpsecPfs *string `json:"IpsecPfs,omitzero"`
+}
+
+// ModifyVPNConnectionAttributeOutputTunnelOptionsSpecification represents the complete DSL model ModifyVpnConnectionAttributeResponseBody.tunnelOptionsSpecification.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNConnectionAttributeOutputTunnelOptionsSpecification struct {
+	// TunnelOptions maps to the exact wire member TunnelOptions.
+	TunnelOptions []ModifyVPNConnectionAttributeOutputTunnelOptionsSpecificationTunnelOptions `json:"TunnelOptions,omitzero"`
+}
+
+// ModifyVPNConnectionAttributeOutputTunnelOptionsSpecificationTunnelOptions represents the complete DSL model ModifyVpnConnectionAttributeResponseBody.tunnelOptionsSpecification.tunnelOptions[].
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNConnectionAttributeOutputTunnelOptionsSpecificationTunnelOptions struct {
+	// CustomerGatewayID maps to the exact wire member CustomerGatewayId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	CustomerGatewayID *string `json:"CustomerGatewayId,omitzero"`
+	// EnableDpd maps to the exact wire member EnableDpd.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	EnableDpd *bool `json:"EnableDpd,omitzero"`
+	// EnableNATTraversal maps to the exact wire member EnableNatTraversal.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	EnableNATTraversal *bool `json:"EnableNatTraversal,omitzero"`
+	// InternetIP maps to the exact wire member InternetIp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	InternetIP *string `json:"InternetIp,omitzero"`
+	// RemoteCaCertificate maps to the exact wire member RemoteCaCertificate.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	RemoteCaCertificate *string `json:"RemoteCaCertificate,omitzero"`
+	// Role maps to the exact wire member Role.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	Role *string `json:"Role,omitzero"`
+	// State maps to the exact wire member State.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	State *string `json:"State,omitzero"`
+	// TunnelBGPConfig maps to the exact wire member TunnelBgpConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	TunnelBGPConfig *ModifyVPNConnectionAttributeOutputTunnelOptionsSpecificationTunnelOptionsTunnelBGPConfig `json:"TunnelBgpConfig,omitzero"`
+	// TunnelID maps to the exact wire member TunnelId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	TunnelID *string `json:"TunnelId,omitzero"`
+	// TunnelIkeConfig maps to the exact wire member TunnelIkeConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	TunnelIkeConfig *ModifyVPNConnectionAttributeOutputTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig `json:"TunnelIkeConfig,omitzero"`
+	// TunnelIpsecConfig maps to the exact wire member TunnelIpsecConfig.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	TunnelIpsecConfig *ModifyVPNConnectionAttributeOutputTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig `json:"TunnelIpsecConfig,omitzero"`
+	// ZoneNo maps to the exact wire member ZoneNo.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	ZoneNo *string `json:"ZoneNo,omitzero"`
+}
+
+// ModifyVPNConnectionAttributeOutputTunnelOptionsSpecificationTunnelOptionsTunnelBGPConfig represents the complete DSL model ModifyVpnConnectionAttributeResponseBody.tunnelOptionsSpecification.tunnelOptions[].tunnelBgpConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNConnectionAttributeOutputTunnelOptionsSpecificationTunnelOptionsTunnelBGPConfig struct {
+	// LocalAsn maps to the exact wire member LocalAsn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	LocalAsn *int64 `json:"LocalAsn,omitzero"`
+	// LocalBGPIP maps to the exact wire member LocalBgpIp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	LocalBGPIP *string `json:"LocalBgpIp,omitzero"`
+	// PeerAsn maps to the exact wire member PeerAsn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	PeerAsn *int64 `json:"PeerAsn,omitzero"`
+	// PeerBGPIP maps to the exact wire member PeerBgpIp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	PeerBGPIP *string `json:"PeerBgpIp,omitzero"`
+	// TunnelCIDR maps to the exact wire member TunnelCidr.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	TunnelCIDR *string `json:"TunnelCidr,omitzero"`
+}
+
+// ModifyVPNConnectionAttributeOutputTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig represents the complete DSL model ModifyVpnConnectionAttributeResponseBody.tunnelOptionsSpecification.tunnelOptions[].tunnelIkeConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNConnectionAttributeOutputTunnelOptionsSpecificationTunnelOptionsTunnelIkeConfig struct {
+	// IkeAuthAlg maps to the exact wire member IkeAuthAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	IkeAuthAlg *string `json:"IkeAuthAlg,omitzero"`
+	// IkeEncAlg maps to the exact wire member IkeEncAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	IkeEncAlg *string `json:"IkeEncAlg,omitzero"`
+	// IkeLifetime maps to the exact wire member IkeLifetime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	IkeLifetime *int64 `json:"IkeLifetime,omitzero"`
+	// IkeMode maps to the exact wire member IkeMode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	IkeMode *string `json:"IkeMode,omitzero"`
+	// IkePfs maps to the exact wire member IkePfs.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	IkePfs *string `json:"IkePfs,omitzero"`
+	// IkeVersion maps to the exact wire member IkeVersion.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	IkeVersion *string `json:"IkeVersion,omitzero"`
+	// LocalID maps to the exact wire member LocalId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	LocalID *string `json:"LocalId,omitzero"`
+	// Psk maps to the exact wire member Psk.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	Psk *string `json:"Psk,omitzero"`
+	// RemoteID maps to the exact wire member RemoteId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	RemoteID *string `json:"RemoteId,omitzero"`
+}
+
+// ModifyVPNConnectionAttributeOutputTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig represents the complete DSL model ModifyVpnConnectionAttributeResponseBody.tunnelOptionsSpecification.tunnelOptions[].tunnelIpsecConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNConnectionAttributeOutputTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig struct {
+	// IpsecAuthAlg maps to the exact wire member IpsecAuthAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitzero"`
+	// IpsecEncAlg maps to the exact wire member IpsecEncAlg.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	IpsecEncAlg *string `json:"IpsecEncAlg,omitzero"`
+	// IpsecLifetime maps to the exact wire member IpsecLifetime.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	IpsecLifetime *int64 `json:"IpsecLifetime,omitzero"`
+	// IpsecPfs maps to the exact wire member IpsecPfs.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	IpsecPfs *string `json:"IpsecPfs,omitzero"`
+}
+
+// ModifyVPNConnectionAttributeOutputVcoHealthCheck represents the complete DSL model ModifyVpnConnectionAttributeResponseBody.vcoHealthCheck.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNConnectionAttributeOutputVcoHealthCheck struct {
+	// Dip maps to the exact wire member Dip.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The destination IP address.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46848
+	Dip *string `json:"Dip,omitzero"`
+	// Enable maps to the exact wire member Enable.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// Indicates whether the health check feature is enabled for the IPsec-VPN connection.
+	//
+	// - true: Enabled.
+	//
+	// - false: Not enabled.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46849
+	Enable *string `json:"Enable,omitzero"`
+	// Interval maps to the exact wire member Interval.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The retry interval of the health check. Unit: seconds.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46854
+	Interval *int32 `json:"Interval,omitzero"`
+	// Retry maps to the exact wire member Retry.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The number of retry packets sent for the health check.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46855
+	Retry *int32 `json:"Retry,omitzero"`
+	// Sip maps to the exact wire member Sip.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The source IP address.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46856
+	Sip *string `json:"Sip,omitzero"`
+}
+
+// ModifyVPNConnectionAttributeOutputVPNBGPConfig represents the complete DSL model ModifyVpnConnectionAttributeResponseBody.vpnBgpConfig.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type ModifyVPNConnectionAttributeOutputVPNBGPConfig struct {
+	// EnableBGP maps to the exact wire member EnableBgp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The enabling status of BGP.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46861
+	EnableBGP *string `json:"EnableBgp,omitzero"`
+	// LocalAsn maps to the exact wire member LocalAsn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The autonomous system number on the Alibaba Cloud side.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46862
+	LocalAsn *int32 `json:"LocalAsn,omitzero"`
+	// LocalBGPIP maps to the exact wire member LocalBgpIp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP address on the Alibaba Cloud side.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46863
+	LocalBGPIP *string `json:"LocalBgpIp,omitzero"`
+	// PeerAsn maps to the exact wire member PeerAsn.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The autonomous system number on the on-premises data center side.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46864
+	PeerAsn *int32 `json:"PeerAsn,omitzero"`
+	// PeerBGPIP maps to the exact wire member PeerBgpIp.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP address on the on-premises data center side.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46865
+	PeerBGPIP *string `json:"PeerBgpIp,omitzero"`
+	// Status maps to the exact wire member Status.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP negotiation status.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46866
+	Status *string `json:"Status,omitzero"`
+	// TunnelCIDR maps to the exact wire member TunnelCidr.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The BGP CIDR block of the IPsec-VPN connection.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L46867
+	TunnelCIDR *string `json:"TunnelCidr,omitzero"`
+}
+
 // ModifyVpnGatewayAttributeInput represents the complete DSL model ModifyVpnGatewayAttributeRequest.
 // Optional pointers preserve absence; callers must not mutate inputs during a call.
 type ModifyVpnGatewayAttributeInput struct {
@@ -66496,6 +70619,110 @@ type RevokeInstanceFromCenOutput struct {
 	// The request ID.
 	//
 	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49708
+	RequestID *string `json:"RequestId,omitzero"`
+	// Metadata contains request identity, HTTP status and attempt count.
+	Metadata alicloud.Metadata `json:"-"`
+}
+
+// RevokeInstanceFromVbrInput represents the complete DSL model RevokeInstanceFromVbrRequest.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type RevokeInstanceFromVbrInput struct {
+	// GrantType maps to the exact wire member GrantType.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The scope of VBR instances for which the VPC-connected instance authorization is being revoked. Valid values:
+	//
+	// - ALL: Revokes the VPC-connected instance authorization for all VBR instances in the specified region. In this case, the VbrInstanceIds parameter can be left empty.
+	//
+	// - Specify: Revokes the VPC-connected instance authorization for the specified VBR instances. In this case, the VbrInstanceIds parameter is required.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49792
+	GrantType *string `json:"GrantType,omitzero"`
+	// InstanceID maps to the exact wire member InstanceId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The instance ID of the VPC-connected instance for which you want to revoke the authorization.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49799
+	InstanceID *string `json:"InstanceId,omitzero"`
+	// RegionID maps to the exact wire member RegionId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The region ID of the VPC-connected instance for which you want to revoke the authorization.
+	//
+	// You can invoke the DescribeRegions (https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49802
+	RegionID *string `json:"RegionId,omitzero"`
+	// VbrInstanceIDs maps to the exact wire member VbrInstanceIds.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The list of VBR instance IDs for which the VPC-connected instance authorization is being revoked.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49807
+	// Encoded as one comma-separated value; nil is omitted and a non-nil empty slice sends an empty value.
+	VbrInstanceIDs []string `json:"VbrInstanceIds,omitzero" rpc:"simple"`
+	// VbrOwnerUid maps to the exact wire member VbrOwnerUid.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The Alibaba Cloud account ID of the VBR instance for which the authorization is being revoked.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49808
+	VbrOwnerUid *string `json:"VbrOwnerUid,omitzero"`
+	// VbrRegionNo maps to the exact wire member VbrRegionNo.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The region ID of the VBR instance for which the VPC-connected instance authorization is being revoked.
+	//
+	// This parameter is required.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49811
+	VbrRegionNo *string `json:"VbrRegionNo,omitzero"`
+}
+
+// RevokeInstanceFromVbrResponse represents the complete DSL model RevokeInstanceFromVbrResponse.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type RevokeInstanceFromVbrResponse struct {
+	// Headers maps to the exact wire member headers.
+	Headers map[string]string `json:"headers,omitzero"`
+	// StatusCode maps to the exact wire member statusCode.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	StatusCode *int32 `json:"statusCode,omitzero"`
+	// Body maps to the exact wire member body.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	Body *RevokeInstanceFromVbrOutput `json:"body,omitzero"`
+}
+
+// RevokeInstanceFromVbrOutput represents the complete DSL model RevokeInstanceFromVbrResponseBody.
+// Optional pointers preserve absence; callers must not mutate inputs during a call.
+type RevokeInstanceFromVbrOutput struct {
+	// RequestID maps to the exact wire member RequestId.
+	// Nil omits this member; non-nil scalar pointers preserve explicit zero values.
+	//
+	// Upstream service documentation (Apache-2.0; informational, not SDK validation):
+	//
+	// The request ID.
+	//
+	// Source: https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/main.tea#L49842
 	RequestID *string `json:"RequestId,omitzero"`
 	// Metadata contains request identity, HTTP status and attempt count.
 	Metadata alicloud.Metadata `json:"-"`

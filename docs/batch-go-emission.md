@@ -63,3 +63,5 @@ go run ./internal/cmd/sdkgen product-check -operations ecs/DescribeImages,sts/As
 - Pagination provenance: existing shared engine was committed directly on main as `61d2581` (issue #7); native generated adapters/options as `89e1d07` (issue #28), without a dedicated historical PR.
 - New product-wide paginator/waiter policies and adapters will be reviewed in the PR for #37, after this emission PR.
 - Policies name input/output cursors, collection paths, size/defaults and termination rules, rather than guessing capabilities from field or operation names.
+
+- #85 extends the emitter to explicit query/form locations, simple string arrays and native GET. VPC emits 403 actions/1,728 models. See [the completion contract](vpc-rpc-completion.md); old query-only POST limits are superseded within this reviewed scope.

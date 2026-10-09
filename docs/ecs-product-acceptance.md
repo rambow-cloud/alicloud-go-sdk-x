@@ -57,3 +57,5 @@
 - #81 guide correction: discovery now precedes Go emission in the tool commands. All 29 consumer cases and 24 product subtests PASS at 29d468ad5f8999e92b4e60e4140cb8432efb8a13; machine records use this pin. Go/runtime/source/policy behavior is unchanged from the locally checked e33e5f93d856027569969056e9d4c25e92e51212 workload, so its unaffected gates are reused. Final-head CI remains required on PR #82.
 
 - #83 expansion/regression: 380 ECS actions compile; the existing 10 consumer cases and 14 subtests PASS at 01f25a9a571c3b59024dfbef7e2e96f7605f4a55. Additional root JSON/ownership/cancellation tests and Example PASS. Earlier live evidence stays pinned to its original revision; no all-action live claim.
+
+- #85 regression: ECS remains 380 compiled actions/2,053 models. Ten consumer cases/14 subtests PASS at 72d92d11b5066eb8b6b38a90cf2734c91ef4a1ea. Native VPC wire expansion does not broaden ECS live scope.

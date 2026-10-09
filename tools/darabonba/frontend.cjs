@@ -268,6 +268,8 @@ function lowerOperation(ast, operation) {
   const statements = fn.functionBody.stmts.stmts;
   const inputName = requestless ? null : lex(params[0].paramName);
   const transforms = new Map();
+  const transformEncodings = new Map();
+  let wholeQuery = false;
   let queryFields = inputFields;
   let index = 0;
   if (!requestless) {
@@ -357,10 +359,15 @@ function lowerOperation(ast, operation) {
             call.args[1].type === "string" &&
             call.args[1].value.string === wire(field) &&
             call.args[2].type === "string" &&
-            call.args[2].value.string === "json",
+            ["json", "simple"].includes(call.args[2].value.string),
           "shrink JSON transform",
         );
+        if (call.args[2].value.string === "simple") {
+          const schema = shape(field.fieldValue, models);
+          requireProfile(schema.type === "array" && schema.items.type === "string", "shrink simple string array");
+        }
         transforms.set(target, original);
+        transformEncodings.set(target, call.args[2].value.string);
       }
       requireProfile(
         [...queryFields].every(([name, field]) => {
@@ -377,16 +384,38 @@ function lowerOperation(ast, operation) {
       );
     }
     const query = statements[index++];
+    wholeQuery = inputName === "request" && staticCall(query?.expr, "OpenApiUtil", "query", (e) =>
+      staticCall(e, "Util", "toMap", (value) => variable(value, "request")),
+    );
     requireProfile(
       query?.type === "declare" &&
         lex(query.id) === "query" &&
-        query.expr.type === "object" &&
-        query.expr.fields.length === 0,
+        (wholeQuery || (query.expr.type === "object" && query.expr.fields.length === 0)),
       "query initialization",
     );
   }
   const bindings = [];
   const boundSources = new Map();
+  const boundFields = new Set();
+  function addBinding(fieldName, fieldWire, location) {
+    const field = queryFields.get(fieldName);
+    const originalName = transforms.get(fieldName) || fieldName;
+    const key = location + ":" + fieldWire;
+    requireProfile(field && wire(field) === fieldWire &&
+      (!boundSources.has(key) || boundSources.get(key) === originalName), "query alias/duplicate");
+    if (boundSources.has(key)) return;
+    requireProfile(!boundFields.has(originalName), "input location conflict");
+    boundFields.add(originalName);
+    boundSources.set(key, originalName);
+    const originalField = inputFields.get(originalName);
+    bindings.push({
+      ...(inputName === "tmpReq" ? { field: originalName } : {}),
+      ...(transforms.has(fieldName) ? { encoding: transformEncodings.get(fieldName) } : {}),
+      wire: fieldWire, location, guard: "isUnset",
+      schema: { ...shape(originalField.fieldValue, models), required: originalField.required },
+    });
+  }
+  function readBindings(target, location) {
   while (!requestless && statements[index]?.type === "if") {
     const guard = statements[index++];
     requireProfile(
@@ -408,36 +437,37 @@ function lowerOperation(ast, operation) {
     requireProfile(
       assign.type === "assign" &&
         assign.left.type === "map_access" &&
-        lex(assign.left.id) === "query" &&
+        lex(assign.left.id) === target &&
         assign.left.accessKey.type === "string" &&
         requestProperty(assign.expr) === fieldName,
       "direct query assignment",
     );
-    const field = queryFields.get(fieldName);
     const fieldWire = assign.left.accessKey.value.string;
-    requireProfile(
-      field &&
-        wire(field) === fieldWire &&
-        (!bindings.some((b) => b.wire === fieldWire) ||
-          boundSources.get(fieldWire) ===
-            (transforms.get(fieldName) || fieldName)),
-      "query alias/duplicate",
-    );
-    if (bindings.some((b) => b.wire === fieldWire)) continue;
-    const originalName = transforms.get(fieldName) || fieldName;
-    const originalField = inputFields.get(originalName);
-    boundSources.set(fieldWire, originalName);
-    bindings.push({
-      ...(inputName === "tmpReq" ? { field: originalName } : {}),
-      ...(transforms.has(fieldName) ? { encoding: "json" } : {}),
-      wire: fieldWire,
-      location: "query",
-      guard: "isUnset",
-      schema: {
-        ...shape(originalField.fieldValue, models),
-        required: originalField.required,
-      },
-    });
+    addBinding(fieldName, fieldWire, location);
+  }
+  }
+  if (wholeQuery) {
+    for (const [name, field] of inputFields) addBinding(name, wire(field), "query");
+  } else readBindings("query", "query");
+  let formBody = false;
+  if (!requestless && statements[index]?.type === "declare" && lex(statements[index].id) === "body") {
+    requireProfile(!wholeQuery && inputName === "request", "form body input");
+    for (const name of ["body", "bodyFlat"]) {
+      const declaration = statements[index++];
+      requireProfile(declaration?.type === "declare" && lex(declaration.id) === name &&
+        declaration.expr.type === "object" && declaration.expr.fields.length === 0 &&
+        (!declaration.expectedType || (declaration.expectedType.type === "map" &&
+          lex(declaration.expectedType.keyType) === "string" && lex(declaration.expectedType.valueType) === "any")), "form body initialization");
+    }
+    const previous = bindings.length;
+    readBindings("bodyFlat", "form");
+    requireProfile(bindings.length > previous, "empty form binding program");
+    const merge = statements[index++];
+    const fields = merge?.expr?.fields;
+    requireProfile(merge?.type === "assign" && variable(merge.left, "body") &&
+      merge.expr.type === "object" && fields.length === 2 && fields.every((f) => f.type === "expandField") &&
+      variable(fields[0].expr, "body") && staticCall(fields[1].expr, "OpenApiUtil", "query", (e) => variable(e, "bodyFlat")), "form body merge");
+    formBody = true;
   }
   requireProfile(bindings.length === inputFields.size, "unbound model input");
   const request = statements[index++];
@@ -451,11 +481,12 @@ function lowerOperation(ast, operation) {
   requireProfile(
     requestless
       ? requestFields.length === 0
-      : requestFields.length === 1 &&
+      : requestFields.length === (formBody ? 2 : 1) &&
           lex(requestFields[0].fieldName) === "query" &&
           staticCall(requestFields[0].expr, "OpenApiUtil", "query", (e) =>
             variable(e, "query"),
-          ),
+          ) && (!formBody || (lex(requestFields[1].fieldName) === "body" &&
+            staticCall(requestFields[1].expr, "OpenApiUtil", "parseToMap", (e) => variable(e, "body")))),
     "query encoding helper",
   );
   const protocol = statements[index++];
@@ -493,7 +524,8 @@ function lowerOperation(ast, operation) {
       facts.action === operation &&
       facts.protocol === "HTTPS" &&
       facts.pathname === "/" &&
-      facts.method === "POST" &&
+      ["POST", "GET"].includes(facts.method) &&
+      (!formBody || facts.method === "POST") &&
       ["AK", "Anonymous"].includes(facts.authType) &&
       facts.style === "RPC" &&
       facts.reqBodyType === "formData" &&

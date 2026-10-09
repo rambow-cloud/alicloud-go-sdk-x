@@ -8,8 +8,9 @@
 
 ## Scoped ECS and VPC acceptance
 
+- #85 extends shared RPC generation with explicit query/form locations, native GET and simple string arrays. Product IR and lock use schema v3. Follow [VPC RPC completion](docs/vpc-rpc-completion.md); never infer location, encoding or method from action names.
 - #74/#75 use the pre-execution matrices in [ECS acceptance](docs/ecs-product-acceptance.md) and [VPC acceptance](docs/vpc-product-acceptance.md).
-- Generated RPC inventory after #83 is 380 ECS and 396 VPC actions. #74/#75 consumer acceptance remains pinned historical evidence; expanded generation does not imply all-action live acceptance. Offline consumer contracts and selected-field live reads are separate; unsupported DSL actions retain reasons.
+- Generated RPC inventory after #85 is 380 ECS and 403 VPC actions. #74/#75 consumer acceptance remains pinned historical evidence; expanded generation does not imply all-action live acceptance. Offline consumer contracts and selected-field live reads are separate; unsupported DSL actions retain reasons.
 - Instance token/waiter live transitions and nonempty VPC live continuation remain excluded/NOT RUN or SKIP under follow-up #79. No broader Beta or full-cloud acceptance is claimed.
 - Consumer acceptance is implementation-agent execution. Independent human UX and automated test timings remain distinct.
 - Preserve STS/ECS/VPC evidence pins against the shared consumer/CI revision. Publication and same-version pkg.go.dev indexing remain #61. No tag is created during product closeout.

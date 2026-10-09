@@ -75,7 +75,7 @@ func TestRenamedProductUsesSharedEmitterAndGuide(t *testing.T) {
 }
 
 func TestCompleteProductsDeterministicModelsMethodsAndExamples(t *testing.T) {
-	for pkg, want := range map[string]int{"ecs": 380, "sts": 4, "vpc": 396} {
+	for pkg, want := range map[string]int{"ecs": 380, "sts": 4, "vpc": 403} {
 		t.Run(pkg, func(t *testing.T) {
 			p := readProductIR(t, pkg)
 			r, err := newProductRenderer(p)
@@ -212,7 +212,7 @@ func fullProductFixture(t *testing.T) string {
 
 func TestProductSupportAndCorruptionFailBeforeWrites(t *testing.T) {
 	root := fullProductFixture(t)
-	for _, selected := range [][]string{{"ecs/Unknown"}, {"vpc/GrantInstanceToVbr"}, {"DescribeImages"}, {"ecs/DescribeImages", "vpc/GrantInstanceToVbr"}} {
+	for _, selected := range [][]string{{"ecs/Unknown"}, {"vpc/DoesNotExist"}, {"DescribeImages"}, {"ecs/DescribeImages", "vpc/DoesNotExist"}} {
 		if err := GenerateProducts(context.Background(), root, false, selected); err == nil {
 			t.Fatal("invalid selection accepted", selected)
 		}
@@ -268,8 +268,11 @@ func TestProductSchemaVersionsFailBeforeWrites(t *testing.T) {
 	writePins()
 	checkRejected("unsupported IR manifest")
 	pins.SchemaVersion = 2
+	writePins()
+	checkRejected("unsupported IR manifest")
+	pins.SchemaVersion = 3
 	p := readProductIR(t, "ecs")
-	p.SchemaVersion = 1
+	p.SchemaVersion = 2
 	encoded, err := json.Marshal(p)
 	if err != nil {
 		t.Fatal(err)
@@ -381,7 +384,7 @@ func TestProductPreflightRejectsProtectedFilesAndSymlinks(t *testing.T) {
 
 func TestProductRejectsInvalidBindingProtocolShapeAndCollision(t *testing.T) {
 	for _, mutate := range []func(*productIR){
-		func(p *productIR) { p.Operations[0].Protocol.Method = "GET" },
+		func(p *productIR) { p.Operations[0].Protocol.Method = "DELETE" },
 		func(p *productIR) { p.Operations[0].Bindings[0].Wire = "wrong" },
 		func(p *productIR) { p.Operations[0].ReachableModels = nil },
 		func(p *productIR) { p.Models[0].Fields[0].Type.Kind = "stream" },

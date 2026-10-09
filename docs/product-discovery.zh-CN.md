@@ -47,3 +47,5 @@ node tools/darabonba/discovery.cjs report ecs
 node tools/darabonba/discovery.cjs check
 node tools/darabonba/discovery.cjs check --operations ecs/DescribeImages,sts/AssumeRole
 ```
+
+- #85 后的当前范围：产品 IR/锁文件 schema v3，ECS 380/380、VPC 403/403、STS 4/4。见 [VPC RPC 生成补齐](vpc-rpc-completion.zh-CN.md)；下方旧数量及原因属于历史记录。

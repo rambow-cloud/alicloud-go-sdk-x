@@ -25,3 +25,5 @@
 - The independent identity task now includes [default configuration](../../docs/default-configuration.md) and uses a temporary fictional profile; no interactive login is required for this kit.
 
 - #83 adds `TestOfficialRPCShrinkJSONHelperParity`: generated ECS JSON query values are compared with the existing pinned OpenAPI v2.1.13 helper. It covers nil/empty values, nesting, non-ASCII text and int64 precision. This is account-free helper parity, not all-action ECS compatibility; no new dependency is added.
+
+- #85 additionally compares pinned official simple-array and form-flattening helpers. This is offline helper parity, not full VPC compatibility or live acceptance.

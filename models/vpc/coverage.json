@@ -13,8 +13,8 @@
   },
   "counts": {
     "discovered": 403,
-    "lowered": 396,
-    "unsupported": 7,
+    "lowered": 403,
+    "unsupported": 0,
     "dslOperations": 403,
     "catalogOnlyOperations": 0,
     "dslOnlyOperations": 0,
@@ -29,11 +29,7 @@
     "compilation": "not-assessed",
     "live": "not-assessed"
   },
-  "reasonCounts": {
-    "DSL_QUERY_INITIALIZATION": 1,
-    "DSL_SHRINK_TRANSFORM": 2,
-    "DSL_UNBOUND_INPUT": 4
-  },
+  "reasonCounts": {},
   "operations": [
     {
       "name": "ActivateRouterInterface",
@@ -1246,7 +1242,7 @@
     },
     {
       "name": "CreateVpnAttachment",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1255,23 +1251,11 @@
         "endLine": 14062,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_UNBOUND_INPUT",
-          "message": "unbound model input",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 14062,
-            "column": 16,
-            "endLine": 14062,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateVpnConnection",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -1280,19 +1264,7 @@
         "endLine": 14478,
         "endColumn": 46
       },
-      "reasons": [
-        {
-          "code": "DSL_UNBOUND_INPUT",
-          "message": "unbound model input",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 14478,
-            "column": 16,
-            "endLine": 14478,
-            "endColumn": 46
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "CreateVpnGateway",
@@ -3025,7 +2997,7 @@
     },
     {
       "name": "DescribeVpnGatewayAvailableZones",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -3034,19 +3006,7 @@
         "endLine": 32075,
         "endColumn": 59
       },
-      "reasons": [
-        {
-          "code": "DSL_QUERY_INITIALIZATION",
-          "message": "query initialization",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 32075,
-            "column": 16,
-            "endLine": 32075,
-            "endColumn": 59
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "DescribeVpnGateways",
@@ -3466,7 +3426,7 @@
     },
     {
       "name": "GrantInstanceToVbr",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -3475,19 +3435,7 @@
         "endLine": 35878,
         "endColumn": 45
       },
-      "reasons": [
-        {
-          "code": "DSL_SHRINK_TRANSFORM",
-          "message": "shrink JSON transform",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 35878,
-            "column": 16,
-            "endLine": 35878,
-            "endColumn": 45
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ListBusinessAccessPoints",
@@ -4479,7 +4427,7 @@
     },
     {
       "name": "ModifyVpnAttachmentAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4488,23 +4436,11 @@
         "endLine": 46440,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_UNBOUND_INPUT",
-          "message": "unbound model input",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 46440,
-            "column": 16,
-            "endLine": 46440,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyVpnConnectionAttribute",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4513,19 +4449,7 @@
         "endLine": 46892,
         "endColumn": 55
       },
-      "reasons": [
-        {
-          "code": "DSL_UNBOUND_INPUT",
-          "message": "unbound model input",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 46892,
-            "column": 16,
-            "endLine": 46892,
-            "endColumn": 55
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "ModifyVpnGatewayAttribute",
@@ -4854,7 +4778,7 @@
     },
     {
       "name": "RevokeInstanceFromVbr",
-      "status": "unsupported",
+      "status": "lowered",
       "origin": "dsl-and-catalog",
       "source": {
         "file": "products/vpc/main.tea",
@@ -4863,19 +4787,7 @@
         "endLine": 49858,
         "endColumn": 48
       },
-      "reasons": [
-        {
-          "code": "DSL_SHRINK_TRANSFORM",
-          "message": "shrink JSON transform",
-          "source": {
-            "file": "products/vpc/main.tea",
-            "line": 49858,
-            "column": 16,
-            "endLine": 49858,
-            "endColumn": 48
-          }
-        }
-      ]
+      "reasons": []
     },
     {
       "name": "SecondApplyPhysicalConnectionLOA",
