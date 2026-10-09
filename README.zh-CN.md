@@ -144,7 +144,6 @@ func main() {
 - 有意义的修改后，执行下面的检查一次。Linux CI 增加竞态检查，Windows CI 验证可移植性。
 
 ```powershell
-go run ./internal/cmd/sdkgen check
 go run ./internal/cmd/sdkgen product-check
 go run ./internal/cmd/doccheck
 node .github/scripts/check-doc-language.cjs

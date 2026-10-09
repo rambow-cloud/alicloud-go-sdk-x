@@ -162,7 +162,6 @@ func main() {
 - Linux CI adds race detection; Windows CI checks portability.
 
 ```powershell
-go run ./internal/cmd/sdkgen check
 go run ./internal/cmd/sdkgen product-check
 go run ./internal/cmd/doccheck
 node .github/scripts/check-doc-language.cjs
