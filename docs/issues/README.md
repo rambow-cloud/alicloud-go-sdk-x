@@ -2,6 +2,8 @@
 
 [中文](README.zh-CN.md)
 
+- [Full-DSL live evidence](../product-live-validation.md): Historical full-DSL ECS/VPC read-only evidence (#47): two image pages; empty instance/VPC pages; live waiter skipped. Product acceptance #74/#75 remains separate.
+
 - The first release is [v0.1.0 STS](../sts-v0.1.0.md), tracked by [milestone v0.1.0](https://github.com/rambow-cloud/alicloud-go-sdk-x/milestone/4) and [Project 3](https://github.com/orgs/rambow-cloud/projects/3).
 - Native child issues belong to #57; parent membership is not a blocking dependency.
 

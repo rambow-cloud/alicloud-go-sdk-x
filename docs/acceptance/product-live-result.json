@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "reviewKind": "implementation-agent",
+  "sdkCommit": "dde481ce4da680f964ee3bbd1458048e6ed981bc",
+  "executedOn": "2026-10-08",
+  "goVersion": "go1.27.1",
+  "os": "windows/amd64",
+  "cliVersion": "3.4.11",
+  "evidence": "docs/product-live-validation.md",
+  "checks": [
+    {
+      "Operation": "ecs-regions",
+      "Status": "PASS",
+      "Detail": "regions=33; signed response, scalar presence, metadata and caller ownership match"
+    },
+    {
+      "Operation": "ecs-images",
+      "Status": "PASS",
+      "Detail": "pages=2 items=4 more=true; projections, scalar presence, metadata and caller ownership match"
+    },
+    {
+      "Operation": "ecs-instances-token",
+      "Status": "PASS",
+      "Detail": "pages=1 items=0 more=false; projections, scalar presence, metadata and caller ownership match"
+    },
+    {
+      "Operation": "ecs-instances-pages",
+      "Status": "PASS",
+      "Detail": "pages=1 items=0 more=false; projections, scalar presence, metadata and caller ownership match"
+    },
+    {
+      "Operation": "ecs-status",
+      "Status": "PASS",
+      "Detail": "pages=1 items=0 more=false; projections, scalar presence, metadata and caller ownership match"
+    },
+    {
+      "Operation": "vpc-pages",
+      "Status": "PASS",
+      "Detail": "pages=1 items=0 more=false; projections, scalar presence, metadata and caller ownership match"
+    },
+    {
+      "Operation": "ecs-waiter",
+      "Status": "SKIP",
+      "Detail": "no Running identity in bounded status sample"
+    },
+    {
+      "Operation": "cancellation",
+      "Status": "PASS",
+      "Detail": "ECS/VPC calls and paginator preserve pre-cancellation; cursor unchanged"
+    },
+    {
+      "Operation": "sts-assume-role",
+      "Status": "SKIP",
+      "Detail": "no explicit target role supplied"
+    },
+    {
+      "Operation": "explorer-browser",
+      "Status": "NOT_RUN",
+      "Detail": "separate manual browser links provided; no browser evidence claimed"
+    }
+  ]
+}

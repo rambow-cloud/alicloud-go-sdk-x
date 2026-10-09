@@ -2,6 +2,8 @@
 
 [English](README.md)
 
+- [完整 DSL 真实调用证据](docs/product-live-validation.zh-CN.md): 完整 DSL ECS/VPC 的历史只读证据（#47）：镜像读取两页，实例和 VPC 返回空页，真实 waiter 检查跳过；#74/#75 产品验收仍单独进行。
+
 - 首版路线：#60 代理 STS 验收 → ECS #74 → VPC #75 → #61 发布。独立人工体验另由可选 #76 跟踪，详见[开发路线](docs/sts-ecs-vpc-path.zh-CN.md)。
 
 - 独立开发的阿里云 Go SDK，不是阿里云官方项目。

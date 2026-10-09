@@ -2,6 +2,8 @@
 
 [English](README.md)
 
+- [完整 DSL 真实调用证据](../product-live-validation.zh-CN.md): 完整 DSL ECS/VPC 的历史只读证据（#47）：镜像读取两页，实例和 VPC 返回空页，真实 waiter 检查跳过；#74/#75 产品验收仍单独进行。
+
 - 首版为 [v0.1.0 STS](../sts-v0.1.0.zh-CN.md)，由 [同名 milestone](https://github.com/rambow-cloud/alicloud-go-sdk-x/milestone/4) 和 [Project 3](https://github.com/orgs/rambow-cloud/projects/3) 跟踪，原生子项归属 #57， 父项归属不作为阻塞依赖。
 
 | Issue | v0.1.0 工作                                                  | 依赖                              |

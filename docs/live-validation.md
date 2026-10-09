@@ -2,6 +2,8 @@
 
 [中文](live-validation.zh-CN.md)
 
+- [Full-DSL live evidence](product-live-validation.md): Historical full-DSL ECS/VPC read-only evidence (#47): two image pages; empty instance/VPC pages; live waiter skipped. Product acceptance #74/#75 remains separate.
+
 - This path is written before running live acceptance against the current generated SDK.
 - Use the explicitly selected local Aliyun CLI profile and its region.
 - Compare ECS DescribeRegions, DescribeInstances (native token and legacy pages), DescribeInstanceStatus and VPC DescribeVpcs with the same read-only parameters through Alibaba Cloud CLI.
