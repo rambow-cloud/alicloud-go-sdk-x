@@ -62,3 +62,5 @@ go test ./...
 - Shared-workload refresh for #75: all 11 cases PASS at 85795cf3cf1604afe59b0e8af03d5df0c9d3ba38; the machine record contains latest timestamps/timings. Initial #60 execution details above remain historical. Runtime/STS source behavior is unchanged; this refresh covers the new consumer/CI guard baseline.
 
 - #81 service consolidation: all 11 cases PASS at e33e5f93d856027569969056e9d4c25e92e51212, using generated service/sts and the shared adapter. The updated machine record contains actual timings; earlier closeout/live evidence stays historical.
+
+- #81 guide correction: discovery now precedes Go emission in the tool commands. All 29 consumer cases and 24 product subtests PASS at 29d468ad5f8999e92b4e60e4140cb8432efb8a13; machine records use this pin. Go/runtime/source/policy behavior is unchanged from the locally checked e33e5f93d856027569969056e9d4c25e92e51212 workload, so its unaffected gates are reused. Final-head CI remains required on PR #82.

@@ -34,3 +34,5 @@
 - #81 workload e33e5f93d856027569969056e9d4c25e92e51212: Node 22 frontend check and 57 tests PASS; 25 automation tests PASS; full-DSL regeneration, doccheck (15 public packages), vet, root tests and tracked Go formatting PASS.
 - Isolated consumers PASS: STS 11 cases, ECS 10 cases/14 subtests, VPC eight cases/ten subtests; both modules' vet and offline programs PASS. Updated machine records pin the same revision.
 - Linux race and Windows final-head CI are required on the linked PR. No new live calls, tag or publication.
+
+- #81 guide correction: discovery now precedes Go emission in the tool commands. All 29 consumer cases and 24 product subtests PASS at 29d468ad5f8999e92b4e60e4140cb8432efb8a13; machine records use this pin. Go/runtime/source/policy behavior is unchanged from the locally checked e33e5f93d856027569969056e9d4c25e92e51212 workload, so its unaffected gates are reused. Final-head CI remains required on PR #82.
