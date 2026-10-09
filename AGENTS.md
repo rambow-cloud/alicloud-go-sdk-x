@@ -1,5 +1,7 @@
 # Project working agreements
 
+- #92 now follows [OSS shared runtime](docs/oss-runtime.md) before product emission: explicit OSS4/body modes, bucket identity, per-attempt XML MD5 and bounded XML errors. No inferred roots or generated/live OSS coverage claim.
+
 - #92 XML root discovery follows [native XML traits](docs/native-xml-traits.md) after the [shared codec](docs/xml-model-codec.md). Official DSL remains authoritative; hash-bound native declarations only supplement explicit serialization facts. Preserve the unresolved ListBuckets case/wrapper conflict and namespace policy; discovery counts are not generated OSS coverage.
 
 [中文](AGENTS.zh-CN.md)
