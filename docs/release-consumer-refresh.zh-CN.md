@@ -25,7 +25,7 @@
 - 只读发布检查要求已接受的源码、工作负载行为没有变化，且 main 工作区干净。
 - 最终 main 提交须通过 Linux race、Windows 和自动化 CI；实现 PR 的检查不能替代这一门禁。
 - 评审来源与策略锁定、Go 1.27、直接 JSON v2、MIT 运行时及 Apache 生成通知、配对发布说明和示例。
-- 门禁通过后发布不可变的实验版 v0.1.0。本记录中的发布、相同版本网页索引仍未执行。
+- 门禁通过后已发布不可变的实验版 [v0.1.0](releases/v0.1.0-publication.zh-CN.md)，同版本网页索引仍未验证。
 - 遵循[发布清单](sts-v010-release-checklist.zh-CN.md)，取得真实索引证据后再关闭 #61、#57 和 milestone。
 
 - 20:39 UTC 的记录原样保留：[STS](acceptance/sts-agent-result.2026-10-09T2039.json)、[ECS](acceptance/ecs-product-result.2026-10-09T2039.json)、[VPC](acceptance/vpc-product-result.2026-10-09T2039.json)。本次更新对应 PR #114，不改变任何真实云或来源验证结果。
