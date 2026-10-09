@@ -1,6 +1,6 @@
 # 项目协作约定
 
-- #92 下一步内部 XML 编解码遵循[XML 模型编解码层](docs/xml-model-codec.zh-CN.md)。显式区分结构根和标量根，保持 DSL 具体字段；不推断根元素，不新增未经验证的公共 OSS 操作或签名回退。
+- #92 在[公共编解码层](docs/xml-model-codec.zh-CN.md)之后，遵循[原生 XML 根节点发现](docs/native-xml-traits.zh-CN.md)。官方 DSL 仍为权威来源，绑定哈希的原生声明仅补充明确的序列化事实。保留尚未解决的 ListBuckets 大小写/包装层冲突及命名空间规则；发现数量不代表已生成 OSS 操作。
 
 [English](AGENTS.md)
 

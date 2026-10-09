@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/alibabacloud-go/alibabacloud-gateway-oss-util",
+  "revision": "cd82cbd16bcb3f0988e125ee63679e887867f225",
+  "module": "github.com/alibabacloud-go/alibabacloud-gateway-oss-util",
+  "version": "v0.0.6",
+  "moduleSum": "h1:ta2W9/3FLVMMoOUot2mD+mBvQkVUgnSP0maPboqJdCU=",
+  "registrySymbol": "typeRegistry",
+  "registry": {"name":"client/client.go","sha256":"5eb42ee19906a4e0a252465fb9b6ebc8b3c7236182d7936cf9b27e685712d8b0"},
+  "models": {"name":"client/structs.go","sha256":"b16acbcba29aac2145541a951e450a7ba7d909f46d6812be5bc29b831c629092"}
+}

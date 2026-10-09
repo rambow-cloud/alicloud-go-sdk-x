@@ -1,0 +1,3245 @@
+{
+  "schemaVersion": 1,
+  "scope": "XML root and root-field discovery only; no nested compatibility, lowering, emission, compilation or live acceptance",
+  "sourceRevision": "ec489e5c3deae95496daae2b41503ac58b221adb",
+  "sourceSHA256": "0713683b286a49e4e80fff023f61db426dc035fb8755a7b4616a82f65c22e6ff",
+  "sourceManifestSHA256": "a577b14fe1d5c2b227e143da4ed6f0f9254d7fa3bde0dfafb798d9b9b3ccc439",
+  "parserVersion": "2.2.1",
+  "nativeRegistrySHA256": "5eb42ee19906a4e0a252465fb9b6ebc8b3c7236182d7936cf9b27e685712d8b0",
+  "nativeModelsSHA256": "b16acbcba29aac2145541a951e450a7ba7d909f46d6812be5bc29b831c629092",
+  "nativePins": {
+    "schemaVersion": 1,
+    "repository": "https://github.com/alibabacloud-go/alibabacloud-gateway-oss-util",
+    "revision": "cd82cbd16bcb3f0988e125ee63679e887867f225",
+    "module": "github.com/alibabacloud-go/alibabacloud-gateway-oss-util",
+    "version": "v0.0.6",
+    "moduleSum": "h1:ta2W9/3FLVMMoOUot2mD+mBvQkVUgnSP0maPboqJdCU=",
+    "registrySymbol": "typeRegistry",
+    "registry": {
+      "name": "client/client.go",
+      "sha256": "5eb42ee19906a4e0a252465fb9b6ebc8b3c7236182d7936cf9b27e685712d8b0"
+    },
+    "models": {
+      "name": "client/structs.go",
+      "sha256": "b16acbcba29aac2145541a951e450a7ba7d909f46d6812be5bc29b831c629092"
+    }
+  },
+  "counts": {
+    "discovered": 90,
+    "xmlResponses": 79,
+    "nativeModels": 683,
+    "nativeRoots": 82,
+    "rootFieldsMatch": 36,
+    "noBodyTarget": 42,
+    "divergent": 1,
+    "unsupported": 0
+  },
+  "operations": [
+    {
+      "operation": "AbortBucketWorm",
+      "action": "AbortBucketWorm",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 822,
+        "column": 16,
+        "endLine": 822,
+        "endColumn": 42
+      },
+      "responseModel": "AbortBucketWormResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 817,
+        "column": 7,
+        "endLine": 817,
+        "endColumn": 30
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "AbortMultipartUpload",
+      "action": "AbortMultipartUpload",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 858,
+        "column": 16,
+        "endLine": 858,
+        "endColumn": 47
+      },
+      "responseModel": "AbortMultipartUploadResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 853,
+        "column": 7,
+        "endLine": 853,
+        "endColumn": 35
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "AppendObject",
+      "action": "AppendObject",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 915,
+        "column": 16,
+        "endLine": 915,
+        "endColumn": 39
+      },
+      "responseModel": "AppendObjectResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 910,
+        "column": 7,
+        "endLine": 910,
+        "endColumn": 27
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "CompleteBucketWorm",
+      "action": "CompleteBucketWorm",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 991,
+        "column": 16,
+        "endLine": 991,
+        "endColumn": 45
+      },
+      "responseModel": "CompleteBucketWormResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 986,
+        "column": 7,
+        "endLine": 986,
+        "endColumn": 33
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "CompleteMultipartUpload",
+      "action": "CompleteMultipartUpload",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1051,
+        "column": 16,
+        "endLine": 1051,
+        "endColumn": 50
+      },
+      "responseModel": "CompleteMultipartUploadResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1045,
+        "column": 7,
+        "endLine": 1045,
+        "endColumn": 38
+      },
+      "bodyModel": "CompleteMultipartUploadResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 1037,
+        "column": 7,
+        "endLine": 1037,
+        "endColumn": 42
+      },
+      "nativeRoot": {
+        "action": "CompleteMultipartUpload",
+        "model": "CompleteMultipartUploadResponseBody",
+        "kind": "structured",
+        "name": "CompleteMultipartUploadResult",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "CompleteMultipartUploadResult",
+          "jsonName": "CompleteMultipartUploadResult",
+          "xmlName": "CompleteMultipartUploadResult",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "CompleteMultipartUploadResponseBodyCompleteMultipartUploadResult",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 5570,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 20,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "CopyObject",
+      "action": "CopyObject",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1127,
+        "column": 16,
+        "endLine": 1127,
+        "endColumn": 37
+      },
+      "responseModel": "CopyObjectResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1121,
+        "column": 7,
+        "endLine": 1121,
+        "endColumn": 25
+      },
+      "bodyModel": "CopyObjectResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 1116,
+        "column": 7,
+        "endLine": 1116,
+        "endColumn": 29
+      },
+      "nativeRoot": {
+        "action": "CopyObject",
+        "model": "CopyObjectResponseBody",
+        "kind": "structured",
+        "name": "CopyObjectResult",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "CopyObjectResult",
+          "jsonName": "CopyObjectResult",
+          "xmlName": "CopyObjectResult",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "CopyObjectResponseBodyCopyObjectResult",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 5825,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 21,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "DeleteBucket",
+      "action": "DeleteBucket",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1243,
+        "column": 16,
+        "endLine": 1243,
+        "endColumn": 39
+      },
+      "responseModel": "DeleteBucketResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1238,
+        "column": 7,
+        "endLine": 1238,
+        "endColumn": 27
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "DeleteBucketCors",
+      "action": "DeleteBucketCors",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1275,
+        "column": 16,
+        "endLine": 1275,
+        "endColumn": 43
+      },
+      "responseModel": "DeleteBucketCorsResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1270,
+        "column": 7,
+        "endLine": 1270,
+        "endColumn": 31
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "DeleteBucketEncryption",
+      "action": "DeleteBucketEncryption",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1307,
+        "column": 16,
+        "endLine": 1307,
+        "endColumn": 49
+      },
+      "responseModel": "DeleteBucketEncryptionResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1302,
+        "column": 7,
+        "endLine": 1302,
+        "endColumn": 37
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "DeleteBucketInventory",
+      "action": "DeleteBucketInventory",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1343,
+        "column": 16,
+        "endLine": 1343,
+        "endColumn": 48
+      },
+      "responseModel": "DeleteBucketInventoryResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1338,
+        "column": 7,
+        "endLine": 1338,
+        "endColumn": 36
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "DeleteBucketLifecycle",
+      "action": "DeleteBucketLifecycle",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1382,
+        "column": 16,
+        "endLine": 1382,
+        "endColumn": 48
+      },
+      "responseModel": "DeleteBucketLifecycleResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1377,
+        "column": 7,
+        "endLine": 1377,
+        "endColumn": 36
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "DeleteBucketLogging",
+      "action": "DeleteBucketLogging",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1414,
+        "column": 16,
+        "endLine": 1414,
+        "endColumn": 46
+      },
+      "responseModel": "DeleteBucketLoggingResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1409,
+        "column": 7,
+        "endLine": 1409,
+        "endColumn": 34
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "DeleteBucketPolicy",
+      "action": "DeleteBucketPolicy",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1446,
+        "column": 16,
+        "endLine": 1446,
+        "endColumn": 45
+      },
+      "responseModel": "DeleteBucketPolicyResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1441,
+        "column": 7,
+        "endLine": 1441,
+        "endColumn": 33
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "DeleteBucketReplication",
+      "action": "DeleteBucketReplication",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1482,
+        "column": 16,
+        "endLine": 1482,
+        "endColumn": 50
+      },
+      "responseModel": "DeleteBucketReplicationResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1477,
+        "column": 7,
+        "endLine": 1477,
+        "endColumn": 38
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "DeleteBucketTags",
+      "action": "DeleteBucketTags",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1516,
+        "column": 16,
+        "endLine": 1516,
+        "endColumn": 43
+      },
+      "responseModel": "DeleteBucketTagsResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1511,
+        "column": 7,
+        "endLine": 1511,
+        "endColumn": 31
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "DeleteBucketWebsite",
+      "action": "DeleteBucketWebsite",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1548,
+        "column": 16,
+        "endLine": 1548,
+        "endColumn": 46
+      },
+      "responseModel": "DeleteBucketWebsiteResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1543,
+        "column": 7,
+        "endLine": 1543,
+        "endColumn": 34
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "DeleteLiveChannel",
+      "action": "DeleteLiveChannel",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1580,
+        "column": 16,
+        "endLine": 1580,
+        "endColumn": 44
+      },
+      "responseModel": "DeleteLiveChannelResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1575,
+        "column": 7,
+        "endLine": 1575,
+        "endColumn": 32
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "DeleteMultipleObjects",
+      "action": "DeleteMultipleObjects",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1630,
+        "column": 16,
+        "endLine": 1630,
+        "endColumn": 48
+      },
+      "responseModel": "DeleteMultipleObjectsResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1624,
+        "column": 7,
+        "endLine": 1624,
+        "endColumn": 36
+      },
+      "bodyModel": "DeleteMultipleObjectsResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 1617,
+        "column": 7,
+        "endLine": 1617,
+        "endColumn": 40
+      },
+      "nativeRoot": {
+        "action": "DeleteMultipleObjects",
+        "model": "DeleteMultipleObjectsResponseBody",
+        "kind": "structured",
+        "name": "DeleteResult",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "DeleteResult",
+          "jsonName": "DeleteResult",
+          "xmlName": "DeleteResult",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "DeleteMultipleObjectsResponseBodyDeleteResult",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 7090,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 26,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "DeleteObjectTagging",
+      "action": "DeleteObjectTagging",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1723,
+        "column": 16,
+        "endLine": 1723,
+        "endColumn": 46
+      },
+      "responseModel": "DeleteObjectTaggingResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1718,
+        "column": 7,
+        "endLine": 1718,
+        "endColumn": 34
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "DescribeRegions",
+      "action": "DescribeRegions",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1773,
+        "column": 16,
+        "endLine": 1773,
+        "endColumn": 42
+      },
+      "responseModel": "DescribeRegionsResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1767,
+        "column": 7,
+        "endLine": 1767,
+        "endColumn": 30
+      },
+      "bodyModel": "DescribeRegionsResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 1761,
+        "column": 7,
+        "endLine": 1761,
+        "endColumn": 34
+      },
+      "nativeRoot": {
+        "action": "DescribeRegions",
+        "model": "DescribeRegionsResponseBody",
+        "kind": "structured",
+        "name": "RegionInfoList",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "RegionInfoList",
+          "jsonName": "RegionInfoList",
+          "xmlName": "RegionInfoList",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "DescribeRegionsResponseBodyRegionInfoList",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 7347,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 27,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "ExtendBucketWorm",
+      "action": "ExtendBucketWorm",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1813,
+        "column": 16,
+        "endLine": 1813,
+        "endColumn": 43
+      },
+      "responseModel": "ExtendBucketWormResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1808,
+        "column": 7,
+        "endLine": 1808,
+        "endColumn": 31
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "GetBucketAcl",
+      "action": "GetBucketAcl",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1861,
+        "column": 16,
+        "endLine": 1861,
+        "endColumn": 39
+      },
+      "responseModel": "GetBucketAclResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1855,
+        "column": 7,
+        "endLine": 1855,
+        "endColumn": 27
+      },
+      "bodyModel": "GetBucketAclResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 1848,
+        "column": 7,
+        "endLine": 1848,
+        "endColumn": 31
+      },
+      "nativeRoot": {
+        "action": "GetBucketAcl",
+        "model": "GetBucketAclResponseBody",
+        "kind": "structured",
+        "name": "AccessControlPolicy",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "AccessControlPolicy",
+          "jsonName": "AccessControlPolicy",
+          "xmlName": "AccessControlPolicy",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetBucketAclResponseBodyAccessControlPolicy",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 8142,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 34,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetBucketCors",
+      "action": "GetBucketCors",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1900,
+        "column": 16,
+        "endLine": 1900,
+        "endColumn": 40
+      },
+      "responseModel": "GetBucketCorsResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1894,
+        "column": 7,
+        "endLine": 1894,
+        "endColumn": 28
+      },
+      "bodyModel": "GetBucketCorsResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 1887,
+        "column": 7,
+        "endLine": 1887,
+        "endColumn": 32
+      },
+      "nativeRoot": {
+        "action": "GetBucketCors",
+        "model": "GetBucketCorsResponseBody",
+        "kind": "structured",
+        "name": "CORSConfiguration",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "CORSConfiguration",
+          "jsonName": "CORSConfiguration",
+          "xmlName": "CORSConfiguration",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetBucketCorsResponseBodyCORSConfiguration",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 8324,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 37,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetBucketEncryption",
+      "action": "GetBucketEncryption",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1936,
+        "column": 16,
+        "endLine": 1936,
+        "endColumn": 46
+      },
+      "responseModel": "GetBucketEncryptionResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1930,
+        "column": 7,
+        "endLine": 1930,
+        "endColumn": 34
+      },
+      "bodyModel": "GetBucketEncryptionResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 1926,
+        "column": 7,
+        "endLine": 1926,
+        "endColumn": 38
+      },
+      "nativeRoot": {
+        "action": "GetBucketEncryption",
+        "model": "GetBucketEncryptionResponseBody",
+        "kind": "structured",
+        "name": "ServerSideEncryptionRule",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "ServerSideEncryptionRule",
+          "jsonName": "ServerSideEncryptionRule",
+          "xmlName": "ServerSideEncryptionRule",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetBucketEncryptionResponseBodyServerSideEncryptionRule",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 8461,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 39,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetBucketInfo",
+      "action": "GetBucketInfo",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1968,
+        "column": 16,
+        "endLine": 1968,
+        "endColumn": 40
+      },
+      "responseModel": "GetBucketInfoResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 1962,
+        "column": 7,
+        "endLine": 1962,
+        "endColumn": 28
+      },
+      "bodyModel": "BucketInfo",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 90,
+        "column": 7,
+        "endLine": 90,
+        "endColumn": 17
+      },
+      "nativeRoot": {
+        "action": "GetBucketInfo",
+        "model": "GetBucketInfoResponseBody",
+        "kind": "structured",
+        "name": "BucketInfo",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "BucketInfo",
+          "jsonName": "BucketInfo",
+          "xmlName": "BucketInfo",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "BucketInfo",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 8573,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 41,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetBucketInventory",
+      "action": "GetBucketInventory",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2018,
+        "column": 16,
+        "endLine": 2018,
+        "endColumn": 45
+      },
+      "responseModel": "GetBucketInventoryResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2012,
+        "column": 7,
+        "endLine": 2012,
+        "endColumn": 33
+      },
+      "bodyModel": "GetBucketInventoryResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 1998,
+        "column": 7,
+        "endLine": 1998,
+        "endColumn": 37
+      },
+      "nativeRoot": {
+        "action": "GetBucketInventory",
+        "model": "GetBucketInventoryResponseBody",
+        "kind": "structured",
+        "name": "InventoryConfiguration",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "InventoryConfiguration",
+          "jsonName": "InventoryConfiguration",
+          "xmlName": "InventoryConfiguration",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "InventoryConfiguration",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 8638,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 42,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetBucketLifecycle",
+      "action": "GetBucketLifecycle",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2063,
+        "column": 16,
+        "endLine": 2063,
+        "endColumn": 45
+      },
+      "responseModel": "GetBucketLifecycleResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2057,
+        "column": 7,
+        "endLine": 2057,
+        "endColumn": 33
+      },
+      "bodyModel": "GetBucketLifecycleResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 2051,
+        "column": 7,
+        "endLine": 2051,
+        "endColumn": 37
+      },
+      "nativeRoot": {
+        "action": "GetBucketLifecycle",
+        "model": "GetBucketLifecycleResponseBody",
+        "kind": "structured",
+        "name": "LifecycleConfiguration",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "LifecycleConfiguration",
+          "jsonName": "LifecycleConfiguration",
+          "xmlName": "LifecycleConfiguration",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetBucketLifecycleResponseBodyLifecycleConfiguration",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 8685,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 43,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetBucketLocation",
+      "action": "GetBucketLocation",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2099,
+        "column": 16,
+        "endLine": 2099,
+        "endColumn": 44
+      },
+      "responseModel": "GetBucketLocationResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2093,
+        "column": 7,
+        "endLine": 2093,
+        "endColumn": 32
+      },
+      "bodyModel": "GetBucketLocationResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 2089,
+        "column": 7,
+        "endLine": 2089,
+        "endColumn": 36
+      },
+      "nativeRoot": {
+        "action": "GetBucketLocation",
+        "model": "GetBucketLocationResponseBody",
+        "kind": "scalar",
+        "name": "LocationConstraint",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "LocationConstraint",
+          "jsonName": "LocationConstraint",
+          "xmlName": "LocationConstraint",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "scalar",
+            "name": "string",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 8754,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 44,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "scalar-field",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetBucketLogging",
+      "action": "GetBucketLogging",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2135,
+        "column": 16,
+        "endLine": 2135,
+        "endColumn": 43
+      },
+      "responseModel": "GetBucketLoggingResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2129,
+        "column": 7,
+        "endLine": 2129,
+        "endColumn": 31
+      },
+      "bodyModel": "GetBucketLoggingResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 2125,
+        "column": 7,
+        "endLine": 2125,
+        "endColumn": 35
+      },
+      "nativeRoot": {
+        "action": "GetBucketLogging",
+        "model": "GetBucketLoggingResponseBody",
+        "kind": "structured",
+        "name": "BucketLoggingStatus",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "BucketLoggingStatus",
+          "jsonName": "BucketLoggingStatus",
+          "xmlName": "BucketLoggingStatus",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetBucketLoggingResponseBodyBucketLoggingStatus",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 8801,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 45,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetBucketReplication",
+      "action": "GetBucketReplication",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2239,
+        "column": 16,
+        "endLine": 2239,
+        "endColumn": 47
+      },
+      "responseModel": "GetBucketReplicationResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2233,
+        "column": 7,
+        "endLine": 2233,
+        "endColumn": 35
+      },
+      "bodyModel": "GetBucketReplicationResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 2227,
+        "column": 7,
+        "endLine": 2227,
+        "endColumn": 39
+      },
+      "nativeRoot": {
+        "action": "GetBucketReplication",
+        "model": "GetBucketReplicationResponseBody",
+        "kind": "structured",
+        "name": "ReplicationConfiguration",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "ReplicationConfiguration",
+          "jsonName": "ReplicationConfiguration",
+          "xmlName": "ReplicationConfiguration",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetBucketReplicationResponseBodyReplicationConfiguration",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 9051,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 49,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetBucketReplicationLocation",
+      "action": "GetBucketReplicationLocation",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2280,
+        "column": 16,
+        "endLine": 2280,
+        "endColumn": 55
+      },
+      "responseModel": "GetBucketReplicationLocationResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2274,
+        "column": 7,
+        "endLine": 2274,
+        "endColumn": 43
+      },
+      "bodyModel": "GetBucketReplicationLocationResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 2265,
+        "column": 7,
+        "endLine": 2265,
+        "endColumn": 47
+      },
+      "nativeRoot": {
+        "action": "GetBucketReplicationLocation",
+        "model": "GetBucketReplicationLocationResponseBody",
+        "kind": "structured",
+        "name": "ReplicationLocation",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "ReplicationLocation",
+          "jsonName": "ReplicationLocation",
+          "xmlName": "ReplicationLocation",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetBucketReplicationLocationResponseBodyReplicationLocation",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 9116,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 50,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": [
+        "LocationRTCConstraint"
+      ]
+    },
+    {
+      "operation": "GetBucketReplicationProgress",
+      "action": "GetBucketReplicationProgress",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2320,
+        "column": 16,
+        "endLine": 2320,
+        "endColumn": 55
+      },
+      "responseModel": "GetBucketReplicationProgressResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2314,
+        "column": 7,
+        "endLine": 2314,
+        "endColumn": 43
+      },
+      "bodyModel": "GetBucketReplicationProgressResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 2310,
+        "column": 7,
+        "endLine": 2310,
+        "endColumn": 47
+      },
+      "nativeRoot": {
+        "action": "GetBucketReplicationProgress",
+        "model": "GetBucketReplicationProgressResponseBody",
+        "kind": "structured",
+        "name": "ReplicationProgress",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "ReplicationProgress",
+          "jsonName": "ReplicationProgress",
+          "xmlName": "ReplicationProgress",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetBucketReplicationProgressResponseBodyReplicationProgress",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 9249,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 51,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetBucketRequestPayment",
+      "action": "GetBucketRequestPayment",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2363,
+        "column": 16,
+        "endLine": 2363,
+        "endColumn": 50
+      },
+      "responseModel": "GetBucketRequestPaymentResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2357,
+        "column": 7,
+        "endLine": 2357,
+        "endColumn": 38
+      },
+      "bodyModel": "GetBucketRequestPaymentResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 2353,
+        "column": 7,
+        "endLine": 2353,
+        "endColumn": 42
+      },
+      "nativeRoot": {
+        "action": "GetBucketRequestPayment",
+        "model": "GetBucketRequestPaymentResponseBody",
+        "kind": "structured",
+        "name": "RequestPaymentConfiguration",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "RequestPaymentConfiguration",
+          "jsonName": "RequestPaymentConfiguration",
+          "xmlName": "RequestPaymentConfiguration",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetBucketRequestPaymentResponseBodyRequestPaymentConfiguration",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 9314,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 52,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetBucketTags",
+      "action": "GetBucketTags",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2399,
+        "column": 16,
+        "endLine": 2399,
+        "endColumn": 40
+      },
+      "responseModel": "GetBucketTagsResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2393,
+        "column": 7,
+        "endLine": 2393,
+        "endColumn": 28
+      },
+      "bodyModel": "GetBucketTagsResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 2389,
+        "column": 7,
+        "endLine": 2389,
+        "endColumn": 32
+      },
+      "nativeRoot": {
+        "action": "GetBucketTags",
+        "model": "GetBucketTagsResponseBody",
+        "kind": "structured",
+        "name": "Tagging",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "Tagging",
+          "jsonName": "Tagging",
+          "xmlName": "Tagging",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetBucketTagsResponseBodyTagging",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 9540,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 56,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetBucketTransferAcceleration",
+      "action": "GetBucketTransferAcceleration",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2435,
+        "column": 16,
+        "endLine": 2435,
+        "endColumn": 56
+      },
+      "responseModel": "GetBucketTransferAccelerationResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2429,
+        "column": 7,
+        "endLine": 2429,
+        "endColumn": 44
+      },
+      "bodyModel": "GetBucketTransferAccelerationResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 2425,
+        "column": 7,
+        "endLine": 2425,
+        "endColumn": 48
+      },
+      "nativeRoot": {
+        "action": "GetBucketTransferAcceleration",
+        "model": "GetBucketTransferAccelerationResponseBody",
+        "kind": "structured",
+        "name": "TransferAccelerationConfiguration",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "TransferAccelerationConfiguration",
+          "jsonName": "TransferAccelerationConfiguration",
+          "xmlName": "TransferAccelerationConfiguration",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetBucketTransferAccelerationResponseBodyTransferAccelerationConfiguration",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 9605,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 57,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetBucketVersioning",
+      "action": "GetBucketVersioning",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2471,
+        "column": 16,
+        "endLine": 2471,
+        "endColumn": 46
+      },
+      "responseModel": "GetBucketVersioningResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2465,
+        "column": 7,
+        "endLine": 2465,
+        "endColumn": 34
+      },
+      "bodyModel": "GetBucketVersioningResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 2461,
+        "column": 7,
+        "endLine": 2461,
+        "endColumn": 38
+      },
+      "nativeRoot": {
+        "action": "GetBucketVersioning",
+        "model": "GetBucketVersioningResponseBody",
+        "kind": "structured",
+        "name": "VersioningConfiguration",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "VersioningConfiguration",
+          "jsonName": "VersioningConfiguration",
+          "xmlName": "VersioningConfiguration",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetBucketVersioningResponseBodyVersioningConfiguration",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 9670,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 58,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetBucketWebsite",
+      "action": "GetBucketWebsite",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2513,
+        "column": 16,
+        "endLine": 2513,
+        "endColumn": 43
+      },
+      "responseModel": "GetBucketWebsiteResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2507,
+        "column": 7,
+        "endLine": 2507,
+        "endColumn": 31
+      },
+      "bodyModel": "GetBucketWebsiteResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 2497,
+        "column": 7,
+        "endLine": 2497,
+        "endColumn": 35
+      },
+      "nativeRoot": {
+        "action": "GetBucketWebsite",
+        "model": "GetBucketWebsiteResponseBody",
+        "kind": "structured",
+        "name": "WebsiteConfiguration",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "WebsiteConfiguration",
+          "jsonName": "WebsiteConfiguration",
+          "xmlName": "WebsiteConfiguration",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "WebsiteConfiguration",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 9735,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 59,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetBucketWorm",
+      "action": "GetBucketWorm",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2552,
+        "column": 16,
+        "endLine": 2552,
+        "endColumn": 40
+      },
+      "responseModel": "GetBucketWormResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2546,
+        "column": 7,
+        "endLine": 2546,
+        "endColumn": 28
+      },
+      "bodyModel": "GetBucketWormResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 2539,
+        "column": 7,
+        "endLine": 2539,
+        "endColumn": 32
+      },
+      "nativeRoot": {
+        "action": "GetBucketWorm",
+        "model": "GetBucketWormResponseBody",
+        "kind": "structured",
+        "name": "WormConfiguration",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "WormConfiguration",
+          "jsonName": "WormConfiguration",
+          "xmlName": "WormConfiguration",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetBucketWormResponseBodyWormConfiguration",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 9782,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 60,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": [
+        "ExpirationDate"
+      ]
+    },
+    {
+      "operation": "GetLiveChannelHistory",
+      "action": "GetLiveChannelHistory",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2590,
+        "column": 16,
+        "endLine": 2590,
+        "endColumn": 48
+      },
+      "responseModel": "GetLiveChannelHistoryResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2584,
+        "column": 7,
+        "endLine": 2584,
+        "endColumn": 36
+      },
+      "bodyModel": "GetLiveChannelHistoryResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 2578,
+        "column": 7,
+        "endLine": 2578,
+        "endColumn": 40
+      },
+      "nativeRoot": {
+        "action": "GetLiveChannelHistory",
+        "model": "GetLiveChannelHistoryResponseBody",
+        "kind": "structured",
+        "name": "LiveChannelHistory",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "LiveChannelHistory",
+          "jsonName": "LiveChannelHistory",
+          "xmlName": "LiveChannelHistory",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetLiveChannelHistoryResponseBodyLiveChannelHistory",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 9945,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 62,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetLiveChannelInfo",
+      "action": "GetLiveChannelInfo",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2628,
+        "column": 16,
+        "endLine": 2628,
+        "endColumn": 45
+      },
+      "responseModel": "GetLiveChannelInfoResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2622,
+        "column": 7,
+        "endLine": 2622,
+        "endColumn": 33
+      },
+      "bodyModel": "GetLiveChannelInfoResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 2616,
+        "column": 7,
+        "endLine": 2616,
+        "endColumn": 37
+      },
+      "nativeRoot": {
+        "action": "GetLiveChannelInfo",
+        "model": "GetLiveChannelInfoResponseBody",
+        "kind": "structured",
+        "name": "LiveChannelConfiguration",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "LiveChannelConfiguration",
+          "jsonName": "LiveChannelConfiguration",
+          "xmlName": "LiveChannelConfiguration",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetLiveChannelInfoResponseBodyLiveChannelConfiguration",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 10010,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 63,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetLiveChannelStat",
+      "action": "GetLiveChannelStat",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2668,
+        "column": 16,
+        "endLine": 2668,
+        "endColumn": 45
+      },
+      "responseModel": "GetLiveChannelStatResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2662,
+        "column": 7,
+        "endLine": 2662,
+        "endColumn": 33
+      },
+      "bodyModel": "GetLiveChannelStatResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 2654,
+        "column": 7,
+        "endLine": 2654,
+        "endColumn": 37
+      },
+      "nativeRoot": {
+        "action": "GetLiveChannelStat",
+        "model": "GetLiveChannelStatResponseBody",
+        "kind": "structured",
+        "name": "LiveChannelStat",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "LiveChannelStat",
+          "jsonName": "LiveChannelStat",
+          "xmlName": "LiveChannelStat",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetLiveChannelStatResponseBodyLiveChannelStat",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 10094,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 64,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetObjectAcl",
+      "action": "GetObjectAcl",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2851,
+        "column": 16,
+        "endLine": 2851,
+        "endColumn": 39
+      },
+      "responseModel": "GetObjectAclResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2845,
+        "column": 7,
+        "endLine": 2845,
+        "endColumn": 27
+      },
+      "bodyModel": "GetObjectAclResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 2838,
+        "column": 7,
+        "endLine": 2838,
+        "endColumn": 31
+      },
+      "nativeRoot": {
+        "action": "GetObjectAcl",
+        "model": "GetObjectAclResponseBody",
+        "kind": "structured",
+        "name": "AccessControlPolicy",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "AccessControlPolicy",
+          "jsonName": "AccessControlPolicy",
+          "xmlName": "AccessControlPolicy",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetObjectAclResponseBodyAccessControlPolicy",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 10472,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 66,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetObjectTagging",
+      "action": "GetObjectTagging",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2941,
+        "column": 16,
+        "endLine": 2941,
+        "endColumn": 43
+      },
+      "responseModel": "GetObjectTaggingResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2935,
+        "column": 7,
+        "endLine": 2935,
+        "endColumn": 31
+      },
+      "bodyModel": "GetObjectTaggingResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 2931,
+        "column": 7,
+        "endLine": 2931,
+        "endColumn": 35
+      },
+      "nativeRoot": {
+        "action": "GetObjectTagging",
+        "model": "GetObjectTaggingResponseBody",
+        "kind": "structured",
+        "name": "Tagging",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "Tagging",
+          "jsonName": "Tagging",
+          "xmlName": "Tagging",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "GetObjectTaggingResponseBodyTagging",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 10621,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 67,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "GetSymlink",
+      "action": "GetSymlink",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2983,
+        "column": 16,
+        "endLine": 2983,
+        "endColumn": 37
+      },
+      "responseModel": "GetSymlinkResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 2978,
+        "column": 7,
+        "endLine": 2978,
+        "endColumn": 25
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "InitiateBucketWorm",
+      "action": "InitiateBucketWorm",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3161,
+        "column": 16,
+        "endLine": 3161,
+        "endColumn": 45
+      },
+      "responseModel": "InitiateBucketWormResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 3156,
+        "column": 7,
+        "endLine": 3156,
+        "endColumn": 33
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "InitiateMultipartUpload",
+      "action": "InitiateMultipartUpload",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3253,
+        "column": 16,
+        "endLine": 3253,
+        "endColumn": 50
+      },
+      "responseModel": "InitiateMultipartUploadResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 3237,
+        "column": 7,
+        "endLine": 3237,
+        "endColumn": 38
+      },
+      "bodyModel": "InitiateMultipartUploadResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 3230,
+        "column": 7,
+        "endLine": 3230,
+        "endColumn": 42
+      },
+      "nativeRoot": {
+        "action": "InitiateMultipartUpload",
+        "model": "InitiateMultipartUploadResponseBody",
+        "kind": "structured",
+        "name": "InitiateMultipartUploadResult",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "InitiateMultipartUploadResult",
+          "jsonName": "InitiateMultipartUploadResult",
+          "xmlName": "InitiateMultipartUploadResult",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "InitiateMultipartUploadResponseBodyInitiateMultipartUploadResult",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 11357,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 72,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "ListBucketInventory",
+      "action": "ListBucketInventory",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3346,
+        "column": 16,
+        "endLine": 3346,
+        "endColumn": 46
+      },
+      "responseModel": "ListBucketInventoryResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 3340,
+        "column": 7,
+        "endLine": 3340,
+        "endColumn": 34
+      },
+      "bodyModel": "ListBucketInventoryResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 3332,
+        "column": 7,
+        "endLine": 3332,
+        "endColumn": 38
+      },
+      "nativeRoot": {
+        "action": "ListBucketInventory",
+        "model": "ListBucketInventoryResponseBody",
+        "kind": "structured",
+        "name": "ListInventoryConfigurationsResult",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "ListInventoryConfigurationsResult",
+          "jsonName": "ListInventoryConfigurationsResult",
+          "xmlName": "ListInventoryConfigurationsResult",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "ListBucketInventoryResponseBodyListInventoryConfigurationsResult",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 11875,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 77,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "ListBuckets",
+      "action": "ListBuckets",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3408,
+        "column": 16,
+        "endLine": 3408,
+        "endColumn": 38
+      },
+      "responseModel": "ListBucketsResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 3402,
+        "column": 7,
+        "endLine": 3402,
+        "endColumn": 26
+      },
+      "bodyModel": "ListBucketsResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 3390,
+        "column": 7,
+        "endLine": 3390,
+        "endColumn": 30
+      },
+      "nativeRoot": {
+        "action": "ListBuckets",
+        "model": "ListBucketsResponseBody",
+        "kind": "structured",
+        "name": "ListAllMyBucketsResult",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "ListAllMyBucketsResult",
+          "jsonName": "ListAllMyBucketsResult",
+          "xmlName": "ListAllMyBucketsResult",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "ListBucketsResponseBodyListAllMyBucketsResult",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 12013,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 78,
+          "column": 2
+        }
+      },
+      "status": "divergent",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [
+        "buckets",
+        "isTruncated",
+        "marker",
+        "maxKeys",
+        "nextMarker",
+        "owner",
+        "prefix"
+      ],
+      "extraNativeFields": [
+        "Buckets",
+        "IsTruncated",
+        "Marker",
+        "MaxKeys",
+        "NextMarker",
+        "Owner",
+        "Prefix"
+      ]
+    },
+    {
+      "operation": "ListLiveChannel",
+      "action": "ListLiveChannel",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3474,
+        "column": 16,
+        "endLine": 3474,
+        "endColumn": 42
+      },
+      "responseModel": "ListLiveChannelResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 3468,
+        "column": 7,
+        "endLine": 3468,
+        "endColumn": 30
+      },
+      "bodyModel": "ListLiveChannelResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 3457,
+        "column": 7,
+        "endLine": 3457,
+        "endColumn": 34
+      },
+      "nativeRoot": {
+        "action": "ListLiveChannel",
+        "model": "ListLiveChannelResponseBody",
+        "kind": "structured",
+        "name": "ListLiveChannelResult",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "ListLiveChannelResult",
+          "jsonName": "ListLiveChannelResult",
+          "xmlName": "ListLiveChannelResult",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "ListLiveChannelResponseBodyListLiveChannelResult",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 12252,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 80,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "ListMultipartUploads",
+      "action": "ListMultipartUploads",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3547,
+        "column": 16,
+        "endLine": 3547,
+        "endColumn": 47
+      },
+      "responseModel": "ListMultipartUploadsResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 3541,
+        "column": 7,
+        "endLine": 3541,
+        "endColumn": 35
+      },
+      "bodyModel": "ListMultipartUploadsResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 3522,
+        "column": 7,
+        "endLine": 3522,
+        "endColumn": 39
+      },
+      "nativeRoot": {
+        "action": "ListMultipartUploads",
+        "model": "ListMultipartUploadsResponseBody",
+        "kind": "structured",
+        "name": "ListMultipartUploadsResult",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "ListMultipartUploadsResult",
+          "jsonName": "ListMultipartUploadsResult",
+          "xmlName": "ListMultipartUploadsResult",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "ListMultipartUploadsResponseBodyListMultipartUploadsResult",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 12427,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 81,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "ListObjectVersions",
+      "action": "ListObjectVersions",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3632,
+        "column": 16,
+        "endLine": 3632,
+        "endColumn": 45
+      },
+      "responseModel": "ListObjectVersionsResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 3626,
+        "column": 7,
+        "endLine": 3626,
+        "endColumn": 33
+      },
+      "bodyModel": "ListObjectVersionsResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 3604,
+        "column": 7,
+        "endLine": 3604,
+        "endColumn": 37
+      },
+      "nativeRoot": {
+        "action": "ListObjectVersions",
+        "model": "ListObjectVersionsResponseBody",
+        "kind": "structured",
+        "name": "ListVersionsResult",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "ListVersionsResult",
+          "jsonName": "ListVersionsResult",
+          "xmlName": "ListVersionsResult",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "ListObjectVersionsResponseBodyListVersionsResult",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 12645,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 82,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "ListObjects",
+      "action": "ListObjects",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3711,
+        "column": 16,
+        "endLine": 3711,
+        "endColumn": 38
+      },
+      "responseModel": "ListObjectsResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 3705,
+        "column": 7,
+        "endLine": 3705,
+        "endColumn": 26
+      },
+      "bodyModel": "ListObjectsResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 3688,
+        "column": 7,
+        "endLine": 3688,
+        "endColumn": 30
+      },
+      "nativeRoot": {
+        "action": "ListObjects",
+        "model": "ListObjectsResponseBody",
+        "kind": "structured",
+        "name": "ListBucketResult",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "ListBucketResult",
+          "jsonName": "ListBucketResult",
+          "xmlName": "ListBucketResult",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "ListObjectsResponseBodyListBucketResult",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 12856,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 83,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "ListObjectsV2",
+      "action": "ListObjectsV2",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3791,
+        "column": 16,
+        "endLine": 3791,
+        "endColumn": 40
+      },
+      "responseModel": "ListObjectsV2Response",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 3785,
+        "column": 7,
+        "endLine": 3785,
+        "endColumn": 28
+      },
+      "bodyModel": "ListObjectsV2ResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 3766,
+        "column": 7,
+        "endLine": 3766,
+        "endColumn": 32
+      },
+      "nativeRoot": {
+        "action": "ListObjectsV2",
+        "model": "ListObjectsV2ResponseBody",
+        "kind": "structured",
+        "name": "ListBucketResult",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "ListBucketResult",
+          "jsonName": "ListBucketResult",
+          "xmlName": "ListBucketResult",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "ListObjectsV2ResponseBodyListBucketResult",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 13065,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 84,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "ListParts",
+      "action": "ListParts",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3875,
+        "column": 16,
+        "endLine": 3875,
+        "endColumn": 36
+      },
+      "responseModel": "ListPartsResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 3869,
+        "column": 7,
+        "endLine": 3869,
+        "endColumn": 24
+      },
+      "bodyModel": "ListPartsResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 3856,
+        "column": 7,
+        "endLine": 3856,
+        "endColumn": 28
+      },
+      "nativeRoot": {
+        "action": "ListParts",
+        "model": "ListPartsResponseBody",
+        "kind": "structured",
+        "name": "ListPartResult",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "ListPartResult",
+          "jsonName": "ListPartResult",
+          "xmlName": "ListPartResult",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "ListPartsResponseBodyListPartResult",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 13312,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 85,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "OptionObject",
+      "action": "OptionObject",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3934,
+        "column": 16,
+        "endLine": 3934,
+        "endColumn": 39
+      },
+      "responseModel": "OptionObjectResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 3929,
+        "column": 7,
+        "endLine": 3929,
+        "endColumn": 27
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PostObject",
+      "action": "PostObject",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4007,
+        "column": 16,
+        "endLine": 4007,
+        "endColumn": 37
+      },
+      "responseModel": "PostObjectResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 3974,
+        "column": 7,
+        "endLine": 3974,
+        "endColumn": 25
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PostVodPlaylist",
+      "action": "PostVodPlaylist",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4070,
+        "column": 16,
+        "endLine": 4070,
+        "endColumn": 42
+      },
+      "responseModel": "PostVodPlaylistResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4065,
+        "column": 7,
+        "endLine": 4065,
+        "endColumn": 30
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutBucket",
+      "action": "PutBucket",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4122,
+        "column": 16,
+        "endLine": 4122,
+        "endColumn": 36
+      },
+      "responseModel": "PutBucketResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4117,
+        "column": 7,
+        "endLine": 4117,
+        "endColumn": 24
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutBucketAcl",
+      "action": "PutBucketAcl",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4171,
+        "column": 16,
+        "endLine": 4171,
+        "endColumn": 39
+      },
+      "responseModel": "PutBucketAclResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4166,
+        "column": 7,
+        "endLine": 4166,
+        "endColumn": 27
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutBucketCors",
+      "action": "PutBucketCors",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4214,
+        "column": 16,
+        "endLine": 4214,
+        "endColumn": 40
+      },
+      "responseModel": "PutBucketCorsResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4209,
+        "column": 7,
+        "endLine": 4209,
+        "endColumn": 28
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutBucketEncryption",
+      "action": "PutBucketEncryption",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4252,
+        "column": 16,
+        "endLine": 4252,
+        "endColumn": 46
+      },
+      "responseModel": "PutBucketEncryptionResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4247,
+        "column": 7,
+        "endLine": 4247,
+        "endColumn": 34
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutBucketInventory",
+      "action": "PutBucketInventory",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4291,
+        "column": 16,
+        "endLine": 4291,
+        "endColumn": 45
+      },
+      "responseModel": "PutBucketInventoryResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4286,
+        "column": 7,
+        "endLine": 4286,
+        "endColumn": 33
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutBucketLifecycle",
+      "action": "PutBucketLifecycle",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4335,
+        "column": 16,
+        "endLine": 4335,
+        "endColumn": 45
+      },
+      "responseModel": "PutBucketLifecycleResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4330,
+        "column": 7,
+        "endLine": 4330,
+        "endColumn": 33
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutBucketLogging",
+      "action": "PutBucketLogging",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4373,
+        "column": 16,
+        "endLine": 4373,
+        "endColumn": 43
+      },
+      "responseModel": "PutBucketLoggingResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4368,
+        "column": 7,
+        "endLine": 4368,
+        "endColumn": 31
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutBucketReferer",
+      "action": "PutBucketReferer",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4449,
+        "column": 16,
+        "endLine": 4449,
+        "endColumn": 43
+      },
+      "responseModel": "PutBucketRefererResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4444,
+        "column": 7,
+        "endLine": 4444,
+        "endColumn": 31
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutBucketReplication",
+      "action": "PutBucketReplication",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4487,
+        "column": 16,
+        "endLine": 4487,
+        "endColumn": 47
+      },
+      "responseModel": "PutBucketReplicationResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4482,
+        "column": 7,
+        "endLine": 4482,
+        "endColumn": 35
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutBucketRequestPayment",
+      "action": "PutBucketRequestPayment",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4525,
+        "column": 16,
+        "endLine": 4525,
+        "endColumn": 50
+      },
+      "responseModel": "PutBucketRequestPaymentResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4520,
+        "column": 7,
+        "endLine": 4520,
+        "endColumn": 38
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutBucketTags",
+      "action": "PutBucketTags",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4563,
+        "column": 16,
+        "endLine": 4563,
+        "endColumn": 40
+      },
+      "responseModel": "PutBucketTagsResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4558,
+        "column": 7,
+        "endLine": 4558,
+        "endColumn": 28
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutBucketTransferAcceleration",
+      "action": "PutBucketTransferAcceleration",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4601,
+        "column": 16,
+        "endLine": 4601,
+        "endColumn": 56
+      },
+      "responseModel": "PutBucketTransferAccelerationResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4596,
+        "column": 7,
+        "endLine": 4596,
+        "endColumn": 44
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutBucketVersioning",
+      "action": "PutBucketVersioning",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4639,
+        "column": 16,
+        "endLine": 4639,
+        "endColumn": 46
+      },
+      "responseModel": "PutBucketVersioningResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4634,
+        "column": 7,
+        "endLine": 4634,
+        "endColumn": 34
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutBucketWebsite",
+      "action": "PutBucketWebsite",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4677,
+        "column": 16,
+        "endLine": 4677,
+        "endColumn": 43
+      },
+      "responseModel": "PutBucketWebsiteResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4672,
+        "column": 7,
+        "endLine": 4672,
+        "endColumn": 31
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutLiveChannel",
+      "action": "PutLiveChannel",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4721,
+        "column": 16,
+        "endLine": 4721,
+        "endColumn": 41
+      },
+      "responseModel": "PutLiveChannelResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4715,
+        "column": 7,
+        "endLine": 4715,
+        "endColumn": 29
+      },
+      "bodyModel": "PutLiveChannelResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 4710,
+        "column": 7,
+        "endLine": 4710,
+        "endColumn": 33
+      },
+      "nativeRoot": {
+        "action": "PutLiveChannel",
+        "model": "PutLiveChannelResponseBody",
+        "kind": "structured",
+        "name": "CreateLiveChannelResult",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "CreateLiveChannelResult",
+          "jsonName": "CreateLiveChannelResult",
+          "xmlName": "CreateLiveChannelResult",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "PutLiveChannelResponseBodyCreateLiveChannelResult",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 15178,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 87,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    },
+    {
+      "operation": "PutLiveChannelStatus",
+      "action": "PutLiveChannelStatus",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4758,
+        "column": 16,
+        "endLine": 4758,
+        "endColumn": 47
+      },
+      "responseModel": "PutLiveChannelStatusResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4753,
+        "column": 7,
+        "endLine": 4753,
+        "endColumn": 35
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutObjectAcl",
+      "action": "PutObjectAcl",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4885,
+        "column": 16,
+        "endLine": 4885,
+        "endColumn": 39
+      },
+      "responseModel": "PutObjectAclResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4880,
+        "column": 7,
+        "endLine": 4880,
+        "endColumn": 27
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutObjectTagging",
+      "action": "PutObjectTagging",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4936,
+        "column": 16,
+        "endLine": 4936,
+        "endColumn": 43
+      },
+      "responseModel": "PutObjectTaggingResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4931,
+        "column": 7,
+        "endLine": 4931,
+        "endColumn": 31
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "PutSymlink",
+      "action": "PutSymlink",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4984,
+        "column": 16,
+        "endLine": 4984,
+        "endColumn": 37
+      },
+      "responseModel": "PutSymlinkResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 4979,
+        "column": 7,
+        "endLine": 4979,
+        "endColumn": 25
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "RestoreObject",
+      "action": "RestoreObject",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 5037,
+        "column": 16,
+        "endLine": 5037,
+        "endColumn": 40
+      },
+      "responseModel": "RestoreObjectResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 5032,
+        "column": 7,
+        "endLine": 5032,
+        "endColumn": 28
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "UploadPart",
+      "action": "UploadPart",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 5122,
+        "column": 16,
+        "endLine": 5122,
+        "endColumn": 37
+      },
+      "responseModel": "UploadPartResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 5117,
+        "column": 7,
+        "endLine": 5117,
+        "endColumn": 25
+      },
+      "status": "no-body-target",
+      "reason": "DSL response facade declares no body field"
+    },
+    {
+      "operation": "UploadPartCopy",
+      "action": "UploadPartCopy",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 5187,
+        "column": 16,
+        "endLine": 5187,
+        "endColumn": 41
+      },
+      "responseModel": "UploadPartCopyResponse",
+      "responseSource": {
+        "file": "products/oss/main.tea",
+        "line": 5181,
+        "column": 7,
+        "endLine": 5181,
+        "endColumn": 29
+      },
+      "bodyModel": "UploadPartCopyResponseBody",
+      "bodySource": {
+        "file": "products/oss/main.tea",
+        "line": 5176,
+        "column": 7,
+        "endLine": 5176,
+        "endColumn": 33
+      },
+      "nativeRoot": {
+        "action": "UploadPartCopy",
+        "model": "UploadPartCopyResponseBody",
+        "kind": "structured",
+        "name": "CopyPartResult",
+        "namespaceMatch": "local",
+        "field": {
+          "goName": "CopyPartResult",
+          "jsonName": "CopyPartResult",
+          "xmlName": "CopyPartResult",
+          "xmlOptions": [
+            "omitempty"
+          ],
+          "type": {
+            "kind": "model",
+            "name": "UploadPartCopyResponseBodyCopyPartResult",
+            "optional": true
+          },
+          "source": {
+            "file": "client/structs.go",
+            "line": 16154,
+            "column": 2
+          }
+        },
+        "source": {
+          "file": "client/client.go",
+          "line": 88,
+          "column": 2
+        }
+      },
+      "status": "root-fields-match",
+      "normalization": "unwrap-structured-root",
+      "missingNativeFields": [],
+      "extraNativeFields": []
+    }
+  ],
+  "unusedNativeRoots": [
+    "CreateAccessPoint",
+    "CreateAccessPointForObjectProcess",
+    "CreateBucketDataRedundancyTransition",
+    "CreateCnameToken",
+    "DoMetaQuery",
+    "GetAccessPoint",
+    "GetAccessPointConfigForObjectProcess",
+    "GetAccessPointForObjectProcess",
+    "GetAccessPointPublicAccessBlock",
+    "GetAddress",
+    "GetAgent",
+    "GetAgentStatus",
+    "GetBucketAccessMonitor",
+    "GetBucketArchiveDirectRead",
+    "GetBucketCallbackPolicy",
+    "GetBucketDataRedundancyTransition",
+    "GetBucketHttpsConfig",
+    "GetBucketPolicyStatus",
+    "GetBucketPublicAccessBlock",
+    "GetBucketReferer",
+    "GetBucketResourceGroup",
+    "GetBucketResponseHeader",
+    "GetBucketStat",
+    "GetCnameToken",
+    "GetJob",
+    "GetJobResult",
+    "GetMetaQueryStatus",
+    "GetPublicAccessBlock",
+    "GetReport",
+    "GetStyle",
+    "GetTunnel",
+    "GetUserAntiDDosInfo",
+    "GetUserDefinedLogFieldsConfig",
+    "ListAccessPoints",
+    "ListAccessPointsForObjectProcess",
+    "ListAddress",
+    "ListAgent",
+    "ListBucketAntiDDosInfo",
+    "ListBucketDataRedundancyTransition",
+    "ListCname",
+    "ListJob",
+    "ListJobHistory",
+    "ListStyle",
+    "ListTunnel",
+    "VerifyAddress"
+  ]
+}

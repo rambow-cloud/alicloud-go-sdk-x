@@ -2,7 +2,9 @@
 
 [中文](development-path.zh-CN.md)
 
-- #92 next adds the [shared internal XML codec](xml-model-codec.md). Root/model fixtures precede OSS Gateway/signing/IR integration; no public OSS client is accepted yet.
+- #92 next uses [native XML root discovery](native-xml-traits.md): complete hash-bound helper facts complement official DSL, with explicit conflict reports before production XML/Gateway integration. No inferred roots or generated OSS coverage claim.
+
+- The [shared internal XML codec](xml-model-codec.md) is merged under #92. Root/model fixtures precede OSS Gateway/signing/IR integration; no public OSS client is accepted yet.
 
 - #92 follows [FC binary generation](fc-binary-generation.md): schema v6, openapi-http-v1 and 73 generated FC actions. The [JSON/none baseline](fc-roa-product.md) remains historical evidence. XML, unbounded request streams and live acceptance remain separate.
 - Before binary emission, implement [bounded response streaming](response-streaming.md) in the shared runtime. Its reader lifetime and publication gates do not establish generated binary coverage.
