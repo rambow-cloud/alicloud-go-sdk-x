@@ -1,5 +1,7 @@
 # 项目协作约定
 
+- #92 下一步内部 XML 编解码遵循[XML 模型编解码层](docs/xml-model-codec.zh-CN.md)。显式区分结构根和标量根，保持 DSL 具体字段；不推断根元素，不新增未经验证的公共 OSS 操作或签名回退。
+
 [English](AGENTS.md)
 
 ## SDK 缺口补齐路线（2026-10-09）

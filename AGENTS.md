@@ -1,5 +1,7 @@
 # Project working agreements
 
+- The next #92 internal XML codec follows [XML model codec](docs/xml-model-codec.md). Preserve explicit structured/scalar roots and typed DSL wire fields; no inferred roots, public OSS operations or signing fallback.
+
 [中文](AGENTS.zh-CN.md)
 
 ## SDK gap completion (2026-10-09)
