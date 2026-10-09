@@ -195,7 +195,7 @@ func flatten(ctx context.Context, v reflect.Value, prefix string, result url.Val
 					return errors.New("rpcmodel: unsupported field encoding")
 				}
 				field := v.Field(i)
-				if (field.Kind() == reflect.Pointer || field.Kind() == reflect.Map || field.Kind() == reflect.Slice || field.Kind() == reflect.Interface) && field.IsNil() {
+				if IsNil(field.Interface()) {
 					continue
 				}
 				data, err := json.Marshal(field.Interface(), json.Deterministic(true))

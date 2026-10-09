@@ -3,11 +3,12 @@
 [中文](README.zh-CN.md)
 
 - Current lowering/emission: ECS 380/380, VPC 396/403, STS 4/4. See [RPC expansion #83](../docs/dsl-rpc-expansion.md). The older table below is historical.
-- Schema v1 adds optional binding `encoding: "json"`, boolean field `attributes.deprecated`, and `kind: "json", dslType: "any"` for dynamic values inside reviewed JSON transforms. No unknown transform is accepted.
+- Schema v2 adds optional binding `encoding: "json"`, boolean field `attributes.deprecated`, and `kind: "json", dslType: "any"` for dynamic values inside reviewed JSON transforms. No unknown transform is accepted.
+- Product IR and its lock use schema v2. Old generators reject the lock instead of ignoring JSON query encoding. Regenerate with the matching frontend/backend. Reports keep their independent v1 schema.
 
 - Generated build-time artifacts for [#35](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/35).
 - Read [product-discovery.md](../docs/product-discovery.md) before consuming them.
-- Schema version 1 and profile rpc-query-json-v1 record the pinned official product DSL, parser version, complete source-lock hash, source/API catalog hashes and Apache-2.0 provenance.
+- Schema version 2 and profile rpc-query-json-v1 record the pinned official product DSL, parser version, complete source-lock hash, source/API catalog hashes and Apache-2.0 provenance.
 - The original license is [LICENSE.upstream](../sources/darabonba/LICENSE.upstream).
 - Do not relabel source-derived definitions under the project MIT license.
 - Descriptions/ examples reference coordinates in the licensed source; #38 includes parser description/ summary text for English Go comments, with paired guides and documentation coverage.

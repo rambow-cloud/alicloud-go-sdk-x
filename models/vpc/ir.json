@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "profile": "rpc-query-json-v1",
   "product": "vpc",
   "identifier": "vpc-20160428",

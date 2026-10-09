@@ -1,11 +1,11 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "profile": "rpc-query-json-v1",
   "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
   "files": [
     {
       "file": "models/ecs/ir.json",
-      "sha256": "ce73311e8e11930097733be1879f520098c5abac6bb71912f06adc3a527af718"
+      "sha256": "e25caa8b81f626298f68b593d9ac0eac33d3a08d2fc83fa394f5fedc90b6e3cb"
     },
     {
       "file": "models/ecs/coverage.json",
@@ -13,7 +13,7 @@
     },
     {
       "file": "models/sts/ir.json",
-      "sha256": "7560b3c8cf32482dd32de26bfe2385772fe438c13d68ebbb448dc4b59d4fd5b0"
+      "sha256": "b1c1aa4ff7fba6106ee34379488312a5ea3d8a9c18df5753a755304e8c5eb25d"
     },
     {
       "file": "models/sts/coverage.json",
@@ -21,7 +21,7 @@
     },
     {
       "file": "models/vpc/ir.json",
-      "sha256": "87e937afa0fa8eed69ee497e649d8ee7d9698c01d77fc5e183c704279f37d325"
+      "sha256": "cee51293aab2eb8ea2e54b4b66f4a91cd7f896d3e0a75fa8a4d0aaf87e611325"
     },
     {
       "file": "models/vpc/coverage.json",

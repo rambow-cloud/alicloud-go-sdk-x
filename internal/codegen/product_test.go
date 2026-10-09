@@ -236,6 +236,54 @@ func TestProductSupportAndCorruptionFailBeforeWrites(t *testing.T) {
 	}
 }
 
+func TestProductSchemaVersionsFailBeforeWrites(t *testing.T) {
+	root := fullProductFixture(t)
+	path := filepath.Join(root, "models", "manifest.json")
+	data, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var pins productPins
+	if err := json.Unmarshal(data, &pins); err != nil {
+		t.Fatal(err)
+	}
+	writePins := func() {
+		t.Helper()
+		encoded, err := json.Marshal(pins)
+		if err != nil {
+			t.Fatal(err)
+		}
+		writeTestFile(t, root, "models/manifest.json", encoded)
+	}
+	checkRejected := func(want string) {
+		t.Helper()
+		if err := GenerateProducts(context.Background(), root, false, nil); err == nil || !strings.Contains(err.Error(), want) {
+			t.Fatal("incompatible IR accepted", err)
+		}
+		if _, err := os.Stat(filepath.Join(root, "service")); !errors.Is(err, os.ErrNotExist) {
+			t.Fatal("version rejection wrote output")
+		}
+	}
+	pins.SchemaVersion = 1
+	writePins()
+	checkRejected("unsupported IR manifest")
+	pins.SchemaVersion = 2
+	p := readProductIR(t, "ecs")
+	p.SchemaVersion = 1
+	encoded, err := json.Marshal(p)
+	if err != nil {
+		t.Fatal(err)
+	}
+	writeTestFile(t, root, "models/ecs/ir.json", encoded)
+	for i := range pins.Files {
+		if pins.Files[i].File == "models/ecs/ir.json" {
+			pins.Files[i].SHA256 = digest(encoded)
+		}
+	}
+	writePins()
+	checkRejected("IR provenance mismatch")
+}
+
 func TestProductSourceIntegrityFailsBeforeWrites(t *testing.T) {
 	for _, file := range []string{"products/sts/main.tea", "modules/shadow.tea", "manifest.json"} {
 		t.Run(file, func(t *testing.T) {

@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "profile": "rpc-query-json-v1",
   "product": "ecs",
   "identifier": "ecs-20140526",
