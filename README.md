@@ -2,6 +2,8 @@
 
 [中文](README.zh-CN.md)
 
+- Delivery: #60 agent STS acceptance -> ECS #74 -> VPC #75 -> #61 publication. Independent human UX is optional #76; see [the route](docs/sts-ecs-vpc-path.md).
+
 - An independent Alibaba Cloud SDK for Go.
 - This is not an official Alibaba Cloud project.
 
@@ -46,7 +48,7 @@
 
 - The eleven foundation capabilities and initial generator route are accepted; see [foundation evidence](docs/foundation-acceptance.md) and [integration](docs/generator-integration.md).
 
-- [Product acceptance](docs/product-acceptance.md) separates offline, live, user and release evidence. v0.1.0 is scoped to STS; independent acceptance and publication remain pending. Benchmarks #20 are separate.
+- [Product acceptance](docs/product-acceptance.md) separates offline, live, user and release evidence. v0.1.0 follows STS agent acceptance (#60), ECS (#74), VPC (#75), then publication (#61). Independent human UX is optional follow-up #76. Benchmarks #20 are separate.
 
 ## Offline STS-to-ECS example
 

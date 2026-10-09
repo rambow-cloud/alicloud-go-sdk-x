@@ -2,6 +2,15 @@
 
 [English](sts-consumer-acceptance.md)
 
+## 当前 #60 消费者验收
+
+- 用户指定 #60 由代理验收，见[收尾报告](sts-agent-closeout.zh-CN.md)及 acceptance/sts-agent-result.json 中的机器记录。
+- 使用当前固定的 SDK 和任务版本，执行全部独立模块测试及可运行消费者程序。
+- 原生 StsToken、OAuth 刷新与轮换、持久化和重建、长期凭据显式启用，都使用合成 Profile 和模拟 HTTP。
+- 记录代理执行者、实际结果和自动化测试耗时，不宣称独立人工仅按文档完成任务，也不做未经测量的优越性比较。
+- 下文独立开发者交接说明改用于可选 #76，原人工记录保持 NOT RUN。
+- #61 在 ECS #74、VPC #75 完成后执行，遵循[新路线](sts-ecs-vpc-path.zh-CN.md)。
+
 - #60 验收四个生成操作与消费者维护，与 #61 发布分开。
 - 隔离的 `examples/stsacceptance` 模块固定官方 STS v2.1.0；本 SDK 通过显式本地 replace 使用当前检出源码。
 - 报告记录 `git rev-parse HEAD`、`go version`、系统和模块版本；对比依赖不进入 SDK 运行时模块。

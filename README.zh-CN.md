@@ -2,6 +2,8 @@
 
 [English](README.md)
 
+- 首版路线：#60 代理 STS 验收 → ECS #74 → VPC #75 → #61 发布。独立人工体验另由可选 #76 跟踪，详见[开发路线](docs/sts-ecs-vpc-path.zh-CN.md)。
+
 - 独立开发的阿里云 Go SDK，不是阿里云官方项目。
 
 - 要求 Go 1.27，并直接使用 `encoding/json/v2`。v1 之前 API 可能调整。
@@ -36,7 +38,7 @@
 
 - 十一项基础能力和初始生成路线已验收，见[基础证据](docs/foundation-acceptance.zh-CN.md)与[集成记录](docs/generator-integration.zh-CN.md)。
 
-- [产品验收](docs/product-acceptance.zh-CN.md)分别记录离线、真实调用、用户体验和发布证据。v0.1.0 的产品范围限定为 STS，独立验收和发布仍待完成；基准测试 #20 单独跟踪。
+- [产品验收](docs/product-acceptance.zh-CN.md)分别记录离线、真实调用、用户体验和发布证据。v0.1.0 按 STS 代理验收（#60）、ECS（#74）、VPC（#75）、发布（#61）的顺序推进；独立人工体验为可选 #76，基准测试 #20 单独跟踪。
 
 ## 离线 STS→ECS 示例
 

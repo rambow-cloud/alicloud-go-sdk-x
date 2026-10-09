@@ -2,51 +2,44 @@
 
 [中文](sts-v010-release-checklist.zh-CN.md)
 
-- #61 remains open: required independent #60 acceptance is NOT RUN.
-- Publication and same-version browser indexing are NOT RUN.
-- Notes/commands are prepared; no tag is created by this preparation.
-- User authorization to complete the release already exists; the pending item is actual acceptance evidence, not another permission request.
+- The user revised the route on 2026-10-09: #60 agent STS acceptance, ECS #74, VPC #75, then #61 publication/indexing.
+- Follow [the current route](sts-ecs-vpc-path.md). Earlier STS-only publication and required-human #60 rules are superseded.
+- Independent human UX is optional #76. Its original record remains NOT RUN; agent tests must never be labeled as human evidence.
+- Publication/indexing remain NOT RUN. STS closeout creates no tag or release.
 
-- The user's later #68 correction also requires default configuration/native CLI Profile/OAuth and its scoped evidence before the new #60 human handoff.
-- Track docs/acceptance/profile-oauth-live.json separately from historical manual snapshots.
+## Required gates
 
-1. Receive the user-arranged independent Go developer's completed
-   [task report](sts-independent-result-template.md). Transcribe only actual results
-   into `docs/acceptance/sts-independent-result.json`, retaining sanitized source/
-   timings/obstacles/version evidence. Complete #60 only when all required cases pass.
-2. Review and merge the final notes/evidence. At the exact main candidate commit,
-   require Linux Go 1.27 race, Windows Go 1.27, automation/linked-issue checks plus
-   isolated consumer and real-source rehearsal. Review module/JSON v2 and MIT/Apache
-   licenses/source lock. `node .github/scripts/sts-release-check.cjs` refuses incomplete
-   human evidence or SDK changes since that evidence; it creates no tag or release.
-3. Confirm remote tag v0.1.0 is absent and #60 is closed. Record the exact candidate
-   SHA and passing CI URLs. Create/push an immutable annotated tag and publish:
+1. Record actual agent consumer results in acceptance/sts-agent-result.json with the tested SDK/workload revision. Preserve scoped live/source/Profile evidence and declare limits.
+2. Complete #74 and #75 and their product-result records. Generation counts, empty terminal pages and skipped waiter cases do not satisfy unexecuted required cases. Review #47/PR #48 independently.
+3. Require final-main Linux Go 1.27 race, Windows Go 1.27, automation and linked-issue checks. Review module/JSON v2, source/policy locks, MIT runtime and Apache generated LICENSE/NOTICE. Update paired release notes to the actual accepted scope.
+4. Run the read-only guard. It checks STS agent tasks, both product reports, native OAuth/live/source evidence, clean main and changes since recorded revisions. It creates no tag or release. Missing/NOT RUN product evidence remains blocking.
+5. Confirm #60/#74/#75 are closed and remote v0.1.0 is absent. Record the exact candidate and CI URLs, then use the commands below as part of #61.
+
+## Publication commands (after gates)
 
 ```powershell
-git tag -a v0.1.0 <verified-main-commit> -m "v0.1.0: generated STS"
+node .github/scripts/sts-release-check.cjs
+git tag -a v0.1.0 <verified-main-commit> -m "v0.1.0: generated STS, ECS and VPC"
 git -c credential.helper= -c 'credential.helper=!gh auth git-credential' -c credential.interactive=false push origin refs/tags/v0.1.0
-gh release create v0.1.0 --verify-tag --title "v0.1.0: generated STS" --notes-file docs/releases/v0.1.0.md --prerelease
+gh release create v0.1.0 --verify-tag --title "v0.1.0: generated STS, ECS and VPC" --notes-file docs/releases/v0.1.0.md --prerelease
 ```
 
-- These are post-acceptance commands, not executed preparation steps.
-- Never overwrite an existing tag.
-- If publishing fails after tag creation, inspect actual remote state and finish the release for that same tag; do not recreate or move it.
+- Authorization for release completion already exists. The user now defers execution until ECS/VPC completion.
+- Never overwrite a tag. If publishing fails after tag creation, inspect remote state and finish the same version.
 
-4. Record tag target/release URL and open these exact same-version pages in a browser:
+## Same-version browser evidence
 
-| Package        | Exact URL                                                                                | Inspect                                                                                     |
-| -------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| STS            | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/service/sts          | Version v0.1.0; Apache license; four client actions, model/field docs and runnable Examples |
-| Credentials    | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/credentials          | Version; MIT; explicit providers including AnonymousProvider, Cache and Examples            |
-| STS helper     | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/feature/stscreds     | Version; MIT; full-DSL constructor/ownership/renewal docs and Examples                      |
-| Config         | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/config               | Version; MIT; default loader/options/precedence and offline Example                         |
-| Native Profile | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/feature/profilecreds | Version; MIT; native modes/OAuth persistence/ownership/errors and offline Example           |
+| Package              | Exact URL                                                                                |
+| -------------------- | ---------------------------------------------------------------------------------------- |
+| service/sts          | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/service/sts          |
+| service/ecs          | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/service/ecs          |
+| service/vpc          | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/service/vpc          |
+| credentials          | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/credentials          |
+| feature/stscreds     | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/feature/stscreds     |
+| config               | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/config               |
+| feature/profilecreds | https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/feature/profilecreds |
 
-- If absent, use the browser Request action, then record the actual result/time; do not claim indexing from local tests, curl or DNS.
-- In particular check that the indexer can build Go 1.27/direct JSON v2; incompatibility keeps indexing NOT RUN/FAIL until resolved.
-- Preserve our chosen Go baseline rather than quietly downgrading it.
-
-5. Add actual release/browser evidence to this checklist or an explicitly linked
-   paired report. Close #61/#57 and milestone 4 only when these required cases pass;
-   align issue status labels and Project 3. A merged preparation PR does not satisfy
-   publication/indexing or close either issue.
+- Open these pages in a browser. Check v0.1.0, licenses, complete documented actions/fields, reviewed adapters and runnable Examples.
+- If absent, use Request. Record actual indexing/time; local tests, curl and DNS do not establish indexing.
+- Verify the indexer accepts Go 1.27/direct JSON v2; do not silently downgrade the baseline.
+- Finish #61/#57 and milestone only after actual publication/indexing. Keep labels and Project status aligned.

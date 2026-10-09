@@ -2,6 +2,14 @@
 
 [中文](AGENTS.zh-CN.md)
 
+## Current delivery and acceptance authority
+
+- The user-approved 2026-10-09 route in [docs/sts-ecs-vpc-path.md](docs/sts-ecs-vpc-path.md) overrides older STS-only release and required-human #60 rules.
+- Complete #60 through recorded implementation-agent consumer acceptance. Keep independent human UX in optional #76 and leave its evidence NOT RUN until actual results exist.
+- Then complete ECS #74 and VPC #75 before #61. Maintain native dependencies, milestone and Project state; no release during STS closeout.
+- Separate agent tests from human task success/timing. Preserve broader Beta UX criteria and accepted live/source evidence.
+- Release guard requires current STS agent and ECS/VPC product records; no single-product acceptance can bypass the other gates.
+
 - The 2026-10-09 writing policy replaces all older mixed-language Markdown rules.
 - See [documentation style](docs/documentation-style.md).
 

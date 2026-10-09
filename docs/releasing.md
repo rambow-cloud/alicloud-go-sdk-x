@@ -2,6 +2,14 @@
 
 [中文](releasing.zh-CN.md)
 
+## Current delivery route (2026-10-09)
+
+- Follow [STS/ECS/VPC delivery](sts-ecs-vpc-path.md): finish #60, then ECS #74 and VPC #75, then #61 release/indexing.
+- #60 now requires truthful implementation-agent consumer acceptance. Independent human usability moves to optional follow-up #76; its record remains NOT RUN and does not block this release.
+- Existing STS-only first-release scheduling and required-human #60 gates below are historical and superseded by this decision.
+- Preserve actual technical/live/source evidence. Agent test duration is not human task time.
+- Publication remains pending until both product acceptance issues pass. No tag is created by this change.
+
 - The first release target is [v0.1.0 STS](sts-v0.1.0.md), parent #57 / release #61, milestone v0.1.0 / Project 3.
 - Apply its explicitly scoped experimental gate before publication; the older multi-product candidate Beta schedule is not a prerequisite for this version.
 - Its broader acceptance remains open.

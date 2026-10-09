@@ -2,6 +2,15 @@
 
 [中文](sts-consumer-acceptance.zh-CN.md)
 
+## Current #60 consumer acceptance
+
+- The user now selects implementation-agent acceptance for #60. See [the closeout report](sts-agent-closeout.md) and machine evidence in acceptance/sts-agent-result.json.
+- Use the pinned current SDK/workload revision; run all standalone tests and the runnable consumer.
+- Native StsToken, OAuth refresh/rotation/persistence/reconstruction and explicit long-lived opt-in use synthetic profiles and scripted HTTP.
+- Record agent execution, actual case results and automated test duration. Do not claim an independent human/docs-only task or superiority.
+- The independent developer instructions below now apply to optional #76. Its original record stays NOT RUN.
+- Release #61 follows ECS #74 and VPC #75 under [the revised route](sts-ecs-vpc-path.md).
+
 - Issue #60 validates the four generated actions and consumer maintenance, separately from publication #61.
 - The isolated `examples/stsacceptance` module pins the official STS v2.1.0 comparison; the SDK uses an explicit local replacement to this checked-out repository.
 - Record `git rev-parse HEAD`, `go version`, OS and module versions in the report.

@@ -7,9 +7,122 @@ const os = require("node:os");
 const { execFileSync } = require("node:child_process");
 const {
   validateHuman,
+  validateAgent,
+  validateProduct,
   check,
   requireUnchangedBehavior,
 } = require("./sts-release-check.cjs");
+const { requiredTests, collect } = require("./sts-consumer-record.cjs");
+
+function passedAgent() {
+  return {
+    schemaVersion: 1,
+    status: "PASS",
+    reviewKind: "implementation-agent",
+    independentHuman: false,
+    sdkCommit: "a".repeat(40),
+    evidence: "synthetic unit fixture",
+    goVersion: "go1.27.1",
+    os: "fixture",
+    officialSTSVersion: "v2.1.0",
+    timingKind: "automated-test-execution",
+    tasks: Object.entries(requiredTests).map(([id, names]) => ({
+      id,
+      status: "PASS",
+      elapsedSeconds: 1,
+      tests: names.map((name) => ({ name, status: "PASS", elapsedSeconds: 1 })),
+    })),
+  };
+}
+
+test("agent evidence requires actual consumer cases and never claims human independence", () => {
+  assert.equal(validateAgent(passedAgent()), null);
+  for (const mutate of [
+    (a) => (a.independentHuman = true),
+    (a) => (a.reviewKind = "human"),
+    (a) => (a.sdkCommit = ""),
+    (a) => (a.goVersion = "go1.26.9"),
+    (a) => a.tasks.pop(),
+    (a) => a.tasks[0].tests.pop(),
+    (a) => (a.tasks[0].tests[0].status = "SKIP"),
+    (a) => (a.tasks[0].elapsedSeconds = null),
+    (a) => (a.timingKind = "developer-task-time"),
+  ]) {
+    const record = passedAgent();
+    mutate(record);
+    assert.ok(validateAgent(record));
+  }
+});
+
+test("test collector rejects failures, missing/duplicate tests and malformed private logs", () => {
+  const pkg =
+    "github.com/rambow-cloud/alicloud-go-sdk-x/examples/stsacceptance";
+  const events = Object.values(requiredTests)
+    .flat()
+    .map((Test) => ({ Package: pkg, Test, Action: "pass", Elapsed: 0.01 }));
+  events.push({ Package: pkg, Action: "pass", Elapsed: 1 });
+  const encode = (list) => list.map((e) => JSON.stringify(e)).join("\n");
+  const record = collect(encode(events), {
+    sdkCommit: "a".repeat(40),
+    goVersion: "go1.27.1",
+    os: "fixture",
+  });
+  assert.equal(validateAgent(record), null);
+  for (const log of [
+    "{private-test-value",
+    encode(events.slice(1)),
+    encode([...events, events[0]]),
+    encode([...events, { Package: pkg, Action: "fail" }]),
+  ])
+    assert.throws(
+      () => collect(log, {}),
+      (error) => !error.message.includes("private-test-value"),
+    );
+});
+
+test("STS completion cannot substitute for ECS or VPC product acceptance", () => {
+  for (const product of ["ecs", "vpc"]) {
+    const ids = [
+      "generation",
+      "consumer",
+      "pagination",
+      "retry-errors",
+      "live",
+      "docs",
+    ];
+    if (product === "ecs") ids.push("waiter");
+    const record = {
+      schemaVersion: 1,
+      product,
+      status: "PASS",
+      sdkCommit: "a".repeat(40),
+      evidence: "synthetic",
+      requiredCases: ids.map((id) => ({ id, status: "PASS" })),
+    };
+    assert.equal(validateProduct(record, product), null);
+    for (const mutate of [
+      (r) => (r.status = "NOT RUN"),
+      (r) => r.requiredCases.pop(),
+      (r) => (r.requiredCases[0].status = "SKIP"),
+      (r) => (r.sdkCommit = ""),
+    ]) {
+      const changed = structuredClone(record);
+      mutate(changed);
+      assert.ok(validateProduct(changed, product));
+    }
+    const pending = JSON.parse(
+      fs.readFileSync(
+        path.resolve(
+          __dirname,
+          "../../docs/acceptance/" + product + "-product-result.json",
+        ),
+      ),
+    );
+    if (pending.status === "PASS")
+      assert.equal(validateProduct(pending, product), null);
+    else assert.match(validateProduct(pending, product), /not PASS/);
+  }
+});
 
 test("behavior guard detects deleted root Go files after the independent revision", (t) => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "release-tree-"));
@@ -56,13 +169,12 @@ test("malformed acceptance reports never expose raw evidence in diagnostics", (t
   const target = path.join(dir, "docs/acceptance");
   fs.mkdirSync(target, { recursive: true });
   fs.writeFileSync(
-    path.join(target, "sts-independent-result.json"),
+    path.join(target, "sts-agent-result.json"),
     "{secret-unit-fixture",
   );
   assert.throws(
     () => check(dir),
-    (e) =>
-      e.message === "Independent developer evidence cannot be read or decoded",
+    (e) => e.message === "Agent consumer evidence cannot be read or decoded",
   );
 });
 
@@ -119,7 +231,7 @@ test("working acceptance template remains a truthful pending independent gate", 
   else assert.equal(validateHuman(h), null);
 });
 
-test("native Profile/OAuth evidence cannot be bypassed by completed synthetic human evidence", (t) => {
+test("native Profile/OAuth evidence cannot be bypassed by completed synthetic agent evidence", (t) => {
   const dir = fs.mkdtempSync(
     path.join(os.tmpdir(), "release-profile-evidence-"),
   );
@@ -132,8 +244,8 @@ test("native Profile/OAuth evidence cannot be bypassed by completed synthetic hu
   fs.mkdirSync(target, { recursive: true });
   fs.mkdirSync(products, { recursive: true });
   fs.writeFileSync(
-    path.join(target, "sts-independent-result.json"),
-    JSON.stringify(passed()),
+    path.join(target, "sts-agent-result.json"),
+    JSON.stringify(passedAgent()),
   );
   fs.copyFileSync(
     path.join(__dirname, "../../docs/products/sts.coverage.json"),
@@ -162,4 +274,66 @@ test("native Profile/OAuth evidence cannot be bypassed by completed synthetic hu
     () => check(dir),
     /required native Profile\/OAuth acceptance is incomplete/,
   );
+});
+
+test("complete synthetic STS evidence still blocks release until both products pass", (t) => {
+  const dir = fs.mkdtempSync(
+    path.join(os.tmpdir(), "release-product-evidence-"),
+  );
+  t.after(() => {
+    assert.equal(path.dirname(path.resolve(dir)), path.resolve(os.tmpdir()));
+    fs.rmSync(dir, { recursive: true, force: true });
+  });
+  const target = path.join(dir, "docs/acceptance"),
+    products = path.join(dir, "docs/products");
+  fs.mkdirSync(target, { recursive: true });
+  fs.mkdirSync(products, { recursive: true });
+  const write = (name, value) =>
+    fs.writeFileSync(path.join(target, name), JSON.stringify(value));
+  write("sts-agent-result.json", passedAgent());
+  fs.copyFileSync(
+    path.join(__dirname, "../../docs/products/sts.coverage.json"),
+    path.join(products, "sts.coverage.json"),
+  );
+  write("sts-identity-live.json", {
+    Status: "PASS",
+    IdentityFieldsCompared: 6,
+  });
+  write("sts-source-rehearsal.json", {
+    verification: { candidateCompilationAndIndependentContracts: "PASS" },
+  });
+  write("profile-oauth-live.json", {
+    Status: "PASS",
+    NativeCLIConfig: true,
+    CLISubprocess: false,
+    SuccessfulNativeOAuthExchange: "PASS",
+  });
+  write("ecs-product-result.json", {
+    schemaVersion: 1,
+    product: "ecs",
+    status: "NOT RUN",
+  });
+  write("vpc-product-result.json", {
+    schemaVersion: 1,
+    product: "vpc",
+    status: "NOT RUN",
+  });
+  assert.throws(() => check(dir), /ecs product acceptance is not PASS/);
+  write("ecs-product-result.json", {
+    schemaVersion: 1,
+    product: "ecs",
+    status: "PASS",
+    sdkCommit: "a".repeat(40),
+    evidence: "fixture",
+    requiredCases: [
+      "generation",
+      "consumer",
+      "pagination",
+      "retry-errors",
+      "live",
+      "docs",
+      "waiter",
+    ].map((id) => ({ id, status: "PASS" })),
+  });
+  assert.throws(() => check(dir), /vpc product acceptance is not PASS/);
 });

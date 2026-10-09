@@ -2,6 +2,14 @@
 
 [中文](sts-v010-acceptance-report.zh-CN.md)
 
+## Current delivery route (2026-10-09)
+
+- Follow [STS/ECS/VPC delivery](sts-ecs-vpc-path.md): finish #60, then ECS #74 and VPC #75, then #61 release/indexing.
+- #60 now requires truthful implementation-agent consumer acceptance. Independent human usability moves to optional follow-up #76; its record remains NOT RUN and does not block this release.
+- Existing STS-only first-release scheduling and required-human #60 gates below are historical and superseded by this decision.
+- Preserve actual technical/live/source evidence. Agent test duration is not human task time.
+- Publication remains pending until both product acceptance issues pass. No tag is created by this change.
+
 - Issue #60: technical acceptance and the independent developer gate are separate. #58/PR #63 and #59/PR #64 are merged.
 - Implementation version for the live/consumer run is `38cf05ac458d2e6ed3af165350fb77a10e7e8817`, now on main through `f31ad13e4ed3ba9974dfd5d5a9efff8c01aaf3a6`.
 - Go 1.27.1, Windows/amd64, Node 22.21.1, parser 2.2.1; Linux race and Windows CI preserve separate results.

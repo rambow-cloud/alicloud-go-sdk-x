@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "product": "vpc",
+  "status": "NOT RUN",
+  "issue": 75,
+  "sdkCommit": "",
+  "evidence": "",
+  "requiredCases": [
+    {
+      "id": "generation",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "consumer",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "pagination",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "retry-errors",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "live",
+      "status": "NOT RUN"
+    },
+    {
+      "id": "docs",
+      "status": "NOT RUN"
+    }
+  ]
+}
