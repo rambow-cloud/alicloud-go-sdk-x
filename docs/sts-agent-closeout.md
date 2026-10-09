@@ -60,3 +60,5 @@ go test ./...
 - Independent human usability remains NOT RUN under optional #76. Live federation and natural OAuth expiry remain outside this offline result.
 
 - Shared-workload refresh for #75: all 11 cases PASS at 85795cf3cf1604afe59b0e8af03d5df0c9d3ba38; the machine record contains latest timestamps/timings. Initial #60 execution details above remain historical. Runtime/STS source behavior is unchanged; this refresh covers the new consumer/CI guard baseline.
+
+- #81 service consolidation: all 11 cases PASS at e33e5f93d856027569969056e9d4c25e92e51212, using generated service/sts and the shared adapter. The updated machine record contains actual timings; earlier closeout/live evidence stays historical.

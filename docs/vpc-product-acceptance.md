@@ -47,3 +47,5 @@
 - AC-05/06/09: shared Profile/STS cache, reviewed retry and injected OTel.
 - AC-11/12: package docs/Examples/licenses, paired consumer guidance, complete inventory and deterministic generation.
 - UX-01/02/04/05: agent execution only. Publication/indexing belongs to #61.
+
+- #81 service consolidation refresh: the eight consumer tests and ten subtests PASS at e33e5f93d856027569969056e9d4c25e92e51212. Machine evidence is updated; historical live samples do not establish nonempty continuation.

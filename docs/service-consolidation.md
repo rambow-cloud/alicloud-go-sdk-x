@@ -30,3 +30,7 @@
 - Use `NewFromConfig`; supply pointers for optional fields and read the native response containers.
 - Use `stscreds.NewAssumeRoleProvider` with generated `sts.AssumeRoleInput`. The `FromClient` spelling uses the same implementation.
 - The shared runtime, credential providers and cache remain reusable.
+
+- #81 workload e33e5f93d856027569969056e9d4c25e92e51212: Node 22 frontend check and 57 tests PASS; 25 automation tests PASS; full-DSL regeneration, doccheck (15 public packages), vet, root tests and tracked Go formatting PASS.
+- Isolated consumers PASS: STS 11 cases, ECS 10 cases/14 subtests, VPC eight cases/ten subtests; both modules' vet and offline programs PASS. Updated machine records pin the same revision.
+- Linux race and Windows final-head CI are required on the linked PR. No new live calls, tag or publication.

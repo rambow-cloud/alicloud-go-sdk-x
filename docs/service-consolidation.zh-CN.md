@@ -30,3 +30,7 @@
 - 使用 `NewFromConfig`；可选字段按需要传指针，响应读取原生容器。
 - 将生成的 `sts.AssumeRoleInput` 传给 `stscreds.NewAssumeRoleProvider`。`FromClient` 函数名调用同一实现。
 - 公共运行时、凭据 provider 和缓存继续复用。
+
+- #81 任务版本 e33e5f93d856027569969056e9d4c25e92e51212：Node 22 前端检查及 57 项测试、25 项自动化测试、完整 DSL 生成一致性、文档检查（15 个公共包）、vet、根模块测试及受版本控制 Go 文件的格式检查全部通过。
+- 独立模块消费者通过：STS 11 项、ECS 10 项及 14 个子用例、VPC 八项及十个子用例；两个模块的 vet 和离线程序均通过。更新后的机器记录固定到同一版本。
+- 最终提交还需关联 PR 上的 Linux race、Windows CI。本次没有新的真实调用、标签或发布。

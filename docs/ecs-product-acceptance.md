@@ -49,3 +49,5 @@
 - UX-01/02/03/04/05: agent-executed consumer tasks only; no independent human usability or performance result.
 
 - Shared-workload refresh for #75: the same ten tests and 14 subtests PASS at 85795cf3cf1604afe59b0e8af03d5df0c9d3ba38. The machine record now pins this revision; initial #74 evidence above is historical. Live gaps remain tracked by [#79](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/79).
+
+- #81 service consolidation refresh: the ten consumer tests and 14 subtests PASS at e33e5f93d856027569969056e9d4c25e92e51212; root cross-capability contracts now use generated clients. Machine evidence is updated; live limitations remain unchanged.
