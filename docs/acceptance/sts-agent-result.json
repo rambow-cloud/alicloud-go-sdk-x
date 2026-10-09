@@ -1,10 +1,10 @@
 {
-  "sdkCommit": "0fa3989f5df2e809082126eb9f177a8cc5ec218c",
+  "sdkCommit": "72d92d11b5066eb8b6b38a90cf2734c91ef4a1ea",
   "sourceBaseline": "f72bbdbc4ac0733f899e8a54d8c9bb1e1ac25266",
   "goVersion": "go1.27.1",
   "os": "windows/amd64",
-  "startedAt": "2026-10-09T11:18:38.453Z",
-  "endedAt": "2026-10-09T11:18:40.841Z",
+  "startedAt": "2026-10-09T11:25:51.947Z",
+  "endedAt": "2026-10-09T11:25:54.138Z",
   "command": "go -C examples/stsacceptance test -json -count=1 ./...",
   "schemaVersion": 1,
   "status": "PASS",

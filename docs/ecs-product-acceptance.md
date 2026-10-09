@@ -58,4 +58,4 @@
 
 - #83 expansion/regression: 380 ECS actions compile; the existing 10 consumer cases and 14 subtests PASS at 01f25a9a571c3b59024dfbef7e2e96f7605f4a55. Additional root JSON/ownership/cancellation tests and Example PASS. Earlier live evidence stays pinned to its original revision; no all-action live claim.
 
-- #85 regression: ECS remains 380 compiled actions/2,053 models. Ten consumer cases/14 subtests PASS at 0fa3989f5df2e809082126eb9f177a8cc5ec218c. Native VPC wire expansion does not broaden ECS live scope.
+- #85 regression: ECS remains 380 compiled actions/2,053 models. Ten consumer cases/14 subtests PASS at 72d92d11b5066eb8b6b38a90cf2734c91ef4a1ea. Native VPC wire expansion does not broaden ECS live scope.

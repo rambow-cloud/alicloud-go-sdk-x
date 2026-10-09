@@ -56,4 +56,4 @@
 
 - #83 shared lowering regression: 396 VPC actions compile; the existing 8 consumer cases and 10 subtests PASS at 01f25a9a571c3b59024dfbef7e2e96f7605f4a55. Seven unsupported actions retain explicit reasons. Historical live limits remain unchanged.
 
-- #85 completion: VPC reaches 403/403 compiled actions and 1,728 models. Eight existing consumer cases/10 subtests PASS at 0fa3989f5df2e809082126eb9f177a8cc5ec218c. Root signed-wire tests cover all seven added actions; official simple/form helper comparisons pass separately. Historical live limits remain unchanged.
+- #85 completion: VPC reaches 403/403 compiled actions and 1,728 models. Eight existing consumer cases/10 subtests PASS at 72d92d11b5066eb8b6b38a90cf2734c91ef4a1ea. Root signed-wire tests cover all seven added actions; official simple/form helper comparisons pass separately. Historical live limits remain unchanged.

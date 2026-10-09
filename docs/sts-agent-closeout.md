@@ -67,4 +67,4 @@ go test ./...
 
 - #83 shared RPC/runtime regression: 11 existing STS cases plus the pinned official JSON-helper comparison PASS at 01f25a9a571c3b59024dfbef7e2e96f7605f4a55. This is automated agent evidence; earlier live pins and independent UX limitations remain unchanged.
 
-- #85 refresh: 11 existing STS consumer cases plus pinned official JSON/simple/form helper comparisons PASS at 0fa3989f5df2e809082126eb9f177a8cc5ec218c. Both consumer modules pass vet and account-free programs. Historical live and human evidence stays unchanged.
+- #85 refresh: 11 existing STS consumer cases plus pinned official JSON/simple/form helper comparisons PASS at 72d92d11b5066eb8b6b38a90cf2734c91ef4a1ea. Both consumer modules pass vet and account-free programs. Historical live and human evidence stays unchanged.
