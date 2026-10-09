@@ -39,7 +39,7 @@
 - #68: merged.
 - Default configuration and native CLI Profile/OAuth have scoped live evidence.
 - #60: implementation-agent acceptance is delivered; independent human usability remains #76 / NOT RUN.
-- #61: release and pkg.go.dev indexing are still NOT RUN.
+- #61: immutable v0.1.0 publication and all seven same-version pkg.go.dev browser checks passed. [Publication record](releases/v0.1.0-publication.md) distinguishes agent release checks from the user's browser report; broader gaps remain #87.
 - #70: split language files, improve Chinese, and use English-only issues.
 - This language policy changes documentation format, not SDK or release acceptance.
 - #72: [STS reuse review](sts-reuse-review.md). Share provider validation, isolate call options, and prove renamed DSL actions use the same parser/backend before release.

@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "issue": 61,
+  "version": "v0.1.0",
+  "tagCommit": "1bb5e1cc5d8e22bce773c82faa57fbfee62adfc0",
+  "recordedAtUTC": "2026-10-09T23:09:20Z",
+  "status": "PASS",
+  "evidenceType": "user-browser-report",
+  "report": "User explicitly confirmed all seven required pages show v0.1.0 with normal licenses, operation/field documentation and Examples.",
+  "history": [
+    "At publication on 2026-10-09 22:05 UTC, browser indexing was NOT RUN.",
+    "User initially reported partial indexing/problems, then reported recovery and explicitly confirmed all seven cases pass."
+  ],
+  "limitations": [
+    "No per-page inspection timestamps, screenshots or indexer build logs were supplied.",
+    "The implementation agent did not independently inspect these pages or substitute curl/DNS checks.",
+    "This is package documentation inspection, not independent Go consumer UX or broader live/protocol acceptance."
+  ],
+  "cases": [
+    {
+      "package": "service/sts",
+      "url": "https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/service/sts",
+      "status": "PASS",
+      "checks": {
+        "sameVersion": "PASS",
+        "license": "PASS",
+        "operationAndFieldDocs": "PASS",
+        "examples": "PASS"
+      },
+      "evidenceType": "user-browser-report"
+    },
+    {
+      "package": "service/ecs",
+      "url": "https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/service/ecs",
+      "status": "PASS",
+      "checks": {
+        "sameVersion": "PASS",
+        "license": "PASS",
+        "operationAndFieldDocs": "PASS",
+        "examples": "PASS"
+      },
+      "evidenceType": "user-browser-report"
+    },
+    {
+      "package": "service/vpc",
+      "url": "https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/service/vpc",
+      "status": "PASS",
+      "checks": {
+        "sameVersion": "PASS",
+        "license": "PASS",
+        "operationAndFieldDocs": "PASS",
+        "examples": "PASS"
+      },
+      "evidenceType": "user-browser-report"
+    },
+    {
+      "package": "credentials",
+      "url": "https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/credentials",
+      "status": "PASS",
+      "checks": {
+        "sameVersion": "PASS",
+        "license": "PASS",
+        "operationAndFieldDocs": "PASS",
+        "examples": "PASS"
+      },
+      "evidenceType": "user-browser-report"
+    },
+    {
+      "package": "feature/stscreds",
+      "url": "https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/feature/stscreds",
+      "status": "PASS",
+      "checks": {
+        "sameVersion": "PASS",
+        "license": "PASS",
+        "operationAndFieldDocs": "PASS",
+        "examples": "PASS"
+      },
+      "evidenceType": "user-browser-report"
+    },
+    {
+      "package": "config",
+      "url": "https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/config",
+      "status": "PASS",
+      "checks": {
+        "sameVersion": "PASS",
+        "license": "PASS",
+        "operationAndFieldDocs": "PASS",
+        "examples": "PASS"
+      },
+      "evidenceType": "user-browser-report"
+    },
+    {
+      "package": "feature/profilecreds",
+      "url": "https://pkg.go.dev/github.com/rambow-cloud/alicloud-go-sdk-x@v0.1.0/feature/profilecreds",
+      "status": "PASS",
+      "checks": {
+        "sameVersion": "PASS",
+        "license": "PASS",
+        "operationAndFieldDocs": "PASS",
+        "examples": "PASS"
+      },
+      "evidenceType": "user-browser-report"
+    }
+  ]
+}

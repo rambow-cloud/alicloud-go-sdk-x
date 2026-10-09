@@ -5,7 +5,7 @@
 - The user revised the route on 2026-10-09: #60 agent STS acceptance, ECS #74, VPC #75, then #61 publication/indexing.
 - Follow [the current route](sts-ecs-vpc-path.md). Earlier STS-only publication and required-human #60 rules are superseded.
 - Independent human UX is optional #76. Its original record remains NOT RUN; agent tests must never be labeled as human evidence.
-- [v0.1.0 publication](releases/v0.1.0-publication.md) passed. Same-version browser indexing remains NOT RUN. STS closeout created no tag or release; publication followed ECS/VPC acceptance.
+- [v0.1.0 publication and seven-page browser inspection](releases/v0.1.0-publication.md) passed. Browser evidence is the user's report. STS closeout created no tag or release; publication followed ECS/VPC acceptance.
 
 ## Required gates
 
