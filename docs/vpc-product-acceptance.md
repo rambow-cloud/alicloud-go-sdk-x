@@ -33,7 +33,12 @@
 - Reuse accepted ECS-stage frontend/generator/root checks only where the source/runtime is unchanged. Run new isolated VPC tests/vet/run, formatting/language checks and final-head Linux race/Windows/automation.
 - Refresh STS and ECS machine evidence against the final shared consumer/CI revision; changed workloads must not pass the release guard using stale pins.
 - Record actual test events, versions, revisions, coverage and limits in acceptance/vpc-product-result.json.
-- Current result: NOT RUN.
+- PASS: eight external consumer tests and ten subtests at 85795cf3cf1604afe59b0e8af03d5df0c9d3ba38; actual versions/timings are in [the machine record](acceptance/vpc-product-result.json).
+- PASS: native traversal, mock business output, bounds/failure stability, fields/options, read retry/conservative write, Profile/shared STS cache, OTel, requestless smoke and cancellation/deadline.
+- PASS: consumer vet/run, formatting/language/local links; unchanged frontend/generation/root evidence is reused from #74.
+- STS (11 cases), ECS (10 cases/14 subtests) and VPC (eight cases/ten subtests) were rerun on the same clean shared workload revision. Required live evidence remains historical and scoped as declared.
+- Final-head Linux race, Windows, automation and linked-issue checks are required before merge; exact CI/merge links are recorded on #75 and its PR.
+- This completes scoped agent product acceptance only. #79 live gaps, optional human UX and #61 publication/indexing remain separate.
 
 ## Criterion mapping
 

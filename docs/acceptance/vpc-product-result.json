@@ -1,34 +1,124 @@
 {
   "schemaVersion": 1,
   "product": "vpc",
-  "status": "NOT RUN",
+  "status": "PASS",
   "issue": 75,
-  "sdkCommit": "",
-  "evidence": "",
+  "reviewKind": "implementation-agent",
+  "independentHuman": false,
+  "sdkCommit": "85795cf3cf1604afe59b0e8af03d5df0c9d3ba38",
+  "goVersion": "go1.27.1",
+  "os": "windows/amd64",
+  "startedAt": "2026-10-09T00:55:09.527Z",
+  "endedAt": "2026-10-09T00:55:13.326Z",
+  "command": "go -C examples/productacceptance test -json -count=1 -run ^TestVPC ./...",
+  "timingKind": "automated-test-execution",
+  "evidence": "docs/vpc-product-acceptance.md",
+  "sourceRevision": "ec489e5c3deae95496daae2b41503ac58b221adb",
+  "parserVersion": "2.2.1",
+  "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
+  "policySHA256": "d5c1511fe4ba20ccb76975c995c45e891838fe89f1dea318879dc2ce7dd54db1",
+  "coverage": {
+    "discovered": 403,
+    "lowered": 296,
+    "emitted": 296,
+    "models": 1242,
+    "compiled": 296,
+    "unsupported": 107,
+    "live": "selected-fields-only"
+  },
   "requiredCases": [
     {
       "id": "generation",
-      "status": "NOT RUN"
+      "status": "PASS"
     },
     {
       "id": "consumer",
-      "status": "NOT RUN"
+      "status": "PASS"
     },
     {
       "id": "pagination",
-      "status": "NOT RUN"
+      "status": "PASS"
     },
     {
       "id": "retry-errors",
-      "status": "NOT RUN"
+      "status": "PASS"
     },
     {
       "id": "live",
-      "status": "NOT RUN"
+      "status": "PASS"
     },
     {
       "id": "docs",
-      "status": "NOT RUN"
+      "status": "PASS"
     }
-  ]
+  ],
+  "consumerTests": [
+    {
+      "name": "TestVPCRetryErrorsAndSecretSafeTracing",
+      "status": "PASS",
+      "elapsedSeconds": 0
+    },
+    {
+      "name": "TestVPCNativeProfileAndSharedGeneratedRole",
+      "status": "PASS",
+      "elapsedSeconds": 0.02
+    },
+    {
+      "name": "TestVPCRequestlessContract",
+      "status": "PASS",
+      "elapsedSeconds": 0
+    },
+    {
+      "name": "TestVPCInFlightDeadlineAndPreCancellation",
+      "status": "PASS",
+      "elapsedSeconds": 0.1
+    },
+    {
+      "name": "TestVPCConsumerTraversal",
+      "status": "PASS",
+      "elapsedSeconds": 0
+    },
+    {
+      "name": "TestVPCPageFailureStabilityAndOwnership",
+      "status": "PASS",
+      "elapsedSeconds": 0
+    },
+    {
+      "name": "TestVPCPageBoundsAndEmptyShortResults",
+      "status": "PASS",
+      "elapsedSeconds": 0
+    },
+    {
+      "name": "TestVPCWirePresenceMalformedBodiesAndOptions",
+      "status": "PASS",
+      "elapsedSeconds": 0
+    }
+  ],
+  "subtests": 10,
+  "live": {
+    "evidence": "docs/product-live-validation.md",
+    "sdkCommit": "dde481ce4da680f964ee3bbd1458048e6ed981bc",
+    "executedOn": "2026-10-08",
+    "requiredChecks": [
+      "vpc-pages"
+    ],
+    "limits": {
+      "nonemptyContinuation": "NOT RUN",
+      "explorerBrowser": "NOT RUN"
+    }
+  },
+  "verification": {
+    "frontendCheck": "PASS",
+    "frontendTests": 57,
+    "automationTests": 25,
+    "generatorCheck": "PASS",
+    "productCheck": "PASS",
+    "doccheckPackages": 18,
+    "vet": "PASS",
+    "rootTests": "PASS",
+    "consumerVet": "PASS",
+    "consumerRun": "PASS",
+    "formatAndLanguage": "PASS",
+    "finalHeadCI": "recorded-on-PR-before-merge"
+  }
 }

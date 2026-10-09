@@ -34,7 +34,7 @@
 - Run both sdkgen checks, doccheck, vet, root tests/Examples, isolated consumer tests and formatting once for this change.
 - CI runs Linux race, Windows and automation on the final PR head.
 - Record actual revision, versions, test names and status in acceptance/ecs-product-result.json. Evidence-only follow-up does not change the tested workload.
-- PASS: 10 external consumer tests and 14 subtests at ac2d9b6521af81a0fc628b7e3a0d209270420b3a; actual timings and Go/OS pins are in [the machine record](acceptance/ecs-product-result.json).
+- Initial #74 result: PASS, 10 external consumer tests and 14 subtests at ac2d9b6521af81a0fc628b7e3a0d209270420b3a; actual timings and Go/OS pins are in [the machine record](acceptance/ecs-product-result.json).
 - PASS: Node 22 frontend check/57 tests, 25 automation tests, both generator checks, doccheck for 18 public packages, vet, root tests/Examples, consumer vet/run, formatting and paired language/local links.
 - #47 evidence is integrated in PR #48. The sampled ECS implementation/runtime/policy is unchanged from its live baseline. Existing live status remains scoped as declared above.
 - Final-head Linux race, Windows, automation and linked-issue checks must pass before merging the closing PR. CI links and merge revision are recorded on #74 and the PR.
@@ -47,3 +47,5 @@
 - AC-05/06/09: native temporary Profile, cached generated STS provider, reviewed retry and injected secret-safe OTel.
 - AC-11/12: generated package docs/Examples/licenses, paired consumer guide, complete inventory and deterministic/safe generation checks.
 - UX-01/02/03/04/05: agent-executed consumer tasks only; no independent human usability or performance result.
+
+- Shared-workload refresh for #75: the same ten tests and 14 subtests PASS at 85795cf3cf1604afe59b0e8af03d5df0c9d3ba38. The machine record now pins this revision; initial #74 evidence above is historical. Live gaps remain tracked by [#79](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/79).

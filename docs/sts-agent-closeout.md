@@ -50,7 +50,7 @@ go test ./...
 
 ## Results
 
-- PASS: 11 external consumer tests across all five tasks, pinned to [3d54426](https://github.com/rambow-cloud/alicloud-go-sdk-x/commit/3d54426d15b6b79b238138a0d8a52bf9ebc0d62c).
+- Initial #60 closeout: PASS, 11 external consumer tests across all five tasks, pinned to [3d54426](https://github.com/rambow-cloud/alicloud-go-sdk-x/commit/3d54426d15b6b79b238138a0d8a52bf9ebc0d62c).
 - Environment: Go 1.27.1, windows/amd64; Node 22.21.1. Execution: 2026-10-09 00:14:07.135–00:14:09.855 UTC.
 - The command took 2.720 seconds including compilation. Summed Go test elapsed time: identity 0.080 seconds, comparison 0.010 seconds, other groups rounded to zero by Go. These are automated execution times, not human task times or a benchmark.
 - PASS: runnable external consumer, official STS v2.1.0 comparison, frontend check and 57 frontend tests, 25 automation tests, both generator checks, doccheck (18 public packages), vet, root Go tests and formatting.
@@ -58,3 +58,5 @@ go test ./...
 - Expected release block: the read-only guard returns `BLOCKED: ecs product acceptance is not PASS`. ECS and VPC records remain NOT RUN.
 - Final-head Linux race, Windows and automation results are recorded on the closing PR and #60 before merge. The machine record remains bound to the tested workload commit; later evidence-only changes do not alter it.
 - Independent human usability remains NOT RUN under optional #76. Live federation and natural OAuth expiry remain outside this offline result.
+
+- Shared-workload refresh for #75: all 11 cases PASS at 85795cf3cf1604afe59b0e8af03d5df0c9d3ba38; the machine record contains latest timestamps/timings. Initial #60 execution details above remain historical. Runtime/STS source behavior is unchanged; this refresh covers the new consumer/CI guard baseline.
