@@ -46,7 +46,7 @@ func main() {
 
 - 使用 AK 或以 AK 为来源的角色配置时，必须显式调用 `profilecreds.NewProvider` 并设置 `AllowLongLived: true`。也可以明确注入 StaticProvider、EnvProvider 或自定义凭据提供者。
 
-- CloudSSO、外部进程、URI 和实例元数据模式返回 `ErrUnsupportedMode`。OIDC/SAML 操作另有支持，本加载器不自动查找 token 文件。
+- CloudSSO、外部进程、URI 和实例元数据模式返回 `ErrUnsupportedMode`。完整的 OIDC 环境配置会按 #89 加载可轮换的 token 文件；SAML 断言来源须显式注册，详见[联邦身份凭据](federation-credentials.zh-CN.md)。
 
 - 服务构造函数仍要求提供凭据提供者。加载配置会读取本地 JSON 并建立缓存，但不会通过 HTTP 获取凭据。
 
@@ -58,7 +58,9 @@ func main() {
 
 3. 完整的临时环境凭据：ALIBABA_CLOUD_ACCESS_KEY_ID、ALIBABA_CLOUD_ACCESS_KEY_SECRET、ALIBABA_CLOUD_SECURITY_TOKEN。
 
-4. ALIBABA_CLOUD_PROFILE 指定的 Profile；未指定时依次使用 CLI 的 `current` 和 `default`。
+4. 完整的 OIDC 环境配置：角色 ARN、OIDC provider ARN 与 token 文件名。
+
+5. ALIBABA_CLOUD_PROFILE 指定的 Profile；未指定时依次使用 CLI 的 `current` 和 `default`。
 
 - 环境变量已设置但不完整时，加载直接失败；长期环境密钥也必须显式启用。无效来源不会被悄悄跳过。
 

@@ -41,12 +41,16 @@ func (p *AssumeRoleProvider) Retrieve(ctx context.Context) (credentials.Credenti
 }
 
 func validateSnapshot(c credentials.Credentials) (credentials.Credentials, error) {
+	return validateCredentials(c, "sts.AssumeRole")
+}
+
+func validateCredentials(c credentials.Credentials, source string) (credentials.Credentials, error) {
 	if strings.TrimSpace(c.AccessKeyID) == "" || strings.TrimSpace(c.AccessKeySecret) == "" || strings.TrimSpace(c.SecurityToken) == "" {
 		return credentials.Credentials{}, credentials.ErrMissingCredentials
 	}
 	if c.ExpiresAt.IsZero() || !time.Now().Before(c.ExpiresAt) {
 		return credentials.Credentials{}, credentials.ErrExpired
 	}
-	c.Source = "sts.AssumeRole"
+	c.Source = source
 	return c, nil
 }
