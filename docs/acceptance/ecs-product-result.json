@@ -1,38 +1,143 @@
 {
   "schemaVersion": 1,
   "product": "ecs",
-  "status": "NOT RUN",
+  "status": "PASS",
   "issue": 74,
-  "sdkCommit": "",
-  "evidence": "",
+  "reviewKind": "implementation-agent",
+  "independentHuman": false,
+  "sdkCommit": "ac2d9b6521af81a0fc628b7e3a0d209270420b3a",
+  "goVersion": "go1.27.1",
+  "os": "windows/amd64",
+  "startedAt": "2026-10-09T00:44:43.280Z",
+  "endedAt": "2026-10-09T00:44:45.234Z",
+  "command": "go -C examples/productacceptance test -json -count=1 -run ^TestECS ./...",
+  "timingKind": "automated-test-execution",
+  "evidence": "docs/ecs-product-acceptance.md",
+  "sourceRevision": "ec489e5c3deae95496daae2b41503ac58b221adb",
+  "parserVersion": "2.2.1",
+  "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
+  "policySHA256": "fae0ff0fe206eae652af2a902b4434d95b11b43ca89cecd68962e04519ff46b5",
+  "coverage": {
+    "discovered": 380,
+    "lowered": 283,
+    "emitted": 283,
+    "models": 1453,
+    "compiled": 283,
+    "unsupported": 97,
+    "live": "selected-fields-only"
+  },
   "requiredCases": [
     {
       "id": "generation",
-      "status": "NOT RUN"
+      "status": "PASS"
     },
     {
       "id": "consumer",
-      "status": "NOT RUN"
+      "status": "PASS"
     },
     {
       "id": "pagination",
-      "status": "NOT RUN"
+      "status": "PASS"
     },
     {
       "id": "retry-errors",
-      "status": "NOT RUN"
+      "status": "PASS"
     },
     {
       "id": "live",
-      "status": "NOT RUN"
+      "status": "PASS"
     },
     {
       "id": "docs",
-      "status": "NOT RUN"
+      "status": "PASS"
     },
     {
       "id": "waiter",
-      "status": "NOT RUN"
+      "status": "PASS"
     }
-  ]
+  ],
+  "consumerTests": [
+    {
+      "name": "TestECSPaginatorOptionAndModelOwnership",
+      "status": "PASS",
+      "elapsedSeconds": 0
+    },
+    {
+      "name": "TestECSInFlightDeadlineAndWaiterCancellation",
+      "status": "PASS",
+      "elapsedSeconds": 0.01
+    },
+    {
+      "name": "TestECSConsumerTraversal",
+      "status": "PASS",
+      "elapsedSeconds": 0
+    },
+    {
+      "name": "TestECSTokenFailureStabilityAndOwnership",
+      "status": "PASS",
+      "elapsedSeconds": 0
+    },
+    {
+      "name": "TestECSPageBoundariesAndStableFailures",
+      "status": "PASS",
+      "elapsedSeconds": 0
+    },
+    {
+      "name": "TestECSWaiterTransitionsAndConcurrentReuse",
+      "status": "PASS",
+      "elapsedSeconds": 0
+    },
+    {
+      "name": "TestECSWaiterFailuresDeadlinesAndCancellation",
+      "status": "PASS",
+      "elapsedSeconds": 0
+    },
+    {
+      "name": "TestECSWirePresenceMalformedBodiesAndOptions",
+      "status": "PASS",
+      "elapsedSeconds": 0
+    },
+    {
+      "name": "TestECSRetryErrorsAndSecretSafeTracing",
+      "status": "PASS",
+      "elapsedSeconds": 0
+    },
+    {
+      "name": "TestECSNativeProfileAndCachedGeneratedRole",
+      "status": "PASS",
+      "elapsedSeconds": 0.01
+    }
+  ],
+  "subtests": 14,
+  "live": {
+    "evidence": "docs/product-live-validation.md",
+    "sdkCommit": "dde481ce4da680f964ee3bbd1458048e6ed981bc",
+    "executedOn": "2026-10-08",
+    "requiredChecks": [
+      "ecs-regions",
+      "ecs-images",
+      "ecs-instances-token",
+      "ecs-instances-pages",
+      "ecs-status"
+    ],
+    "limits": {
+      "instanceTokenContinuation": "NOT RUN",
+      "waiterTransitions": "SKIP",
+      "explorerBrowser": "NOT RUN"
+    }
+  },
+  "verification": {
+    "frontendCheck": "PASS",
+    "frontendTests": 57,
+    "automationTests": 25,
+    "generatorCheck": "PASS",
+    "productCheck": "PASS",
+    "doccheckPackages": 18,
+    "vet": "PASS",
+    "rootTests": "PASS",
+    "consumerVet": "PASS",
+    "consumerRun": "PASS",
+    "formatAndLanguage": "PASS",
+    "finalHeadCI": "recorded-on-PR-before-merge"
+  }
 }

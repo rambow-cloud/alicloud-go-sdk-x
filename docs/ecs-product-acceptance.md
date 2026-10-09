@@ -34,7 +34,11 @@
 - Run both sdkgen checks, doccheck, vet, root tests/Examples, isolated consumer tests and formatting once for this change.
 - CI runs Linux race, Windows and automation on the final PR head.
 - Record actual revision, versions, test names and status in acceptance/ecs-product-result.json. Evidence-only follow-up does not change the tested workload.
-- Current result: NOT RUN. No completion is inferred from this plan.
+- PASS: 10 external consumer tests and 14 subtests at ac2d9b6521af81a0fc628b7e3a0d209270420b3a; actual timings and Go/OS pins are in [the machine record](acceptance/ecs-product-result.json).
+- PASS: Node 22 frontend check/57 tests, 25 automation tests, both generator checks, doccheck for 18 public packages, vet, root tests/Examples, consumer vet/run, formatting and paired language/local links.
+- #47 evidence is integrated in PR #48. The sampled ECS implementation/runtime/policy is unchanged from its live baseline. Existing live status remains scoped as declared above.
+- Final-head Linux race, Windows, automation and linked-issue checks must pass before merging the closing PR. CI links and merge revision are recorded on #74 and the PR.
+- This is implementation-agent acceptance. Publication/indexing and broader live/human gaps remain separate.
 
 ## Criterion mapping
 
