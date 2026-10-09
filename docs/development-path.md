@@ -2,6 +2,14 @@
 
 [中文](development-path.zh-CN.md)
 
+## Current delivery route (2026-10-09)
+
+- Follow [STS/ECS/VPC delivery](sts-ecs-vpc-path.md): finish #60, then ECS #74 and VPC #75, then #61 release/indexing.
+- #60 now requires truthful implementation-agent consumer acceptance. Independent human usability moves to optional follow-up #76; its record remains NOT RUN and does not block this release.
+- Existing STS-only first-release scheduling and required-human #60 gates below are historical and superseded by this decision.
+- Preserve actual technical/live/source evidence. Agent test duration is not human task time.
+- Publication remains pending until both product acceptance issues pass. No tag is created by this change.
+
 ## Current status
 
 - #58 and #59: merged.

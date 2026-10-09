@@ -1,9 +1,10 @@
 "use strict";
 
-// Read-only release gate. It never creates tags, publishes, or infers human UX.
+// Read-only release gate. Agent acceptance never implies independent human UX.
 const fs = require("node:fs");
 const path = require("node:path");
 const { execFileSync } = require("node:child_process");
+const { requiredTests } = require("./sts-consumer-record.cjs");
 const root = path.resolve(__dirname, "../..");
 const taskIDs = [
   "identity",
@@ -51,6 +52,96 @@ function validateHuman(human) {
   return null;
 }
 
+function validateAgent(record) {
+  if (record.schemaVersion !== 1 || record.status !== "PASS")
+    return "agent consumer acceptance is not PASS";
+  if (
+    record.reviewKind !== "implementation-agent" ||
+    record.independentHuman !== false
+  )
+    return "agent reviewer classification is missing or misleading";
+  const version = /^go(\d+)\.(\d+)(?:\.|$)/.exec(record.goVersion || "");
+  if (
+    !/^[a-f0-9]{40}$/.test(record.sdkCommit || "") ||
+    !record.evidence?.trim() ||
+    !record.os?.trim() ||
+    record.officialSTSVersion !== "v2.1.0" ||
+    !version ||
+    Number(version[1]) < 1 ||
+    (Number(version[1]) === 1 && Number(version[2]) < 27)
+  )
+    return "pinned agent acceptance evidence is incomplete";
+  if (
+    record.timingKind !== "automated-test-execution" ||
+    !Array.isArray(record.tasks) ||
+    record.tasks.length !== taskIDs.length ||
+    taskIDs.some((id) => record.tasks.filter((t) => t.id === id).length !== 1)
+  )
+    return "agent task inventory or timing classification is incomplete";
+  if (
+    record.tasks.some(
+      (t) =>
+        t.status !== "PASS" ||
+        !Array.isArray(t.tests) ||
+        t.tests.length === 0 ||
+        typeof t.elapsedSeconds !== "number" ||
+        !Number.isFinite(t.elapsedSeconds) ||
+        t.elapsedSeconds < 0,
+    )
+  )
+    return "required agent consumer tasks are incomplete";
+  if (
+    record.tasks.some(
+      (t) =>
+        t.tests.length !== requiredTests[t.id].length ||
+        requiredTests[t.id].some(
+          (name) =>
+            t.tests.filter(
+              (test) =>
+                test.name === name &&
+                test.status === "PASS" &&
+                typeof test.elapsedSeconds === "number" &&
+                Number.isFinite(test.elapsedSeconds) &&
+                test.elapsedSeconds >= 0,
+            ).length !== 1,
+        ),
+    )
+  )
+    return "required agent consumer test evidence is incomplete";
+  return null;
+}
+
+function validateProduct(record, product) {
+  if (
+    record.schemaVersion !== 1 ||
+    record.product !== product ||
+    record.status !== "PASS"
+  )
+    return product + " product acceptance is not PASS";
+  const ids = [
+    "generation",
+    "consumer",
+    "pagination",
+    "retry-errors",
+    "live",
+    "docs",
+  ];
+  if (product === "ecs") ids.push("waiter");
+  if (
+    !/^[a-f0-9]{40}$/.test(record.sdkCommit || "") ||
+    !record.evidence?.trim() ||
+    !Array.isArray(record.requiredCases) ||
+    record.requiredCases.length !== ids.length ||
+    ids.some(
+      (id) =>
+        record.requiredCases.filter((c) => c.id === id && c.status === "PASS")
+          .length !== 1,
+    )
+  )
+    return product + " product acceptance evidence is incomplete";
+  return null;
+}
+
 function check(repository = root) {
   function readEvidence(relative, label) {
     try {
@@ -59,11 +150,11 @@ function check(repository = root) {
       throw Error(label + " evidence cannot be read or decoded");
     }
   }
-  const human = readEvidence(
-    "docs/acceptance/sts-independent-result.json",
-    "Independent developer",
+  const agent = readEvidence(
+    "docs/acceptance/sts-agent-result.json",
+    "Agent consumer",
   );
-  const problem = validateHuman(human);
+  const problem = validateAgent(agent);
   if (problem) throw Error(problem);
   const coverage = readEvidence(
     "docs/products/sts.coverage.json",
@@ -114,6 +205,15 @@ function check(repository = root) {
     source.verification?.candidateCompilationAndIndependentContracts !== "PASS"
   )
     throw Error("scoped live/source acceptance evidence is incomplete");
+  const products = ["ecs", "vpc"].map((product) => {
+    const record = readEvidence(
+      "docs/acceptance/" + product + "-product-result.json",
+      product + " product",
+    );
+    const problem = validateProduct(record, product);
+    if (problem) throw Error(problem);
+    return record;
+  });
   if (
     execFileSync("git", ["branch", "--show-current"], {
       cwd: repository,
@@ -128,8 +228,10 @@ function check(repository = root) {
     }).trim()
   )
     throw Error("release candidate working tree must be clean");
-  requireUnchangedBehavior(repository, human.sdkCommit);
-  return "PASS local acceptance guard; final-main CI, closed #60, remote-tag absence, publication and browser indexing must still be verified separately. No mutation performed.";
+  requireUnchangedBehavior(repository, agent.sdkCommit);
+  for (const product of products)
+    requireUnchangedBehavior(repository, product.sdkCommit);
+  return "PASS local STS/ECS/VPC acceptance guard; final-main CI, closed #60/#74/#75, remote-tag absence, publication and browser indexing must still be verified separately. No mutation performed.";
 }
 
 function requireUnchangedBehavior(repository, revision) {
@@ -158,12 +260,14 @@ function requireUnchangedBehavior(repository, revision) {
         "docs/sts-anonymous-rpc.md",
         "docs/sts-consumer-acceptance.md",
         ".github/workflows/ci.yml",
+        ".github/scripts/sts-release-check.cjs",
+        ".github/scripts/sts-consumer-record.cjs",
       ],
       { cwd: repository, stdio: "pipe" },
     );
   } catch {
     throw Error(
-      "SDK or acceptance workload changed since independent tasks; review and rerun affected acceptance",
+      "SDK or acceptance workload changed since recorded tasks; review and rerun affected acceptance",
     );
   }
 }
@@ -176,4 +280,10 @@ if (require.main === module) {
     process.exitCode = 2;
   }
 }
-module.exports = { validateHuman, check, requireUnchangedBehavior };
+module.exports = {
+  validateHuman,
+  validateAgent,
+  validateProduct,
+  check,
+  requireUnchangedBehavior,
+};

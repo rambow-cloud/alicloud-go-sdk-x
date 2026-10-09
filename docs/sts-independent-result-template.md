@@ -2,6 +2,8 @@
 
 [中文](sts-independent-result-template.zh-CN.md)
 
+- Optional follow-up [#76](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/76). This human report does not block agent closeout #60 or the revised v0.1.0 schedule.
+
 - Status: NOT RUN.
 - This is a blank handoff template, not implementation-author UX evidence.
 

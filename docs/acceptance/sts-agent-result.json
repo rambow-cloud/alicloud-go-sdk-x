@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "NOT RUN",
+  "reviewKind": "implementation-agent",
+  "independentHuman": false,
+  "sdkCommit": "",
+  "goVersion": "",
+  "os": "",
+  "officialSTSVersion": "v2.1.0",
+  "evidence": "docs/sts-agent-closeout.md",
+  "timingKind": "automated-test-execution",
+  "tasks": [
+    {
+      "id": "identity",
+      "status": "NOT RUN",
+      "elapsedSeconds": null,
+      "tests": []
+    },
+    {
+      "id": "provider-cache",
+      "status": "NOT RUN",
+      "elapsedSeconds": null,
+      "tests": []
+    },
+    {
+      "id": "mock-errors",
+      "status": "NOT RUN",
+      "elapsedSeconds": null,
+      "tests": []
+    },
+    {
+      "id": "anonymous",
+      "status": "NOT RUN",
+      "elapsedSeconds": null,
+      "tests": []
+    },
+    {
+      "id": "comparison",
+      "status": "NOT RUN",
+      "elapsedSeconds": null,
+      "tests": []
+    }
+  ]
+}

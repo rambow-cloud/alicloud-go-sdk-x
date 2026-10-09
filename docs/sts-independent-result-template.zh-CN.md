@@ -2,6 +2,8 @@
 
 [English](sts-independent-result-template.md)
 
+- 可选后续项 [#76](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/76)。这份人工报告不阻塞 #60 代理收尾或调整后的 v0.1.0 排期。
+
 - 状态 NOT RUN，此为待填写的交接模板，不是实现者 UX 验收结果。
 
 - 开发者（公开别名即可）：
