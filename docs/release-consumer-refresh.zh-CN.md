@@ -8,14 +8,17 @@
 
 ## 候选版本及结果
 
-- SDK 提交：`0365dd8733ffa6aa86061b226d5e8f79d83e70d0`；Go 1.27.1，Windows/amd64。
-- 两个独立模块的 `go vet ./...`、`go test -json -count=1 ./...` 和无需账号的 `go run .` 均于 2026-10-09 16:04 UTC 通过。
+- SDK 提交：`0bd42d8a933bae452d88a99f3274b8e98ebc35ba`；Go 1.27.1，Windows/amd64。该干净候选版本已集成 FC 生成和评审修正；PR #111 的 CI 仍是单独的门禁。
+- 两个独立模块的 `go vet ./...`、`go test -json -count=1 ./...` 和无需账号的 `go run .` 均于 2026-10-09 20:39 UTC 通过。
 - STS：五项必需任务、十一项必需测试及两项额外协议一致性测试通过。
 - ECS：十项必需测试、十四项子测试通过。VPC：八项测试、十项子测试通过。
 - 当前记录：[STS](acceptance/sts-agent-result.json)、[ECS](acceptance/ecs-product-result.json)、[VPC](acceptance/vpc-product-result.json)。
 - 历史记录：[STS](acceptance/sts-agent-result.historical.json)、[ECS](acceptance/ecs-product-result.historical.json)、[VPC](acceptance/vpc-product-result.historical.json)。早期收尾文档描述的是这些历史执行。
+- 16:04 UTC 的记录也已原样保留：[STS](acceptance/sts-agent-result.2026-10-09T1604.json)、[ECS](acceptance/ecs-product-result.2026-10-09T1604.json)、[VPC](acceptance/vpc-product-result.2026-10-09T1604.json)。
+- 当前生成使用 IR schema 5，来源 manifest SHA256 为 `fda7bc19fbbeb45b230c5dc9c4e69452a1dfe57331452f62dc653261b6d13254`。产品记录注明本次实际来源；历史来源 manifest 留在原记录中。
 - 真实云调用和来源证据保留当时实际验证的提交。[本轮现有资源证据](live-resource-followup.zh-CN.md) 单独记录；本次消费者更新未调用云 API。
 - 生成覆盖为 STS 4、ECS 380、VPC 403 个操作。这不代表全部操作已通过真实云验收，也不代表全部能力策略已经审核。
+- FC 另有 72 个离线生成操作和一个二进制排除项。本次消费者更新不把 FC 的消费者或真实云验收纳入 STS/ECS/VPC 的发布范围。
 
 ## 剩余发布门禁
 
