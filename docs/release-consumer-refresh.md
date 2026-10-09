@@ -25,7 +25,7 @@
 - Require unchanged accepted source/workload behavior and clean main in the read-only release guard.
 - Require exact-final-main Linux race, Windows and automation CI; implementation PR checks do not replace this gate.
 - Review source/policy locks, Go 1.27/direct JSON v2, MIT runtime and Apache generated notices, paired release notes and examples.
-- The immutable experimental [v0.1.0 publication](releases/v0.1.0-publication.md) passed after the gates. Same-version browser indexing remains NOT RUN.
+- The immutable experimental [v0.1.0 publication and browser inspection](releases/v0.1.0-publication.md) passed after the gates. All seven same-version pages passed the user's browser checks.
 - Follow [the release checklist](sts-v010-release-checklist.md); close #61/#57 and the milestone only after actual indexing evidence.
 
 - The 20:39 UTC records are preserved unchanged: [STS](acceptance/sts-agent-result.2026-10-09T2039.json), [ECS](acceptance/ecs-product-result.2026-10-09T2039.json), [VPC](acceptance/vpc-product-result.2026-10-09T2039.json). The new refresh follows PR #114 and changes no live/source result.
