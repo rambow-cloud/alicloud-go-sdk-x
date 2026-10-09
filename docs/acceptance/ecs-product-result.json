@@ -5,11 +5,11 @@
   "issue": 74,
   "reviewKind": "implementation-agent",
   "independentHuman": false,
-  "sdkCommit": "a304a1b720a223fd7c3c3d3142a6c868262cda18",
+  "sdkCommit": "01f25a9a571c3b59024dfbef7e2e96f7605f4a55",
   "goVersion": "go1.27.1",
   "os": "windows/amd64",
-  "startedAt": "2026-10-09T09:29:05.079Z",
-  "endedAt": "2026-10-09T09:29:07.401Z",
+  "startedAt": "2026-10-09T09:45:26.717Z",
+  "endedAt": "2026-10-09T09:45:28.812Z",
   "command": "go -C examples/productacceptance test -json -count=1 ./...",
   "timingKind": "automated-test-execution",
   "evidence": "docs/ecs-product-acceptance.md",
@@ -139,8 +139,8 @@
     "consumerRun": "PASS",
     "formatAndLanguage": "PASS",
     "finalHeadCI": "see-linked-PR-checks",
-    "unaffectedGoChecksWorkload": "358013c7b9f0466cacb36ac7f43ac9d30839286f",
-    "generatorReviewTests": "PASS"
+    "generatorReviewTests": "PASS",
+    "irSchemaVersion": 2
   },
   "regressionIssue": 83
 }

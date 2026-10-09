@@ -36,7 +36,7 @@
 - VPC: 403 discovered, 396 lowered/emitted, 1,671 models. Seven actions remain unsupported: four unbound input flows, one query initialization flow, and two non-JSON shrink flows.
 - STS: unchanged, four actions and 19 models.
 - Node 22 frontend check and 73 tests, product-check, doccheck (15 packages), vet, root tests/Examples: PASS. Original source, sparse policies and STS Go output are unchanged.
-- Shared consumer workload: `a304a1b720a223fd7c3c3d3142a6c868262cda18`.
+- Shared consumer workload: `01f25a9a571c3b59024dfbef7e2e96f7605f4a55`.
 - Isolated modules: both vet and account-free programs PASS. STS: 11 existing cases plus one pinned official JSON-helper comparison; ECS: 10 cases/14 subtests; VPC: 8 cases/10 subtests. Updated records share the workload pin and preserve historical live evidence.
 - Review: index JSON encodings once and require IR schema v2. Reject old locks and mixed-version IR before writes. Typed nil JSON fields follow the upstream isUnset guard, while nested null and empty values remain intact.
 - After these changes, Node checks/73 tests, product-check, doccheck, vet and root tests/Examples PASS. Generated Go and guides retain identical bytes.
