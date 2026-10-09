@@ -33,4 +33,8 @@
 // Request.RawPath preserves encoded parameter segments for reviewed ROA paths.
 // It must decode to the effective Request.Path; signing and transport use the same
 // escaped path. This path contract does not imply complete ROA/XML/stream generation.
+// Operation.ResponseBody defaults to JSON. Explicit ResponseBodyNone discards a
+// bounded success body and returns a fresh zero-valued output; structured JSON
+// errors still accept native uppercase and lowercase member spellings. This
+// runtime contract does not establish generated ROA product coverage.
 package alicloud
