@@ -5,11 +5,11 @@
   "issue": 75,
   "reviewKind": "implementation-agent",
   "independentHuman": false,
-  "sdkCommit": "0bd42d8a933bae452d88a99f3274b8e98ebc35ba",
+  "sdkCommit": "426108073437898ab93bc24fc3bc61311530d03e",
   "goVersion": "go1.27.1",
   "os": "windows/amd64",
-  "startedAt": "2026-10-09T20:39:15.493Z",
-  "endedAt": "2026-10-09T20:39:18.212Z",
+  "startedAt": "2026-10-09T21:19:19.144Z",
+  "endedAt": "2026-10-09T21:19:21.751Z",
   "command": "go -C examples/productacceptance test -json -count=1 ./...",
   "timingKind": "automated-test-execution",
   "evidence": "docs/vpc-product-acceptance.md",
@@ -61,7 +61,7 @@
     {
       "name": "TestVPCNativeProfileAndSharedGeneratedRole",
       "status": "PASS",
-      "elapsedSeconds": 0.01
+      "elapsedSeconds": 0
     },
     {
       "name": "TestVPCRequestlessContract",

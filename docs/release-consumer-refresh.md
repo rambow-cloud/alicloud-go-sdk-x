@@ -8,8 +8,8 @@
 
 ## Candidate and results
 
-- SDK: `0bd42d8a933bae452d88a99f3274b8e98ebc35ba`; Go 1.27.1, Windows/amd64. This clean candidate integrates the FC generation/review fixes; PR #111 CI remains a separate gate.
-- Both isolated modules: `go vet ./...`, `go test -json -count=1 ./...` and account-free `go run .` passed on 2026-10-09 20:39 UTC.
+- SDK: `426108073437898ab93bc24fc3bc61311530d03e`; Go 1.27.1, Windows/amd64. This clean candidate integrates FC generation, the pinned OSS comparison and the JSON assertion correction. Final-main CI remains a separate gate.
+- Both isolated modules: `go vet ./...`, `go test -json -count=1 ./...` and account-free `go run .` passed on 2026-10-09 21:19 UTC.
 - STS: all five required tasks, eleven required tests and two additional protocol parity tests passed.
 - ECS: ten required tests and fourteen subtests passed. VPC: eight tests and ten subtests passed.
 - Current records: [STS](acceptance/sts-agent-result.json), [ECS](acceptance/ecs-product-result.json), [VPC](acceptance/vpc-product-result.json).
@@ -27,3 +27,5 @@
 - Review source/policy locks, Go 1.27/direct JSON v2, MIT runtime and Apache generated notices, paired release notes and examples.
 - Publish immutable experimental v0.1.0 after the gates. Publication and same-version browser indexing remain NOT RUN in this record.
 - Follow [the release checklist](sts-v010-release-checklist.md); close #61/#57 and the milestone only after actual indexing evidence.
+
+- The 20:39 UTC records are preserved unchanged: [STS](acceptance/sts-agent-result.2026-10-09T2039.json), [ECS](acceptance/ecs-product-result.2026-10-09T2039.json), [VPC](acceptance/vpc-product-result.2026-10-09T2039.json). The new refresh follows PR #114 and changes no live/source result.
