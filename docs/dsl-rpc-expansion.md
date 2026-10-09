@@ -41,4 +41,5 @@
 - Review: index JSON encodings once and require IR schema v2. Reject old locks and mixed-version IR before writes. Typed nil JSON fields follow the upstream isUnset guard, while nested null and empty values remain intact.
 - After these changes, Node checks/73 tests, product-check, doccheck, vet and root tests/Examples PASS. Generated Go and guides retain identical bytes.
 - Tracked Go formatting PASS. Final-head CI is required before merge; inspect [PR #84 checks](https://github.com/rambow-cloud/alicloud-go-sdk-x/pull/84/checks) for current results.
+- CI follow-up: [run 37913736842](https://github.com/rambow-cloud/alicloud-go-sdk-x/actions/runs/37913736842) hit Go's default 10-minute package deadline while the isolated compiler test was running. The earlier race suite passed in 335 seconds. Set an explicit 20-minute CI package deadline for the expanded inventory; retain race checks, every test and the compiler subprocess's 180-second deadline.
 - These counts describe pinned generation, not complete live ECS/VPC acceptance.

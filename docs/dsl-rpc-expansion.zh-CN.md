@@ -41,4 +41,5 @@
 - 评审修复：JSON 编码建立一次索引，IR 强制使用 schema v2。旧锁文件和混合版本 IR 均在写文件前拒绝。JSON 字段的类型化 nil 遵循上游 isUnset 条件，嵌套 null 及空值保留。
 - 修复后，Node 检查及 73 项测试、product-check、文档检查、vet、根模块测试及 Example 均通过。生成的 Go 代码及指南字节未变。
 - 受版本控制 Go 文件的格式检查通过。合并前要求最终提交的 CI 通过；最新结果见 [PR #84 检查](https://github.com/rambow-cloud/alicloud-go-sdk-x/pull/84/checks)。
+- CI 后续修复：[运行 37913736842](https://github.com/rambow-cloud/alicloud-go-sdk-x/actions/runs/37913736842) 在隔离编译测试运行期间，触发 Go 默认的 10 分钟包级期限。此前 race 测试套件曾用 335 秒通过。针对扩展后的生成范围，CI 显式设置 20 分钟包级期限，保留 race 检查、全部测试和编译子进程独立的 180 秒期限。
 - 数量表示固定来源的生成范围，不表示 ECS/VPC 全部经过真实调用验收。
