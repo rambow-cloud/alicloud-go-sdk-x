@@ -2,6 +2,8 @@
 
 [English](capability-policy.md)
 
+- 当前 #88 扩展支持原生 int64/字符串 token 分页限制、明确排除的废弃分页输入、同一操作的多个生命周期 waiter 及原生单 ID waiter。具体范围见[能力扩展](product-capability-expansion.zh-CN.md)；未列出的行为仍为未审核。
+
 - [评审修复 #44](capability-role-review.zh-CN.md) 拒绝同一模型内的分页请求页码/页大小/limit、 响应页码/页大小/总数、状态等待器请求页码/页大小及成员 ID/状态重叠；不同请求/响应模型或独立适配器之间的同名路径仍有效。
 - 路径存在且类型匹配不足以证明行为角色各不相同。
 

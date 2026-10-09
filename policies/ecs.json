@@ -3,33 +3,404 @@
   "product": "ecs",
   "version": "2014-05-26",
   "sourceManifestSHA256": "7119b2b63b79f769ae06ee8c544230cc7f60e603e70358aa7d960599770ab1dd",
-  "fieldNames": {"DescribeInstanceStatusRequest#instanceId": "InstanceIDs"},
+  "fieldNames": {
+    "DescribeInstanceStatusRequest#instanceId": "InstanceIDs"
+  },
   "operations": {
     "DescribeInstances": {
       "idempotent": true,
-      "evidence": ["https://help.aliyun.com/en/ecs/developer-reference/api-ecs-2014-05-26-describeinstances", "docs/pagination.md"],
-      "paginator": {"mode": "dual", "items": "Instances.Instance", "inputToken": "NextToken", "outputToken": "NextToken", "limit": "MaxResults", "page": "PageNumber", "size": "PageSize", "total": "TotalCount", "defaultSize": 10, "maximumSize": 100},
-      "constraints": [{"path": "PageNumber", "minimum": 1}, {"path": "PageSize", "minimum": 1, "maximum": 100}, {"path": "MaxResults", "minimum": 1, "maximum": 100}]
+      "evidence": [
+        "https://help.aliyun.com/en/ecs/developer-reference/api-ecs-2014-05-26-describeinstances",
+        "docs/pagination.md"
+      ],
+      "paginator": {
+        "mode": "dual",
+        "items": "Instances.Instance",
+        "inputToken": "NextToken",
+        "outputToken": "NextToken",
+        "limit": "MaxResults",
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount",
+        "defaultSize": 10,
+        "maximumSize": 100
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 100
+        },
+        {
+          "path": "MaxResults",
+          "minimum": 1,
+          "maximum": 100
+        }
+      ]
     },
     "DescribeInstanceStatus": {
       "idempotent": true,
-      "evidence": ["https://help.aliyun.com/en/ecs/developer-reference/api-ecs-2014-05-26-describeinstancestatus", "docs/waiters.md"],
-      "paginator": {"mode": "pages", "items": "InstanceStatuses.InstanceStatus", "page": "PageNumber", "size": "PageSize", "total": "TotalCount", "defaultSize": 50, "maximumSize": 50},
-      "waiter": {"name": "InstanceRunningWaiter", "ids": "InstanceId", "items": "InstanceStatuses.InstanceStatus", "id": "InstanceId", "state": "Status", "page": "PageNumber", "size": "PageSize", "maxIDs": 50, "success": "Running", "retry": ["Pending", "Starting", "Stopping", "Stopped"]},
-      "constraints": [{"path": "PageNumber", "minimum": 1}, {"path": "PageSize", "minimum": 1, "maximum": 50}, {"path": "InstanceId", "maximumItems": 100, "nonemptyItems": true}]
+      "evidence": [
+        "https://help.aliyun.com/en/ecs/developer-reference/api-ecs-2014-05-26-describeinstancestatus",
+        "docs/waiters.md",
+        "https://www.alibabacloud.com/help/en/ecs/user-guide/overview-52"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "InstanceStatuses.InstanceStatus",
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount",
+        "defaultSize": 50,
+        "maximumSize": 50
+      },
+      "waiter": {
+        "name": "InstanceRunningWaiter",
+        "ids": "InstanceId",
+        "items": "InstanceStatuses.InstanceStatus",
+        "id": "InstanceId",
+        "state": "Status",
+        "page": "PageNumber",
+        "size": "PageSize",
+        "maxIDs": 50,
+        "success": "Running",
+        "retry": [
+          "Pending",
+          "Starting",
+          "Stopping",
+          "Stopped"
+        ]
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 50
+        },
+        {
+          "path": "InstanceId",
+          "maximumItems": 100,
+          "nonemptyItems": true
+        }
+      ],
+      "waiters": [
+        {
+          "name": "InstanceStoppedWaiter",
+          "ids": "InstanceId",
+          "items": "InstanceStatuses.InstanceStatus",
+          "id": "InstanceId",
+          "state": "Status",
+          "page": "PageNumber",
+          "size": "PageSize",
+          "maxIDs": 50,
+          "success": "Stopped",
+          "retry": [
+            "Pending",
+            "Starting",
+            "Running",
+            "Stopping"
+          ]
+        }
+      ]
     },
     "DescribeImages": {
       "idempotent": true,
-      "evidence": ["https://help.aliyun.com/en/ecs/developer-reference/api-ecs-2014-05-26-describeimages"],
-      "paginator": {"mode": "pages", "items": "Images.Image", "page": "PageNumber", "size": "PageSize", "total": "TotalCount", "defaultSize": 10, "maximumSize": 100},
-      "constraints": [{"path": "PageNumber", "minimum": 1}, {"path": "PageSize", "minimum": 1, "maximum": 100}]
+      "evidence": [
+        "https://help.aliyun.com/en/ecs/developer-reference/api-ecs-2014-05-26-describeimages"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "Images.Image",
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount",
+        "defaultSize": 10,
+        "maximumSize": 100
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 100
+        }
+      ]
     },
-    "DescribeRegions": {"idempotent": true, "evidence": ["sources/darabonba/products/ecs/main.tea", "docs/support.md"]},
+    "DescribeRegions": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/ecs/main.tea",
+        "docs/support.md"
+      ]
+    },
     "AllocateDedicatedHosts": {
       "idempotent": false,
-      "evidence": ["https://help.aliyun.com/en/ecs/developer-reference/api-ecs-2014-05-26-allocatededicatedhosts"],
+      "evidence": [
+        "https://help.aliyun.com/en/ecs/developer-reference/api-ecs-2014-05-26-allocatededicatedhosts"
+      ],
       "clientToken": "ClientToken",
-      "constraints": [{"path": "ClientToken", "minimumLength": 1, "maximumLength": 64, "ascii": true}]
+      "constraints": [
+        {
+          "path": "ClientToken",
+          "minimumLength": 1,
+          "maximumLength": 64,
+          "ascii": true
+        }
+      ]
+    },
+    "DescribeDisks": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/ecs/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "tokens",
+        "items": "Disks.Disk",
+        "defaultSize": 10,
+        "maximumSize": 500,
+        "inputToken": "NextToken",
+        "outputToken": "NextToken",
+        "limit": "MaxResults",
+        "excludedInputs": [
+          "PageNumber",
+          "PageSize"
+        ]
+      },
+      "constraints": [
+        {
+          "path": "MaxResults",
+          "minimum": 1,
+          "maximum": 500
+        }
+      ]
+    },
+    "DescribeSnapshots": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/ecs/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "tokens",
+        "items": "Snapshots.Snapshot",
+        "defaultSize": 10,
+        "maximumSize": 100,
+        "inputToken": "NextToken",
+        "outputToken": "NextToken",
+        "limit": "MaxResults",
+        "excludedInputs": [
+          "PageNumber",
+          "PageSize"
+        ]
+      },
+      "constraints": [
+        {
+          "path": "MaxResults",
+          "minimum": 1,
+          "maximum": 100
+        }
+      ]
+    },
+    "DescribeSecurityGroups": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/ecs/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "tokens",
+        "items": "SecurityGroups.SecurityGroup",
+        "defaultSize": 10,
+        "maximumSize": 100,
+        "inputToken": "NextToken",
+        "outputToken": "NextToken",
+        "limit": "MaxResults",
+        "excludedInputs": [
+          "PageNumber",
+          "PageSize"
+        ]
+      },
+      "constraints": [
+        {
+          "path": "MaxResults",
+          "minimum": 1,
+          "maximum": 100
+        }
+      ]
+    },
+    "DescribeNetworkInterfaces": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/ecs/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "tokens",
+        "items": "NetworkInterfaceSets.NetworkInterfaceSet",
+        "defaultSize": 10,
+        "maximumSize": 500,
+        "inputToken": "NextToken",
+        "outputToken": "NextToken",
+        "limit": "MaxResults",
+        "excludedInputs": [
+          "PageNumber",
+          "PageSize"
+        ]
+      },
+      "constraints": [
+        {
+          "path": "MaxResults",
+          "minimum": 1,
+          "maximum": 500
+        }
+      ]
+    },
+    "DescribeKeyPairs": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/ecs/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "KeyPairs.KeyPair",
+        "defaultSize": 10,
+        "maximumSize": 50,
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount"
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 50
+        }
+      ]
+    },
+    "DescribeDeploymentSets": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/ecs/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "DeploymentSets.DeploymentSet",
+        "defaultSize": 10,
+        "maximumSize": 50,
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount"
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 50
+        }
+      ]
+    },
+    "DescribeAutoSnapshotPolicyEx": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/ecs/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "AutoSnapshotPolicies.AutoSnapshotPolicy",
+        "defaultSize": 10,
+        "maximumSize": 100,
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount"
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 100
+        }
+      ]
+    },
+    "DescribeCommands": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/ecs/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "tokens",
+        "items": "Commands.Command",
+        "defaultSize": 10,
+        "maximumSize": 50,
+        "inputToken": "NextToken",
+        "outputToken": "NextToken",
+        "limit": "MaxResults",
+        "excludedInputs": [
+          "PageNumber",
+          "PageSize"
+        ]
+      },
+      "constraints": [
+        {
+          "path": "MaxResults",
+          "minimum": 1,
+          "maximum": 50
+        }
+      ]
+    },
+    "DescribeInvocations": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/ecs/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "tokens",
+        "items": "Invocations.Invocation",
+        "defaultSize": 10,
+        "maximumSize": 50,
+        "inputToken": "NextToken",
+        "outputToken": "NextToken",
+        "limit": "MaxResults",
+        "excludedInputs": [
+          "PageNumber",
+          "PageSize"
+        ]
+      },
+      "constraints": [
+        {
+          "path": "MaxResults",
+          "minimum": 1,
+          "maximum": 50
+        }
+      ]
     }
   }
 }

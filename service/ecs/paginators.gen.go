@@ -8,6 +8,506 @@ import (
 	"github.com/rambow-cloud/alicloud-go-sdk-x/pagination"
 )
 
+// DescribeAutoSnapshotPolicyExPaginatorOptions controls native pagination and copied operation options.
+type DescribeAutoSnapshotPolicyExPaginatorOptions struct {
+	// Limit overrides native page size; zero preserves input or the reviewed default.
+	Limit int
+	// StopOnDuplicateToken defaults true and returns the fetched page before stopping.
+	// Explicit false can permit cyclic traversal.
+	StopOnDuplicateToken bool
+	// ClientOptions applies to every page; NextPage overrides run last for that page only.
+	ClientOptions []func(*Options)
+}
+
+// DescribeAutoSnapshotPolicyExPaginator is a single-consumer iterator; do not copy or share it.
+type DescribeAutoSnapshotPolicyExPaginator struct {
+	engine         *pagination.Paginator[*DescribeAutoSnapshotPolicyExOutput]
+	clientOptions  []func(*Options)
+	pendingOptions []func(*Options)
+}
+
+// NewDescribeAutoSnapshotPolicyExPaginator snapshots input and applies reviewed native pagination.
+// Invalid API/options/fields return errors; constructor errors are an intentional v0 convention.
+func NewDescribeAutoSnapshotPolicyExPaginator(api DescribeAutoSnapshotPolicyExAPI, input *DescribeAutoSnapshotPolicyExInput, optFns ...func(*DescribeAutoSnapshotPolicyExPaginatorOptions)) (*DescribeAutoSnapshotPolicyExPaginator, error) {
+	if rpcmodel.IsNil(api) {
+		return nil, errors.New("nil paginator API")
+	}
+	options := DescribeAutoSnapshotPolicyExPaginatorOptions{StopOnDuplicateToken: true}
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil paginator option")
+		}
+		f(&options)
+	}
+	if options.Limit < 0 || options.Limit > 100 {
+		return nil, errors.New("invalid paginator limit")
+	}
+	for _, f := range options.ClientOptions {
+		if f == nil {
+			return nil, errors.New("nil paginator client option")
+		}
+	}
+	in, err := rpcmodel.Snapshot(context.Background(), input)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := ValidateDescribeAutoSnapshotPolicyExInput(in); err != nil {
+		return nil, err
+	}
+	pageMode := true
+	initial := pagination.Cursor{}
+	if pageMode {
+		if !(in.PageNumber != nil) {
+			in.PageNumber = rpcmodel.Pointer(int32(1))
+		}
+		if !(in.PageSize != nil) {
+			in.PageSize = rpcmodel.Pointer(int32(10))
+		}
+		if options.Limit > 0 {
+			in.PageSize = rpcmodel.Pointer(int32(options.Limit))
+		}
+		if *in.PageNumber < 1 || *in.PageSize < 1 || *in.PageSize > 100 {
+			return nil, errors.New("invalid native page fields")
+		}
+		initial.PageNumber = int(*in.PageNumber)
+	}
+
+	p := &DescribeAutoSnapshotPolicyExPaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
+	engine, err := pagination.New(initial, func(ctx context.Context, cursor pagination.Cursor) (pagination.Page[*DescribeAutoSnapshotPolicyExOutput], error) {
+		request, err := rpcmodel.Snapshot(ctx, in)
+		if err != nil {
+			return pagination.Page[*DescribeAutoSnapshotPolicyExOutput]{}, err
+		}
+		if pageMode {
+			request.PageNumber = rpcmodel.Pointer(int32(cursor.PageNumber))
+		}
+
+		out, err := api.DescribeAutoSnapshotPolicyEx(ctx, request, append([]func(*Options){}, p.pendingOptions...)...)
+		if err != nil {
+			return pagination.Page[*DescribeAutoSnapshotPolicyExOutput]{}, err
+		}
+		if out == nil {
+			return pagination.Page[*DescribeAutoSnapshotPolicyExOutput]{}, errors.New("nil paginator response")
+		}
+		page := pagination.Page[*DescribeAutoSnapshotPolicyExOutput]{Value: out}
+
+		if pageMode {
+			if !(out.TotalCount != nil) || *out.TotalCount < 0 {
+				return pagination.Page[*DescribeAutoSnapshotPolicyExOutput]{}, errors.New("missing or negative page total")
+			}
+			if out.PageNumber != nil && int(*out.PageNumber) != cursor.PageNumber {
+				return pagination.Page[*DescribeAutoSnapshotPolicyExOutput]{}, errors.New("inconsistent page number")
+			}
+			size := int(*in.PageSize)
+			if out.PageSize != nil {
+				size = int(*out.PageSize)
+			}
+			if size < 1 || size > 100 {
+				return pagination.Page[*DescribeAutoSnapshotPolicyExOutput]{}, errors.New("invalid response page size")
+			}
+			count := 0
+			if out.AutoSnapshotPolicies != nil {
+				count = len(out.AutoSnapshotPolicies.AutoSnapshotPolicy)
+			}
+			page.HasMore = count > 0 && *out.TotalCount > 0 && cursor.PageNumber < 2147483647 && cursor.PageNumber <= int((*out.TotalCount-1)/int32(size))
+			if page.HasMore {
+				page.Next.PageNumber = cursor.PageNumber + 1
+			}
+		}
+		return page, nil
+	}, func(o *pagination.Options) { o.StopOnDuplicateCursor = options.StopOnDuplicateToken })
+	if err != nil {
+		return nil, err
+	}
+	p.engine = engine
+	return p, nil
+}
+
+// HasMorePages reports whether another native page is available; initially true.
+func (p *DescribeAutoSnapshotPolicyExPaginator) HasMorePages() bool { return p.engine.HasMorePages() }
+
+// NextPage fetches a page with isolated options. Failed/canceled fetches preserve state.
+func (p *DescribeAutoSnapshotPolicyExPaginator) NextPage(ctx context.Context, optFns ...func(*Options)) (*DescribeAutoSnapshotPolicyExOutput, error) {
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil page option")
+		}
+	}
+	p.pendingOptions = append(append([]func(*Options){}, p.clientOptions...), optFns...)
+	defer func() { p.pendingOptions = nil }()
+	return p.engine.NextPage(ctx)
+}
+
+// DescribeCommandsPaginatorOptions controls native pagination and copied operation options.
+type DescribeCommandsPaginatorOptions struct {
+	// Limit overrides native page size; zero preserves input or the reviewed default.
+	Limit int
+	// StopOnDuplicateToken defaults true and returns the fetched page before stopping.
+	// Explicit false can permit cyclic traversal.
+	StopOnDuplicateToken bool
+	// ClientOptions applies to every page; NextPage overrides run last for that page only.
+	ClientOptions []func(*Options)
+}
+
+// DescribeCommandsPaginator is a single-consumer iterator; do not copy or share it.
+type DescribeCommandsPaginator struct {
+	engine         *pagination.Paginator[*DescribeCommandsOutput]
+	clientOptions  []func(*Options)
+	pendingOptions []func(*Options)
+}
+
+// NewDescribeCommandsPaginator snapshots input and applies reviewed native pagination.
+// Invalid API/options/fields return errors; constructor errors are an intentional v0 convention.
+func NewDescribeCommandsPaginator(api DescribeCommandsAPI, input *DescribeCommandsInput, optFns ...func(*DescribeCommandsPaginatorOptions)) (*DescribeCommandsPaginator, error) {
+	if rpcmodel.IsNil(api) {
+		return nil, errors.New("nil paginator API")
+	}
+	options := DescribeCommandsPaginatorOptions{StopOnDuplicateToken: true}
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil paginator option")
+		}
+		f(&options)
+	}
+	if options.Limit < 0 || options.Limit > 50 {
+		return nil, errors.New("invalid paginator limit")
+	}
+	for _, f := range options.ClientOptions {
+		if f == nil {
+			return nil, errors.New("nil paginator client option")
+		}
+	}
+	in, err := rpcmodel.Snapshot(context.Background(), input)
+	if err != nil {
+		return nil, err
+	}
+	if in.PageNumber != nil {
+		return nil, errors.New("token paginator does not accept legacy page fields")
+	}
+	if in.PageSize != nil {
+		return nil, errors.New("token paginator does not accept legacy page fields")
+	}
+	if err := ValidateDescribeCommandsInput(in); err != nil {
+		return nil, err
+	}
+	pageMode := false
+	initial := pagination.Cursor{}
+
+	if !pageMode {
+		if !(in.MaxResults != nil) {
+			in.MaxResults = rpcmodel.Pointer(int32(10))
+		}
+		if options.Limit > 0 {
+			in.MaxResults = rpcmodel.Pointer(int32(options.Limit))
+		}
+		nativeLimit, cause := rpcmodel.PaginationInteger(*in.MaxResults)
+		if cause != nil || nativeLimit < 1 || nativeLimit > 50 {
+			return nil, errors.New("invalid native token limit")
+		}
+		if in.NextToken != nil {
+			initial.Token = *in.NextToken
+		}
+	}
+	p := &DescribeCommandsPaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
+	engine, err := pagination.New(initial, func(ctx context.Context, cursor pagination.Cursor) (pagination.Page[*DescribeCommandsOutput], error) {
+		request, err := rpcmodel.Snapshot(ctx, in)
+		if err != nil {
+			return pagination.Page[*DescribeCommandsOutput]{}, err
+		}
+
+		if !pageMode {
+			request.NextToken = rpcmodel.Pointer(cursor.Token)
+		}
+		out, err := api.DescribeCommands(ctx, request, append([]func(*Options){}, p.pendingOptions...)...)
+		if err != nil {
+			return pagination.Page[*DescribeCommandsOutput]{}, err
+		}
+		if out == nil {
+			return pagination.Page[*DescribeCommandsOutput]{}, errors.New("nil paginator response")
+		}
+		page := pagination.Page[*DescribeCommandsOutput]{Value: out}
+		if !pageMode {
+			if out.NextToken != nil {
+				page.Next.Token = *out.NextToken
+			}
+			page.HasMore = page.Next.Token != ""
+		}
+
+		return page, nil
+	}, func(o *pagination.Options) { o.StopOnDuplicateCursor = options.StopOnDuplicateToken })
+	if err != nil {
+		return nil, err
+	}
+	p.engine = engine
+	return p, nil
+}
+
+// HasMorePages reports whether another native page is available; initially true.
+func (p *DescribeCommandsPaginator) HasMorePages() bool { return p.engine.HasMorePages() }
+
+// NextPage fetches a page with isolated options. Failed/canceled fetches preserve state.
+func (p *DescribeCommandsPaginator) NextPage(ctx context.Context, optFns ...func(*Options)) (*DescribeCommandsOutput, error) {
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil page option")
+		}
+	}
+	p.pendingOptions = append(append([]func(*Options){}, p.clientOptions...), optFns...)
+	defer func() { p.pendingOptions = nil }()
+	return p.engine.NextPage(ctx)
+}
+
+// DescribeDeploymentSetsPaginatorOptions controls native pagination and copied operation options.
+type DescribeDeploymentSetsPaginatorOptions struct {
+	// Limit overrides native page size; zero preserves input or the reviewed default.
+	Limit int
+	// StopOnDuplicateToken defaults true and returns the fetched page before stopping.
+	// Explicit false can permit cyclic traversal.
+	StopOnDuplicateToken bool
+	// ClientOptions applies to every page; NextPage overrides run last for that page only.
+	ClientOptions []func(*Options)
+}
+
+// DescribeDeploymentSetsPaginator is a single-consumer iterator; do not copy or share it.
+type DescribeDeploymentSetsPaginator struct {
+	engine         *pagination.Paginator[*DescribeDeploymentSetsOutput]
+	clientOptions  []func(*Options)
+	pendingOptions []func(*Options)
+}
+
+// NewDescribeDeploymentSetsPaginator snapshots input and applies reviewed native pagination.
+// Invalid API/options/fields return errors; constructor errors are an intentional v0 convention.
+func NewDescribeDeploymentSetsPaginator(api DescribeDeploymentSetsAPI, input *DescribeDeploymentSetsInput, optFns ...func(*DescribeDeploymentSetsPaginatorOptions)) (*DescribeDeploymentSetsPaginator, error) {
+	if rpcmodel.IsNil(api) {
+		return nil, errors.New("nil paginator API")
+	}
+	options := DescribeDeploymentSetsPaginatorOptions{StopOnDuplicateToken: true}
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil paginator option")
+		}
+		f(&options)
+	}
+	if options.Limit < 0 || options.Limit > 50 {
+		return nil, errors.New("invalid paginator limit")
+	}
+	for _, f := range options.ClientOptions {
+		if f == nil {
+			return nil, errors.New("nil paginator client option")
+		}
+	}
+	in, err := rpcmodel.Snapshot(context.Background(), input)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := ValidateDescribeDeploymentSetsInput(in); err != nil {
+		return nil, err
+	}
+	pageMode := true
+	initial := pagination.Cursor{}
+	if pageMode {
+		if !(in.PageNumber != nil) {
+			in.PageNumber = rpcmodel.Pointer(int32(1))
+		}
+		if !(in.PageSize != nil) {
+			in.PageSize = rpcmodel.Pointer(int32(10))
+		}
+		if options.Limit > 0 {
+			in.PageSize = rpcmodel.Pointer(int32(options.Limit))
+		}
+		if *in.PageNumber < 1 || *in.PageSize < 1 || *in.PageSize > 50 {
+			return nil, errors.New("invalid native page fields")
+		}
+		initial.PageNumber = int(*in.PageNumber)
+	}
+
+	p := &DescribeDeploymentSetsPaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
+	engine, err := pagination.New(initial, func(ctx context.Context, cursor pagination.Cursor) (pagination.Page[*DescribeDeploymentSetsOutput], error) {
+		request, err := rpcmodel.Snapshot(ctx, in)
+		if err != nil {
+			return pagination.Page[*DescribeDeploymentSetsOutput]{}, err
+		}
+		if pageMode {
+			request.PageNumber = rpcmodel.Pointer(int32(cursor.PageNumber))
+		}
+
+		out, err := api.DescribeDeploymentSets(ctx, request, append([]func(*Options){}, p.pendingOptions...)...)
+		if err != nil {
+			return pagination.Page[*DescribeDeploymentSetsOutput]{}, err
+		}
+		if out == nil {
+			return pagination.Page[*DescribeDeploymentSetsOutput]{}, errors.New("nil paginator response")
+		}
+		page := pagination.Page[*DescribeDeploymentSetsOutput]{Value: out}
+
+		if pageMode {
+			if !(out.TotalCount != nil) || *out.TotalCount < 0 {
+				return pagination.Page[*DescribeDeploymentSetsOutput]{}, errors.New("missing or negative page total")
+			}
+			if out.PageNumber != nil && int(*out.PageNumber) != cursor.PageNumber {
+				return pagination.Page[*DescribeDeploymentSetsOutput]{}, errors.New("inconsistent page number")
+			}
+			size := int(*in.PageSize)
+			if out.PageSize != nil {
+				size = int(*out.PageSize)
+			}
+			if size < 1 || size > 50 {
+				return pagination.Page[*DescribeDeploymentSetsOutput]{}, errors.New("invalid response page size")
+			}
+			count := 0
+			if out.DeploymentSets != nil {
+				count = len(out.DeploymentSets.DeploymentSet)
+			}
+			page.HasMore = count > 0 && *out.TotalCount > 0 && cursor.PageNumber < 2147483647 && cursor.PageNumber <= int((*out.TotalCount-1)/int32(size))
+			if page.HasMore {
+				page.Next.PageNumber = cursor.PageNumber + 1
+			}
+		}
+		return page, nil
+	}, func(o *pagination.Options) { o.StopOnDuplicateCursor = options.StopOnDuplicateToken })
+	if err != nil {
+		return nil, err
+	}
+	p.engine = engine
+	return p, nil
+}
+
+// HasMorePages reports whether another native page is available; initially true.
+func (p *DescribeDeploymentSetsPaginator) HasMorePages() bool { return p.engine.HasMorePages() }
+
+// NextPage fetches a page with isolated options. Failed/canceled fetches preserve state.
+func (p *DescribeDeploymentSetsPaginator) NextPage(ctx context.Context, optFns ...func(*Options)) (*DescribeDeploymentSetsOutput, error) {
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil page option")
+		}
+	}
+	p.pendingOptions = append(append([]func(*Options){}, p.clientOptions...), optFns...)
+	defer func() { p.pendingOptions = nil }()
+	return p.engine.NextPage(ctx)
+}
+
+// DescribeDisksPaginatorOptions controls native pagination and copied operation options.
+type DescribeDisksPaginatorOptions struct {
+	// Limit overrides native page size; zero preserves input or the reviewed default.
+	Limit int
+	// StopOnDuplicateToken defaults true and returns the fetched page before stopping.
+	// Explicit false can permit cyclic traversal.
+	StopOnDuplicateToken bool
+	// ClientOptions applies to every page; NextPage overrides run last for that page only.
+	ClientOptions []func(*Options)
+}
+
+// DescribeDisksPaginator is a single-consumer iterator; do not copy or share it.
+type DescribeDisksPaginator struct {
+	engine         *pagination.Paginator[*DescribeDisksOutput]
+	clientOptions  []func(*Options)
+	pendingOptions []func(*Options)
+}
+
+// NewDescribeDisksPaginator snapshots input and applies reviewed native pagination.
+// Invalid API/options/fields return errors; constructor errors are an intentional v0 convention.
+func NewDescribeDisksPaginator(api DescribeDisksAPI, input *DescribeDisksInput, optFns ...func(*DescribeDisksPaginatorOptions)) (*DescribeDisksPaginator, error) {
+	if rpcmodel.IsNil(api) {
+		return nil, errors.New("nil paginator API")
+	}
+	options := DescribeDisksPaginatorOptions{StopOnDuplicateToken: true}
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil paginator option")
+		}
+		f(&options)
+	}
+	if options.Limit < 0 || options.Limit > 500 {
+		return nil, errors.New("invalid paginator limit")
+	}
+	for _, f := range options.ClientOptions {
+		if f == nil {
+			return nil, errors.New("nil paginator client option")
+		}
+	}
+	in, err := rpcmodel.Snapshot(context.Background(), input)
+	if err != nil {
+		return nil, err
+	}
+	if in.PageNumber != nil {
+		return nil, errors.New("token paginator does not accept legacy page fields")
+	}
+	if in.PageSize != nil {
+		return nil, errors.New("token paginator does not accept legacy page fields")
+	}
+	if err := ValidateDescribeDisksInput(in); err != nil {
+		return nil, err
+	}
+	pageMode := false
+	initial := pagination.Cursor{}
+
+	if !pageMode {
+		if !(in.MaxResults != nil) {
+			in.MaxResults = rpcmodel.Pointer(int32(10))
+		}
+		if options.Limit > 0 {
+			in.MaxResults = rpcmodel.Pointer(int32(options.Limit))
+		}
+		nativeLimit, cause := rpcmodel.PaginationInteger(*in.MaxResults)
+		if cause != nil || nativeLimit < 1 || nativeLimit > 500 {
+			return nil, errors.New("invalid native token limit")
+		}
+		if in.NextToken != nil {
+			initial.Token = *in.NextToken
+		}
+	}
+	p := &DescribeDisksPaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
+	engine, err := pagination.New(initial, func(ctx context.Context, cursor pagination.Cursor) (pagination.Page[*DescribeDisksOutput], error) {
+		request, err := rpcmodel.Snapshot(ctx, in)
+		if err != nil {
+			return pagination.Page[*DescribeDisksOutput]{}, err
+		}
+
+		if !pageMode {
+			request.NextToken = rpcmodel.Pointer(cursor.Token)
+		}
+		out, err := api.DescribeDisks(ctx, request, append([]func(*Options){}, p.pendingOptions...)...)
+		if err != nil {
+			return pagination.Page[*DescribeDisksOutput]{}, err
+		}
+		if out == nil {
+			return pagination.Page[*DescribeDisksOutput]{}, errors.New("nil paginator response")
+		}
+		page := pagination.Page[*DescribeDisksOutput]{Value: out}
+		if !pageMode {
+			if out.NextToken != nil {
+				page.Next.Token = *out.NextToken
+			}
+			page.HasMore = page.Next.Token != ""
+		}
+
+		return page, nil
+	}, func(o *pagination.Options) { o.StopOnDuplicateCursor = options.StopOnDuplicateToken })
+	if err != nil {
+		return nil, err
+	}
+	p.engine = engine
+	return p, nil
+}
+
+// HasMorePages reports whether another native page is available; initially true.
+func (p *DescribeDisksPaginator) HasMorePages() bool { return p.engine.HasMorePages() }
+
+// NextPage fetches a page with isolated options. Failed/canceled fetches preserve state.
+func (p *DescribeDisksPaginator) NextPage(ctx context.Context, optFns ...func(*Options)) (*DescribeDisksOutput, error) {
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil page option")
+		}
+	}
+	p.pendingOptions = append(append([]func(*Options){}, p.clientOptions...), optFns...)
+	defer func() { p.pendingOptions = nil }()
+	return p.engine.NextPage(ctx)
+}
+
 // DescribeImagesPaginatorOptions controls native pagination and copied operation options.
 type DescribeImagesPaginatorOptions struct {
 	// Limit overrides native page size; zero preserves input or the reviewed default.
@@ -51,6 +551,7 @@ func NewDescribeImagesPaginator(api DescribeImagesAPI, input *DescribeImagesInpu
 	if err != nil {
 		return nil, err
 	}
+
 	if err := ValidateDescribeImagesInput(in); err != nil {
 		return nil, err
 	}
@@ -181,6 +682,7 @@ func NewDescribeInstanceStatusPaginator(api DescribeInstanceStatusAPI, input *De
 	if err != nil {
 		return nil, err
 	}
+
 	if err := ValidateDescribeInstanceStatusInput(in); err != nil {
 		return nil, err
 	}
@@ -311,6 +813,7 @@ func NewDescribeInstancesPaginator(api DescribeInstancesAPI, input *DescribeInst
 	if err != nil {
 		return nil, err
 	}
+
 	if err := ValidateDescribeInstancesInput(in); err != nil {
 		return nil, err
 	}
@@ -338,7 +841,8 @@ func NewDescribeInstancesPaginator(api DescribeInstancesAPI, input *DescribeInst
 		if options.Limit > 0 {
 			in.MaxResults = rpcmodel.Pointer(int32(options.Limit))
 		}
-		if *in.MaxResults < 1 || *in.MaxResults > 100 {
+		nativeLimit, cause := rpcmodel.PaginationInteger(*in.MaxResults)
+		if cause != nil || nativeLimit < 1 || nativeLimit > 100 {
 			return nil, errors.New("invalid native token limit")
 		}
 		if in.NextToken != nil {
@@ -408,6 +912,613 @@ func (p *DescribeInstancesPaginator) HasMorePages() bool { return p.engine.HasMo
 
 // NextPage fetches a page with isolated options. Failed/canceled fetches preserve state.
 func (p *DescribeInstancesPaginator) NextPage(ctx context.Context, optFns ...func(*Options)) (*DescribeInstancesOutput, error) {
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil page option")
+		}
+	}
+	p.pendingOptions = append(append([]func(*Options){}, p.clientOptions...), optFns...)
+	defer func() { p.pendingOptions = nil }()
+	return p.engine.NextPage(ctx)
+}
+
+// DescribeInvocationsPaginatorOptions controls native pagination and copied operation options.
+type DescribeInvocationsPaginatorOptions struct {
+	// Limit overrides native page size; zero preserves input or the reviewed default.
+	Limit int
+	// StopOnDuplicateToken defaults true and returns the fetched page before stopping.
+	// Explicit false can permit cyclic traversal.
+	StopOnDuplicateToken bool
+	// ClientOptions applies to every page; NextPage overrides run last for that page only.
+	ClientOptions []func(*Options)
+}
+
+// DescribeInvocationsPaginator is a single-consumer iterator; do not copy or share it.
+type DescribeInvocationsPaginator struct {
+	engine         *pagination.Paginator[*DescribeInvocationsOutput]
+	clientOptions  []func(*Options)
+	pendingOptions []func(*Options)
+}
+
+// NewDescribeInvocationsPaginator snapshots input and applies reviewed native pagination.
+// Invalid API/options/fields return errors; constructor errors are an intentional v0 convention.
+func NewDescribeInvocationsPaginator(api DescribeInvocationsAPI, input *DescribeInvocationsInput, optFns ...func(*DescribeInvocationsPaginatorOptions)) (*DescribeInvocationsPaginator, error) {
+	if rpcmodel.IsNil(api) {
+		return nil, errors.New("nil paginator API")
+	}
+	options := DescribeInvocationsPaginatorOptions{StopOnDuplicateToken: true}
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil paginator option")
+		}
+		f(&options)
+	}
+	if options.Limit < 0 || options.Limit > 50 {
+		return nil, errors.New("invalid paginator limit")
+	}
+	for _, f := range options.ClientOptions {
+		if f == nil {
+			return nil, errors.New("nil paginator client option")
+		}
+	}
+	in, err := rpcmodel.Snapshot(context.Background(), input)
+	if err != nil {
+		return nil, err
+	}
+	if in.PageNumber != nil {
+		return nil, errors.New("token paginator does not accept legacy page fields")
+	}
+	if in.PageSize != nil {
+		return nil, errors.New("token paginator does not accept legacy page fields")
+	}
+	if err := ValidateDescribeInvocationsInput(in); err != nil {
+		return nil, err
+	}
+	pageMode := false
+	initial := pagination.Cursor{}
+
+	if !pageMode {
+		if !(in.MaxResults != nil) {
+			in.MaxResults = rpcmodel.Pointer(int32(10))
+		}
+		if options.Limit > 0 {
+			in.MaxResults = rpcmodel.Pointer(int32(options.Limit))
+		}
+		nativeLimit, cause := rpcmodel.PaginationInteger(*in.MaxResults)
+		if cause != nil || nativeLimit < 1 || nativeLimit > 50 {
+			return nil, errors.New("invalid native token limit")
+		}
+		if in.NextToken != nil {
+			initial.Token = *in.NextToken
+		}
+	}
+	p := &DescribeInvocationsPaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
+	engine, err := pagination.New(initial, func(ctx context.Context, cursor pagination.Cursor) (pagination.Page[*DescribeInvocationsOutput], error) {
+		request, err := rpcmodel.Snapshot(ctx, in)
+		if err != nil {
+			return pagination.Page[*DescribeInvocationsOutput]{}, err
+		}
+
+		if !pageMode {
+			request.NextToken = rpcmodel.Pointer(cursor.Token)
+		}
+		out, err := api.DescribeInvocations(ctx, request, append([]func(*Options){}, p.pendingOptions...)...)
+		if err != nil {
+			return pagination.Page[*DescribeInvocationsOutput]{}, err
+		}
+		if out == nil {
+			return pagination.Page[*DescribeInvocationsOutput]{}, errors.New("nil paginator response")
+		}
+		page := pagination.Page[*DescribeInvocationsOutput]{Value: out}
+		if !pageMode {
+			if out.NextToken != nil {
+				page.Next.Token = *out.NextToken
+			}
+			page.HasMore = page.Next.Token != ""
+		}
+
+		return page, nil
+	}, func(o *pagination.Options) { o.StopOnDuplicateCursor = options.StopOnDuplicateToken })
+	if err != nil {
+		return nil, err
+	}
+	p.engine = engine
+	return p, nil
+}
+
+// HasMorePages reports whether another native page is available; initially true.
+func (p *DescribeInvocationsPaginator) HasMorePages() bool { return p.engine.HasMorePages() }
+
+// NextPage fetches a page with isolated options. Failed/canceled fetches preserve state.
+func (p *DescribeInvocationsPaginator) NextPage(ctx context.Context, optFns ...func(*Options)) (*DescribeInvocationsOutput, error) {
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil page option")
+		}
+	}
+	p.pendingOptions = append(append([]func(*Options){}, p.clientOptions...), optFns...)
+	defer func() { p.pendingOptions = nil }()
+	return p.engine.NextPage(ctx)
+}
+
+// DescribeKeyPairsPaginatorOptions controls native pagination and copied operation options.
+type DescribeKeyPairsPaginatorOptions struct {
+	// Limit overrides native page size; zero preserves input or the reviewed default.
+	Limit int
+	// StopOnDuplicateToken defaults true and returns the fetched page before stopping.
+	// Explicit false can permit cyclic traversal.
+	StopOnDuplicateToken bool
+	// ClientOptions applies to every page; NextPage overrides run last for that page only.
+	ClientOptions []func(*Options)
+}
+
+// DescribeKeyPairsPaginator is a single-consumer iterator; do not copy or share it.
+type DescribeKeyPairsPaginator struct {
+	engine         *pagination.Paginator[*DescribeKeyPairsOutput]
+	clientOptions  []func(*Options)
+	pendingOptions []func(*Options)
+}
+
+// NewDescribeKeyPairsPaginator snapshots input and applies reviewed native pagination.
+// Invalid API/options/fields return errors; constructor errors are an intentional v0 convention.
+func NewDescribeKeyPairsPaginator(api DescribeKeyPairsAPI, input *DescribeKeyPairsInput, optFns ...func(*DescribeKeyPairsPaginatorOptions)) (*DescribeKeyPairsPaginator, error) {
+	if rpcmodel.IsNil(api) {
+		return nil, errors.New("nil paginator API")
+	}
+	options := DescribeKeyPairsPaginatorOptions{StopOnDuplicateToken: true}
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil paginator option")
+		}
+		f(&options)
+	}
+	if options.Limit < 0 || options.Limit > 50 {
+		return nil, errors.New("invalid paginator limit")
+	}
+	for _, f := range options.ClientOptions {
+		if f == nil {
+			return nil, errors.New("nil paginator client option")
+		}
+	}
+	in, err := rpcmodel.Snapshot(context.Background(), input)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := ValidateDescribeKeyPairsInput(in); err != nil {
+		return nil, err
+	}
+	pageMode := true
+	initial := pagination.Cursor{}
+	if pageMode {
+		if !(in.PageNumber != nil) {
+			in.PageNumber = rpcmodel.Pointer(int32(1))
+		}
+		if !(in.PageSize != nil) {
+			in.PageSize = rpcmodel.Pointer(int32(10))
+		}
+		if options.Limit > 0 {
+			in.PageSize = rpcmodel.Pointer(int32(options.Limit))
+		}
+		if *in.PageNumber < 1 || *in.PageSize < 1 || *in.PageSize > 50 {
+			return nil, errors.New("invalid native page fields")
+		}
+		initial.PageNumber = int(*in.PageNumber)
+	}
+
+	p := &DescribeKeyPairsPaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
+	engine, err := pagination.New(initial, func(ctx context.Context, cursor pagination.Cursor) (pagination.Page[*DescribeKeyPairsOutput], error) {
+		request, err := rpcmodel.Snapshot(ctx, in)
+		if err != nil {
+			return pagination.Page[*DescribeKeyPairsOutput]{}, err
+		}
+		if pageMode {
+			request.PageNumber = rpcmodel.Pointer(int32(cursor.PageNumber))
+		}
+
+		out, err := api.DescribeKeyPairs(ctx, request, append([]func(*Options){}, p.pendingOptions...)...)
+		if err != nil {
+			return pagination.Page[*DescribeKeyPairsOutput]{}, err
+		}
+		if out == nil {
+			return pagination.Page[*DescribeKeyPairsOutput]{}, errors.New("nil paginator response")
+		}
+		page := pagination.Page[*DescribeKeyPairsOutput]{Value: out}
+
+		if pageMode {
+			if !(out.TotalCount != nil) || *out.TotalCount < 0 {
+				return pagination.Page[*DescribeKeyPairsOutput]{}, errors.New("missing or negative page total")
+			}
+			if out.PageNumber != nil && int(*out.PageNumber) != cursor.PageNumber {
+				return pagination.Page[*DescribeKeyPairsOutput]{}, errors.New("inconsistent page number")
+			}
+			size := int(*in.PageSize)
+			if out.PageSize != nil {
+				size = int(*out.PageSize)
+			}
+			if size < 1 || size > 50 {
+				return pagination.Page[*DescribeKeyPairsOutput]{}, errors.New("invalid response page size")
+			}
+			count := 0
+			if out.KeyPairs != nil {
+				count = len(out.KeyPairs.KeyPair)
+			}
+			page.HasMore = count > 0 && *out.TotalCount > 0 && cursor.PageNumber < 2147483647 && cursor.PageNumber <= int((*out.TotalCount-1)/int32(size))
+			if page.HasMore {
+				page.Next.PageNumber = cursor.PageNumber + 1
+			}
+		}
+		return page, nil
+	}, func(o *pagination.Options) { o.StopOnDuplicateCursor = options.StopOnDuplicateToken })
+	if err != nil {
+		return nil, err
+	}
+	p.engine = engine
+	return p, nil
+}
+
+// HasMorePages reports whether another native page is available; initially true.
+func (p *DescribeKeyPairsPaginator) HasMorePages() bool { return p.engine.HasMorePages() }
+
+// NextPage fetches a page with isolated options. Failed/canceled fetches preserve state.
+func (p *DescribeKeyPairsPaginator) NextPage(ctx context.Context, optFns ...func(*Options)) (*DescribeKeyPairsOutput, error) {
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil page option")
+		}
+	}
+	p.pendingOptions = append(append([]func(*Options){}, p.clientOptions...), optFns...)
+	defer func() { p.pendingOptions = nil }()
+	return p.engine.NextPage(ctx)
+}
+
+// DescribeNetworkInterfacesPaginatorOptions controls native pagination and copied operation options.
+type DescribeNetworkInterfacesPaginatorOptions struct {
+	// Limit overrides native page size; zero preserves input or the reviewed default.
+	Limit int
+	// StopOnDuplicateToken defaults true and returns the fetched page before stopping.
+	// Explicit false can permit cyclic traversal.
+	StopOnDuplicateToken bool
+	// ClientOptions applies to every page; NextPage overrides run last for that page only.
+	ClientOptions []func(*Options)
+}
+
+// DescribeNetworkInterfacesPaginator is a single-consumer iterator; do not copy or share it.
+type DescribeNetworkInterfacesPaginator struct {
+	engine         *pagination.Paginator[*DescribeNetworkInterfacesOutput]
+	clientOptions  []func(*Options)
+	pendingOptions []func(*Options)
+}
+
+// NewDescribeNetworkInterfacesPaginator snapshots input and applies reviewed native pagination.
+// Invalid API/options/fields return errors; constructor errors are an intentional v0 convention.
+func NewDescribeNetworkInterfacesPaginator(api DescribeNetworkInterfacesAPI, input *DescribeNetworkInterfacesInput, optFns ...func(*DescribeNetworkInterfacesPaginatorOptions)) (*DescribeNetworkInterfacesPaginator, error) {
+	if rpcmodel.IsNil(api) {
+		return nil, errors.New("nil paginator API")
+	}
+	options := DescribeNetworkInterfacesPaginatorOptions{StopOnDuplicateToken: true}
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil paginator option")
+		}
+		f(&options)
+	}
+	if options.Limit < 0 || options.Limit > 500 {
+		return nil, errors.New("invalid paginator limit")
+	}
+	for _, f := range options.ClientOptions {
+		if f == nil {
+			return nil, errors.New("nil paginator client option")
+		}
+	}
+	in, err := rpcmodel.Snapshot(context.Background(), input)
+	if err != nil {
+		return nil, err
+	}
+	if in.PageNumber != nil {
+		return nil, errors.New("token paginator does not accept legacy page fields")
+	}
+	if in.PageSize != nil {
+		return nil, errors.New("token paginator does not accept legacy page fields")
+	}
+	if err := ValidateDescribeNetworkInterfacesInput(in); err != nil {
+		return nil, err
+	}
+	pageMode := false
+	initial := pagination.Cursor{}
+
+	if !pageMode {
+		if !(in.MaxResults != nil) {
+			in.MaxResults = rpcmodel.Pointer(int32(10))
+		}
+		if options.Limit > 0 {
+			in.MaxResults = rpcmodel.Pointer(int32(options.Limit))
+		}
+		nativeLimit, cause := rpcmodel.PaginationInteger(*in.MaxResults)
+		if cause != nil || nativeLimit < 1 || nativeLimit > 500 {
+			return nil, errors.New("invalid native token limit")
+		}
+		if in.NextToken != nil {
+			initial.Token = *in.NextToken
+		}
+	}
+	p := &DescribeNetworkInterfacesPaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
+	engine, err := pagination.New(initial, func(ctx context.Context, cursor pagination.Cursor) (pagination.Page[*DescribeNetworkInterfacesOutput], error) {
+		request, err := rpcmodel.Snapshot(ctx, in)
+		if err != nil {
+			return pagination.Page[*DescribeNetworkInterfacesOutput]{}, err
+		}
+
+		if !pageMode {
+			request.NextToken = rpcmodel.Pointer(cursor.Token)
+		}
+		out, err := api.DescribeNetworkInterfaces(ctx, request, append([]func(*Options){}, p.pendingOptions...)...)
+		if err != nil {
+			return pagination.Page[*DescribeNetworkInterfacesOutput]{}, err
+		}
+		if out == nil {
+			return pagination.Page[*DescribeNetworkInterfacesOutput]{}, errors.New("nil paginator response")
+		}
+		page := pagination.Page[*DescribeNetworkInterfacesOutput]{Value: out}
+		if !pageMode {
+			if out.NextToken != nil {
+				page.Next.Token = *out.NextToken
+			}
+			page.HasMore = page.Next.Token != ""
+		}
+
+		return page, nil
+	}, func(o *pagination.Options) { o.StopOnDuplicateCursor = options.StopOnDuplicateToken })
+	if err != nil {
+		return nil, err
+	}
+	p.engine = engine
+	return p, nil
+}
+
+// HasMorePages reports whether another native page is available; initially true.
+func (p *DescribeNetworkInterfacesPaginator) HasMorePages() bool { return p.engine.HasMorePages() }
+
+// NextPage fetches a page with isolated options. Failed/canceled fetches preserve state.
+func (p *DescribeNetworkInterfacesPaginator) NextPage(ctx context.Context, optFns ...func(*Options)) (*DescribeNetworkInterfacesOutput, error) {
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil page option")
+		}
+	}
+	p.pendingOptions = append(append([]func(*Options){}, p.clientOptions...), optFns...)
+	defer func() { p.pendingOptions = nil }()
+	return p.engine.NextPage(ctx)
+}
+
+// DescribeSecurityGroupsPaginatorOptions controls native pagination and copied operation options.
+type DescribeSecurityGroupsPaginatorOptions struct {
+	// Limit overrides native page size; zero preserves input or the reviewed default.
+	Limit int
+	// StopOnDuplicateToken defaults true and returns the fetched page before stopping.
+	// Explicit false can permit cyclic traversal.
+	StopOnDuplicateToken bool
+	// ClientOptions applies to every page; NextPage overrides run last for that page only.
+	ClientOptions []func(*Options)
+}
+
+// DescribeSecurityGroupsPaginator is a single-consumer iterator; do not copy or share it.
+type DescribeSecurityGroupsPaginator struct {
+	engine         *pagination.Paginator[*DescribeSecurityGroupsOutput]
+	clientOptions  []func(*Options)
+	pendingOptions []func(*Options)
+}
+
+// NewDescribeSecurityGroupsPaginator snapshots input and applies reviewed native pagination.
+// Invalid API/options/fields return errors; constructor errors are an intentional v0 convention.
+func NewDescribeSecurityGroupsPaginator(api DescribeSecurityGroupsAPI, input *DescribeSecurityGroupsInput, optFns ...func(*DescribeSecurityGroupsPaginatorOptions)) (*DescribeSecurityGroupsPaginator, error) {
+	if rpcmodel.IsNil(api) {
+		return nil, errors.New("nil paginator API")
+	}
+	options := DescribeSecurityGroupsPaginatorOptions{StopOnDuplicateToken: true}
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil paginator option")
+		}
+		f(&options)
+	}
+	if options.Limit < 0 || options.Limit > 100 {
+		return nil, errors.New("invalid paginator limit")
+	}
+	for _, f := range options.ClientOptions {
+		if f == nil {
+			return nil, errors.New("nil paginator client option")
+		}
+	}
+	in, err := rpcmodel.Snapshot(context.Background(), input)
+	if err != nil {
+		return nil, err
+	}
+	if in.PageNumber != nil {
+		return nil, errors.New("token paginator does not accept legacy page fields")
+	}
+	if in.PageSize != nil {
+		return nil, errors.New("token paginator does not accept legacy page fields")
+	}
+	if err := ValidateDescribeSecurityGroupsInput(in); err != nil {
+		return nil, err
+	}
+	pageMode := false
+	initial := pagination.Cursor{}
+
+	if !pageMode {
+		if !(in.MaxResults != nil) {
+			in.MaxResults = rpcmodel.Pointer(int32(10))
+		}
+		if options.Limit > 0 {
+			in.MaxResults = rpcmodel.Pointer(int32(options.Limit))
+		}
+		nativeLimit, cause := rpcmodel.PaginationInteger(*in.MaxResults)
+		if cause != nil || nativeLimit < 1 || nativeLimit > 100 {
+			return nil, errors.New("invalid native token limit")
+		}
+		if in.NextToken != nil {
+			initial.Token = *in.NextToken
+		}
+	}
+	p := &DescribeSecurityGroupsPaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
+	engine, err := pagination.New(initial, func(ctx context.Context, cursor pagination.Cursor) (pagination.Page[*DescribeSecurityGroupsOutput], error) {
+		request, err := rpcmodel.Snapshot(ctx, in)
+		if err != nil {
+			return pagination.Page[*DescribeSecurityGroupsOutput]{}, err
+		}
+
+		if !pageMode {
+			request.NextToken = rpcmodel.Pointer(cursor.Token)
+		}
+		out, err := api.DescribeSecurityGroups(ctx, request, append([]func(*Options){}, p.pendingOptions...)...)
+		if err != nil {
+			return pagination.Page[*DescribeSecurityGroupsOutput]{}, err
+		}
+		if out == nil {
+			return pagination.Page[*DescribeSecurityGroupsOutput]{}, errors.New("nil paginator response")
+		}
+		page := pagination.Page[*DescribeSecurityGroupsOutput]{Value: out}
+		if !pageMode {
+			if out.NextToken != nil {
+				page.Next.Token = *out.NextToken
+			}
+			page.HasMore = page.Next.Token != ""
+		}
+
+		return page, nil
+	}, func(o *pagination.Options) { o.StopOnDuplicateCursor = options.StopOnDuplicateToken })
+	if err != nil {
+		return nil, err
+	}
+	p.engine = engine
+	return p, nil
+}
+
+// HasMorePages reports whether another native page is available; initially true.
+func (p *DescribeSecurityGroupsPaginator) HasMorePages() bool { return p.engine.HasMorePages() }
+
+// NextPage fetches a page with isolated options. Failed/canceled fetches preserve state.
+func (p *DescribeSecurityGroupsPaginator) NextPage(ctx context.Context, optFns ...func(*Options)) (*DescribeSecurityGroupsOutput, error) {
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil page option")
+		}
+	}
+	p.pendingOptions = append(append([]func(*Options){}, p.clientOptions...), optFns...)
+	defer func() { p.pendingOptions = nil }()
+	return p.engine.NextPage(ctx)
+}
+
+// DescribeSnapshotsPaginatorOptions controls native pagination and copied operation options.
+type DescribeSnapshotsPaginatorOptions struct {
+	// Limit overrides native page size; zero preserves input or the reviewed default.
+	Limit int
+	// StopOnDuplicateToken defaults true and returns the fetched page before stopping.
+	// Explicit false can permit cyclic traversal.
+	StopOnDuplicateToken bool
+	// ClientOptions applies to every page; NextPage overrides run last for that page only.
+	ClientOptions []func(*Options)
+}
+
+// DescribeSnapshotsPaginator is a single-consumer iterator; do not copy or share it.
+type DescribeSnapshotsPaginator struct {
+	engine         *pagination.Paginator[*DescribeSnapshotsOutput]
+	clientOptions  []func(*Options)
+	pendingOptions []func(*Options)
+}
+
+// NewDescribeSnapshotsPaginator snapshots input and applies reviewed native pagination.
+// Invalid API/options/fields return errors; constructor errors are an intentional v0 convention.
+func NewDescribeSnapshotsPaginator(api DescribeSnapshotsAPI, input *DescribeSnapshotsInput, optFns ...func(*DescribeSnapshotsPaginatorOptions)) (*DescribeSnapshotsPaginator, error) {
+	if rpcmodel.IsNil(api) {
+		return nil, errors.New("nil paginator API")
+	}
+	options := DescribeSnapshotsPaginatorOptions{StopOnDuplicateToken: true}
+	for _, f := range optFns {
+		if f == nil {
+			return nil, errors.New("nil paginator option")
+		}
+		f(&options)
+	}
+	if options.Limit < 0 || options.Limit > 100 {
+		return nil, errors.New("invalid paginator limit")
+	}
+	for _, f := range options.ClientOptions {
+		if f == nil {
+			return nil, errors.New("nil paginator client option")
+		}
+	}
+	in, err := rpcmodel.Snapshot(context.Background(), input)
+	if err != nil {
+		return nil, err
+	}
+	if in.PageNumber != nil {
+		return nil, errors.New("token paginator does not accept legacy page fields")
+	}
+	if in.PageSize != nil {
+		return nil, errors.New("token paginator does not accept legacy page fields")
+	}
+	if err := ValidateDescribeSnapshotsInput(in); err != nil {
+		return nil, err
+	}
+	pageMode := false
+	initial := pagination.Cursor{}
+
+	if !pageMode {
+		if !(in.MaxResults != nil) {
+			in.MaxResults = rpcmodel.Pointer(int32(10))
+		}
+		if options.Limit > 0 {
+			in.MaxResults = rpcmodel.Pointer(int32(options.Limit))
+		}
+		nativeLimit, cause := rpcmodel.PaginationInteger(*in.MaxResults)
+		if cause != nil || nativeLimit < 1 || nativeLimit > 100 {
+			return nil, errors.New("invalid native token limit")
+		}
+		if in.NextToken != nil {
+			initial.Token = *in.NextToken
+		}
+	}
+	p := &DescribeSnapshotsPaginator{clientOptions: append([]func(*Options){}, options.ClientOptions...)}
+	engine, err := pagination.New(initial, func(ctx context.Context, cursor pagination.Cursor) (pagination.Page[*DescribeSnapshotsOutput], error) {
+		request, err := rpcmodel.Snapshot(ctx, in)
+		if err != nil {
+			return pagination.Page[*DescribeSnapshotsOutput]{}, err
+		}
+
+		if !pageMode {
+			request.NextToken = rpcmodel.Pointer(cursor.Token)
+		}
+		out, err := api.DescribeSnapshots(ctx, request, append([]func(*Options){}, p.pendingOptions...)...)
+		if err != nil {
+			return pagination.Page[*DescribeSnapshotsOutput]{}, err
+		}
+		if out == nil {
+			return pagination.Page[*DescribeSnapshotsOutput]{}, errors.New("nil paginator response")
+		}
+		page := pagination.Page[*DescribeSnapshotsOutput]{Value: out}
+		if !pageMode {
+			if out.NextToken != nil {
+				page.Next.Token = *out.NextToken
+			}
+			page.HasMore = page.Next.Token != ""
+		}
+
+		return page, nil
+	}, func(o *pagination.Options) { o.StopOnDuplicateCursor = options.StopOnDuplicateToken })
+	if err != nil {
+		return nil, err
+	}
+	p.engine = engine
+	return p, nil
+}
+
+// HasMorePages reports whether another native page is available; initially true.
+func (p *DescribeSnapshotsPaginator) HasMorePages() bool { return p.engine.HasMorePages() }
+
+// NextPage fetches a page with isolated options. Failed/canceled fetches preserve state.
+func (p *DescribeSnapshotsPaginator) NextPage(ctx context.Context, optFns ...func(*Options)) (*DescribeSnapshotsOutput, error) {
 	for _, f := range optFns {
 		if f == nil {
 			return nil, errors.New("nil page option")

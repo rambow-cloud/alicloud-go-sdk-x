@@ -6,9 +6,366 @@
   "operations": {
     "DescribeVpcs": {
       "idempotent": true,
-      "evidence": ["https://help.aliyun.com/en/vpc/developer-reference/api-vpc-2016-04-28-describevpcs"],
-      "paginator": {"mode": "pages", "items": "Vpcs.Vpc", "page": "PageNumber", "size": "PageSize", "total": "TotalCount", "defaultSize": 10, "maximumSize": 50},
-      "constraints": [{"path": "PageNumber", "minimum": 1}, {"path": "PageSize", "minimum": 1, "maximum": 50}]
+      "evidence": [
+        "https://help.aliyun.com/en/vpc/developer-reference/api-vpc-2016-04-28-describevpcs",
+        "https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-describevpcs"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "Vpcs.Vpc",
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount",
+        "defaultSize": 10,
+        "maximumSize": 50
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 50
+        }
+      ],
+      "waiter": {
+        "name": "VpcAvailableWaiter",
+        "ids": "VpcId",
+        "items": "Vpcs.Vpc",
+        "id": "VpcId",
+        "state": "Status",
+        "page": "PageNumber",
+        "size": "PageSize",
+        "maxIDs": 1,
+        "success": "Available",
+        "retry": [
+          "Pending"
+        ]
+      }
+    },
+    "DescribeVSwitches": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/vpc/main.tea",
+        "docs/product-capability-expansion.md",
+        "https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-describevswitches"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "VSwitches.VSwitch",
+        "defaultSize": 10,
+        "maximumSize": 50,
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount"
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 50
+        }
+      ],
+      "waiter": {
+        "name": "VSwitchAvailableWaiter",
+        "ids": "VSwitchId",
+        "items": "VSwitches.VSwitch",
+        "id": "VSwitchId",
+        "state": "Status",
+        "page": "PageNumber",
+        "size": "PageSize",
+        "maxIDs": 1,
+        "success": "Available",
+        "retry": [
+          "Pending"
+        ]
+      }
+    },
+    "DescribeRouteTables": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/vpc/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "RouteTables.RouteTable",
+        "defaultSize": 10,
+        "maximumSize": 50,
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount"
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 50
+        }
+      ]
+    },
+    "DescribeRouteEntryList": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/vpc/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "tokens",
+        "items": "RouteEntrys.RouteEntry",
+        "defaultSize": 10,
+        "maximumSize": 100,
+        "inputToken": "NextToken",
+        "outputToken": "NextToken",
+        "limit": "MaxResult"
+      },
+      "constraints": [
+        {
+          "path": "MaxResult",
+          "minimum": 1,
+          "maximum": 100
+        }
+      ]
+    },
+    "DescribeNatGateways": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/vpc/main.tea",
+        "docs/product-capability-expansion.md",
+        "https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-describenatgateways"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "NatGateways.NatGateway",
+        "defaultSize": 10,
+        "maximumSize": 50,
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount"
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 50
+        }
+      ],
+      "waiter": {
+        "name": "NatGatewayAvailableWaiter",
+        "ids": "NatGatewayId",
+        "items": "NatGateways.NatGateway",
+        "id": "NatGatewayId",
+        "state": "Status",
+        "page": "PageNumber",
+        "size": "PageSize",
+        "maxIDs": 1,
+        "success": "Available",
+        "retry": [
+          "Creating",
+          "Modifying",
+          "Converting"
+        ]
+      }
+    },
+    "DescribeEipAddresses": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/vpc/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "EipAddresses.EipAddress",
+        "defaultSize": 10,
+        "maximumSize": 100,
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount"
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 100
+        }
+      ]
+    },
+    "DescribeVpnGateways": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/vpc/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "VpnGateways.VpnGateway",
+        "defaultSize": 10,
+        "maximumSize": 50,
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount"
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 50
+        }
+      ]
+    },
+    "DescribeVpnConnections": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/vpc/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "VpnConnections.VpnConnection",
+        "defaultSize": 10,
+        "maximumSize": 50,
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount"
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 50
+        }
+      ]
+    },
+    "DescribeCustomerGateways": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/vpc/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "pages",
+        "items": "CustomerGateways.CustomerGateway",
+        "defaultSize": 10,
+        "maximumSize": 50,
+        "page": "PageNumber",
+        "size": "PageSize",
+        "total": "TotalCount"
+      },
+      "constraints": [
+        {
+          "path": "PageNumber",
+          "minimum": 1
+        },
+        {
+          "path": "PageSize",
+          "minimum": 1,
+          "maximum": 50
+        }
+      ]
+    },
+    "ListPrefixLists": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/vpc/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "tokens",
+        "items": "PrefixLists",
+        "defaultSize": 20,
+        "maximumSize": 100,
+        "inputToken": "NextToken",
+        "outputToken": "NextToken",
+        "limit": "MaxResults"
+      },
+      "constraints": [
+        {
+          "path": "MaxResults",
+          "minimum": 1,
+          "maximum": 100
+        }
+      ]
+    },
+    "ListNatIps": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/vpc/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "tokens",
+        "items": "NatIps",
+        "defaultSize": 20,
+        "maximumSize": 100,
+        "inputToken": "NextToken",
+        "outputToken": "NextToken",
+        "limit": "MaxResults"
+      }
+    },
+    "ListNatIpCidrs": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/vpc/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "tokens",
+        "items": "NatIpCidrs",
+        "defaultSize": 20,
+        "maximumSize": 100,
+        "inputToken": "NextToken",
+        "outputToken": "NextToken",
+        "limit": "MaxResults"
+      }
+    },
+    "ListVpcGatewayEndpoints": {
+      "idempotent": true,
+      "evidence": [
+        "sources/darabonba/products/vpc/main.tea",
+        "docs/product-capability-expansion.md"
+      ],
+      "paginator": {
+        "mode": "tokens",
+        "items": "Endpoints",
+        "defaultSize": 20,
+        "maximumSize": 100,
+        "inputToken": "NextToken",
+        "outputToken": "NextToken",
+        "limit": "MaxResults"
+      },
+      "constraints": [
+        {
+          "path": "MaxResults",
+          "minimum": 1,
+          "maximum": 100
+        }
+      ]
     }
   }
 }

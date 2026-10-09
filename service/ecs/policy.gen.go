@@ -39,6 +39,84 @@ func prepareAllocateDedicatedHostsInput(ctx context.Context, in *AllocateDedicat
 	return nil
 }
 
+// ValidateDescribeAutoSnapshotPolicyExInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeAutoSnapshotPolicyExInput(in *DescribeAutoSnapshotPolicyExInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.PageNumber != nil {
+		if *in.PageNumber < 1 {
+			return errors.New("invalid PageNumber: below minimum")
+		}
+	}
+	if in.PageSize != nil {
+		if *in.PageSize < 1 {
+			return errors.New("invalid PageSize: below minimum")
+		}
+		if *in.PageSize > 100 {
+			return errors.New("invalid PageSize: above maximum")
+		}
+	}
+	return nil
+}
+
+// ValidateDescribeCommandsInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeCommandsInput(in *DescribeCommandsInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.MaxResults != nil {
+		if *in.MaxResults < 1 {
+			return errors.New("invalid MaxResults: below minimum")
+		}
+		if *in.MaxResults > 50 {
+			return errors.New("invalid MaxResults: above maximum")
+		}
+	}
+	return nil
+}
+
+// ValidateDescribeDeploymentSetsInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeDeploymentSetsInput(in *DescribeDeploymentSetsInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.PageNumber != nil {
+		if *in.PageNumber < 1 {
+			return errors.New("invalid PageNumber: below minimum")
+		}
+	}
+	if in.PageSize != nil {
+		if *in.PageSize < 1 {
+			return errors.New("invalid PageSize: below minimum")
+		}
+		if *in.PageSize > 50 {
+			return errors.New("invalid PageSize: above maximum")
+		}
+	}
+	return nil
+}
+
+// ValidateDescribeDisksInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeDisksInput(in *DescribeDisksInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.MaxResults != nil {
+		if *in.MaxResults < 1 {
+			return errors.New("invalid MaxResults: below minimum")
+		}
+		if *in.MaxResults > 500 {
+			return errors.New("invalid MaxResults: above maximum")
+		}
+	}
+	return nil
+}
+
 // ValidateDescribeImagesInput checks only the reviewed sparse constraints without changing input.
 // Nil is an empty request; diagnostics identify rules without including values.
 func ValidateDescribeImagesInput(in *DescribeImagesInput) error {
@@ -122,6 +200,96 @@ func ValidateDescribeInstancesInput(in *DescribeInstancesInput) error {
 	}
 	if (in.NextToken != nil || in.MaxResults != nil) && (in.PageNumber != nil || in.PageSize != nil) {
 		return errors.New("token and page-number parameters cannot be combined")
+	}
+	return nil
+}
+
+// ValidateDescribeInvocationsInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeInvocationsInput(in *DescribeInvocationsInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.MaxResults != nil {
+		if *in.MaxResults < 1 {
+			return errors.New("invalid MaxResults: below minimum")
+		}
+		if *in.MaxResults > 50 {
+			return errors.New("invalid MaxResults: above maximum")
+		}
+	}
+	return nil
+}
+
+// ValidateDescribeKeyPairsInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeKeyPairsInput(in *DescribeKeyPairsInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.PageNumber != nil {
+		if *in.PageNumber < 1 {
+			return errors.New("invalid PageNumber: below minimum")
+		}
+	}
+	if in.PageSize != nil {
+		if *in.PageSize < 1 {
+			return errors.New("invalid PageSize: below minimum")
+		}
+		if *in.PageSize > 50 {
+			return errors.New("invalid PageSize: above maximum")
+		}
+	}
+	return nil
+}
+
+// ValidateDescribeNetworkInterfacesInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeNetworkInterfacesInput(in *DescribeNetworkInterfacesInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.MaxResults != nil {
+		if *in.MaxResults < 1 {
+			return errors.New("invalid MaxResults: below minimum")
+		}
+		if *in.MaxResults > 500 {
+			return errors.New("invalid MaxResults: above maximum")
+		}
+	}
+	return nil
+}
+
+// ValidateDescribeSecurityGroupsInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeSecurityGroupsInput(in *DescribeSecurityGroupsInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.MaxResults != nil {
+		if *in.MaxResults < 1 {
+			return errors.New("invalid MaxResults: below minimum")
+		}
+		if *in.MaxResults > 100 {
+			return errors.New("invalid MaxResults: above maximum")
+		}
+	}
+	return nil
+}
+
+// ValidateDescribeSnapshotsInput checks only the reviewed sparse constraints without changing input.
+// Nil is an empty request; diagnostics identify rules without including values.
+func ValidateDescribeSnapshotsInput(in *DescribeSnapshotsInput) error {
+	if in == nil {
+		return nil
+	}
+	if in.MaxResults != nil {
+		if *in.MaxResults < 1 {
+			return errors.New("invalid MaxResults: below minimum")
+		}
+		if *in.MaxResults > 100 {
+			return errors.New("invalid MaxResults: above maximum")
+		}
 	}
 	return nil
 }

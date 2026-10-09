@@ -28,7 +28,7 @@ func readPolicyProduct(t *testing.T, pkg string) productIR {
 }
 
 func TestPolicyRenderingCoverageAndExactWireNaming(t *testing.T) {
-	for pkg, want := range map[string]int{"ecs": 5, "vpc": 1, "sts": 3} {
+	for pkg, want := range map[string]int{"ecs": 14, "vpc": 13, "sts": 3} {
 		p := readPolicyProduct(t, pkg)
 		r, err := newProductRenderer(p)
 		if err != nil {
@@ -72,6 +72,20 @@ func TestPolicyRenderingCoverageAndExactWireNaming(t *testing.T) {
 
 func TestInvalidSparsePoliciesFailBeforeRendering(t *testing.T) {
 	for name, mutate := range map[string]func(*capabilityPolicy){
+		"duplicate lifecycle waiter": func(p *capabilityPolicy) {
+			c := p.Operations["DescribeInstanceStatus"]
+			c.Waiters = append(c.Waiters, *c.Waiter)
+			p.Operations["DescribeInstanceStatus"] = c
+		},
+		"unknown excluded cursor": func(p *capabilityPolicy) {
+			p.Operations["DescribeDisks"].Paginator.ExcludedInputs = []string{"Unknown"}
+		},
+		"duplicate excluded cursor": func(p *capabilityPolicy) {
+			p.Operations["DescribeDisks"].Paginator.ExcludedInputs = []string{"PageNumber", "PageNumber"}
+		},
+		"excluded active token": func(p *capabilityPolicy) {
+			p.Operations["DescribeDisks"].Paginator.ExcludedInputs = []string{"NextToken"}
+		},
 		"unknown operation": func(p *capabilityPolicy) { p.Operations["RunInstances"] = p.Operations["DescribeImages"] },
 		"unknown field":     func(p *capabilityPolicy) { p.FieldNames["DescribeImagesRequest#unknown"] = "Unknown" },
 		"wrong wire case":   func(p *capabilityPolicy) { p.Operations["DescribeImages"].Paginator.Items = "images.Image" },
