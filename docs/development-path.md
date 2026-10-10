@@ -1,5 +1,7 @@
 # Development path
 
+- The current #92 stage follows [OSS semantic IR](oss-semantic-ir.md): complete source pinning, Gateway lowering and nested XML checks precede Go emission; frontend acceptance is not public OSS coverage.
+
 [中文](development-path.zh-CN.md)
 
 - #92 next delivers [OSS shared runtime](oss-runtime.md): OSS4, bucket hosts, XML request MD5, typed XML responses and structured errors. Production source/IR/emission follows; ListBuckets remains an explicit conflict.

@@ -1,5 +1,7 @@
 # 开发路线
 
+- #92 当前阶段遵循 [OSS 语义 IR](oss-semantic-ir.zh-CN.md)：完整来源固定、Gateway 语义降低及嵌套 XML 比较先于 Go 输出；不把前端验收算作公开 OSS 覆盖。
+
 [English](development-path.md)
 
 - #92 下一阶段完成[OSS 共享运行时](oss-runtime.zh-CN.md)：OSS4、桶地址、XML 请求 MD5、类型化 XML 响应和结构化错误；随后推进生产来源、IR 和生成。ListBuckets 冲突继续单独记录。
