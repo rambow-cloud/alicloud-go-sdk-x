@@ -17,7 +17,7 @@ func ExampleClient_InvokeModel_oss() {
 	// This demonstrates the runtime seam before generated OSS emission.
 	// The transport is account-free; credentials and addresses are synthetic.
 	provider, _ := credentials.NewStaticProvider(credentials.Credentials{
-		AccessKeyID: "example-id", AccessKeySecret: "example-secret", SecurityToken: "example-token",
+		AccessKeyID: "STS.example-id", AccessKeySecret: "example-secret", SecurityToken: "example-token",
 	})
 	transport := sdktest.NewTransport(sdktest.Step{
 		Body:   `<AccessControlPolicy><AccessControlList><Grant>private</Grant></AccessControlList></AccessControlPolicy>`,

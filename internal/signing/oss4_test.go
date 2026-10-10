@@ -69,6 +69,22 @@ func TestOSS4OfficialDocumentDigestAndProvidedKey(t *testing.T) {
 	}
 }
 
+func TestOSS4TemporaryIdentifierUsesIndependentSTSVector(t *testing.T) {
+	request, _ := http.NewRequest("PUT", "https://bucket.oss-cn-hangzhou.aliyuncs.com/1234+-/123/1.txt", nil)
+	request.Header = http.Header{"X-Oss-Head1": {"value"}, "Abc": {"value"}, "Zabc": {"value"}, "Xyz": {"value"}, "Content-Type": {"text/plain"}}
+	request.URL.RawQuery = url.Values{"param1": {"value1"}, "+param1": {"value3"}, "|param1": {"value4"}, "+param2": {""}, "|param2": {""}, "param2": {""}}.Encode()
+	options := OSS4Options{Bucket: "bucket", Region: "cn-hangzhou", Time: time.Unix(1702784856, 0)}
+	if err := SignOSS4(context.Background(), request, credentials.Credentials{AccessKeyID: "STS.synthetic", AccessKeySecret: "sk", SecurityToken: "token"}, options); err != nil {
+		t.Fatal(err)
+	}
+	// The identifier only affects Credential. Secret, token and canonical request
+	// are unchanged from the independently pinned native STS vector above.
+	want := "OSS4-HMAC-SHA256 Credential=STS.synthetic/20231217/cn-hangzhou/oss/aliyun_v4_request, Signature=b94a3f999cf85bcdc00d332fbd3734ba03e48382c36fa4d5af5df817395bd9ea"
+	if request.Header.Get("Authorization") != want || request.Header.Get("X-Oss-Security-Token") != "token" {
+		t.Fatal("temporary credential scope or independent signature changed")
+	}
+}
+
 type unreadBody struct{ reads, closes int }
 
 func (b *unreadBody) Read([]byte) (int, error) { b.reads++; return 0, io.EOF }
@@ -117,6 +133,14 @@ func TestOSS4RejectsBeforeMutation(t *testing.T) {
 	}{
 		{"plain HTTP", func(r *http.Request, _ *OSS4Options, _ *credentials.Credentials) { r.URL.Scheme = "http" }},
 		{"scope", func(_ *http.Request, o *OSS4Options, _ *credentials.Credentials) { o.Region = "cn/x" }},
+		{"region period", func(_ *http.Request, o *OSS4Options, _ *credentials.Credentials) { o.Region = "cn.test" }},
+		{"credential scope separator", func(_ *http.Request, _ *OSS4Options, c *credentials.Credentials) { c.AccessKeyID = "STS.test/extra" }},
+		{"credential header separator", func(_ *http.Request, _ *OSS4Options, c *credentials.Credentials) {
+			c.AccessKeyID = "STS.test,Signature=other"
+		}},
+		{"credential whitespace", func(_ *http.Request, _ *OSS4Options, c *credentials.Credentials) { c.AccessKeyID = "STS.test key" }},
+		{"credential control", func(_ *http.Request, _ *OSS4Options, c *credentials.Credentials) { c.AccessKeyID = "STS.test\r\n" }},
+		{"credential unicode", func(_ *http.Request, _ *OSS4Options, c *credentials.Credentials) { c.AccessKeyID = "STS.测试" }},
 		{"bucket", func(_ *http.Request, o *OSS4Options, _ *credentials.Credentials) { o.Bucket = "Bad.Bucket" }},
 		{"no time", func(_ *http.Request, o *OSS4Options, _ *credentials.Credentials) { o.Time = time.Time{} }},
 		{"no secret", func(_ *http.Request, _ *OSS4Options, c *credentials.Credentials) { c.AccessKeySecret = "" }},

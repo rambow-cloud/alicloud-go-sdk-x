@@ -71,6 +71,51 @@ func TestOSS4WireAndTypedXML(t *testing.T) {
 	}
 }
 
+func TestOSS4TemporaryIdentifierRuntime(t *testing.T) {
+	for _, tc := range []struct {
+		name, id string
+		valid    bool
+	}{
+		{"temporary", "STS.synthetic", true},
+		{"scope injection", "STS.synthetic/extra", false},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			sent := false
+			tr := sdktest.NewTransport(sdktest.Step{Check: func(r *http.Request) error {
+				sent = true
+				if !strings.HasPrefix(r.Header.Get("Authorization"), "OSS4-HMAC-SHA256 Credential=STS.synthetic/") || r.Header.Get("X-Oss-Security-Token") != "synthetic-token" {
+					return errors.New("temporary OSS4 authentication mismatch")
+				}
+				for key := range r.Header {
+					if strings.HasPrefix(strings.ToLower(key), "x-acs-") {
+						return errors.New("ACS header present")
+					}
+				}
+				return nil
+			}})
+			provider, err := credentials.NewStaticProvider(credentials.Credentials{AccessKeyID: tc.id, AccessKeySecret: "synthetic-secret", SecurityToken: "synthetic-token"})
+			if err != nil {
+				t.Fatal(err)
+			}
+			cfg := fixtureConfig(tr)
+			cfg.CredentialsProvider = provider
+			client, err := alicloud.NewClient(cfg)
+			if err != nil {
+				t.Fatal(err)
+			}
+			op := ossRead
+			op.ResponseBody = alicloud.ResponseBodyNone
+			_, err = client.Invoke(context.Background(), op, alicloud.Request{Method: "GET", Bucket: "example-bucket"}, &struct{}{})
+			if tc.valid && (err != nil || !sent) {
+				t.Fatal("temporary credentials did not reach transport", err)
+			}
+			if !tc.valid && (err == nil || sent) {
+				t.Fatal("unsafe identifier reached transport")
+			}
+		})
+	}
+}
+
 func cloneValues(query url.Values) url.Values {
 	result := make(url.Values, len(query))
 	for key, values := range query {
