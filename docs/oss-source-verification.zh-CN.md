@@ -6,24 +6,37 @@
 - 核对[暂存覆盖报告](research/oss-semantic-coverage.json)中的 8 个 XML 模型差异。
 - DSL 版本为 `ec489e5c3deae95496daae2b41503ac58b221adb`。
 - 原生参考为 `alibabacloud-gateway-oss-util` v0.0.6，哈希记录仍见[语义固定文件](../metadata/oss-semantic-pins.json)。
-- 已通过网页工具阅读官方文档。这些是当前文档，不是固定版本的真实响应，也不是 Explorer 核验结果。
-- 网页工具无法读取 GetBucketCors 和 ListBuckets 的 Explorer 页面；当前也没有可用的浏览器控制工具。这不能证明 Explorer 不提供这些 API。
-- 8 个操作的 Explorer 页面模型检查均为 **NOT RUN（未执行）**。
-- 8 个操作的 Explorer 真实请求及 SDK 真实请求均为 **NOT RUN（未执行）**。
+- 已阅读官方文档，并通过 Explorer 的公开元数据接口读取全部 8 个操作，均返回 HTTP 200。JSON 路径和响应哈希见[核验记录](acceptance/oss-source-live.json)。元数据接口证据与浏览器界面证据分别记录。
+- 浏览器模型检查和浏览器真实调用仍为 **NOT RUN（未执行）**。网页工具无法读取交互页面，当前没有可用的浏览器控制工具。
+- 本地 CLI 使用 aliyun 3.4.11、ossutil 2.4.0 和已有 oss-sftp OAuth Profile，发现北京地域的 1 个桶。全部查询为只读，关闭重试并设置有界超时。
+- 修复候选 [#126](https://github.com/rambow-cloud/alicloud-go-sdk-x/issues/126) 后，SDK 对 ListBuckets、GetBucketInfo 和 GetBucketReplicationLocation 的原始线路核验**通过**，均只尝试一次，返回 HTTP 200/application/xml。这里使用公共底层运行时，不是生成的 OSS 客户端。
+- 修复前，签名器拒绝原生临时 AccessKey ID 中的 `STS.` 句点，尚未发送 HTTP 就失败。核验记录绑定基线提交和修正后的签名器文件哈希；CLI 与 SDK 原始响应结构一致。
 - 未修改来源字节、审核批准、模型或覆盖数字。仍为发现 90 个操作、降低 16 个、暂不支持 74 个；OSS Go 输出尚未交付。
 
 ## 文档发现与待核验项
 
-| 操作 | 官方文档证据 | 仍需核验 |
+| 操作 | 官方文档证据 | 真实核验结果 |
 | --- | --- | --- |
-| GetBucketCors | [GetBucketCors](https://help.aliyun.com/zh/oss/developer-reference/getbucketcors)说明了请求头条目；[PutBucketCors](https://help.aliyun.com/zh/oss/developer-reference/putbucketcors)的请求语法包含重复的 AllowedHeader 元素。这支持集合模型，但不是实际响应证据。 | 读取已有且至少包含两个允许请求头的规则，检查 `CORSConfiguration/CORSRule/AllowedHeader` 是否重复。单个条目不能证明最多只返回一个。 |
-| GetBucketInfo | [GetBucketInfo](https://help.aliyun.com/zh/oss/developer-reference/getbucketinfo)定义及示例使用 `BucketPolicy/LogBucket` 和 `LogPrefix`，固定 DSL 使用 `TargetBucket` 和 `TargetPrefix`。 | 读取已开启日志的桶，核对 `BucketInfo/Bucket/BucketPolicy` 下的准确元素名。不能再简单解释为旧 helper 缺少新版字段。 |
-| GetBucketInventory | [GetBucketInventory](https://help.aliyun.com/en/oss/developer-reference/getbucketinventory)将 SSE-OSS 定义为容器，示例是空元素。 | 读取已有且采用 SSE-OSS 加密的清单配置，区分空元素与元素缺失。空模型和空字符串可能对应同一种 XML，需明确映射，不能直接改成文本字段。 |
-| ListBucketInventory | [ListBucketInventory](https://help.aliyun.com/zh/oss/developer-reference/listbucketinventory)也将 SSE-OSS 定义为容器，但列表示例没有展示该元素。 | 读取包含已有 SSE-OSS 清单配置的列表，检查 `InventoryConfiguration[]/Destination/OSSBucketDestination/Encryption/SSE-OSS`。 |
-| GetBucketReplicationLocation | [GetBucketReplicationLocation](https://help.aliyun.com/zh/oss/developer-reference/getbucketreplicationlocation)示例有多个 LocationTransferType，但每个 TransferTypes 中只有一个 Type。 | 检查 `LocationTransferType[]/TransferTypes/Type`。现有示例不能确定 Type 是单值还是可重复元素。 |
-| GetBucketReplicationProgress | [GetBucketReplicationProgress](https://help.aliyun.com/zh/oss/developer-reference/getbucketreplicationprogress)要求 `rule-id`，示例只有一个 Rule；说明中的父节点名称也存在不一致。 | 读取已有复制规则。单个 Rule 既可能对应单模型，也可能对应只有一项的数组，不能据此确定最大数量。 |
-| GetBucketWebsite | [GetBucketWebsite](https://help.aliyun.com/zh/oss/developer-reference/getbucketwebsite)明确将 ErrorDocument.HttpStatus 列为字符串；本次阅读的页面未定义 IndexDocument.Type。 | 读取已有静态网站配置，分别核对两个字段。XML 文本是数字不能证明 API 类型是整数。HttpStatus 的 DSL 字符串类型有文档依据，Type 仍未确定。 |
-| ListBuckets | [ListBuckets](https://help.aliyun.com/en/oss/developer-reference/listbuckets)定义根节点 ListAllMyBucketsResult、首字母大写字段和 Buckets/Bucket 包装层，也说明部分分页元素可以省略。 | 检查真实 XML 的包装层、大小写和分页字段是否存在。界面展平后的 JSON 不能证明 XML 没有包装层。服务级地址和类型化请求头仍需单独补充生成器能力。 |
+| GetBucketCors | [GetBucketCors](https://help.aliyun.com/zh/oss/developer-reference/getbucketcors)说明了请求头条目；[PutBucketCors](https://help.aliyun.com/zh/oss/developer-reference/putbucketcors)的请求语法包含重复的 AllowedHeader 元素。这支持集合模型，但不是实际响应证据。 | **SKIP（跳过）**：HTTP 404 / NoSuchCORSConfiguration，没有可供核验的多请求头规则。 |
+| GetBucketInfo | [GetBucketInfo](https://help.aliyun.com/zh/oss/developer-reference/getbucketinfo)使用 `BucketPolicy/LogBucket` 和 `LogPrefix`，固定 DSL 使用 `TargetBucket` 和 `TargetPrefix`。 | **字段名通过核验**：CLI 和 SDK 原始 XML 都有 LogBucket/LogPrefix，值均为空，没有 TargetBucket/TargetPrefix。非空日志配置行为仍未执行。 |
+| GetBucketInventory | [GetBucketInventory](https://help.aliyun.com/en/oss/developer-reference/getbucketinventory)将 SSE-OSS 定义为容器，示例是空元素。 | **NOT RUN（未执行）**：没有发现清单配置 ID。空模型和空字符串是否等价需明确序列化决策，不能根据空列表判断。 |
+| ListBucketInventory | [ListBucketInventory](https://help.aliyun.com/zh/oss/developer-reference/listbucketinventory)也将 SSE-OSS 定义为容器。 | **SKIP（跳过）**：HTTP 404 / NoSuchInventory，没有 SSE-OSS 清单配置可供核验。 |
+| GetBucketReplicationLocation | [GetBucketReplicationLocation](https://help.aliyun.com/zh/oss/developer-reference/getbucketreplicationlocation)示例中每个 TransferTypes 只有一个 Type。 | **重复元素通过核验**：CLI 和 SDK 原始 XML 都有 21 项 TransferTypes，其中 8 项各含一个 Type，13 项各含两个。使用单值模型会丢失返回数据。 |
+| GetBucketReplicationProgress | [GetBucketReplicationProgress](https://help.aliyun.com/zh/oss/developer-reference/getbucketreplicationprogress)要求 `rule-id`，示例只有一个 Rule。 | **NOT RUN（未执行）**：配置查询 GetBucketReplication 返回 HTTP 404 / NoSuchReplicationConfiguration，没有编造规则 ID。 |
+| GetBucketWebsite | [GetBucketWebsite](https://help.aliyun.com/zh/oss/developer-reference/getbucketwebsite)将 HttpStatus 列为字符串，所查页面未定义 IndexDocument.Type。 | **SKIP（跳过）**：HTTP 404 / NoSuchWebsiteConfiguration。仅凭数字 XML 文本不能确定 Go 整数契约。 |
+| ListBuckets | [ListBuckets](https://help.aliyun.com/en/oss/developer-reference/listbuckets)定义 ListAllMyBucketsResult、首字母大写字段和 Buckets/Bucket 包装层。 | **包装层和大小写通过核验**：CLI 和 SDK 原始 XML 一致，仅返回一个桶，没有分页字段。真实续页仍未执行；服务级地址和请求头降低能力仍需实现。 |
+
+## Explorer 元数据核对结果
+
+- 使用 `https://api.aliyun.com/meta/v1/products/Oss/versions/2019-05-17/apis/<Operation>/api.json?language=EN_US` 读取定义。完整 URL、哈希和 JSON 路径见核验记录，该公开接口无需浏览器登录。
+- GetBucketCors：AllowedHeader 声明 `type: string`，同时有 `items.type: string` 和 `items.extendType: "true"`。这是不一致或扩展表示，不是标准数组声明；批准数组修正前需规范化并审核。
+- GetBucketInfo：BucketPolicy 的内联字段为 LogBucket/LogPrefix，但 `$ref` 引用的 LoggingEnabled 字段为 TargetBucket/TargetPrefix/LoggingRole。两边事实都保留；本次原始响应和帮助文档支持该响应中的内联名称。
+- GetBucketReplicationLocation：TransferTypes.Type 在元数据中是字符串数组，原始 XML 证实元素可以重复。
+- GetBucketReplicationProgress：元数据中 Rule 是数组，没有已有复制规则可供真实核验。
+- 两个清单操作引用的 SSEOSS 声明为 `type: string`，同时有空 `properties`；帮助文档将其描述为空容器，真实映射仍未验证。
+- GetBucketWebsite：元数据将 HttpStatus 和 Type 声明为整数，DSL 声明为字符串，帮助文档也将 HttpStatus 列为字符串。这项三方差异仍保留。
+- ListBuckets：元数据与实际响应的首字母大写节点及 Buckets/Bucket 包装层一致，但不能据此宣称全部桶字段和分页续页均已覆盖。
+- 元数据可用于佐证或发现冲突，不替代完整官方 DSL/parser 路线，也不授权静默修改模型。
 
 ## Explorer 浏览器核验步骤
 
@@ -38,14 +51,14 @@
 
 | 操作 | 待核验 Explorer 页面 | 所需已有资源 |
 | --- | --- | --- |
-| GetBucketCors | [打开](https://api.aliyun.com/api/OSS/2019-05-17/GetBucketCors) | 包含多请求头 CORS 规则的桶 |
-| GetBucketInfo | [打开](https://api.aliyun.com/api/OSS/2019-05-17/GetBucketInfo) | 已开启日志的桶 |
-| GetBucketInventory | [打开](https://api.aliyun.com/api/OSS/2019-05-17/GetBucketInventory) | 桶和 SSE-OSS 清单配置 ID |
-| ListBucketInventory | [打开](https://api.aliyun.com/api/OSS/2019-05-17/ListBucketInventory) | 包含 SSE-OSS 清单配置的桶 |
-| GetBucketReplicationLocation | [打开](https://api.aliyun.com/api/OSS/2019-05-17/GetBucketReplicationLocation) | 桶 |
-| GetBucketReplicationProgress | [打开](https://api.aliyun.com/api/OSS/2019-05-17/GetBucketReplicationProgress) | 桶和复制规则 ID |
-| GetBucketWebsite | [打开](https://api.aliyun.com/api/OSS/2019-05-17/GetBucketWebsite) | 已有静态网站配置的桶 |
-| ListBuckets | [打开](https://api.aliyun.com/api/OSS/2019-05-17/ListBuckets) | 名下已有桶的账号 |
+| GetBucketCors | [打开](https://api.aliyun.com/api/Oss/2019-05-17/GetBucketCors) | 包含多请求头 CORS 规则的桶 |
+| GetBucketInfo | [打开](https://api.aliyun.com/api/Oss/2019-05-17/GetBucketInfo) | 已开启日志的桶 |
+| GetBucketInventory | [打开](https://api.aliyun.com/api/Oss/2019-05-17/GetBucketInventory) | 桶和 SSE-OSS 清单配置 ID |
+| ListBucketInventory | [打开](https://api.aliyun.com/api/Oss/2019-05-17/ListBucketInventory) | 包含 SSE-OSS 清单配置的桶 |
+| GetBucketReplicationLocation | [打开](https://api.aliyun.com/api/Oss/2019-05-17/GetBucketReplicationLocation) | 桶 |
+| GetBucketReplicationProgress | [打开](https://api.aliyun.com/api/Oss/2019-05-17/GetBucketReplicationProgress) | 桶和复制规则 ID |
+| GetBucketWebsite | [打开](https://api.aliyun.com/api/Oss/2019-05-17/GetBucketWebsite) | 已有静态网站配置的桶 |
+| ListBuckets | [打开](https://api.aliyun.com/api/Oss/2019-05-17/ListBuckets) | 名下已有桶的账号 |
 
 ## 修正前的门禁
 
@@ -56,5 +69,5 @@
 
 ## 验证要求
 
-- 本次仅增加文档，执行文档语言与本地链接检查及 `git diff --check`。
-- 文档修改无需运行 Go 或前端测试，也不需要调用真实云 API。
+- 本分支仅增加文档和脱敏证据，执行文档语言与本地链接检查及 `git diff --check`。
+- 签名器代码验证归属 #126；原始私有响应不纳入版本控制。没有为了补齐证据创建或修改云配置。

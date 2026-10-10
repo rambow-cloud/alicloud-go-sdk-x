@@ -1,0 +1,415 @@
+{
+  "schemaVersion": 1,
+  "executedOn": "2026-10-10",
+  "reviewKind": "implementation-agent",
+  "readOnly": true,
+  "sourceRevision": "ec489e5c3deae95496daae2b41503ac58b221adb",
+  "sdkBaselineRevision": "740221415fade8ed964d8e8ac2e8c9d5c413e8d6",
+  "sdkFixIssue": 126,
+  "sdkSignerBlob": "c4735c4ef8148075a9159e32556c1fe380978c1b",
+  "cliVersion": "3.4.11",
+  "ossutilVersion": "2.4.0",
+  "goVersion": "go1.27.1",
+  "nativeProfile": "oss-sftp",
+  "bucketAlias": "bucket-1",
+  "bucketRegion": "cn-beijing",
+  "bucketCount": 1,
+  "explorerMetadataStatus": "PASS fetched eight API definitions; compatibility is not implied",
+  "explorerBrowserStatus": "NOT RUN",
+  "explorerLiveStatus": "NOT RUN",
+  "generatedOSSStatus": "NOT RUN; no public service/oss client",
+  "cliResults": [
+    {
+      "Command": "get-bucket-info",
+      "ObservedAt": "2026-10-10T01:43:35.0798669Z",
+      "Exit": 0,
+      "HasXML": true,
+      "ErrorCodes": []
+    },
+    {
+      "Command": "get-bucket-cors",
+      "ObservedAt": "2026-10-10T01:43:35.4026305Z",
+      "Exit": 1,
+      "HasXML": false,
+      "ErrorCodes": [
+        "NoSuchCORSConfiguration"
+      ]
+    },
+    {
+      "Command": "get-bucket-website",
+      "ObservedAt": "2026-10-10T01:43:35.6215110Z",
+      "Exit": 1,
+      "HasXML": false,
+      "ErrorCodes": [
+        "NoSuchWebsiteConfiguration"
+      ]
+    },
+    {
+      "Command": "list-bucket-inventory",
+      "ObservedAt": "2026-10-10T01:43:35.8053639Z",
+      "Exit": 1,
+      "HasXML": false,
+      "ErrorCodes": [
+        "NoSuchInventory"
+      ]
+    },
+    {
+      "Command": "get-bucket-replication-location",
+      "ObservedAt": "2026-10-10T01:43:36.0053195Z",
+      "Exit": 0,
+      "HasXML": true,
+      "ErrorCodes": []
+    },
+    {
+      "Command": "get-bucket-replication",
+      "ObservedAt": "2026-10-10T01:43:36.2015611Z",
+      "Exit": 1,
+      "HasXML": false,
+      "ErrorCodes": [
+        "NoSuchReplicationConfiguration"
+      ]
+    }
+  ],
+  "sdkRawResponseResults": [
+    {
+      "success": true,
+      "contentType": "application/xml",
+      "requestIDPresent": true,
+      "operation": "ListBuckets",
+      "observedAt": "2026-10-10T01:51:18.6448956Z",
+      "httpStatus": 200,
+      "attempts": 1
+    },
+    {
+      "httpStatus": 200,
+      "attempts": 1,
+      "success": true,
+      "contentType": "application/xml",
+      "requestIDPresent": true,
+      "operation": "GetBucketInfo",
+      "observedAt": "2026-10-10T01:51:19.0543684Z"
+    },
+    {
+      "operation": "GetBucketReplicationLocation",
+      "observedAt": "2026-10-10T01:51:19.1425427Z",
+      "httpStatus": 200,
+      "attempts": 1,
+      "success": true,
+      "contentType": "application/xml",
+      "requestIDPresent": true
+    }
+  ],
+  "sdkRawResponseShapes": [
+    {
+      "Operation": "ListBuckets",
+      "Root": "ListAllMyBucketsResult",
+      "Namespace": "",
+      "RootFields": [
+        "Owner",
+        "Buckets"
+      ],
+      "BucketCount": 1
+    },
+    {
+      "Operation": "GetBucketInfo",
+      "Root": "BucketInfo",
+      "Namespace": "",
+      "LoggingFields": [
+        "LogBucket",
+        "LogPrefix"
+      ],
+      "LoggingValuesEmpty": [
+        true,
+        true
+      ]
+    },
+    {
+      "Operation": "GetBucketReplicationLocation",
+      "Root": "ReplicationLocation",
+      "Namespace": "",
+      "TransferTypeCounts": [
+        {
+          "TypesPerEntry": 1,
+          "EntryCount": 8
+        },
+        {
+          "TypesPerEntry": 2,
+          "EntryCount": 13
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "operation": "ListBuckets",
+      "status": "PASS",
+      "check": "Root ListAllMyBucketsResult, capitalized Owner/Buckets and Buckets/Bucket wrapper confirmed by CLI and raw SDK response. Pagination continuation NOT RUN: one bucket."
+    },
+    {
+      "operation": "GetBucketInfo",
+      "status": "PASS",
+      "check": "Raw BucketPolicy children are LogBucket and LogPrefix, both empty. TargetBucket/TargetPrefix absent. Nonempty logging behavior NOT RUN."
+    },
+    {
+      "operation": "GetBucketReplicationLocation",
+      "status": "PASS",
+      "check": "Type is repeated: eight TransferTypes entries contain one Type each, thirteen contain two each. CLI and SDK raw XML agree."
+    },
+    {
+      "operation": "GetBucketCors",
+      "status": "SKIP",
+      "httpStatus": 404,
+      "errorCode": "NoSuchCORSConfiguration",
+      "check": "Disputed field absent; cardinality not verified live."
+    },
+    {
+      "operation": "GetBucketWebsite",
+      "status": "SKIP",
+      "httpStatus": 404,
+      "errorCode": "NoSuchWebsiteConfiguration",
+      "check": "Disputed fields absent; scalar conversion not verified live."
+    },
+    {
+      "operation": "ListBucketInventory",
+      "status": "SKIP",
+      "httpStatus": 404,
+      "errorCode": "NoSuchInventory",
+      "check": "No inventory configuration to inspect."
+    },
+    {
+      "operation": "GetBucketInventory",
+      "status": "NOT RUN",
+      "check": "No existing inventory ID found; no identifier invented and no configuration created."
+    },
+    {
+      "operation": "GetBucketReplicationProgress",
+      "status": "NOT RUN",
+      "check": "Read-only discovery GetBucketReplication returned NoSuchReplicationConfiguration / HTTP 404; no existing rule ID."
+    }
+  ],
+  "redactedStructuralExtracts": {
+    "ListBuckets": "<ListAllMyBucketsResult><Buckets><Bucket><Name>REDACTED</Name></Bucket></Buckets></ListAllMyBucketsResult>",
+    "GetBucketInfo": "<BucketPolicy><LogBucket/><LogPrefix/></BucketPolicy>",
+    "GetBucketReplicationLocation": "<TransferTypes><Type>REDACTED</Type><Type>REDACTED</Type></TransferTypes>"
+  },
+  "explorerMetadata": [
+    {
+      "operation": "GetBucketCors",
+      "url": "https://api.aliyun.com/meta/v1/products/Oss/versions/2019-05-17/apis/GetBucketCors/api.json?language=EN_US",
+      "httpStatus": 200,
+      "sha256": "50642ebb75cca85e510327e4f884263fa872ff5afaefe1b003c86d244f7461a3",
+      "path": "/?cors",
+      "methods": [
+        "get"
+      ],
+      "fields": [
+        {
+          "pointer": "/components/schemas/CORSRule/properties/AllowedHeader",
+          "type": "string",
+          "items": {
+            "type": "string",
+            "extendType": "true"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "GetBucketInfo",
+      "url": "https://api.aliyun.com/meta/v1/products/Oss/versions/2019-05-17/apis/GetBucketInfo/api.json?language=EN_US",
+      "httpStatus": 200,
+      "sha256": "5ebcd612390b712ab77f481381f0f82bf985dd67f405e339f96b35a6b042c486",
+      "path": "/?bucketInfo",
+      "methods": [
+        "get"
+      ],
+      "fields": [
+        {
+          "pointer": "/components/schemas/BucketInfo/properties/Bucket/properties/BucketPolicy",
+          "type": "object",
+          "ref": "#/components/schemas/LoggingEnabled",
+          "propertyNames": [
+            "LogBucket",
+            "LogPrefix"
+          ]
+        },
+        {
+          "pointer": "/components/schemas/BucketInfo/properties/Bucket/properties/BucketPolicy/properties/LogBucket",
+          "type": "string"
+        },
+        {
+          "pointer": "/components/schemas/BucketInfo/properties/Bucket/properties/BucketPolicy/properties/LogPrefix",
+          "type": "string"
+        },
+        {
+          "pointer": "/components/schemas/LoggingEnabled/properties/TargetBucket",
+          "type": "string"
+        },
+        {
+          "pointer": "/components/schemas/LoggingEnabled/properties/TargetPrefix",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "operation": "GetBucketInventory",
+      "url": "https://api.aliyun.com/meta/v1/products/Oss/versions/2019-05-17/apis/GetBucketInventory/api.json?language=EN_US",
+      "httpStatus": 200,
+      "sha256": "ca1bd82ad9f3c67dfeaade119cfa0deb147e1d43b2d89f02a55707f004d8c1d0",
+      "path": "/?inventory",
+      "methods": [
+        "get"
+      ],
+      "fields": [
+        {
+          "pointer": "/components/schemas/InventoryEncryption/properties/SSE-OSS",
+          "ref": "#/components/schemas/SSEOSS"
+        },
+        {
+          "pointer": "/components/schemas/SSEOSS",
+          "type": "string",
+          "propertyNames": []
+        }
+      ]
+    },
+    {
+      "operation": "ListBucketInventory",
+      "url": "https://api.aliyun.com/meta/v1/products/Oss/versions/2019-05-17/apis/ListBucketInventory/api.json?language=EN_US",
+      "httpStatus": 200,
+      "sha256": "b254d2834fdb1e8826506b9d165099a5590aea3dd5779272c6a7bd602de6ba7a",
+      "path": "/?inventory",
+      "methods": [
+        "get"
+      ],
+      "fields": [
+        {
+          "pointer": "/components/schemas/InventoryEncryption/properties/SSE-OSS",
+          "ref": "#/components/schemas/SSEOSS"
+        },
+        {
+          "pointer": "/components/schemas/SSEOSS",
+          "type": "string",
+          "propertyNames": []
+        }
+      ]
+    },
+    {
+      "operation": "GetBucketReplicationLocation",
+      "url": "https://api.aliyun.com/meta/v1/products/Oss/versions/2019-05-17/apis/GetBucketReplicationLocation/api.json?language=EN_US",
+      "httpStatus": 200,
+      "sha256": "fc118cc5dd427bdabe8ca683a66776aa315699e42ef5711f347158a6c56f12ed",
+      "path": "/?replicationLocation",
+      "methods": [
+        "get"
+      ],
+      "fields": [
+        {
+          "pointer": "/components/schemas/LocationTransferType/properties/TransferTypes/properties/Type",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "GetBucketReplicationProgress",
+      "url": "https://api.aliyun.com/meta/v1/products/Oss/versions/2019-05-17/apis/GetBucketReplicationProgress/api.json?language=EN_US",
+      "httpStatus": 200,
+      "sha256": "651ed1ac3995cd67983043a04462b284840a0d827f964b3dbedd0c0ea187ff3b",
+      "path": "/?replicationProgress",
+      "methods": [
+        "get"
+      ],
+      "fields": [
+        {
+          "pointer": "/responses/200/schema/properties/ReplicationProgress/properties/Rule",
+          "type": "array",
+          "items": {
+            "ref": "#/components/schemas/ReplicationProgressRule"
+          }
+        }
+      ]
+    },
+    {
+      "operation": "GetBucketWebsite",
+      "url": "https://api.aliyun.com/meta/v1/products/Oss/versions/2019-05-17/apis/GetBucketWebsite/api.json?language=EN_US",
+      "httpStatus": 200,
+      "sha256": "f352838969636867e352786e91193db55f792a5a39f27a9fcec92ecc3074f4e5",
+      "path": "/?website",
+      "methods": [
+        "get"
+      ],
+      "fields": [
+        {
+          "pointer": "/components/schemas/IndexDocument/properties/Type",
+          "type": "integer",
+          "format": "int64"
+        },
+        {
+          "pointer": "/components/schemas/ErrorDocument/properties/HttpStatus",
+          "type": "integer",
+          "format": "int64"
+        }
+      ]
+    },
+    {
+      "operation": "ListBuckets",
+      "url": "https://api.aliyun.com/meta/v1/products/Oss/versions/2019-05-17/apis/ListBuckets/api.json?language=EN_US",
+      "httpStatus": 200,
+      "sha256": "fea548cd37c98a383fdb5846383a5a48851fdd21b524c7a986dc4fdb0e42ba00",
+      "path": "/",
+      "methods": [
+        "get"
+      ],
+      "fields": [
+        {
+          "pointer": "/responses/200/schema/properties/ListAllMyBucketsResult",
+          "type": "object",
+          "propertyNames": [
+            "Owner",
+            "Prefix",
+            "Marker",
+            "MaxKeys",
+            "IsTruncated",
+            "NextMarker",
+            "Buckets"
+          ]
+        },
+        {
+          "pointer": "/responses/200/schema/properties/ListAllMyBucketsResult/properties/Buckets",
+          "type": "object",
+          "propertyNames": [
+            "Bucket"
+          ]
+        },
+        {
+          "pointer": "/responses/200/schema/properties/ListAllMyBucketsResult/properties/Buckets/properties/Bucket",
+          "type": "array",
+          "items": {
+            "ref": "#/components/schemas/Bucket"
+          }
+        },
+        {
+          "pointer": "/components/schemas/Bucket",
+          "type": "object",
+          "propertyNames": [
+            "CreationDate",
+            "ExtranetEndpoint",
+            "IntranetEndpoint",
+            "Location",
+            "Name",
+            "StorageClass",
+            "Region"
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Structural extracts omit unrelated elements and redact values; they are not full responses.",
+    "Raw private responses and account/resource/credential values are not committed.",
+    "No source-bound model correction is approved by this evidence record.",
+    "No writes to cloud resources, configuration provisioning, generated coverage or release changes."
+  ],
+  "sdkFixRevision": "a94c87eaa3b3668af6c396691fb3eb3ac219e79f"
+}

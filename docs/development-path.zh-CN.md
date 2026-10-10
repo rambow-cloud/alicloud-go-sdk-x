@@ -4,7 +4,7 @@
 
 [English](development-path.md)
 
-- #92 的来源修正先遵循 [OSS 来源核验](oss-source-verification.zh-CN.md)。已记录官方文档证据，Explorer 浏览器及真实调用仍未执行。不能仅凭旧 helper 或 XML 中的数字文本确定公共模型。
+- #92 的来源修正先遵循 [OSS 来源核验](oss-source-verification.zh-CN.md)。已记录 8 个 Explorer 元数据定义及 3 项 CLI/SDK 原始响应结构；浏览器检查和缺少配置的项目仍未验证。#126 修复 OSS4 临时凭据标识符。不能仅凭旧 helper 或 XML 中的数字文本确定公共模型。
 
 - #92 已合并[OSS 共享运行时](oss-runtime.zh-CN.md)：OSS4、桶地址、XML 请求 MD5、类型化 XML 响应和结构化错误。当前继续推进暂存来源和 IR；Go 输出与 ListBuckets 修正分别验收。
 
