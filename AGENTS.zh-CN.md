@@ -1,5 +1,7 @@
 # 项目协作约定
 
+- #92 按[OSS 共享运行时](docs/oss-runtime.zh-CN.md)先接通调用链，再推进产品生成：显式 OSS4/响应模式、桶名、逐次 XML MD5 及有界 XML 错误；不猜根节点、不宣称已生成或真实验收 OSS。
+
 - #92 在[公共编解码层](docs/xml-model-codec.zh-CN.md)之后，遵循[原生 XML 根节点发现](docs/native-xml-traits.zh-CN.md)。官方 DSL 仍为权威来源，绑定哈希的原生声明仅补充明确的序列化事实。保留尚未解决的 ListBuckets 大小写/包装层冲突及命名空间规则；发现数量不代表已生成 OSS 操作。
 
 [English](AGENTS.md)

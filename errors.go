@@ -16,6 +16,9 @@ type APIError struct {
 	RequestID string
 	// HTTPStatusCode is the HTTP response status, or zero if unavailable.
 	HTTPStatusCode int
+	// ECCode is the OSS diagnostic error code, or empty if unavailable. Inspect it
+	// explicitly for troubleshooting; Error omits it with Message and body bytes.
+	ECCode string
 }
 
 // Error returns the code, HTTP status, and request ID without including Message.

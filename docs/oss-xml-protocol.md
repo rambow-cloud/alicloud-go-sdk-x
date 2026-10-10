@@ -2,7 +2,7 @@
 
 [中文](oss-xml-protocol.zh-CN.md)
 
-- Issue #92. Research only; production source/IR/runtime has not changed.
+- Issue #92. This document preserves the initial research stage. The current implementation route is [OSS shared runtime](oss-runtime.md); production OSS sources/IR/emission remain pending.
 - Official OSS product: oss-20190517 at ec489e5c3deae95496daae2b41503ac58b221adb; original main.tea SHA256 0713683b286a49e4e80fff023f61db426dc035fb8755a7b4616a82f65c22e6ff. 90 WithOptions functions hand off to execute, with SPI/GatewayOSS initialization and bucket hostMap.
 - Source response modes: XML 79, JSON 3, none 4, string 1, binary 3. Request modes: XML 84, binary 3, JSON 2, multiFormData 1. These are source counts, not parser/lowering/emission acceptance.
 - Official registry research resolved GatewayOSS 0.0.42; archive SHA1 0b31bfdd4c86a28a6c93d74c0622e3167558435f, SHA256 5bf16e8d5283b8174c34d17fd4cb085422c7ef64a8d129beb93dd404216b7cab. This research resolution is not a production pin. Additional OSSUtil/GatewayOSS_Util/Time imports and license/source evidence must be fixed before production generation.

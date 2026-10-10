@@ -2,7 +2,7 @@
 
 [English](oss-xml-protocol.md)
 
-- 对应 #92；当前仅调研，尚未修改生产来源、IR 或运行时。
+- 对应 #92；本文保留最初的调研记录。当前实现路线见[OSS 共享运行时](oss-runtime.zh-CN.md)；生产 OSS 来源、IR 和代码生成仍待完成。
 - 官方 OSS 产品为 ec489e5c3deae95496daae2b41503ac58b221adb 中的 oss-20190517，原始 main.tea SHA256 为 0713683b286a49e4e80fff023f61db426dc035fb8755a7b4616a82f65c22e6ff。90 个 WithOptions 函数调用 execute，初始化 SPI/GatewayOSS，并通过 bucket hostMap 传入主机参数。
 - 来源响应模式：XML 79、JSON 3、none 4、string 1、binary 3；请求模式：XML 84、binary 3、JSON 2、multiFormData 1。这是源码数量，不代表解析、降低或生成验收。
 - 官方 registry 调研解析到 GatewayOSS 0.0.42；归档 SHA1 为 0b31bfdd4c86a28a6c93d74c0622e3167558435f，SHA256 为 5bf16e8d5283b8174c34d17fd4cb085422c7ef64a8d129beb93dd404216b7cab。该调研结果不是生产锁定；生产生成前还须固定 OSSUtil、GatewayOSS_Util、Time 导入及许可和来源证据。

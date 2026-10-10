@@ -1,4 +1,4 @@
-// Package alicloud provides a shared HTTP runtime with ACS3 signing and structured errors for
+// Package alicloud provides a shared HTTP runtime with ACS3/OSS4 signing and structured errors for
 // an independent Alibaba Cloud SDK for Go. Construct NewClient with explicit
 // credential providers and use generated service clients in service/ecs and service/sts.
 // Prefer renewable STS credentials wrapped in credentials.Cache. config.LoadDefaultConfig
@@ -41,5 +41,14 @@
 // Codec.DecodeStream. Close it after use. Timeout and context remain active
 // through reads; EOF, errors and overflow close the underlying body. Read has
 // one owner; Close may run concurrently. Late read failures never retry. This
-// contract does not add XML decoding or unbounded request streams.
+// contract does not add unbounded request streams.
+//
+// Explicit AuthenticationOSS4 uses Request.Bucket with an unprefixed service
+// origin and an explicit region; it does not fall back to ACS3. RequestBodyXML
+// sets Content-Type and recomputes Content-MD5 after Finalize middleware from
+// nonempty buffered bytes. ResponseBodyXML requires InvokeModel with a typed
+// codec and a reviewed root. OSS4 failures decode bounded Error-root XML and
+// expose APIError.ECCode; messages, EC and bodies are excluded from default error
+// text. XML roots remain namespace-exact. CNAME/path-style addressing, generated
+// OSS clients, unbounded uploads and automatic integrity policy are separate work.
 package alicloud

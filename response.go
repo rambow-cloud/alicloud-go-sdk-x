@@ -4,6 +4,7 @@ import "encoding/json/v2"
 
 type serviceEnvelope struct {
 	Code, Message, RequestID string
+	ECCode                   string
 }
 
 // decodeServiceEnvelope accepts only the reviewed native member spellings.
@@ -46,5 +47,5 @@ func decodeServiceEnvelope(data []byte, success bool) (serviceEnvelope, error) {
 		}
 		return ""
 	}
-	return serviceEnvelope{selectValue(wire.Code, wire.LowerCode), selectValue(wire.Message, wire.LowerMsg), selectValue(wire.RequestID, wire.LowerReqID)}, nil
+	return serviceEnvelope{Code: selectValue(wire.Code, wire.LowerCode), Message: selectValue(wire.Message, wire.LowerMsg), RequestID: selectValue(wire.RequestID, wire.LowerReqID)}, nil
 }

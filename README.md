@@ -37,6 +37,8 @@
 
 ## Coverage
 
+- The [OSS runtime](docs/oss-runtime.md) supports explicit OSS4, virtual-host buckets and typed XML codecs. Production service/oss generation and live acceptance remain pending.
+
 - Complete official DSL emits STS 4, ECS 380 and VPC 403 actions with typed models, small mock interfaces and offline Examples. FC adds an [offline ROA preview](docs/fc-binary-generation.md): all 73 actions, including binary InvokeFunction with owned response streams. Generation, compilation, consumer acceptance and live behavior stay separate.
 
 - Reviewed policies provide ECS 14/VPC 15 paginators and ECS 2/VPC 3 waiters. ECS 16/380 and VPC 15/403 actions have reviewed policy; unlisted actions remain unreviewed.

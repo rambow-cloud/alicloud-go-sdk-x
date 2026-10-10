@@ -2,6 +2,8 @@
 
 [中文](development-path.zh-CN.md)
 
+- #92 next delivers [OSS shared runtime](oss-runtime.md): OSS4, bucket hosts, XML request MD5, typed XML responses and structured errors. Production source/IR/emission follows; ListBuckets remains an explicit conflict.
+
 - #92 next uses [native XML root discovery](native-xml-traits.md): complete hash-bound helper facts complement official DSL, with explicit conflict reports before production XML/Gateway integration. No inferred roots or generated OSS coverage claim.
 
 - The [shared internal XML codec](xml-model-codec.md) is merged under #92. Root/model fixtures precede OSS Gateway/signing/IR integration; no public OSS client is accepted yet.

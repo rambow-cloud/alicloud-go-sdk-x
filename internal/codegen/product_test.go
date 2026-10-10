@@ -420,7 +420,7 @@ func TestFullProductEmissionCompilesInIsolatedModule(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	for _, relative := range []string{".", "credentials", "endpoint", "middleware", "retry", "pagination", "waiter", "sdktest", "internal/signing", "internal/rpcmodel", "internal/roamodel"} {
+	for _, relative := range []string{".", "credentials", "endpoint", "middleware", "retry", "pagination", "waiter", "sdktest", "internal/signing", "internal/rpcmodel", "internal/roamodel", "internal/checksum", "internal/xmlmodel"} {
 		entries, err := os.ReadDir(filepath.Join(repository, relative))
 		if err != nil {
 			t.Fatal(err)
