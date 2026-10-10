@@ -4,6 +4,8 @@
 
 [中文](development-path.zh-CN.md)
 
+- #92 source corrections first follow [OSS source verification](oss-source-verification.md). Eight Explorer metadata definitions and three read-only CLI/raw SDK structures are recorded; browser checks and missing configurations remain unverified. #126 corrects temporary OSS4 credential identifiers. Do not treat an older helper or numeric XML text as proof of the public model.
+
 - #92 merged [OSS shared runtime](oss-runtime.md): OSS4, bucket hosts, XML request MD5, typed XML responses and structured errors. Staged source/IR now follows; Go emission and ListBuckets correction remain separate acceptance.
 
 - #92 accepted [native XML root discovery](native-xml-traits.md). The current semantic IR stage adds nested comparison; root-level matches alone do not establish compatibility.
