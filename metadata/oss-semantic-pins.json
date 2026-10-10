@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "sourceSHA256": "0713683b286a49e4e80fff023f61db426dc035fb8755a7b4616a82f65c22e6ff",
+  "inventoryFile": "metadata/native-helper-pins/oss-inventory.json",
+  "inventorySHA256": "5758248cfa2a5370fa2b71f40d54f1afdb111ece5cafd43fc79bc1e78fde2b15",
+  "pinsFile": "metadata/native-helper-pins/oss.json",
+  "gatewayFile": "modules/alibabacloud_GatewayOSS_0.0.42/main.tea",
+  "gatewaySHA256": "71caf417a396688b8a4a38b0e0f431d5adfb7ae043d98fa504f07ac1b319f44c"
+}

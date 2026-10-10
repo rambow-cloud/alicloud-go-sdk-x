@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "product": "sts",
   "version": "2015-04-01",
-  "sourceManifestSHA256": "fda7bc19fbbeb45b230c5dc9c4e69452a1dfe57331452f62dc653261b6d13254",
+  "sourceManifestSHA256": "145082e7c8d725925ed509b430a6cc2e302d3f2fc97ae4986ea8f114fbc3924c",
   "discovered": 4,
   "lowered": 4,
   "emitted": 4,
@@ -11,7 +11,7 @@
   "compilation": "not-assessed",
   "live": "not-assessed",
   "capabilityPolicy": "sparse-reviewed",
-  "policySHA256": "4c22bccad01394c53519b9d847d8e8a5f02b2984714f46f4e5d48c32bf8d6b79",
+  "policySHA256": "771d153f911e59d70147dd5b2fd95efaf9080c9f183cffbd9145795816fa4fb0",
   "operations": [
     {
       "name": "AssumeRole",

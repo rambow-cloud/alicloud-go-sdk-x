@@ -33,8 +33,8 @@
   ],
   "dsl": {
     "file": "dsl.json",
-    "sha256": "2dbf4ecc31025b785ffec4e1c9bcef5a3c61dd0d94a4a11d1ae0b23f1a052713",
-    "sourceManifestSHA256": "fda7bc19fbbeb45b230c5dc9c4e69452a1dfe57331452f62dc653261b6d13254",
+    "sha256": "2a25be231287bbe51f79765049eed72bfa21525ff287a4cb10af290a71387b3e",
+    "sourceManifestSHA256": "145082e7c8d725925ed509b430a6cc2e302d3f2fc97ae4986ea8f114fbc3924c",
     "decisionsSHA256": "3d95b943e57bc9cc91afc0052df123b24f470b2cd912dd6ce9a0a7ca00208055"
   }
 }

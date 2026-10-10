@@ -36,7 +36,7 @@ test("explicit extension preserves existing pins and every transitive product ma
   writeModules(root,prepared);
   const after=verifySources(root);
   assert.equal(after.manifest.modules.length,before.manifest.modules.length+1);
-  for(const product of Object.keys(after.manifest.products)){
+  for(const product of Object.keys({...after.manifest.products,...after.manifest.stagedProducts})){
     const libraries=JSON.parse(fs.readFileSync(path.join(root,"products",product,".libraries.json")));
     assert.equal(Object.keys(libraries).length,after.manifest.modules.length);
     assert.equal(libraries[plan.modules[0].spec],"../../"+plan.modules[0].directory);

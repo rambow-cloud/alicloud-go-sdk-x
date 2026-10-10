@@ -2,6 +2,8 @@
 
 [English](module-source-extension.md)
 
+- OSS 模块和完整产品源码现已按 [OSS 语义 IR](oss-semantic-ir.zh-CN.md)固定为暂存输入。原模块扩展计划保留导入前的来源锁，属于历史证据，不应在已经扩展的来源锁上重复执行。
+
 - 对应 #92。现有产品导入工具要求所有传递依赖都已固定。
 - 先用 `tools/darabonba/import-modules.cjs` 导入审核过的缺失模块，再用 `import-product.cjs` 添加产品。
 - 模块导入器不解析通配版本。审核计划明确给出准确版本、归档 SHA1/SHA256、官方归档地址和许可证据，并绑定当前来源 manifest 哈希。

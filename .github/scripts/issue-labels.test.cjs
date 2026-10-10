@@ -2,6 +2,10 @@ const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const { classify, planLabels, run } = require("./issue-labels.cjs");
 
+test("OSS structured areas retain the maintained product label", () => {
+  assert.deepEqual(classify({ title: "[Feature]: XML generation", body: "### Affected areas\n\noss, tools" }), { type: "enhancement", modules: ["module:oss", "module:tools"] });
+});
+
 test("classifies structured areas and ignores arbitrary issue text", () => {
   assert.deepEqual(
     classify({

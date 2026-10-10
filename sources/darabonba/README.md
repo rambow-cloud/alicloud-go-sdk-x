@@ -4,6 +4,7 @@
 
 - Products come from [aliyun/alibabacloud-sdk](https://github.com/aliyun/alibabacloud-sdk/tree/ec489e5c3deae95496daae2b41503ac58b221adb) at commit ec489e5c3deae95496daae2b41503ac58b221adb.
 - Keep main.tea, Teafile and api-info.json bytes intact for ECS 2014-05-26, STS 2015-04-01, VPC 2016-04-28 and FC 2023-03-30.
+- OSS 2019-05-17 is pinned under `stagedProducts` with its complete imports. Follow [OSS semantic IR](../../docs/oss-semantic-ir.md); it is not registered for production Go emission yet.
 - The upstream [Apache notice](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/LICENSE) is preserved as LICENSE.upstream.
 - Product source descriptions are part of this licensed corpus; public metadata snapshots separately exclude descriptions/examples.
 - Product comments now reuse licensed parser descriptions/annotations under #38; paired usage/contracts/source indexes record language and prose coverage.
@@ -19,16 +20,20 @@
 | ------------------------- | -------------- |
 | alibabacloud Credential   | 0.5.17         |
 | alibabacloud EndpointUtil | 0.2.1          |
+| alibabacloud GatewayOSS   | 0.0.42         |
+| alibabacloud GatewayOSS_Util | 0.0.8        |
 | alibabacloud GatewayPOP   | 0.1.4          |
 | alibabacloud GatewaySPI   | 0.0.15         |
 | alibabacloud OpenApi      | 0.3.23         |
 | alibabacloud OpenApiUtil  | 0.2.11         |
+| alibabacloud OSSUtil      | 0.1.10         |
 | alibabacloud Paginator    | 0.0.3          |
 | darabonba Array           | 0.1.1          |
 | darabonba EncodeUtil      | 0.0.6          |
 | darabonba Map             | 0.0.5          |
 | darabonba SignatureUtil   | 0.0.11         |
 | darabonba String          | 0.0.13         |
+| darabonba Time            | 0.0.2          |
 | darabonba Util            | 0.2.19         |
 | darabonba XML             | 0.1.14         |
 

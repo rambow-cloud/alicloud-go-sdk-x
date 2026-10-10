@@ -1,0 +1,5244 @@
+/**
+ *
+ */
+import Util;
+import SPI;
+import GatewayClient;
+import OpenApi;
+import OpenApiUtil;
+
+extends OpenApi;
+
+type @client = SPI
+
+init(config: OpenApi.Config){
+  super(config);
+  @client = new GatewayClient();
+  @spi = @client;
+  @endpointRule = '';
+  }
+
+model AccessControlList {
+  grant?: string(name='Grant'),
+}
+
+model AccessControlPolicy {
+  accessControlList?: AccessControlList(name='AccessControlList'),
+  owner?: Owner(name='Owner'),
+}
+
+model AccessMonitorConfiguration {
+  status?: string(name='Status'),
+}
+
+model AccessPoint {
+  accessPointName?:   string(name='AccessPointName'),
+  alias?:   string(name='Alias'),
+  bucket?: string(name='Bucket'),
+  networkOrigin?:   string(name='NetworkOrigin'),
+  status?:   string(name='Status'),
+  vpcConfiguration?: AccessPointVpcConfiguration(name='VpcConfiguration'),
+}
+
+model AccessPointVpcConfiguration {
+  vpcId?: string(name='VpcId', example='vpc-t4nlw426y44rd3iq4****'),
+}
+
+model ApplyServerSideEncryptionByDefault {
+  KMSDataEncryption?: string(name='KMSDataEncryption'),
+  KMSMasterKeyID?: string(name='KMSMasterKeyID'),
+  SSEAlgorithm?: string(name='SSEAlgorithm'),
+}
+
+model Bucket {
+  creationDate?: string(name='CreationDate'),
+  extranetEndpoint?: string(name='ExtranetEndpoint'),
+  intranetEndpoint?: string(name='IntranetEndpoint'),
+  location?: string(name='Location'),
+  name?: string(name='Name'),
+  region?: string(name='Region'),
+  resourceGroupId?:   string(name='ResourceGroupId'),
+  storageClass?: string(name='StorageClass'),
+}
+
+model BucketAntiDDOSConfiguration {
+  cnames?: {
+    domain?: [ string ](name='Domain'),
+  }(name='Cnames'),
+}
+
+model BucketAntiDDOSInfo {
+  activeTime?: long(name='ActiveTime'),
+  bucket?: string(name='Bucket'),
+  cnames?: {
+    domain?: [ string ](name='Domain'),
+  }(name='Cnames'),
+  ctime?: long(name='Ctime'),
+  instanceId?: string(name='InstanceId'),
+  mtime?: long(name='Mtime'),
+  owner?: string(name='Owner'),
+  status?: string(name='Status'),
+  type?: string(name='Type'),
+}
+
+model BucketCnameConfiguration {
+  cname?: {
+    domain?: string(name='Domain'),
+  }(name='Cname'),
+}
+
+model BucketInfo {
+  bucket?: {
+    accessControlList?: AccessControlList(name='AccessControlList'),
+    accessMonitor?: string(name='AccessMonitor', example='Disabled'),
+    bucketPolicy?: LoggingEnabled(name='BucketPolicy'),
+    creationDate?: string(name='CreationDate', example='2022-01-06T08:20:09.000Z'),
+    crossRegionReplication?: string(name='CrossRegionReplication', example='Disabled'),
+    dataRedundancyType?: string(name='DataRedundancyType'),
+    extranetEndpoint?:     string(name='ExtranetEndpoint'),
+    intranetEndpoint?:     string(name='IntranetEndpoint'),
+    location?: string(name='Location', example='oss-cn-hangzhou'),
+    name?: string(name='Name', example='test-bucket'),
+    owner?: Owner(name='Owner'),
+    resourceGroupId?:     string(name='ResourceGroupId'),
+    serverSideEncryptionRule?: {
+      KMSDataEncryption?: string(name='KMSDataEncryption', example='SM4'),
+      KMSMasterKeyID?: string(name='KMSMasterKeyID', example='****'),
+      SSEAlgorithm?: string(name='SSEAlgorithm', example='None'),
+    }(name='ServerSideEncryptionRule'),
+    storageClass?: string(name='StorageClass'),
+    transferAcceleration?: string(name='TransferAcceleration', example='Disabled'),
+    versioning?: string(name='Versioning'),
+  }(name='Bucket'),
+}
+
+model BucketLoggingStatus {
+  loggingEnabled?: LoggingEnabled(name='LoggingEnabled'),
+}
+
+model BucketResourceGroupConfiguration {
+  resourceGroupId?:   string(name='ResourceGroupId'),
+}
+
+model BucketStat {
+  archiveObjectCount?: long(name='ArchiveObjectCount'),
+  archiveRealStorage?: long(name='ArchiveRealStorage'),
+  archiveStorage?: long(name='ArchiveStorage'),
+  coldArchiveObjectCount?: long(name='ColdArchiveObjectCount'),
+  coldArchiveRealStorage?: long(name='ColdArchiveRealStorage'),
+  coldArchiveStorage?: long(name='ColdArchiveStorage'),
+  infrequentAccessObjectCount?: long(name='InfrequentAccessObjectCount'),
+  infrequentAccessRealStorage?: long(name='InfrequentAccessRealStorage'),
+  infrequentAccessStorage?: long(name='InfrequentAccessStorage'),
+  lastModifiedTime?: long(name='LastModifiedTime'),
+  liveChannelCount?: long(name='LiveChannelCount'),
+  multipartUploadCount?: long(name='MultipartUploadCount'),
+  objectCount?: long(name='ObjectCount'),
+  standardObjectCount?: long(name='StandardObjectCount'),
+  standardStorage?: long(name='StandardStorage'),
+  storage?: long(name='Storage'),
+}
+
+model CORSConfiguration {
+  CORSRule?: [
+    CORSRule
+  ](name='CORSRule'),
+  responseVary?: boolean(name='ResponseVary'),
+}
+
+model CORSRule {
+  allowedHeader?: string(name='AllowedHeader'),
+  allowedMethod?: [ string ](name='AllowedMethod'),
+  allowedOrigin?: [ string ](name='AllowedOrigin'),
+  exposeHeader?: [ string ](name='ExposeHeader'),
+  maxAgeSeconds?: long(name='MaxAgeSeconds'),
+}
+
+model CSVInput {
+  allowQuotedRecordDelimiter?: boolean(name='AllowQuotedRecordDelimiter'),
+  commentCharacter?: string(name='CommentCharacter'),
+  fieldDelimiter?: string(name='FieldDelimiter'),
+  fileHeaderInfo?: string(name='FileHeaderInfo'),
+  quoteCharacter?: string(name='QuoteCharacter'),
+  range?: string(name='Range'),
+  recordDelimiter?: string(name='RecordDelimiter'),
+}
+
+model CSVOutput {
+  fieldDelimiter?: string(name='FieldDelimiter'),
+  recordDelimiter?: string(name='RecordDelimiter'),
+}
+
+model CnameCertificate {
+  certId?: string(name='CertId'),
+  creationDate?: string(name='CreationDate'),
+  fingerprint?: string(name='Fingerprint'),
+  status?: string(name='Status'),
+  type?: string(name='Type'),
+  validEndDate?: string(name='ValidEndDate'),
+  validStartDate?: string(name='ValidStartDate'),
+}
+
+model CnameInfo {
+  certificate?: CnameCertificate(name='Certificate'),
+  domain?: string(name='Domain'),
+  lastModified?: string(name='LastModified'),
+  status?: string(name='Status'),
+}
+
+model CnameSummary {
+  certificate?: CnameCertificate(name='Certificate'),
+  domain?: string(name='Domain'),
+  lastModified?: string(name='LastModified'),
+  status?: string(name='Status'),
+}
+
+model CnameToken {
+  bucket?: string(name='Bucket'),
+  cname?: string(name='Cname'),
+  expireTime?: string(name='ExpireTime'),
+  token?: string(name='Token'),
+}
+
+model CommonPrefix {
+  prefix?: string(name='Prefix'),
+}
+
+model CompleteMultipartUpload {
+  part?: [
+    Part
+  ](name='Part'),
+}
+
+model CopyObjectResult {
+  ETag?: string(name='ETag'),
+  lastModified?: string(name='LastModified'),
+}
+
+model CopyPartResult {
+  ETag?: string(name='ETag'),
+  lastModified?: string(name='LastModified'),
+}
+
+model CreateAccessPointConfiguration {
+  accessPointName?: string(name='AccessPointName'),
+  networkOrigin?:   string(name='NetworkOrigin'),
+  vpcConfiguration?: AccessPointVpcConfiguration(name='VpcConfiguration'),
+}
+
+model CreateAccessPointResult {
+  accessPointArn?:   string(name='AccessPointArn'),
+  alias?:   string(name='Alias'),
+}
+
+model CreateBucketConfiguration {
+  dataRedundancyType?: string(name='DataRedundancyType'),
+  storageClass?: string(name='StorageClass'),
+}
+
+model Delete {
+  objects?: [
+    ObjectIdentifier
+  ](name='Object'),
+  quiet?: boolean(name='Quiet'),
+}
+
+model DeleteMarkerEntry {
+  isLatest?: boolean(name='IsLatest'),
+  key?: string(name='Key'),
+  lastModified?: string(name='LastModified'),
+  owner?: Owner(name='Owner'),
+  versionId?: string(name='VersionId'),
+}
+
+model DeletedObject {
+  deleteMarker?: boolean(name='DeleteMarker'),
+  deleteMarkerVersionId?: string(name='DeleteMarkerVersionId'),
+  key?: string(name='Key'),
+  versionId?: string(name='VersionId'),
+}
+
+model Error {
+  code?: string(name='Code'),
+  hostId?: string(name='HostId'),
+  message?: string(name='Message'),
+  requestId?: string(name='RequestId'),
+}
+
+model ErrorDocument {
+  httpStatus?: string(name='HttpStatus'),
+  key?: string(name='Key'),
+}
+
+model ExtendWormConfiguration {
+  retentionPeriodInDays?: int32(name='RetentionPeriodInDays'),
+}
+
+model GetAccessPointResult {
+  accessPointArn?:   string(name='AccessPointArn'),
+  accessPointName?:   string(name='AccessPointName'),
+  accountId?: string(name='AccountId'),
+  alias?:   string(name='Alias'),
+  bucket?: string(name='Bucket'),
+  endpoints?: {
+    publicEndpoint?:     string(name='PublicEndpoint'),
+  }(name='Endpoints'),
+  internalEndpoint?:   string(name='InternalEndpoint'),
+  networkOrigin?:   string(name='NetworkOrigin'),
+  status?:   string(name='Status'),
+  vpcConfiguration?: AccessPointVpcConfiguration(name='VpcConfiguration'),
+}
+
+model IndexDocument {
+  suffix?: string(name='Suffix'),
+  supportSubDir?: boolean(name='SupportSubDir'),
+  type?: string(name='Type'),
+}
+
+model InitiateWormConfiguration {
+  retentionPeriodInDays?: int32(name='RetentionPeriodInDays'),
+}
+
+model InputSerialization {
+  csv?: CSVInput(name='CSV'),
+  compressionType?: string(name='CompressionType'),
+  json?: JSONInput(name='JSON'),
+}
+
+model InventoryConfiguration {
+  destination?: InventoryDestination(name='Destination'),
+  filter?: InventoryFilter(name='Filter'),
+  id?: string(name='Id'),
+  includedObjectVersions?: string(name='IncludedObjectVersions'),
+  isEnabled?: boolean(name='IsEnabled'),
+  optionalFields?: {
+    fields?: [
+      string
+    ](name='Field'),
+  }(name='OptionalFields'),
+  schedule?: InventorySchedule(name='Schedule'),
+}
+
+model InventoryDestination {
+  OSSBucketDestination?: InventoryOSSBucketDestination(name='OSSBucketDestination'),
+}
+
+model InventoryEncryption {
+  SSEKMS?: SSEKMS(name='SSE-KMS'),
+  SSEOSS?: SSEOSS(name='SSE-OSS'),
+}
+
+model InventoryFilter {
+  prefix?: string(name='Prefix'),
+}
+
+model InventoryOSSBucketDestination {
+  accountId?: string(name='AccountId'),
+  bucket?: string(name='Bucket'),
+  encryption?: InventoryEncryption(name='Encryption'),
+  format?: string(name='Format'),
+  prefix?: string(name='Prefix'),
+  roleArn?: string(name='RoleArn'),
+}
+
+model InventorySchedule {
+  frequency?: string(name='Frequency'),
+}
+
+model JSONInput {
+  parseJsonNumberAsString?: boolean(name='ParseJsonNumberAsString'),
+  range?: string(name='Range'),
+  type?: string(name='Type'),
+}
+
+model JSONOutput {
+  recordDelimiter?: string(name='RecordDelimiter'),
+}
+
+model LifecycleConfiguration {
+  rule?: [
+    LifecycleRule
+  ](name='Rule'),
+}
+
+model LifecycleRule {
+  lifecycleAbortMultipartUpload?: {
+    createdBeforeDate?: string(name='CreatedBeforeDate'),
+    days?: int32(name='Days'),
+  }(name='AbortMultipartUpload'),
+  lifecycleExpiration?: {
+    createdBeforeDate?: string(name='CreatedBeforeDate'),
+    days?: int32(name='Days'),
+    expiredObjectDeleteMarker?: boolean(name='ExpiredObjectDeleteMarker'),
+  }(name='Expiration'),
+  filter?: {
+    not?: {
+      prefix?: string(name='Prefix'),
+      tag?: Tag(name='Tag'),
+    }(name='Not'),
+  }(name='Filter'),
+  ID?: string(name='ID'),
+  noncurrentVersionExpiration?: {
+    noncurrentDays?: int32(name='NoncurrentDays'),
+  }(name='NoncurrentVersionExpiration'),
+  noncurrentVersionTransition?: [ 
+    {
+      allowSmallFile?: boolean(name='AllowSmallFile'),
+      isAccessTime?: boolean(name='IsAccessTime'),
+      noncurrentDays?: int32(name='NoncurrentDays'),
+      returnToStdWhenVisit?: boolean(name='ReturnToStdWhenVisit'),
+      storageClass?: string(name='StorageClass'),
+    }
+  ](name='NoncurrentVersionTransition'),
+  prefix?: string(name='Prefix'),
+  status?: string(name='Status'),
+  tag?: [
+    Tag
+  ](name='Tag'),
+  lifecycleTransition?: [ 
+    {
+      allowSmallFile?: boolean(name='AllowSmallFile'),
+      createdBeforeDate?: string(name='CreatedBeforeDate'),
+      days?: int32(name='Days'),
+      isAccessTime?: boolean(name='IsAccessTime'),
+      returnToStdWhenVisit?: boolean(name='ReturnToStdWhenVisit'),
+      storageClass?: string(name='StorageClass'),
+    }
+  ](name='Transition'),
+}
+
+model ListAccessPointsResult {
+  accessPoints?: [
+    AccessPoint
+  ](name='AccessPoints'),
+  accountId?: string(name='AccountId'),
+  isTruncated?: string(name='IsTruncated'),
+  nextContinuationToken?: string(name='NextContinuationToken'),
+}
+
+model LiveChannel {
+  description?: string(name='Description'),
+  lastModified?: string(name='LastModified'),
+  name?: string(name='Name'),
+  playUrls?: LiveChannelPlayUrls(name='PlayUrls'),
+  publishUrls?: LiveChannelPublishUrls(name='PublishUrls'),
+  status?: string(name='Status'),
+}
+
+model LiveChannelAudio {
+  bandwidth?: long(name='Bandwidth'),
+  codec?: string(name='Codec'),
+  sampleRate?: long(name='SampleRate'),
+}
+
+model LiveChannelConfiguration {
+  description?: string(name='Description'),
+  snapshot?: LiveChannelSnapshot(name='Snapshot'),
+  status?: string(name='Status'),
+  target?: LiveChannelTarget(name='Target'),
+}
+
+model LiveChannelPlayUrls {
+  url?: string(name='Url'),
+}
+
+model LiveChannelPublishUrls {
+  url?: string(name='Url'),
+}
+
+model LiveChannelSnapshot {
+  destBucket?: string(name='DestBucket'),
+  interval?: long(name='Interval'),
+  notifyTopic?: string(name='NotifyTopic'),
+  roleName?: string(name='RoleName'),
+}
+
+model LiveChannelTarget {
+  fragCount?: long(name='FragCount'),
+  fragDuration?: long(name='FragDuration'),
+  playlistName?: string(name='PlaylistName'),
+  type?: string(name='Type'),
+}
+
+model LiveChannelVideo {
+  bandwidth?: long(name='Bandwidth'),
+  codec?: string(name='Codec'),
+  frameRate?: long(name='FrameRate'),
+  height?: long(name='Height'),
+  width?: long(name='Width'),
+}
+
+model LiveRecord {
+  endTime?: string(name='EndTime'),
+  remoteAddr?: string(name='RemoteAddr'),
+  startTime?: string(name='StartTime'),
+}
+
+model LocationTransferType {
+  location?: string(name='Location'),
+  transferTypes?: {
+    type?: string(name='Type'),
+  }(name='TransferTypes'),
+}
+
+model LoggingEnabled {
+  targetBucket?: string(name='TargetBucket'),
+  targetPrefix?: string(name='TargetPrefix'),
+}
+
+model MetaQuery {
+  aggregations?: {
+    aggregation?: [
+      MetaQueryAggregation
+    ](name='Aggregation'),
+  }(name='Aggregations'),
+  maxResults?: long(name='MaxResults'),
+  nextToken?: string(name='NextToken'),
+  order?: string(name='Order'),
+  query?: string(name='Query'),
+  sort?: string(name='Sort'),
+}
+
+model MetaQueryAggregation {
+  field?: string(name='Field'),
+  operation?: string(name='Operation'),
+}
+
+model MetaQueryFile {
+  ETag?: string(name='ETag'),
+  fileModifiedTime?: string(name='FileModifiedTime'),
+  filename?: string(name='Filename'),
+  OSSCRC64?: string(name='OSSCRC64'),
+  OSSObjectType?: string(name='OSSObjectType'),
+  OSSStorageClass?: string(name='OSSStorageClass'),
+  OSSTagging?: {
+    tagging?: [
+      MetaQueryTagging
+    ](name='Tagging'),
+  }(name='OSSTagging'),
+  OSSTaggingCount?: long(name='OSSTaggingCount'),
+  OSSUserMeta?: {
+    userMeta?: [
+      MetaQueryUserMeta
+    ](name='UserMeta'),
+  }(name='OSSUserMeta'),
+  objectACL?: string(name='ObjectACL'),
+  serverSideEncryption?: string(name='ServerSideEncryption'),
+  serverSideEncryptionCustomerAlgorithm?: string(name='ServerSideEncryptionCustomerAlgorithm'),
+  size?: long(name='Size'),
+}
+
+model MetaQueryTagging {
+  key?: string(name='Key'),
+  value?: string(name='Value'),
+}
+
+model MetaQueryUserMeta {
+  key?: string(name='Key'),
+  value?: string(name='Value'),
+}
+
+model ObjectIdentifier {
+  key?: string(name='Key'),
+  versionId?: string(name='VersionId'),
+}
+
+model ObjectSummary {
+  ETag?: string(name='ETag', example='5B3C1A2E053D763E1B002CC607C5A0FE1****'),
+  key?: string(name='Key', example='fun/test.jpg'),
+  lastModified?: string(name='LastModified', example='2012-02-24T08:42:32.000Z'),
+  owner?: Owner(name='Owner'),
+  resoreInfo?: string(name='ResoreInfo', example='ongoing-request="true”'),
+  size?: long(name='Size', example='344606'),
+  storageClass?: string(name='StorageClass'),
+  type?: string(name='Type', example='Normal'),
+}
+
+model ObjectVersion {
+  ETag?: string(name='ETag'),
+  isLatest?: boolean(name='IsLatest'),
+  key?: string(name='Key'),
+  lastModified?: string(name='LastModified'),
+  owner?: Owner(name='Owner'),
+  size?: long(name='Size'),
+  storageClass?: string(name='StorageClass'),
+  versionId?: string(name='VersionId'),
+}
+
+model OutputSerialization {
+  csv?: CSVOutput(name='CSV'),
+  enablePayloadCrc?: boolean(name='EnablePayloadCrc'),
+  json?: JSONOutput(name='JSON'),
+  keepAllColumns?: boolean(name='KeepAllColumns'),
+  outputHeader?: boolean(name='OutputHeader'),
+  outputRawData?: boolean(name='OutputRawData'),
+}
+
+model Owner {
+  displayName?: string(name='DisplayName'),
+  ID?: string(name='ID'),
+}
+
+model Part {
+  ETag?: string(name='ETag'),
+  lastModified?: string(name='LastModified'),
+  partNumber?: long(name='PartNumber'),
+  size?: long(name='Size'),
+}
+
+model RTC {
+  status?: string(name='Status', example='Enabled'),
+}
+
+model RefererConfiguration {
+  allowEmptyReferer?: boolean(name='AllowEmptyReferer'),
+  allowTruncateQueryString?: boolean(name='AllowTruncateQueryString'),
+  refererList?: {
+    referer?: [ string ](name='Referer'),
+  }(name='RefererList'),
+  truncatePath?: boolean(name='TruncatePath'),
+}
+
+model RegionInfo {
+  accelerateEndpoint?: string(name='AccelerateEndpoint'),
+  internalEndpoint?: string(name='InternalEndpoint'),
+  internetEndpoint?: string(name='InternetEndpoint'),
+  region?: string(name='Region'),
+}
+
+model ReplicationConfiguration {
+  rule?: ReplicationRule(name='Rule'),
+}
+
+model ReplicationDestination {
+  bucket?: string(name='Bucket'),
+  location?: string(name='Location'),
+  transferType?: string(name='TransferType'),
+}
+
+model ReplicationPrefixSet {
+  prefixs?: [ string ](name='Prefix'),
+}
+
+model ReplicationProgressRule {
+  action?: string(name='Action'),
+  destination?: ReplicationDestination(name='Destination'),
+  historicalObjectReplication?: string(name='HistoricalObjectReplication'),
+  ID?: string(name='ID'),
+  prefixSet?: ReplicationPrefixSet(name='PrefixSet'),
+  progress?: {
+    historicalObject?: string(name='HistoricalObject'),
+    newObject?: string(name='NewObject'),
+  }(name='Progress'),
+  status?: string(name='Status'),
+}
+
+model ReplicationRule {
+  action?: string(name='Action'),
+  destination?: ReplicationDestination(name='Destination'),
+  encryptionConfiguration?: {
+    replicaKmsKeyID?: string(name='ReplicaKmsKeyID'),
+  }(name='EncryptionConfiguration'),
+  historicalObjectReplication?: string(name='HistoricalObjectReplication'),
+  ID?: string(name='ID'),
+  prefixSet?: ReplicationPrefixSet(name='PrefixSet'),
+  sourceSelectionCriteria?: ReplicationSourceSelectionCriteria(name='SourceSelectionCriteria'),
+  status?: string(name='Status'),
+  syncRole?: string(name='SyncRole'),
+}
+
+model ReplicationRuleProgress {
+  action?: string(name='Action'),
+  ID?: string(name='ID'),
+  prefixSet?: ReplicationPrefixSet(name='PrefixSet'),
+}
+
+model ReplicationRules {
+  ids?: [ string ](name='ID'),
+}
+
+model ReplicationSourceSelectionCriteria {
+  sseKmsEncryptedObjects?: {
+    status?: string(name='Status'),
+  }(name='SseKmsEncryptedObjects'),
+}
+
+model RequestPaymentConfiguration {
+  payer?: string(name='Payer'),
+}
+
+model RestoreRequest {
+  days?: long(name='Days'),
+  jobParameters?: {
+    tier?: string(name='Tier'),
+  }(name='JobParameters'),
+}
+
+model RoutingRule {
+  condition?: RoutingRuleCondition(name='Condition'),
+  redirect?: RoutingRuleRedirect(name='Redirect'),
+  ruleNumber?: long(name='RuleNumber'),
+}
+
+model RoutingRuleCondition {
+  httpErrorCodeReturnedEquals?: long(name='HttpErrorCodeReturnedEquals'),
+  keyPrefixEquals?: string(name='KeyPrefixEquals'),
+}
+
+model RoutingRuleRedirect {
+  enableReplacePrefix?: boolean(name='EnableReplacePrefix'),
+  hostName?: string(name='HostName'),
+  httpRedirectCode?: long(name='HttpRedirectCode'),
+  mirrorCheckMd5?: boolean(name='MirrorCheckMd5'),
+  mirrorFollowRedirect?: boolean(name='MirrorFollowRedirect'),
+  mirrorHeaders?: {
+    pass?: [ string ](name='Pass'),
+    passAll?: boolean(name='PassAll'),
+    remove?: [ string ](name='Remove'),
+    set?: [ 
+      {
+        key?: string(name='Key'),
+        value?: string(name='Value'),
+      }
+    ](name='Set'),
+  }(name='MirrorHeaders'),
+  mirrorPassQueryString?: boolean(name='MirrorPassQueryString'),
+  mirrorURL?: string(name='MirrorURL'),
+  passQueryString?: boolean(name='PassQueryString'),
+  protocol?: string(name='Protocol'),
+  redirectType?: string(name='RedirectType'),
+  replaceKeyPrefixWith?: string(name='ReplaceKeyPrefixWith'),
+  replaceKeyWith?: string(name='ReplaceKeyWith'),
+  transparentMirrorResponseCodes?: string(name='TransparentMirrorResponseCodes'),
+}
+
+model RtcConfiguration {
+  ID?: string(name='ID', example='test_replication_rule_1'),
+  RTC?: RTC(name='RTC'),
+}
+
+model SSEKMS {
+  keyId?: string(name='KeyId'),
+}
+
+model SSEOSS {
+}
+
+model SelectMetaRequest {
+  inputSerialization?: InputSerialization(name='InputSerialization'),
+  overwriteIfExists?: boolean(name='OverwriteIfExists'),
+}
+
+model SelectMetaStatus {
+  colsCount?: long(name='ColsCount'),
+  errorMessage?: string(name='ErrorMessage'),
+  offset?: long(name='Offset'),
+  rowsCount?: long(name='RowsCount'),
+  splitsCount?: long(name='SplitsCount'),
+  status?: long(name='Status'),
+  totalScannedBytes?: long(name='TotalScannedBytes'),
+}
+
+model SelectRequest {
+  expression?: string(name='Expression'),
+  inputSerialization?: InputSerialization(name='InputSerialization'),
+  options?: SelectRequestOptions(name='Options'),
+  outputSerialization?: OutputSerialization(name='OutputSerialization'),
+}
+
+model SelectRequestOptions {
+  maxSkippedRecordsAllowed?: long(name='MaxSkippedRecordsAllowed'),
+  skipPartialDataRecord?: boolean(name='SkipPartialDataRecord'),
+}
+
+model ServerSideEncryptionRule {
+  applyServerSideEncryptionByDefault?: ApplyServerSideEncryptionByDefault(name='ApplyServerSideEncryptionByDefault'),
+}
+
+model Style {
+  content?: string(name='Content'),
+}
+
+model StyleInfo {
+  content?: string(name='Content'),
+  createTime?: string(name='CreateTime'),
+  lastModifyTime?: string(name='LastModifyTime'),
+  name?: string(name='Name'),
+}
+
+model Tag {
+  key?: string(name='Key'),
+  value?: string(name='Value'),
+}
+
+model TagSet {
+  tags?: [
+    Tag
+  ](name='Tag'),
+}
+
+model Tagging {
+  tagSet?: TagSet(name='TagSet'),
+}
+
+model TransferAccelerationConfiguration {
+  enabled?: boolean(name='Enabled'),
+}
+
+model Upload {
+  initiated?: string(name='Initiated'),
+  key?: string(name='Key'),
+  uploadId?: string(name='UploadId'),
+}
+
+model UserAntiDDOSInfo {
+  activeTime?: long(name='ActiveTime'),
+  ctime?: long(name='Ctime'),
+  instanceId?: string(name='InstanceId'),
+  mtime?: long(name='Mtime'),
+  owner?: string(name='Owner'),
+  status?: string(name='Status'),
+}
+
+model VersioningConfiguration {
+  status?: string(name='Status'),
+}
+
+model WebsiteConfiguration {
+  errorDocument?: ErrorDocument(name='ErrorDocument'),
+  indexDocument?: IndexDocument(name='IndexDocument'),
+  routingRules?: {
+    routingRule?: [
+      RoutingRule
+    ](name='RoutingRule'),
+  }(name='RoutingRules'),
+}
+
+model AbortBucketWormResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function abortBucketWormWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): AbortBucketWormResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'AbortBucketWorm',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?worm`,
+    method = 'DELETE',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function abortBucketWorm(bucket: string): AbortBucketWormResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return abortBucketWormWithOptions(bucket, headers, runtime);
+}
+
+model AbortMultipartUploadRequest {
+  uploadId?: string(name='uploadId', example='0004B9895DBBB6E****'),
+}
+
+model AbortMultipartUploadResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function abortMultipartUploadWithOptions(bucket: string, key: string, request: AbortMultipartUploadRequest, headers: map[string]string, runtime: Util.RuntimeOptions): AbortMultipartUploadResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.uploadId)) {
+    query['uploadId'] = request.uploadId;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'AbortMultipartUpload',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}`,
+    method = 'DELETE',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function abortMultipartUpload(bucket: string, key: string, request: AbortMultipartUploadRequest): AbortMultipartUploadResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return abortMultipartUploadWithOptions(bucket, key, request, headers, runtime);
+}
+
+model AppendObjectHeaders {
+  commonHeaders?: map[string]string,
+  cacheControl?: string(name='Cache-Control', example='no-cache'),
+  contentDisposition?: string(name='Content-Disposition', example='attachment;filename=oss_download.jpg'),
+  contentEncoding?: string(name='Content-Encoding', example='utf-8'),
+  contentMD5?: string(name='Content-MD5', example='ohhnqLBJFiKkPSBO1eNaUA=='),
+  expires?: string(name='Expires', example='Wed, 08 Jul 2015 16:57:01 GMT'),
+  metaData?: map[string]string(name='x-oss-meta-*', example='x-oss-meta-location'),
+  acl?: string(name='x-oss-object-acl'),
+  serverSideEncryption	?: string(name='x-oss-server-side-encryption', example='AES256'),
+  storageClass?: string(name='x-oss-storage-class'),
+}
+
+model AppendObjectRequest {
+  body?: readable(name='body'),
+  position?: long(name='position', example='0'),
+}
+
+model AppendObjectResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function appendObjectWithOptions(bucket: string, key: string, request: AppendObjectRequest, headers: AppendObjectHeaders, runtime: Util.RuntimeOptions): AppendObjectResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.position)) {
+    query['position'] = request.position;
+  }
+
+  var realHeaders : map[string]string = {};
+  if (!Util.isUnset(headers.commonHeaders)) {
+    realHeaders = headers.commonHeaders;
+  }
+  if (!Util.isUnset(headers.cacheControl)) {
+    realHeaders['Cache-Control'] = Util.toJSONString(headers.cacheControl);
+  }
+  if (!Util.isUnset(headers.contentDisposition)) {
+    realHeaders['Content-Disposition'] = Util.toJSONString(headers.contentDisposition);
+  }
+  if (!Util.isUnset(headers.contentEncoding)) {
+    realHeaders['Content-Encoding'] = Util.toJSONString(headers.contentEncoding);
+  }
+  if (!Util.isUnset(headers.contentMD5)) {
+    realHeaders['Content-MD5'] = Util.toJSONString(headers.contentMD5);
+  }
+  if (!Util.isUnset(headers.expires)) {
+    realHeaders['Expires'] = Util.toJSONString(headers.expires);
+  }
+  if (!Util.isUnset(headers.metaData)) {
+    realHeaders['x-oss-meta-*'] = Util.toJSONString(headers.metaData);
+  }
+  if (!Util.isUnset(headers.acl)) {
+    realHeaders['x-oss-object-acl'] = Util.toJSONString(headers.acl);
+  }
+  if (!Util.isUnset(headers.serverSideEncryption	)) {
+    realHeaders['x-oss-server-side-encryption'] = Util.toJSONString(headers.serverSideEncryption	);
+  }
+  if (!Util.isUnset(headers.storageClass)) {
+    realHeaders['x-oss-storage-class'] = Util.toJSONString(headers.storageClass);
+  }
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = realHeaders,
+    query = OpenApiUtil.query(query),
+    body = request.body,
+    stream = request.body,
+  };
+  var params = new OpenApi.Params{
+    action = 'AppendObject',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}?append`,
+    method = 'POST',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'binary',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function appendObject(bucket: string, key: string, request: AppendObjectRequest): AppendObjectResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers = new AppendObjectHeaders{};
+  return appendObjectWithOptions(bucket, key, request, headers, runtime);
+}
+
+model CompleteBucketWormRequest {
+  wormId?: string(name='wormId', example='1666E2CFB2B3418****'),
+}
+
+model CompleteBucketWormResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function completeBucketWormWithOptions(bucket: string, request: CompleteBucketWormRequest, headers: map[string]string, runtime: Util.RuntimeOptions): CompleteBucketWormResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.wormId)) {
+    query['wormId'] = request.wormId;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'CompleteBucketWorm',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/`,
+    method = 'POST',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function completeBucketWorm(bucket: string, request: CompleteBucketWormRequest): CompleteBucketWormResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return completeBucketWormWithOptions(bucket, request, headers, runtime);
+}
+
+model CompleteMultipartUploadHeaders {
+  commonHeaders?: map[string]string,
+  completeAll?: string(name='x-oss-complete-all', example='yes'),
+  forbidOverwrite?: string(name='x-oss-forbid-overwrite', example='true'),
+}
+
+model CompleteMultipartUploadRequest {
+  body?: CompleteMultipartUpload(name='CompleteMultipartUpload'),
+  encodingType?: string(name='encoding-type'),
+  uploadId?: string(name='uploadId', example='0004B9895DBBB6E****'),
+}
+
+model CompleteMultipartUploadResponseBody = {
+  bucket?: string(name='Bucket', example='oss-example'),
+  ETag?: string(name='ETag', example='B864DB6A936D376F9F8D3ED3BBE540****'),
+  encodingType?: string(name='EncodingType', example='url'),
+  key?: string(name='Key', example='multipart.data'),
+  location?: string(name='Location', example='http://oss-example.oss-cn-hangzhou.aliyuncs.com /multipart.data'),
+}
+
+model CompleteMultipartUploadResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: CompleteMultipartUploadResponseBody(name='body'),
+}
+
+async function completeMultipartUploadWithOptions(bucket: string, key: string, request: CompleteMultipartUploadRequest, headers: CompleteMultipartUploadHeaders, runtime: Util.RuntimeOptions): CompleteMultipartUploadResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.encodingType)) {
+    query['encoding-type'] = request.encodingType;
+  }
+  if (!Util.isUnset(request.uploadId)) {
+    query['uploadId'] = request.uploadId;
+  }
+
+  var realHeaders : map[string]string = {};
+  if (!Util.isUnset(headers.commonHeaders)) {
+    realHeaders = headers.commonHeaders;
+  }
+  if (!Util.isUnset(headers.completeAll)) {
+    realHeaders['x-oss-complete-all'] = Util.toJSONString(headers.completeAll);
+  }
+  if (!Util.isUnset(headers.forbidOverwrite)) {
+    realHeaders['x-oss-forbid-overwrite'] = Util.toJSONString(headers.forbidOverwrite);
+  }
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = realHeaders,
+    query = OpenApiUtil.query(query),
+    body = OpenApiUtil.parseToMap(request.body),
+  };
+  var params = new OpenApi.Params{
+    action = 'CompleteMultipartUpload',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}`,
+    method = 'POST',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function completeMultipartUpload(bucket: string, key: string, request: CompleteMultipartUploadRequest): CompleteMultipartUploadResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers = new CompleteMultipartUploadHeaders{};
+  return completeMultipartUploadWithOptions(bucket, key, request, headers, runtime);
+}
+
+model CopyObjectHeaders {
+  commonHeaders?: map[string]string,
+  copySource?: string(name='x-oss-copy-source', example='/oss-example/oss.jpg'),
+  copySourceIfMatch?: string(name='x-oss-copy-source-if-match', example='5B3C1A2E053D763E1B002CC607C5****'),
+  copySourceIfModifiedSince?: string(name='x-oss-copy-source-if-modified-since', example='2019-04-09T07:01:56.000Z'),
+  copySourceIfNoneMatch?: string(name='x-oss-copy-source-if-none-match', example='5B3C1A2E053D763E1B002CC607C5****'),
+  copySourceIfUnmodifiedSince?: string(name='x-oss-copy-source-if-unmodified-since', example='2019-04-09T07:01:56.000Z'),
+  forbidOverwrite?: string(name='x-oss-forbid-overwrite', example='true'),
+  metaData?: map[string]string(name='x-oss-meta-*'),
+  metadataDirective?: string(name='x-oss-metadata-directive', example='COPY'),
+  acl?: string(name='x-oss-object-acl'),
+  serverSideEncryption?: string(name='x-oss-server-side-encryption', example='AES256'),
+  sseKeyId?: string(name='x-oss-server-side-encryption-key-id', example='9468da86-3509-4f8d-a61e-6eab1eac****'),
+  storageClass?: string(name='x-oss-storage-class'),
+  tagging?: string(name='x-oss-tagging', example='a:1'),
+  taggingDirective?: string(name='x-oss-tagging-directive', example='Copy'),
+}
+
+model CopyObjectResponseBody = {
+  ETag?: string(name='ETag', example='5B3C1A2E053D763E1B002CC607C5****'),
+  lastModified?: string(name='LastModified', example='Fri, 24 Feb 2012 07:18:48 GMT'),
+}
+
+model CopyObjectResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: CopyObjectResponseBody(name='body'),
+}
+
+async function copyObjectWithOptions(bucket: string, key: string, headers: CopyObjectHeaders, runtime: Util.RuntimeOptions): CopyObjectResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var realHeaders : map[string]string = {};
+  if (!Util.isUnset(headers.commonHeaders)) {
+    realHeaders = headers.commonHeaders;
+  }
+  if (!Util.isUnset(headers.copySource)) {
+    realHeaders['x-oss-copy-source'] = Util.toJSONString(headers.copySource);
+  }
+  if (!Util.isUnset(headers.copySourceIfMatch)) {
+    realHeaders['x-oss-copy-source-if-match'] = Util.toJSONString(headers.copySourceIfMatch);
+  }
+  if (!Util.isUnset(headers.copySourceIfModifiedSince)) {
+    realHeaders['x-oss-copy-source-if-modified-since'] = Util.toJSONString(headers.copySourceIfModifiedSince);
+  }
+  if (!Util.isUnset(headers.copySourceIfNoneMatch)) {
+    realHeaders['x-oss-copy-source-if-none-match'] = Util.toJSONString(headers.copySourceIfNoneMatch);
+  }
+  if (!Util.isUnset(headers.copySourceIfUnmodifiedSince)) {
+    realHeaders['x-oss-copy-source-if-unmodified-since'] = Util.toJSONString(headers.copySourceIfUnmodifiedSince);
+  }
+  if (!Util.isUnset(headers.forbidOverwrite)) {
+    realHeaders['x-oss-forbid-overwrite'] = Util.toJSONString(headers.forbidOverwrite);
+  }
+  if (!Util.isUnset(headers.metaData)) {
+    realHeaders['x-oss-meta-*'] = Util.toJSONString(headers.metaData);
+  }
+  if (!Util.isUnset(headers.metadataDirective)) {
+    realHeaders['x-oss-metadata-directive'] = Util.toJSONString(headers.metadataDirective);
+  }
+  if (!Util.isUnset(headers.acl)) {
+    realHeaders['x-oss-object-acl'] = Util.toJSONString(headers.acl);
+  }
+  if (!Util.isUnset(headers.serverSideEncryption)) {
+    realHeaders['x-oss-server-side-encryption'] = Util.toJSONString(headers.serverSideEncryption);
+  }
+  if (!Util.isUnset(headers.sseKeyId)) {
+    realHeaders['x-oss-server-side-encryption-key-id'] = Util.toJSONString(headers.sseKeyId);
+  }
+  if (!Util.isUnset(headers.storageClass)) {
+    realHeaders['x-oss-storage-class'] = Util.toJSONString(headers.storageClass);
+  }
+  if (!Util.isUnset(headers.tagging)) {
+    realHeaders['x-oss-tagging'] = Util.toJSONString(headers.tagging);
+  }
+  if (!Util.isUnset(headers.taggingDirective)) {
+    realHeaders['x-oss-tagging-directive'] = Util.toJSONString(headers.taggingDirective);
+  }
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = realHeaders,
+  };
+  var params = new OpenApi.Params{
+    action = 'CopyObject',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function copyObject(bucket: string, key: string): CopyObjectResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers = new CopyObjectHeaders{};
+  return copyObjectWithOptions(bucket, key, headers, runtime);
+}
+
+model CreateSelectObjectMetaRequest {
+  selectMetaRequest?: SelectMetaRequest(name='SelectMetaRequest'),
+}
+
+model CreateSelectObjectMetaResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: SelectMetaStatus  
+}
+
+async function createSelectObjectMetaWithOptions(bucket: string, key: string, request: CreateSelectObjectMetaRequest, headers: map[string]string, runtime: Util.RuntimeOptions): CreateSelectObjectMetaResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    body = OpenApiUtil.parseToMap(request.selectMetaRequest),
+  };
+  var params = new OpenApi.Params{
+    action = 'CreateSelectObjectMeta',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}`,
+    method = 'POST',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'json',
+  };
+  return execute(params, req, runtime);
+}
+
+async function createSelectObjectMeta(bucket: string, key: string, request: CreateSelectObjectMetaRequest): CreateSelectObjectMetaResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return createSelectObjectMetaWithOptions(bucket, key, request, headers, runtime);
+}
+
+model DeleteBucketResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function deleteBucketWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): DeleteBucketResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'DeleteBucket',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/`,
+    method = 'DELETE',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function deleteBucket(bucket: string): DeleteBucketResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return deleteBucketWithOptions(bucket, headers, runtime);
+}
+
+model DeleteBucketCorsResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function deleteBucketCorsWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): DeleteBucketCorsResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'DeleteBucketCors',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?cors`,
+    method = 'DELETE',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function deleteBucketCors(bucket: string): DeleteBucketCorsResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return deleteBucketCorsWithOptions(bucket, headers, runtime);
+}
+
+model DeleteBucketEncryptionResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function deleteBucketEncryptionWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): DeleteBucketEncryptionResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'DeleteBucketEncryption',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?encryption`,
+    method = 'DELETE',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function deleteBucketEncryption(bucket: string): DeleteBucketEncryptionResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return deleteBucketEncryptionWithOptions(bucket, headers, runtime);
+}
+
+model DeleteBucketInventoryRequest {
+  inventoryId?: string(name='inventoryId', example='list1'),
+}
+
+model DeleteBucketInventoryResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function deleteBucketInventoryWithOptions(bucket: string, request: DeleteBucketInventoryRequest, headers: map[string]string, runtime: Util.RuntimeOptions): DeleteBucketInventoryResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.inventoryId)) {
+    query['inventoryId'] = request.inventoryId;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'DeleteBucketInventory',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?inventory`,
+    method = 'DELETE',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function deleteBucketInventory(bucket: string, request: DeleteBucketInventoryRequest): DeleteBucketInventoryResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return deleteBucketInventoryWithOptions(bucket, request, headers, runtime);
+}
+
+model DeleteBucketLifecycleResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function deleteBucketLifecycleWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): DeleteBucketLifecycleResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'DeleteBucketLifecycle',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?lifecycle`,
+    method = 'DELETE',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function deleteBucketLifecycle(bucket: string): DeleteBucketLifecycleResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return deleteBucketLifecycleWithOptions(bucket, headers, runtime);
+}
+
+model DeleteBucketLoggingResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function deleteBucketLoggingWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): DeleteBucketLoggingResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'DeleteBucketLogging',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?logging`,
+    method = 'DELETE',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function deleteBucketLogging(bucket: string): DeleteBucketLoggingResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return deleteBucketLoggingWithOptions(bucket, headers, runtime);
+}
+
+model DeleteBucketPolicyResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function deleteBucketPolicyWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): DeleteBucketPolicyResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'DeleteBucketPolicy',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?policy`,
+    method = 'DELETE',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function deleteBucketPolicy(bucket: string): DeleteBucketPolicyResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return deleteBucketPolicyWithOptions(bucket, headers, runtime);
+}
+
+model DeleteBucketReplicationRequest {
+  body?: ReplicationRules(name='ReplicationRules'),
+}
+
+model DeleteBucketReplicationResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function deleteBucketReplicationWithOptions(bucket: string, request: DeleteBucketReplicationRequest, headers: map[string]string, runtime: Util.RuntimeOptions): DeleteBucketReplicationResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    body = OpenApiUtil.parseToMap(request.body),
+  };
+  var params = new OpenApi.Params{
+    action = 'DeleteBucketReplication',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?replication&comp=delete`,
+    method = 'POST',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function deleteBucketReplication(bucket: string, request: DeleteBucketReplicationRequest): DeleteBucketReplicationResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return deleteBucketReplicationWithOptions(bucket, request, headers, runtime);
+}
+
+model DeleteBucketTagsResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function deleteBucketTagsWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): DeleteBucketTagsResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'DeleteBucketTags',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?tagging`,
+    method = 'DELETE',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function deleteBucketTags(bucket: string): DeleteBucketTagsResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return deleteBucketTagsWithOptions(bucket, headers, runtime);
+}
+
+model DeleteBucketWebsiteResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function deleteBucketWebsiteWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): DeleteBucketWebsiteResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'DeleteBucketWebsite',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?website`,
+    method = 'DELETE',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function deleteBucketWebsite(bucket: string): DeleteBucketWebsiteResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return deleteBucketWebsiteWithOptions(bucket, headers, runtime);
+}
+
+model DeleteLiveChannelResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function deleteLiveChannelWithOptions(bucket: string, channel: string, headers: map[string]string, runtime: Util.RuntimeOptions): DeleteLiveChannelResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'DeleteLiveChannel',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${channel}?live`,
+    method = 'DELETE',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function deleteLiveChannel(bucket: string, channel: string): DeleteLiveChannelResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return deleteLiveChannelWithOptions(bucket, channel, headers, runtime);
+}
+
+model DeleteMultipleObjectsHeaders {
+  commonHeaders?: map[string]string,
+  contentMd5?: string(name='content-md5'),
+}
+
+model DeleteMultipleObjectsRequest {
+  delete?: Delete(name='Delete'),
+  encodingType?: string(name='encoding-type', example='url'),
+}
+
+model DeleteMultipleObjectsResponseBody = {
+  deleted?: [
+    DeletedObject
+  ](name='Deleted'),
+  encodingType?: string(name='EncodingType', example='url'),
+}
+
+model DeleteMultipleObjectsResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: DeleteMultipleObjectsResponseBody(name='body'),
+}
+
+async function deleteMultipleObjectsWithOptions(bucket: string, request: DeleteMultipleObjectsRequest, headers: DeleteMultipleObjectsHeaders, runtime: Util.RuntimeOptions): DeleteMultipleObjectsResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.encodingType)) {
+    query['encoding-type'] = request.encodingType;
+  }
+
+  var realHeaders : map[string]string = {};
+  if (!Util.isUnset(headers.commonHeaders)) {
+    realHeaders = headers.commonHeaders;
+  }
+  if (!Util.isUnset(headers.contentMd5)) {
+    realHeaders['content-md5'] = Util.toJSONString(headers.contentMd5);
+  }
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = realHeaders,
+    query = OpenApiUtil.query(query),
+    body = OpenApiUtil.parseToMap(request.delete),
+  };
+  var params = new OpenApi.Params{
+    action = 'DeleteMultipleObjects',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?delete`,
+    method = 'POST',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function deleteMultipleObjects(bucket: string, request: DeleteMultipleObjectsRequest): DeleteMultipleObjectsResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers = new DeleteMultipleObjectsHeaders{};
+  return deleteMultipleObjectsWithOptions(bucket, request, headers, runtime);
+}
+
+model DeleteObjectRequest {
+  versionId?: string(name='versionId', example='CAEQMxiBgIDh3ZCB0BYiIGE4YjIyMjExZDhhYjQxNzZiNGUyZTI4ZjljZDcz****'),
+}
+
+model DeleteObjectResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function deleteObjectWithOptions(bucket: string, key: string, request: DeleteObjectRequest, headers: map[string]string, runtime: Util.RuntimeOptions): DeleteObjectResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.versionId)) {
+    query['versionId'] = request.versionId;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'DeleteObject',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}`,
+    method = 'DELETE',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'none',
+  };
+  return execute(params, req, runtime);
+}
+
+async function deleteObject(bucket: string, key: string, request: DeleteObjectRequest): DeleteObjectResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return deleteObjectWithOptions(bucket, key, request, headers, runtime);
+}
+
+model DeleteObjectTaggingRequest {
+  versionId?: string(name='versionId', example='CAEQExiBgID.jImWlxciIDQ2ZjgwODIyNDk5MTRhNzBiYmQwYTZkMTYzZjM0****'),
+}
+
+model DeleteObjectTaggingResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function deleteObjectTaggingWithOptions(bucket: string, key: string, request: DeleteObjectTaggingRequest, headers: map[string]string, runtime: Util.RuntimeOptions): DeleteObjectTaggingResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.versionId)) {
+    query['versionId'] = request.versionId;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'DeleteObjectTagging',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}?tagging`,
+    method = 'DELETE',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function deleteObjectTagging(bucket: string, key: string, request: DeleteObjectTaggingRequest): DeleteObjectTaggingResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return deleteObjectTaggingWithOptions(bucket, key, request, headers, runtime);
+}
+
+model DescribeRegionsRequest {
+  regions?: string(name='regions', example='oss-cn-hangzhou'),
+}
+
+model DescribeRegionsResponseBody = {
+  regionInfos?: [
+    RegionInfo
+  ](name='RegionInfo'),
+}
+
+model DescribeRegionsResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: DescribeRegionsResponseBody(name='body'),
+}
+
+async function describeRegionsWithOptions(request: DescribeRegionsRequest, headers: map[string]string, runtime: Util.RuntimeOptions): DescribeRegionsResponse {
+  Util.validateModel(request);
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.regions)) {
+    query['regions'] = request.regions;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'DescribeRegions',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?regions`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function describeRegions(request: DescribeRegionsRequest): DescribeRegionsResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return describeRegionsWithOptions(request, headers, runtime);
+}
+
+model ExtendBucketWormRequest {
+  body?: ExtendWormConfiguration(name='ExtendWormConfiguration'),
+  wormId?: string(name='wormId', example='1666E2CFB2B3418****'),
+}
+
+model ExtendBucketWormResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function extendBucketWormWithOptions(bucket: string, request: ExtendBucketWormRequest, headers: map[string]string, runtime: Util.RuntimeOptions): ExtendBucketWormResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.wormId)) {
+    query['wormId'] = request.wormId;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+    body = OpenApiUtil.parseToMap(request.body),
+  };
+  var params = new OpenApi.Params{
+    action = 'ExtendBucketWorm',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?wormExtend`,
+    method = 'POST',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function extendBucketWorm(bucket: string, request: ExtendBucketWormRequest): ExtendBucketWormResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return extendBucketWormWithOptions(bucket, request, headers, runtime);
+}
+
+model GetBucketAclResponseBody = {
+  accessControlList?: {
+    grant?: string(name='Grant'),
+  }(name='AccessControlList'),
+  owner?: Owner(name='Owner'),
+}
+
+model GetBucketAclResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetBucketAclResponseBody(name='body'),
+}
+
+async function getBucketAclWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketAclResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketAcl',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?acl`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketAcl(bucket: string): GetBucketAclResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketAclWithOptions(bucket, headers, runtime);
+}
+
+model GetBucketCorsResponseBody = {
+  CORSRule?: [
+    CORSRule
+  ](name='CORSRule'),
+  responseVary?: boolean(name='ResponseVary', example='true'),
+}
+
+model GetBucketCorsResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetBucketCorsResponseBody(name='body'),
+}
+
+async function getBucketCorsWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketCorsResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketCors',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?cors`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketCors(bucket: string): GetBucketCorsResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketCorsWithOptions(bucket, headers, runtime);
+}
+
+model GetBucketEncryptionResponseBody = {
+  applyServerSideEncryptionByDefault?: ApplyServerSideEncryptionByDefault(name='ApplyServerSideEncryptionByDefault'),
+}
+
+model GetBucketEncryptionResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetBucketEncryptionResponseBody(name='body'),
+}
+
+async function getBucketEncryptionWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketEncryptionResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketEncryption',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?encryption`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketEncryption(bucket: string): GetBucketEncryptionResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketEncryptionWithOptions(bucket, headers, runtime);
+}
+
+model GetBucketInfoResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: BucketInfo  
+}
+
+async function getBucketInfoWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketInfoResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketInfo',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?bucketInfo`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketInfo(bucket: string): GetBucketInfoResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketInfoWithOptions(bucket, headers, runtime);
+}
+
+model GetBucketInventoryRequest {
+  inventoryId?: string(name='inventoryId', example='list1'),
+}
+
+model GetBucketInventoryResponseBody = {
+  destination?: InventoryDestination(name='Destination'),
+  filter?: InventoryFilter(name='Filter'),
+  id?: string(name='Id', example='report1'),
+  includedObjectVersions?: string(name='IncludedObjectVersions', example='All'),
+  isEnabled?: boolean(name='IsEnabled', example='true'),
+  optionalFields?: {
+    field?: [
+      string
+    ](name='Field'),
+  }(name='OptionalFields'),
+  schedule?: InventorySchedule(name='Schedule'),
+}
+
+model GetBucketInventoryResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetBucketInventoryResponseBody(name='body'),
+}
+
+async function getBucketInventoryWithOptions(bucket: string, request: GetBucketInventoryRequest, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketInventoryResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.inventoryId)) {
+    query['inventoryId'] = request.inventoryId;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketInventory',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?inventory`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketInventory(bucket: string, request: GetBucketInventoryRequest): GetBucketInventoryResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketInventoryWithOptions(bucket, request, headers, runtime);
+}
+
+model GetBucketLifecycleResponseBody = {
+  rules?: [
+    LifecycleRule
+  ](name='Rule'),
+}
+
+model GetBucketLifecycleResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetBucketLifecycleResponseBody(name='body'),
+}
+
+async function getBucketLifecycleWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketLifecycleResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketLifecycle',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?lifecycle`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketLifecycle(bucket: string): GetBucketLifecycleResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketLifecycleWithOptions(bucket, headers, runtime);
+}
+
+model GetBucketLocationResponseBody = {
+  locationConstraint?: string(name='LocationConstraint', example='oss-cn-hangzhou'),
+}
+
+model GetBucketLocationResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetBucketLocationResponseBody(name='body'),
+}
+
+async function getBucketLocationWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketLocationResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketLocation',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?location`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketLocation(bucket: string): GetBucketLocationResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketLocationWithOptions(bucket, headers, runtime);
+}
+
+model GetBucketLoggingResponseBody = {
+  loggingEnabled?: LoggingEnabled(name='LoggingEnabled'),
+}
+
+model GetBucketLoggingResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetBucketLoggingResponseBody(name='body'),
+}
+
+async function getBucketLoggingWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketLoggingResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketLogging',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?logging`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketLogging(bucket: string): GetBucketLoggingResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketLoggingWithOptions(bucket, headers, runtime);
+}
+
+model GetBucketPolicyResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: string(name='body'),
+}
+
+async function getBucketPolicyWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketPolicyResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketPolicy',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?policy`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'json',
+    bodyType = 'string',
+  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketPolicy(bucket: string): GetBucketPolicyResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketPolicyWithOptions(bucket, headers, runtime);
+}
+
+model GetBucketRefererResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: RefererConfiguration  
+}
+
+async function getBucketRefererWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketRefererResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketReferer',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?referer`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'json',
+  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketReferer(bucket: string): GetBucketRefererResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketRefererWithOptions(bucket, headers, runtime);
+}
+
+model GetBucketReplicationResponseBody = {
+  rules?: [
+    ReplicationRule
+  ](name='Rule'),
+}
+
+model GetBucketReplicationResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetBucketReplicationResponseBody(name='body'),
+}
+
+async function getBucketReplicationWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketReplicationResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketReplication',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?replication`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketReplication(bucket: string): GetBucketReplicationResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketReplicationWithOptions(bucket, headers, runtime);
+}
+
+model GetBucketReplicationLocationResponseBody = {
+  locations?: [ string ](name='Location'),
+  locationTransferTypeConstraint?: {
+    locationTransferTypes?: [
+      LocationTransferType
+    ](name='LocationTransferType'),
+  }(name='LocationTransferTypeConstraint'),
+}
+
+model GetBucketReplicationLocationResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetBucketReplicationLocationResponseBody(name='body'),
+}
+
+async function getBucketReplicationLocationWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketReplicationLocationResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketReplicationLocation',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?replicationLocation`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketReplicationLocation(bucket: string): GetBucketReplicationLocationResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketReplicationLocationWithOptions(bucket, headers, runtime);
+}
+
+model GetBucketReplicationProgressRequest {
+  ruleId?: string(name='rule-id', example='test_replication_1'),
+}
+
+model GetBucketReplicationProgressResponseBody = {
+  rule?: ReplicationProgressRule(name='Rule'),
+}
+
+model GetBucketReplicationProgressResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetBucketReplicationProgressResponseBody(name='body'),
+}
+
+async function getBucketReplicationProgressWithOptions(bucket: string, request: GetBucketReplicationProgressRequest, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketReplicationProgressResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.ruleId)) {
+    query['rule-id'] = request.ruleId;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketReplicationProgress',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?replicationProgress`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketReplicationProgress(bucket: string, request: GetBucketReplicationProgressRequest): GetBucketReplicationProgressResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketReplicationProgressWithOptions(bucket, request, headers, runtime);
+}
+
+model GetBucketRequestPaymentResponseBody = {
+  payer?: string(name='Payer', example='BucketOwner'),
+}
+
+model GetBucketRequestPaymentResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetBucketRequestPaymentResponseBody(name='body'),
+}
+
+async function getBucketRequestPaymentWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketRequestPaymentResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketRequestPayment',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?requestPayment`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketRequestPayment(bucket: string): GetBucketRequestPaymentResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketRequestPaymentWithOptions(bucket, headers, runtime);
+}
+
+model GetBucketTagsResponseBody = {
+  tagSet?: TagSet(name='TagSet'),
+}
+
+model GetBucketTagsResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetBucketTagsResponseBody(name='body'),
+}
+
+async function getBucketTagsWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketTagsResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketTags',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?tagging`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketTags(bucket: string): GetBucketTagsResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketTagsWithOptions(bucket, headers, runtime);
+}
+
+model GetBucketTransferAccelerationResponseBody = {
+  enabled?: boolean(name='Enabled', example='true'),
+}
+
+model GetBucketTransferAccelerationResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetBucketTransferAccelerationResponseBody(name='body'),
+}
+
+async function getBucketTransferAccelerationWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketTransferAccelerationResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketTransferAcceleration',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?transferAcceleration`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketTransferAcceleration(bucket: string): GetBucketTransferAccelerationResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketTransferAccelerationWithOptions(bucket, headers, runtime);
+}
+
+model GetBucketVersioningResponseBody = {
+  status?: string(name='Status', example='Enabled'),
+}
+
+model GetBucketVersioningResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetBucketVersioningResponseBody(name='body'),
+}
+
+async function getBucketVersioningWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketVersioningResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketVersioning',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?versioning`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketVersioning(bucket: string): GetBucketVersioningResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketVersioningWithOptions(bucket, headers, runtime);
+}
+
+model GetBucketWebsiteResponseBody = {
+  errorDocument?: ErrorDocument(name='ErrorDocument'),
+  indexDocument?: IndexDocument(name='IndexDocument'),
+  routingRules?: {
+    routingRules?: [
+      RoutingRule
+    ](name='RoutingRule'),
+  }(name='RoutingRules'),
+}
+
+model GetBucketWebsiteResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetBucketWebsiteResponseBody(name='body'),
+}
+
+async function getBucketWebsiteWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketWebsiteResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketWebsite',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?website`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketWebsite(bucket: string): GetBucketWebsiteResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketWebsiteWithOptions(bucket, headers, runtime);
+}
+
+model GetBucketWormResponseBody = {
+  creationDate?: string(name='CreationDate', example='2020-10-15T15:50:32'),
+  retentionPeriodInDays?: int32(name='RetentionPeriodInDays', example='30'),
+  state?: string(name='State', example='Locked'),
+  wormId?: string(name='WormId', example='1666E2CFB2B3418****'),
+}
+
+model GetBucketWormResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetBucketWormResponseBody(name='body'),
+}
+
+async function getBucketWormWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetBucketWormResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetBucketWorm',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?worm`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getBucketWorm(bucket: string): GetBucketWormResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getBucketWormWithOptions(bucket, headers, runtime);
+}
+
+model GetLiveChannelHistoryResponseBody = {
+  liveRecords?: [
+    LiveRecord
+  ](name='LiveRecord'),
+}
+
+model GetLiveChannelHistoryResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetLiveChannelHistoryResponseBody(name='body'),
+}
+
+async function getLiveChannelHistoryWithOptions(bucket: string, channel: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetLiveChannelHistoryResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetLiveChannelHistory',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${channel}?live&comp=history`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getLiveChannelHistory(bucket: string, channel: string): GetLiveChannelHistoryResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getLiveChannelHistoryWithOptions(bucket, channel, headers, runtime);
+}
+
+model GetLiveChannelInfoResponseBody = {
+  description?: string(name='Description', example='test'),
+  status?: string(name='Status', example='enabled'),
+  target?: LiveChannelTarget(name='Target'),
+}
+
+model GetLiveChannelInfoResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetLiveChannelInfoResponseBody(name='body'),
+}
+
+async function getLiveChannelInfoWithOptions(bucket: string, channel: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetLiveChannelInfoResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetLiveChannelInfo',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${channel}?live`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getLiveChannelInfo(bucket: string, channel: string): GetLiveChannelInfoResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getLiveChannelInfoWithOptions(bucket, channel, headers, runtime);
+}
+
+model GetLiveChannelStatResponseBody = {
+  audio?: LiveChannelAudio(name='Audio'),
+  connectedTime?: string(name='ConnectedTime', example='2016-08-25T06:25:15.000Z'),
+  remoteAddr?: string(name='RemoteAddr', example='10.1.2.3:47745'),
+  status?: string(name='Status', example='Live'),
+  video?: LiveChannelVideo(name='Video'),
+}
+
+model GetLiveChannelStatResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetLiveChannelStatResponseBody(name='body'),
+}
+
+async function getLiveChannelStatWithOptions(bucket: string, channel: string, headers: map[string]string, runtime: Util.RuntimeOptions): GetLiveChannelStatResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'GetLiveChannelStat',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${channel}?live&comp=stat`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getLiveChannelStat(bucket: string, channel: string): GetLiveChannelStatResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getLiveChannelStatWithOptions(bucket, channel, headers, runtime);
+}
+
+model GetObjectHeaders {
+  commonHeaders?: map[string]string,
+  acceptEncoding?: string(name='Accept-Encoding', description='The encoding type at the client side. 
+If you want an object to be returned in the GZIP format, you must include the Accept-Encoding:gzip header in your request. OSS determines whether to return the object compressed in the GZip format based on the Content-Type header and whether the size of the object is larger than or equal to 1 KB.
+                                  
+> If an object is compressed in the GZip format, the response OSS returns does not include the ETag value of the object. 
+>   - OSS supports the following Content-Type values to compress the object in the GZip format: text/cache-manifest, text/xml, text/plain, text/css, application/javascript, application/x-javascript, application/rss+xml, application/json, and text/json. 
+
+Default value: null', example='gzip'),
+  ifMatch?: string(name='If-Match', description='If the ETag specified in the request matches the ETag value of the object, OSS transmits the object and returns 200 OK. If the ETag specified in the request does not match the ETag value of the object, OSS returns 412 Precondition Failed. 
+The ETag value of an object is used to check whether the content of the object has changed. You can check data integrity by using the ETag value. 
+Default value: null', example='fba9dede5f27731c9771645a3986****'),
+  ifModifiedSince?: string(name='If-Modified-Since', description='If the time specified in this header is earlier than the object modified time or is invalid, OSS returns the object and 200 OK. If the time specified in this header is later than or the same as the object modified time, OSS returns 304 Not Modified. 
+The time must be in GMT. Example: `Fri, 13 Nov 2015 14:47:53 GMT`.
+Default value: null', example='Fri, 13 Nov 2015 14:47:53 GMT'),
+  ifNoneMatch?: string(name='If-None-Match', description='If the ETag specified in the request does not match the ETag value of the object, OSS transmits the object and returns 200 OK. If the ETag specified in the request matches the ETag value of the object, OSS returns 304 Not Modified. 
+You can specify both the **If-Match** and **If-None-Match** headers in a request. 
+Default value: null', example='5B3C1A2E0563E1B002CC607C****'),
+  ifUnmodifiedSince?: string(name='If-Unmodified-Since', description='If the time specified in this header is the same as or later than the object modified time, OSS returns the object and 200 OK. If the time specified in this header is earlier than the object modified time, OSS returns 412 Precondition Failed.
+                               
+The time must be in GMT. Example: `Fri, 13 Nov 2015 14:47:53 GMT`.
+You can specify both the **If-Modified-Since** and **If-Unmodified-Since** headers in a request. 
+Default value: null', example='Fri, 13 Nov 2015 14:47:53 GMT'),
+  range?: string(name='Range', description='The range of data of the object to be returned. 
+  - If the value of Range is valid, OSS returns the response that includes the total size of the object and the range of data returned. For example, Content-Range: bytes 0~9/44 indicates that the total size of the object is 44 bytes, and the range of data returned is the first 10 bytes. 
+  - However, if the value of Range is invalid, the entire object is returned, and the response returned by OSS excludes Content-Range. 
+
+Default value: null', example='Content-Range: bytes 100-900/344606'),
+}
+
+model GetObjectRequest {
+  responseCacheControl?: string(name='response-cache-control', description='The cache-control header in the response that OSS returns.', example='no-cache'),
+  responseContentDisposition?: string(name='response-content-disposition', description='The content-disposition header in the response that OSS returns.', example='attachment; filename:testing.txt'),
+  responseContentEncoding?: string(name='response-content-encoding', description='The content-encoding header in the response that OSS returns.', example='utf-8'),
+  responseContentLanguage?: string(name='response-content-language', description='The content-language header in the response that OSS returns.', example='中文'),
+  responseContentType?: string(name='response-content-type', description='The content-type header in the response that OSS returns.', example='image/jpg'),
+  responseExpires?: string(name='response-expires', description='The expires header in the response that OSS returns.', example='Fri, 24 Feb 2012 17:00:00 GMT'),
+}
+
+model GetObjectResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: readable(name='body'),
+}
+
+/**
+  * **Usage notes**
+  * - By default, the GetObject operation supports access over HTTP and HTTPS. To impose a limit on access to a bucket only over HTTPS, configure a bucket policy for the bucket to specify the access method. For more information, see [Configure bucket policies to authorize other users to access OSS resources](~~85111~~).
+  * - If the storage class of the object that you want to query is Archive, you must send a RestoreObject request to restore the object before you call the GetObject operation.
+  * **Versioning**
+  * By default, only the current version of an object is returned after GetObject is called. 
+  * If the version ID of the object is specified in the request, OSS returns the specified version of the object. If the version ID is set to null in the request, OSS returns the version of the object whose version ID is null.
+  *
+  * @param request GetObjectRequest
+  * @param headers GetObjectHeaders
+  * @param runtime runtime options for this request RuntimeOptions
+  * @return GetObjectResponse
+ */
+async function getObjectWithOptions(bucket: string, key: string, request: GetObjectRequest, headers: GetObjectHeaders, runtime: Util.RuntimeOptions): GetObjectResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.responseCacheControl)) {
+    query['response-cache-control'] = request.responseCacheControl;
+  }
+  if (!Util.isUnset(request.responseContentDisposition)) {
+    query['response-content-disposition'] = request.responseContentDisposition;
+  }
+  if (!Util.isUnset(request.responseContentEncoding)) {
+    query['response-content-encoding'] = request.responseContentEncoding;
+  }
+  if (!Util.isUnset(request.responseContentLanguage)) {
+    query['response-content-language'] = request.responseContentLanguage;
+  }
+  if (!Util.isUnset(request.responseContentType)) {
+    query['response-content-type'] = request.responseContentType;
+  }
+  if (!Util.isUnset(request.responseExpires)) {
+    query['response-expires'] = request.responseExpires;
+  }
+
+  var realHeaders : map[string]string = {};
+  if (!Util.isUnset(headers.commonHeaders)) {
+    realHeaders = headers.commonHeaders;
+  }
+  if (!Util.isUnset(headers.acceptEncoding)) {
+    realHeaders['Accept-Encoding'] = Util.toJSONString(headers.acceptEncoding);
+  }
+  if (!Util.isUnset(headers.ifMatch)) {
+    realHeaders['If-Match'] = Util.toJSONString(headers.ifMatch);
+  }
+  if (!Util.isUnset(headers.ifModifiedSince)) {
+    realHeaders['If-Modified-Since'] = Util.toJSONString(headers.ifModifiedSince);
+  }
+  if (!Util.isUnset(headers.ifNoneMatch)) {
+    realHeaders['If-None-Match'] = Util.toJSONString(headers.ifNoneMatch);
+  }
+  if (!Util.isUnset(headers.ifUnmodifiedSince)) {
+    realHeaders['If-Unmodified-Since'] = Util.toJSONString(headers.ifUnmodifiedSince);
+  }
+  if (!Util.isUnset(headers.range)) {
+    realHeaders['Range'] = Util.toJSONString(headers.range);
+  }
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = realHeaders,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'GetObject',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'binary',
+  };
+  return execute(params, req, runtime);
+}
+
+/**
+  * **Usage notes**
+  * - By default, the GetObject operation supports access over HTTP and HTTPS. To impose a limit on access to a bucket only over HTTPS, configure a bucket policy for the bucket to specify the access method. For more information, see [Configure bucket policies to authorize other users to access OSS resources](~~85111~~).
+  * - If the storage class of the object that you want to query is Archive, you must send a RestoreObject request to restore the object before you call the GetObject operation.
+  * **Versioning**
+  * By default, only the current version of an object is returned after GetObject is called. 
+  * If the version ID of the object is specified in the request, OSS returns the specified version of the object. If the version ID is set to null in the request, OSS returns the version of the object whose version ID is null.
+  *
+  * @param request GetObjectRequest
+  * @return GetObjectResponse
+ */
+async function getObject(bucket: string, key: string, request: GetObjectRequest): GetObjectResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers = new GetObjectHeaders{};
+  return getObjectWithOptions(bucket, key, request, headers, runtime);
+}
+
+model GetObjectAclRequest {
+  versionId?: string(name='versionId', example='list1'),
+}
+
+model GetObjectAclResponseBody = {
+  accessControlList?: {
+    ACL?: string(name='Grant', example='private'),
+  }(name='AccessControlList'),
+  owner?: Owner(name='Owner'),
+}
+
+model GetObjectAclResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetObjectAclResponseBody(name='body'),
+}
+
+async function getObjectAclWithOptions(bucket: string, key: string, request: GetObjectAclRequest, headers: map[string]string, runtime: Util.RuntimeOptions): GetObjectAclResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.versionId)) {
+    query['versionId'] = request.versionId;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'GetObjectAcl',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}?acl`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getObjectAcl(bucket: string, key: string, request: GetObjectAclRequest): GetObjectAclResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getObjectAclWithOptions(bucket, key, request, headers, runtime);
+}
+
+model GetObjectMetaRequest {
+  versionId?: string(name='versionId', example='CAEQNRiBgIDMh4mD0BYiIDUzNDA4OGNmZjBjYTQ0YmI4Y2I4ZmVlYzJlNGVk****'),
+}
+
+model GetObjectMetaResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function getObjectMetaWithOptions(bucket: string, key: string, request: GetObjectMetaRequest, headers: map[string]string, runtime: Util.RuntimeOptions): GetObjectMetaResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.versionId)) {
+    query['versionId'] = request.versionId;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'GetObjectMeta',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}?objectMeta`,
+    method = 'HEAD',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'none',
+  };
+  return execute(params, req, runtime);
+}
+
+async function getObjectMeta(bucket: string, key: string, request: GetObjectMetaRequest): GetObjectMetaResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getObjectMetaWithOptions(bucket, key, request, headers, runtime);
+}
+
+model GetObjectTaggingRequest {
+  versionId?: string(name='versionId', example='CAEQExiBgID.jImWlxciIDQ2ZjgwODIyNDk5MTRhNzBiYmQwYTZkMTYzZjM0****'),
+}
+
+model GetObjectTaggingResponseBody = {
+  tagSet?: TagSet(name='TagSet'),
+}
+
+model GetObjectTaggingResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: GetObjectTaggingResponseBody(name='body'),
+}
+
+async function getObjectTaggingWithOptions(bucket: string, key: string, request: GetObjectTaggingRequest, headers: map[string]string, runtime: Util.RuntimeOptions): GetObjectTaggingResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.versionId)) {
+    query['versionId'] = request.versionId;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'GetObjectTagging',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}?tagging`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function getObjectTagging(bucket: string, key: string, request: GetObjectTaggingRequest): GetObjectTaggingResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getObjectTaggingWithOptions(bucket, key, request, headers, runtime);
+}
+
+model GetSymlinkRequest {
+  versionId?: string(name='versionId', example='CAEQNRiBgMClj7qD0BYiIDQ5Y2QyMjc3NGZkODRlMTU5M2VkY2U3MWRiNGRh****'),
+}
+
+model GetSymlinkResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function getSymlinkWithOptions(bucket: string, key: string, request: GetSymlinkRequest, headers: map[string]string, runtime: Util.RuntimeOptions): GetSymlinkResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.versionId)) {
+    query['versionId'] = request.versionId;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'GetSymlink',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}?symlink`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function getSymlink(bucket: string, key: string, request: GetSymlinkRequest): GetSymlinkResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getSymlinkWithOptions(bucket, key, request, headers, runtime);
+}
+
+model GetVodPlaylistRequest {
+  endTime?: string(name='endTime', example='1636618271'),
+  startTime?: string(name='startTime', example='1636600271'),
+}
+
+model GetVodPlaylistResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: readable(name='body'),
+}
+
+async function getVodPlaylistWithOptions(bucket: string, channel: string, request: GetVodPlaylistRequest, headers: map[string]string, runtime: Util.RuntimeOptions): GetVodPlaylistResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.endTime)) {
+    query['endTime'] = request.endTime;
+  }
+  if (!Util.isUnset(request.startTime)) {
+    query['startTime'] = request.startTime;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'GetVodPlaylist',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${channel}?vod`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'binary',
+  };
+  return execute(params, req, runtime);
+}
+
+async function getVodPlaylist(bucket: string, channel: string, request: GetVodPlaylistRequest): GetVodPlaylistResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return getVodPlaylistWithOptions(bucket, channel, request, headers, runtime);
+}
+
+model HeadObjectHeaders {
+  commonHeaders?: map[string]string,
+  ifMatch?: string(name='If-Match', description='If the ETag value that is specified in the request matches the ETag value of the object, OSS returns 200 OK and the metadata of the object. Otherwise, OSS returns 412 precondition failed. 
+Default value: null.', example='fba9dede5f27731c9771645a3986****'),
+  ifModifiedSince?: string(name='If-Modified-Since', description='If the time that is specified in the request is earlier than the time when the object is modified, OSS returns 200 OK and the metadata of the object. Otherwise, OSS returns 304 not modified. 
+Default value: null.', example='Fri, 9 Apr 2021 14:47:53 GMT'),
+  ifNoneMatch?: string(name='If-None-Match', description='If the ETag value that is specified in the request does not match the ETag value of the object, OSS returns 200 OK and the metadata of the object. Otherwise, OSS returns 304 Not Modified. 
+Default value: null.', example='5B3C1A2E0563E1B002CC607C****'),
+  ifUnmodifiedSince?: string(name='If-Unmodified-Since', description='If the time that is specified in the request is later than or the same as the time when the object is modified, OSS returns 200 OK and the metadata of the object. Otherwise, OSS returns 412 precondition failed. 
+Default value: null.', example='Fri, 13 Oct 2021 14:47:53 GMT'),
+}
+
+model HeadObjectRequest {
+  versionId?: string(name='versionId', description='The version ID of the object for which you want to query metadata.', example='CAEQMxiBgMCZov2D0BYiIDY4MDllOTc2YmY5MjQxMzdiOGI3OTlhNTU0ODIx****'),
+}
+
+model HeadObjectResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+/**
+  * - When you call this operation, the object content is not returned in the results. 
+  * - By default, you can call the HeadObject operation to query the metadata of the object of the current version. If the current version of the object is a delete marker, OSS returns 404 Not Found. If you specify a version ID in the request, OSS returns the metadata of the object of the specified version.
+  *
+  * @param request HeadObjectRequest
+  * @param headers HeadObjectHeaders
+  * @param runtime runtime options for this request RuntimeOptions
+  * @return HeadObjectResponse
+ */
+async function headObjectWithOptions(bucket: string, key: string, request: HeadObjectRequest, headers: HeadObjectHeaders, runtime: Util.RuntimeOptions): HeadObjectResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.versionId)) {
+    query['versionId'] = request.versionId;
+  }
+
+  var realHeaders : map[string]string = {};
+  if (!Util.isUnset(headers.commonHeaders)) {
+    realHeaders = headers.commonHeaders;
+  }
+  if (!Util.isUnset(headers.ifMatch)) {
+    realHeaders['If-Match'] = Util.toJSONString(headers.ifMatch);
+  }
+  if (!Util.isUnset(headers.ifModifiedSince)) {
+    realHeaders['If-Modified-Since'] = Util.toJSONString(headers.ifModifiedSince);
+  }
+  if (!Util.isUnset(headers.ifNoneMatch)) {
+    realHeaders['If-None-Match'] = Util.toJSONString(headers.ifNoneMatch);
+  }
+  if (!Util.isUnset(headers.ifUnmodifiedSince)) {
+    realHeaders['If-Unmodified-Since'] = Util.toJSONString(headers.ifUnmodifiedSince);
+  }
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = realHeaders,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'HeadObject',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}`,
+    method = 'HEAD',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'none',
+  };
+  return execute(params, req, runtime);
+}
+
+/**
+  * - When you call this operation, the object content is not returned in the results. 
+  * - By default, you can call the HeadObject operation to query the metadata of the object of the current version. If the current version of the object is a delete marker, OSS returns 404 Not Found. If you specify a version ID in the request, OSS returns the metadata of the object of the specified version.
+  *
+  * @param request HeadObjectRequest
+  * @return HeadObjectResponse
+ */
+async function headObject(bucket: string, key: string, request: HeadObjectRequest): HeadObjectResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers = new HeadObjectHeaders{};
+  return headObjectWithOptions(bucket, key, request, headers, runtime);
+}
+
+model InitiateBucketWormRequest {
+  initiateWormConfiguration?: InitiateWormConfiguration(name='InitiateWormConfiguration'),
+}
+
+model InitiateBucketWormResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function initiateBucketWormWithOptions(bucket: string, request: InitiateBucketWormRequest, headers: map[string]string, runtime: Util.RuntimeOptions): InitiateBucketWormResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    body = OpenApiUtil.parseToMap(request.initiateWormConfiguration),
+  };
+  var params = new OpenApi.Params{
+    action = 'InitiateBucketWorm',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?worm`,
+    method = 'POST',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function initiateBucketWorm(bucket: string, request: InitiateBucketWormRequest): InitiateBucketWormResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return initiateBucketWormWithOptions(bucket, request, headers, runtime);
+}
+
+model InitiateMultipartUploadHeaders {
+  commonHeaders?: map[string]string,
+  cacheControl?: string(name='Cache-Control', description='The caching behavior of the web page when the object is downloaded. For more information, see **[RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)**. 
+Default value: null.', example='private'),
+  contentDisposition?: string(name='Content-Disposition', description='The name of the object when the object is downloaded. For more information, see **[RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)**. 
+Default value: null.', example='attachment;filename=oss_download.jpg'),
+  contentEncoding?: string(name='Content-Encoding', description='The content encoding format of the object when the object is downloaded. For more information, see **[RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)**. 
+Default value: null.', example='utf-8'),
+  expires?: string(name='Expires', description='The expiration time of the request. Unit: milliseconds. For more information, see **[RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)**. 
+Default value: null.', example='Fri, 28 Feb 2012 05:38:42 GMT'),
+  forbidOverwrite?: string(name='x-oss-forbid-overwrite', description='Specifies whether the InitiateMultipartUpload operation overwrites the existing object that has the same name as the object that you want to upload. When versioning is enabled or suspended for the bucket to which you want to upload the object, the **x-oss-forbid-overwrite** header does not take effect. In this case, the InitiateMultipartUpload operation overwrites the existing object that has the same name as the object that you want to upload. 
+  - If you do not specify the **x-oss-forbid-overwrite** header or set the **x-oss-forbid-overwrite** header to **false**, the object that is uploaded by calling the PutObject operation overwrites the existing object that has the same name. 
+  - If the value of **x-oss-forbid-overwrite** is set to **true**, existing objects cannot be overwritten by objects that have the same names. 
+
+If you specify the **x-oss-forbid-overwrite** request header, the queries per second (QPS) performance of OSS is degraded. If you want to use the **x-oss-forbid-overwrite** request header to perform a large number of operations (QPS greater than 1,000), contact technical support', example='true'),
+  sseDataEncryption?: string(name='x-oss-server-side-data-encryption', description='The algorithm that is used to encrypt the object that you want to upload. If this header is not specified, the object is encrypted by using AES-256. This header is valid only when **x-oss-server-side-encryption** is set to KMS. 
+Valid value: SM4.', example='SM4'),
+  serverSideEncryption?: string(name='x-oss-server-side-encryption', description='The server-side encryption method that is used to encrypt each part of the object that you want to upload. 
+Valid values: **AES256**, **KMS**, and **SM4**.
+> You must activate Key Management Service (KMS) before you set this header to KMS. 
+
+
+If you specify this header in the request, this header is included in the response. OSS uses the method specified by this header to encrypt each uploaded part. When you download the object, the x-oss-server-side-encryption header is included in the response and the header value is set to the algorithm that is used to encrypt the object.', example='AES256'),
+  sseKeyId?: string(name='x-oss-server-side-encryption-key-id', description='The ID of the CMK that is managed by KMS. 
+This header is valid only when **x-oss-server-side-encryption** is set to KMS.', example='9468da86-3509-4f8d-a61e-6eab1eac****'),
+  storageClass?: string(name='x-oss-storage-class', description='The storage class of the bucket. Default value: Standard.  Valid values:
+
+- Standard
+- IA
+- Archive
+- ColdArchive'),
+  tagging?: string(name='x-oss-tagging', description='The tag of the object. You can configure multiple tags for the object. Example: TagA=A&amp;TagB=B.
+> The key and value of a tag must be URL-encoded. If a tag does not contain an equal sign (=), the value of the tag is considered an empty string.', example='a:1'),
+}
+
+model InitiateMultipartUploadRequest {
+  encodingType?: string(name='encoding-type', description='The method used to encode the object name in the response. Only URL encoding is supported. The object name can contain characters encoded in UTF-8. However, the XML 1.0 standard cannot be used to parse specific control characters, such as characters whose ASCII values range from 0 to 10. You can configure the encoding-type parameter to encode object names that include characters that cannot be parsed by XML 1.0 in the response.
+<br>Default value: null'),
+}
+
+model InitiateMultipartUploadResponseBody = {
+  bucket?: string(name='Bucket', description='The name of the bucket to which the object is uploaded by the multipart upload task.', example='examplebucket'),
+  encodingType?: string(name='EncodingType', description='The encoding type of the object name in the response. If the encoding-type parameter is specified in the request, the object name in the response is encoded.', example='url'),
+  key?: string(name='Key', description='The name of the object that is uploaded by the multipart upload task.', example='multipart.data'),
+  uploadId?: string(name='UploadId', description='The Upload ID that uniquely identifies the multipart upload task. The Upload ID is used to call UploadPart and CompleteMultipartUpload later.', example='0004B9894A22E5B1888A1E29F823****'),
+}
+
+model InitiateMultipartUploadResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: InitiateMultipartUploadResponseBody(name='body'),
+}
+
+/**
+  * - When you call the InitiateMultipartUpload operation, OSS creates and returns a unique upload ID to identify the multipart upload task. You can initiate operations such as stopping or querying the multipart upload task by using this upload ID.
+  * - When you initiate a multipart upload request to upload an object, the existing object that has the same name is not affected.
+  * - If you want to calculate the signature for authentication when you call this operation, you must add `?uploads` to `CanonicalizedResource`.
+  *
+  * @param request InitiateMultipartUploadRequest
+  * @param headers InitiateMultipartUploadHeaders
+  * @param runtime runtime options for this request RuntimeOptions
+  * @return InitiateMultipartUploadResponse
+ */
+async function initiateMultipartUploadWithOptions(bucket: string, key: string, request: InitiateMultipartUploadRequest, headers: InitiateMultipartUploadHeaders, runtime: Util.RuntimeOptions): InitiateMultipartUploadResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.encodingType)) {
+    query['encoding-type'] = request.encodingType;
+  }
+
+  var realHeaders : map[string]string = {};
+  if (!Util.isUnset(headers.commonHeaders)) {
+    realHeaders = headers.commonHeaders;
+  }
+  if (!Util.isUnset(headers.cacheControl)) {
+    realHeaders['Cache-Control'] = Util.toJSONString(headers.cacheControl);
+  }
+  if (!Util.isUnset(headers.contentDisposition)) {
+    realHeaders['Content-Disposition'] = Util.toJSONString(headers.contentDisposition);
+  }
+  if (!Util.isUnset(headers.contentEncoding)) {
+    realHeaders['Content-Encoding'] = Util.toJSONString(headers.contentEncoding);
+  }
+  if (!Util.isUnset(headers.expires)) {
+    realHeaders['Expires'] = Util.toJSONString(headers.expires);
+  }
+  if (!Util.isUnset(headers.forbidOverwrite)) {
+    realHeaders['x-oss-forbid-overwrite'] = Util.toJSONString(headers.forbidOverwrite);
+  }
+  if (!Util.isUnset(headers.sseDataEncryption)) {
+    realHeaders['x-oss-server-side-data-encryption'] = Util.toJSONString(headers.sseDataEncryption);
+  }
+  if (!Util.isUnset(headers.serverSideEncryption)) {
+    realHeaders['x-oss-server-side-encryption'] = Util.toJSONString(headers.serverSideEncryption);
+  }
+  if (!Util.isUnset(headers.sseKeyId)) {
+    realHeaders['x-oss-server-side-encryption-key-id'] = Util.toJSONString(headers.sseKeyId);
+  }
+  if (!Util.isUnset(headers.storageClass)) {
+    realHeaders['x-oss-storage-class'] = Util.toJSONString(headers.storageClass);
+  }
+  if (!Util.isUnset(headers.tagging)) {
+    realHeaders['x-oss-tagging'] = Util.toJSONString(headers.tagging);
+  }
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = realHeaders,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'InitiateMultipartUpload',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}?uploads`,
+    method = 'POST',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+/**
+  * - When you call the InitiateMultipartUpload operation, OSS creates and returns a unique upload ID to identify the multipart upload task. You can initiate operations such as stopping or querying the multipart upload task by using this upload ID.
+  * - When you initiate a multipart upload request to upload an object, the existing object that has the same name is not affected.
+  * - If you want to calculate the signature for authentication when you call this operation, you must add `?uploads` to `CanonicalizedResource`.
+  *
+  * @param request InitiateMultipartUploadRequest
+  * @return InitiateMultipartUploadResponse
+ */
+async function initiateMultipartUpload(bucket: string, key: string, request: InitiateMultipartUploadRequest): InitiateMultipartUploadResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers = new InitiateMultipartUploadHeaders{};
+  return initiateMultipartUploadWithOptions(bucket, key, request, headers, runtime);
+}
+
+model ListBucketInventoryRequest {
+  continuationToken?: string(name='continuation-token', example='test1.txt'),
+}
+
+model ListBucketInventoryResponseBody = {
+  inventoryConfigurations?: [
+    InventoryConfiguration
+  ](name='InventoryConfiguration'),
+  isTruncated?: boolean(name='IsTruncated', example='true'),
+  nextContinuationToken?: string(name='NextContinuationToken', example='CgJiYw--'),
+}
+
+model ListBucketInventoryResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: ListBucketInventoryResponseBody(name='body'),
+}
+
+async function listBucketInventoryWithOptions(bucket: string, request: ListBucketInventoryRequest, headers: map[string]string, runtime: Util.RuntimeOptions): ListBucketInventoryResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.continuationToken)) {
+    query['continuation-token'] = request.continuationToken;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'ListBucketInventory',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?inventory`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function listBucketInventory(bucket: string, request: ListBucketInventoryRequest): ListBucketInventoryResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return listBucketInventoryWithOptions(bucket, request, headers, runtime);
+}
+
+model ListBucketsHeaders {
+  commonHeaders?: map[string]string,
+  xOssResourceGroupId?:   string(name='x-oss-resource-group-id'),
+}
+
+model ListBucketsRequest {
+  marker?: string(name='marker', example='mybucket10'),
+  maxKeys?: long(name='max-keys', example='100'),
+  prefix?: string(name='prefix', example='my'),
+}
+
+model ListBucketsResponseBody = {
+  buckets?: [
+    Bucket
+  ](name='buckets'),
+  isTruncated?: boolean(name='isTruncated'),
+  marker?: string(name='marker'),
+  maxKeys?: long(name='maxKeys'),
+  nextMarker?: string(name='nextMarker'),
+  owner?: Owner(name='owner'),
+  prefix?: string(name='prefix'),
+}
+
+model ListBucketsResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: ListBucketsResponseBody(name='body'),
+}
+
+async function listBucketsWithOptions(request: ListBucketsRequest, headers: ListBucketsHeaders, runtime: Util.RuntimeOptions): ListBucketsResponse {
+  Util.validateModel(request);
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.marker)) {
+    query['marker'] = request.marker;
+  }
+  if (!Util.isUnset(request.maxKeys)) {
+    query['max-keys'] = request.maxKeys;
+  }
+  if (!Util.isUnset(request.prefix)) {
+    query['prefix'] = request.prefix;
+  }
+
+  var realHeaders : map[string]string = {};
+  if (!Util.isUnset(headers.commonHeaders)) {
+    realHeaders = headers.commonHeaders;
+  }
+  if (!Util.isUnset(headers.xOssResourceGroupId)) {
+    realHeaders['x-oss-resource-group-id'] = Util.toJSONString(headers.xOssResourceGroupId);
+  }
+  var req = new OpenApi.OpenApiRequest{ 
+    headers = realHeaders,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'ListBuckets',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function listBuckets(request: ListBucketsRequest): ListBucketsResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers = new ListBucketsHeaders{};
+  return listBucketsWithOptions(request, headers, runtime);
+}
+
+model ListLiveChannelRequest {
+  marker?: string(name='marker', example='channel-1'),
+  maxKeys?: long(name='max-keys', example='100'),
+  prefix?: string(name='prefix', example='fun/'),
+}
+
+model ListLiveChannelResponseBody = {
+  isTruncated?: boolean(name='IsTruncated', example='true'),
+  liveChannels?: [
+    LiveChannel
+  ](name='LiveChannel'),
+  marker?: string(name='Marker', example='channel-1'),
+  maxKeys?: long(name='MaxKeys', example='100'),
+  nextMarker?: string(name='NextMarker', example='channel-100'),
+  prefix?: string(name='Prefix', example='fun/'),
+}
+
+model ListLiveChannelResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: ListLiveChannelResponseBody(name='body'),
+}
+
+async function listLiveChannelWithOptions(bucket: string, request: ListLiveChannelRequest, headers: map[string]string, runtime: Util.RuntimeOptions): ListLiveChannelResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.marker)) {
+    query['marker'] = request.marker;
+  }
+  if (!Util.isUnset(request.maxKeys)) {
+    query['max-keys'] = request.maxKeys;
+  }
+  if (!Util.isUnset(request.prefix)) {
+    query['prefix'] = request.prefix;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'ListLiveChannel',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?live`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function listLiveChannel(bucket: string, request: ListLiveChannelRequest): ListLiveChannelResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return listLiveChannelWithOptions(bucket, request, headers, runtime);
+}
+
+model ListMultipartUploadsRequest {
+  delimiter?: string(name='delimiter', example='/'),
+  encodingType?: string(name='encoding-type'),
+  keyMarker?: string(name='key-marker', example='test1.avi'),
+  maxUploads?: long(name='max-uploads', example='1000'),
+  prefix?: string(name='prefix', example='fun/'),
+  uploadIdMarker?: string(name='upload-id-marker', example='0004B99B8E707874FC2D692FA5D7****'),
+}
+
+model ListMultipartUploadsResponseBody = {
+  bucket?: string(name='Bucket', example='examplebucket'),
+  commonPrefixes?: [
+    CommonPrefix
+  ](name='CommonPrefixes'),
+  delimiter?: string(name='Delimiter', example='/'),
+  encodingType?: string(name='EncodingType', example='url'),
+  isTruncated?: boolean(name='IsTruncated', example='true'),
+  keyMarker?: string(name='KeyMarker', example='test1.avi'),
+  maxUploads?: long(name='MaxUploads', example='1000'),
+  nextKeyMarker?: string(name='NextKeyMarker', example='test100.avi'),
+  nextUploadIdMarker?: string(name='NextUploadIdMarker', example='0004B99B8E707874FC2D692FA5D7****'),
+  prefix?: string(name='Prefix', example='test'),
+  uploads?: [
+    Upload
+  ](name='Upload'),
+  uploadIdMarker?: string(name='UploadIdMarker', example='0004B99B8E707874FC2D692FA5D7****'),
+}
+
+model ListMultipartUploadsResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: ListMultipartUploadsResponseBody(name='body'),
+}
+
+async function listMultipartUploadsWithOptions(bucket: string, request: ListMultipartUploadsRequest, headers: map[string]string, runtime: Util.RuntimeOptions): ListMultipartUploadsResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.delimiter)) {
+    query['delimiter'] = request.delimiter;
+  }
+  if (!Util.isUnset(request.encodingType)) {
+    query['encoding-type'] = request.encodingType;
+  }
+  if (!Util.isUnset(request.keyMarker)) {
+    query['key-marker'] = request.keyMarker;
+  }
+  if (!Util.isUnset(request.maxUploads)) {
+    query['max-uploads'] = request.maxUploads;
+  }
+  if (!Util.isUnset(request.prefix)) {
+    query['prefix'] = request.prefix;
+  }
+  if (!Util.isUnset(request.uploadIdMarker)) {
+    query['upload-id-marker'] = request.uploadIdMarker;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'ListMultipartUploads',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?uploads`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function listMultipartUploads(bucket: string, request: ListMultipartUploadsRequest): ListMultipartUploadsResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return listMultipartUploadsWithOptions(bucket, request, headers, runtime);
+}
+
+model ListObjectVersionsRequest {
+  delimiter?: string(name='delimiter', example='/'),
+  encodingType?: string(name='encoding-type'),
+  keyMarker?: string(name='key-marker', example='example'),
+  maxKeys?: long(name='max-keys', example='100'),
+  prefix?: string(name='prefix', example='fun'),
+  versionIdMarker?: string(name='version-id-marker', example='CAEQMxiBgICbof2D0BYiIGRhZjgwMzJiMjA3MjQ0ODE5MWYxZDYwMzJlZjU1****'),
+}
+
+model ListObjectVersionsResponseBody = {
+  commonPrefixes?: [
+    CommonPrefix
+  ](name='CommonPrefixes'),
+  deleteMarkers?: [
+    DeleteMarkerEntry
+  ](name='DeleteMarker'),
+  delimiter?: string(name='Delimiter', example='/'),
+  encodingType?: string(name='EncodingType', example='URL'),
+  isTruncated?: boolean(name='IsTruncated', example='true'),
+  keyMarker?: string(name='KeyMarker', example='example'),
+  maxKeys?: long(name='MaxKeys', example='1000'),
+  name?: string(name='Name', example='examplebucket'),
+  nextKeyMarker?: string(name='NextKeyMarker', example='test'),
+  nextVersionIdMarker?: string(name='NextVersionIdMarker', example='CAEQGBiBgIC_jq7P9xYiIDRiZWJkNjY2Y2Q4NDQ5ZTI5ZGE5ODIxMTIyZThl****'),
+  prefix?: string(name='Prefix', example='fun'),
+  versions?: [
+    ObjectVersion
+  ](name='Version'),
+  versionIdMarker?: string(name='VersionIdMarker', example='CAEQMxiBgICbof2D0BYiIGRhZjgwMzJiMjA3MjQ0ODE5MWYxZDYwMzJlZjU1****'),
+}
+
+model ListObjectVersionsResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: ListObjectVersionsResponseBody(name='body'),
+}
+
+async function listObjectVersionsWithOptions(bucket: string, request: ListObjectVersionsRequest, headers: map[string]string, runtime: Util.RuntimeOptions): ListObjectVersionsResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.delimiter)) {
+    query['delimiter'] = request.delimiter;
+  }
+  if (!Util.isUnset(request.encodingType)) {
+    query['encoding-type'] = request.encodingType;
+  }
+  if (!Util.isUnset(request.keyMarker)) {
+    query['key-marker'] = request.keyMarker;
+  }
+  if (!Util.isUnset(request.maxKeys)) {
+    query['max-keys'] = request.maxKeys;
+  }
+  if (!Util.isUnset(request.prefix)) {
+    query['prefix'] = request.prefix;
+  }
+  if (!Util.isUnset(request.versionIdMarker)) {
+    query['version-id-marker'] = request.versionIdMarker;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'ListObjectVersions',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?versions`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function listObjectVersions(bucket: string, request: ListObjectVersionsRequest): ListObjectVersionsResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return listObjectVersionsWithOptions(bucket, request, headers, runtime);
+}
+
+model ListObjectsRequest {
+  delimiter?: string(name='delimiter', example='/'),
+  encodingType?: string(name='encoding-type'),
+  marker?: string(name='marker', example='test1.txt'),
+  maxKeys?: long(name='max-keys'),
+  prefix?: string(name='prefix', example='fun'),
+}
+
+model ListObjectsResponseBody = {
+  commonPrefixes?: [
+    CommonPrefix
+  ](name='CommonPrefixes'),
+  contents?: [
+    ObjectSummary
+  ](name='Contents'),
+  delimiter?: string(name='Delimiter', example='/'),
+  encodingType?: string(name='EncodingType', example='url'),
+  isTruncated?: boolean(name='IsTruncated', example='false'),
+  marker?: string(name='Marker', example='test1.txt'),
+  maxKeys?: int32(name='MaxKeys', example='100'),
+  name?: string(name='Name', example='oss-example'),
+  nextMarker?: string(name='NextMarker', example='test100.txt'),
+  prefix?: string(name='Prefix', example='fun/'),
+}
+
+model ListObjectsResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: ListObjectsResponseBody(name='body'),
+}
+
+async function listObjectsWithOptions(bucket: string, request: ListObjectsRequest, headers: map[string]string, runtime: Util.RuntimeOptions): ListObjectsResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.delimiter)) {
+    query['delimiter'] = request.delimiter;
+  }
+  if (!Util.isUnset(request.encodingType)) {
+    query['encoding-type'] = request.encodingType;
+  }
+  if (!Util.isUnset(request.marker)) {
+    query['marker'] = request.marker;
+  }
+  if (!Util.isUnset(request.maxKeys)) {
+    query['max-keys'] = request.maxKeys;
+  }
+  if (!Util.isUnset(request.prefix)) {
+    query['prefix'] = request.prefix;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'ListObjects',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function listObjects(bucket: string, request: ListObjectsRequest): ListObjectsResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return listObjectsWithOptions(bucket, request, headers, runtime);
+}
+
+model ListObjectsV2Request {
+  continuationToken?: string(name='continuation-token', example='test1.txt'),
+  delimiter?: string(name='delimiter', example='/'),
+  encodingType?: string(name='encoding-type'),
+  fetchOwner?: boolean(name='fetch-owner', example='true'),
+  maxKeys?: long(name='max-keys'),
+  prefix?: string(name='prefix', example='a'),
+  startAfter?: string(name='start-after', example='b'),
+}
+
+model ListObjectsV2ResponseBody = {
+  commonPrefixes?: [
+    CommonPrefix
+  ](name='CommonPrefixes'),
+  contents?: [
+    ObjectSummary
+  ](name='Contents'),
+  continuationToken?: string(name='ContinuationToken', example='test1.txt'),
+  delimiter?: string(name='Delimiter', example='/'),
+  encodingType?: string(name='EncodingType', example='url'),
+  isTruncated?: boolean(name='IsTruncated', example='true'),
+  keyCount?: int32(name='KeyCount', example='6'),
+  maxKeys?: int32(name='MaxKeys', example='3'),
+  name?: string(name='Name', example='oss-example'),
+  nextContinuationToken?: string(name='NextContinuationToken', example='CgJiYw--'),
+  prefix?: string(name='Prefix', example='a'),
+  startAfter?: string(name='StartAfter', example='b'),
+}
+
+model ListObjectsV2Response = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: ListObjectsV2ResponseBody(name='body'),
+}
+
+async function listObjectsV2WithOptions(bucket: string, request: ListObjectsV2Request, headers: map[string]string, runtime: Util.RuntimeOptions): ListObjectsV2Response {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.continuationToken)) {
+    query['continuation-token'] = request.continuationToken;
+  }
+  if (!Util.isUnset(request.delimiter)) {
+    query['delimiter'] = request.delimiter;
+  }
+  if (!Util.isUnset(request.encodingType)) {
+    query['encoding-type'] = request.encodingType;
+  }
+  if (!Util.isUnset(request.fetchOwner)) {
+    query['fetch-owner'] = request.fetchOwner;
+  }
+  if (!Util.isUnset(request.maxKeys)) {
+    query['max-keys'] = request.maxKeys;
+  }
+  if (!Util.isUnset(request.prefix)) {
+    query['prefix'] = request.prefix;
+  }
+  if (!Util.isUnset(request.startAfter)) {
+    query['start-after'] = request.startAfter;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'ListObjectsV2',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?list-type=2`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function listObjectsV2(bucket: string, request: ListObjectsV2Request): ListObjectsV2Response {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return listObjectsV2WithOptions(bucket, request, headers, runtime);
+}
+
+model ListPartsRequest {
+  encodingType?: string(name='encoding-type'),
+  maxParts?: long(name='max-parts', example='1000'),
+  partNumberMarker?: long(name='part-number-marker', example='100'),
+  uploadId?: string(name='uploadId', example='0004B999EF5A239BB9138C6227D69F95'),
+}
+
+model ListPartsShrinkRequest {
+  encodingTypeShrink?: string(name='encoding-type'),
+  maxParts?: long(name='max-parts', example='1000'),
+  partNumberMarker?: long(name='part-number-marker', example='100'),
+  uploadId?: string(name='uploadId', example='0004B999EF5A239BB9138C6227D69F95'),
+}
+
+model ListPartsResponseBody = {
+  bucket?: string(name='Bucket', example='examplebucket'),
+  isTruncated?: boolean(name='IsTruncated', example='true'),
+  key?: string(name='Key', example='url'),
+  maxParts?: long(name='MaxParts', example='1000'),
+  nextPartNumberMarker?: long(name='NextPartNumberMarker', example='5'),
+  part?: [
+    Part
+  ](name='Part'),
+  partNumberMarker?: long(name='PartNumberMarker', example='10'),
+  uploadId?: string(name='UploadId', example='0004B999EF5A239BB9138C6227D69F95'),
+}
+
+model ListPartsResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: ListPartsResponseBody(name='body'),
+}
+
+async function listPartsWithOptions(bucket: string, key: string, tmpReq: ListPartsRequest, headers: map[string]string, runtime: Util.RuntimeOptions): ListPartsResponse {
+  Util.validateModel(tmpReq);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var request = new ListPartsShrinkRequest{};
+  OpenApiUtil.convert(tmpReq, request);
+  if (!Util.isUnset(tmpReq.encodingType)) {
+    request.encodingTypeShrink = OpenApiUtil.arrayToStringWithSpecifiedStyle(tmpReq.encodingType, 'encoding-type', 'json');
+  }
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.encodingTypeShrink)) {
+    query['encoding-type'] = request.encodingTypeShrink;
+  }
+  if (!Util.isUnset(request.maxParts)) {
+    query['max-parts'] = request.maxParts;
+  }
+  if (!Util.isUnset(request.partNumberMarker)) {
+    query['part-number-marker'] = request.partNumberMarker;
+  }
+  if (!Util.isUnset(request.uploadId)) {
+    query['uploadId'] = request.uploadId;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'ListParts',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}`,
+    method = 'GET',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function listParts(bucket: string, key: string, request: ListPartsRequest): ListPartsResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return listPartsWithOptions(bucket, key, request, headers, runtime);
+}
+
+model OptionObjectHeaders {
+  commonHeaders?: map[string]string,
+  accessControlRequestHeaders?: string(name='Access-Control-Request-Headers', example='x-oss-test1,x-oss-test2'),
+  accessControlRequestMethod	?: string(name='Access-Control-Request-Method', example='PUT'),
+  origin?: string(name='Origin', example='http://www.example.com'),
+}
+
+model OptionObjectResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function optionObjectWithOptions(bucket: string, key: string, headers: OptionObjectHeaders, runtime: Util.RuntimeOptions): OptionObjectResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var realHeaders : map[string]string = {};
+  if (!Util.isUnset(headers.commonHeaders)) {
+    realHeaders = headers.commonHeaders;
+  }
+  if (!Util.isUnset(headers.accessControlRequestHeaders)) {
+    realHeaders['Access-Control-Request-Headers'] = Util.toJSONString(headers.accessControlRequestHeaders);
+  }
+  if (!Util.isUnset(headers.accessControlRequestMethod	)) {
+    realHeaders['Access-Control-Request-Method'] = Util.toJSONString(headers.accessControlRequestMethod	);
+  }
+  if (!Util.isUnset(headers.origin)) {
+    realHeaders['Origin'] = Util.toJSONString(headers.origin);
+  }
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = realHeaders,
+  };
+  var params = new OpenApi.Params{
+    action = 'OptionObject',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}`,
+    method = 'OPTIONS',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function optionObject(bucket: string, key: string): OptionObjectResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers = new OptionObjectHeaders{};
+  return optionObjectWithOptions(bucket, key, headers, runtime);
+}
+
+model PostObjectResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+/**
+  * - 
+  *   The object that is uploaded by calling the PostObject operation cannot be
+  *   larger than 5 GB in size.
+  * - 
+  *   To initiate a PostObject request to a bucket, you must have write permissions
+  *   on the bucket. If the ACL of the bucket to which you want to initiate a
+  *   PostObject request is public-read-write, you do not need to sign the
+  *   PostObject request. In other cases, Object Storage Service (OSS) verifies the
+  *   signature information contained in the request.
+  * - 
+  *   Unlike the PutObject operation, the PostObject operation uses an AccessKey
+  *   secret to calculate the signature for the policy form field. The calculated
+  *   signature string is used as the value of the Signature form field. OSS checks
+  *   this value to verify the validity of the signature.
+  * - 
+  *   The URL of the submitted form is the domain name of the bucket. You do not
+  *   need to specify the object that you want to upload in the URL. In other words,
+  *   the request line is in the format of `POST T/ HTTP/1.1` instead of `POST
+  *   /ObjectName HTTP/1.1`.
+  * - 
+  *   OSS does not check the signature information that is contained in headers or
+  *   URLs in PostObject requests.
+  *
+  * @param headers map
+  * @param runtime runtime options for this request RuntimeOptions
+  * @return PostObjectResponse
+ */
+async function postObjectWithOptions(bucket: string, headers: map[string]string, runtime: Util.RuntimeOptions): PostObjectResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+  };
+  var params = new OpenApi.Params{
+    action = 'PostObject',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/`,
+    method = 'POST',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'multiFormData',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+/**
+  * - 
+  *   The object that is uploaded by calling the PostObject operation cannot be
+  *   larger than 5 GB in size.
+  * - 
+  *   To initiate a PostObject request to a bucket, you must have write permissions
+  *   on the bucket. If the ACL of the bucket to which you want to initiate a
+  *   PostObject request is public-read-write, you do not need to sign the
+  *   PostObject request. In other cases, Object Storage Service (OSS) verifies the
+  *   signature information contained in the request.
+  * - 
+  *   Unlike the PutObject operation, the PostObject operation uses an AccessKey
+  *   secret to calculate the signature for the policy form field. The calculated
+  *   signature string is used as the value of the Signature form field. OSS checks
+  *   this value to verify the validity of the signature.
+  * - 
+  *   The URL of the submitted form is the domain name of the bucket. You do not
+  *   need to specify the object that you want to upload in the URL. In other words,
+  *   the request line is in the format of `POST T/ HTTP/1.1` instead of `POST
+  *   /ObjectName HTTP/1.1`.
+  * - 
+  *   OSS does not check the signature information that is contained in headers or
+  *   URLs in PostObject requests.
+  *
+  * @return PostObjectResponse
+ */
+async function postObject(bucket: string): PostObjectResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return postObjectWithOptions(bucket, headers, runtime);
+}
+
+model PostVodPlaylistRequest {
+  endTime?: string(name='endTime', example='1636618271'),
+  startTime?: string(name='startTime', example='1636600271'),
+}
+
+model PostVodPlaylistResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function postVodPlaylistWithOptions(bucket: string, channel: string, playlist: string, request: PostVodPlaylistRequest, headers: map[string]string, runtime: Util.RuntimeOptions): PostVodPlaylistResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.endTime)) {
+    query['endTime'] = request.endTime;
+  }
+  if (!Util.isUnset(request.startTime)) {
+    query['startTime'] = request.startTime;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'PostVodPlaylist',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${channel}/${playlist}?vod`,
+    method = 'POST',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function postVodPlaylist(bucket: string, channel: string, playlist: string, request: PostVodPlaylistRequest): PostVodPlaylistResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return postVodPlaylistWithOptions(bucket, channel, playlist, request, headers, runtime);
+}
+
+model PutBucketHeaders {
+  commonHeaders?: map[string]string,
+  acl?: string(name='x-oss-acl'),
+  xOssResourceGroupId?:   string(name='x-oss-resource-group-id'),
+}
+
+model PutBucketRequest {
+  createBucketConfiguration?: CreateBucketConfiguration(name='CreateBucketConfiguration'),
+}
+
+model PutBucketResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putBucketWithOptions(bucket: string, request: PutBucketRequest, headers: PutBucketHeaders, runtime: Util.RuntimeOptions): PutBucketResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var realHeaders : map[string]string = {};
+  if (!Util.isUnset(headers.commonHeaders)) {
+    realHeaders = headers.commonHeaders;
+  }
+  if (!Util.isUnset(headers.acl)) {
+    realHeaders['x-oss-acl'] = Util.toJSONString(headers.acl);
+  }
+  if (!Util.isUnset(headers.xOssResourceGroupId)) {
+    realHeaders['x-oss-resource-group-id'] = Util.toJSONString(headers.xOssResourceGroupId);
+  }
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = realHeaders,
+    body = OpenApiUtil.parseToMap(request.createBucketConfiguration),
+  };
+  var params = new OpenApi.Params{
+    action = 'PutBucket',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putBucket(bucket: string, request: PutBucketRequest): PutBucketResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers = new PutBucketHeaders{};
+  return putBucketWithOptions(bucket, request, headers, runtime);
+}
+
+model PutBucketAclHeaders {
+  commonHeaders?: map[string]string,
+  acl?: string(name='x-oss-acl'),
+}
+
+model PutBucketAclResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putBucketAclWithOptions(bucket: string, headers: PutBucketAclHeaders, runtime: Util.RuntimeOptions): PutBucketAclResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var realHeaders : map[string]string = {};
+  if (!Util.isUnset(headers.commonHeaders)) {
+    realHeaders = headers.commonHeaders;
+  }
+  if (!Util.isUnset(headers.acl)) {
+    realHeaders['x-oss-acl'] = Util.toJSONString(headers.acl);
+  }
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = realHeaders,
+  };
+  var params = new OpenApi.Params{
+    action = 'PutBucketAcl',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?acl`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putBucketAcl(bucket: string): PutBucketAclResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers = new PutBucketAclHeaders{};
+  return putBucketAclWithOptions(bucket, headers, runtime);
+}
+
+model PutBucketCorsRequest {
+  cORSConfiguration?: CORSConfiguration(name='CORSConfiguration'),
+}
+
+model PutBucketCorsResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putBucketCorsWithOptions(bucket: string, request: PutBucketCorsRequest, headers: map[string]string, runtime: Util.RuntimeOptions): PutBucketCorsResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    body = OpenApiUtil.parseToMap(request.cORSConfiguration),
+  };
+  var params = new OpenApi.Params{
+    action = 'PutBucketCors',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?cors`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putBucketCors(bucket: string, request: PutBucketCorsRequest): PutBucketCorsResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return putBucketCorsWithOptions(bucket, request, headers, runtime);
+}
+
+model PutBucketEncryptionRequest {
+  serverSideEncryptionRule?: ServerSideEncryptionRule(name='ServerSideEncryptionRule'),
+}
+
+model PutBucketEncryptionResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putBucketEncryptionWithOptions(bucket: string, request: PutBucketEncryptionRequest, headers: map[string]string, runtime: Util.RuntimeOptions): PutBucketEncryptionResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    body = OpenApiUtil.parseToMap(request.serverSideEncryptionRule),
+  };
+  var params = new OpenApi.Params{
+    action = 'PutBucketEncryption',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?encryption`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putBucketEncryption(bucket: string, request: PutBucketEncryptionRequest): PutBucketEncryptionResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return putBucketEncryptionWithOptions(bucket, request, headers, runtime);
+}
+
+model PutBucketInventoryRequest {
+  inventoryConfiguration?: InventoryConfiguration(name='InventoryConfiguration', description='存储清单配置信息的容器。'),
+  inventoryId?: string(name='inventoryId', example='report1'),
+}
+
+model PutBucketInventoryResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putBucketInventoryWithOptions(bucket: string, request: PutBucketInventoryRequest, headers: map[string]string, runtime: Util.RuntimeOptions): PutBucketInventoryResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.inventoryId)) {
+    query['inventoryId'] = request.inventoryId;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+    body = OpenApiUtil.parseToMap(request.inventoryConfiguration),
+  };
+  var params = new OpenApi.Params{
+    action = 'PutBucketInventory',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?inventory`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putBucketInventory(bucket: string, request: PutBucketInventoryRequest): PutBucketInventoryResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return putBucketInventoryWithOptions(bucket, request, headers, runtime);
+}
+
+model PutBucketLifecycleRequest {
+  lifecycleConfiguration?: LifecycleConfiguration(name='LifecycleConfiguration'),
+}
+
+model PutBucketLifecycleResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putBucketLifecycleWithOptions(bucket: string, request: PutBucketLifecycleRequest, headers: map[string]string, runtime: Util.RuntimeOptions): PutBucketLifecycleResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    body = OpenApiUtil.parseToMap(request.lifecycleConfiguration),
+  };
+  var params = new OpenApi.Params{
+    action = 'PutBucketLifecycle',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?lifecycle`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putBucketLifecycle(bucket: string, request: PutBucketLifecycleRequest): PutBucketLifecycleResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return putBucketLifecycleWithOptions(bucket, request, headers, runtime);
+}
+
+model PutBucketLoggingRequest {
+  bucketLoggingStatus?: BucketLoggingStatus(name='BucketLoggingStatus'),
+}
+
+model PutBucketLoggingResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putBucketLoggingWithOptions(bucket: string, request: PutBucketLoggingRequest, headers: map[string]string, runtime: Util.RuntimeOptions): PutBucketLoggingResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    body = OpenApiUtil.parseToMap(request.bucketLoggingStatus),
+  };
+  var params = new OpenApi.Params{
+    action = 'PutBucketLogging',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?logging`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putBucketLogging(bucket: string, request: PutBucketLoggingRequest): PutBucketLoggingResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return putBucketLoggingWithOptions(bucket, request, headers, runtime);
+}
+
+model PutBucketPolicyRequest {
+  policy?: string(name='body'),
+}
+
+model PutBucketPolicyResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putBucketPolicyWithOptions(bucket: string, request: PutBucketPolicyRequest, headers: map[string]string, runtime: Util.RuntimeOptions): PutBucketPolicyResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    body = request.policy,
+  };
+  var params = new OpenApi.Params{
+    action = 'PutBucketPolicy',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?policy`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'json',
+    bodyType = 'json',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putBucketPolicy(bucket: string, request: PutBucketPolicyRequest): PutBucketPolicyResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return putBucketPolicyWithOptions(bucket, request, headers, runtime);
+}
+
+model PutBucketRefererRequest {
+  refererConfiguration?: RefererConfiguration(name='RefererConfiguration'),
+}
+
+model PutBucketRefererResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putBucketRefererWithOptions(bucket: string, request: PutBucketRefererRequest, headers: map[string]string, runtime: Util.RuntimeOptions): PutBucketRefererResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    body = OpenApiUtil.parseToMap(request.refererConfiguration),
+  };
+  var params = new OpenApi.Params{
+    action = 'PutBucketReferer',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?referer`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putBucketReferer(bucket: string, request: PutBucketRefererRequest): PutBucketRefererResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return putBucketRefererWithOptions(bucket, request, headers, runtime);
+}
+
+model PutBucketReplicationRequest {
+  replicationConfiguration?: ReplicationConfiguration(name='ReplicationConfiguration'),
+}
+
+model PutBucketReplicationResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putBucketReplicationWithOptions(bucket: string, request: PutBucketReplicationRequest, headers: map[string]string, runtime: Util.RuntimeOptions): PutBucketReplicationResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    body = OpenApiUtil.parseToMap(request.replicationConfiguration),
+  };
+  var params = new OpenApi.Params{
+    action = 'PutBucketReplication',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?replication&comp=add`,
+    method = 'POST',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putBucketReplication(bucket: string, request: PutBucketReplicationRequest): PutBucketReplicationResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return putBucketReplicationWithOptions(bucket, request, headers, runtime);
+}
+
+model PutBucketRequestPaymentRequest {
+  requestPaymentConfiguration?: RequestPaymentConfiguration(name='RequestPaymentConfiguration'),
+}
+
+model PutBucketRequestPaymentResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putBucketRequestPaymentWithOptions(bucket: string, request: PutBucketRequestPaymentRequest, headers: map[string]string, runtime: Util.RuntimeOptions): PutBucketRequestPaymentResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    body = OpenApiUtil.parseToMap(request.requestPaymentConfiguration),
+  };
+  var params = new OpenApi.Params{
+    action = 'PutBucketRequestPayment',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?requestPayment`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putBucketRequestPayment(bucket: string, request: PutBucketRequestPaymentRequest): PutBucketRequestPaymentResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return putBucketRequestPaymentWithOptions(bucket, request, headers, runtime);
+}
+
+model PutBucketTagsRequest {
+  tagging?: Tagging(name='Tagging'),
+}
+
+model PutBucketTagsResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putBucketTagsWithOptions(bucket: string, request: PutBucketTagsRequest, headers: map[string]string, runtime: Util.RuntimeOptions): PutBucketTagsResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    body = OpenApiUtil.parseToMap(request.tagging),
+  };
+  var params = new OpenApi.Params{
+    action = 'PutBucketTags',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?tagging`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putBucketTags(bucket: string, request: PutBucketTagsRequest): PutBucketTagsResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return putBucketTagsWithOptions(bucket, request, headers, runtime);
+}
+
+model PutBucketTransferAccelerationRequest {
+  transferAccelerationConfiguration?: TransferAccelerationConfiguration(name='TransferAccelerationConfiguration'),
+}
+
+model PutBucketTransferAccelerationResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putBucketTransferAccelerationWithOptions(bucket: string, request: PutBucketTransferAccelerationRequest, headers: map[string]string, runtime: Util.RuntimeOptions): PutBucketTransferAccelerationResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    body = OpenApiUtil.parseToMap(request.transferAccelerationConfiguration),
+  };
+  var params = new OpenApi.Params{
+    action = 'PutBucketTransferAcceleration',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?transferAcceleration`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putBucketTransferAcceleration(bucket: string, request: PutBucketTransferAccelerationRequest): PutBucketTransferAccelerationResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return putBucketTransferAccelerationWithOptions(bucket, request, headers, runtime);
+}
+
+model PutBucketVersioningRequest {
+  versioningConfiguration?: VersioningConfiguration(name='VersioningConfiguration'),
+}
+
+model PutBucketVersioningResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putBucketVersioningWithOptions(bucket: string, request: PutBucketVersioningRequest, headers: map[string]string, runtime: Util.RuntimeOptions): PutBucketVersioningResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    body = OpenApiUtil.parseToMap(request.versioningConfiguration),
+  };
+  var params = new OpenApi.Params{
+    action = 'PutBucketVersioning',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?versioning`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putBucketVersioning(bucket: string, request: PutBucketVersioningRequest): PutBucketVersioningResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return putBucketVersioningWithOptions(bucket, request, headers, runtime);
+}
+
+model PutBucketWebsiteRequest {
+  websiteConfiguration?: WebsiteConfiguration(name='WebsiteConfiguration'),
+}
+
+model PutBucketWebsiteResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putBucketWebsiteWithOptions(bucket: string, request: PutBucketWebsiteRequest, headers: map[string]string, runtime: Util.RuntimeOptions): PutBucketWebsiteResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    body = OpenApiUtil.parseToMap(request.websiteConfiguration),
+  };
+  var params = new OpenApi.Params{
+    action = 'PutBucketWebsite',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/?website`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putBucketWebsite(bucket: string, request: PutBucketWebsiteRequest): PutBucketWebsiteResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return putBucketWebsiteWithOptions(bucket, request, headers, runtime);
+}
+
+model PutLiveChannelRequest {
+  liveChannelConfiguration?: LiveChannelConfiguration(name='LiveChannelConfiguration'),
+}
+
+model PutLiveChannelResponseBody = {
+  playUrls?: LiveChannelPlayUrls(name='PlayUrls'),
+  publishUrls?: LiveChannelPublishUrls(name='PublishUrls'),
+}
+
+model PutLiveChannelResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: PutLiveChannelResponseBody(name='body'),
+}
+
+async function putLiveChannelWithOptions(bucket: string, channel: string, request: PutLiveChannelRequest, headers: map[string]string, runtime: Util.RuntimeOptions): PutLiveChannelResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    body = OpenApiUtil.parseToMap(request.liveChannelConfiguration),
+  };
+  var params = new OpenApi.Params{
+    action = 'PutLiveChannel',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${channel}?live`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function putLiveChannel(bucket: string, channel: string, request: PutLiveChannelRequest): PutLiveChannelResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return putLiveChannelWithOptions(bucket, channel, request, headers, runtime);
+}
+
+model PutLiveChannelStatusRequest {
+  status?: string(name='status', example='enabled'),
+}
+
+model PutLiveChannelStatusResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putLiveChannelStatusWithOptions(bucket: string, channel: string, request: PutLiveChannelStatusRequest, headers: map[string]string, runtime: Util.RuntimeOptions): PutLiveChannelStatusResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.status)) {
+    query['status'] = request.status;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'PutLiveChannelStatus',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${channel}?live`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putLiveChannelStatus(bucket: string, channel: string, request: PutLiveChannelStatusRequest): PutLiveChannelStatusResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return putLiveChannelStatusWithOptions(bucket, channel, request, headers, runtime);
+}
+
+model PutObjectHeaders {
+  commonHeaders?: map[string]string,
+  forbidOverwrite?: boolean(name='x-oss-forbid-overwrite', example='false'),
+  metaData?: map[string]string(name='x-oss-meta-*', example='x-oss-meta-location'),
+  acl?: string(name='x-oss-object-acl'),
+  sseDataEncryption?: string(name='x-oss-server-side-data-encryption', example='AES256'),
+  serverSideEncryption?: string(name='x-oss-server-side-encryption', example='AES256'),
+  sseKeyId?: string(name='x-oss-server-side-encryption-key-id', example='9468da86-3509-4f8d-a61e-6eab1eac****'),
+  storageClass?: string(name='x-oss-storage-class'),
+  tagging?: string(name='x-oss-tagging', example='a:1'),
+}
+
+model PutObjectRequest {
+  body?: readable(name='body'),
+}
+
+model PutObjectResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putObjectWithOptions(bucket: string, key: string, request: PutObjectRequest, headers: PutObjectHeaders, runtime: Util.RuntimeOptions): PutObjectResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var realHeaders : map[string]string = {};
+  if (!Util.isUnset(headers.commonHeaders)) {
+    realHeaders = headers.commonHeaders;
+  }
+  if (!Util.isUnset(headers.forbidOverwrite)) {
+    realHeaders['x-oss-forbid-overwrite'] = Util.toJSONString(headers.forbidOverwrite);
+  }
+  if (!Util.isUnset(headers.metaData)) {
+    realHeaders['x-oss-meta-*'] = Util.toJSONString(headers.metaData);
+  }
+  if (!Util.isUnset(headers.acl)) {
+    realHeaders['x-oss-object-acl'] = Util.toJSONString(headers.acl);
+  }
+  if (!Util.isUnset(headers.sseDataEncryption)) {
+    realHeaders['x-oss-server-side-data-encryption'] = Util.toJSONString(headers.sseDataEncryption);
+  }
+  if (!Util.isUnset(headers.serverSideEncryption)) {
+    realHeaders['x-oss-server-side-encryption'] = Util.toJSONString(headers.serverSideEncryption);
+  }
+  if (!Util.isUnset(headers.sseKeyId)) {
+    realHeaders['x-oss-server-side-encryption-key-id'] = Util.toJSONString(headers.sseKeyId);
+  }
+  if (!Util.isUnset(headers.storageClass)) {
+    realHeaders['x-oss-storage-class'] = Util.toJSONString(headers.storageClass);
+  }
+  if (!Util.isUnset(headers.tagging)) {
+    realHeaders['x-oss-tagging'] = Util.toJSONString(headers.tagging);
+  }
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = realHeaders,
+    body = request.body,
+    stream = request.body,
+  };
+  var params = new OpenApi.Params{
+    action = 'PutObject',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'binary',
+    bodyType = 'none',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putObject(bucket: string, key: string, request: PutObjectRequest): PutObjectResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers = new PutObjectHeaders{};
+  return putObjectWithOptions(bucket, key, request, headers, runtime);
+}
+
+model PutObjectAclHeaders {
+  commonHeaders?: map[string]string,
+  acl?: string(name='x-oss-object-acl'),
+}
+
+model PutObjectAclRequest {
+  versionId?: string(name='versionId', example='CAEQMhiBgIC3rpSD0BYiIDBjYTk5MmIzN2JlNjQxZTFiNGIzM2E3OTliODA0****'),
+}
+
+model PutObjectAclResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putObjectAclWithOptions(bucket: string, key: string, request: PutObjectAclRequest, headers: PutObjectAclHeaders, runtime: Util.RuntimeOptions): PutObjectAclResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.versionId)) {
+    query['versionId'] = request.versionId;
+  }
+
+  var realHeaders : map[string]string = {};
+  if (!Util.isUnset(headers.commonHeaders)) {
+    realHeaders = headers.commonHeaders;
+  }
+  if (!Util.isUnset(headers.acl)) {
+    realHeaders['x-oss-object-acl'] = Util.toJSONString(headers.acl);
+  }
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = realHeaders,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'PutObjectAcl',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}?acl`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putObjectAcl(bucket: string, key: string, request: PutObjectAclRequest): PutObjectAclResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers = new PutObjectAclHeaders{};
+  return putObjectAclWithOptions(bucket, key, request, headers, runtime);
+}
+
+model PutObjectTaggingRequest {
+  tagging?: Tagging(name='Tagging'),
+  versionId?: string(name='versionId', example='CAEQNRiBgMClj7qD0BYiIDQ5Y2QyMjc3NGZkODRlMTU5M2VkY2U3MWRiNGRh****'),
+}
+
+model PutObjectTaggingResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putObjectTaggingWithOptions(bucket: string, key: string, request: PutObjectTaggingRequest, headers: map[string]string, runtime: Util.RuntimeOptions): PutObjectTaggingResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.versionId)) {
+    query['versionId'] = request.versionId;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+    body = OpenApiUtil.parseToMap(request.tagging),
+  };
+  var params = new OpenApi.Params{
+    action = 'PutObjectTagging',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}?tagging`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putObjectTagging(bucket: string, key: string, request: PutObjectTaggingRequest): PutObjectTaggingResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return putObjectTaggingWithOptions(bucket, key, request, headers, runtime);
+}
+
+model PutSymlinkHeaders {
+  commonHeaders?: map[string]string,
+  forbidOverwrite?: string(name='x-oss-forbid-overwrite', example='true'),
+  acl?: string(name='x-oss-object-acl'),
+  storageClass?: string(name='x-oss-storage-class'),
+  symlinkTargetKey?: string(name='x-oss-symlink-target', example='oss.jpg'),
+}
+
+model PutSymlinkResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function putSymlinkWithOptions(bucket: string, key: string, headers: PutSymlinkHeaders, runtime: Util.RuntimeOptions): PutSymlinkResponse {
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var realHeaders : map[string]string = {};
+  if (!Util.isUnset(headers.commonHeaders)) {
+    realHeaders = headers.commonHeaders;
+  }
+  if (!Util.isUnset(headers.forbidOverwrite)) {
+    realHeaders['x-oss-forbid-overwrite'] = Util.toJSONString(headers.forbidOverwrite);
+  }
+  if (!Util.isUnset(headers.acl)) {
+    realHeaders['x-oss-object-acl'] = Util.toJSONString(headers.acl);
+  }
+  if (!Util.isUnset(headers.storageClass)) {
+    realHeaders['x-oss-storage-class'] = Util.toJSONString(headers.storageClass);
+  }
+  if (!Util.isUnset(headers.symlinkTargetKey)) {
+    realHeaders['x-oss-symlink-target'] = Util.toJSONString(headers.symlinkTargetKey);
+  }
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = realHeaders,
+  };
+  var params = new OpenApi.Params{
+    action = 'PutSymlink',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}?symlink`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function putSymlink(bucket: string, key: string): PutSymlinkResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers = new PutSymlinkHeaders{};
+  return putSymlinkWithOptions(bucket, key, headers, runtime);
+}
+
+model RestoreObjectRequest {
+  restoreRequest?: RestoreRequest(name='RestoreRequest'),
+  versionId?: string(name='versionId', example='CAEQNRiBgMClj7qD0BYiIDQ5Y2QyMjc3NGZkODRlMTU5M2VkY2U3MWRiNGRh'),
+}
+
+model RestoreObjectResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function restoreObjectWithOptions(bucket: string, key: string, request: RestoreObjectRequest, headers: map[string]string, runtime: Util.RuntimeOptions): RestoreObjectResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.versionId)) {
+    query['versionId'] = request.versionId;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+    body = OpenApiUtil.parseToMap(request.restoreRequest),
+  };
+  var params = new OpenApi.Params{
+    action = 'RestoreObject',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}?restore`,
+    method = 'POST',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function restoreObject(bucket: string, key: string, request: RestoreObjectRequest): RestoreObjectResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return restoreObjectWithOptions(bucket, key, request, headers, runtime);
+}
+
+model SelectObjectRequest {
+  selectRequest?: SelectRequest(name='SelectRequest'),
+}
+
+model SelectObjectResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: readable(name='body'),
+}
+
+async function selectObjectWithOptions(bucket: string, key: string, request: SelectObjectRequest, headers: map[string]string, runtime: Util.RuntimeOptions): SelectObjectResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    body = OpenApiUtil.parseToMap(request.selectRequest),
+  };
+  var params = new OpenApi.Params{
+    action = 'SelectObject',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}`,
+    method = 'POST',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'binary',
+  };
+  return execute(params, req, runtime);
+}
+
+async function selectObject(bucket: string, key: string, request: SelectObjectRequest): SelectObjectResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return selectObjectWithOptions(bucket, key, request, headers, runtime);
+}
+
+model UploadPartRequest {
+  body?: readable(name='body'),
+  partNumber?: long(name='partNumber', example='2'),
+  uploadId?: string(name='uploadId', example='0004B9895DBBB6EC98E36'),
+}
+
+model UploadPartResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+}
+
+async function uploadPartWithOptions(bucket: string, key: string, request: UploadPartRequest, headers: map[string]string, runtime: Util.RuntimeOptions): UploadPartResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.partNumber)) {
+    query['partNumber'] = request.partNumber;
+  }
+  if (!Util.isUnset(request.uploadId)) {
+    query['uploadId'] = request.uploadId;
+  }
+
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = headers,
+    query = OpenApiUtil.query(query),
+    body = request.body,
+    stream = request.body,
+  };
+  var params = new OpenApi.Params{
+    action = 'UploadPart',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'binary',
+    bodyType = 'xml',
+  };
+  return execute(params, req, runtime);
+}
+
+async function uploadPart(bucket: string, key: string, request: UploadPartRequest): UploadPartResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers : map[string]string = {};
+  return uploadPartWithOptions(bucket, key, request, headers, runtime);
+}
+
+model UploadPartCopyHeaders {
+  commonHeaders?: map[string]string,
+  copySource?: string(name='x-oss-copy-source', example='/oss-example/ src-object'),
+  copySourceIfMatch?: string(name='x-oss-copy-source-if-match', example='5B3C1A2E053D763E1B002CC607C5****'),
+  copySourceIfModifiedSince?: string(name='x-oss-copy-source-if-modified-since', example='Fri, 13 Nov 2015 14:47:53 GMT'),
+  copySourceIfNoneMatch?: string(name='x-oss-copy-source-if-none-match', example='5B3C1A2E053D763E1B002CC607C5****'),
+  copySourceIfUnmodifiedSince?: string(name='x-oss-copy-source-if-unmodified-since', example='Fri, 13 Oct 2015 14:47:53 GMT'),
+  copySourceRange?: string(name='x-oss-copy-source-range', example='bytes=100-6291756'),
+}
+
+model UploadPartCopyRequest {
+  partNumber?: long(name='partNumber', example='10000'),
+  uploadId?: string(name='uploadId', example='0004B999EF5A239BB9138C6227D69F95'),
+}
+
+model UploadPartCopyResponseBody = {
+  ETag?: string(name='ETag', example='250F8A0AE989679A22926A875F0A2****'),
+  lastModified?: string(name='LastModified', example='2019-04-09T07:27:28.000Z'),
+}
+
+model UploadPartCopyResponse = {
+  headers: map[string]string(name='headers'),
+  statusCode: int32(name='statusCode'),
+  body: UploadPartCopyResponseBody(name='body'),
+}
+
+async function uploadPartCopyWithOptions(bucket: string, key: string, request: UploadPartCopyRequest, headers: UploadPartCopyHeaders, runtime: Util.RuntimeOptions): UploadPartCopyResponse {
+  Util.validateModel(request);
+  var hostMap : map[string]string = {};
+  hostMap['bucket'] = bucket;
+  var query : map[string]any = {};
+  if (!Util.isUnset(request.partNumber)) {
+    query['partNumber'] = request.partNumber;
+  }
+  if (!Util.isUnset(request.uploadId)) {
+    query['uploadId'] = request.uploadId;
+  }
+
+  var realHeaders : map[string]string = {};
+  if (!Util.isUnset(headers.commonHeaders)) {
+    realHeaders = headers.commonHeaders;
+  }
+  if (!Util.isUnset(headers.copySource)) {
+    realHeaders['x-oss-copy-source'] = Util.toJSONString(headers.copySource);
+  }
+  if (!Util.isUnset(headers.copySourceIfMatch)) {
+    realHeaders['x-oss-copy-source-if-match'] = Util.toJSONString(headers.copySourceIfMatch);
+  }
+  if (!Util.isUnset(headers.copySourceIfModifiedSince)) {
+    realHeaders['x-oss-copy-source-if-modified-since'] = Util.toJSONString(headers.copySourceIfModifiedSince);
+  }
+  if (!Util.isUnset(headers.copySourceIfNoneMatch)) {
+    realHeaders['x-oss-copy-source-if-none-match'] = Util.toJSONString(headers.copySourceIfNoneMatch);
+  }
+  if (!Util.isUnset(headers.copySourceIfUnmodifiedSince)) {
+    realHeaders['x-oss-copy-source-if-unmodified-since'] = Util.toJSONString(headers.copySourceIfUnmodifiedSince);
+  }
+  if (!Util.isUnset(headers.copySourceRange)) {
+    realHeaders['x-oss-copy-source-range'] = Util.toJSONString(headers.copySourceRange);
+  }
+  var req = new OpenApi.OpenApiRequest{ 
+    hostMap = hostMap,
+    headers = realHeaders,
+    query = OpenApiUtil.query(query),
+  };
+  var params = new OpenApi.Params{
+    action = 'UploadPartCopy',
+    version = '2019-05-17',
+    protocol = 'HTTPS',
+    pathname = `/${key}`,
+    method = 'PUT',
+    authType = 'AK',
+    style = 'ROA',
+    reqBodyType = 'xml',
+    bodyType = 'xml',  };
+  return execute(params, req, runtime);
+}
+
+async function uploadPartCopy(bucket: string, key: string, request: UploadPartCopyRequest): UploadPartCopyResponse {
+  var runtime = new Util.RuntimeOptions{};
+  var headers = new UploadPartCopyHeaders{};
+  return uploadPartCopyWithOptions(bucket, key, request, headers, runtime);
+}
+

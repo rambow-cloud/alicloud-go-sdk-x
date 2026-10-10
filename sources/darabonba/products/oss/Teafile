@@ -1,0 +1,117 @@
+{
+  "scope": "alibabacloud",
+  "name": "Oss20190517",
+  "version": "1.0.14",
+  "main": "./main.tea",
+  "maintainers": [
+    {
+      "name": "Alibaba Cloud SDK",
+      "email": "sdk-team@alibabacloud.com"
+    }
+  ],
+  "java": {
+    "package": "com.aliyun.oss20190517",
+    "enableMinimizeModelName": true,
+    "packageInfo": {
+      "description": "Alibaba Cloud Object Storage Service (20190517) SDK for Java",
+      "url": "https://github.com/aliyun/alibabacloud-java-sdk",
+      "licenseName": "The Apache License, Version 2.0",
+      "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+      "developerId": "aliyunproducts",
+      "developerName": "Aliyun SDK",
+      "developerEmail": "aliyunsdk@aliyun.com"
+    }
+  },
+  "releases": {
+    "java": "com.aliyun:oss20190517:1.0.6",
+    "go": "github.com/alibabacloud-go/oss-20190517/v2/client:v2.0.1",
+    "csharp": "AlibabaCloud.SDK.Oss20190517:1.0.7",
+    "ts": "@alicloud/oss20190517:1.0.6",
+    "php": "alibabacloud/oss-20190517:1.0.5",
+    "python": "alibabacloud_oss20190517:1.0.6",
+    "python2": "alibabacloud_oss20190517_py2:1.0.6",
+    "swift": "alibabacloud-sdk-swift/oss-20190517:1.0.0"
+  },
+  "libraries": {
+    "OpenApi": "alibabacloud:OpenApi:*",
+    "Util": "darabonba:Util:*",
+    "OpenApiUtil": "alibabacloud:OpenApiUtil:*",
+    "EndpointUtil": "alibabacloud:EndpointUtil:*",
+    "SPI": "alibabacloud:GatewaySPI:*",
+    "GatewayClient": "alibabacloud:GatewayOSS:*",
+    "Paginator": "alibabacloud:Paginator:*"
+  },
+  "csharp": {
+    "className": "Client",
+    "namespace": "AlibabaCloud.SDK.Oss20190517",
+    "packageInfo": {
+      "name": "oss",
+      "title": "alibabacloud-oss",
+      "description": "Alibaba Cloud Object Storage Service (20190517) SDK Library for .NET",
+      "company": "Alibaba Cloud",
+      "property": {
+        "PackageTags": "Alibaba Aliyun Object Storage Service SDK",
+        "Copyright": "©2009-present Alibaba Cloud",
+        "PackageProjectUrl": "https://github.com/aliyun/alibabacloud-csharp-sdk",
+        "PackageIconUrl": "https://www.alibabacloud.com/favicon.ico"
+      }
+    }
+  },
+  "php": {
+    "package": "AlibabaCloud.SDK.Oss.V20190517",
+    "clientName": "Oss",
+    "packageInfo": {
+      "name": "alibabacloud/oss-20190517",
+      "desc": "Alibaba Cloud Object Storage Service (20190517) SDK Library for PHP",
+      "github": "https://github.com/aliyun/alibabacloud-php-sdk",
+      "files": {
+        "LICENSE": "../LICENSE"
+      }
+    }
+  },
+  "python": {
+    "package": "alibabacloud_oss20190517",
+    "clientName": "client",
+    "packageInfo": {
+      "name": "alibabacloud_oss20190517",
+      "desc": "Alibaba Cloud Object Storage Service (20190517) SDK Library for Python",
+      "github": "https://github.com/aliyun/alibabacloud-python-sdk",
+      "author": "Alibaba Cloud SDK",
+      "email": "sdk-team@alibabacloud.com"
+    }
+  },
+  "python2": {
+    "package": "alibabacloud_oss20190517",
+    "clientName": "client",
+    "packageInfo": {
+      "name": "alibabacloud_oss20190517_py2",
+      "desc": "Alibaba Cloud Object Storage Service (20190517) SDK Library for Python2",
+      "github": "https://github.com/aliyun/alibabacloud-python2-sdk",
+      "author": "Alibaba Cloud SDK",
+      "email": "sdk-team@alibabacloud.com"
+    }
+  },
+  "cpp": {
+    "packageInfo": {
+      "git": {
+        "scope": "alibabacloud-sdk-cpp",
+        "project": "oss-20190517"
+      }
+    }
+  },
+  "swift": {
+    "clientName": "Client",
+    "packageInfo": {
+      "name": "AlibabacloudOss20190517",
+      "desc": "Alibaba Cloud Object Storage Service (20190517) SDK Library for Swift",
+      "github": "https://github.com/alibabacloud-sdk-swift/oss-20190517",
+      "author": "Alibaba Cloud SDK",
+      "email": "sdk-team@alibabacloud.com"
+    }
+  },
+  "go": {
+    "mapAndSliceWithoutOmitempty": false
+  },
+  "productId": "Oss",
+  "apiVersions": "2019-05-17"
+}

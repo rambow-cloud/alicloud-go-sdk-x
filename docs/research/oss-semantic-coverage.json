@@ -1,0 +1,2388 @@
+{
+  "schemaVersion": 1,
+  "product": "oss",
+  "version": "2019-05-17",
+  "provenance": {
+    "repository": "https://github.com/aliyun/alibabacloud-sdk",
+    "revision": "ec489e5c3deae95496daae2b41503ac58b221adb",
+    "license": "Apache-2.0",
+    "parserVersion": "2.2.1",
+    "sourceManifestSHA256": "145082e7c8d725925ed509b430a6cc2e302d3f2fc97ae4986ea8f114fbc3924c",
+    "sourceSHA256": "0713683b286a49e4e80fff023f61db426dc035fb8755a7b4616a82f65c22e6ff",
+    "nativeInventorySHA256": "5758248cfa2a5370fa2b71f40d54f1afdb111ece5cafd43fc79bc1e78fde2b15",
+    "nativeRegistrySHA256": "5eb42ee19906a4e0a252465fb9b6ebc8b3c7236182d7936cf9b27e685712d8b0",
+    "nativeModelsSHA256": "b16acbcba29aac2145541a951e450a7ba7d909f46d6812be5bc29b831c629092",
+    "gatewaySHA256": "71caf417a396688b8a4a38b0e0f431d5adfb7ae043d98fa504f07ac1b319f44c"
+  },
+  "counts": {
+    "discovered": 90,
+    "lowered": 16,
+    "unsupported": 74,
+    "dslOperations": 90,
+    "catalogOnlyOperations": 0,
+    "dslOnlyOperations": 90,
+    "declaredModels": 303,
+    "reachableNamedModels": 271,
+    "reachableAnonymousModels": 56,
+    "unusedNamedModels": 32
+  },
+  "acceptance": {
+    "lowering": "assessed",
+    "goEmission": "not-assessed",
+    "compilation": "not-assessed",
+    "live": "not-assessed"
+  },
+  "reasonCounts": {
+    "DSL_OSS_BODY_PROFILE": 58,
+    "DSL_OSS_BUCKET_BINDING": 1,
+    "DSL_OSS_STATIC_PATH": 6,
+    "DSL_OSS_XML_SHAPE": 8,
+    "DSL_OSS_XML_TARGET": 1
+  },
+  "operations": [
+    {
+      "name": "AbortBucketWorm",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 822,
+        "column": 16,
+        "endLine": 822,
+        "endColumn": 42
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 822,
+            "column": 16,
+            "endLine": 822,
+            "endColumn": 42
+          }
+        }
+      ]
+    },
+    {
+      "name": "AbortMultipartUpload",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 858,
+        "column": 16,
+        "endLine": 858,
+        "endColumn": 47
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 858,
+            "column": 16,
+            "endLine": 858,
+            "endColumn": 47
+          }
+        }
+      ]
+    },
+    {
+      "name": "AppendObject",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 915,
+        "column": 16,
+        "endLine": 915,
+        "endColumn": 39
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 915,
+            "column": 16,
+            "endLine": 915,
+            "endColumn": 39
+          }
+        }
+      ]
+    },
+    {
+      "name": "CompleteBucketWorm",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 991,
+        "column": 16,
+        "endLine": 991,
+        "endColumn": 45
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 991,
+            "column": 16,
+            "endLine": 991,
+            "endColumn": 45
+          }
+        }
+      ]
+    },
+    {
+      "name": "CompleteMultipartUpload",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1051,
+        "column": 16,
+        "endLine": 1051,
+        "endColumn": 50
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1051,
+            "column": 16,
+            "endLine": 1051,
+            "endColumn": 50
+          }
+        }
+      ]
+    },
+    {
+      "name": "CopyObject",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1127,
+        "column": 16,
+        "endLine": 1127,
+        "endColumn": 37
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1127,
+            "column": 16,
+            "endLine": 1127,
+            "endColumn": 37
+          }
+        }
+      ]
+    },
+    {
+      "name": "CreateSelectObjectMeta",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1209,
+        "column": 16,
+        "endLine": 1209,
+        "endColumn": 49
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1209,
+            "column": 16,
+            "endLine": 1209,
+            "endColumn": 49
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteBucket",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1243,
+        "column": 16,
+        "endLine": 1243,
+        "endColumn": 39
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1243,
+            "column": 16,
+            "endLine": 1243,
+            "endColumn": 39
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteBucketCors",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1275,
+        "column": 16,
+        "endLine": 1275,
+        "endColumn": 43
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1275,
+            "column": 16,
+            "endLine": 1275,
+            "endColumn": 43
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteBucketEncryption",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1307,
+        "column": 16,
+        "endLine": 1307,
+        "endColumn": 49
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1307,
+            "column": 16,
+            "endLine": 1307,
+            "endColumn": 49
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteBucketInventory",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1343,
+        "column": 16,
+        "endLine": 1343,
+        "endColumn": 48
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1343,
+            "column": 16,
+            "endLine": 1343,
+            "endColumn": 48
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteBucketLifecycle",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1382,
+        "column": 16,
+        "endLine": 1382,
+        "endColumn": 48
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1382,
+            "column": 16,
+            "endLine": 1382,
+            "endColumn": 48
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteBucketLogging",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1414,
+        "column": 16,
+        "endLine": 1414,
+        "endColumn": 46
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1414,
+            "column": 16,
+            "endLine": 1414,
+            "endColumn": 46
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteBucketPolicy",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1446,
+        "column": 16,
+        "endLine": 1446,
+        "endColumn": 45
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1446,
+            "column": 16,
+            "endLine": 1446,
+            "endColumn": 45
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteBucketReplication",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1482,
+        "column": 16,
+        "endLine": 1482,
+        "endColumn": 50
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1482,
+            "column": 16,
+            "endLine": 1482,
+            "endColumn": 50
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteBucketTags",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1516,
+        "column": 16,
+        "endLine": 1516,
+        "endColumn": 43
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1516,
+            "column": 16,
+            "endLine": 1516,
+            "endColumn": 43
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteBucketWebsite",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1548,
+        "column": 16,
+        "endLine": 1548,
+        "endColumn": 46
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1548,
+            "column": 16,
+            "endLine": 1548,
+            "endColumn": 46
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteLiveChannel",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1580,
+        "column": 16,
+        "endLine": 1580,
+        "endColumn": 44
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1580,
+            "column": 16,
+            "endLine": 1580,
+            "endColumn": 44
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteMultipleObjects",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1630,
+        "column": 16,
+        "endLine": 1630,
+        "endColumn": 48
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1630,
+            "column": 16,
+            "endLine": 1630,
+            "endColumn": 48
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteObject",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1680,
+        "column": 16,
+        "endLine": 1680,
+        "endColumn": 39
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1680,
+            "column": 16,
+            "endLine": 1680,
+            "endColumn": 39
+          }
+        }
+      ]
+    },
+    {
+      "name": "DeleteObjectTagging",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1723,
+        "column": 16,
+        "endLine": 1723,
+        "endColumn": 46
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1723,
+            "column": 16,
+            "endLine": 1723,
+            "endColumn": 46
+          }
+        }
+      ]
+    },
+    {
+      "name": "DescribeRegions",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1773,
+        "column": 16,
+        "endLine": 1773,
+        "endColumn": 42
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BUCKET_BINDING",
+          "message": "OSS bucket signature",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1773,
+            "column": 16,
+            "endLine": 1773,
+            "endColumn": 42
+          }
+        }
+      ]
+    },
+    {
+      "name": "ExtendBucketWorm",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1813,
+        "column": 16,
+        "endLine": 1813,
+        "endColumn": 43
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1813,
+            "column": 16,
+            "endLine": 1813,
+            "endColumn": 43
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetBucketAcl",
+      "status": "lowered",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1861,
+        "column": 16,
+        "endLine": 1861,
+        "endColumn": 39
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetBucketCors",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1900,
+        "column": 16,
+        "endLine": 1900,
+        "endColumn": 40
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_XML_SHAPE",
+          "message": "OSS XML shape differs",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1900,
+            "column": 16,
+            "endLine": 1900,
+            "endColumn": 40
+          },
+          "differences": [
+            {
+              "code": "XML_KIND",
+              "path": "GetBucketCors.CORSRule[].AllowedHeader",
+              "dslKind": "scalar",
+              "nativeKind": "array",
+              "dslSource": {
+                "file": "products/oss/main.tea",
+                "line": 150,
+                "column": 3,
+                "endLine": 150,
+                "endColumn": 16
+              },
+              "nativeSource": {
+                "file": "client/structs.go",
+                "line": 837,
+                "column": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GetBucketEncryption",
+      "status": "lowered",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1936,
+        "column": 16,
+        "endLine": 1936,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetBucketInfo",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 1968,
+        "column": 16,
+        "endLine": 1968,
+        "endColumn": 40
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_XML_SHAPE",
+          "message": "OSS XML shape differs",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 1968,
+            "column": 16,
+            "endLine": 1968,
+            "endColumn": 40
+          },
+          "differences": [
+            {
+              "code": "XML_NATIVE_FIELD_ABSENT",
+              "path": "GetBucketInfo.Bucket.BucketPolicy.TargetBucket",
+              "dslSource": {
+                "file": "products/oss/main.tea",
+                "line": 485,
+                "column": 3,
+                "endLine": 485,
+                "endColumn": 15
+              },
+              "nativeSource": {
+                "file": "client/structs.go",
+                "line": 579,
+                "column": 2
+              }
+            },
+            {
+              "code": "XML_NATIVE_FIELD_ABSENT",
+              "path": "GetBucketInfo.Bucket.BucketPolicy.TargetPrefix",
+              "dslSource": {
+                "file": "products/oss/main.tea",
+                "line": 486,
+                "column": 3,
+                "endLine": 486,
+                "endColumn": 15
+              },
+              "nativeSource": {
+                "file": "client/structs.go",
+                "line": 579,
+                "column": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GetBucketInventory",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2018,
+        "column": 16,
+        "endLine": 2018,
+        "endColumn": 45
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_XML_SHAPE",
+          "message": "OSS XML shape differs",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 2018,
+            "column": 16,
+            "endLine": 2018,
+            "endColumn": 45
+          },
+          "differences": [
+            {
+              "code": "XML_KIND",
+              "path": "GetBucketInventory.Destination.OSSBucketDestination.Encryption.SSE-OSS",
+              "dslKind": "model",
+              "nativeKind": "scalar",
+              "dslSource": {
+                "file": "products/oss/main.tea",
+                "line": 328,
+                "column": 3,
+                "endLine": 328,
+                "endColumn": 9
+              },
+              "nativeSource": {
+                "file": "client/structs.go",
+                "line": 1860,
+                "column": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GetBucketLifecycle",
+      "status": "lowered",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2063,
+        "column": 16,
+        "endLine": 2063,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetBucketLocation",
+      "status": "lowered",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2099,
+        "column": 16,
+        "endLine": 2099,
+        "endColumn": 44
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetBucketLogging",
+      "status": "lowered",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2135,
+        "column": 16,
+        "endLine": 2135,
+        "endColumn": 43
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetBucketPolicy",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2167,
+        "column": 16,
+        "endLine": 2167,
+        "endColumn": 42
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 2167,
+            "column": 16,
+            "endLine": 2167,
+            "endColumn": 42
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetBucketReferer",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2200,
+        "column": 16,
+        "endLine": 2200,
+        "endColumn": 43
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 2200,
+            "column": 16,
+            "endLine": 2200,
+            "endColumn": 43
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetBucketReplication",
+      "status": "lowered",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2239,
+        "column": 16,
+        "endLine": 2239,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetBucketReplicationLocation",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2280,
+        "column": 16,
+        "endLine": 2280,
+        "endColumn": 55
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_XML_SHAPE",
+          "message": "OSS XML shape differs",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 2280,
+            "column": 16,
+            "endLine": 2280,
+            "endColumn": 55
+          },
+          "differences": [
+            {
+              "code": "XML_KIND",
+              "path": "GetBucketReplicationLocation.LocationTransferTypeConstraint.LocationTransferType[].TransferTypes.Type",
+              "dslKind": "scalar",
+              "nativeKind": "array",
+              "dslSource": {
+                "file": "products/oss/main.tea",
+                "line": 480,
+                "column": 5,
+                "endLine": 480,
+                "endColumn": 9
+              },
+              "nativeSource": {
+                "file": "client/structs.go",
+                "line": 2732,
+                "column": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GetBucketReplicationProgress",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2320,
+        "column": 16,
+        "endLine": 2320,
+        "endColumn": 55
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_XML_SHAPE",
+          "message": "OSS XML shape differs",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 2320,
+            "column": 16,
+            "endLine": 2320,
+            "endColumn": 55
+          },
+          "differences": [
+            {
+              "code": "XML_KIND",
+              "path": "GetBucketReplicationProgress.Rule",
+              "dslKind": "model",
+              "nativeKind": "array",
+              "dslSource": {
+                "file": "products/oss/main.tea",
+                "line": 2311,
+                "column": 3,
+                "endLine": 2311,
+                "endColumn": 7
+              },
+              "nativeSource": {
+                "file": "client/structs.go",
+                "line": 9267,
+                "column": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GetBucketRequestPayment",
+      "status": "lowered",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2363,
+        "column": 16,
+        "endLine": 2363,
+        "endColumn": 50
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetBucketTags",
+      "status": "lowered",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2399,
+        "column": 16,
+        "endLine": 2399,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetBucketTransferAcceleration",
+      "status": "lowered",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2435,
+        "column": 16,
+        "endLine": 2435,
+        "endColumn": 56
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetBucketVersioning",
+      "status": "lowered",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2471,
+        "column": 16,
+        "endLine": 2471,
+        "endColumn": 46
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetBucketWebsite",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2513,
+        "column": 16,
+        "endLine": 2513,
+        "endColumn": 43
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_XML_SHAPE",
+          "message": "OSS XML shape differs",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 2513,
+            "column": 16,
+            "endLine": 2513,
+            "endColumn": 43
+          },
+          "differences": [
+            {
+              "code": "XML_SCALAR_TYPE",
+              "path": "GetBucketWebsite.ErrorDocument.HttpStatus",
+              "dslType": "string",
+              "nativeType": "int64",
+              "dslSource": {
+                "file": "products/oss/main.tea",
+                "line": 269,
+                "column": 3,
+                "endLine": 269,
+                "endColumn": 13
+              },
+              "nativeSource": {
+                "file": "client/structs.go",
+                "line": 1517,
+                "column": 2
+              }
+            },
+            {
+              "code": "XML_SCALAR_TYPE",
+              "path": "GetBucketWebsite.IndexDocument.Type",
+              "dslType": "string",
+              "nativeType": "int64",
+              "dslSource": {
+                "file": "products/oss/main.tea",
+                "line": 295,
+                "column": 3,
+                "endLine": 295,
+                "endColumn": 7
+              },
+              "nativeSource": {
+                "file": "client/structs.go",
+                "line": 1699,
+                "column": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GetBucketWorm",
+      "status": "lowered",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2552,
+        "column": 16,
+        "endLine": 2552,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "GetLiveChannelHistory",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2590,
+        "column": 16,
+        "endLine": 2590,
+        "endColumn": 48
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_STATIC_PATH",
+          "message": "OSS static path",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 2590,
+            "column": 16,
+            "endLine": 2590,
+            "endColumn": 48
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetLiveChannelInfo",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2628,
+        "column": 16,
+        "endLine": 2628,
+        "endColumn": 45
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_STATIC_PATH",
+          "message": "OSS static path",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 2628,
+            "column": 16,
+            "endLine": 2628,
+            "endColumn": 45
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetLiveChannelStat",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2668,
+        "column": 16,
+        "endLine": 2668,
+        "endColumn": 45
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_STATIC_PATH",
+          "message": "OSS static path",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 2668,
+            "column": 16,
+            "endLine": 2668,
+            "endColumn": 45
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetObject",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2752,
+        "column": 16,
+        "endLine": 2752,
+        "endColumn": 36
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 2752,
+            "column": 16,
+            "endLine": 2752,
+            "endColumn": 36
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetObjectAcl",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2851,
+        "column": 16,
+        "endLine": 2851,
+        "endColumn": 39
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_STATIC_PATH",
+          "message": "OSS static path",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 2851,
+            "column": 16,
+            "endLine": 2851,
+            "endColumn": 39
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetObjectMeta",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2893,
+        "column": 16,
+        "endLine": 2893,
+        "endColumn": 40
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 2893,
+            "column": 16,
+            "endLine": 2893,
+            "endColumn": 40
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetObjectTagging",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2941,
+        "column": 16,
+        "endLine": 2941,
+        "endColumn": 43
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_STATIC_PATH",
+          "message": "OSS static path",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 2941,
+            "column": 16,
+            "endLine": 2941,
+            "endColumn": 43
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetSymlink",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 2983,
+        "column": 16,
+        "endLine": 2983,
+        "endColumn": 37
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_XML_TARGET",
+          "message": "OSS XML response body target missing",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 2983,
+            "column": 16,
+            "endLine": 2983,
+            "endColumn": 37
+          }
+        }
+      ]
+    },
+    {
+      "name": "GetVodPlaylist",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3028,
+        "column": 16,
+        "endLine": 3028,
+        "endColumn": 41
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 3028,
+            "column": 16,
+            "endLine": 3028,
+            "endColumn": 41
+          }
+        }
+      ]
+    },
+    {
+      "name": "HeadObject",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3095,
+        "column": 16,
+        "endLine": 3095,
+        "endColumn": 37
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 3095,
+            "column": 16,
+            "endLine": 3095,
+            "endColumn": 37
+          }
+        }
+      ]
+    },
+    {
+      "name": "InitiateBucketWorm",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3161,
+        "column": 16,
+        "endLine": 3161,
+        "endColumn": 45
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 3161,
+            "column": 16,
+            "endLine": 3161,
+            "endColumn": 45
+          }
+        }
+      ]
+    },
+    {
+      "name": "InitiateMultipartUpload",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3253,
+        "column": 16,
+        "endLine": 3253,
+        "endColumn": 50
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 3253,
+            "column": 16,
+            "endLine": 3253,
+            "endColumn": 50
+          }
+        }
+      ]
+    },
+    {
+      "name": "ListBucketInventory",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3346,
+        "column": 16,
+        "endLine": 3346,
+        "endColumn": 46
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_XML_SHAPE",
+          "message": "OSS XML shape differs",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 3346,
+            "column": 16,
+            "endLine": 3346,
+            "endColumn": 46
+          },
+          "differences": [
+            {
+              "code": "XML_KIND",
+              "path": "ListBucketInventory.InventoryConfiguration[].Destination.OSSBucketDestination.Encryption.SSE-OSS",
+              "dslKind": "model",
+              "nativeKind": "scalar",
+              "dslSource": {
+                "file": "products/oss/main.tea",
+                "line": 328,
+                "column": 3,
+                "endLine": 328,
+                "endColumn": 9
+              },
+              "nativeSource": {
+                "file": "client/structs.go",
+                "line": 1860,
+                "column": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ListBuckets",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3408,
+        "column": 16,
+        "endLine": 3408,
+        "endColumn": 38
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_XML_SHAPE",
+          "message": "OSS XML shape differs",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 3408,
+            "column": 16,
+            "endLine": 3408,
+            "endColumn": 38
+          },
+          "differences": [
+            {
+              "code": "XML_NATIVE_FIELD_ABSENT",
+              "path": "ListBuckets.buckets",
+              "dslSource": {
+                "file": "products/oss/main.tea",
+                "line": 3391,
+                "column": 3,
+                "endLine": 3391,
+                "endColumn": 10
+              },
+              "nativeSource": {
+                "file": "client/structs.go",
+                "line": 12031,
+                "column": 2
+              }
+            },
+            {
+              "code": "XML_NATIVE_FIELD_ABSENT",
+              "path": "ListBuckets.isTruncated",
+              "dslSource": {
+                "file": "products/oss/main.tea",
+                "line": 3394,
+                "column": 3,
+                "endLine": 3394,
+                "endColumn": 14
+              },
+              "nativeSource": {
+                "file": "client/structs.go",
+                "line": 12031,
+                "column": 2
+              }
+            },
+            {
+              "code": "XML_NATIVE_FIELD_ABSENT",
+              "path": "ListBuckets.marker",
+              "dslSource": {
+                "file": "products/oss/main.tea",
+                "line": 3395,
+                "column": 3,
+                "endLine": 3395,
+                "endColumn": 9
+              },
+              "nativeSource": {
+                "file": "client/structs.go",
+                "line": 12031,
+                "column": 2
+              }
+            },
+            {
+              "code": "XML_NATIVE_FIELD_ABSENT",
+              "path": "ListBuckets.maxKeys",
+              "dslSource": {
+                "file": "products/oss/main.tea",
+                "line": 3396,
+                "column": 3,
+                "endLine": 3396,
+                "endColumn": 10
+              },
+              "nativeSource": {
+                "file": "client/structs.go",
+                "line": 12031,
+                "column": 2
+              }
+            },
+            {
+              "code": "XML_NATIVE_FIELD_ABSENT",
+              "path": "ListBuckets.nextMarker",
+              "dslSource": {
+                "file": "products/oss/main.tea",
+                "line": 3397,
+                "column": 3,
+                "endLine": 3397,
+                "endColumn": 13
+              },
+              "nativeSource": {
+                "file": "client/structs.go",
+                "line": 12031,
+                "column": 2
+              }
+            },
+            {
+              "code": "XML_NATIVE_FIELD_ABSENT",
+              "path": "ListBuckets.owner",
+              "dslSource": {
+                "file": "products/oss/main.tea",
+                "line": 3398,
+                "column": 3,
+                "endLine": 3398,
+                "endColumn": 8
+              },
+              "nativeSource": {
+                "file": "client/structs.go",
+                "line": 12031,
+                "column": 2
+              }
+            },
+            {
+              "code": "XML_NATIVE_FIELD_ABSENT",
+              "path": "ListBuckets.prefix",
+              "dslSource": {
+                "file": "products/oss/main.tea",
+                "line": 3399,
+                "column": 3,
+                "endLine": 3399,
+                "endColumn": 9
+              },
+              "nativeSource": {
+                "file": "client/structs.go",
+                "line": 12031,
+                "column": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ListLiveChannel",
+      "status": "lowered",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3474,
+        "column": 16,
+        "endLine": 3474,
+        "endColumn": 42
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListMultipartUploads",
+      "status": "lowered",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3547,
+        "column": 16,
+        "endLine": 3547,
+        "endColumn": 47
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListObjectVersions",
+      "status": "lowered",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3632,
+        "column": 16,
+        "endLine": 3632,
+        "endColumn": 45
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListObjects",
+      "status": "lowered",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3711,
+        "column": 16,
+        "endLine": 3711,
+        "endColumn": 38
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListObjectsV2",
+      "status": "lowered",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3791,
+        "column": 16,
+        "endLine": 3791,
+        "endColumn": 40
+      },
+      "reasons": []
+    },
+    {
+      "name": "ListParts",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3875,
+        "column": 16,
+        "endLine": 3875,
+        "endColumn": 36
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_STATIC_PATH",
+          "message": "OSS static path",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 3875,
+            "column": 16,
+            "endLine": 3875,
+            "endColumn": 36
+          }
+        }
+      ]
+    },
+    {
+      "name": "OptionObject",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 3934,
+        "column": 16,
+        "endLine": 3934,
+        "endColumn": 39
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 3934,
+            "column": 16,
+            "endLine": 3934,
+            "endColumn": 39
+          }
+        }
+      ]
+    },
+    {
+      "name": "PostObject",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4007,
+        "column": 16,
+        "endLine": 4007,
+        "endColumn": 37
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4007,
+            "column": 16,
+            "endLine": 4007,
+            "endColumn": 37
+          }
+        }
+      ]
+    },
+    {
+      "name": "PostVodPlaylist",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4070,
+        "column": 16,
+        "endLine": 4070,
+        "endColumn": 42
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4070,
+            "column": 16,
+            "endLine": 4070,
+            "endColumn": 42
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutBucket",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4122,
+        "column": 16,
+        "endLine": 4122,
+        "endColumn": 36
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4122,
+            "column": 16,
+            "endLine": 4122,
+            "endColumn": 36
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutBucketAcl",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4171,
+        "column": 16,
+        "endLine": 4171,
+        "endColumn": 39
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4171,
+            "column": 16,
+            "endLine": 4171,
+            "endColumn": 39
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutBucketCors",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4214,
+        "column": 16,
+        "endLine": 4214,
+        "endColumn": 40
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4214,
+            "column": 16,
+            "endLine": 4214,
+            "endColumn": 40
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutBucketEncryption",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4252,
+        "column": 16,
+        "endLine": 4252,
+        "endColumn": 46
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4252,
+            "column": 16,
+            "endLine": 4252,
+            "endColumn": 46
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutBucketInventory",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4291,
+        "column": 16,
+        "endLine": 4291,
+        "endColumn": 45
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4291,
+            "column": 16,
+            "endLine": 4291,
+            "endColumn": 45
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutBucketLifecycle",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4335,
+        "column": 16,
+        "endLine": 4335,
+        "endColumn": 45
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4335,
+            "column": 16,
+            "endLine": 4335,
+            "endColumn": 45
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutBucketLogging",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4373,
+        "column": 16,
+        "endLine": 4373,
+        "endColumn": 43
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4373,
+            "column": 16,
+            "endLine": 4373,
+            "endColumn": 43
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutBucketPolicy",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4411,
+        "column": 16,
+        "endLine": 4411,
+        "endColumn": 42
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4411,
+            "column": 16,
+            "endLine": 4411,
+            "endColumn": 42
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutBucketReferer",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4449,
+        "column": 16,
+        "endLine": 4449,
+        "endColumn": 43
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4449,
+            "column": 16,
+            "endLine": 4449,
+            "endColumn": 43
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutBucketReplication",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4487,
+        "column": 16,
+        "endLine": 4487,
+        "endColumn": 47
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4487,
+            "column": 16,
+            "endLine": 4487,
+            "endColumn": 47
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutBucketRequestPayment",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4525,
+        "column": 16,
+        "endLine": 4525,
+        "endColumn": 50
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4525,
+            "column": 16,
+            "endLine": 4525,
+            "endColumn": 50
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutBucketTags",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4563,
+        "column": 16,
+        "endLine": 4563,
+        "endColumn": 40
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4563,
+            "column": 16,
+            "endLine": 4563,
+            "endColumn": 40
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutBucketTransferAcceleration",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4601,
+        "column": 16,
+        "endLine": 4601,
+        "endColumn": 56
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4601,
+            "column": 16,
+            "endLine": 4601,
+            "endColumn": 56
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutBucketVersioning",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4639,
+        "column": 16,
+        "endLine": 4639,
+        "endColumn": 46
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4639,
+            "column": 16,
+            "endLine": 4639,
+            "endColumn": 46
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutBucketWebsite",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4677,
+        "column": 16,
+        "endLine": 4677,
+        "endColumn": 43
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4677,
+            "column": 16,
+            "endLine": 4677,
+            "endColumn": 43
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutLiveChannel",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4721,
+        "column": 16,
+        "endLine": 4721,
+        "endColumn": 41
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4721,
+            "column": 16,
+            "endLine": 4721,
+            "endColumn": 41
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutLiveChannelStatus",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4758,
+        "column": 16,
+        "endLine": 4758,
+        "endColumn": 47
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4758,
+            "column": 16,
+            "endLine": 4758,
+            "endColumn": 47
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutObject",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4813,
+        "column": 16,
+        "endLine": 4813,
+        "endColumn": 36
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4813,
+            "column": 16,
+            "endLine": 4813,
+            "endColumn": 36
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutObjectAcl",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4885,
+        "column": 16,
+        "endLine": 4885,
+        "endColumn": 39
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4885,
+            "column": 16,
+            "endLine": 4885,
+            "endColumn": 39
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutObjectTagging",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4936,
+        "column": 16,
+        "endLine": 4936,
+        "endColumn": 43
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4936,
+            "column": 16,
+            "endLine": 4936,
+            "endColumn": 43
+          }
+        }
+      ]
+    },
+    {
+      "name": "PutSymlink",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 4984,
+        "column": 16,
+        "endLine": 4984,
+        "endColumn": 37
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 4984,
+            "column": 16,
+            "endLine": 4984,
+            "endColumn": 37
+          }
+        }
+      ]
+    },
+    {
+      "name": "RestoreObject",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 5037,
+        "column": 16,
+        "endLine": 5037,
+        "endColumn": 40
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 5037,
+            "column": 16,
+            "endLine": 5037,
+            "endColumn": 40
+          }
+        }
+      ]
+    },
+    {
+      "name": "SelectObject",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 5082,
+        "column": 16,
+        "endLine": 5082,
+        "endColumn": 39
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 5082,
+            "column": 16,
+            "endLine": 5082,
+            "endColumn": 39
+          }
+        }
+      ]
+    },
+    {
+      "name": "UploadPart",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 5122,
+        "column": 16,
+        "endLine": 5122,
+        "endColumn": 37
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 5122,
+            "column": 16,
+            "endLine": 5122,
+            "endColumn": 37
+          }
+        }
+      ]
+    },
+    {
+      "name": "UploadPartCopy",
+      "status": "unsupported",
+      "origin": "dsl-only",
+      "source": {
+        "file": "products/oss/main.tea",
+        "line": 5187,
+        "column": 16,
+        "endLine": 5187,
+        "endColumn": 41
+      },
+      "reasons": [
+        {
+          "code": "DSL_OSS_BODY_PROFILE",
+          "message": "OSS bodyless XML read profile",
+          "source": {
+            "file": "products/oss/main.tea",
+            "line": 5187,
+            "column": 16,
+            "endLine": 5187,
+            "endColumn": 41
+          }
+        }
+      ]
+    }
+  ]
+}

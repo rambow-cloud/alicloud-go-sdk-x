@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "product": "fc",
   "version": "2023-03-30",
-  "irSHA256": "156bb6e4a609db3c1c17dd103d916b8e1706fecbb24efc248ebb8b2712341861",
+  "irSHA256": "1ddee4cce8c975561a9aac2ad57109a8eee2d328085146386d4bf0a59e1efce5",
   "corpusManifestSHA256": "8a53b4e6a0829555805dde8960e65b2a2dd9d4a78358569ef053edd29c0564da",
   "repository": "https://github.com/aliyun/aliyun-openapi-meta",
   "revision": "51286a65c79d008436eb314e636f9c9ad4b1ca08",

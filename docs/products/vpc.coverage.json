@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "product": "vpc",
   "version": "2016-04-28",
-  "sourceManifestSHA256": "fda7bc19fbbeb45b230c5dc9c4e69452a1dfe57331452f62dc653261b6d13254",
+  "sourceManifestSHA256": "145082e7c8d725925ed509b430a6cc2e302d3f2fc97ae4986ea8f114fbc3924c",
   "discovered": 403,
   "lowered": 403,
   "emitted": 403,
@@ -11,7 +11,7 @@
   "compilation": "not-assessed",
   "live": "not-assessed",
   "capabilityPolicy": "sparse-reviewed",
-  "policySHA256": "79cfd7bb5575a38bf55e3c1e67e15430ba1852e163e08ba9c6aa9a10fa2f9031",
+  "policySHA256": "9876f75fef2483c487c58e01698fdc04ce68e22711c367c6a71f4c0e4b337861",
   "operations": [
     {
       "name": "ActivateRouterInterface",

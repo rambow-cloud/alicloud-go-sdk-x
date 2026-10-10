@@ -31,6 +31,7 @@
 ## 支持范围
 
 - [OSS 运行时](docs/oss-runtime.zh-CN.md)支持显式 OSS4、桶域名寻址及类型化 XML codec；生产 service/oss 生成和真实云验收仍待完成。
+- [OSS 语义 IR](docs/oss-semantic-ir.zh-CN.md)发现完整来源中的 90 个操作，并降低了 16 个 XML 读取操作。这是前端进展，尚未交付公开 OSS 客户端。
 
 - 完整官方 DSL 生成 STS 4、ECS 380、VPC 403 个操作，提供类型化模型、小型测试替身接口和离线 Example。FC 另提供 [ROA 离线预览](docs/fc-binary-generation.zh-CN.md)：生成全部 73 个操作，包括返回由调用者持有的响应流的二进制 InvokeFunction。生成、编译、消费者验收及真实调用分别记录。
 

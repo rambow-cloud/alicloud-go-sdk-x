@@ -180,6 +180,9 @@ function prepare(output, root = repository) {
     const manifest = structuredClone(sourceManifest);
     manifest.revision = revision;
     manifest.products = { sts: "sts-20150401" };
+    // This rehearsal intentionally narrows the corpus to STS. Do not retain
+    // registrations whose product files are excluded from the fixture.
+    delete manifest.stagedProducts;
     manifest.files = manifest.files.filter(
       (f) =>
         !f.file.startsWith("products/") || f.file.startsWith("products/sts/"),

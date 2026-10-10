@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "product": "ecs",
   "version": "2014-05-26",
-  "irSHA256": "eb1c352539141d0ab0c098fc0b47401e736cf607dc43a09019ae7615319b27a5",
+  "irSHA256": "f08cac59307c1aa19df2aee54d58a6744be95eef49666ada4123c8c8a12367c6",
   "corpusManifestSHA256": "8a53b4e6a0829555805dde8960e65b2a2dd9d4a78358569ef053edd29c0564da",
   "repository": "https://github.com/aliyun/aliyun-openapi-meta",
   "revision": "51286a65c79d008436eb314e636f9c9ad4b1ca08",

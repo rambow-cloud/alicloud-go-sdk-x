@@ -7,6 +7,7 @@ const crypto = require("node:crypto");
 const parser = require("@darabonba/parser");
 const { Tag } = require("@darabonba/parser/lib/tag");
 const { roaStyle, lowerROA } = require("./roa.cjs");
+const { gatewayProduct, lowerOSS } = require("./oss.cjs");
 const {
   bindInputs,
   verifyCanonical,
@@ -102,7 +103,8 @@ function verifySources(root = sourceRoot) {
       "module entrypoint",
     );
   }
-  for (const pkg of Object.keys(manifest.products)) {
+  requireProfile(!Object.keys(manifest.stagedProducts || {}).some(pkg => Object.hasOwn(manifest.products, pkg)), "staged product already registered");
+  for (const pkg of Object.keys({ ...manifest.products, ...manifest.stagedProducts })) {
     const directory = "products/" + pkg;
     for (const name of ["main.tea", "Teafile", ".libraries.json"])
       requireProfile(names.has(directory + "/" + name), "product source");
@@ -222,7 +224,7 @@ function shape(value, models, stack = []) {
   return { type: "unsupported" };
 }
 
-function lowerOperation(ast, operation) {
+function lowerOperation(ast, operation, { reviewXML } = {}) {
   const nodes = ast.moduleBody.nodes;
   const fn = nodes.find(
     (n) =>
@@ -234,6 +236,7 @@ function lowerOperation(ast, operation) {
     "operation function " + operation,
   );
   if (roaStyle(fn)) {
+    if (gatewayProduct(ast)) return lowerOSS(ast, fn, operation, {shape, reviewedAttributes, requireProfile}, reviewXML);
     const inspect=node=>{if(!node||typeof node!=="object")return;if(node.type==="assign"&&node.left?.type==="virtualVariable"&&lex(node.left.vid)==="@signatureAlgorithm")requireProfile(node.expr?.type==="string"&&node.expr.value.string==="ACS3-HMAC-SHA256","signed product signature initializer");for(const value of Object.values(node)){if(Array.isArray(value))value.forEach(inspect);else if(value&&typeof value==="object")inspect(value);}};
     nodes.filter(n=>n.type==="init").forEach(inspect);
     return lowerROA(ast, fn, operation, {shape, reviewedAttributes, requireProfile});

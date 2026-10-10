@@ -25,6 +25,7 @@ const areas = new Set([
   "waiter",
   "testing",
   "sts",
+  "oss",
   "telemetry",
 ]);
 
