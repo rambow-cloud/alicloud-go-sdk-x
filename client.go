@@ -516,9 +516,7 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 		if r.Header == nil {
 			r.Header = make(http.Header)
 		}
-		if op.Authentication == AuthenticationOSS4 {
-			r.Header.Set("Accept", "application/xml")
-		} else {
+		if op.Authentication != AuthenticationOSS4 {
 			r.Header.Set("Accept", "application/json")
 		}
 		e.Request = r

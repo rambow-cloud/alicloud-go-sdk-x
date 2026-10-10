@@ -42,7 +42,7 @@ func ossACLCodec(request alicloud.Request) alicloud.Codec {
 
 func TestOSS4WireAndTypedXML(t *testing.T) {
 	query := url.Values{"acl": {""}, "RegionId": {"unchanged"}, "unicode": {"中文"}}
-	header := http.Header{"X-Oss-Meta-Example": {"value"}}
+	header := http.Header{"X-Oss-Meta-Example": {"value"}, "Accept": {"application/xml"}}
 	queryBefore, headerBefore := cloneValues(query), header.Clone()
 	tr := sdktest.NewTransport(sdktest.Step{
 		Body:   `<AccessControlPolicy><AccessControlList><Grant>private</Grant></AccessControlList></AccessControlPolicy>`,
@@ -111,6 +111,29 @@ func TestOSSServiceLevelAndXMLMD5AfterFinalize(t *testing.T) {
 				t.Fatal(err, "caller mutated")
 			}
 		})
+	}
+}
+
+func TestOSS4PreservesAcceptForJSONAndNone(t *testing.T) {
+	for _, mode := range []alicloud.ResponseBodyMode{alicloud.ResponseBodyJSON, alicloud.ResponseBodyNone} {
+		for _, accept := range []string{"", "application/custom"} {
+			tr := sdktest.NewTransport(sdktest.Step{Body: `{}`, Check: func(r *http.Request) error {
+				if r.Header.Get("Accept") != accept {
+					return errors.New("OSS Accept was inferred or overwritten")
+				}
+				return nil
+			}})
+			c, _ := alicloud.NewClient(fixtureConfig(tr))
+			op := ossRead
+			op.ResponseBody = mode
+			header := http.Header{}
+			if accept != "" {
+				header.Set("Accept", accept)
+			}
+			if _, err := c.Invoke(context.Background(), op, alicloud.Request{Method: "GET", Header: header}, &struct{}{}); err != nil {
+				t.Fatal(err)
+			}
+		}
 	}
 }
 

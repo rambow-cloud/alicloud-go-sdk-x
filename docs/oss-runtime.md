@@ -13,6 +13,7 @@
 - The generator must put DSL subresources in Request.Query. An OSS Path containing `?` or `#` requires an explicit matching RawPath encoding; never interpret object bytes as query syntax.
 - Reviewed nonempty XML request bytes get application/xml and a fresh Content-MD5 after Finalize middleware on each attempt. Requests remain owned buffers bounded to eight MiB.
 - Reuse providers, signing, middleware, opt-in retry, timeout, limits and response-stream ownership. No unbounded uploads or automatic response integrity checks.
+- Preserve OSS Accept headers; do not force XML for JSON/binary operations or infer content negotiation from response decoding mode.
 - Bounded Error-root XML exposes RequestId/EC with OSS header fallbacks. Empty errors use the HTTP status as a string code; malformed errors use InvalidErrorResponse. Default error text excludes message, EC and body bytes.
 - XML namespace matching remains exact. Native local-name matching and ListBuckets case/wrapper normalization need reviewed generator policy.
 
@@ -46,4 +47,5 @@
 - Go 1.27.1: formatting, sdkgen check/product-check, doccheck (17 public packages), vet and language/link policy (263 project files) passed.
 - Initial full Go test run: all packages except internal/codegen passed. Its isolated compiler fixture omitted the new checksum/XML dependencies. Fixed both fixture and STS rehearsal dependency copies; four affected frontend rehearsal tests and the complete internal/codegen suite passed (125.278 s).
 - Review added final-host DNS length validation and mixed-case managed-header coverage; affected root vet/tests passed (3.189 s). No cloud calls or source/IR regeneration occurred.
+- Final review removed inferred OSS Accept negotiation; explicit/absent headers survive JSON/none calls. Root vet/tests passed after this correction (3.040 s).
 - Final-head CI and merge evidence belong to the linked PR/issue; local verification does not claim them.

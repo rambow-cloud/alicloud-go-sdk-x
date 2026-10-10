@@ -13,6 +13,7 @@
 - 生成器需将 DSL 子资源放入 Request.Query。OSS Path 中出现 `?` 或 `#` 时必须提供相应的 RawPath 编码，不把对象名字节解释成查询语法。
 - 对已审核的非空 XML 请求字节设置 application/xml；每次尝试在 Finalize 中间件之后重新计算 Content-MD5。请求保持独占副本，先缓冲后发送，上限八 MiB。
 - 复用 provider、签名、中间件、显式重试、超时、大小限制及响应流所有权。暂不支持无界流式上传和自动响应完整性校验。
+- 保留调用者的 OSS Accept 请求头，不为 JSON/二进制操作强制设置 XML，也不根据响应解码模式猜测内容协商规则。
 - 在大小限制内解析 Error 根节点 XML 错误，提取 RequestId/EC，并支持 OSS 响应头回退。空错误体以 HTTP 状态码字符串作为 code；XML 无效时使用 InvalidErrorResponse。默认错误字符串不包含 message、EC 或原始响应体。
 - XML 命名空间仍精确匹配。原生按节点名匹配的行为及 ListBuckets 大小写、包装层差异，需要后续生成器策略明确处理。
 
@@ -46,4 +47,5 @@
 - Go 1.27.1：格式、sdkgen check/product-check、doccheck（17 个公共包）、vet、语言及链接检查（263 个项目文档文件）通过。
 - 首次完整 Go 测试中，除 internal/codegen 外均通过。该包的隔离编译样本漏复制新接入的 checksum/XML 依赖。已补齐样本和 STS 来源更新演练的依赖；四项受影响的前端演练测试及 internal/codegen 全套测试通过，后者耗时 125.278 秒。
 - 评审补充了最终桶域名的 DNS 长度校验及大小写混用请求头的测试；受影响的根包 vet/测试通过，测试耗时 3.189 秒。未访问云端，也未重新生成来源或 IR。
+- 最终评审移除了对 OSS Accept 的推断；JSON/none 调用会保留显式请求头，也不会擅自补充缺失的 Accept。修正后的根包 vet/测试通过，测试耗时 3.040 秒。
 - 最终提交的 CI 和合并证据记录在对应 PR/issue 中，本地结果不代替这些证据。
