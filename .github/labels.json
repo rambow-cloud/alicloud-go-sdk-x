@@ -1,5 +1,10 @@
 [
   {
+    "name": "module:oss",
+    "color": "1d76db",
+    "description": "OSS protocol, generated clients, and product acceptance"
+  },
+  {
     "name": "bug",
     "color": "d73a4a",
     "description": "Unexpected behavior requiring a regression fix"

@@ -113,7 +113,7 @@ async function prepareModules(root, plan, loadArchive) {
         manifest.files.push({ file, sha256: hash(data), url: pin.url + "#" + file.slice(pin.directory.length + 1) });
   manifest.modules.sort((a,b) => order(a.spec,b.spec));
   const libraries = Buffer.from(JSON.stringify(Object.fromEntries(manifest.modules.map(m => [m.spec, "../../" + m.directory])), null, 2) + "\n");
-  for (const product of Object.keys(manifest.products)) {
+  for (const product of Object.keys({...manifest.products,...manifest.stagedProducts})) {
     const file = `products/${product}/.libraries.json`;
     files.set(file, libraries);
     const record = manifest.files.find(f => f.file === file);

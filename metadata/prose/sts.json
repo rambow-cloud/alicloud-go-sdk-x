@@ -3,7 +3,7 @@
   "schemaVersion": 1,
   "product": "sts",
   "version": "2015-04-01",
-  "irSHA256": "e402a22b91a031f7caf5b3b2be060577d6b77f7badc3a8919f311ce991a138d9",
+  "irSHA256": "2add77b750e6050d7aa9f6f641dcb0daab606fb4166bb40b6933717b122064bc",
   "corpusManifestSHA256": "8a53b4e6a0829555805dde8960e65b2a2dd9d4a78358569ef053edd29c0564da",
   "repository": "https://github.com/aliyun/aliyun-openapi-meta",
   "revision": "51286a65c79d008436eb314e636f9c9ad4b1ca08",

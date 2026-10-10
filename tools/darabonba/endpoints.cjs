@@ -2,6 +2,7 @@
 
 // Recognize the pinned endpoint initialization through the official semantic AST.
 const lex=(t)=>t?.lexeme;
+const {gatewayProduct,validateGateway}=require("./oss.cjs");
 const variable=(name)=>({type:"variable",id:{lexeme:name,type:"variable"}});
 const call=(module,name,args)=>({type:"call",left:{type:"static_call",id:{lexeme:module,type:"module"},propertyPath:[{lexeme:name}]},args});
 const not=(expr)=>({type:"not",expr});
@@ -20,6 +21,12 @@ function syntax(value){
 }
 function projectEndpoints(ast,file,source,decisions=[],sourceSHA256=""){
   const fail=(ok,message)=>{if(!ok)throw Error("discovery: endpoint "+message)};
+  if(gatewayProduct(ast)) {
+    validateGateway(ast,(ok,reason)=>fail(ok,reason));
+    fail(!decisions.length,"Gateway endpoint decisions are not supported");
+    const initializer=ast.moduleBody.nodes.find(n=>n.type==="init");
+    return {profile:"gateway-explicit-origin-v1",source:source(file,initializer.initBody.stmts[3].left.vid),overrides:[]};
+  }
   const initializers=ast.moduleBody.nodes.filter(n=>n.type==="init");fail(initializers.length===1,"initializer must be unique");
   // Signing declarations are validated separately by operation lowering. A
   // constant initializer does not alter endpoint flow, including historical v2.

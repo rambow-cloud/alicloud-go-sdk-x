@@ -236,6 +236,21 @@ func TestProductSupportAndCorruptionFailBeforeWrites(t *testing.T) {
 	}
 }
 
+func TestStagedOSSIRCannotBypassXMLBackendAcceptance(t *testing.T) {
+	data, err := os.ReadFile(filepath.Join("..", "..", "docs", "research", "oss-semantic-ir.json"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	var product productIR
+	if err := json.Unmarshal(data, &product); err != nil {
+		t.Fatal(err)
+	}
+	files, err := renderProduct(product)
+	if err == nil || !strings.Contains(err.Error(), "unsupported protocol") || len(files) != 0 {
+		t.Fatal("staged OSS IR bypassed the XML backend gate", err)
+	}
+}
+
 func TestProductSchemaVersionsFailBeforeWrites(t *testing.T) {
 	root := fullProductFixture(t)
 	path := filepath.Join(root, "models", "manifest.json")

@@ -34,6 +34,8 @@
 
 ## Usage and defaults
 
+- Next-stage source and frontend acceptance follow [OSS semantic IR](oss-semantic-ir.md); its staged lowering is not public service/oss emission.
+
 - Set Operation.Authentication to AuthenticationOSS4 and supply Config.Region plus an unprefixed BaseEndpoint or a custom endpoint resolver. No OSS default endpoint catalog is registered yet.
 - Request.Bucket selects virtual-host routing. Put object bytes in Path/RawPath and subresource keys in Query.
 - RequestBodyXML treats supplied bytes as already encoded; the operation codec owns root/type validation. ResponseBodyXML requires InvokeModel and Codec.Decode; the built-in internal XML codec validates exact expanded root names.

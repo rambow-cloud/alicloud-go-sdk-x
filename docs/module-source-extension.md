@@ -2,6 +2,8 @@
 
 [中文](module-source-extension.zh-CN.md)
 
+- OSS modules and complete product source are now pinned as staged input under [OSS semantic IR](oss-semantic-ir.md). The original extension plan records the pre-import manifest; it is historical evidence, not a command to rerun against the expanded lock.
+
 - Issue #92. Existing product import requires every transitive dependency to be pinned already.
 - Use `tools/darabonba/import-modules.cjs` to add reviewed missing modules first, then `import-product.cjs` to add the product.
 - The module importer never resolves wildcard versions. A reviewed plan supplies exact versions, archive SHA1/SHA256, official archive URLs and license evidence, bound to the current source manifest hash.

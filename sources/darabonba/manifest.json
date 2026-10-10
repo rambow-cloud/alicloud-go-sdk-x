@@ -47,6 +47,40 @@
       }
     },
     {
+      "spec": "alibabacloud:GatewayOSS:*",
+      "directory": "modules/alibabacloud_GatewayOSS_0.0.42",
+      "scope": "alibabacloud",
+      "name": "GatewayOSS",
+      "version": "0.0.42",
+      "archiveSHA1": "0b31bfdd4c86a28a6c93d74c0622e3167558435f",
+      "archiveSHA256": "5bf16e8d5283b8174c34d17fd4cb085422c7ef64a8d129beb93dd404216b7cab",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/GatewayOSS-0.0.42.tar.gz",
+      "license": {
+        "repository": "https://github.com/aliyun/alibabacloud-gateway",
+        "spdx": "Apache-2.0",
+        "file": "licenses/alibabacloud-gateway.NOTICE",
+        "gitBlobSHA": "0c44dcefe3df7e146aeb9717c5f96c4f5b2afbc0",
+        "evidence": "module-source-repository"
+      }
+    },
+    {
+      "spec": "alibabacloud:GatewayOSS_Util:*",
+      "directory": "modules/alibabacloud_GatewayOSS_Util_0.0.8",
+      "scope": "alibabacloud",
+      "name": "GatewayOSS_Util",
+      "version": "0.0.8",
+      "archiveSHA1": "ee70def81274425f3d3e5965faccfcd15e00d6f7",
+      "archiveSHA256": "70a67d20feaaf421dcfb254aba2b01e7f986dc4e7564b3908b625c5b7092fbbb",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/GatewayOSS_Util-0.0.8.tar.gz",
+      "license": {
+        "repository": "https://github.com/aliyun/alibabacloud-gateway",
+        "spdx": "Apache-2.0",
+        "file": "licenses/alibabacloud-gateway.NOTICE",
+        "gitBlobSHA": "0c44dcefe3df7e146aeb9717c5f96c4f5b2afbc0",
+        "evidence": "module-source-repository"
+      }
+    },
+    {
       "spec": "alibabacloud:GatewayPOP:*",
       "directory": "modules/alibabacloud_GatewayPOP_0.1.4",
       "archiveSHA256": "b78f523dc920b2303d03756f4eeed77fc57e4407aba21536d033e5d582f4ee39",
@@ -78,6 +112,21 @@
         "file": "licenses/alibabacloud-gateway.NOTICE",
         "gitBlobSHA": "0c44dcefe3df7e146aeb9717c5f96c4f5b2afbc0",
         "evidence": "module-source-repository"
+      }
+    },
+    {
+      "spec": "alibabacloud:OSSUtil:*",
+      "directory": "modules/alibabacloud_OSSUtil_0.1.10",
+      "scope": "alibabacloud",
+      "name": "OSSUtil",
+      "version": "0.1.10",
+      "archiveSHA1": "45004fa2ae292e5f11e89bed263a8a1a80ec5ad5",
+      "archiveSHA256": "1e8e14d74dca96a8570c8abc73e162d4ad2f34266a8c4548d761e9e2a80c6271",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/OSSUtil-0.1.10.tar.gz",
+      "license": {
+        "spdx": "Apache-2.0",
+        "file": "modules/alibabacloud_OSSUtil_0.1.10/README.md",
+        "evidence": "archive-declaration"
       }
     },
     {
@@ -217,6 +266,21 @@
       }
     },
     {
+      "spec": "darabonba:Time:*",
+      "directory": "modules/darabonba_Time_0.0.2",
+      "scope": "darabonba",
+      "name": "Time",
+      "version": "0.0.2",
+      "archiveSHA1": "28aa4ecece3819e59a10a7bc4e84e48ad7875007",
+      "archiveSHA256": "06521f035f680de8396d88219fcec1530ad42cee241c13e029e826c9d695a529",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/darabonba/Time-0.0.2.tar.gz",
+      "license": {
+        "spdx": "Apache-2.0",
+        "file": "modules/darabonba_Time_0.0.2/README.md",
+        "evidence": "archive-declaration"
+      }
+    },
+    {
       "spec": "darabonba:Util:*",
       "directory": "modules/darabonba_Util_0.2.19",
       "archiveSHA256": "27941a227cbcea5a40e75ccaaa545582106ef04462785e41c82beeb7c6067066",
@@ -346,6 +410,26 @@
       "sha256": "c79d8f80b97eead8a06b46ef8f523ed5efa549aef3b6e87895151f32f04b9812"
     },
     {
+      "file": "modules/alibabacloud_GatewayOSS_0.0.42/main.tea",
+      "sha256": "71caf417a396688b8a4a38b0e0f431d5adfb7ae043d98fa504f07ac1b319f44c",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/GatewayOSS-0.0.42.tar.gz#main.tea"
+    },
+    {
+      "file": "modules/alibabacloud_GatewayOSS_0.0.42/Teafile",
+      "sha256": "2c7e6946f23e4d27b8596e196819ede7c06dc50abb2315072d1ef3dedcb4ef10",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/GatewayOSS-0.0.42.tar.gz#Teafile"
+    },
+    {
+      "file": "modules/alibabacloud_GatewayOSS_Util_0.0.8/main.tea",
+      "sha256": "0cfe0be4e5e2aae34af35578fd61c58008d2b6158f7eac765dc215a561513f49",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/GatewayOSS_Util-0.0.8.tar.gz#main.tea"
+    },
+    {
+      "file": "modules/alibabacloud_GatewayOSS_Util_0.0.8/Teafile",
+      "sha256": "d3c979b297ad14451887eaeab09c2ca2c2b2035bb2d7f976f1d56d85d2187870",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/GatewayOSS_Util-0.0.8.tar.gz#Teafile"
+    },
+    {
       "file": "modules/alibabacloud_GatewayPOP_0.1.4/main.tea",
       "sha256": "e8f91d525484e86f01d439ac35434d04d179f9a225735d5364b27fa3ce089889"
     },
@@ -388,6 +472,21 @@
     {
       "file": "modules/alibabacloud_OpenApiUtil_0.2.11/Teafile",
       "sha256": "d544e8e5ea8789197aa48fdbf6ce0b87aa76e41007ac3c93e441e36d4e1b39f4"
+    },
+    {
+      "file": "modules/alibabacloud_OSSUtil_0.1.10/README.md",
+      "sha256": "77add0766c051eefe9da73a1d2744abd5a7ece76e7fef143e4a7fa83c47b29ff",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/OSSUtil-0.1.10.tar.gz#README.md"
+    },
+    {
+      "file": "modules/alibabacloud_OSSUtil_0.1.10/Teafile",
+      "sha256": "7e227d0f8be8aaa030654d2aa45cf8fc14dd615457fc5ed9e2fe1847e31aef93",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/OSSUtil-0.1.10.tar.gz#Teafile"
+    },
+    {
+      "file": "modules/alibabacloud_OSSUtil_0.1.10/util.tea",
+      "sha256": "d8fa185162d76f085603ad67f32ee9cedc1b452999ddec5398cf9b510aa2db92",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/alibabacloud/OSSUtil-0.1.10.tar.gz#util.tea"
     },
     {
       "file": "modules/alibabacloud_Paginator_0.0.3/Darafile",
@@ -440,6 +539,21 @@
     {
       "file": "modules/darabonba_String_0.0.13/Teafile",
       "sha256": "e7a6168319d019ad906cd4ed90a71a035f18928d1b23c5da63afbdcebe99d4e0"
+    },
+    {
+      "file": "modules/darabonba_Time_0.0.2/main.tea",
+      "sha256": "cc5a47824b4cdc8b4596b48f3810d8060935d4a5b4cea436e90f3b69450d0717",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/darabonba/Time-0.0.2.tar.gz#main.tea"
+    },
+    {
+      "file": "modules/darabonba_Time_0.0.2/README.md",
+      "sha256": "617003bf1596cf9263c0ab48c9f2afd780e456af827076b2140236c6945b8fe2",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/darabonba/Time-0.0.2.tar.gz#README.md"
+    },
+    {
+      "file": "modules/darabonba_Time_0.0.2/Teafile",
+      "sha256": "9707c0a96b8522c2aab528ef028061ecce3dcb0449c6d09ce0181153ef7f34c7",
+      "url": "https://darabonba-module-prod.oss-cn-zhangjiakou.aliyuncs.com/darabonba/Time-0.0.2.tar.gz#Teafile"
     },
     {
       "file": "modules/darabonba_Util_0.2.19/main.tea",
@@ -505,6 +619,21 @@
       "sha256": "43406cb599521ed1102ab64cc8cb7bc844915c69fdf9c6d6fbd7856ff937549b"
     },
     {
+      "file": "products/oss/.libraries.json",
+      "sha256": "9967b87c5d171177a2ca8ed587345a7e68d3e2bf6e167bafcc659211ef8653cc",
+      "url": "local:pinned-import-projection"
+    },
+    {
+      "file": "products/oss/main.tea",
+      "sha256": "0713683b286a49e4e80fff023f61db426dc035fb8755a7b4616a82f65c22e6ff",
+      "url": "https://raw.githubusercontent.com/aliyun/alibabacloud-sdk/ec489e5c3deae95496daae2b41503ac58b221adb/oss-20190517/main.tea"
+    },
+    {
+      "file": "products/oss/Teafile",
+      "sha256": "3f4e5b2b01408d24984496e8ed2ef4f1afa0f0711a2aa339774da1f2a7b213a5",
+      "url": "https://raw.githubusercontent.com/aliyun/alibabacloud-sdk/ec489e5c3deae95496daae2b41503ac58b221adb/oss-20190517/Teafile"
+    },
+    {
       "file": "products/sts/.libraries.json",
       "sha256": "12ef9e70a292c2be6b66faf46c5ce1b73d328f9c06145503dbb837bdd62b9192"
     },
@@ -542,5 +671,8 @@
       "sha256": "78775ac8134458bcfc026c54fb1f582de2b8b98b1533db70c19fdd42747972b1",
       "url": "https://raw.githubusercontent.com/aliyun/alibabacloud-sdk/ec489e5c3deae95496daae2b41503ac58b221adb/vpc-20160428/Teafile"
     }
-  ]
+  ],
+  "stagedProducts": {
+    "oss": "oss-20190517"
+  }
 }

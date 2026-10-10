@@ -2,6 +2,8 @@
 
 [English](oss-runtime.md)
 
+- 后续来源固定和前端验收遵循 [OSS 语义 IR](oss-semantic-ir.zh-CN.md)。暂存操作完成降低，不代表已经生成公开的 service/oss。
+
 - 对应 issue #92。先把已完成的 XML/OSS4 组件接入共享 HTTP 调用链，再推进产品代码生成。
 - 协议依据：GatewayOSS 0.0.42 main.tea，SHA256 为 `71caf417a396688b8a4a38b0e0f431d5adfb7ae043d98fa504f07ac1b319f44c`。XML 请求和 MD5 见第 92–99 行，路径与查询拆分见第 125–146 行，XML 错误见第 153–181 行，桶域名见第 305–334 行。[签名](oss4-signing.zh-CN.md)和 [XML 编解码](xml-model-codec.zh-CN.md)沿用各自证据。
 

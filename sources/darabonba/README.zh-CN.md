@@ -4,6 +4,7 @@
 
 - 产品来源为 [aliyun/alibabacloud-sdk](https://github.com/aliyun/alibabacloud-sdk/tree/ec489e5c3deae95496daae2b41503ac58b221adb)， commit 固定 ec489e5c3deae95496daae2b41503ac58b221adb。
 - ECS 2014-05-26、STS 2015-04-01、VPC 2016-04-28、FC 2023-03-30 的 main.tea、Teafile、api-info.json 保留原始字节。
+- OSS 2019-05-17 及完整导入依赖固定在 `stagedProducts` 下。遵循 [OSS 语义 IR](../../docs/oss-semantic-ir.zh-CN.md)，目前尚未加入生产 Go 输出列表。
 - 上游[Apache 通知](https://github.com/aliyun/alibabacloud-sdk/blob/ec489e5c3deae95496daae2b41503ac58b221adb/LICENSE) 保存在 LICENSE.upstream。
 - 产品说明属于该授权源码集合；公共元数据快照仍单独排除说明和示例。
 - #38 生成注释复用授权语义解析器说明/摘要；双语使用/契约/来源索引明确语言及说明覆盖，原始 example 值不进入可执行 Example。
@@ -19,16 +20,20 @@
 | ------------------------- | -------- |
 | alibabacloud Credential   | 0.5.17   |
 | alibabacloud EndpointUtil | 0.2.1    |
+| alibabacloud GatewayOSS   | 0.0.42   |
+| alibabacloud GatewayOSS_Util | 0.0.8  |
 | alibabacloud GatewayPOP   | 0.1.4    |
 | alibabacloud GatewaySPI   | 0.0.15   |
 | alibabacloud OpenApi      | 0.3.23   |
 | alibabacloud OpenApiUtil  | 0.2.11   |
+| alibabacloud OSSUtil      | 0.1.10   |
 | alibabacloud Paginator    | 0.0.3    |
 | darabonba Array           | 0.1.1    |
 | darabonba EncodeUtil      | 0.0.6    |
 | darabonba Map             | 0.0.5    |
 | darabonba SignatureUtil   | 0.0.11   |
 | darabonba String          | 0.0.13   |
+| darabonba Time            | 0.0.2    |
 | darabonba Util            | 0.2.19   |
 | darabonba XML             | 0.1.14   |
 

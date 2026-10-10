@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-- #92 的[显式模块扩展](../../docs/module-source-extension.zh-CN.md)导入审核过的缺失依赖，不重新解析现有通配导入。写入前验证准确归档、绑定来源的计划、完整依赖和许可证据。metadata/module-imports/oss.json 是后续导入计划，生产来源尚未修改。
+- #92 的[OSS 语义 IR](../../docs/oss-semantic-ir.zh-CN.md)将完整 OSS 产品及依赖固定为暂存来源。执行 `node oss-discover.cjs generate`、`check` 或 `report`；生产 Go 输出仍覆盖四个产品。[模块扩展](../../docs/module-source-extension.zh-CN.md)计划保留经过审核的导入证据，现有源码及导入文件的字节保持不变。
 
 - #92 [FC ROA 生成](../../docs/fc-roa-product.zh-CN.md) 使用 schema v5 和准确的官方 JSON/none 参数映射。在仓库根目录执行 `node tools/darabonba/import-product.cjs fc fc-20230330`，可增加同一固定版本中的产品。该命令拒绝已存在产品和未锁定导入，保留全部已锁定的间接模块。先审核来源绑定和端点决策，再运行发现；完整发现无需新增逐操作元数据，旧前端夹具仍限定在原产品中。
 

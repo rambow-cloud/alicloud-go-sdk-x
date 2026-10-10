@@ -4,9 +4,9 @@
 
 [English](development-path.md)
 
-- #92 下一阶段完成[OSS 共享运行时](oss-runtime.zh-CN.md)：OSS4、桶地址、XML 请求 MD5、类型化 XML 响应和结构化错误；随后推进生产来源、IR 和生成。ListBuckets 冲突继续单独记录。
+- #92 已合并[OSS 共享运行时](oss-runtime.zh-CN.md)：OSS4、桶地址、XML 请求 MD5、类型化 XML 响应和结构化错误。当前继续推进暂存来源和 IR；Go 输出与 ListBuckets 修正分别验收。
 
-- #92 下一步执行[原生 XML 根节点发现](native-xml-traits.zh-CN.md)：完整、绑定哈希的 helper 事实补充官方 DSL；生产 XML/Gateway 接入前明确报告来源冲突。不猜测根元素，不宣称已生成 OSS 操作。
+- #92 已验收[原生 XML 根节点发现](native-xml-traits.zh-CN.md)。当前语义 IR 阶段增加嵌套模型比较；仅根字段一致不能证明兼容。
 
 - #92 的[内部公共 XML 编解码层](xml-model-codec.zh-CN.md)已合并。先验证根元素与模型契约，再接入 OSS Gateway、签名和 IR；当前尚未验收公共 OSS 客户端。
 

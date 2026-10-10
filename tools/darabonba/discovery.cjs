@@ -7,6 +7,7 @@ const crypto = require("node:crypto");
 const parser = require("@darabonba/parser");
 const { verifySources, lowerOperation } = require("./frontend.cjs");
 const { projectEndpoints } = require("./endpoints.cjs");
+const { xmlReviewer } = require("./oss-xml-shape.cjs");
 const repository = path.resolve(__dirname, "../..");
 const lex = (token) => token?.lexeme;
 const order = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
@@ -340,6 +341,20 @@ function shapeIssue(shape, location, allowJSON = false) {
   return null;
 }
 const reasonPrefixes = {
+  "OSS Gateway initializer": "DSL_OSS_GATEWAY_INITIALIZER",
+  "OSS native XML facts missing": "DSL_OSS_NATIVE_XML_FACTS",
+  "OSS bodyless XML read profile": "DSL_OSS_BODY_PROFILE",
+  "OSS request body is not supported": "DSL_OSS_REQUEST_BODY",
+  "OSS XML shape differs": "DSL_OSS_XML_SHAPE",
+  "OSS XML response body target missing": "DSL_OSS_XML_TARGET",
+  "OSS XML root missing or unsupported": "DSL_OSS_XML_ROOT",
+  "OSS XML structured wrapper requires a separate binding": "DSL_OSS_XML_WRAPPER",
+  "OSS XML root namespace profile": "DSL_OSS_XML_NAMESPACE",
+  "OSS bucket": "DSL_OSS_BUCKET_BINDING",
+  "OSS host map": "DSL_OSS_BUCKET_BINDING",
+  "OSS execute handoff": "DSL_OSS_EXECUTE_HANDOFF",
+  "OSS static": "DSL_OSS_STATIC_PATH",
+  "OSS query/subresource collision": "DSL_OSS_QUERY_COLLISION",
   "ROA unsupported response body": "DSL_RESPONSE_BODY_PROFILE",
   "ROA": "DSL_ROA_PROFILE",
   "operation function": "DSL_OPERATION_FUNCTION",
@@ -381,10 +396,12 @@ function profileIssue(error, location) {
     code: matched?.[1] || "DSL_UNSUPPORTED_PATTERN",
     message,
     source: location,
+    ...(error.findings?.length ? { differences: error.findings } : {}),
   };
 }
-function buildProduct(ast, { pkg, identifier, info, file, provenance, endpointDecisions=[] }) {
+function buildProduct(ast, { pkg, identifier, info, file, provenance, endpointDecisions=[], nativeXML }) {
   const graph = modelGraph(ast, file);
+  const reviewXML = nativeXML ? xmlReviewer(graph, nativeXML, file) : undefined;
   const candidates = discoverCandidates(ast, info, file);
   const operations = [];
   for (const candidate of candidates) {
@@ -470,7 +487,7 @@ function buildProduct(ast, { pkg, identifier, info, file, provenance, endpointDe
       });
     } else {
       try {
-        const lowered = lowerOperation(ast, candidate.name);
+        const lowered = lowerOperation(ast, candidate.name, { reviewXML });
         const invalid =
           lowered.inputs
             .map((input) =>
@@ -497,7 +514,7 @@ function buildProduct(ast, { pkg, identifier, info, file, provenance, endpointDe
             const inputFields=lowered.inputs.map(input=>{
               const original=originalRequest?.fields.find(f=>f.dslName===input.field),param=record.parameters.find(p=>p.name===input.field);
               requireInventory(original||param,"facade parameter source");
-              const field=original ? structuredClone(original) : {dslName:input.field,wireName:input.wire,required:input.location==="path",type:param.type,source:param.source,attributes:{}};
+              const field=original ? structuredClone(original) : {dslName:input.field,wireName:input.wire,required:["path","bucket"].includes(input.location),type:param.type,source:param.source,attributes:{}};
               if(input.location==="binary-body")field.type={kind:"bytes",dslType:"readable",wireType:"binary"};
               return field;
             });
@@ -511,6 +528,7 @@ function buildProduct(ast, { pkg, identifier, info, file, provenance, endpointDe
           }
           if (lowered.handoff) record.handoff = lowered.handoff;
           if (lowered.headerBindings) record.headerBindings = lowered.headerBindings;
+          if (lowered.oss) record.oss = lowered.oss;
           // An explicit empty root preserves source absence without inventing a DSL model.
           if (!record.roots.request) record.roots.request = { kind: "empty" };
           const fields =
