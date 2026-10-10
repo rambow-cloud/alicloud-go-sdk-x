@@ -30,3 +30,20 @@
 
 - 固定完整 OSS 产品源码及导入闭包，将可支持的 Gateway 初始化、hostMap 和准确 XML 信息投影到 IR。
 - 通过通用后端生成 service/oss，明确不支持的原因，并用更名合成产品证明编译流程可以复用。ListBuckets 仅在审核协议证据后解决。
+
+## 使用方式与默认行为
+
+- 将 Operation.Authentication 设为 AuthenticationOSS4；填写 Config.Region，并提供不含桶前缀的 BaseEndpoint 或自定义端点解析器。目前尚未注册 OSS 默认端点目录。
+- Request.Bucket 选择桶域名寻址；对象名字节放在 Path/RawPath，子资源参数放在 Query。
+- RequestBodyXML 接收已编码的字节，根节点和类型校验由操作 codec 负责。ResponseBodyXML 必须使用 InvokeModel 与 Codec.Decode；内部公共 XML codec 精确校验根节点名称及命名空间。
+- 参见无需云账号的[运行时 Example](../oss_example_test.go)。其中的小型显式 codec 演示扩展入口；生产生成将复用已有的严格 XML codec。
+- 默认行为保持不变：不自动重试、总超时三十秒、请求和响应上限八 MiB。即使自定义响应上限更大，内部 XML codec 的文档上限仍是八 MiB。
+- 本阶段未实现 CNAME/路径式地址、预签名、V1/V2、无界上传 reader、响应 CRC/MD5 策略和真实云验收。
+
+## 本地验证（2026-10-10）
+
+- Node 22.21.1：前端检查通过，110 项前端测试通过。生产发现仍包含四个产品，尚未加入 OSS。
+- Go 1.27.1：格式、sdkgen check/product-check、doccheck（17 个公共包）、vet、语言及链接检查（263 个项目文档文件）通过。
+- 首次完整 Go 测试中，除 internal/codegen 外均通过。该包的隔离编译样本漏复制新接入的 checksum/XML 依赖。已补齐样本和 STS 来源更新演练的依赖；四项受影响的前端演练测试及 internal/codegen 全套测试通过，后者耗时 125.278 秒。
+- 评审补充了最终桶域名的 DNS 长度校验及大小写混用请求头的测试；受影响的根包 vet/测试通过，测试耗时 3.189 秒。未访问云端，也未重新生成来源或 IR。
+- 最终提交的 CI 和合并证据记录在对应 PR/issue 中，本地结果不代替这些证据。

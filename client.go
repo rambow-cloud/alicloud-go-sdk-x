@@ -16,6 +16,7 @@ import (
 
 	"github.com/rambow-cloud/alicloud-go-sdk-x/credentials"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/endpoint"
+	"github.com/rambow-cloud/alicloud-go-sdk-x/internal/checksum"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/internal/signing"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/middleware"
 	"github.com/rambow-cloud/alicloud-go-sdk-x/retry"
@@ -92,10 +93,28 @@ const (
 	// AuthenticationAnonymousRPC uses unsigned legacy RPC query framing over HTTPS.
 	// It never retrieves a provider or adds source authentication fields.
 	AuthenticationAnonymousRPC
+	// AuthenticationOSS4 signs reviewed OSS requests with explicit bucket identity
+	// and region. The endpoint resolver must return an unprefixed service origin.
+	// It never falls back to ACS3, V1, V2 or anonymous authentication.
+	AuthenticationOSS4
+)
+
+// RequestBodyMode selects treatment of pre-encoded request bytes.
+// The zero value sends the bytes unchanged; it does not choose a serializer.
+type RequestBodyMode uint8
+
+const (
+	// RequestBodyRaw preserves caller headers for buffered request bytes.
+	RequestBodyRaw RequestBodyMode = iota
+	// RequestBodyXML sets application/xml and computes Content-MD5 from nonempty
+	// actual bytes after Finalize middleware on each OSS4 attempt. Empty means no
+	// body. A typed codec owns XML validation and exact root selection.
+	RequestBodyXML
 )
 
 // ResponseBodyMode selects how a reviewed operation handles a successful body.
-// The zero value requires JSON. Error responses always use structured JSON decoding.
+// The zero value requires JSON. OSS4 errors use bounded structured XML decoding;
+// other authentication profiles use structured JSON.
 type ResponseBodyMode uint8
 
 const (
@@ -107,23 +126,32 @@ const (
 	ResponseBodyNone
 	// ResponseBodyStream publishes a bounded io.ReadCloser without eager reading.
 	// Callers must close the body; context and timeout remain active after return.
-	// Error responses retain bounded structured JSON decoding.
+	// Errors retain bounded decoding for the selected authentication profile.
 	ResponseBodyStream
+	// ResponseBodyXML passes bounded successful XML bytes to Codec.Decode.
+	// It requires InvokeModel and an explicit typed codec; no root is inferred.
+	// Only the reviewed OSS4 profile supports it. Empty or malformed XML handling
+	// belongs to the codec, whose temporary output is discarded on error.
+	ResponseBodyXML
 )
 
 // Operation describes a reviewed API operation; clients provide concrete models.
 type Operation struct {
 	// Service identifies the product, such as ecs or sts.
 	Service string
-	// Name is the x-acs-action value.
+	// Name is the native OpenAPI operation name; ACS3 sends it as x-acs-action.
 	Name string
-	// Version is the x-acs-version value.
+	// Version is the native API version; ACS3 sends it as x-acs-version.
 	Version string
 	// Idempotent explicitly permits retry when the policy also permits it.
 	Idempotent bool
+	// RequestBody selects treatment of buffered request bytes; zero preserves them.
+	// XML mode requires explicit OSS4 authentication and recomputes its wire digest.
+	RequestBody RequestBodyMode
 	// ResponseBody selects successful body handling; zero requires JSON.
 	// Unsupported values fail before credential retrieval or transport. None mode
-	// preserves response limits, closure and metadata; error decoding remains JSON.
+	// preserves response limits, closure and metadata; errors use the selected
+	// authentication profile (OSS4 XML, otherwise JSON).
 	// Stream mode transfers an owned reader with the same timeout and byte limit.
 	ResponseBody ResponseBodyMode
 	// Authentication selects the reviewed protocol; zero means signed ACS3.
@@ -131,7 +159,7 @@ type Operation struct {
 	Authentication AuthenticationMode
 }
 
-// Request supplies pre-encoded RPC/ROA wire data. Invoke copies maps and bytes.
+// Request supplies pre-encoded RPC/ROA/OSS wire data. Invoke copies maps and bytes.
 type Request struct {
 	// Method is the uppercase HTTP method; empty defaults to POST.
 	Method string
@@ -141,6 +169,10 @@ type Request struct {
 	// contain valid escapes and decode exactly to Path. Empty derives escapes from Path.
 	// Signing and transport preserve encoded slashes within a segment.
 	RawPath string
+	// Bucket is the reviewed OSS bucket identity, separate from Path. Empty means
+	// a service-level OSS request. Nonempty values require OSS4 authentication and
+	// virtual-host addressing; use an unprefixed regional service endpoint.
+	Bucket string
 	// Region overrides Config.Region before CallOptions.Region is applied.
 	Region string
 	// Query contains already-flattened service parameters.
@@ -153,8 +185,8 @@ type Request struct {
 
 // Client is a concurrency-safe immutable runtime. Construct with NewClient;
 // the zero value must not be used. It supports bounded JSON and explicitly reviewed
-// bodyless and response-stream operations. Complete XML and request-stream
-// profiles are not supported.
+// bodyless, response-stream and typed OSS4/XML operations. Generated OSS clients,
+// additional OSS addressing modes and unbounded request streams remain separate.
 type Client struct {
 	config Config
 	stack  *middleware.Stack
@@ -232,7 +264,8 @@ func (c *Client) Config() Config {
 }
 
 // Codec binds an owned model input and output to reviewed wire serialization.
-// Functions must honor context, use JSON v2 and avoid retaining model pointers.
+// Functions must honor context, use the reviewed operation serialization protocol
+// (JSON uses JSON v2) and avoid retaining model pointers.
 type Codec struct {
 	// Encode converts the owned typed input into a new request after Initialize.
 	Encode func(context.Context, any) (Request, error)
@@ -264,6 +297,7 @@ func (c *Client) InvokeModel(ctx context.Context, op Operation, input any, reque
 // assigned only after successful completion. JSON v2 ignores unknown fields;
 // duplicate names and invalid UTF-8 fail. All operation failures wrap OperationError.
 // Callers must not concurrently mutate request inputs or share output pointers.
+// ResponseBodyXML requires InvokeModel and a typed codec instead of Invoke.
 // ResponseBodyStream requires *StreamingOutput; close its Body after use. The
 // operation timeout and context cover subsequent reads, which never retry.
 func (c *Client) Invoke(ctx context.Context, op Operation, input Request, output any, optFns ...func(*CallOptions)) (meta Metadata, err error) {
@@ -283,12 +317,18 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 		err = errors.New("alicloud: incomplete operation")
 		return
 	}
-	if op.Authentication != AuthenticationACS3 && op.Authentication != AuthenticationAnonymousRPC {
+	if op.Authentication != AuthenticationACS3 && op.Authentication != AuthenticationAnonymousRPC && op.Authentication != AuthenticationOSS4 {
 		err = errors.New("alicloud: unsupported authentication protocol")
 		return
 	}
-	if op.ResponseBody != ResponseBodyJSON && op.ResponseBody != ResponseBodyNone && op.ResponseBody != ResponseBodyStream {
+	if op.ResponseBody != ResponseBodyJSON && op.ResponseBody != ResponseBodyNone && op.ResponseBody != ResponseBodyStream && op.ResponseBody != ResponseBodyXML {
 		err = errors.New("alicloud: unsupported response body mode")
+		return
+	}
+	if (op.RequestBody != RequestBodyRaw && op.RequestBody != RequestBodyXML) ||
+		(op.RequestBody == RequestBodyXML && op.Authentication != AuthenticationOSS4) ||
+		(op.ResponseBody == ResponseBodyXML && (op.Authentication != AuthenticationOSS4 || binding == nil)) {
+		err = errors.New("alicloud: unsupported request or XML codec profile")
 		return
 	}
 	target := reflect.ValueOf(output)
@@ -419,11 +459,14 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 			}
 			return nil
 		}
-		if _, ok := query["RegionId"]; ok {
+		if _, ok := query["RegionId"]; ok && op.Authentication != AuthenticationOSS4 {
 			if e.Region == "" {
 				return errors.New("alicloud: region required for RegionId")
 			}
 			query.Set("RegionId", e.Region)
+		}
+		if err := validateOSSIdentity(op, input.Bucket, e.Region); err != nil {
+			return err
 		}
 		resolved, resolveErr := config.EndpointResolver.ResolveEndpoint(ctx, endpoint.Parameters{Service: op.Service, Region: e.Region, BaseEndpoint: options.BaseEndpoint, Network: config.Network})
 		if resolveErr != nil {
@@ -433,12 +476,21 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 			return validateErr
 		}
 		u, _ := url.Parse(resolved.URL)
+		if op.Authentication == AuthenticationOSS4 {
+			if err := prepareOSSOrigin(u, input.Bucket); err != nil {
+				return err
+			}
+		}
+		ossAuthority := u.Host
 		path := input.Path
 		if path == "" {
 			path = "/"
 		}
 		if !strings.HasPrefix(path, "/") {
 			return errors.New("alicloud: path must be absolute")
+		}
+		if op.Authentication == AuthenticationOSS4 && strings.ContainsAny(path, "?#") && input.RawPath == "" {
+			return errors.New("alicloud: OSS object delimiters require escaped path; subresources belong in Query")
 		}
 		u.Path = path
 		u.RawPath = input.RawPath
@@ -464,7 +516,11 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 		if r.Header == nil {
 			r.Header = make(http.Header)
 		}
-		r.Header.Set("Accept", "application/json")
+		if op.Authentication == AuthenticationOSS4 {
+			r.Header.Set("Accept", "application/xml")
+		} else {
+			r.Header.Set("Accept", "application/json")
+		}
 		e.Request = r
 		return stack.Run(ctx, middleware.Build, e, func(ctx context.Context, e *middleware.Exchange) error {
 			if e.Request == nil {
@@ -503,8 +559,27 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 						return readErr
 					}
 					setBody(e.Request, actual)
+					if op.Authentication == AuthenticationOSS4 {
+						if err := validateOSSIdentity(op, input.Bucket, e.Region); err != nil {
+							return err
+						}
+						if e.Request.URL.Host != ossAuthority || (e.Request.Host != "" && e.Request.Host != ossAuthority) {
+							return errors.New("alicloud: OSS signing authority changed")
+						}
+						if op.RequestBody == RequestBodyXML && len(actual) != 0 {
+							digest, err := checksum.ContentMD5(ctx, actual)
+							if err != nil {
+								return err
+							}
+							if e.Request.Header == nil {
+								e.Request.Header = make(http.Header)
+							}
+							setOSSManagedHeader(e.Request.Header, "Content-Type", "application/xml")
+							setOSSManagedHeader(e.Request.Header, "Content-Md5", digest)
+						}
+					}
 					var value credentials.Credentials
-					if op.Authentication == AuthenticationACS3 {
+					if op.Authentication != AuthenticationAnonymousRPC {
 						var credErr error
 						value, credErr = config.CredentialsProvider.Retrieve(ctx)
 						if credErr != nil {
@@ -517,18 +592,22 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 							return credentials.ErrExpired
 						}
 					}
-					var nonce [16]byte
-					if _, randErr := rand.Read(nonce[:]); randErr != nil {
-						return errors.New("alicloud: nonce generation failed")
-					}
 					var signErr error
-					if op.Authentication == AuthenticationAnonymousRPC {
-						if len(actual) != 0 {
-							return errors.New("alicloud: anonymous RPC body unsupported")
-						}
-						signErr = signing.PrepareAnonymousRPC(e.Request, op.Name, op.Version, time.Now(), hex.EncodeToString(nonce[:]))
+					if op.Authentication == AuthenticationOSS4 {
+						signErr = signing.SignOSS4(ctx, e.Request, value, signing.OSS4Options{Bucket: input.Bucket, Region: e.Region, Time: time.Now()})
 					} else {
-						signErr = signing.Sign(e.Request, actual, value, op.Name, op.Version, time.Now(), hex.EncodeToString(nonce[:]))
+						var nonce [16]byte
+						if _, randErr := rand.Read(nonce[:]); randErr != nil {
+							return errors.New("alicloud: nonce generation failed")
+						}
+						if op.Authentication == AuthenticationAnonymousRPC {
+							if len(actual) != 0 {
+								return errors.New("alicloud: anonymous RPC body unsupported")
+							}
+							signErr = signing.PrepareAnonymousRPC(e.Request, op.Name, op.Version, time.Now(), hex.EncodeToString(nonce[:]))
+						} else {
+							signErr = signing.Sign(e.Request, actual, value, op.Name, op.Version, time.Now(), hex.EncodeToString(nonce[:]))
+						}
 					}
 					if signErr != nil {
 						return signErr
@@ -551,12 +630,14 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 					}
 					e.Response = response
 					meta.HTTPStatusCode = response.StatusCode
+					meta.RequestID = responseRequestID(op, response.Header)
+					e.RequestID = meta.RequestID
 					return stack.Run(ctx, middleware.Deserialize, e, func(ctx context.Context, e *middleware.Exchange) error {
 						if ctx.Err() != nil {
 							return ctx.Err()
 						}
 						if op.ResponseBody == ResponseBodyStream && response.StatusCode >= 200 && response.StatusCode < 300 {
-							meta.RequestID = response.Header.Get("X-Acs-Request-Id")
+							meta.RequestID = responseRequestID(op, response.Header)
 							e.RequestID = meta.RequestID
 							stream = newResponseStream(callCtx, response.Body, config.MaxResponseBytes, op, meta)
 							streamOwnsBody = true
@@ -583,10 +664,12 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 						var envelope serviceEnvelope
 						var decodeErr error
 						success := response.StatusCode >= 200 && response.StatusCode < 300
-						if !success || op.ResponseBody == ResponseBodyJSON {
+						if !success && op.Authentication == AuthenticationOSS4 {
+							envelope, decodeErr = decodeOSSError(ctx, data, response.StatusCode)
+						} else if !success || op.ResponseBody == ResponseBodyJSON {
 							envelope, decodeErr = decodeServiceEnvelope(data, success)
 						}
-						meta.RequestID = response.Header.Get("X-Acs-Request-Id")
+						meta.RequestID = responseRequestID(op, response.Header)
 						if envelope.RequestID != "" {
 							meta.RequestID = envelope.RequestID
 						}
@@ -596,7 +679,11 @@ func (c *Client) invoke(ctx context.Context, op Operation, input Request, output
 								envelope.Code = "InvalidErrorResponse"
 								envelope.Message = ""
 							}
-							return &APIError{Code: envelope.Code, Message: envelope.Message, RequestID: meta.RequestID, HTTPStatusCode: response.StatusCode}
+							ecCode := envelope.ECCode
+							if op.Authentication == AuthenticationOSS4 && ecCode == "" {
+								ecCode = response.Header.Get("X-Oss-Ec-Code")
+							}
+							return &APIError{Code: envelope.Code, Message: envelope.Message, RequestID: meta.RequestID, HTTPStatusCode: response.StatusCode, ECCode: ecCode}
 						}
 						if decodeErr != nil {
 							return decodeErr

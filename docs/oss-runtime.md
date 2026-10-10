@@ -30,3 +30,20 @@
 
 - Pin the complete OSS product/import closure in production; project supported Gateway initialization, hostMap and exact XML facts into IR.
 - Emit service/oss through the generic backend with deterministic unsupported reasons and renamed synthetic-product compilation proof. Resolve ListBuckets only from reviewed wire evidence.
+
+## Usage and defaults
+
+- Set Operation.Authentication to AuthenticationOSS4 and supply Config.Region plus an unprefixed BaseEndpoint or a custom endpoint resolver. No OSS default endpoint catalog is registered yet.
+- Request.Bucket selects virtual-host routing. Put object bytes in Path/RawPath and subresource keys in Query.
+- RequestBodyXML treats supplied bytes as already encoded; the operation codec owns root/type validation. ResponseBodyXML requires InvokeModel and Codec.Decode; the built-in internal XML codec validates exact expanded root names.
+- See the account-free [runtime Example](../oss_example_test.go). Its small explicit codec demonstrates the extension seam; production generation will use the shared validated XML codec.
+- Existing defaults remain: no automatic retries, thirty-second total timeout, eight-MiB request/response bounds. Custom response bounds do not enlarge the internal XML codec's eight-MiB document limit.
+- CNAME/path-style addressing, presigning, V1/V2, unbounded upload readers, response CRC/MD5 policy and cloud acceptance are not implemented by this stage.
+
+## Local verification (2026-10-10)
+
+- Node 22.21.1: frontend check passed; 110 frontend tests passed. Production discovery remains four products, without OSS.
+- Go 1.27.1: formatting, sdkgen check/product-check, doccheck (17 public packages), vet and language/link policy (263 project files) passed.
+- Initial full Go test run: all packages except internal/codegen passed. Its isolated compiler fixture omitted the new checksum/XML dependencies. Fixed both fixture and STS rehearsal dependency copies; four affected frontend rehearsal tests and the complete internal/codegen suite passed (125.278 s).
+- Review added final-host DNS length validation and mixed-case managed-header coverage; affected root vet/tests passed (3.189 s). No cloud calls or source/IR regeneration occurred.
+- Final-head CI and merge evidence belong to the linked PR/issue; local verification does not claim them.

@@ -325,6 +325,8 @@ function prepareRuntime(candidate, root = repository) {
     "sdktest",
     "internal/signing",
     "internal/rpcmodel",
+    "internal/checksum",
+    "internal/xmlmodel",
   ]) {
     for (const entry of fs.readdirSync(path.join(root, directory), {
       withFileTypes: true,
