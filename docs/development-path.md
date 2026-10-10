@@ -4,6 +4,8 @@
 
 [中文](development-path.zh-CN.md)
 
+- #126 fixes OSS4 temporary credential identifiers before further live source verification. Follow [OSS4 signing](oss4-signing.md): allow the period in STS identifiers, preserve strict region and injection checks, then run offline vectors and authorized read-only protocol checks. This does not establish generated OSS coverage.
+
 - #92 merged [OSS shared runtime](oss-runtime.md): OSS4, bucket hosts, XML request MD5, typed XML responses and structured errors. Staged source/IR now follows; Go emission and ListBuckets correction remain separate acceptance.
 
 - #92 accepted [native XML root discovery](native-xml-traits.md). The current semantic IR stage adds nested comparison; root-level matches alone do not establish compatibility.

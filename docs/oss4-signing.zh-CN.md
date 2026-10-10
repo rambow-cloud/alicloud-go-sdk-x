@@ -2,6 +2,17 @@
 
 [English](oss4-signing.md)
 
+## 临时凭据修正（#126）
+
+- 原生 OAuth 核验发现临时 AccessKey ID 使用 `STS.` 前缀。原实现复用了地域校验规则，因此在发送请求前拒绝了句点。
+- 单独校验凭据标识符：允许 ASCII 字母、数字、连字符、下划线和句点；拒绝空白、控制字符、非 ASCII 文本及签名范围或请求头分隔符。地域校验规则保持原样。
+- 使用带句点的合成标识符验证既有独立 STS 签名向量，增加运行时临时 provider 集成和非法标识符拒绝测试。已有离线 OSS Example 同步使用带句点的合成标识符。
+- 已授权的真实核验只使用现有原生临时 Profile 和 GET 请求，不公开凭据、资源标识符或正文。SDK 线路证据不代表已经生成并验收 `service/oss`。
+- 实现后运行文档检查、vet、完整 Go 测试和格式检查；合并前要求最终提交 CI 通过。
+
+- 2026-10-10 本地核验：根包运行时测试、独立 STS 签名向量、非法输入拒绝测试、确定性 Example、文档检查（17 个包）、vet 和格式检查通过。首次完整 Go 测试只有两个 codegen 测试失败，原因是新 worktree 未安装固定版本的 Node parser。执行 npm ci 安装锁文件依赖后，这两项重跑通过（37.426 秒）；其他包已在首次测试中通过。
+- 修复后的真实只读核验：通过 oss-sftp 原生临时 Profile 读取 ListBuckets、GetBucketInfo 和 GetBucketReplicationLocation，均只尝试一次，返回 HTTP 200、application/xml 和 OSS 请求 ID。修复前三项均在发送 HTTP 前报 OSS V4 输入无效；修复后的原始响应结构与官方 CLI 一致。公开 OSS 生成和浏览器界面核验仍分别验收。
+
 - 对应 #92，在有界响应流和 FC 二进制生成之后建设内部签名能力。
 - 依据[官方 V4 规范](https://www.alibabacloud.com/help/en/oss/developer-reference/recommend-to-use-signature-version-4)和已审核的 GatewayOSS 0.0.42 来源，使用标准库独立实现，不复制原生 SDK 或增加运行时依赖。
 - 显式指定 bucket、region 和时间。规范资源路径包含 bucket，并保留对象键中的斜线；query 按编码后的名称排序，空值使用无等号的子资源名，不复用 ACS3 的请求结构。

@@ -2,6 +2,17 @@
 
 [中文](oss4-signing.zh-CN.md)
 
+## Temporary credential correction (#126)
+
+- Native OAuth verification found temporary AccessKey IDs with the `STS.` prefix. The original region validator rejected their period before transport.
+- Validate credential identifiers separately: permit ASCII letters, digits, hyphen, underscore and period. Reject whitespace, controls, non-ASCII text and scope/header separators. Region scope validation remains unchanged.
+- Verify the existing independent STS vector with a synthetic dotted identifier. Add runtime temporary-provider integration and invalid-identifier rejection fixtures. Use a dotted synthetic identifier in the existing account-free OSS Example.
+- Authorized live checks use the existing native temporary profile and GET requests only. No credentials, resource identifiers or bodies are published. SDK wire evidence does not imply generated `service/oss` acceptance.
+- Run doccheck, vet, full Go tests and formatting after implementation; final-head CI is required before merge.
+
+- Local verification on 2026-10-10: root runtime tests, the independent STS signature vector, rejection fixtures, deterministic Example, doccheck (17 packages), vet and formatting passed. The initial full Go run failed only two codegen fixtures because the fresh worktree lacked the pinned Node parser. After installing lockfile dependencies with npm ci, both fixtures passed (37.426 seconds); all other packages passed in the original run.
+- Read-only live verification after the fix: ListBuckets, GetBucketInfo and GetBucketReplicationLocation each returned HTTP 200, application/xml and an OSS request ID in one attempt through the native oss-sftp temporary profile. Before the fix all three failed before HTTP with the invalid OSS V4 inputs error. Raw response structures agree with official CLI results. Public OSS generation and browser UI checks remain separate.
+
 - Issue #92, internal signing stage after bounded response streams and FC binary generation.
 - Follow the [official V4 specification](https://www.alibabacloud.com/help/en/oss/developer-reference/recommend-to-use-signature-version-4) and reviewed GatewayOSS 0.0.42 source. This is an independent standard-library implementation; do not copy the native SDK or add runtime dependencies.
 - Use explicit bucket, region and time. Canonical resource paths include the bucket and preserve object-key slashes. Sort encoded query names; empty values use a bare subresource name. Do not reuse ACS3 framing.

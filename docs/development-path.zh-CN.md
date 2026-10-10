@@ -4,6 +4,8 @@
 
 [English](development-path.md)
 
+- #126 先修复 OSS4 临时凭据标识符，再继续真实来源核验。遵循 [OSS4 签名](oss4-signing.zh-CN.md)：允许 STS 标识符中的句点，保留地域和注入检查，再执行离线签名向量及已授权的只读协议核验。不把这项修正算作生成的 OSS 覆盖。
+
 - #92 已合并[OSS 共享运行时](oss-runtime.zh-CN.md)：OSS4、桶地址、XML 请求 MD5、类型化 XML 响应和结构化错误。当前继续推进暂存来源和 IR；Go 输出与 ListBuckets 修正分别验收。
 
 - #92 已验收[原生 XML 根节点发现](native-xml-traits.zh-CN.md)。当前语义 IR 阶段增加嵌套模型比较；仅根字段一致不能证明兼容。

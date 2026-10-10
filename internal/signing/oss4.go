@@ -50,6 +50,20 @@ func scopePart(value string) bool {
 	return true
 }
 
+// credentialID accepts the period used by temporary STS identifiers. Scope and
+// authorization separators remain invalid; regions use the stricter scopePart.
+func credentialID(value string) bool {
+	if value == "" {
+		return false
+	}
+	for _, r := range value {
+		if (r < 'a' || r > 'z') && (r < 'A' || r > 'Z') && (r < '0' || r > '9') && r != '-' && r != '_' && r != '.' {
+			return false
+		}
+	}
+	return true
+}
+
 func bucketName(value string) bool {
 	if value == "" {
 		return true
@@ -150,7 +164,7 @@ func SignOSS4(ctx context.Context, request *http.Request, c credentials.Credenti
 	if err := ctx.Err(); err != nil {
 		return err
 	}
-	if request == nil || request.URL == nil || request.URL.Scheme != "https" || request.URL.Host == "" || request.URL.User != nil || request.URL.Opaque != "" || request.URL.Fragment != "" || request.URL.RawFragment != "" || !bucketName(options.Bucket) || !scopePart(options.Region) || !scopePart(c.AccessKeyID) || c.AccessKeySecret == "" || options.Time.IsZero() || !headerValue(c.SecurityToken) {
+	if request == nil || request.URL == nil || request.URL.Scheme != "https" || request.URL.Host == "" || request.URL.User != nil || request.URL.Opaque != "" || request.URL.Fragment != "" || request.URL.RawFragment != "" || !bucketName(options.Bucket) || !scopePart(options.Region) || !credentialID(c.AccessKeyID) || c.AccessKeySecret == "" || options.Time.IsZero() || !headerValue(c.SecurityToken) {
 		return errOSS4
 	}
 	if !c.ExpiresAt.IsZero() && !options.Time.Before(c.ExpiresAt) {
